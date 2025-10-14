@@ -18,7 +18,7 @@ public interface DAOAvsandare {
     
     Avsandare sokEnAvsandare(Avsandare avs);
     /**
-     * Om någon inparameter är null så används den inte i frågan
+     * Om nagon inparameter ar null sa anvands den inte i fragan
      */
     List getAvsandare(String namn, String programnamn,
             String kategori, String epost, String replyto);

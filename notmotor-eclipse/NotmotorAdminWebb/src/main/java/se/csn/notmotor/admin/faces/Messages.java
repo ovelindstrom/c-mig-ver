@@ -14,7 +14,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 /**
- * Taget från Core JavaServer Faces, Geary och Horstmann, s. 232  
+ * Taget fran Core JavaServer Faces, Geary och Horstmann, s. 232  
  */
 public class Messages {
     

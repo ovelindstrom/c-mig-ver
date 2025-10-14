@@ -12,8 +12,8 @@ import javax.mail.event.TransportListener;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * Klass som fångar upp events från mail-transporttjänsten. 
- * Lagrar status på meddelandet. 
+ * Klass som fangar upp events fran mail-transporttjansten. 
+ * Lagrar status pa meddelandet. 
  */
 public class TransportListenerImpl implements TransportListener {
 

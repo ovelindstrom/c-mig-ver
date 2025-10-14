@@ -26,14 +26,14 @@ import se.csn.notmotor.ipl.Notmotor;
 //import com.ibm.websphere.servlet.event.ServletListener;
 
 /**
- * Denna servlet tillhandahåller den tråd som notmotorn går i. 
- * Servleten hanterar två typer av anrop: ett testanrop (GET 
+ * Denna servlet tillhandahaller den trad som notmotorn gar i. 
+ * Servleten hanterar tva typer av anrop: ett testanrop (GET 
  * eller POST utan speciella parametrar) och ett starta-anrop
  * (parametern 'start' satt till 'true').
  * Vid testanropet returnerar servleten ett enkelt, html-formaterat
  * OK-meddelande. 
- * Vid start-anropet kommer servleten att flusha buffern för att 
- * skicka meddelande tillbaka till anropande tråd. Därefter startas 
+ * Vid start-anropet kommer servleten att flusha buffern for att 
+ * skicka meddelande tillbaka till anropande trad. Darefter startas 
  * notmotorn. 
  *   
  */

@@ -81,7 +81,7 @@ public class SMSTjaenst {
 	}
 	
 	/**
-	 * Kontrollerar att alla nödvändiga data är satta.
+	 * Kontrollerar att alla nodvandiga data ar satta.
 	 * @throws IllegalStateException om någon parameter saknas för 
 	 * att tjänsten ska kunna användas
 	 */

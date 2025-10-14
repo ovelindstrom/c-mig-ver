@@ -44,8 +44,8 @@ import se.csn.webservice.bas.notmotor.skicka.Skicka_ServiceLocator;
 
 /**
  * Bean implementation class for Enterprise Bean: Meddelande.
- * Transaktionshantering är satt till container för att fMessageDrivenCtx.setRollbackOnly() ska
- * lägga tillbaka MQ meddelandet på kön igen.
+ * Transaktionshantering ar satt till container for att fMessageDrivenCtx.setRollbackOnly() ska
+ * lagga tillbaka MQ meddelandet pa kon igen.
  */
 @MessageDriven
 public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.MessageDrivenBean, javax.jms.MessageListener {
@@ -58,7 +58,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 	private static final String PROPERTIES_FIL = "notmotor-ipl";
 	private static final String PROPERTIES_FIL_ARK = "ark";
 
-	/** Namn på inkommande kanal, om inget annat ges. */
+	/** Namn pa inkommande kanal, om inget annat ges. */
 	private static final String KANAL_NAMN_DEFAULT = "MQMAAAUD";
 
 	/** 

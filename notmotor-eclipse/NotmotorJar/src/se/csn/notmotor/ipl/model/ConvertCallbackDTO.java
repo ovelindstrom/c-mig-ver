@@ -10,7 +10,7 @@ import se.csn.webservice.bas.notmotor.callback.DTOMeddelandeHandelse;
 import se.csn.webservice.bas.notmotor.callback.DTOMottagare;
 
 /**
- * Utilityklass för att konvertera notmotorns interna modelklasser till webbservice-dtoer och vice versa.
+ * Utilityklass for att konvertera notmotorns interna modelklasser till webbservice-dtoer och vice versa.
  * @author csn7823
  *
  */

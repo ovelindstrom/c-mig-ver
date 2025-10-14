@@ -13,7 +13,7 @@ import se.csn.notmotor.ipl.model.Mottagare;
 import se.csn.notmotor.ipl.model.KodText;
 
 /**
- * Klass som kontrollerar att ett meddelande är riktigt formaterat.
+ * Klass som kontrollerar att ett meddelande ar riktigt formaterat.
  */
 public class BasicMeddelandeValidator implements MeddelandeValidator {
 

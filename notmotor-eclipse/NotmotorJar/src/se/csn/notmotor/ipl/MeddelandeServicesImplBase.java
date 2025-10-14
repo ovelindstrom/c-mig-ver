@@ -83,9 +83,9 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 	}
 	
 	/**
-	 * Sätter fältet WATCHDOGTIMESTAMP i tabellen STATUS för denna instans till nuvarande tid. 
-	 * Detta fält används för att kontrollera att alla instanser lever och gör det de ska.
-	 * En servlet läser fältet för alla aktiva instanser och kollar att de lever.
+	 * Satter faltet WATCHDOGTIMESTAMP i tabellen STATUS for denna instans till nuvarande tid. 
+	 * Detta falt anvands for att kontrollera att alla instanser lever och gor det de ska.
+	 * En servlet laser faltet for alla aktiva instanser och kollar att de lever.
 	 */
 	public void updateWatchdogFlag() {
 	    try {
@@ -164,7 +164,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 	
 	
 	/**
-	 * Läser den rad i STATUS-tabellen som matchar denna instans
+	 * Laser den rad i STATUS-tabellen som matchar denna instans
 	 * @return aktuell status som den är satt i databasen för den här instansen
 	 */
 	public int getStatus() {
@@ -254,9 +254,9 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 	
 	
 	/**
-	 * Söker ut alla meddelanden för denna instans med negativ status 
-	 * (dvs. meddelanden som är markerade för pågående sändning) 
-	 * och sätter om dem till status MOTTAGET.
+	 * Soker ut alla meddelanden for denna instans med negativ status 
+	 * (dvs. meddelanden som ar markerade for pagaende sandning) 
+	 * och satter om dem till status MOTTAGET.
 	*/
 	private void aterstallMeddelanden() {
 		String sql = "UPDATE MEDDELANDE SET STATUS = " + MeddelandeHandelse.MOTTAGET

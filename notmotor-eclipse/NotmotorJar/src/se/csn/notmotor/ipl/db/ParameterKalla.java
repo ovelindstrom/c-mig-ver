@@ -25,7 +25,7 @@ public interface ParameterKalla {
     void reload();
     
     /**
-     * Returnerar en map av namn-värdepar.
+     * Returnerar en map av namn-vardepar.
      */
     Map getStringParamMap();
     Setting[] getSettings();

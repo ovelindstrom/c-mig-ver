@@ -12,7 +12,7 @@ import se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat;
 
 
 /**
- * Klass för att skicka många testmail via web service.
+ * Klass for att skicka manga testmail via web service.
  * @author csn7821
  *
  */

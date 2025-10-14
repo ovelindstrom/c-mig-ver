@@ -11,7 +11,7 @@ import se.csn.ark.common.dal.db.DatabaseException;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * QueryProcessor som använder en enda Connection. 
+ * QueryProcessor som anvander en enda Connection. 
  * Denna connection lagras i en statisk medlemsvariabel.
  * OBS! Kan leda till udda beteende om flera webappar delar klassladdare.
  */
@@ -30,7 +30,7 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
 	
 	
 	/**
-	 * Hämtar connection, om det inte finns någon skapas en ny.
+	 * Hamtar connection, om det inte finns nagon skapas en ny.
 	 * @return Samma connection för alla anrop i denna tråd med denna datasource
 	 */
 	public Connection getConnection() {
@@ -86,7 +86,7 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
     }
     
     /**
-     * Gör commit() och close() på en connection, samt lyfter bort den ur trådmappen.
+     * Gor commit() och close() pa en connection, samt lyfter bort den ur tradmappen.
      */
     public void removeConnectionForThisThread() {
 	    Connection conn = getConnectionForThisThread();
@@ -125,7 +125,7 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
 	
 	
 	/**
-	 * Sätter connection för denna tråd och datasource.
+	 * Satter connection for denna trad och datasource.
 	 * @param conn Connection som ska sättas
 	 */
 	private void setConnectionForThisThread(Connection conn) {

@@ -45,7 +45,7 @@ public class ConfigServlet extends HttpServlet implements Servlet {
 
 	
 	/**
-	 * Kontrollerar att alla externa beroenden är uppsatta enligt krav.
+	 * Kontrollerar att alla externa beroenden ar uppsatta enligt krav.
 	 * @return true om alla dependencies fanns och var rätt uppsatta,
 	 * false annars
 	 */

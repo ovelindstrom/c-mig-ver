@@ -74,7 +74,7 @@ public class SokBean {
         }
         
         /**
-         * Returnerar true om meddelandet ska vara möjligt att sända om. Omsändningen är möjligt i de fall
+         * Returnerar true om meddelandet ska vara mojligt att sanda om. Omsandningen ar mojligt i de fall
          * ett meddelande har statuskod 32(Meddelandefel) eller 16(Tekniskt fel).
          * @return true om meddelandet kan sändas om, annars false.
          */
@@ -218,7 +218,7 @@ public class SokBean {
     }
 
     /**
-     * Utför en sökning efter meddelanden enligt de villkor som fyllts på webbsidan.
+     * Utfor en sokning efter meddelanden enligt de villkor som fyllts pa webbsidan.
      */
 	private void sok() {
 		log.debug("sok");
@@ -334,7 +334,7 @@ public class SokBean {
     }
     
     /**
-     * Skickar om ett flera meddelanden som valts på webbsidan.
+     * Skickar om ett flera meddelanden som valts pa webbsidan.
      * @param e action event från webbsidan
      */
     public void skickaOm(ActionEvent e) {
@@ -398,7 +398,7 @@ public class SokBean {
     }
     
     /**
-     * Kontrollerar om några meddelanden som hittades i sökningen är möjliga att skicka om.
+     * Kontrollerar om nagra meddelanden som hittades i sokningen ar mojliga att skicka om.
      * @return true om något meddelande kan skickas om, annars false.
      */
     public boolean getFinnsMeddelandenMojligaForOmsandning() {
@@ -539,7 +539,7 @@ public class SokBean {
     }
             
     /**
-     * Returnerar sökta meddelanden i en lista.
+     * Returnerar sokta meddelanden i en lista.
      * @return akteulla meddelanden i form av en lista.
      */
     public List<Meddelanderad> getMeddelandenAsList() {

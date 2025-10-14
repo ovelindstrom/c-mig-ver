@@ -9,9 +9,9 @@ import java.util.Date;
 
 /***
  * Klass som representerar ett tidsintervall. 
- * Gränserna kan sättas till null, de tolkas då som öppna. 
- * Ett intervall med både start och slut satta till null omfattar
- * alltså all tid.
+ * Granserna kan sattas till null, de tolkas da som oppna. 
+ * Ett intervall med bade start och slut satta till null omfattar
+ * alltsa all tid.
  */
 public class Tidsintervall {
 

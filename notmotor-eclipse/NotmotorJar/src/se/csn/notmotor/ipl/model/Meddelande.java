@@ -15,7 +15,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
 
 /**
- * Modellklass för Meddelande.
+ * Modellklass for Meddelande.
  *
  */
 public class Meddelande extends CsnDataTransferObjectImpl {

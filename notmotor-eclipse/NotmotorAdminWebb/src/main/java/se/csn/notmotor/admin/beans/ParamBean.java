@@ -32,9 +32,9 @@ public class ParamBean {
     };
     
     /**
-     * Lista med de parametrar som finns tillgängliga för nedprioriterade kanaler.
-     * Varje element i listan består i sin tur av en lista som innehåller två element;
-     * namn och beskrivning. Om parameterns namn innehåller "{{KANAL}}" så kommer detta
+     * Lista med de parametrar som finns tillgangliga for nedprioriterade kanaler.
+     * Varje element i listan bestar i sin tur av en lista som innehaller tva element;
+     * namn och beskrivning. Om parameterns namn innehaller "{{KANAL}}" sa kommer detta
      * att bytas ut mot kanalens namn.
      */
     private static final String[][] paramsKanaler = {

@@ -18,8 +18,8 @@ import se.csn.notmotor.ipl.model.NotifieringResultat;
 import se.csn.notmotor.ipl.model.SandResultat;
 
 /**
- * Enkel meddelandesändningsstubbe. Tänkt för utvecklingsfasen innan notmotorn är helt på 
- * plats. Kan användas i samma process som klientkoden; konfa då upp med properties.
+ * Enkel meddelandesandningsstubbe. Tankt for utvecklingsfasen innan notmotorn ar helt pa 
+ * plats. Kan anvandas i samma process som klientkoden; konfa da upp med properties.
  * Implementerar bara skicka-metoden.  
  */
 public class SimpleNotifieringProxyImpl implements NotifieringProxy {
@@ -35,7 +35,7 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
     }
     
     /**
-     * Enklast möjliga implementation. Skickar meddelandet men returnerar
+     * Enklast mojliga implementation. Skickar meddelandet men returnerar
      * inget meddelande-id
      */
     public NotifieringResultat skickaMeddelande(Meddelande meddelande) {

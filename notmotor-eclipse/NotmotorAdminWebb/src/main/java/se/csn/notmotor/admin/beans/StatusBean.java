@@ -231,8 +231,8 @@ public class StatusBean {
     }
     
     /**
-     * Kontrollerar att processernas watchdogflaggor är tillräckligt färska. 
-     * Tillräckligt färsk anses vara inom 60 sekunder från den satta parametern
+     * Kontrollerar att processernas watchdogflaggor ar tillrackligt farska. 
+     * Tillrackligt farsk anses vara inom 60 sekunder fran den satta parametern
      */
     public String getWatchdogVarning() {
         Date jamforelsetid = getJamforelsetid();
@@ -267,8 +267,8 @@ public class StatusBean {
     }
     
     /**
-     * Kan bara ta bort en statusrad om status är stoppad eller watchdogtidpunkten har passerats så
-     * att varningstexten är utlagd samtidigt som status är stoppar.
+     * Kan bara ta bort en statusrad om status ar stoppad eller watchdogtidpunkten har passerats sa
+     * att varningstexten ar utlagd samtidigt som status ar stoppar.
      * @param rad Statusrad
      * @return true om villkoren uppfylls
      */

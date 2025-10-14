@@ -9,7 +9,7 @@ import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.webservice.bas.notmotor.callback.CallbackProxy;
 
 /**
- * Klient som används för att skicka ett callbackanrop till webbservice.
+ * Klient som anvands for att skicka ett callbackanrop till webbservice.
  * @author Jonas åhrnell - csn7821
  */
 public class CallbackClient {

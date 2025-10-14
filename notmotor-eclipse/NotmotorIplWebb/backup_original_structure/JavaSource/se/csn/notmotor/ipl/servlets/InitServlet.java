@@ -34,7 +34,7 @@ import se.csn.notmotor.ipl.webservice.SkickaService;
 //import com.ibm.websphere.servlet.event.ServletListener;
 
 /**
- * Servlet som ska köras vid startup; används för att starta notmotorinstans.
+ * Servlet som ska koras vid startup; anvands for att starta notmotorinstans.
  */
 public class InitServlet extends HttpServlet implements Servlet { //, ServletListener {
 	private static final long serialVersionUID = 1L;
@@ -46,8 +46,8 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
 	}
 
 	/**
-	 * Testar externa beroenden, sätter upp beroenden, 
-	 * startar en notmotorinstans. Detta görs mha en tråd. 
+	 * Testar externa beroenden, satter upp beroenden, 
+	 * startar en notmotorinstans. Detta gors mha en trad. 
 	 */
 	public void init(ServletConfig config) throws ServletException {
 	    checkExternalDependencies();

@@ -14,7 +14,7 @@ import se.csn.notmotor.ipl.db.SingleThreadConnectionQueryProcessor;
 import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 
 /**
- * Huvudklassen, ingångsklassen för notifieringsmotorn. Denna klass
+ * Huvudklassen, ingangsklassen for notifieringsmotorn. Denna klass
  * instantierar och kopplar ihop alla andra klasser. 
  */
 public class NotmotorBase {
@@ -42,9 +42,9 @@ public class NotmotorBase {
     }
     
     /**
-     * Metoden sätter alla statusrader som matchar URL:en till STOPPED.
-     * Nödvändigt ifall någon process dör okontrollerat.
-     * Ska alltså bara anropas en gång per webbapplikationsinstans.
+     * Metoden satter alla statusrader som matchar URL:en till STOPPED.
+     * Nodvandigt ifall nagon process dor okontrollerat.
+     * Ska alltsa bara anropas en gang per webbapplikationsinstans.
      * @param anropadURL anropande process
      * @param qp QueryProcessor
      */
@@ -62,10 +62,10 @@ public class NotmotorBase {
     }
     
     /**
-    * Söker ut alla meddelanden med negativ status (dvs. meddelanden
-    * som är markerade för pågående sändning) och sätter om dem till 
+    * Soker ut alla meddelanden med negativ status (dvs. meddelanden
+    * som ar markerade for pagaende sandning) och satter om dem till 
     * status MOTTAGET.
-    * Ska alltså bara anropas en gång per webbapplikationsinstans.
+    * Ska alltsa bara anropas en gang per webbapplikationsinstans.
     * @param qp QueryProcessor
     */
     protected void aterstallAvbrutnaSandningar(QueryProcessor qp) {

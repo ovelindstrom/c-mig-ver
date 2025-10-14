@@ -20,7 +20,7 @@ public class DTOSMSIn {
 	private static final int MINTELELANGD = 10;
 	
 	/**
-	 * Parameterlös konstruktor för att uppfylla beankontraktet.
+	 * Parameterlos konstruktor for att uppfylla beankontraktet.
 	 *
 	 */
 	public DTOSMSIn() {

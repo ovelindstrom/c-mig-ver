@@ -12,7 +12,7 @@ import java.util.List;
 import se.csn.notmotor.ipl.model.Avsandare;
 
 /**
- * CRUD-metoder för avsändare
+ * CRUD-metoder for avsandare
  */
 public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, DAOAvsandare {
     
@@ -59,7 +59,7 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
     }
     
     /**
-    * Om någon inparameter är null så används den inte i frågan.
+    * Om nagon inparameter ar null sa anvands den inte i fragan.
     */
     public List getAvsandare(String namn, String programnamn, String kategori, String epost, String replyto) {
         // Bygg SQL-satsen. 
@@ -97,7 +97,7 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
     
     
     /**
-     * Söker i databasen efter användare som matchar kriterierna
+     * Soker i databasen efter anvandare som matchar kriterierna
      * @return id för den matchande avsändaren; -1 
      * om det inte fanns någon matchande avsändare, -2 om det fanns mer än en 
      */

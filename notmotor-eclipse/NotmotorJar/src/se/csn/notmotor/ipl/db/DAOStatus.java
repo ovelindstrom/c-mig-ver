@@ -23,7 +23,7 @@ public interface DAOStatus {
     public void uppdatera(Status status);
     
     /**
-     * Söker ut de statusar som matchar sökkriterierna
+     * Soker ut de statusar som matchar sokkriterierna
      * @param status Begränsa sökningen till de rader som har denna status. 
      *        Om null så begränsas inte sökningen på status.
      * @param server Begränsa sökningen till de rader som har denna server. 
@@ -32,13 +32,13 @@ public interface DAOStatus {
     public List getStatus(Integer status, Integer server);
     
     /**
-     * Läser upp ett statusonbjekt från databas.
+     * Laser upp ett statusonbjekt fran databas.
      */
     public Status getStatus(int instans);
     
     /**
      * Tar bort motsvarande rad ur databasen. 
-     * OBS! Kan ge märkliga problem om raden används av en aktiv instans. 
+     * OBS! Kan ge markliga problem om raden anvands av en aktiv instans. 
      */
     public void delete(int instans);
 }

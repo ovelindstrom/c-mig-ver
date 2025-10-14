@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * Representerar en inkanal där det finns begränsningar i
+ * Representerar en inkanal dar det finns begransningar i
  * hur meddelanden ska bearbetas.
  * 
  * @author Petrus Bergman, csn7820
@@ -22,25 +22,25 @@ public class Kanal {
 	/** Kanalens namn. */
 	private String namn;
 	
-	/** Kanalens öppningstid (endast klockslag). */
+	/** Kanalens oppningstid (endast klockslag). */
 	private Calendar oppningstid;
 	
-	/** Kanalens stängningstid (endast klockslag). */
+	/** Kanalens stangningstid (endast klockslag). */
 	private Calendar stangningstid;
 	
-	/** Det maximala antalet meddelanden som får bearbetas per timme. */
+	/** Det maximala antalet meddelanden som far bearbetas per timme. */
 	private int maxAntalPerTimme;
 	
-	/** Antal meddelanden som ska bearbetas i en följd. */
+	/** Antal meddelanden som ska bearbetas i en foljd. */
 	private int batchStorlek;
 	
-	/** Antal meddelanden som återstår i aktuell batch. */
+	/** Antal meddelanden som aterstar i aktuell batch. */
 	private int batchKvar;
 	
 	/** Tid i sekunder mellan varje batch. */
 	private int sovtid;
 	
-	/** Tidsstämpel då kanalen senast somnat, eller null om vaken. */
+	/** Tidsstampel da kanalen senast somnat, eller null om vaken. */
 	private Date soverTimestamp;
 	
 	/** Antal meddelanden som senast markerats. */
@@ -82,9 +82,9 @@ public class Kanal {
 	}
 	
 	/**
-	 * Returnerar huruvida kanalen är öppen eller stängd.
-	 * Kanalen anses vara öppen om nuvarande tidpunkt är inom aktuell öppet-
-	 * och stängningstid.
+	 * Returnerar huruvida kanalen ar oppen eller stangd.
+	 * Kanalen anses vara oppen om nuvarande tidpunkt ar inom aktuell oppet-
+	 * och stangningstid.
 	 * 
 	 * @return <code>true</code> om kanalen är öppen, annars <code>false</code>
 	 */
@@ -108,7 +108,7 @@ public class Kanal {
 	}
 	
 	/**
-	 * Sätt klockslag då kanalen ska öppnas.
+	 * Satt klockslag da kanalen ska oppnas.
 	 * 
 	 * @param klockslag anges på formen HH:mm:ss
 	 */
@@ -131,7 +131,7 @@ public class Kanal {
 	}
 	
 	/**
-	 * Sätt klockslag då kanalen ska öppnas.
+	 * Satt klockslag da kanalen ska oppnas.
 	 * 
 	 * @param hh timme (0-23)
 	 * @param mm minut (0-59)
@@ -150,7 +150,7 @@ public class Kanal {
 	}
 	
 	/**
-	 * Sätt klockslag då kanalen ska stängas.
+	 * Satt klockslag da kanalen ska stangas.
 	 * 
 	 * @param klockslag anges på formen HH:mm:ss
 	 */
@@ -173,7 +173,7 @@ public class Kanal {
 	}
 	
 	/**
-	 * Sätt klockslag då kanalen ska stängas.
+	 * Satt klockslag da kanalen ska stangas.
 	 * 
 	 * @param hh timme (0-23)
 	 * @param mm minut (0-59)
@@ -192,7 +192,7 @@ public class Kanal {
 	}
 	
 	/**
-	 * Sätter maximala antalet meddelanden som får bearbetas per timme.
+	 * Satter maximala antalet meddelanden som far bearbetas per timme.
 	 * 
 	 * @param antal max antal meddelanden. -1 innebär ingen begränsning.
 	 */

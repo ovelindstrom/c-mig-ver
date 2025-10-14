@@ -17,8 +17,8 @@ import se.csn.common.util.cache.TimeoutCache;
 import se.csn.notmotor.ipl.model.Setting;
 
 /**
- * Denna klass fungerar som en proxy för alla parametrar som 
- * används av notmotorn
+ * Denna klass fungerar som en proxy for alla parametrar som 
+ * anvands av notmotorn
  */
 public class ParameterCache implements ParameterKalla {
 

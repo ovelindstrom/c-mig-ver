@@ -38,7 +38,7 @@ public class NotifieringProxyImpl implements NotifieringProxy {
     }
 
     /**
-     * Validerar, lägger till händelsen MOTTAGET och skriver till databas.
+     * Validerar, lagger till handelsen MOTTAGET och skriver till databas.
      */
     public NotifieringResultat skickaMeddelande(Meddelande meddelande) {
         try {

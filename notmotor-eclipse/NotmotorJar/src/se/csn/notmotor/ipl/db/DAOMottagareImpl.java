@@ -12,7 +12,7 @@ import java.util.List;
 import se.csn.notmotor.ipl.model.Mottagare;
 
 /**
- * CRUD för mottagare
+ * CRUD for mottagare
  */
 public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
 

@@ -3,9 +3,9 @@ package se.csn.notmotor.ipl;
 import se.csn.common.servlet.RunControl;
 
 /**
- * Klass som realiserar tillståndshanteringen för att skicka meddelanden.
- * Allt "arbete" utförs i andra klasser; det gör det möjligt att testa 
- * tillståndshanteringen för sig. 
+ * Klass som realiserar tillstandshanteringen for att skicka meddelanden.
+ * Allt "arbete" utfors i andra klasser; det gor det mojligt att testa 
+ * tillstandshanteringen for sig. 
  * @author Jonas åhrnell (csn7821)
  *
  */

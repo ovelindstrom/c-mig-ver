@@ -326,7 +326,7 @@ public class MeddelandeBean {
     }
     
     /**
-     * Specialare för att formatera ut mottagarna som en sträng.
+     * Specialare for att formatera ut mottagarna som en strang.
      * @return String med alla mottagare för meddelandet.
      */
     public String getMottagarstrang() {

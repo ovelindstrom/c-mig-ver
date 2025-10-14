@@ -7,7 +7,7 @@ import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.notmotor.ipl.model.KodText;
 
 /**
- * Märklig namngivning pga Harvest:
+ * Marklig namngivning pga Harvest:
  * @author Jonas åhrnell - csn7821
  */
 public interface MeddelandeValidator {

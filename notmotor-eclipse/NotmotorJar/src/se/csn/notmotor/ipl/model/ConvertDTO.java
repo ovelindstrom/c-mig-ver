@@ -11,7 +11,7 @@ import se.csn.webservice.bas.notmotor.skicka.DTOMottagare;
 import se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat;
 
 /**
- * Utilityklass för att konvertera notmotorns interna modelklasser till webbservice-dtoer och vice versa.
+ * Utilityklass for att konvertera notmotorns interna modelklasser till webbservice-dtoer och vice versa.
  * @author csn7823
  *
  */

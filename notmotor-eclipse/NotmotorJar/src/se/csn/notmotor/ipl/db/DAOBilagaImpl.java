@@ -16,7 +16,7 @@ import se.csn.ark.common.util.logging.Log;
 import se.csn.notmotor.ipl.model.Bilaga;
 
 /**
- * CRUD för bilagor
+ * CRUD for bilagor
  */
 public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
 
