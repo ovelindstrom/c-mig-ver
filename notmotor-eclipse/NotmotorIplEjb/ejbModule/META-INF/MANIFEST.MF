@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Class-Path: log4j-1.2.8.jar 
+ axis-1.3.jar 
+ NotmotorIplClient.jar 
+ ark-2.1.4.jar
+

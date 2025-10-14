@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+	<application>
+<!-- 		<state-manager>com.ibm.faces.application.DevelopmentStateManager</state-manager> -->
+<!-- 		<property-resolver>com.ibm.faces.databind.SelectItemsPropResolver</property-resolver> -->
+<!-- 		<variable-resolver>com.ibm.faces.databind.SelectItemsVarResolver</variable-resolver> -->
+		<el-resolver>javax.el.ResourceBundleELResolver</el-resolver>
+	</application>
+	<factory>
+<!-- 		<faces-context-factory>com.ibm.faces.context.AjaxFacesContextFactory</faces-context-factory> -->
+<!-- 		<render-kit-factory>com.ibm.faces.renderkit.AjaxRenderKitFactory</render-kit-factory> -->
+		<faces-context-factory>org.apache.myfaces.context.FacesContextFactoryImpl</faces-context-factory>
+		<render-kit-factory>org.apache.myfaces.renderkit.RenderKitFactoryImpl</render-kit-factory>
+	</factory>
+  <!--
+  <application>
+  	<state-manager>
+  	com.ibm.faces.application.DevelopmentStateManager</state-manager>
+  	<property-resolver>
+  	com.ibm.faces.databind.SelectItemsPropResolver</property-resolver>
+  	<variable-resolver>
+  	com.ibm.faces.databind.SelectItemsVarResolver</variable-resolver>
+    <locale-config>
+      <default-locale>se</default-locale>
+    </locale-config>
+  </application>
+  <factory>
+  	<faces-context-factory>
+  	com.ibm.faces.context.AjaxFacesContextFactory</faces-context-factory>
+  	<render-kit-factory>
+  	com.ibm.faces.renderkit.AjaxRenderKitFactory</render-kit-factory>
+  </factory>
+-->
+  <managed-bean>
+    <description>
+      Helper för status.jsp
+    </description>
+    <managed-bean-name>statusBean</managed-bean-name>
+    <managed-bean-class>se.csn.notmotor.admin.beans.StatusBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <description>
+      Helper för params.jsp
+    </description>
+    <managed-bean-name>paramBean</managed-bean-name>
+    <managed-bean-class>se.csn.notmotor.admin.beans.ParamBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <description>
+      Helper för statistik.jsp
+    </description>
+    <managed-bean-name>statBean</managed-bean-name>
+    <managed-bean-class>se.csn.notmotor.admin.beans.StatistikBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <description>
+      Helper för sok.jsp
+    </description>
+    <managed-bean-name>sokBean</managed-bean-name>
+    <managed-bean-class>se.csn.notmotor.admin.beans.SokBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <description>
+      Helper för stangningsschema.jsp
+    </description>
+    <managed-bean-name>schemaBean</managed-bean-name>
+    <managed-bean-class>se.csn.notmotor.admin.beans.SchemaBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  
+  <managed-bean>
+    <description>
+      Helper för visameddelande.jsp
+    </description>
+    <managed-bean-name>msgBean</managed-bean-name>
+    <managed-bean-class>se.csn.notmotor.admin.beans.MeddelandeBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <lifecycle>
+  	<phase-listener>com.ibm.faces.webapp.ValueResourcePhaseListener</phase-listener>
+  </lifecycle>
+  <!--
+  <lifecycle>
+  	<phase-listener>
+  	com.ibm.faces.webapp.ValueResourcePhaseListener</phase-listener>
+  </lifecycle>
+  -->
+</faces-config>

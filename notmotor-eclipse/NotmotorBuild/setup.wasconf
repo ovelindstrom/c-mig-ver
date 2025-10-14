@@ -1,0 +1,78 @@
+# Dump av wsaxp023.csnnet.int : wsaxp023Node01
+# Startad Thu Jan 18 09:52:55 CET 2007 
+
+[VARIABLE_1]
+name=UNIVERSAL_JDBC_DRIVER_PATH
+value=${WAS_INSTALL_ROOT}/universalDriver/lib
+description=The directory that contains the DB2 Universal JDBC driver license file.
+
+[VARIABLE_2]
+name=DB2UNIVERSAL_JDBC_DRIVER_PATH
+value=C:/SQLLIB/java
+description=The directory that contains the DB2 Universal JDBC driver jars.
+
+[JDBCPROVIDER_1]
+name=DB2 XA Provider
+classpath=${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc.jar;${UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cu.jar;${DB2UNIVERSAL_JDBC_DRIVER_PATH}/db2jcc_license_cisuz.jar
+implementationclassname=com.ibm.db2.jcc.DB2XADataSource
+xa=true
+description=JDBC XA provider for DB2 datasources
+
+[AUTHALIAS_1]
+name=wsaxp023Node01/db_login
+userid=notmotor
+password=notmotor
+description=Alias for db access
+
+[DATASOURCE_1]
+name=notmotor ds
+jndiname=jdbc/NotmotorDS
+description=Notmotor DS
+provider=DB2 XA Provider
+aliasname=wsaxp023Node01/db_login
+databasename=WDBUTV
+servername=csn24utv
+port=50000
+schema=NOTMOTOR
+
+[LISTENERPORT_1]
+name=NotmotorLP
+qcfjndiname=jms/NotmotorMqConnFactory
+jndiname=queue/NOTMOTOR
+maxretries=0
+description=Listenerport för notmotorn
+
+
+[QUEUECONNECTIONFACTORY_1]
+name=NotmotorMqConnFactory
+jndiname=jms/NotmotorMqConnFactory
+host=csn24int
+port=1415
+managername=MQS_CSN24INT_MQIU
+channel=NOTMOTOR_CSN24INT
+msgretention=true
+xa=true
+transporttype=CLIENT
+description=Connection Factory för Notmotorn
+connectionpoolmaxconns=10
+connectionpoolminconns=1
+sessionpoolmaxconns=10
+sessionpoolminconns=1
+
+[MQQUEUE_1]
+name=NOTMOTOR
+jndiname=queue/NOTMOTOR
+host=csn24int
+port=1415
+managername=MQS_CSN24INT_MQIU
+basequeue=LQ.NOTMOTOR
+targetclient=MQ
+description=Kö för meddelanden som ska skickas av notmotorn
+
+[THREADPOOLSETTINGS_1]
+maxthreads=50
+minthreads=10
+allowextrathreads=false
+timeout=3500
+
+

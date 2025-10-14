@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+extraProperties=sonar.jdbc.password\=sonar\r\nsonar.jdbc.username\=sonar\r\nsonar.jdbc.url\=jdbc\:mysql\://csncm002.csnnet.int\:3306/sonar?useUnicode\=true&characterEncoding\=utf8&rewriteBatchedStatements\=true&useConfigs\=maxPerformance\r\nsonar.host.url\=http\://csncm002\:9000
+projectKey=NotmotorMQClient\:NotmotorMQClient
+serverUrl=http\://localhost\:9000
+version=2

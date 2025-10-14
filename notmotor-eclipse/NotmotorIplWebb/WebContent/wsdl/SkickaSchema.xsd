@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:Q1="http://webservice.csn.se/bas/notmotor/skicka" xmlns:tns="http://webservice.csn.se/bas/notmotor/skicka" elementFormDefault="qualified" targetNamespace="http://webservice.csn.se/bas/notmotor/skicka">
+
+    <element name="skickaMeddelandeRequest" type="Q1:DTOMeddelande"/>
+    
+    <element name="skickaMeddelandeResponse" type="Q1:DTONotifieringResultat">
+    </element>
+
+    <complexType name="DTOMeddelande">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="0" name="id" type="long"/>
+    		<element maxOccurs="1" minOccurs="0" name="csnnummer" type="int"/>
+    		<element maxOccurs="1" minOccurs="0" name="rubrik" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="meddelandetext" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="rubrikEncoding" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="meddelandeEncoding" type="string"/>
+    		<element maxOccurs="unbounded" minOccurs="0" name="bilagor" type="Q1:DTOBilaga"/>
+    		<element maxOccurs="1" minOccurs="0" name="skapad" type="dateTime"/>
+    		<element maxOccurs="1" minOccurs="0" name="skickat" type="dateTime"/>
+    		<element maxOccurs="1" minOccurs="0" name="skickaTidigast" type="dateTime"/>
+    		<element maxOccurs="1" minOccurs="1" name="avsandare" type="Q1:DTOAvsandare"/>
+    		<element maxOccurs="unbounded" minOccurs="1" name="mottagare" type="Q1:DTOMottagare"/>
+    		<element maxOccurs="unbounded" minOccurs="0" name="handelser" type="Q1:DTOMeddelandeHandelse"/>
+    		<element maxOccurs="1" minOccurs="0" name="callbackURL" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="callbackMask" type="int"/>
+    		<element maxOccurs="1" minOccurs="0" name="mimetyp" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="kanal" type="string"/>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="DTOBilaga">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="0" name="id" type="long"/>
+    		<element maxOccurs="1" minOccurs="0" name="mimetyp" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="filnamn" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="encoding" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="data" type="base64Binary"/>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="DTOAvsandare">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="0" name="id" type="long"/>
+    		<element maxOccurs="1" minOccurs="0" name="applikation" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="kategori" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="namn" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="epostadress" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="replyTo" type="string"/>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="DTOMottagare">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="0" name="id" type="long"/>
+    		<element maxOccurs="1" minOccurs="0" name="namn" type="string"/>
+    		<element maxOccurs="1" minOccurs="1" name="adress" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="csnnummer" type="int"/>
+    		<element maxOccurs="1" minOccurs="0" name="typ" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="status" type="int"/>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="DTOMeddelandeHandelse">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="0" name="id" type="long"/>
+    		<element maxOccurs="1" minOccurs="0" name="handelsetyp" type="int"/>
+    		<element maxOccurs="1" minOccurs="0" name="tidpunkt" type="dateTime"/>
+    		<element maxOccurs="1" minOccurs="0" name="felkod" type="int"/>
+    		<element maxOccurs="1" minOccurs="0" name="feltext" type="string"/>
+    		<element maxOccurs="1" minOccurs="0" name="instans" type="int"/>
+    	</sequence>
+    </complexType>
+
+    <complexType name="DTONotifieringResultat">
+    	<sequence>
+    		<element maxOccurs="1" minOccurs="1" name="meddelandeId" type="long"/>
+    		<element maxOccurs="1" minOccurs="0" name="resultat" type="int"/>
+    		<element maxOccurs="1" minOccurs="0" name="info" type="string"/>
+    	</sequence>
+    </complexType>
+
+    <element name="hamtaMeddelandeRequest" type="long"/>
+
+    <element name="hamtaMeddelandeResponse" type="Q1:DTOMeddelande"/>
+
+    <element name="taBortMeddelandeRequest" type="long"/>
+
+    <element name="taBortMeddelandeResponse" type="Q1:DTONotifieringResultat"/>
+
+
+</schema>

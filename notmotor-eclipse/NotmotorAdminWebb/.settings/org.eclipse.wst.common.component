@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+                
+    
+    
+    <wb-module deploy-name="notmotoradminwebb-2.0-SNAPSHOT">
+        <wb-resource deploy-path="/WEB-INF/web.xml" source-path="/WebContent/WEB-INF/web.xml"/>
+                        
+        
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+                                
+        
+        
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                                
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/JavaSource"/>
+                                
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/.apt_generated"/>
+                                
+        
+        
+        <property name="jsf.standard.scheme.other.filePath" value="/WEB-INF/faces-config.xml"/>
+                                
+        
+        
+        <property name="FeatureID_7" value="jsf.base.v600.6.0.1"/>
+                                
+        
+        
+        <property name="FeatureID_6" value="com.ibm.etools.web.diagram.project.feature"/>
+                                
+        
+        
+        <property name="FeatureID_5" value="com.ibm.etools.struts.wizards.project.feature"/>
+                                
+        
+        
+        <property name="FeatureID_4" value="JSPStandardFeature"/>
+                                
+        
+        
+        <property name="FeatureID_3" value="com.ibm.etools.siteedit.wizards.projectfeature.WebSiteFeature"/>
+                                
+        
+        
+        <property name="FeatureID_2" value="WebProjectCSSFileFeature"/>
+                                
+        
+        
+        <property name="jsf.standard.scheme.managedBean" value="singleFile"/>
+                                
+        
+        
+        <property name="FeatureID_1" value="templatefeature"/>
+                                
+        
+        
+        <property name="jsf.standard.scheme.navigationRule" value="singleFile"/>
+                                
+        
+        
+        <property name="JSPLevel" value="1.2"/>
+                                
+        
+        
+        <property name="jsf.standard.scheme.other" value="singleFile"/>
+                                
+        
+        
+        <property name="jsf.standard.scheme.pageCodeBean" value="singleFile"/>
+                                
+        
+        
+        <property name="jsf.standard.scheme.pageCodeBean.filePath" value="/WEB-INF/faces-config.xml"/>
+                                
+        
+        
+        <property name="jsf.standard.scheme.managedBean.filePath" value="/WEB-INF/faces-config.xml"/>
+                                
+        
+        
+        <property name="jsf.standard.scheme.navigationRule.filePath" value="/WEB-INF/faces-config.xml"/>
+                                
+        
+        
+        <property name="java-output-path" value="WebContent/WEB-INF/classes"/>
+                                
+        
+        
+        <property name="jsf.base" value="7.5.0.0"/>
+                                
+        
+        
+        <property name="jsf.ri" value="7.5.0.0"/>
+                                
+        
+        
+        <property name="jsf.extended" value="8.0.3200.v20131027_2117"/>
+                        
+        
+        <property name="context-root" value="notmotoradminwebb"/>
+                            
+    
+    
+    </wb-module>
+            
+
+
+</project-modules>

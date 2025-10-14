@@ -1,0 +1,9 @@
+# Denna fil skall innehålla två properties; userid och password
+# Deras värden används som användarid och lösenord när CA:Gen-genererade java-proxies
+# anropar serverprocedurer i stordatorn, dvs giltiga RACF-användaridentiteter
+# Man kan testa giltigheten i dessa parametrar med hjälp av CA:Gens Client Manager.
+#
+# Från och med 2019-05-20 är propertys-mallen anpassad till migrerad STIS utan koppling till stordatorn. 
+userid=<STIS_AUTHORIZATION_WS_USER>
+password=<STIS_AUTHORIZATION_WS_PASSWORD>
+

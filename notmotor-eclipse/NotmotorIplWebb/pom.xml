@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>se.csn.notmotor</groupId>
+  <artifactId>notmotoriplwebb</artifactId>
+  <version>2.0-SNAPSHOT</version>
+
+  <packaging>war</packaging>
+	
+  <name>NotmotorIplWebb</name>
+   <url>notmotor-ipl/</url>
+  <inceptionYear>2007</inceptionYear>
+  <organization>
+    <name>Centrala studiestödsnämnden</name>
+    <url>http://www.csn.se/</url>
+  </organization>
+  <parent>
+    <groupId>se.csn</groupId>
+    <artifactId>notmotor</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../NotmotorBuild</relativePath>
+  </parent>  
+
+  <dependencies>
+    <dependency>
+      <groupId>se.csn</groupId>
+	  <artifactId>ark</artifactId>
+  	  <version>3.0.1</version>
+    </dependency>
+  	<dependency>
+      <groupId>se.csn</groupId>
+	  <artifactId>utils</artifactId>
+  	  <version>1.0.0</version>
+  	  <exclusions>
+  	  	<exclusion>
+  	  		<groupId>javax.j2ee</groupId>
+  	  		<artifactId>j2ee</artifactId>
+  	  	</exclusion>
+  	  </exclusions>
+  	</dependency>
+  	<dependency>
+	  	<groupId>se.csn.notmotor</groupId>
+		<artifactId>notmotorjar</artifactId>
+  		<version>2.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+	  	<groupId>se.csn</groupId>
+		<artifactId>notmotoriplclient</artifactId>
+  		<version>2.1-SNAPSHOT</version>
+  	</dependency>
+<!--   	<dependency> -->
+<!-- 	  	<groupId>com.ibm.websphere</groupId> -->
+<!-- 		<artifactId>j2ee</artifactId> -->
+<!--   		<version>8.0</version> -->
+<!--   		<scope>provided</scope> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!-- 	  	<groupId>com.ibm.websphere</groupId> -->
+<!-- 		<artifactId>ras</artifactId> -->
+<!--   		<version>1.0</version> -->
+<!--   		<scope>provided</scope> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!-- 	  	<groupId>com.ibm.websphere</groupId> -->
+<!-- 		<artifactId>servletevent</artifactId> -->
+<!--   		<version>1.0</version> -->
+<!--   		<scope>provided</scope> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!-- 	  	<groupId>axis</groupId> -->
+<!-- 		<artifactId>axis</artifactId> -->
+<!--   		<version>1.3</version> -->
+<!--   		<optional>true</optional> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!-- 	  	<groupId>axis</groupId> -->
+<!-- 		<artifactId>axis-jaxrpc</artifactId> -->
+<!--   		<version>1.3</version> -->
+<!--   		<optional>true</optional> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!-- 	  	<groupId>axis</groupId> -->
+<!-- 		<artifactId>axis-saaj</artifactId> -->
+<!--   		<version>1.3</version> -->
+<!--   		<optional>true</optional> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!-- 	  	<groupId>wsdl4j</groupId> -->
+<!-- 		<artifactId>wsdl4j</artifactId> -->
+<!--   		<version>1.5.1</version> -->
+<!--   		<optional>true</optional> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!-- 	  	<groupId>commons-codec</groupId> -->
+<!-- 		<artifactId>commons-codec</artifactId> -->
+<!--   		<version>1.3</version> -->
+<!--   		<optional>true</optional> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!-- 	  	<groupId>commons-httpclient</groupId> -->
+<!-- 		<artifactId>commons-httpclient</artifactId> -->
+<!--   		<version>3.1</version> -->
+<!--   		<optional>true</optional> -->
+<!--   	</dependency> -->
+<!--   	<dependency> -->
+<!-- 	  	<groupId>commons-lang</groupId> -->
+<!-- 		<artifactId>commons-lang</artifactId> -->
+<!--   		<version>2.2</version> -->
+<!--   		<optional>true</optional> -->
+<!--   	</dependency> -->
+  	<dependency>
+	  	<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+  		<version>1.2.8</version>
+  	</dependency>
+  	<dependency>
+	  	<groupId>commons-collections</groupId>
+		<artifactId>commons-collections</artifactId>
+  		<version>3.2</version>
+<!--   		<optional>true</optional> -->
+  	</dependency>
+  	<dependency>
+	  	<groupId>opensymphony</groupId>
+		<artifactId>quartz</artifactId>
+  		<version>1.6.0</version>
+  	</dependency>
+  	
+  </dependencies>
+  
+  <build>
+    <sourceDirectory>${basedir}/JavaSource</sourceDirectory>
+    <testSourceDirectory>${basedir}/test</testSourceDirectory>
+    <outputDirectory>${basedir}/target/classes</outputDirectory>
+    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
+    <defaultGoal>compile</defaultGoal>
+    <resources>
+    	<resource>
+			<directory>${basedir}/JavaSource</directory>
+			<includes>
+				<include>**/*.java</include>
+			</includes>
+		</resource>
+   	</resources>
+    <!--
+    <filters>
+		<filter>${basedir}/project.properties</filter>
+    </filters>
+    -->
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.0.1</version>
+        <configuration>
+        	<warSourceExcludes>**/*Test*</warSourceExcludes>
+        	<archive>
+        		<manifest>
+        			<addClasspath>true</addClasspath>
+        		</manifest>
+        	</archive>
+ 	        <webXml>${basedir}/WebContent/WEB-INF/web.xml</webXml>
+ 			<warSourceDirectory>${basedir}/WebContent</warSourceDirectory>
+ 			<addMavenDescriptor>false</addMavenDescriptor>
+        </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+        </configuration>
+      </plugin>
+    </plugins>
+    
+  </build>
+  
+</project>
