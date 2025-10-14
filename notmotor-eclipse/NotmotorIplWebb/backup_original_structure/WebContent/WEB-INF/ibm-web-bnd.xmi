@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<webappbnd:WebAppBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:webappbnd="webappbnd.xmi" xmi:id="WebAppBinding_1172830826284" virtualHostName="default_host">
-  <webapp href="WEB-INF/web.xml#WebApp_ID"/>
-  <resRefBindings xmi:id="ResourceRefBinding_1178803842553" jndiName="jdbc/NotmotorWebb_DS">
-    <bindingResourceRef href="WEB-INF/web.xml#ResourceRef_1178803842553"/>
-  </resRefBindings>
-</webappbnd:WebAppBinding>

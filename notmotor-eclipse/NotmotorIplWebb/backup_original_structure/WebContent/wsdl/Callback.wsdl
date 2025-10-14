@@ -1,27 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webservice.csn.se/bas/notmotor/callback" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Callback" targetNamespace="http://webservice.csn.se/bas/notmotor/callback">
-  <wsdl:types>
-    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    	<xsd:import
-    		namespace="http://webservice.csn.se/bas/notmotor/callback"
-    		schemaLocation="CallbackSchema.xsd">
-    	</xsd:import></xsd:schema></wsdl:types>
-  <wsdl:message name="nyHandelseRequest">
-    <wsdl:part element="tns:nyHandelseRequest" name="parameters"/>
-  </wsdl:message>
-  <wsdl:portType name="Callback">
-    <wsdl:operation name="nyHandelse">
-      <wsdl:input message="tns:nyHandelseRequest"/>
-    </wsdl:operation>
-  </wsdl:portType>
-  <wsdl:binding name="CallbackSOAP" type="tns:Callback">  	<soap:binding style="document"
-  		transport="http://schemas.xmlsoap.org/soap/http" />  	<wsdl:operation name="nyHandelse">  		<soap:operation
-  			soapAction="http://webservice.csn.se/bas/notmotor/callback/nyHandelse" />  		<wsdl:input>  			<soap:body use="literal" />
-  		</wsdl:input>  	</wsdl:operation>
-  </wsdl:binding>
-  <wsdl:service name="Callback">
-    <wsdl:port binding="tns:CallbackSOAP" name="CallbackSOAP">
-      <soap:address location="http://webservice.csn.se/bas/notmotor/callback"/>
-    </wsdl:port>
-  </wsdl:service>
-</wsdl:definitions>
