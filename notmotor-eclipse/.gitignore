@@ -1,2 +1,19 @@
 /.metadata
 *.class
+
+# VS Code Java extension build directories
+**/bin/
+
+# Maven build directories (keep these visible)
+# **/target/
+
+# Eclipse IDE files - not needed for Maven + VS Code
+**/.settings/
+**/.project
+**/.classpath
+**/.checkstyle
+**/.fbprefs
+**/.runtime
+**/.eisConnections
+**/.website-config
+**/.externalToolBuilders/

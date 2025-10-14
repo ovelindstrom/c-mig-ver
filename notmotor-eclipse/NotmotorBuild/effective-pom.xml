@@ -349,16 +349,16 @@
     <artifactId>notmotor</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Notmotor</name>
+    <name>Notmotor Build - Parent</name>
     <url>http://www.csn.se/</url>
     <inceptionYear>2007</inceptionYear>
     <organization>
-      <name>Centrala studiestödsnämnden</name>
+      <name>Centrala studiestï¿½dsnï¿½mnden</name>
       <url>http://www.csn.se/</url>
     </organization>
     <developers>
       <developer>
-        <name>Jonas Öhrnell</name>
+        <name>Jonas ï¿½hrnell</name>
         <email>jonas.ohrnell@csn.se</email>
         <organization>CSN</organization>
         <organizationUrl>http://www.csn.se/</organizationUrl>
@@ -625,7 +625,7 @@
     </organization>
     <developers>
       <developer>
-        <name>Jonas Öhrnell</name>
+        <name>Jonas ï¿½hrnell</name>
         <email>jonas.ohrnell@csn.se</email>
         <organization>CSN</organization>
         <organizationUrl>http://www.csn.se/</organizationUrl>
@@ -1066,7 +1066,7 @@
     </organization>
     <developers>
       <developer>
-        <name>Jonas Öhrnell</name>
+        <name>Jonas ï¿½hrnell</name>
         <email>jonas.ohrnell@csn.se</email>
         <organization>CSN</organization>
         <organizationUrl>http://www.csn.se/</organizationUrl>
@@ -1468,7 +1468,7 @@
     </organization>
     <developers>
       <developer>
-        <name>Jonas Öhrnell</name>
+        <name>Jonas ï¿½hrnell</name>
         <email>jonas.ohrnell@csn.se</email>
         <organization>CSN</organization>
         <organizationUrl>http://www.csn.se/</organizationUrl>
@@ -1843,7 +1843,7 @@
     </organization>
     <developers>
       <developer>
-        <name>Jonas Öhrnell</name>
+        <name>Jonas ï¿½hrnell</name>
         <email>jonas.ohrnell@csn.se</email>
         <organization>CSN</organization>
         <organizationUrl>http://www.csn.se/</organizationUrl>
@@ -2224,7 +2224,7 @@
     </organization>
     <developers>
       <developer>
-        <name>Jonas Öhrnell</name>
+        <name>Jonas ï¿½hrnell</name>
         <email>jonas.ohrnell@csn.se</email>
         <organization>CSN</organization>
         <organizationUrl>http://www.csn.se/</organizationUrl>
@@ -2642,12 +2642,12 @@
     <url>../NotmotorAdminEAR/target/site</url>
     <inceptionYear>2007</inceptionYear>
     <organization>
-      <name>Centrala studiestödsnämnden</name>
+      <name>Centrala studiestï¿½dsnï¿½mnden</name>
       <url>http://www.csn.se/</url>
     </organization>
     <developers>
       <developer>
-        <name>Jonas Öhrnell</name>
+        <name>Jonas ï¿½hrnell</name>
         <email>jonas.ohrnell@csn.se</email>
         <organization>CSN</organization>
         <organizationUrl>http://www.csn.se/</organizationUrl>
@@ -2741,7 +2741,7 @@
     <build>
       <sourceDirectory>/Users/ovelindstrom/CSN/PoC/csn-migrate/notmotor-eclipse/NotmotorAdminEAR/src</sourceDirectory>
       <scriptSourceDirectory>/Users/ovelindstrom/CSN/PoC/csn-migrate/notmotor-eclipse/NotmotorAdminEAR/src/main/scripts</scriptSourceDirectory>
-      <testSourceDirectory>/Users/ovelindstrom/CSN/PoC/csn-migrate/notmotor-eclipse/NotmotorAdminEAR/src</testSourceDirectory>
+      <testSourceDirectory>/Users/ovelindstrom/CSN/PoC/csn-migrate/notmotor-eclipse/NotmotorAdminEAR/test</testSourceDirectory>
       <outputDirectory>/Users/ovelindstrom/CSN/PoC/csn-migrate/notmotor-eclipse/NotmotorAdminEAR/target/classes</outputDirectory>
       <testOutputDirectory>/Users/ovelindstrom/CSN/PoC/csn-migrate/notmotor-eclipse/NotmotorAdminEAR/target/test-classes</testOutputDirectory>
       <extensions>

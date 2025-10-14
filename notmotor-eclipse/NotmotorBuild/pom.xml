@@ -7,7 +7,7 @@
   <groupId>se.csn</groupId>
   <artifactId>notmotor</artifactId>
   <packaging>pom</packaging>
-  <name>Notmotor</name>
+  <name>Notmotor Build - Parent</name>
   <version>1.0-SNAPSHOT</version>
   <url>http://www.csn.se/</url>
   <issueManagement>
@@ -16,12 +16,12 @@
   </issueManagement>
   <inceptionYear>2007</inceptionYear>
   <organization>
-    <name>Centrala studiestödsnämnden</name>
+    <name>Centrala studiestï¿½dsnï¿½mnden</name>
     <url>http://www.csn.se/</url>
   </organization>
   <developers>
    <developer>
-      <name>Jonas Öhrnell</name>
+      <name>Jonas ï¿½hrnell</name>
       <email>jonas.ohrnell@csn.se</email>
       <organization>CSN</organization>
       <organizationUrl>http://www.csn.se/</organizationUrl>
@@ -54,9 +54,9 @@
   	<module>../NotmotorAdminEAR</module>
   	<module>../NotmotorAdminWebb</module>
 	<module>../NotmotorIplClient</module>
-  	<!-- Och NotmotorIplClient? Den modulen är frikopplad från den övriga notmotorn.
-  	     Grundprincipen är att om det är olika releasecykler (och det kommer det 
-  	     troligtvis att vara) så ska projekten ligga i olika projekt. -->
+  	<!-- Och NotmotorIplClient? Den modulen ï¿½r frikopplad frï¿½n den ï¿½vriga notmotorn.
+  	     Grundprincipen ï¿½r att om det ï¿½r olika releasecykler (och det kommer det 
+  	     troligtvis att vara) sï¿½ ska projekten ligga i olika projekt. -->
   </modules>
 
   <dependencies>
