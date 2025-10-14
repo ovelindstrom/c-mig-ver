@@ -382,37 +382,64 @@ def convert_to_maven_structure(project_root, create_backup=True):
             if os.path.exists(temp_dir):
                 shutil.rmtree(temp_dir, ignore_errors=True)
 
+def is_project_directory(directory):
+    """
+    Check if a directory looks like a single project (has pom.xml, JavaSource, src, etc.)
+    vs a parent directory containing multiple modules.
+    """
+    project_indicators = ['pom.xml', 'JavaSource', 'src', 'WebContent', 'build.xml']
+    return any(os.path.exists(os.path.join(directory, indicator)) for indicator in project_indicators)
+
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python3 maven_structure_converter.py <modules_parent_directory> [--no-backup]")
-        print("Example: python3 maven_structure_converter.py ./modules")
-        print("Example: python3 maven_structure_converter.py /path/to/modules --no-backup")
+        print("Usage: python3 maven_structure_converter.py <project_or_modules_directory> [--no-backup]")
+        print("Examples:")
+        print("  Single project: python3 maven_structure_converter.py ./NotmotorIplWebb")
+        print("  Multiple modules: python3 maven_structure_converter.py ./modules_parent")
+        print("  No backup: python3 maven_structure_converter.py ./project --no-backup")
         sys.exit(1)
 
-    parent_dir = sys.argv[1]
+    target_dir = sys.argv[1]
     create_backup = "--no-backup" not in sys.argv
 
-    if not os.path.exists(parent_dir):
-        print(f"❌ ERROR: Directory {parent_dir} does not exist")
+    if not os.path.exists(target_dir):
+        print(f"❌ ERROR: Directory {target_dir} does not exist")
         sys.exit(1)
 
-    if not os.path.isdir(parent_dir):
-        print(f"❌ ERROR: {parent_dir} is not a directory")
+    if not os.path.isdir(target_dir):
+        print(f"❌ ERROR: {target_dir} is not a directory")
         sys.exit(1)
 
-    # Iterate over subdirectories (modules)
-    subdirs = [d for d in os.listdir(parent_dir) if os.path.isdir(os.path.join(parent_dir, d))]
-    if not subdirs:
-        print(f"No sub-modules found in {parent_dir}")
-        sys.exit(0)
-
-    for subdir in subdirs:
-        module_path = os.path.join(parent_dir, subdir)
-        print(f"\n=== Processing module: {subdir} ===")
+    # Check if this is a single project or a parent directory with multiple modules
+    if is_project_directory(target_dir):
+        # Single project conversion
+        print(f"=== Processing single project: {os.path.basename(target_dir)} ===")
         try:
-            convert_to_maven_structure(module_path, create_backup)
+            convert_to_maven_structure(target_dir, create_backup)
         except Exception as e:
-            print(f"❌ FATAL ERROR in module {subdir}: {e}")
+            print(f"❌ FATAL ERROR: {e}")
+    else:
+        # Multiple modules conversion
+        subdirs = [d for d in os.listdir(target_dir) 
+                  if os.path.isdir(os.path.join(target_dir, d)) and not d.startswith('.')]
+        
+        if not subdirs:
+            print(f"No sub-modules found in {target_dir}")
+            sys.exit(0)
+
+        print(f"Found {len(subdirs)} potential modules in {target_dir}")
+        
+        for subdir in subdirs:
+            module_path = os.path.join(target_dir, subdir)
+            # Only process directories that look like projects
+            if is_project_directory(module_path):
+                print(f"\n=== Processing module: {subdir} ===")
+                try:
+                    convert_to_maven_structure(module_path, create_backup)
+                except Exception as e:
+                    print(f"❌ FATAL ERROR in module {subdir}: {e}")
+            else:
+                print(f"Skipping {subdir} (not a project directory)")
 
 if __name__ == "__main__":
     main()
