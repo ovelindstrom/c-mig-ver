@@ -22,22 +22,22 @@ public class BasicMeddelandeValidator implements MeddelandeValidator {
     }
 
     public KodText getFelkodForMeddelande(Meddelande meddelande) {
-        if(meddelande == null) {
+        if (meddelande == null) {
             return new KodText(MeddelandeHandelse.FELAKTIG_SUBJECT, "Inget meddelande!");
         }
 
         Avsandare avs = meddelande.getAvsandare();
-        if(avs == null) {
-           return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Avsändare saknas");
+        if (avs == null) {
+            return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Avsändare saknas");
         } else {
-            if(!EmailAdressValidator.isValid(avs.getEpostadress())) {
+            if (!EmailAdressValidator.isValid(avs.getEpostadress())) {
                 return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Felaktig avsändaradress");
             }
             //if(avs.getReplyTo() == null) return skapaHandelse(DTOMeddelandeHandelse.FELAKTIG_AVSANDARE, "Returadress saknas");
         }
 
         Mottagare[] mott = meddelande.getMottagare();
-        if((mott == null) || (mott.length == 0)) {
+        if ((mott == null) || (mott.length == 0)) {
             return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "Mottagare saknas");
         }
         return null;

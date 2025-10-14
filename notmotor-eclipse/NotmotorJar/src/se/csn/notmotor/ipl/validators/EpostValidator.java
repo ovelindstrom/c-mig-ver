@@ -15,14 +15,14 @@ import se.csn.notmotor.ipl.model.KodText;
 public class EpostValidator implements MeddelandeValidator {
 
     public KodText getFelkodForMeddelande(Meddelande meddelande) {
-        if(!EmailAdressValidator.isValid(meddelande.getAvsandare().getEpostadress())) {
+        if (!EmailAdressValidator.isValid(meddelande.getAvsandare().getEpostadress())) {
             return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Felaktig avsändaradress");
         }
         Mottagare[] mott = meddelande.getMottagare();
-        for(int i = 0; i < mott.length; i++) {
-            if(matchandeTyp(mott[i].getTyp())) {
-                if(!EmailAdressValidator.isValid(mott[i].getAdress())) {
-                    return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "Mottagare nr " + (i+1) + " har felaktig adress");
+        for (int i = 0;i < mott.length;i++) {
+            if (matchandeTyp(mott[i].getTyp())) {
+                if (!EmailAdressValidator.isValid(mott[i].getAdress())) {
+                    return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "Mottagare nr " + (i + 1) + " har felaktig adress");
                 }
             }
         }
@@ -31,19 +31,18 @@ public class EpostValidator implements MeddelandeValidator {
 
     boolean matchandeTyp(String typ) {
         // EpostMeddelandeSendern är defaultsändare -> accepterar NULL
-        if((typ == null) || (typ.length() == 0)) {
+        if ((typ == null) || (typ.length() == 0)) {
             return true;
         }
         final String kandaTyper = "EPOST EPOSTCC EPOSTBCC";
         String[] typer = typ.split(",");
-        for (int typloop = 0; typloop < typer.length; typloop++) {
+        for (int typloop = 0;typloop < typer.length;typloop++) {
             if (kandaTyper.indexOf(typer[typloop]) >= 0) {
                 return true;
             }
         }
         return false;
     }
-
 
 
     /** 

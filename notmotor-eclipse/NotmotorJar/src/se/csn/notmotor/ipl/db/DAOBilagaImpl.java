@@ -32,7 +32,7 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
      * @return nyckeln för bilagan
      */
     public long createBilaga(Bilaga b, long meddelandeid) {
-        if(b.getData() == null) {
+        if (b.getData() == null) {
             throw new IllegalArgumentException("Bilagan måste ha data.");
         }
 
@@ -42,19 +42,19 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
             conn = qp.getConnection();
 
             String query = "INSERT INTO BILAGA (ID,MEDDELANDEID,DATA,MIMETYP,ENCODING,FILNAMN) " +
-        		"VALUES(?,?,?,?,?,?)";
+                "VALUES(?,?,?,?,?,?)";
 
             long id = qp.getCounter("SEKVENS", "BILAGAID");
             ps = conn.prepareStatement(query);
-            ps.setLong(1,id);
-            ps.setLong(2,meddelandeid);
+            ps.setLong(1, id);
+            ps.setLong(2, meddelandeid);
             ps.setBinaryStream(3, new ByteArrayInputStream(b.getData()), b.getData().length);
             ps.setString(4, b.getMimetyp());
             ps.setString(5, b.getEncoding());
             ps.setString(6, b.getFilnamn());
 
             int result = ps.executeUpdate();
-            if(result != 1) {
+            if (result != 1) {
                 throw new SQLException("INSERT returnerade " + result);
             }
             b.setId(new Long(id));
@@ -64,8 +64,10 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
             throw new IllegalStateException("Kunde inte skapa meddelande i basen " + e);
         } finally {
             try {
-	            if(ps != null) { ps.close(); }
-            } catch(SQLException sqle) {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException sqle) {
                 throw new IllegalStateException("Kunde inte stänga resurser", sqle);
             }
         }
@@ -82,12 +84,12 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
     }
 
     @SuppressWarnings("unchecked")
-	public List<Bilaga> getBilagorForMeddelande(long meddelandeid) {
+    public List<Bilaga> getBilagorForMeddelande(long meddelandeid) {
         return qp.processQuery("SELECT ID,DATA,ENCODING,FILNAMN,MIMETYP FROM BILAGA WHERE MEDDELANDEID=" + meddelandeid, this);
     }
 
     public Bilaga getBilaga(long id) {
-        return (Bilaga)qp.getObject("SELECT ID,DATA,ENCODING,FILNAMN,MIMETYP FROM BILAGA WHERE ID=" + id, this);
+        return (Bilaga) qp.getObject("SELECT ID,DATA,ENCODING,FILNAMN,MIMETYP FROM BILAGA WHERE ID=" + id, this);
     }
 
 

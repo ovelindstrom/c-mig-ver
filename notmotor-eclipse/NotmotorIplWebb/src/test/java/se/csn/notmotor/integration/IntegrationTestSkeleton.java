@@ -20,19 +20,19 @@ import se.csn.webservice.bas.notmotor.skicka.Skicka_ServiceLocator;
 
 
 public class IntegrationTestSkeleton extends TestCase {
-	private static final Log log = Log.getInstance(IntegrationTestSkeleton.class);
+    private static final Log log = Log.getInstance(IntegrationTestSkeleton.class);
     protected Skicka_PortType client;
     protected String mottagaradress, mottagarsms, avsandaradress;
     protected String avsandarnamn;
 
     public void setUp() {
-    	try {
-    		Skicka_ServiceLocator serviceLocator = new Skicka_ServiceLocator();
-	    	CsnDAOWebServiceImpl daows = new CsnDAOWebServiceImpl();
-    		client = serviceLocator.getSkickaSOAP(daows.getURL(serviceLocator.getPorts()));
-    	} catch (Exception e) {
-    		log.error(e.getMessage());
-    	}
+        try {
+            Skicka_ServiceLocator serviceLocator = new Skicka_ServiceLocator();
+            CsnDAOWebServiceImpl daows = new CsnDAOWebServiceImpl();
+            client = serviceLocator.getSkickaSOAP(daows.getURL(serviceLocator.getPorts()));
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
 
         // Byt ut mot rätt mailadress(er):
         mottagaradress = "test.ekund@csn.se";
@@ -78,69 +78,69 @@ public class IntegrationTestSkeleton extends TestCase {
     }
 
     public DTOMeddelande skapaTestMeddelande(String rubrik, String text, String typ) {
-    	DTOMeddelande dto = new DTOMeddelande();
+        DTOMeddelande dto = new DTOMeddelande();
         dto.setRubrik(rubrik);
         dto.setMeddelandetext(text);
-    	DTOMottagare mott = null;
-		String meddelandesatt = typ.toUpperCase();
-		if ("EPOST".equals(meddelandesatt)) {
-			mott = new DTOMottagare();
-			mott.setAdress(mottagaradress);
-			mott.setTyp(meddelandesatt);
-		} else if ("SMS".equals(meddelandesatt)) {
-			mott = new DTOMottagare();
-			mott.setAdress(mottagarsms);
-			mott.setTyp(meddelandesatt);
-		} else {
-			String error = "Saknar mottagare vid leverans till notmotor (nyregistrering av e-kund)";
-			System.err.println(error);
-			throw new IllegalArgumentException(error);
-		}
-		List<DTOMottagare> list = new ArrayList<DTOMottagare>();
+        DTOMottagare mott = null;
+        String meddelandesatt = typ.toUpperCase();
+        if ("EPOST".equals(meddelandesatt)) {
+            mott = new DTOMottagare();
+            mott.setAdress(mottagaradress);
+            mott.setTyp(meddelandesatt);
+        } else if ("SMS".equals(meddelandesatt)) {
+            mott = new DTOMottagare();
+            mott.setAdress(mottagarsms);
+            mott.setTyp(meddelandesatt);
+        } else {
+            String error = "Saknar mottagare vid leverans till notmotor (nyregistrering av e-kund)";
+            System.err.println(error);
+            throw new IllegalArgumentException(error);
+        }
+        List<DTOMottagare> list = new ArrayList<DTOMottagare>();
         list.add(mott);
         dto.setMottagare((DTOMottagare[]) list.toArray(new DTOMottagare[0]));
 
-		DTOAvsandare avs = new DTOAvsandare();
-		avs.setNamn(avsandarnamn);
-		avs.setEpostadress(avsandaradress);
-		avs.setApplikation("Junit test");
-		avs.setKategori(null);
-		dto.setAvsandare(avs);
+        DTOAvsandare avs = new DTOAvsandare();
+        avs.setNamn(avsandarnamn);
+        avs.setEpostadress(avsandaradress);
+        avs.setApplikation("Junit test");
+        avs.setKategori(null);
+        dto.setAvsandare(avs);
 
         return dto;
     }
 
     public DTOMeddelande skapaTestMeddelandeMedTvaMottagare(String rubrik, String text) {
-    	DTOMeddelande dto = new DTOMeddelande();
+        DTOMeddelande dto = new DTOMeddelande();
         dto.setRubrik(rubrik);
         dto.setMeddelandetext(text);
-    	DTOMottagare mott = null;
-    	List<DTOMottagare> list = new ArrayList<DTOMottagare>();
+        DTOMottagare mott = null;
+        List<DTOMottagare> list = new ArrayList<DTOMottagare>();
 
-		// Epost
-		mott = new DTOMottagare();
-		mott.setAdress(mottagaradress);
-		list.add(mott);
+        // Epost
+        mott = new DTOMottagare();
+        mott.setAdress(mottagaradress);
+        list.add(mott);
 
-		// SMS
-		mott = new DTOMottagare();
-		mott.setAdress(mottagarsms);
-		mott.setTyp("SMS");
-		list.add(mott);
+        // SMS
+        mott = new DTOMottagare();
+        mott.setAdress(mottagarsms);
+        mott.setTyp("SMS");
+        list.add(mott);
         dto.setMottagare((DTOMottagare[]) list.toArray(new DTOMottagare[0]));
 
-		DTOAvsandare avs = new DTOAvsandare();
-		avs.setNamn(avsandarnamn);
-		avs.setEpostadress(avsandaradress);
-		avs.setApplikation("Junit test");
-		avs.setKategori(null);
-		dto.setAvsandare(avs);
+        DTOAvsandare avs = new DTOAvsandare();
+        avs.setNamn(avsandarnamn);
+        avs.setEpostadress(avsandaradress);
+        avs.setApplikation("Junit test");
+        avs.setKategori(null);
+        dto.setAvsandare(avs);
 
         return dto;
     }
 
     public void vantaOchSkriv(int sekunder, int ganger) {
-        for (int i = 0; i < ganger; i++) {
+        for (int i = 0;i < ganger;i++) {
             try {
                 Thread.sleep(sekunder * 1000);
                 System.out.println("Sovit " + (sekunder * (i + 1)) + " sekunder");

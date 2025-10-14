@@ -41,11 +41,11 @@ public class NotifieringProxyFactoryImpl implements NotifieringProxyFactory {
         QueryProcessor qp = new WebServiceQueryProcessor(ds);
         qp.addQueryListener(new QueryListenerImpl("WEBSERVICE"));
         DAOMeddelande dao = new DAOMeddelandeImpl(
-                				qp,
-                				new DAOAvsandareImpl(qp),
-                				new DAOMottagareImpl(qp),
-                				new DAOBilagaImpl(qp),
-                				new DAOHandelseImpl(qp));
+            qp,
+            new DAOAvsandareImpl(qp),
+            new DAOMottagareImpl(qp),
+            new DAOBilagaImpl(qp),
+            new DAOHandelseImpl(qp));
         MeddelandeMottagare mm = new MeddelandeMottagare();
         return new NotifieringProxyImpl(dao, qp, mm);
     }

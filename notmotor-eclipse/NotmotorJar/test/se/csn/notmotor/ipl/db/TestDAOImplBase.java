@@ -17,6 +17,7 @@ public class TestDAOImplBase extends TestCase {
         public HandlerBaseTestSub() {
             super(null);
         }
+
         public Object newRow(ResultSet rs) throws SQLException {
             return null;
         }
@@ -32,14 +33,14 @@ public class TestDAOImplBase extends TestCase {
 
     public void testMakeUpdateQuery() {
         HandlerBaseTestSub hb = new HandlerBaseTestSub();
-        String uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1", "COL2", new Integer(2)},null);
+        String uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1", "COL2", new Integer(2)}, null);
         assertEquals(uq, "UPDATE TABNAMN SET COL1='VAL1',COL2=2");
-        uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", null, "COL2", new Integer(2)},null);
+        uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", null, "COL2", new Integer(2)}, null);
         assertEquals(uq, "UPDATE TABNAMN SET COL1=null,COL2=2");
 
-        uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1"},new Object[]{"COL2", null});
+        uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1"}, new Object[]{"COL2", null});
         assertEquals(uq, "UPDATE TABNAMN SET COL1='VAL1' WHERE COL2 IS NULL");
-        uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1"},new Object[]{"COL2", "VAL2"});
+        uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1"}, new Object[]{"COL2", "VAL2"});
         assertEquals(uq, "UPDATE TABNAMN SET COL1='VAL1' WHERE COL2='VAL2'");
 
     }

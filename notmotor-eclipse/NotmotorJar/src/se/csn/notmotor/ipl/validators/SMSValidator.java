@@ -23,16 +23,16 @@ public class SMSValidator implements MeddelandeValidator {
         // 1. telefonnumren
         Mottagare[] mott = meddelande.getMottagare();
 
-        for (int i = 0; i < mott.length; i++) {
-		    if ((mott[i].getTyp() != null) && (mott[i].getTyp().equalsIgnoreCase("SMS"))) {
-		        String nummer = mott[i].getAdress();
-		        if ((nummer == null) || (nummer.length() == 0)) {
-		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "SMS-nummer saknas");
-		        } else if (!nummer.matches(NUMMERFORMAT)) {
-		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE,
-		            		"SMS-numret måste vara mellan 10 och 18 tecken och får bara innehålla inledande + och/eller siffror");
-		        }
-		    }
+        for (int i = 0;i < mott.length;i++) {
+            if ((mott[i].getTyp() != null) && (mott[i].getTyp().equalsIgnoreCase("SMS"))) {
+                String nummer = mott[i].getAdress();
+                if ((nummer == null) || (nummer.length() == 0)) {
+                    return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "SMS-nummer saknas");
+                } else if (!nummer.matches(NUMMERFORMAT)) {
+                    return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE,
+                        "SMS-numret måste vara mellan 10 och 18 tecken och får bara innehålla inledande + och/eller siffror");
+                }
+            }
         }
 
         return null;

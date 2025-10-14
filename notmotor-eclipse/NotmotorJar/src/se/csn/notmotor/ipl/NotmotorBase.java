@@ -70,7 +70,7 @@ public class NotmotorBase {
     */
     protected void aterstallAvbrutnaSandningar(QueryProcessor qp) {
         String sql = "UPDATE MEDDELANDE SET STATUS = " + MeddelandeHandelse.MOTTAGET
-        	+ " WHERE STATUS < 0";
+            + " WHERE STATUS < 0";
         log.info("Återställer meddelandestatus för avbrutna sändningar, sql: " + sql);
 
         int result = qp.executeThrowException(sql);

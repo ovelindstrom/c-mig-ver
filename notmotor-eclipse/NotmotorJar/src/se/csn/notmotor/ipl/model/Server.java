@@ -25,24 +25,31 @@ public class Server {
     public boolean isAktiv() {
         return aktiv;
     }
+
     public void setAktiv(boolean aktiv) {
         this.aktiv = aktiv;
     }
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public int getPrestanda() {
         return prestanda;
     }
+
     public void setPrestanda(int prestanda) {
         this.prestanda = prestanda;
     }
+
     public String getServleturl() {
         return servleturl;
     }
+
     public void setServleturl(String servleturl) {
         this.servleturl = servleturl;
     }

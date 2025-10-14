@@ -30,12 +30,12 @@ public class DTOMottagare  implements java.io.Serializable {
            java.lang.Integer csnnummer,
            java.lang.String typ,
            java.lang.Integer status) {
-           this.id = id;
-           this.namn = namn;
-           this.adress = adress;
-           this.csnnummer = csnnummer;
-           this.typ = typ;
-           this.status = status;
+        this.id = id;
+        this.namn = namn;
+        this.adress = adress;
+        this.csnnummer = csnnummer;
+        this.typ = typ;
+        this.status = status;
     }
 
 
@@ -159,6 +159,7 @@ public class DTOMottagare  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof DTOMottagare)) return false;
         DTOMottagare other = (DTOMottagare) obj;
@@ -170,29 +171,30 @@ public class DTOMottagare  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true &&
-            ((this.id==null && other.getId()==null) ||
-             (this.id!=null &&
-              this.id.equals(other.getId()))) &&
-            ((this.namn==null && other.getNamn()==null) ||
-             (this.namn!=null &&
-              this.namn.equals(other.getNamn()))) &&
-            ((this.adress==null && other.getAdress()==null) ||
-             (this.adress!=null &&
-              this.adress.equals(other.getAdress()))) &&
-            ((this.csnnummer==null && other.getCsnnummer()==null) ||
-             (this.csnnummer!=null &&
-              this.csnnummer.equals(other.getCsnnummer()))) &&
-            ((this.typ==null && other.getTyp()==null) ||
-             (this.typ!=null &&
-              this.typ.equals(other.getTyp()))) &&
-            ((this.status==null && other.getStatus()==null) ||
-             (this.status!=null &&
-              this.status.equals(other.getStatus())));
+            ((this.id == null && other.getId() == null) ||
+                (this.id != null &&
+                    this.id.equals(other.getId()))) &&
+            ((this.namn == null && other.getNamn() == null) ||
+                (this.namn != null &&
+                    this.namn.equals(other.getNamn()))) &&
+            ((this.adress == null && other.getAdress() == null) ||
+                (this.adress != null &&
+                    this.adress.equals(other.getAdress()))) &&
+            ((this.csnnummer == null && other.getCsnnummer() == null) ||
+                (this.csnnummer != null &&
+                    this.csnnummer.equals(other.getCsnnummer()))) &&
+            ((this.typ == null && other.getTyp() == null) ||
+                (this.typ != null &&
+                    this.typ.equals(other.getTyp()))) &&
+            ((this.status == null && other.getStatus() == null) ||
+                (this.status != null &&
+                    this.status.equals(other.getStatus())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -285,8 +287,8 @@ public class DTOMottagare  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -297,8 +299,8 @@ public class DTOMottagare  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

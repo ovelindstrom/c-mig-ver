@@ -48,7 +48,7 @@ public class TestMeddelandeHandelse extends TestCase {
         assertNotNull(o1.toString());
         o1.setFeltext("fel");
         assertFalse(o1.equals(o2));
-        assertFalse(o1.hashCode() ==  o2.hashCode());
+        assertFalse(o1.hashCode() == o2.hashCode());
     }
 
     public void testHandelsetexter() {

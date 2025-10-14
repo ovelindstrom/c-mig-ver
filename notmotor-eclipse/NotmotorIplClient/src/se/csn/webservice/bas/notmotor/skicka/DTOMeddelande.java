@@ -63,23 +63,23 @@ public class DTOMeddelande  implements java.io.Serializable {
            java.lang.Integer callbackMask,
            java.lang.String mimetyp,
            java.lang.String kanal) {
-           this.id = id;
-           this.csnnummer = csnnummer;
-           this.rubrik = rubrik;
-           this.meddelandetext = meddelandetext;
-           this.rubrikEncoding = rubrikEncoding;
-           this.meddelandeEncoding = meddelandeEncoding;
-           this.bilagor = bilagor;
-           this.skapad = skapad;
-           this.skickat = skickat;
-           this.skickaTidigast = skickaTidigast;
-           this.avsandare = avsandare;
-           this.mottagare = mottagare;
-           this.handelser = handelser;
-           this.callbackURL = callbackURL;
-           this.callbackMask = callbackMask;
-           this.mimetyp = mimetyp;
-           this.kanal = kanal;
+        this.id = id;
+        this.csnnummer = csnnummer;
+        this.rubrik = rubrik;
+        this.meddelandetext = meddelandetext;
+        this.rubrikEncoding = rubrikEncoding;
+        this.meddelandeEncoding = meddelandeEncoding;
+        this.bilagor = bilagor;
+        this.skapad = skapad;
+        this.skickat = skickat;
+        this.skickaTidigast = skickaTidigast;
+        this.avsandare = avsandare;
+        this.mottagare = mottagare;
+        this.handelser = handelser;
+        this.callbackURL = callbackURL;
+        this.callbackMask = callbackMask;
+        this.mimetyp = mimetyp;
+        this.kanal = kanal;
     }
 
 
@@ -447,6 +447,7 @@ public class DTOMeddelande  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof DTOMeddelande)) return false;
         DTOMeddelande other = (DTOMeddelande) obj;
@@ -458,62 +459,63 @@ public class DTOMeddelande  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true &&
-            ((this.id==null && other.getId()==null) ||
-             (this.id!=null &&
-              this.id.equals(other.getId()))) &&
-            ((this.csnnummer==null && other.getCsnnummer()==null) ||
-             (this.csnnummer!=null &&
-              this.csnnummer.equals(other.getCsnnummer()))) &&
-            ((this.rubrik==null && other.getRubrik()==null) ||
-             (this.rubrik!=null &&
-              this.rubrik.equals(other.getRubrik()))) &&
-            ((this.meddelandetext==null && other.getMeddelandetext()==null) ||
-             (this.meddelandetext!=null &&
-              this.meddelandetext.equals(other.getMeddelandetext()))) &&
-            ((this.rubrikEncoding==null && other.getRubrikEncoding()==null) ||
-             (this.rubrikEncoding!=null &&
-              this.rubrikEncoding.equals(other.getRubrikEncoding()))) &&
-            ((this.meddelandeEncoding==null && other.getMeddelandeEncoding()==null) ||
-             (this.meddelandeEncoding!=null &&
-              this.meddelandeEncoding.equals(other.getMeddelandeEncoding()))) &&
-            ((this.bilagor==null && other.getBilagor()==null) ||
-             (this.bilagor!=null &&
-              java.util.Arrays.equals(this.bilagor, other.getBilagor()))) &&
-            ((this.skapad==null && other.getSkapad()==null) ||
-             (this.skapad!=null &&
-              this.skapad.equals(other.getSkapad()))) &&
-            ((this.skickat==null && other.getSkickat()==null) ||
-             (this.skickat!=null &&
-              this.skickat.equals(other.getSkickat()))) &&
-            ((this.skickaTidigast==null && other.getSkickaTidigast()==null) ||
-             (this.skickaTidigast!=null &&
-              this.skickaTidigast.equals(other.getSkickaTidigast()))) &&
-            ((this.avsandare==null && other.getAvsandare()==null) ||
-             (this.avsandare!=null &&
-              this.avsandare.equals(other.getAvsandare()))) &&
-            ((this.mottagare==null && other.getMottagare()==null) ||
-             (this.mottagare!=null &&
-              java.util.Arrays.equals(this.mottagare, other.getMottagare()))) &&
-            ((this.handelser==null && other.getHandelser()==null) ||
-             (this.handelser!=null &&
-              java.util.Arrays.equals(this.handelser, other.getHandelser()))) &&
-            ((this.callbackURL==null && other.getCallbackURL()==null) ||
-             (this.callbackURL!=null &&
-              this.callbackURL.equals(other.getCallbackURL()))) &&
-            ((this.callbackMask==null && other.getCallbackMask()==null) ||
-             (this.callbackMask!=null &&
-              this.callbackMask.equals(other.getCallbackMask()))) &&
-            ((this.mimetyp==null && other.getMimetyp()==null) ||
-             (this.mimetyp!=null &&
-              this.mimetyp.equals(other.getMimetyp()))) &&
-            ((this.kanal==null && other.getKanal()==null) ||
-             (this.kanal!=null &&
-              this.kanal.equals(other.getKanal())));
+            ((this.id == null && other.getId() == null) ||
+                (this.id != null &&
+                    this.id.equals(other.getId()))) &&
+            ((this.csnnummer == null && other.getCsnnummer() == null) ||
+                (this.csnnummer != null &&
+                    this.csnnummer.equals(other.getCsnnummer()))) &&
+            ((this.rubrik == null && other.getRubrik() == null) ||
+                (this.rubrik != null &&
+                    this.rubrik.equals(other.getRubrik()))) &&
+            ((this.meddelandetext == null && other.getMeddelandetext() == null) ||
+                (this.meddelandetext != null &&
+                    this.meddelandetext.equals(other.getMeddelandetext()))) &&
+            ((this.rubrikEncoding == null && other.getRubrikEncoding() == null) ||
+                (this.rubrikEncoding != null &&
+                    this.rubrikEncoding.equals(other.getRubrikEncoding()))) &&
+            ((this.meddelandeEncoding == null && other.getMeddelandeEncoding() == null) ||
+                (this.meddelandeEncoding != null &&
+                    this.meddelandeEncoding.equals(other.getMeddelandeEncoding()))) &&
+            ((this.bilagor == null && other.getBilagor() == null) ||
+                (this.bilagor != null &&
+                    java.util.Arrays.equals(this.bilagor, other.getBilagor()))) &&
+            ((this.skapad == null && other.getSkapad() == null) ||
+                (this.skapad != null &&
+                    this.skapad.equals(other.getSkapad()))) &&
+            ((this.skickat == null && other.getSkickat() == null) ||
+                (this.skickat != null &&
+                    this.skickat.equals(other.getSkickat()))) &&
+            ((this.skickaTidigast == null && other.getSkickaTidigast() == null) ||
+                (this.skickaTidigast != null &&
+                    this.skickaTidigast.equals(other.getSkickaTidigast()))) &&
+            ((this.avsandare == null && other.getAvsandare() == null) ||
+                (this.avsandare != null &&
+                    this.avsandare.equals(other.getAvsandare()))) &&
+            ((this.mottagare == null && other.getMottagare() == null) ||
+                (this.mottagare != null &&
+                    java.util.Arrays.equals(this.mottagare, other.getMottagare()))) &&
+            ((this.handelser == null && other.getHandelser() == null) ||
+                (this.handelser != null &&
+                    java.util.Arrays.equals(this.handelser, other.getHandelser()))) &&
+            ((this.callbackURL == null && other.getCallbackURL() == null) ||
+                (this.callbackURL != null &&
+                    this.callbackURL.equals(other.getCallbackURL()))) &&
+            ((this.callbackMask == null && other.getCallbackMask() == null) ||
+                (this.callbackMask != null &&
+                    this.callbackMask.equals(other.getCallbackMask()))) &&
+            ((this.mimetyp == null && other.getMimetyp() == null) ||
+                (this.mimetyp != null &&
+                    this.mimetyp.equals(other.getMimetyp()))) &&
+            ((this.kanal == null && other.getKanal() == null) ||
+                (this.kanal != null &&
+                    this.kanal.equals(other.getKanal())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -539,8 +541,8 @@ public class DTOMeddelande  implements java.io.Serializable {
             _hashCode += getMeddelandeEncoding().hashCode();
         }
         if (getBilagor() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getBilagor());
+            for (int i = 0;
+                 i < java.lang.reflect.Array.getLength(getBilagor());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getBilagor(), i);
                 if (obj != null &&
@@ -562,8 +564,8 @@ public class DTOMeddelande  implements java.io.Serializable {
             _hashCode += getAvsandare().hashCode();
         }
         if (getMottagare() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getMottagare());
+            for (int i = 0;
+                 i < java.lang.reflect.Array.getLength(getMottagare());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getMottagare(), i);
                 if (obj != null &&
@@ -573,8 +575,8 @@ public class DTOMeddelande  implements java.io.Serializable {
             }
         }
         if (getHandelser() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getHandelser());
+            for (int i = 0;
+                 i < java.lang.reflect.Array.getLength(getHandelser());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getHandelser(), i);
                 if (obj != null &&
@@ -742,8 +744,8 @@ public class DTOMeddelande  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -754,8 +756,8 @@ public class DTOMeddelande  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

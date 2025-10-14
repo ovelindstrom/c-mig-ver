@@ -40,16 +40,18 @@ public class MeddelandeMottagare {
     public void addValidator(MeddelandeValidator validator) {
         validators.add(validator);
     }
+
     public void removeValidator(MeddelandeValidator validator) {
         validators.remove(validator);
     }
+
     public void clearValidators() {
         validators.clear();
     }
 
     public NotifieringResultat skickaMeddelande(Meddelande meddelande, DAOMeddelande meddelandeHandler) {
         // Validera meddelandet:
-        for (Iterator it = validators.iterator(); it.hasNext();) {
+        for (Iterator it = validators.iterator();it.hasNext();) {
             MeddelandeValidator validator = (MeddelandeValidator) it.next();
             KodText res = validator.getFelkodForMeddelande(meddelande);
             if (res != null) {
@@ -61,41 +63,41 @@ public class MeddelandeMottagare {
         meddelande.addHandelse(mh);
 
         // 2007-10-25: inför separat status för varje mottagare
-        for (int i = 0; i < meddelande.getMottagare().length; i++) {
+        for (int i = 0;i < meddelande.getMottagare().length;i++) {
             Mottagare mott = meddelande.getMottagare()[i];
             mott.setStatus(new Integer(MeddelandeHandelse.MOTTAGET));
 
             // 2008-04-15 Formatera smsnr så att det är på formatet 46701234567
             if ("SMS".equalsIgnoreCase(mott.getTyp())) {
-            	// Formatera smsnr
-            	String mobilnr = mott.getAdress();
+                // Formatera smsnr
+                String mobilnr = mott.getAdress();
 
-            	// Telia vill ha mobilnr på formatet 46701234567
-            	try {
-            		// Om mobilnr börjar med 00 (ex 004670...), ta bort 00
-	            	if (mobilnr.startsWith("00")) {
-	            		String nyttMobilnr = mobilnr.substring(2, mobilnr.length());
-	            		mott.setAdress(nyttMobilnr);
-	            	// Om mobilnr börjar med 0 (ex 070...), byt ut 0 mot 46
-	            	} else if (mobilnr.startsWith("0")) {
-	            		String nyttMobilnr = mobilnr.substring(1, mobilnr.length());
-	            		mott.setAdress(LANDSNR + nyttMobilnr);
-	            	// Om mobilnr börjar med + (ex. +4670...), ta bort +
-	            	} else if (mobilnr.startsWith("+")) {
-	            		String nyttMobilnr = mobilnr.substring(1, mobilnr.length());
-	            		mott.setAdress(nyttMobilnr);
-	            	}
-            	} catch (IndexOutOfBoundsException be) {
-        			LOG.error("Kunde inte formatera mobilnr på korrekt format.");
-        			return new NotifieringResultat(-1, NotifieringResultat.FEL,
-        					"Mobilnr är på fel format.");
-        		}
+                // Telia vill ha mobilnr på formatet 46701234567
+                try {
+                    // Om mobilnr börjar med 00 (ex 004670...), ta bort 00
+                    if (mobilnr.startsWith("00")) {
+                        String nyttMobilnr = mobilnr.substring(2, mobilnr.length());
+                        mott.setAdress(nyttMobilnr);
+                        // Om mobilnr börjar med 0 (ex 070...), byt ut 0 mot 46
+                    } else if (mobilnr.startsWith("0")) {
+                        String nyttMobilnr = mobilnr.substring(1, mobilnr.length());
+                        mott.setAdress(LANDSNR + nyttMobilnr);
+                        // Om mobilnr börjar med + (ex. +4670...), ta bort +
+                    } else if (mobilnr.startsWith("+")) {
+                        String nyttMobilnr = mobilnr.substring(1, mobilnr.length());
+                        mott.setAdress(nyttMobilnr);
+                    }
+                } catch (IndexOutOfBoundsException be) {
+                    LOG.error("Kunde inte formatera mobilnr på korrekt format.");
+                    return new NotifieringResultat(-1, NotifieringResultat.FEL,
+                        "Mobilnr är på fel format.");
+                }
             }
 
             //trimma mottagaradress
             String mottadress = mott.getAdress();
             if (mottadress != null) {
-            	mott.setAdress(mottadress.trim());
+                mott.setAdress(mottadress.trim());
             }
         }
 

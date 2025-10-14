@@ -15,20 +15,21 @@ import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.notmotor.ipl.model.Mottagare;
 
 public interface DAOMeddelande extends RowToObjectMapper {
-	long createMeddelande(Meddelande m);
+    long createMeddelande(Meddelande m);
 
-	Meddelande getMeddelande(long meddelandeId);
+    Meddelande getMeddelande(long meddelandeId);
 
-	void markeraMeddelandenForInstans(int instans, int antalMeddelanden, List<Kanal> kanalerMedBegransning);
-	List getMarkeradeMeddelanden(int instans);
+    void markeraMeddelandenForInstans(int instans, int antalMeddelanden, List<Kanal> kanalerMedBegransning);
 
-	Meddelande[] sokMeddelanden(Date from, Date tom,
-			Avsandare[] avsandare, Mottagare[] mottagare,
-			String textinnehall, Integer minstorlek, Integer maxstorlek,
-			Integer handelseMask, Integer felmask, Bilaga[] bilagor);
+    List getMarkeradeMeddelanden(int instans);
 
-	void deleteMeddelande(long meddelandeId);
+    Meddelande[] sokMeddelanden(Date from, Date tom,
+                                Avsandare[] avsandare, Mottagare[] mottagare,
+                                String textinnehall, Integer minstorlek, Integer maxstorlek,
+                                Integer handelseMask, Integer felmask, Bilaga[] bilagor);
 
-	void updateMeddelande(Meddelande meddelande);
+    void deleteMeddelande(long meddelandeId);
+
+    void updateMeddelande(Meddelande meddelande);
 
 }

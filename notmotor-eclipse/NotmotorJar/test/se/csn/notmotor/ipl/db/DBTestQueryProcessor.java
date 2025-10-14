@@ -12,7 +12,7 @@ import junit.framework.TestCase;
 public class DBTestQueryProcessor extends TestCase {
 
     public void testGetCounter() {
-        SingleConnectionQueryProcessor qp = new SingleConnectionQueryProcessor(TestUtils.getTestDB2DataSource("csn24utv",50000, "WDBUTV", "notmotor", "notmotor"));
+        SingleConnectionQueryProcessor qp = new SingleConnectionQueryProcessor(TestUtils.getTestDB2DataSource("csn24utv", 50000, "WDBUTV", "notmotor", "notmotor"));
 
         String countername = "Test" + System.currentTimeMillis();
         // Hämta testvärde
@@ -26,7 +26,7 @@ public class DBTestQueryProcessor extends TestCase {
 
         // Loopa 1000 st, kolla lite prestanda
         long tick = System.currentTimeMillis();
-        for(int i = 0; i < 1000; i++) {
+        for (int i = 0;i < 1000;i++) {
             cnt = qp.getCounter("SEKVENS", countername);
         }
         System.out.println("Tid: " + (System.currentTimeMillis() - tick));

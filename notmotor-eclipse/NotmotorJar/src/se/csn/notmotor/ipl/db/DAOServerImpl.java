@@ -30,16 +30,16 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
     }
 
     public int skapa(Server server) {
-        if(server == null) {
+        if (server == null) {
             throw new IllegalArgumentException("Server måste anges");
         }
-        int id = (int)qp.getCounter("SEKVENS", "SERVERID");
+        int id = (int) qp.getCounter("SEKVENS", "SERVERID");
         String aktiv = "J";
-        if(!server.isAktiv()) {
+        if (!server.isAktiv()) {
             aktiv = "N";
         }
         String sql = "INSERT INTO SERVER (ID,AKTIV,NOTMOTORSERVLETURL,PRESTANDA) VALUES " +
-        		"(" + id + ",'" + aktiv + "', '" + server.getServleturl() + "'," + server.getPrestanda() + ")";
+            "(" + id + ",'" + aktiv + "', '" + server.getServleturl() + "'," + server.getPrestanda() + ")";
         qp.executeThrowException(sql);
         server.setId(id);
         return id;
@@ -47,12 +47,12 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
 
     public void uppdatera(Server server) {
         String aktiv = "J";
-        if(!server.isAktiv()) {
+        if (!server.isAktiv()) {
             aktiv = "N";
         }
         String sql = "UPDATE SERVER SET AKTIV='" + aktiv + "',NOTMOTORSERVLETURL='"
-        			+ server.getServleturl() + "',PRESTANDA=" + server.getPrestanda()
-        			+ " WHERE ID=" + server.getId();
+            + server.getServleturl() + "',PRESTANDA=" + server.getPrestanda()
+            + " WHERE ID=" + server.getId();
         qp.executeThrowException(sql);
     }
 
@@ -71,6 +71,6 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
     }
 
     public Server get(int serverid) {
-        return (Server)qp.getObject("SELECT ID,AKTIV,NOTMOTORSERVLETURL,PRESTANDA FROM SERVER WHERE ID=" + serverid, this);
+        return (Server) qp.getObject("SELECT ID,AKTIV,NOTMOTORSERVLETURL,PRESTANDA FROM SERVER WHERE ID=" + serverid, this);
     }
 }

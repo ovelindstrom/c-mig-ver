@@ -34,12 +34,12 @@ public class DTOAvsandare  implements java.io.Serializable {
            java.lang.String namn,
            java.lang.String epostadress,
            java.lang.String replyTo) {
-           this.id = id;
-           this.applikation = applikation;
-           this.kategori = kategori;
-           this.namn = namn;
-           this.epostadress = epostadress;
-           this.replyTo = replyTo;
+        this.id = id;
+        this.applikation = applikation;
+        this.kategori = kategori;
+        this.namn = namn;
+        this.epostadress = epostadress;
+        this.replyTo = replyTo;
     }
 
 
@@ -163,6 +163,7 @@ public class DTOAvsandare  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof DTOAvsandare)) return false;
         DTOAvsandare other = (DTOAvsandare) obj;
@@ -174,29 +175,30 @@ public class DTOAvsandare  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true &&
-            ((this.id==null && other.getId()==null) ||
-             (this.id!=null &&
-              this.id.equals(other.getId()))) &&
-            ((this.applikation==null && other.getApplikation()==null) ||
-             (this.applikation!=null &&
-              this.applikation.equals(other.getApplikation()))) &&
-            ((this.kategori==null && other.getKategori()==null) ||
-             (this.kategori!=null &&
-              this.kategori.equals(other.getKategori()))) &&
-            ((this.namn==null && other.getNamn()==null) ||
-             (this.namn!=null &&
-              this.namn.equals(other.getNamn()))) &&
-            ((this.epostadress==null && other.getEpostadress()==null) ||
-             (this.epostadress!=null &&
-              this.epostadress.equals(other.getEpostadress()))) &&
-            ((this.replyTo==null && other.getReplyTo()==null) ||
-             (this.replyTo!=null &&
-              this.replyTo.equals(other.getReplyTo())));
+            ((this.id == null && other.getId() == null) ||
+                (this.id != null &&
+                    this.id.equals(other.getId()))) &&
+            ((this.applikation == null && other.getApplikation() == null) ||
+                (this.applikation != null &&
+                    this.applikation.equals(other.getApplikation()))) &&
+            ((this.kategori == null && other.getKategori() == null) ||
+                (this.kategori != null &&
+                    this.kategori.equals(other.getKategori()))) &&
+            ((this.namn == null && other.getNamn() == null) ||
+                (this.namn != null &&
+                    this.namn.equals(other.getNamn()))) &&
+            ((this.epostadress == null && other.getEpostadress() == null) ||
+                (this.epostadress != null &&
+                    this.epostadress.equals(other.getEpostadress()))) &&
+            ((this.replyTo == null && other.getReplyTo() == null) ||
+                (this.replyTo != null &&
+                    this.replyTo.equals(other.getReplyTo())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -290,8 +292,8 @@ public class DTOAvsandare  implements java.io.Serializable {
            java.lang.Class _javaType,
            QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -302,8 +304,8 @@ public class DTOAvsandare  implements java.io.Serializable {
            java.lang.Class _javaType,
            QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

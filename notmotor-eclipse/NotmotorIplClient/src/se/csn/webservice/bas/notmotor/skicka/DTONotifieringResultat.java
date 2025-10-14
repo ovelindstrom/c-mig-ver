@@ -21,9 +21,9 @@ public class DTONotifieringResultat  implements java.io.Serializable {
            long meddelandeId,
            java.lang.Integer resultat,
            java.lang.String info) {
-           this.meddelandeId = meddelandeId;
-           this.resultat = resultat;
-           this.info = info;
+        this.meddelandeId = meddelandeId;
+        this.resultat = resultat;
+        this.info = info;
     }
 
 
@@ -87,6 +87,7 @@ public class DTONotifieringResultat  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof DTONotifieringResultat)) return false;
         DTONotifieringResultat other = (DTONotifieringResultat) obj;
@@ -99,17 +100,18 @@ public class DTONotifieringResultat  implements java.io.Serializable {
         boolean _equals;
         _equals = true &&
             this.meddelandeId == other.getMeddelandeId() &&
-            ((this.resultat==null && other.getResultat()==null) ||
-             (this.resultat!=null &&
-              this.resultat.equals(other.getResultat()))) &&
-            ((this.info==null && other.getInfo()==null) ||
-             (this.info!=null &&
-              this.info.equals(other.getInfo())));
+            ((this.resultat == null && other.getResultat() == null) ||
+                (this.resultat != null &&
+                    this.resultat.equals(other.getResultat()))) &&
+            ((this.info == null && other.getInfo() == null) ||
+                (this.info != null &&
+                    this.info.equals(other.getInfo())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -170,8 +172,8 @@ public class DTONotifieringResultat  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -182,8 +184,8 @@ public class DTONotifieringResultat  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

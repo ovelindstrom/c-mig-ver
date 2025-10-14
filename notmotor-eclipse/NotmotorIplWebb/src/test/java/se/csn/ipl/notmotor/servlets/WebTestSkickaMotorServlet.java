@@ -16,7 +16,7 @@ public class WebTestSkickaMotorServlet extends TestCase {
 
     public void testAsyncGetURL() throws IOException {
         URL url = new URL("http://localhost:9080/NotmotorIPL/SkickaMotorServlet");
-        HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         //conn.setFollowRedirects(false);
         conn.connect();

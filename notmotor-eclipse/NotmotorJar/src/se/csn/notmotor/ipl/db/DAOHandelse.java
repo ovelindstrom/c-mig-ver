@@ -12,10 +12,10 @@ import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 
 public interface DAOHandelse {
     public long createHandelse(MeddelandeHandelse h,
-            long meddelandeid);
+                               long meddelandeid);
 
     public long createHandelse(MeddelandeHandelse h,
-            long meddelandeid, Connection conn);
+                               long meddelandeid, Connection conn);
 
     public List<MeddelandeHandelse> getHandelserForMeddelande(long meddelandeid);
 

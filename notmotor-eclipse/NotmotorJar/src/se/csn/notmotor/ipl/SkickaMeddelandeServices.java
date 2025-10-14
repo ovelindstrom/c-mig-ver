@@ -5,8 +5,8 @@ package se.csn.notmotor.ipl;
  */
 public interface SkickaMeddelandeServices extends MeddelandeServicesBase {
 
-	/**
-	 * @return true om minst ett mail skickades
-	 */
-	boolean skickaMeddelande();
+    /**
+     * @return true om minst ett mail skickades
+     */
+    boolean skickaMeddelande();
 }

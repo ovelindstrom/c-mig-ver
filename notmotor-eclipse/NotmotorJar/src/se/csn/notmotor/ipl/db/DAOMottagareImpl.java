@@ -21,14 +21,14 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
     }
 
     public int createMottagare(Mottagare mott, long meddelandeId) {
-        if(mott == null) {
+        if (mott == null) {
             throw new IllegalArgumentException("Mottagare måste vara satt");
         }
-        int id = (int)qp.getCounter("SEKVENS", "MOTTAGARE");
+        int id = (int) qp.getCounter("SEKVENS", "MOTTAGARE");
         qp.executeThrowException("INSERT INTO MOTTAGARE(ID,TYP,MEDDELANDEID,NAMN,ADRESS,CSNNUMMER,STATUS) "
-                + "VALUES(" + id + ", " + quoteValue(mott.getTyp()) + ", " + meddelandeId + ", "
-                + quoteValue(mott.getNamn()) + ", " + quoteValue(mott.getAdress()) + ", " + quoteValue(mott.getCsnnummer()) + ", "
-                + quoteValue(mott.getStatus()) + ")");
+            + "VALUES(" + id + ", " + quoteValue(mott.getTyp()) + ", " + meddelandeId + ", "
+            + quoteValue(mott.getNamn()) + ", " + quoteValue(mott.getAdress()) + ", " + quoteValue(mott.getCsnnummer()) + ", "
+            + quoteValue(mott.getStatus()) + ")");
         mott.setId(new Long(id));
         return id;
     }
@@ -37,11 +37,11 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
         Mottagare mott = new Mottagare();
         mott.setId(new Long(rs.getLong("ID")));
         mott.setAdress(rs.getString("ADRESS"));
-        mott.setCsnnummer((Integer)rs.getObject("CSNNUMMER"));
+        mott.setCsnnummer((Integer) rs.getObject("CSNNUMMER"));
         mott.setNamn(rs.getString("NAMN"));
         mott.setTyp(rs.getString("TYP"));
         //int cn = rs.getInt("STATUS");
-        mott.setStatus((Integer)rs.getObject("STATUS"));
+        mott.setStatus((Integer) rs.getObject("STATUS"));
         return mott;
     }
 
@@ -52,32 +52,32 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
         where = addRestriction(where, "ADRESS", "LIKE", adress);
         where = addRestriction(where, "TYP", "LIKE", typ);
         where = addRestriction(where, "CSNNUMMER", "=", csnnummer);
-        if(where.length() > 0) {
+        if (where.length() > 0) {
             sql += (" WHERE " + where);
         }
         return qp.processQuery(sql, this);
     }
 
     @SuppressWarnings("unchecked")
-	public List<Mottagare> getMottagare(Mottagare mott) {
+    public List<Mottagare> getMottagare(Mottagare mott) {
         return getMottagare(mott.getNamn(), mott.getAdress(), mott.getTyp(), mott.getCsnnummer());
     }
 
     public Mottagare getMottagare(long id) {
-        return (Mottagare)qp.getObject("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE " +
-        		"WHERE ID=" + id, this);
+        return (Mottagare) qp.getObject("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE " +
+            "WHERE ID=" + id, this);
     }
 
     @SuppressWarnings("unchecked")
-	public List<Mottagare> getMottagareForMeddelande(long meddelandeId) {
+    public List<Mottagare> getMottagareForMeddelande(long meddelandeId) {
         return qp.processQuery("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE " +
-        		"WHERE MEDDELANDEID=" + meddelandeId, this);
+            "WHERE MEDDELANDEID=" + meddelandeId, this);
     }
 
     public void updateMottagare(Mottagare mott) {
         String query = makeUpdateQuery("MOTTAGARE", new Object[]{"TYP", mott.getTyp(), "NAMN", mott.getNamn(),
                 "ADRESS", mott.getAdress(), "CSNNUMMER", mott.getCsnnummer(), "STATUS", mott.getStatus()},
-                new Object[]{"ID", mott.getId()});
+            new Object[]{"ID", mott.getId()});
         qp.executeThrowException(query);
     }
 

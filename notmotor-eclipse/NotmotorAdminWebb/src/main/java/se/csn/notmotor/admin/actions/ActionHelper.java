@@ -19,7 +19,7 @@ public class ActionHelper {
     private static int isolationLevel = Connection.TRANSACTION_READ_COMMITTED;
 
     public static ResourceFactory getResourceFactory() {
-        if(ds == null) {
+        if (ds == null) {
             throw new IllegalStateException("DataSourcen har inte satts än!");
         }
         return new ResourceFactoryImpl(ds, isolationLevel);

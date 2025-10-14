@@ -25,12 +25,15 @@ public class KodText {
     public int getKod() {
         return kod;
     }
+
     public void setKod(int kod) {
         this.kod = kod;
     }
+
     public String getText() {
         return text;
     }
+
     public void setText(String text) {
         this.text = text;
     }

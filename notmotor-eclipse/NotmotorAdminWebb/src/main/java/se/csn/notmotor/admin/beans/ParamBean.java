@@ -21,14 +21,14 @@ import se.csn.notmotor.ipl.model.Setting;
 public class ParamBean {
 
     private static final String[][] params = {
-            {"WATCHDOGTID", "Sekunder mellan uppdatering av processernas watchdogflagga"},
-            {"TICKTID", "Väntetid i sekunder efter varje arbetsmoment"},
-            {"SOVTID", "Den tid i sekunder som processerna ska vänta på arbete"},
-            {"BATCHSTORLEK", "Max antal meddelanden att sända åt gången"},
-            {"CALLBACKS", "Styr om notmotorn ska göra callbacks för att meddela statusändringar på meddelanden"},
-            {"MINTIDTILLSENASTEFEL", "Tid i sekunder mellan omsändningsförsök av misslyckade meddelanden"},
-            {"MAXSANDFORSOK", "Max antal omsändningsförsök per meddelande"},
-            {"KANALER_MED_BEGRANSNINGAR", "Nedprioriterade inkanaler med begränsningar. Kommaseparerad lista."},
+        {"WATCHDOGTID", "Sekunder mellan uppdatering av processernas watchdogflagga"},
+        {"TICKTID", "Väntetid i sekunder efter varje arbetsmoment"},
+        {"SOVTID", "Den tid i sekunder som processerna ska vänta på arbete"},
+        {"BATCHSTORLEK", "Max antal meddelanden att sända åt gången"},
+        {"CALLBACKS", "Styr om notmotorn ska göra callbacks för att meddela statusändringar på meddelanden"},
+        {"MINTIDTILLSENASTEFEL", "Tid i sekunder mellan omsändningsförsök av misslyckade meddelanden"},
+        {"MAXSANDFORSOK", "Max antal omsändningsförsök per meddelande"},
+        {"KANALER_MED_BEGRANSNINGAR", "Nedprioriterade inkanaler med begränsningar. Kommaseparerad lista."},
     };
 
     /**
@@ -53,9 +53,9 @@ public class ParamBean {
     }
 
     private void init() {
-    	ParameterKalla paramKalla = ActionHelper.getResourceFactory().getParameterKalla();
+        ParameterKalla paramKalla = ActionHelper.getResourceFactory().getParameterKalla();
         List<Setting> plist = new ArrayList<Setting>();
-        for (int i = 0; i < params.length; i++) {
+        for (int i = 0;i < params.length;i++) {
             Setting s = new Setting(params[i][0], paramKalla.getStringParam(params[i][0]), params[i][1]);
             plist.add(s);
         }
@@ -63,13 +63,13 @@ public class ParamBean {
 
         List<Setting> pklist = new ArrayList<Setting>();
         for (String kanal : paramKalla.getStringParam("KANALER_MED_BEGRANSNINGAR", "").split("[, ]+")) {
-        	if (kanal.trim().length() > 0) {
-        		for (int i = 0; i < paramsKanaler.length; i++) {
-        			String key = paramsKanaler[i][0].replaceAll("\\{\\{KANAL\\}\\}", kanal);
-        			Setting s = new Setting(key, paramKalla.getStringParam(key), paramsKanaler[i][1]);
-        			pklist.add(s);
-        		}
-        	}
+            if (kanal.trim().length() > 0) {
+                for (int i = 0;i < paramsKanaler.length;i++) {
+                    String key = paramsKanaler[i][0].replaceAll("\\{\\{KANAL\\}\\}", kanal);
+                    Setting s = new Setting(key, paramKalla.getStringParam(key), paramsKanaler[i][1]);
+                    pklist.add(s);
+                }
+            }
         }
         parametrarKanaler = new ListDataModel(pklist);
     }
@@ -77,7 +77,7 @@ public class ParamBean {
     public void uppdatera(ActionEvent e) {
         ParameterKalla paramKalla = ActionHelper.getResourceFactory().getParameterKalla();
         List settings = (List) parametrar.getWrappedData();
-        for (Iterator it = settings.iterator(); it.hasNext();) {
+        for (Iterator it = settings.iterator();it.hasNext();) {
             Setting s = (Setting) it.next();
             paramKalla.setStringParam(s.getNamn(), s.getVarde());
         }
@@ -88,14 +88,14 @@ public class ParamBean {
         ParameterKalla paramKalla = ActionHelper.getResourceFactory().getParameterKalla();
         // Nollställ temporära parametrar
         for (String kanal : paramKalla.getStringParam("KANALER_MED_BEGRANSNINGAR", "").split("[, ]+")) {
-        	if (kanal.trim().length() > 0) {
-        		paramKalla.setStringParam(new Kanal(kanal).getBatchKvarKey(), null);
-        		paramKalla.setStringParam(new Kanal(kanal).getSoverTimestampKey(), null);
-        	}
+            if (kanal.trim().length() > 0) {
+                paramKalla.setStringParam(new Kanal(kanal).getBatchKvarKey(), null);
+                paramKalla.setStringParam(new Kanal(kanal).getSoverTimestampKey(), null);
+            }
         }
         // Uppdatera parametrar
         List settings = (List) parametrarKanaler.getWrappedData();
-        for (Iterator it = settings.iterator(); it.hasNext();) {
+        for (Iterator it = settings.iterator();it.hasNext();) {
             Setting s = (Setting) it.next();
             paramKalla.setStringParam(s.getNamn(), s.getVarde());
         }
@@ -105,6 +105,7 @@ public class ParamBean {
     public ListDataModel getParametrar() {
         return parametrar;
     }
+
     public void setParametrar(ListDataModel parametrar) {
         this.parametrar = parametrar;
     }
@@ -114,6 +115,6 @@ public class ParamBean {
     }
 
     public void setParametrarKanaler(ListDataModel parametrar) {
-    	this.parametrarKanaler = parametrar;
+        this.parametrarKanaler = parametrar;
     }
 }

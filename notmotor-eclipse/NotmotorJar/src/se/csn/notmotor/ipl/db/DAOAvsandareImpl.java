@@ -33,8 +33,8 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
         String kategori = (avs.getKategori() == null) ? null : "'" + avs.getKategori() + "'";
 
         qp.executeThrowException("INSERT INTO AVSANDARE (ID,NAMN,EPOST,REPLYTO,PROGRAMNAMN,KATEGORI)"
-              + " VALUES(" + id + ", " + namn + ", " + epost + ", "
-              + replyTo + ", " + app + ", " + kategori + ")");
+            + " VALUES(" + id + ", " + namn + ", " + epost + ", "
+            + replyTo + ", " + app + ", " + kategori + ")");
         avs.setId(new Long(id));
         return id;
     }
@@ -76,9 +76,9 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
         return qp.processQuery(sql, this);
     }
 
-	public List getAvsandare(Avsandare avs) {
-		return getAvsandare(avs.getNamn(), avs.getApplikation(), avs.getKategori(), avs.getEpostadress(), avs.getReplyTo());
-	}
+    public List getAvsandare(Avsandare avs) {
+        return getAvsandare(avs.getNamn(), avs.getApplikation(), avs.getKategori(), avs.getEpostadress(), avs.getReplyTo());
+    }
 
     public Avsandare sokEnAvsandare(Avsandare avs) {
         // Bygg SQL-satsen. 
@@ -116,8 +116,8 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
             throw new IllegalArgumentException("Avsändare får inte vara null");
         }
         qp.executeThrowException("UPDATE AVSANDARE SET NAMN='" + avs.getNamn() + "', EPOST='" + avs.getEpostadress()
-                + "', REPLYTO='" + avs.getReplyTo() + "', PROGRAMNAMN='" + avs.getApplikation()
-                + "', KATEGORI='" + avs.getKategori() + "' WHERE ID=" + avs.getId().intValue());
+            + "', REPLYTO='" + avs.getReplyTo() + "', PROGRAMNAMN='" + avs.getApplikation()
+            + "', KATEGORI='" + avs.getKategori() + "' WHERE ID=" + avs.getId().intValue());
 
     }
 
@@ -129,7 +129,7 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
         if (avs == null) {
             throw new IllegalArgumentException("Avsändare får inte vara null");
         }
-        if(avs.getId() == null) {
+        if (avs.getId() == null) {
             throw new IllegalArgumentException("Avsändare måste ha id satt");
         }
         int id = avs.getId().intValue();

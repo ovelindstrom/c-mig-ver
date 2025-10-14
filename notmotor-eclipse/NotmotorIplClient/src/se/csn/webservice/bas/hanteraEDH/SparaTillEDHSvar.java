@@ -18,8 +18,8 @@ public class SparaTillEDHSvar  implements java.io.Serializable {
     public SparaTillEDHSvar(
            java.lang.String famID,
            int returkod) {
-           this.famID = famID;
-           this.returkod = returkod;
+        this.famID = famID;
+        this.returkod = returkod;
     }
 
 
@@ -63,6 +63,7 @@ public class SparaTillEDHSvar  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof SparaTillEDHSvar)) return false;
         SparaTillEDHSvar other = (SparaTillEDHSvar) obj;
@@ -74,15 +75,16 @@ public class SparaTillEDHSvar  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true &&
-            ((this.famID==null && other.getFamID()==null) ||
-             (this.famID!=null &&
-              this.famID.equals(other.getFamID()))) &&
+            ((this.famID == null && other.getFamID() == null) ||
+                (this.famID != null &&
+                    this.famID.equals(other.getFamID()))) &&
             this.returkod == other.getReturkod();
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -132,8 +134,8 @@ public class SparaTillEDHSvar  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -144,8 +146,8 @@ public class SparaTillEDHSvar  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

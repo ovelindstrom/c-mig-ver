@@ -14,8 +14,8 @@ import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
 
 public class Bilaga  extends CsnDataTransferObjectImpl {
 
-	private static final long serialVersionUID = 1L;
-	// Nyckel
+    private static final long serialVersionUID = 1L;
+    // Nyckel
     private Long id;
     // Mimetyp. Kan vara null, i sådana fall används application/octetstream
     private String mimetyp;
@@ -41,30 +41,39 @@ public class Bilaga  extends CsnDataTransferObjectImpl {
     public String getFilnamn() {
         return filnamn;
     }
+
     public void setFilnamn(String filnamn) {
         this.filnamn = filnamn;
     }
+
     public byte[] getData() {
         return data;
     }
+
     public void setData(byte[] data) {
         this.data = data;
     }
+
     public String getEncoding() {
         return encoding;
     }
+
     public void setEncoding(String encoding) {
         this.encoding = encoding;
     }
+
     public String getMimetyp() {
         return mimetyp;
     }
+
     public void setMimetyp(String mimetyp) {
         this.mimetyp = mimetyp;
     }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -72,9 +81,11 @@ public class Bilaga  extends CsnDataTransferObjectImpl {
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
+
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
+
     public boolean equals(Object o) {
         return EqualsBuilder.reflectionEquals(this, o);
     }

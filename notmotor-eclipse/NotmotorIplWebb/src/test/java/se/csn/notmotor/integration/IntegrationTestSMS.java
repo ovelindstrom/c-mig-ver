@@ -51,23 +51,23 @@ public class IntegrationTestSMS extends IntegrationTestSkeleton {
     }
 
     public void testSkickaSMSLangreAn160Tecken() {
-    	long cnt = System.currentTimeMillis();
+        long cnt = System.currentTimeMillis();
 
-    	try {
-    		final String meddelande161Tecken = "abcdefghijklmnopqrstuvxyz0123456789abcdefghijklmnopqrstuvxyz0123456789abcdefghijklmnopqrstuvxyz0123456789abcdefghijklmnopqrstuvxyz0123456789AAAAAAAAAAAAAAAAAAAAA";
+        try {
+            final String meddelande161Tecken = "abcdefghijklmnopqrstuvxyz0123456789abcdefghijklmnopqrstuvxyz0123456789abcdefghijklmnopqrstuvxyz0123456789abcdefghijklmnopqrstuvxyz0123456789AAAAAAAAAAAAAAAAAAAAA";
 
-    		DTOMeddelande meddelande = skapaTestMeddelande("Meddelande", meddelande161Tecken, "SMS");
-    		DTONotifieringResultat resultat = client.skickaMeddelande(meddelande);
-    		if (resultat.getResultat().intValue() != 0) {
-    			System.out.println("Resultatkod: " + resultat.getResultat());
+            DTOMeddelande meddelande = skapaTestMeddelande("Meddelande", meddelande161Tecken, "SMS");
+            DTONotifieringResultat resultat = client.skickaMeddelande(meddelande);
+            if (resultat.getResultat().intValue() != 0) {
+                System.out.println("Resultatkod: " + resultat.getResultat());
                 System.out.println("Fel i meddelande: " + resultat.getInfo());
                 fail();
             }
-    	} catch (Exception e) {
-    		System.out.println("Exception för meddelande: " + e);
-    		fail();
-    	}
-    	System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
+        } catch (Exception e) {
+            System.out.println("Exception för meddelande: " + e);
+            fail();
+        }
+        System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
     }
 
     public void testSkickaEpost() {

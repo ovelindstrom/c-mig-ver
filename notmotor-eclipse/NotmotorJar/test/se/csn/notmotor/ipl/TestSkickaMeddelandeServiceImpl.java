@@ -30,15 +30,15 @@ public class TestSkickaMeddelandeServiceImpl extends TestCase {
 
     private SkickaMeddelandeServicesImpl skapaImplOchMocks() {
         qpControl = MockControl.createControl(ControlledCommitQueryProcessor.class);
-        qp = (ControlledCommitQueryProcessor)qpControl.getMock();
+        qp = (ControlledCommitQueryProcessor) qpControl.getMock();
         pkControl = MockControl.createControl(ParameterKalla.class);
-        pk = (ParameterKalla)pkControl.getMock();
+        pk = (ParameterKalla) pkControl.getMock();
         mhControl = MockControl.createControl(DAOMeddelande.class);
-        mh = (DAOMeddelande)mhControl.getMock();
+        mh = (DAOMeddelande) mhControl.getMock();
         hhControl = MockControl.createControl(DAOHandelse.class);
-        hh = (DAOHandelse)hhControl.getMock();
+        hh = (DAOHandelse) hhControl.getMock();
         mottControl = MockControl.createControl(DAOMottagare.class);
-        motth = (DAOMottagare)mottControl.getMock();
+        motth = (DAOMottagare) mottControl.getMock();
         return new SkickaMeddelandeServicesImpl(qp, pk, mh, hh, motth, 1);
     }
 
@@ -100,7 +100,7 @@ public class TestSkickaMeddelandeServiceImpl extends TestCase {
         long tick = System.currentTimeMillis();
         impl.sleepWaittime();
         // OBS! Maven-testet gick på 999 ms...
-        assertTrue(System.currentTimeMillis()-tick >= 990);
+        assertTrue(System.currentTimeMillis() - tick >= 990);
         pkControl.verify();
         qpControl.verify();
     }
@@ -123,7 +123,7 @@ public class TestSkickaMeddelandeServiceImpl extends TestCase {
         qpControl.replay();
         long tick = System.currentTimeMillis();
         impl.sleepTick();
-        assertTrue(System.currentTimeMillis()-tick >= 1500);
+        assertTrue(System.currentTimeMillis() - tick >= 1500);
         pkControl.verify();
         qpControl.verify();
     }

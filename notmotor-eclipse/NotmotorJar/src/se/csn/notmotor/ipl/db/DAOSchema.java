@@ -16,6 +16,8 @@ public interface DAOSchema {
      * @return En lista av Tidsintervall
      */
     public List getIntervall();
+
     public void skapaIntervall(Tidsintervall intervall);
+
     public void delete(Tidsintervall intervall);
 }

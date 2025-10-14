@@ -26,11 +26,11 @@ public class DBTestDAOBilagaImpl extends TestCase {
         try {
             dao.createBilaga(b, 1);
             fail("Ska inte gå, data saknas");
-        } catch(IllegalArgumentException iae) {
+        } catch (IllegalArgumentException iae) {
             //OK
         }
 
-        b.setData(new byte[]{1,2,3,4,5,6,7,8,9,0});
+        b.setData(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0});
         long id = dao.createBilaga(b, 1);
 
         // Hämta:
@@ -43,20 +43,20 @@ public class DBTestDAOBilagaImpl extends TestCase {
 
         long meddelandebas = System.currentTimeMillis();
 
-        Bilaga b = new Bilaga(new byte[]{1,2,3,4,5,6,7,8,9,0}, "Fil1");
+        Bilaga b = new Bilaga(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, "Fil1");
         dao.createBilaga(b, meddelandebas);
 
-        b = new Bilaga(new byte[]{1,2,3,4,5,6,7,8,9,0}, "Fil2");
+        b = new Bilaga(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, "Fil2");
         dao.createBilaga(b, meddelandebas + 1);
 
-        b = new Bilaga(new byte[]{1,2,3,4,5,6,7,8,9,0}, "Fil3");
+        b = new Bilaga(new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 0}, "Fil3");
         dao.createBilaga(b, meddelandebas + 2);
 
 
         // Hämta:
         List list = dao.getBilagorForMeddelande(meddelandebas + 2);
         assertEquals(list.size(), 1);
-        Bilaga b2 = (Bilaga)list.get(0);
+        Bilaga b2 = (Bilaga) list.get(0);
         assertEquals(b2, b);
     }
 

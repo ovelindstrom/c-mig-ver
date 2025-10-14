@@ -24,13 +24,13 @@ public class TestNotifieringResultat extends TestCase {
         NotifieringResultat r = new NotifieringResultat(1234567890);
         assertEquals(r.getMeddelandeId(), new Long(1234567890));
 
-        r = new NotifieringResultat(1234567891,1,"res");
+        r = new NotifieringResultat(1234567891, 1, "res");
         assertEquals(r.getMeddelandeId(), new Long(1234567891));
         assertEquals(r.getResultat(), new Integer(1));
         assertEquals(r.getInfo(), "res");
 
         try {
-            r = new NotifieringResultat(1234567891,13451324,"res");
+            r = new NotifieringResultat(1234567891, 13451324, "res");
             fail("Felaktig resultatkod");
         } catch (IllegalArgumentException iae) {
             //OK
@@ -47,7 +47,7 @@ public class TestNotifieringResultat extends TestCase {
         assertEquals(o1.hashCode(), o2.hashCode());
         o1.setInfo("info");
         assertFalse(o1.equals(o2));
-        assertFalse(o1.hashCode() ==  o2.hashCode());
+        assertFalse(o1.hashCode() == o2.hashCode());
     }
 
 }

@@ -13,7 +13,7 @@ import se.csn.notmotor.ipl.MeddelandeSender;
  */
 public class SandResultat extends KodText {
 
-	private int handelsetyp;
+    private int handelsetyp;
     private List<Mottagare> mottagare;
     private MeddelandeSender sandare;
 
@@ -38,16 +38,17 @@ public class SandResultat extends KodText {
     public MeddelandeSender getSandare() {
         return sandare;
     }
+
     public void setSandare(MeddelandeSender sandare) {
         this.sandare = sandare;
     }
 
-	public int getHandelsetyp() {
-		return handelsetyp;
-	}
+    public int getHandelsetyp() {
+        return handelsetyp;
+    }
 
-	public void setHandelsetyp(int handelsetyp) {
-		this.handelsetyp = handelsetyp;
-	}
+    public void setHandelsetyp(int handelsetyp) {
+        this.handelsetyp = handelsetyp;
+    }
 
 }

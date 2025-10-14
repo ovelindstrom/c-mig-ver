@@ -29,8 +29,8 @@ public class QueryListenerImpl implements QueryListener {
     }
 
     public void sqlQuery(String sql) {
-        if(sql.indexOf("PARAMETER") >= 0) {
-        	return;
+        if (sql.indexOf("PARAMETER") >= 0) {
+            return;
         }
         log.debug(logPrefix + ": " + sql);
     }

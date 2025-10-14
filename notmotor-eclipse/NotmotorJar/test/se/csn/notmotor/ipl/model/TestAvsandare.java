@@ -44,6 +44,6 @@ public class TestAvsandare extends TestCase {
 
         o1.setNamn("a1");
         assertFalse(o1.equals(o2));
-        assertFalse(o1.hashCode() ==  o2.hashCode());
+        assertFalse(o1.hashCode() == o2.hashCode());
     }
 }

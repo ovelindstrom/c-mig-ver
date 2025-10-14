@@ -50,7 +50,7 @@ public class DBTestDAOStatusImpl extends TestCase {
         DAOStatusImpl dao = new DAOStatusImpl(getQueryProcessor());
         // Skapa tre, två med samma server, en med annan
         Status s = new Status();
-        int serverid = (int)(System.currentTimeMillis() % Integer.MAX_VALUE);
+        int serverid = (int) (System.currentTimeMillis() % Integer.MAX_VALUE);
         int status = serverid - 10000000;
         s.setServer(serverid);
         s.setStatus(status);
@@ -58,12 +58,12 @@ public class DBTestDAOStatusImpl extends TestCase {
         int id1 = dao.skapa(s);
         int id2 = dao.skapa(s);
 
-        s.setServer(serverid-1);
+        s.setServer(serverid - 1);
         int id3 = dao.skapa(s);
 
         List list = dao.getStatus(null, new Integer(serverid));
         assertEquals(list.size(), 2);
-        list = dao.getStatus(null, new Integer(serverid-1));
+        list = dao.getStatus(null, new Integer(serverid - 1));
         assertEquals(list.size(), 1);
         list = dao.getStatus(new Integer(status), null);
         assertEquals(list.size(), 3);

@@ -28,6 +28,7 @@ public class SchemaBean {
     public static class Schemarad {
         private boolean delete;
         private Date from, tom;
+
         public Schemarad(Date start, Date stop) {
             this.from = start;
             this.tom = stop;
@@ -37,6 +38,7 @@ public class SchemaBean {
         public boolean getDelete() {
             return delete;
         }
+
         public void setDelete(boolean delete) {
             this.delete = delete;
         }
@@ -44,12 +46,15 @@ public class SchemaBean {
         public Date getFrom() {
             return from;
         }
+
         public void setFrom(Date from) {
             this.from = from;
         }
+
         public Date getTom() {
             return tom;
         }
+
         public void setTom(Date tom) {
             this.tom = tom;
         }
@@ -59,8 +64,8 @@ public class SchemaBean {
         DAOSchema dao = ActionHelper.getResourceFactory().getDAOSchema();
         List intervall = dao.getIntervall();
         List<Schemarad> schemarader = new ArrayList<Schemarad>(intervall.size());
-        for(Iterator it = intervall.iterator();it.hasNext();) {
-            Tidsintervall ti = (Tidsintervall)it.next();
+        for (Iterator it = intervall.iterator();it.hasNext();) {
+            Tidsintervall ti = (Tidsintervall) it.next();
             schemarader.add(new Schemarad(ti.getStarttid(), ti.getSluttid()));
 
         }
@@ -81,10 +86,10 @@ public class SchemaBean {
 
     public void taBortRader(ActionEvent e) {
         DAOSchema dao = ActionHelper.getResourceFactory().getDAOSchema();
-        List rader = (List)model.getWrappedData();
-        for(int i = rader.size()-1; i >= 0; i--){
-            Schemarad rad = (Schemarad)rader.get(i);
-            if(rad.getDelete()) {
+        List rader = (List) model.getWrappedData();
+        for (int i = rader.size() - 1;i >= 0;i--) {
+            Schemarad rad = (Schemarad) rader.get(i);
+            if (rad.getDelete()) {
                 rader.remove(i);
                 dao.delete(new Tidsintervall(rad.getFrom(), rad.getTom()));
             }
@@ -92,7 +97,7 @@ public class SchemaBean {
     }
 
     @SuppressWarnings("unchecked")
-	public void laggTillRad(ActionEvent e) {
+    public void laggTillRad(ActionEvent e) {
         Tidsintervall intervall = skapaIntervall();
         DAOSchema dao = ActionHelper.getResourceFactory().getDAOSchema();
         dao.skapaIntervall(intervall);
@@ -105,6 +110,7 @@ public class SchemaBean {
     public ListDataModel getSchemarader() {
         return model;
     }
+
     public void setSchemarader(ListDataModel schemarader) {
         this.model = schemarader;
     }
@@ -113,12 +119,15 @@ public class SchemaBean {
     public String getSlutdatum() {
         return slutdatum;
     }
+
     public void setSlutdatum(String slutdatum) {
         this.slutdatum = slutdatum;
     }
+
     public String getStartdatum() {
         return startdatum;
     }
+
     public void setStartdatum(String startdatum) {
         this.startdatum = startdatum;
     }

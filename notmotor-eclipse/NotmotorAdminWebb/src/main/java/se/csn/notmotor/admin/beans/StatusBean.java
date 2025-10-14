@@ -56,57 +56,75 @@ public class StatusBean {
         public boolean getRensa() {
             return rensa;
         }
+
         public void setRensa(boolean rensa) {
             this.rensa = rensa;
         }
+
         public String getServer() {
             return server;
         }
+
         public void setServer(String server) {
             this.server = server;
         }
+
         public String getTyp() {
             return typ;
         }
+
         public void setTyp(String typ) {
             this.typ = typ;
         }
+
         public Date getStarttid() {
             return starttid;
         }
+
         public void setStarttid(Date starttid) {
             this.starttid = starttid;
         }
+
         public Date getStopptid() {
             return stopptid;
         }
+
         public void setStopptid(Date stopptid) {
             this.stopptid = stopptid;
         }
+
         public Date getWatchdog() {
             return watchdog;
         }
+
         public void setWatchdog(Date watchdog) {
             this.watchdog = watchdog;
         }
+
         public boolean getStoppa() {
             return stoppa;
         }
+
         public void setStoppa(boolean stoppa) {
             this.stoppa = stoppa;
         }
+
         public int getNr() {
             return nr;
         }
+
         public void setNr(int nr) {
             this.nr = nr;
         }
+
         public boolean isPausad() {
             return (status == SkickaMeddelandeStateMachine.PAUSING) || (status == SkickaMeddelandeStateMachine.PAUSED);
         }
+
         public boolean getPausa() {
             return pausa;
         }
+
         public void setPausa(boolean pausa) {
             this.pausa = pausa;
         }
@@ -118,6 +136,7 @@ public class StatusBean {
         public int getStatus() {
             return status;
         }
+
         public void setStatus(int status) {
             this.status = status;
         }
@@ -125,24 +144,27 @@ public class StatusBean {
         private String getMsg(String msg) {
             return messages.getString(msg);
         }
+
         public String getStatustext() {
 
             switch(status) {
-            	case SkickaMeddelandeStateMachine.INIT : return getMsg("status.init");
-            	case SkickaMeddelandeStateMachine.RUNNING : return getMsg("status.running");
-            	case SkickaMeddelandeStateMachine.WAITING : return getMsg("status.waiting");
-            	case SkickaMeddelandeStateMachine.PAUSED : return getMsg("status.paused");
-            	case SkickaMeddelandeStateMachine.PAUSING : return getMsg("status.pausing");
-            	case SkickaMeddelandeStateMachine.STOPPED : return getMsg("status.stopped");
-            	case SkickaMeddelandeStateMachine.STOPPING : return getMsg("status.stopping");
-            	case SkickaMeddelandeStateMachine.SCHEDULED_PAUSE : return getMsg("status.scheduledpause");
+                case SkickaMeddelandeStateMachine.INIT : return getMsg("status.init");
+                case SkickaMeddelandeStateMachine.RUNNING : return getMsg("status.running");
+                case SkickaMeddelandeStateMachine.WAITING : return getMsg("status.waiting");
+                case SkickaMeddelandeStateMachine.PAUSED : return getMsg("status.paused");
+                case SkickaMeddelandeStateMachine.PAUSING : return getMsg("status.pausing");
+                case SkickaMeddelandeStateMachine.STOPPED : return getMsg("status.stopped");
+                case SkickaMeddelandeStateMachine.STOPPING : return getMsg("status.stopping");
+                case SkickaMeddelandeStateMachine.SCHEDULED_PAUSE : return getMsg("status.scheduledpause");
 
-            	default : return "status.unknown";
+                default : return "status.unknown";
             }
         }
+
         public boolean getAktiv() {
             return aktiv;
         }
+
         public void setAktiv(boolean aktiv) {
             this.aktiv = aktiv;
         }
@@ -157,10 +179,15 @@ public class StatusBean {
         public boolean getDelete() {
             return delete;
         }
+
         public void setDelete(boolean delete) {
             this.delete = delete;
         }
-        public Serverrad(){};
+
+        public Serverrad() {
+        }
+        ;
+
         public Serverrad(int id, String adress, int prestanda, int processer) {
             this.id = id;
             this.adress = adress;
@@ -168,27 +195,35 @@ public class StatusBean {
             this.processer = processer;
             delete = false;
         }
+
         public int getId() {
             return id;
         }
+
         public void setId(int id) {
             this.id = id;
         }
+
         public int getPrestanda() {
             return prestanda;
         }
+
         public void setPrestanda(int prestanda) {
             this.prestanda = prestanda;
         }
+
         public int getProcesser() {
             return processer;
         }
+
         public void setProcesser(int processer) {
             this.processer = processer;
         }
+
         public String getAdress() {
             return adress;
         }
+
         public void setAdress(String adress) {
             this.adress = adress;
         }
@@ -211,10 +246,10 @@ public class StatusBean {
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
         List statuslist = dao.getStatus(null, null);
         List<Statusrad> rader = new ArrayList<Statusrad>();
-        for (Iterator it = statuslist.iterator(); it.hasNext();) {
+        for (Iterator it = statuslist.iterator();it.hasNext();) {
             Status s = (Status) it.next();
             rader.add(new Statusrad(s.getInstans(), s.getStatus(), ""
-                    + s.getServer(), s.getStartad(), s.getStoppad(), s.getWatchdog(), s.getTyp(), s.isAktiv()));
+                + s.getServer(), s.getStartad(), s.getStoppad(), s.getWatchdog(), s.getTyp(), s.isAktiv()));
         }
         return rader;
     }
@@ -223,7 +258,7 @@ public class StatusBean {
         DAOServer dao = ActionHelper.getResourceFactory().getDAOServer();
         List servers = dao.getAktiva(true);
         List<Serverrad> rader = new ArrayList<Serverrad>();
-        for (Iterator it = servers.iterator(); it.hasNext();) {
+        for (Iterator it = servers.iterator();it.hasNext();) {
             Server s = (Server) it.next();
             rader.add(new Serverrad(s.getId(), s.getServleturl(), s.getPrestanda(), dao.getLevandeProcesser(s.getId())));
         }
@@ -242,9 +277,11 @@ public class StatusBean {
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
         List statuslist = dao.getStatus(null, null);
         String varning = "";
-        for (Iterator it = statuslist.iterator(); it.hasNext();) {
+        for (Iterator it = statuslist.iterator();it.hasNext();) {
             Status s = (Status) it.next();
-            if (s.getStatus() == SkickaMeddelandeStateMachine.STOPPED) { continue; }
+            if (s.getStatus() == SkickaMeddelandeStateMachine.STOPPED) {
+                continue;
+            }
 
             if (s.getWatchdog() == null) {
                 varning += "Process " + s.getInstans() + " har ingen tidsstämpel alls<br/>";
@@ -281,8 +318,8 @@ public class StatusBean {
             return true;
         }
         if ((rad.getWatchdog() != null) && (rad.getWatchdog().before(jamforelsetid))
-                && ((rad.getStatus() == SkickaMeddelandeStateMachine.STOPPING)
-                		|| (rad.getStatus() == SkickaMeddelandeStateMachine.STOPPED))) {
+            && ((rad.getStatus() == SkickaMeddelandeStateMachine.STOPPING)
+            || (rad.getStatus() == SkickaMeddelandeStateMachine.STOPPED))) {
             return true;
         }
         return false;
@@ -292,7 +329,7 @@ public class StatusBean {
         log.debug("taBortStangdaStatusar");
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
         List rader = (List) statusrader.getWrappedData();
-        for (int i = rader.size() - 1; i >= 0; i--) {
+        for (int i = rader.size() - 1;i >= 0;i--) {
             Statusrad rad = (Statusrad) rader.get(i);
             if (kontrolleraBorttag(rad)) {
                 rader.remove(i);
@@ -307,7 +344,7 @@ public class StatusBean {
         log.debug("taBortStatusar");
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
         List rader = (List) statusrader.getWrappedData();
-        for (int i = rader.size() - 1; i >= 0; i--) {
+        for (int i = rader.size() - 1;i >= 0;i--) {
             Statusrad rad = (Statusrad) rader.get(i);
             if (rad.getRensa() && kontrolleraBorttag(rad)) {
                 rader.remove(i);
@@ -321,7 +358,7 @@ public class StatusBean {
     public void taBortServrar(ActionEvent e) {
         DAOServer dao = ActionHelper.getResourceFactory().getDAOServer();
         List rader = (List) serverrader.getWrappedData();
-        for (int i = rader.size() - 1; i >= 0; i--) {
+        for (int i = rader.size() - 1;i >= 0;i--) {
             Serverrad rad = (Serverrad) rader.get(i);
             if (rad.getDelete()) {
                 rader.remove(i);
@@ -341,7 +378,7 @@ public class StatusBean {
             String s = clientId.substring(0, pos);
             pos = s.lastIndexOf(':');
             return Integer.parseInt(s.substring(pos + 1, s.length()));
-        } catch  (Exception t) {
+        } catch (Exception t) {
             throw new IllegalArgumentException("Kunde inte hitta komponentnummer", t);
         }
     }
@@ -375,7 +412,7 @@ public class StatusBean {
 //            }
 //        }
         //if (count >= MAX_INSTANSER_PER_SERVER) { Kommentar: Kommenterar bort if-sats eftersom den var tom.
-            //return false;
+        //return false;
         //}
         
         
@@ -406,12 +443,12 @@ public class StatusBean {
 
     private Date getJamforelsetid() {
         int watchdogtid = 0;
-    	try {
-    		watchdogtid = ActionHelper.getResourceFactory().getParameterKalla().getIntParam("WATCHDOGTID", 0);
-    	} catch (Exception t) {
-    		log.error("Fel i uppslagning av watchdogtid: ", t);
-    		return null;
-    	}
+        try {
+            watchdogtid = ActionHelper.getResourceFactory().getParameterKalla().getIntParam("WATCHDOGTID", 0);
+        } catch (Exception t) {
+            log.error("Fel i uppslagning av watchdogtid: ", t);
+            return null;
+        }
         int marginal = 60;
         maxalder = watchdogtid + marginal;
         Date jamforelsetid = new Date(System.currentTimeMillis() - 1000L * maxalder);
@@ -427,10 +464,10 @@ public class StatusBean {
         if ((s.getWatchdog() != null) && (s.getWatchdog().before(jamforelsetid))) {
             //DAOMeddelande daomeddelande = ActionHelper.getResourceFactory().getDAOMeddelande();
             String sql = "UPDATE MEDDELANDE SET STATUS = " + MeddelandeHandelse.MOTTAGET
-        	+ " WHERE STATUS = -" + s.getInstans();
-	        log.info("Återställer meddelandestatus för avbrutna sändningar för instans: " + s.getInstans());
-	        ActionHelper.getResourceFactory().getQueryProcessor().executeThrowException(sql);
-	        s.setStatus(SkickaMeddelandeStateMachine.STOPPED);
+                + " WHERE STATUS = -" + s.getInstans();
+            log.info("Återställer meddelandestatus för avbrutna sändningar för instans: " + s.getInstans());
+            ActionHelper.getResourceFactory().getQueryProcessor().executeThrowException(sql);
+            s.setStatus(SkickaMeddelandeStateMachine.STOPPED);
         }
     }
 
@@ -461,12 +498,15 @@ public class StatusBean {
     public ListDataModel getServerrader() {
         return serverrader;
     }
+
     public void setServerrader(ListDataModel serverrader) {
         this.serverrader = serverrader;
     }
+
     public ListDataModel getStatusrader() {
         return statusrader;
     }
+
     public void setStatusrader(ListDataModel statusrader) {
         this.statusrader = statusrader;
     }
@@ -476,45 +516,44 @@ public class StatusBean {
     }
 
 
-
     public ListDataModel getKanaler() {
-    	// Initiera nedprioriterade inkanaler med begränsningar
-	    List<Kanal> kanalerMedBegransningar = new ArrayList<Kanal>();
-	    ParameterKalla paramSource = ActionHelper.getResourceFactory().getParameterKalla();
-	    for (String namn : paramSource.getStringParam("KANALER_MED_BEGRANSNINGAR", "").split("[, ]+")) {
-	    	if (namn.trim().length() == 0) {
-	    		break;
-	    	}
-	    	Kanal kanal = new Kanal(namn);
-	    	// Hämta parametrar
-	    	int pt = paramSource.getIntParam(kanal.getMaxAntalPerTimmeKey(), -1);
-	    	int bs = paramSource.getIntParam(kanal.getBatchStorlekKey(), -1);
-	    	int bk = paramSource.getIntParam(kanal.getBatchKvarKey(), bs);
-	    	int st = paramSource.getIntParam(kanal.getSovtidKey(), -1);
-	    	long soverTimestamp = paramSource.getLongParam(kanal.getSoverTimestampKey(), -1);
-	    	String otid = paramSource.getStringParam(kanal.getOppningstidKey(), "00:00:00");
-	    	String stid = paramSource.getStringParam(kanal.getStangningstidKey(), "23:59:59");
-	    	// Initiera kanal
-	    	kanal.setMaxAntalPerTimme(pt);
-	    	kanal.setBatchStorlek(bs);
-	    	kanal.setBatchKvar(bk);
-	    	kanal.setSovtid(st);
-	    	if (soverTimestamp > 0) {
-	    		kanal.setSoverTimestamp(new Date(soverTimestamp));
-	    	}
-	    	try {
-	    		kanal.setOppningstid(otid);
-	    	} catch (IllegalArgumentException e) {
-	    		log.error("Kunde inte sätta öppningstid på kanalen " + namn, e);
-	    	}
-	    	try {
-	    		kanal.setStangningstid(stid);
-	    	} catch (IllegalArgumentException e) {
-	    		log.error("Kunde inte sätta stängningstid på kanalen " + namn, e);
-	    	}
-	    	kanalerMedBegransningar.add(kanal);
-	    }
-	    return new ListDataModel(kanalerMedBegransningar);
+        // Initiera nedprioriterade inkanaler med begränsningar
+        List<Kanal> kanalerMedBegransningar = new ArrayList<Kanal>();
+        ParameterKalla paramSource = ActionHelper.getResourceFactory().getParameterKalla();
+        for (String namn : paramSource.getStringParam("KANALER_MED_BEGRANSNINGAR", "").split("[, ]+")) {
+            if (namn.trim().length() == 0) {
+                break;
+            }
+            Kanal kanal = new Kanal(namn);
+            // Hämta parametrar
+            int pt = paramSource.getIntParam(kanal.getMaxAntalPerTimmeKey(), -1);
+            int bs = paramSource.getIntParam(kanal.getBatchStorlekKey(), -1);
+            int bk = paramSource.getIntParam(kanal.getBatchKvarKey(), bs);
+            int st = paramSource.getIntParam(kanal.getSovtidKey(), -1);
+            long soverTimestamp = paramSource.getLongParam(kanal.getSoverTimestampKey(), -1);
+            String otid = paramSource.getStringParam(kanal.getOppningstidKey(), "00:00:00");
+            String stid = paramSource.getStringParam(kanal.getStangningstidKey(), "23:59:59");
+            // Initiera kanal
+            kanal.setMaxAntalPerTimme(pt);
+            kanal.setBatchStorlek(bs);
+            kanal.setBatchKvar(bk);
+            kanal.setSovtid(st);
+            if (soverTimestamp > 0) {
+                kanal.setSoverTimestamp(new Date(soverTimestamp));
+            }
+            try {
+                kanal.setOppningstid(otid);
+            } catch (IllegalArgumentException e) {
+                log.error("Kunde inte sätta öppningstid på kanalen " + namn, e);
+            }
+            try {
+                kanal.setStangningstid(stid);
+            } catch (IllegalArgumentException e) {
+                log.error("Kunde inte sätta stängningstid på kanalen " + namn, e);
+            }
+            kanalerMedBegransningar.add(kanal);
+        }
+        return new ListDataModel(kanalerMedBegransningar);
     }
 
 }

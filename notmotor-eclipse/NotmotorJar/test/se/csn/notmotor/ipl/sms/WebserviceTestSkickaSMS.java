@@ -18,10 +18,10 @@ import junit.framework.TestCase;
  */
 public class WebserviceTestSkickaSMS extends TestCase {
 
-    public void testSkicka()  {
-		//System.setProperty("javax.net.ssl.trustStore", "C:/Program Files/Java/j2re1.4.2_11/lib/security/cacerts");
+    public void testSkicka() {
+        //System.setProperty("javax.net.ssl.trustStore", "C:/Program Files/Java/j2re1.4.2_11/lib/security/cacerts");
         System.setProperty("javax.net.ssl.trustStore", "test/cacerts");
-		System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
+        System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
 
         SMSTjaenst tjaenst = new SMSTjaenst("https://ssc.telia.se/smsplus/sendsms", "CSN", "Stud13r");
         DTOSMSIn in = new DTOSMSIn("0705976212", "CSN", "testing testing", "NOTMOTOR", "TEST");
@@ -31,7 +31,7 @@ public class WebserviceTestSkickaSMS extends TestCase {
 
     public void testSkickaJDK() throws IOException {
         System.setProperty("javax.net.ssl.trustStore", "test/cacerts");
-		System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
+        System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
         //System.setProperty("javax.net.ssl.trustStorePassword", "secret");
         String httpsURL = "https://ssc.telia.se/smsplus/sendsms";
         URL myurl = new URL(httpsURL);

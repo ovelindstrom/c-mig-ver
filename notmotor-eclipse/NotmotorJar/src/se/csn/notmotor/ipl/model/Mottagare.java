@@ -14,8 +14,8 @@ import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
 
 public class Mottagare extends CsnDataTransferObjectImpl {
 
-	private static final long serialVersionUID = 1L;
-	private Long id;
+    private static final long serialVersionUID = 1L;
+    private Long id;
     // Namn på mottagare, kan var null
     private String namn;
     // Mailadress, måste vara angiven och enligt format
@@ -50,40 +50,50 @@ public class Mottagare extends CsnDataTransferObjectImpl {
     }
 
 
-
     public Integer getCsnnummer() {
         return csnnummer;
     }
+
     public void setCsnnummer(Integer csnnummer) {
         this.csnnummer = csnnummer;
     }
+
     public String getAdress() {
         return adress;
     }
+
     public void setAdress(String adress) {
         this.adress = adress;
     }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getNamn() {
         return namn;
     }
+
     public void setNamn(String namn) {
         this.namn = namn;
     }
+
     public String getTyp() {
         return typ;
     }
+
     public void setTyp(String typ) {
         this.typ = typ;
     }
+
     public Integer getStatus() {
         return status;
     }
+
     public void setStatus(Integer status) {
         this.status = status;
     }
@@ -91,9 +101,11 @@ public class Mottagare extends CsnDataTransferObjectImpl {
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
+
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
+
     public boolean equals(Object o) {
         return EqualsBuilder.reflectionEquals(this, o);
     }

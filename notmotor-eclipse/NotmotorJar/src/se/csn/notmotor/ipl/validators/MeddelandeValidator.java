@@ -12,5 +12,6 @@ import se.csn.notmotor.ipl.model.KodText;
  */
 public interface MeddelandeValidator {
     boolean isValid(Meddelande meddelande);
+
     KodText getFelkodForMeddelande(Meddelande meddelande);
 }

@@ -38,109 +38,109 @@ import se.csn.notmotor.ipl.Notmotor;
  *   
  */
 public class SkickaMotorServlet extends HttpServlet implements Servlet { //, ServletListener {
-	private static final long serialVersionUID = 1L;
-	private static final String PROPERTIESFIL = "notmotor-ipl";
+    private static final long serialVersionUID = 1L;
+    private static final String PROPERTIESFIL = "notmotor-ipl";
     private Log log = Log.getInstance(SkickaMotorServlet.class);
     private RunControl runControl;
 
     public SkickaMotorServlet() {
-		super();
-		runControl = new RunControl();
-	}
+        super();
+        runControl = new RunControl();
+    }
 
-	/* (non-Java-doc)
-	 * @see javax.servlet.http.HttpServlet#doGet(HttpServletRequest arg0, HttpServletResponse arg1)
-	 */
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	    log.debug("SkickaMotorServlet doGet");
-	    hanteraAnrop(req, resp);
-	}
+    /* (non-Java-doc)
+     * @see javax.servlet.http.HttpServlet#doGet(HttpServletRequest arg0, HttpServletResponse arg1)
+     */
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.debug("SkickaMotorServlet doGet");
+        hanteraAnrop(req, resp);
+    }
 
-	/* (non-Java-doc)
-	 * @see javax.servlet.http.HttpServlet#doPost(HttpServletRequest arg0, HttpServletResponse arg1)
-	 */
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	    log.debug("SkickaMotorServlet doPost");
-	    hanteraAnrop(req, resp);
-	}
+    /* (non-Java-doc)
+     * @see javax.servlet.http.HttpServlet#doPost(HttpServletRequest arg0, HttpServletResponse arg1)
+     */
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        log.debug("SkickaMotorServlet doPost");
+        hanteraAnrop(req, resp);
+    }
 
-	private void hanteraAnrop(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-	    String start = req.getParameter("start");
-	    skickaSvar(req, resp);
-	    if ((start != null) && (start.equalsIgnoreCase("true"))) {
-	        startaNotmotor(req.getRequestURL().toString());
-	    } else {
-	        log.debug("Skickat svar på förfrågan från " + req.getRemoteHost());
-	    }
-	}
+    private void hanteraAnrop(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String start = req.getParameter("start");
+        skickaSvar(req, resp);
+        if ((start != null) && (start.equalsIgnoreCase("true"))) {
+            startaNotmotor(req.getRequestURL().toString());
+        } else {
+            log.debug("Skickat svar på förfrågan från " + req.getRemoteHost());
+        }
+    }
 
-	private void skickaSvar(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-	    resp.getWriter().write("<html><body>");
-	    resp.getWriter().write("SkickaMotorServlet<br/>");
-	    resp.getWriter().write("Context path: " + req.getContextPath() + "<br/>");
-	    resp.getWriter().write("URI: " + req.getRequestURI() + "<br/>");
-	    resp.getWriter().write("Server: " + req.getServerName() + "<br/>");
-	    resp.getWriter().write("Port: " + req.getServerPort() + "<br/>");
-	    resp.getWriter().write("URL: " + req.getRequestURL() + "<br/>");
-	    resp.getWriter().write("</body></html>");
-	}
+    private void skickaSvar(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.getWriter().write("<html><body>");
+        resp.getWriter().write("SkickaMotorServlet<br/>");
+        resp.getWriter().write("Context path: " + req.getContextPath() + "<br/>");
+        resp.getWriter().write("URI: " + req.getRequestURI() + "<br/>");
+        resp.getWriter().write("Server: " + req.getServerName() + "<br/>");
+        resp.getWriter().write("Port: " + req.getServerPort() + "<br/>");
+        resp.getWriter().write("URL: " + req.getRequestURL() + "<br/>");
+        resp.getWriter().write("</body></html>");
+    }
 
-	public void init(ServletConfig config) throws ServletException {
-	    log.debug("init");
-	    // Kontrollera om autostart är aktiverad och isåfall hur många instanser av Notmotorn
-	    // som ska startas
-	    int autostart = Properties.getIntProperty(PROPERTIESFIL, "notmotor.autostart", 0);
-	    // Om autostart > 0, starta önskat antal instanser av Notmotorn
-	    if (autostart > 0) {
-	    	log.info("Autostart av " + autostart + " Notmotor-instanser ...");
-	    	String url = Properties.getProperty(PROPERTIESFIL, "notmotor.url");
-	    	for (int i = 0; i < autostart; i++) {
-	    		startaNotmotor(url);
-	    		try {
-	    			// Vänta 1000 millisekunder innan nästa instans startas.
-	    			// För att jobb-namnet för tråden ska bli unik får inte två instanser
-	    			// startas inom samma millisekund.
-	    			Thread.sleep(1000);
-	    		} catch (InterruptedException e) {
-	    			log.warn("sleep avbröts", e);
-					// Fortsätt ändå
-				}
-	    	}
-	    } else {
-	    	log.info("Autostart inaktiverad. Ingen Notmotor-instans startas.");
-	    }
-	}
+    public void init(ServletConfig config) throws ServletException {
+        log.debug("init");
+        // Kontrollera om autostart är aktiverad och isåfall hur många instanser av Notmotorn
+        // som ska startas
+        int autostart = Properties.getIntProperty(PROPERTIESFIL, "notmotor.autostart", 0);
+        // Om autostart > 0, starta önskat antal instanser av Notmotorn
+        if (autostart > 0) {
+            log.info("Autostart av " + autostart + " Notmotor-instanser ...");
+            String url = Properties.getProperty(PROPERTIESFIL, "notmotor.url");
+            for (int i = 0;i < autostart;i++) {
+                startaNotmotor(url);
+                try {
+                    // Vänta 1000 millisekunder innan nästa instans startas.
+                    // För att jobb-namnet för tråden ska bli unik får inte två instanser
+                    // startas inom samma millisekund.
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    log.warn("sleep avbröts", e);
+                    // Fortsätt ändå
+                }
+            }
+        } else {
+            log.info("Autostart inaktiverad. Ingen Notmotor-instans startas.");
+        }
+    }
 
 
     void startaNotmotor(String anropadURL) {
         log.info("Startar ny notmotorinstans");
         long tid = Calendar.getInstance().getTimeInMillis();
         try {
-	        SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
-	        Scheduler sched = schedFact.getScheduler();
-	        sched.start();
+            SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
+            Scheduler sched = schedFact.getScheduler();
+            sched.start();
 
-	        JobDetail jobDetail = new JobDetail("myJob" + tid,
-	                                            null,
-	                                            Notmotor.class);
-	        jobDetail.getJobDataMap().put("url", anropadURL);
-	        jobDetail.getJobDataMap().put("runCon", runControl);
+            JobDetail jobDetail = new JobDetail("myJob" + tid,
+                null,
+                Notmotor.class);
+            jobDetail.getJobDataMap().put("url", anropadURL);
+            jobDetail.getJobDataMap().put("runCon", runControl);
 
-	        Trigger trigger = TriggerUtils.makeImmediateTrigger(0, 0);
-	        trigger.setName("myTrigger" + tid);
+            Trigger trigger = TriggerUtils.makeImmediateTrigger(0, 0);
+            trigger.setName("myTrigger" + tid);
 
-	        sched.scheduleJob(jobDetail, trigger);
+            sched.scheduleJob(jobDetail, trigger);
         } catch (SchedulerException se) {
-        	log.error("Kunde inte starta ny instans av notmotorn", se);
+            log.error("Kunde inte starta ny instans av notmotorn", se);
         }
     }
 
-	public void destroy() {
-		log.info("SkickaMotorServlet Destroying...");
-		if (runControl != null) {
-			runControl.setRunning(false);
-		}
-	}
+    public void destroy() {
+        log.info("SkickaMotorServlet Destroying...");
+        if (runControl != null) {
+            runControl.setRunning(false);
+        }
+    }
 
 //    public void onServletAvailableForService(ServletEvent arg0) {
 //        log.debug(arg0.getServletClassName() + "availableForService()");

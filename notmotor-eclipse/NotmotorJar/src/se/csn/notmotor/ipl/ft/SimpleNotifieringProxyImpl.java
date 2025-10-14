@@ -28,7 +28,7 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
     private Log log = Log.getInstance(SimpleNotifieringProxyImpl.class);
 
     public SimpleNotifieringProxyImpl(MeddelandeSender sender) {
-        if(sender == null) {
+        if (sender == null) {
             throw new IllegalArgumentException("sender får inte vara null");
         }
         this.sender = sender;
@@ -44,7 +44,7 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
         meddelande.setId(new Long(id));
         SandResultat handelse = sender.skickaMeddelande(meddelande);
         log.debug("Skickat meddelande, det tog " + (System.currentTimeMillis() - id) + " ms");
-        if(handelse.getKod() == MeddelandeHandelse.SKICKAT_SERVER) {
+        if (handelse.getKod() == MeddelandeHandelse.SKICKAT_SERVER) {
             return new NotifieringResultat();
         } else {
             return new NotifieringResultat(-1L, NotifieringResultat.FEL, handelse.getText());
@@ -55,25 +55,28 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
      * Ej implementerad
      */
     public NotifieringResultat taBortMeddelande(Long meddelandeId) {
-        throw new UnsupportedOperationException();    }
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Ej implementerad
      */
     public Avsandare[] sokAvsandare(String namndel, String applikationsdel,
-            String kategoridel, String adressdel, String replytoDel) {
-        throw new UnsupportedOperationException();    }
+                                    String kategoridel, String adressdel, String replytoDel) {
+        throw new UnsupportedOperationException();
+    }
 
 
     /**
      * Ej implementerad
      */
     public Meddelande[] sokMeddelanden(Date from, Date tom,
-            Avsandare[] avsandare, Mottagare[] mottagare,
-            String textinnehall, Integer minstorlek, Integer maxstorlek,
-            Integer handelseMask, Integer felmask, Bilaga[] bilagor) {
+                                       Avsandare[] avsandare, Mottagare[] mottagare,
+                                       String textinnehall, Integer minstorlek, Integer maxstorlek,
+                                       Integer handelseMask, Integer felmask, Bilaga[] bilagor) {
         throw new UnsupportedOperationException();
     }
+
     /**
      * Ej implementerad
      */
@@ -85,7 +88,7 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
      * Ej implementerad
      */
     public Mottagare[] sokMottagare(String namndel, String adressdel,
-            String typ, Integer csnnrFrom, Integer csnnrTom) {
+                                    String typ, Integer csnnrFrom, Integer csnnrTom) {
         throw new UnsupportedOperationException();
     }
 }

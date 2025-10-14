@@ -37,28 +37,28 @@ import se.csn.notmotor.ipl.webservice.SkickaService;
  * Servlet som ska koras vid startup; anvands for att starta notmotorinstans.
  */
 public class InitServlet extends HttpServlet implements Servlet { //, ServletListener {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private static final String PROPERTIESFIL = "notmotor-ipl";
     private static Log log = Log.getInstance(InitServlet.class);
 
-	public InitServlet() {
-		super();
-	}
+    public InitServlet() {
+        super();
+    }
 
-	/**
-	 * Testar externa beroenden, satter upp beroenden, 
-	 * startar en notmotorinstans. Detta gors mha en trad. 
-	 */
-	public void init(ServletConfig config) throws ServletException {
-	    checkExternalDependencies();
-	    setupDependencies();
+    /**
+     * Testar externa beroenden, satter upp beroenden, 
+     * startar en notmotorinstans. Detta gors mha en trad. 
+     */
+    public void init(ServletConfig config) throws ServletException {
+        checkExternalDependencies();
+        setupDependencies();
 
-	    // Lägger upp serverrad i DB om den inte redan fanns:
-	    lagraServerIDB(Properties.getProperty(PROPERTIESFIL, "notmotor.url"));
-	}
+        // Lägger upp serverrad i DB om den inte redan fanns:
+        lagraServerIDB(Properties.getProperty(PROPERTIESFIL, "notmotor.url"));
+    }
 
-	private void setupDependencies() {
-	    System.out.println("Sätter upp dependencies för Notmotor");
+    private void setupDependencies() {
+        System.out.println("Sätter upp dependencies för Notmotor");
         ServiceLocator sl = new ServiceLocator();
         String datasourceJndi = Properties.getProperty(PROPERTIESFIL, "notmotor.ds.jndinamn");
         DataSource ds = sl.getDatasource(datasourceJndi);
@@ -67,36 +67,36 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
         qp.addQueryListener(new QueryListenerImpl("WEBSERVICE"));
         NotifieringProxyFactory factory = new NotifieringProxyFactoryImpl(ds);
         SkickaService.setFactory(factory);
-	}
+    }
 
     public void checkExternalDependencies() {
-	    System.out.println("Kontrollerar dependencies för Notmotor");
+        System.out.println("Kontrollerar dependencies för Notmotor");
         try {
             // 0. Kolla att utils finns:
             Class.forName("se.csn.common.config.ConfigException");
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException("Kunde inte ens hitta utils, klassen se.csn.common.config.ConfigException finns inte...", e);
         }
-        String[][] CLASSTEST = new String[][] {
-                ClassDependencyTester.LOG4J,
-                ClassDependencyTester.ARKALL,
-                ClassDependencyTester.COMMONS_LANG,
+        String[][] CLASSTEST = new String[][]{
+            ClassDependencyTester.LOG4J,
+            ClassDependencyTester.ARKALL,
+            ClassDependencyTester.COMMONS_LANG,
         };
         ClassDependencyTester.findClassesThrowException(CLASSTEST);
 
-        String[] properties = new String[] {
-                "mail.user",
-                "mail.password",
-                "mail.host",
-                "mail.port",
-                "mail.timeout",
-                "param.refreshtid",
-                "notmotor.url",
-                "notmotor.autostart",
-                "notmotor.ds.jndinamn",
-                "sms.user",
-                "sms.password",
-                "sms.endpoint",
+        String[] properties = new String[]{
+            "mail.user",
+            "mail.password",
+            "mail.host",
+            "mail.port",
+            "mail.timeout",
+            "param.refreshtid",
+            "notmotor.url",
+            "notmotor.autostart",
+            "notmotor.ds.jndinamn",
+            "sms.user",
+            "sms.password",
+            "sms.endpoint",
         };
 
         // Anropa med propertiesfilen som argument för att sätta upp
@@ -115,7 +115,7 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
         QueryProcessor qp = new QueryProcessorImpl(ds);
         DAOServer dao = new DAOServerImpl(qp);
         List serverlist = dao.getAktiva(true);
-        for (Iterator it = serverlist.iterator(); it.hasNext();) {
+        for (Iterator it = serverlist.iterator();it.hasNext();) {
             Server server = (Server) it.next();
             if (url.equalsIgnoreCase(server.getServleturl())) {
                 return;
@@ -132,8 +132,8 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
     }
 
     public void destroy() {
-		log.info("InitServlet Destroying...");
-	}
+        log.info("InitServlet Destroying...");
+    }
 
 //    public void onServletAvailableForService(ServletEvent arg0) {
 //        log.debug(arg0.getServletClassName() + "availableForService()");

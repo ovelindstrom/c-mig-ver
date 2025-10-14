@@ -9,5 +9,6 @@ package se.csn.webservice.bas.hanteraEDH;
 
 public interface HanteraEDH_PortType extends java.rmi.Remote {
     public se.csn.webservice.bas.hanteraEDH.HamtaFranEDHSvar hamtaFranEDH(se.csn.webservice.bas.hanteraEDH.HamtaFranEDHFraga fraga) throws java.rmi.RemoteException;
+
     public se.csn.webservice.bas.hanteraEDH.SparaTillEDHSvar sparaTillEDH(se.csn.webservice.bas.hanteraEDH.SparaTillEDHFraga fraga) throws java.rmi.RemoteException;
 }

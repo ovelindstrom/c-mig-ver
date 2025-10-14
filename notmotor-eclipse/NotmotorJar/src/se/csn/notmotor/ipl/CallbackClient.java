@@ -23,17 +23,17 @@ public class CallbackClient {
     public void rapporteraHandelseWS(Meddelande meddelande) {
         String url = meddelande.getCallbackURL();
         if (url == null) {
-        	// Ska inte inträffa då detta kontrolleras tidigare
-        	log.error("Ingen callback-url i meddelandet.");
-        	return;
+            // Ska inte inträffa då detta kontrolleras tidigare
+            log.error("Ingen callback-url i meddelandet.");
+            return;
         }
         CallbackProxy callback = new CallbackProxy();
         callback.setEndpoint(url);
         try {
-        	callback.nyHandelse(ConvertCallbackDTO.getMeddelande2(meddelande));
-	    } catch (Exception e) {
-			log.error("Kunde inte anropa url: " + url + " för att meddela ny händelse.");
-		}
+            callback.nyHandelse(ConvertCallbackDTO.getMeddelande2(meddelande));
+        } catch (Exception e) {
+            log.error("Kunde inte anropa url: " + url + " för att meddela ny händelse.");
+        }
     }
 
 }

@@ -14,19 +14,19 @@ public class TestEpostMeddelandeSenderImpl extends TestCase {
 
     public void testRemovePart() {
         String typer = "EPOST,SMS,EPOSTCC";
-        String res = EpostMeddelandeSenderImpl.removePart(typer, "SMS",",");
+        String res = EpostMeddelandeSenderImpl.removePart(typer, "SMS", ",");
         assertEquals(res, "EPOST,EPOSTCC");
 
-        res = EpostMeddelandeSenderImpl.removePart(typer, "EPOST",",");
+        res = EpostMeddelandeSenderImpl.removePart(typer, "EPOST", ",");
         assertEquals(res, "SMS,EPOSTCC");
 
-        res = EpostMeddelandeSenderImpl.removePart(typer, "EPOSTCC",",");
+        res = EpostMeddelandeSenderImpl.removePart(typer, "EPOSTCC", ",");
         assertEquals(res, "EPOST,SMS");
 
-        res = EpostMeddelandeSenderImpl.removePart("EPOST", "EPOST",",");
+        res = EpostMeddelandeSenderImpl.removePart("EPOST", "EPOST", ",");
         assertEquals(res, "");
 
-        res = EpostMeddelandeSenderImpl.removePart("NISSE", "EPOST",",");
+        res = EpostMeddelandeSenderImpl.removePart("NISSE", "EPOST", ",");
         assertEquals(res, "NISSE");
     }
 
@@ -47,8 +47,6 @@ public class TestEpostMeddelandeSenderImpl extends TestCase {
         m = EpostMeddelandeSenderImpl.taBortOkandaOchSandaMottagartyper(m);
         assertEquals(m.getMottagare().length, 0);
     }
-
-
 
 
 }

@@ -49,7 +49,7 @@ public class TestMottagare extends TestCase {
         assertEquals(o1.hashCode(), o2.hashCode());
         o1.setAdress("adr");
         assertFalse(o1.equals(o2));
-        assertFalse(o1.hashCode() ==  o2.hashCode());
+        assertFalse(o1.hashCode() == o2.hashCode());
     }
 
 }

@@ -40,7 +40,7 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service impl
     }
 
     public se.csn.webservice.bas.notmotor.callback.Callback_PortType getCallbackSOAP() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(CallbackSOAP_address);
         }
@@ -96,8 +96,7 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service impl
         java.lang.String inputPortName = portName.getLocalPart();
         if ("CallbackSOAP".equals(inputPortName)) {
             return getCallbackSOAP();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -123,11 +122,10 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service impl
     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
 
-if ("CallbackSOAP".equals(portName)) {
+        if ("CallbackSOAP".equals(portName)) {
             setCallbackSOAPEndpointAddress(address);
-        }
-        else
-{ // Unknown Port Name
+        } else
+        { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }

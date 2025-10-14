@@ -27,11 +27,11 @@ public class DTOBilaga  implements java.io.Serializable {
            java.lang.String filnamn,
            java.lang.String encoding,
            byte[] data) {
-           this.id = id;
-           this.mimetyp = mimetyp;
-           this.filnamn = filnamn;
-           this.encoding = encoding;
-           this.data = data;
+        this.id = id;
+        this.mimetyp = mimetyp;
+        this.filnamn = filnamn;
+        this.encoding = encoding;
+        this.data = data;
     }
 
 
@@ -135,6 +135,7 @@ public class DTOBilaga  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof DTOBilaga)) return false;
         DTOBilaga other = (DTOBilaga) obj;
@@ -146,26 +147,27 @@ public class DTOBilaga  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true &&
-            ((this.id==null && other.getId()==null) ||
-             (this.id!=null &&
-              this.id.equals(other.getId()))) &&
-            ((this.mimetyp==null && other.getMimetyp()==null) ||
-             (this.mimetyp!=null &&
-              this.mimetyp.equals(other.getMimetyp()))) &&
-            ((this.filnamn==null && other.getFilnamn()==null) ||
-             (this.filnamn!=null &&
-              this.filnamn.equals(other.getFilnamn()))) &&
-            ((this.encoding==null && other.getEncoding()==null) ||
-             (this.encoding!=null &&
-              this.encoding.equals(other.getEncoding()))) &&
-            ((this.data==null && other.getData()==null) ||
-             (this.data!=null &&
-              java.util.Arrays.equals(this.data, other.getData())));
+            ((this.id == null && other.getId() == null) ||
+                (this.id != null &&
+                    this.id.equals(other.getId()))) &&
+            ((this.mimetyp == null && other.getMimetyp() == null) ||
+                (this.mimetyp != null &&
+                    this.mimetyp.equals(other.getMimetyp()))) &&
+            ((this.filnamn == null && other.getFilnamn() == null) ||
+                (this.filnamn != null &&
+                    this.filnamn.equals(other.getFilnamn()))) &&
+            ((this.encoding == null && other.getEncoding() == null) ||
+                (this.encoding != null &&
+                    this.encoding.equals(other.getEncoding()))) &&
+            ((this.data == null && other.getData() == null) ||
+                (this.data != null &&
+                    java.util.Arrays.equals(this.data, other.getData())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -185,8 +187,8 @@ public class DTOBilaga  implements java.io.Serializable {
             _hashCode += getEncoding().hashCode();
         }
         if (getData() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getData());
+            for (int i = 0;
+                 i < java.lang.reflect.Array.getLength(getData());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getData(), i);
                 if (obj != null &&
@@ -257,8 +259,8 @@ public class DTOBilaga  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -269,8 +271,8 @@ public class DTOBilaga  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

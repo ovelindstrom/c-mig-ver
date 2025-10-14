@@ -20,7 +20,7 @@ public class CallbackSOAPStub extends org.apache.axis.client.Stub implements se.
         _initOperationDesc1();
     }
 
-    private static void _initOperationDesc1(){
+    private static void _initOperationDesc1() {
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
@@ -35,12 +35,12 @@ public class CallbackSOAPStub extends org.apache.axis.client.Stub implements se.
     }
 
     public CallbackSOAPStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public CallbackSOAPStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public CallbackSOAPStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -49,54 +49,54 @@ public class CallbackSOAPStub extends org.apache.axis.client.Stub implements se.
         } else {
             super.service = service;
         }
-        ((org.apache.axis.client.Service)super.service).setTypeMappingVersion("1.2");
-            java.lang.Class cls;
-            javax.xml.namespace.QName qName;
-            javax.xml.namespace.QName qName2;
-            java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
-            java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOAvsandare");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.callback.DTOAvsandare.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        ((org.apache.axis.client.Service) super.service).setTypeMappingVersion("1.2");
+        java.lang.Class cls;
+        javax.xml.namespace.QName qName;
+        javax.xml.namespace.QName qName2;
+        java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
+        java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
+        java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
+        java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
+        java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
+        java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
+        java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
+        java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
+        java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
+        java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOAvsandare");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.callback.DTOAvsandare.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOBilaga");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.callback.DTOBilaga.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOBilaga");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.callback.DTOBilaga.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOMeddelande");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.callback.DTOMeddelande.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOMeddelande");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.callback.DTOMeddelande.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOMeddelandeHandelse");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.callback.DTOMeddelandeHandelse.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOMeddelandeHandelse");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.callback.DTOMeddelandeHandelse.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOMottagare");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.callback.DTOMottagare.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/callback", "DTOMottagare");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.callback.DTOMottagare.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
     }
 
@@ -135,23 +135,22 @@ public class CallbackSOAPStub extends org.apache.axis.client.Stub implements se.
                 if (firstCall()) {
                     // must set encoding style before registering serializers
                     _call.setEncodingStyle(null);
-                    for (int i = 0; i < cachedSerFactories.size(); ++i) {
+                    for (int i = 0;i < cachedSerFactories.size();++i) {
                         java.lang.Class cls = (java.lang.Class) cachedSerClasses.get(i);
                         javax.xml.namespace.QName qName =
-                                (javax.xml.namespace.QName) cachedSerQNames.get(i);
+                            (javax.xml.namespace.QName) cachedSerQNames.get(i);
                         java.lang.Object x = cachedSerFactories.get(i);
                         if (x instanceof Class) {
                             java.lang.Class sf = (java.lang.Class)
-                                 cachedSerFactories.get(i);
+                                cachedSerFactories.get(i);
                             java.lang.Class df = (java.lang.Class)
-                                 cachedDeserFactories.get(i);
+                                cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
-                        }
-                        else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
+                        } else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
                             org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory)
-                                 cachedSerFactories.get(i);
+                                cachedSerFactories.get(i);
                             org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory)
-                                 cachedDeserFactories.get(i);
+                                cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }
                     }
@@ -180,7 +179,7 @@ public class CallbackSOAPStub extends org.apache.axis.client.Stub implements se.
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        _call.invokeOneWay(new java.lang.Object[] {parameters});
+        _call.invokeOneWay(new java.lang.Object[]{parameters});
 
     }
 

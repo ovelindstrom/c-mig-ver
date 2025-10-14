@@ -20,7 +20,7 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
         _initOperationDesc1();
     }
 
-    private static void _initOperationDesc1(){
+    private static void _initOperationDesc1() {
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
@@ -59,12 +59,12 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
     }
 
     public SkickaSOAPStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public SkickaSOAPStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public SkickaSOAPStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -73,61 +73,61 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
         } else {
             super.service = service;
         }
-        ((org.apache.axis.client.Service)super.service).setTypeMappingVersion("1.2");
-            java.lang.Class cls;
-            javax.xml.namespace.QName qName;
-            javax.xml.namespace.QName qName2;
-            java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
-            java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOAvsandare");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.skicka.DTOAvsandare.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        ((org.apache.axis.client.Service) super.service).setTypeMappingVersion("1.2");
+        java.lang.Class cls;
+        javax.xml.namespace.QName qName;
+        javax.xml.namespace.QName qName2;
+        java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
+        java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
+        java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
+        java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
+        java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
+        java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
+        java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
+        java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
+        java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
+        java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOAvsandare");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.skicka.DTOAvsandare.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOBilaga");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.skicka.DTOBilaga.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOBilaga");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.skicka.DTOBilaga.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelande");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.skicka.DTOMeddelande.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelande");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.skicka.DTOMeddelande.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelandeHandelse");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.skicka.DTOMeddelandeHandelse.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelandeHandelse");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.skicka.DTOMeddelandeHandelse.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMottagare");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.skicka.DTOMottagare.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMottagare");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.skicka.DTOMottagare.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTONotifieringResultat");
-            cachedSerQNames.add(qName);
-            cls = se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTONotifieringResultat");
+        cachedSerQNames.add(qName);
+        cls = se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
     }
 
@@ -166,23 +166,22 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
                 if (firstCall()) {
                     // must set encoding style before registering serializers
                     _call.setEncodingStyle(null);
-                    for (int i = 0; i < cachedSerFactories.size(); ++i) {
+                    for (int i = 0;i < cachedSerFactories.size();++i) {
                         java.lang.Class cls = (java.lang.Class) cachedSerClasses.get(i);
                         javax.xml.namespace.QName qName =
-                                (javax.xml.namespace.QName) cachedSerQNames.get(i);
+                            (javax.xml.namespace.QName) cachedSerQNames.get(i);
                         java.lang.Object x = cachedSerFactories.get(i);
                         if (x instanceof Class) {
                             java.lang.Class sf = (java.lang.Class)
-                                 cachedSerFactories.get(i);
+                                cachedSerFactories.get(i);
                             java.lang.Class df = (java.lang.Class)
-                                 cachedDeserFactories.get(i);
+                                cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
-                        }
-                        else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
+                        } else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
                             org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory)
-                                 cachedSerFactories.get(i);
+                                cachedSerFactories.get(i);
                             org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory)
-                                 cachedDeserFactories.get(i);
+                                cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }
                     }
@@ -211,22 +210,22 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {parameters});
+        try {
+            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{parameters});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat) org.apache.axis.utils.JavaUtils.convert(_resp, se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat.class);
+            if (_resp instanceof java.rmi.RemoteException) {
+                throw (java.rmi.RemoteException) _resp;
+            } else {
+                extractAttachments(_call);
+                try {
+                    return (se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat) _resp;
+                } catch (java.lang.Exception _exception) {
+                    return (se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat) org.apache.axis.utils.JavaUtils.convert(_resp, se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat.class);
+                }
             }
+        } catch (org.apache.axis.AxisFault axisFaultException) {
+            throw axisFaultException;
         }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
     }
 
     public se.csn.webservice.bas.notmotor.skicka.DTOMeddelande hamtaMeddelande(long parameters) throws java.rmi.RemoteException {
@@ -245,22 +244,22 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(parameters)});
+        try {
+            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Long(parameters)});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (se.csn.webservice.bas.notmotor.skicka.DTOMeddelande) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (se.csn.webservice.bas.notmotor.skicka.DTOMeddelande) org.apache.axis.utils.JavaUtils.convert(_resp, se.csn.webservice.bas.notmotor.skicka.DTOMeddelande.class);
+            if (_resp instanceof java.rmi.RemoteException) {
+                throw (java.rmi.RemoteException) _resp;
+            } else {
+                extractAttachments(_call);
+                try {
+                    return (se.csn.webservice.bas.notmotor.skicka.DTOMeddelande) _resp;
+                } catch (java.lang.Exception _exception) {
+                    return (se.csn.webservice.bas.notmotor.skicka.DTOMeddelande) org.apache.axis.utils.JavaUtils.convert(_resp, se.csn.webservice.bas.notmotor.skicka.DTOMeddelande.class);
+                }
             }
+        } catch (org.apache.axis.AxisFault axisFaultException) {
+            throw axisFaultException;
         }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
     }
 
     public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat taBortMeddelande(long parameters) throws java.rmi.RemoteException {
@@ -279,22 +278,22 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Long(parameters)});
+        try {
+            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Long(parameters)});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat) org.apache.axis.utils.JavaUtils.convert(_resp, se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat.class);
+            if (_resp instanceof java.rmi.RemoteException) {
+                throw (java.rmi.RemoteException) _resp;
+            } else {
+                extractAttachments(_call);
+                try {
+                    return (se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat) _resp;
+                } catch (java.lang.Exception _exception) {
+                    return (se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat) org.apache.axis.utils.JavaUtils.convert(_resp, se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat.class);
+                }
             }
+        } catch (org.apache.axis.AxisFault axisFaultException) {
+            throw axisFaultException;
         }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
     }
 
 }

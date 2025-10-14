@@ -12,7 +12,7 @@ import se.csn.notmotor.ipl.SkickaMeddelandeStateMachine;
 public class Constants extends SkickaMeddelandeStateMachine {
     // TODO: Fundera över ett bättre sätt att kommunicera konstanter.
     // Denna koppling blir för osynlig
-    public Constants(){
+    public Constants() {
         super(null, new RunControl());
     }
 }

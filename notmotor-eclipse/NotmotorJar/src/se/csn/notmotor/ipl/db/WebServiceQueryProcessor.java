@@ -15,44 +15,44 @@ import se.csn.ark.common.util.logging.Log;
  */
 public class WebServiceQueryProcessor extends QueryProcessorBase implements ControlledCommitQueryProcessor {
 
-	private DataSource ds;
-	private Connection connection;
-	private boolean commit = false;
-	private Log log = Log.getInstance(WebServiceQueryProcessor.class);
+    private DataSource ds;
+    private Connection connection;
+    private boolean commit = false;
+    private Log log = Log.getInstance(WebServiceQueryProcessor.class);
 
-	public WebServiceQueryProcessor(DataSource ds) {
-		this.ds = ds;
-	}
+    public WebServiceQueryProcessor(DataSource ds) {
+        this.ds = ds;
+    }
 
-	/**
-	 * 
-	 */
-	public Connection getConnection() {
-		try {
-			if ((connection == null) || (connection.isClosed())) {
-				connection = ds.getConnection();
-				connection.setAutoCommit(false);
-				connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-			}
-			return connection;
-		} catch (SQLException e) {
-			log.fatal("Kunde inte skapa ny connection", e);
-			throw new DatabaseException("Kunde inte skapa ny connection", e);
-		}
-	}
+    /**
+     * 
+     */
+    public Connection getConnection() {
+        try {
+            if ((connection == null) || (connection.isClosed())) {
+                connection = ds.getConnection();
+                connection.setAutoCommit(false);
+                connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+            }
+            return connection;
+        } catch (SQLException e) {
+            log.fatal("Kunde inte skapa ny connection", e);
+            throw new DatabaseException("Kunde inte skapa ny connection", e);
+        }
+    }
 
     public void setConnection(Connection conn, boolean handleConnection) {
-    	connection = conn;
-    	this.handleConnection = handleConnection;
-	}
+        connection = conn;
+        this.handleConnection = handleConnection;
+    }
 
     protected void handleConnection(Connection conn) throws SQLException {
         if (commit && (!conn.isClosed())) {
-    		conn.commit();
-    	}
+            conn.commit();
+        }
     }
 
     public void setCommitConnection(Connection conn, boolean commit) {
-    	this.commit = commit;
+        this.commit = commit;
     }
 }

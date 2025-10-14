@@ -51,11 +51,11 @@ public class NotifieringProxyImpl implements NotifieringProxy {
 
     public NotifieringResultat taBortMeddelande(Long meddelandeId) {
         try {
-        	Connection conn = qp.getConnection();
+            Connection conn = qp.getConnection();
             int antalRader = qp.executeThrowException("UPDATE MEDDELANDE SET STATUS = "
-                    + MeddelandeHandelse.BORTTAGET + " WHERE ID = " + meddelandeId.longValue());
+                + MeddelandeHandelse.BORTTAGET + " WHERE ID = " + meddelandeId.longValue());
             if ((conn != null) && (!conn.isClosed())) {
-            	conn.commit();
+                conn.commit();
                 conn.close();
             }
             if (antalRader == 1) {
@@ -70,17 +70,19 @@ public class NotifieringProxyImpl implements NotifieringProxy {
     }
 
     public Avsandare[] sokAvsandare(String namndel, String applikationsdel,
-            String kategoridel, String adressdel, String replytoDel) {
+                                    String kategoridel, String adressdel, String replytoDel) {
         return null;
     }
+
     public Meddelande[] sokMeddelanden(Date from, Date tom,
-            Avsandare[] avsandare, Mottagare[] mottagare,
-            String textinnehall, Integer minstorlek, Integer maxstorlek,
-            Integer handelseMask, Integer felmask, Bilaga[] bilagor) {
+                                       Avsandare[] avsandare, Mottagare[] mottagare,
+                                       String textinnehall, Integer minstorlek, Integer maxstorlek,
+                                       Integer handelseMask, Integer felmask, Bilaga[] bilagor) {
         return null;
     }
+
     public Mottagare[] sokMottagare(String namndel, String adressdel,
-            String typ, Integer csnnrFrom, Integer csnnrTom) {
+                                    String typ, Integer csnnrFrom, Integer csnnrTom) {
         return null;
     }
 }

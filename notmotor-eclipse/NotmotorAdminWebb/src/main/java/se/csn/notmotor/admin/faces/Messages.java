@@ -25,17 +25,17 @@ public class Messages {
         Application app = context.getApplication();
         String bundleName = app.getMessageBundle();
         if (bundleName == null) {
-        	bundleName = BUNDLENAME;
+            bundleName = BUNDLENAME;
         }
 
         Locale locale = context.getViewRoot().getLocale();
         if (locale == null) {
-        	locale = Locale.getDefault();
+            locale = Locale.getDefault();
         }
 
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         if (loader == null) {
-        	loader = ClassLoader.getSystemClassLoader();
+            loader = ClassLoader.getSystemClassLoader();
         }
 
         ResourceBundle bundle = ResourceBundle.getBundle(bundleName, locale, loader);
@@ -45,12 +45,12 @@ public class Messages {
     }
 
     public static String getString(ResourceBundle bundle, String messageKey, Object[] params) {
-        if(bundle == null) {
-        	return "NO BUNDLE";
+        if (bundle == null) {
+            return "NO BUNDLE";
         }
         String msg = bundle.getString(messageKey);
-        if(msg == null) {
-        	return "";
+        if (msg == null) {
+            return "";
         }
         return new MessageFormat(msg).format(params);
     }

@@ -18,6 +18,7 @@ public class ContainerListener implements ServletContextListener {
     public void contextDestroyed(ServletContextEvent arg0) {
         log.info("CONTEXT DESTROY");
     }
+
     public void contextInitialized(ServletContextEvent arg0) {
         log.info("CONTEXT INIT");
     }

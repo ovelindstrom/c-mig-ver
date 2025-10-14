@@ -15,36 +15,37 @@ import se.csn.ark.common.util.logging.Log;
  */
 public class SingleConnectionQueryProcessor extends QueryProcessorBase implements ControlledCommitQueryProcessor {
 
-	private DataSource ds;
-	private Log log = Log.getInstance(SingleConnectionQueryProcessor.class);
-	private static Connection s_connection;
-	private static Object lock = new Object();
-	private static boolean s_commit = true;
+    private DataSource ds;
+    private Log log = Log.getInstance(SingleConnectionQueryProcessor.class);
+    private static Connection s_connection;
+    private static Object lock = new Object();
+    private static boolean s_commit = true;
 
-	public SingleConnectionQueryProcessor(DataSource ds) {
-		this.ds = ds;
-		log.info("Created SingleConnectionQueryProcessor");
-		//addQueryListener(new QueryListenerImpl(""));
-	}
+    public SingleConnectionQueryProcessor(DataSource ds) {
+        this.ds = ds;
+        log.info("Created SingleConnectionQueryProcessor");
+        //addQueryListener(new QueryListenerImpl(""));
+    }
 
     private static int connCounter = 1;
+
     @Override
     public Connection getConnection() {
-       try {
-    	   synchronized (lock) {
-	           if((s_connection == null) || (s_connection.isClosed())) {
-	               log.debug("Creating new connection: " + connCounter);
-	               connCounter++;
-	               s_connection = ds.getConnection();
-	               s_connection.setAutoCommit(false);
-	               s_connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
-	           }
-	           return s_connection;
-    	   }
-       } catch (SQLException e) {
-           log.fatal("Kunde inte skapa ny connection", e);
-           throw new DatabaseException("Kunde inte skapa ny connection", e);
-       }
+        try {
+            synchronized (lock) {
+                if ((s_connection == null) || (s_connection.isClosed())) {
+                    log.debug("Creating new connection: " + connCounter);
+                    connCounter++;
+                    s_connection = ds.getConnection();
+                    s_connection.setAutoCommit(false);
+                    s_connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+                }
+                return s_connection;
+            }
+        } catch (SQLException e) {
+            log.fatal("Kunde inte skapa ny connection", e);
+            throw new DatabaseException("Kunde inte skapa ny connection", e);
+        }
     }
 
     public void setConnection(Connection conn, boolean handleConnection) {
@@ -55,7 +56,7 @@ public class SingleConnectionQueryProcessor extends QueryProcessorBase implement
 
     protected void handleConnection(Connection conn) throws SQLException {
         if (s_commit && (!conn.isClosed())) {
-                conn.commit();
+            conn.commit();
         }
     }
 

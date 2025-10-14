@@ -9,23 +9,23 @@ import junit.framework.TestCase;
 
 
 public class DigesterTest extends TestCase {
-    public void testDummy () {
-    	assertNotNull("a");
+    public void testDummy() {
+        assertNotNull("a");
     }
     /*public void testDigest() throws IOException, SAXException, ParseException {
-	    InputStream is = this.getClass().getClassLoader().getResourceAsStream("test1.xml");
-	    MeddelandeDigester md = new MeddelandeDigester();
-	    DTOMeddelande m = null;
-	    try {
-	        m = md.xmlToDTOMeddelande(is);
-	    } catch(Exception e) {
-	        System.out.println("Fel: " + e);
-	        throw new RuntimeException(e);
-	    }
-	    
+        InputStream is = this.getClass().getClassLoader().getResourceAsStream("test1.xml");
+        MeddelandeDigester md = new MeddelandeDigester();
+        DTOMeddelande m = null;
+        try {
+            m = md.xmlToDTOMeddelande(is);
+        } catch(Exception e) {
+            System.out.println("Fel: " + e);
+            throw new RuntimeException(e);
+        }
+        
         assertNotNull(m);
-	    SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd HHmmss");
-	    Date d = fmt.parse("20070930 100000");
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMdd HHmmss");
+        Date d = fmt.parse("20070930 100000");
         assertEquals(m.getSkickaTidigast(), d);
         assertEquals(m.getCsnnummer().intValue(), 12345678);
         assertEquals(m.getRubrik(), "Testmail");

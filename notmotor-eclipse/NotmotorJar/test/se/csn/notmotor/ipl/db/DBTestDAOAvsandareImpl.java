@@ -16,7 +16,7 @@ import se.csn.notmotor.ipl.model.Avsandare;
 public class DBTestDAOAvsandareImpl extends TestCase {
 
     private QueryProcessor getQueryProcessor() {
-        return new SingleConnectionQueryProcessor(TestUtils.getTestDB2DataSource("csn24utv",50000, "WDBUTV", "notmotor", "notmotor"));
+        return new SingleConnectionQueryProcessor(TestUtils.getTestDB2DataSource("csn24utv", 50000, "WDBUTV", "notmotor", "notmotor"));
     }
 
     public void testCRUD() {
@@ -77,7 +77,7 @@ public class DBTestDAOAvsandareImpl extends TestCase {
         avs.setReplyTo("%@csn.se");
         avs.setEpostadress("%nas%");
         List list = dao.getAvsandare(avs);
-        for(Iterator it = list.iterator(); it.hasNext();) {
+        for (Iterator it = list.iterator();it.hasNext();) {
             System.out.println(it.next().toString());
         }
     }
@@ -86,8 +86,8 @@ public class DBTestDAOAvsandareImpl extends TestCase {
         DAOAvsandareImpl dao = new DAOAvsandareImpl(getQueryProcessor());
         Avsandare avs = new Avsandare();
         List list = dao.getAvsandare(avs);
-        for(Iterator it = list.iterator(); it.hasNext();) {
-            dao.deleteAvsandare((Avsandare)it.next());
+        for (Iterator it = list.iterator();it.hasNext();) {
+            dao.deleteAvsandare((Avsandare) it.next());
             System.out.println("Tog bort avsändare.");
         }
 

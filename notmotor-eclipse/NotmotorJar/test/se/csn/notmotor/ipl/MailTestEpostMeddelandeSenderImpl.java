@@ -25,10 +25,10 @@ public class MailTestEpostMeddelandeSenderImpl extends TestCase {
         EpostMeddelandeSenderImpl impl = getImpl();
 
         int antal = 100;
-        for(int i = 1; i <= antal; i++) {
+        for (int i = 1;i <= antal;i++) {
             Meddelande meddelande = new Meddelande("Testmeddelande numro " + i, "Detta är meddelande nummer " + i + " från testSkickaManga", "jonas.ohrnell@csn.se", "noreply@csn.se", "Noreply");
             SandResultat resultat = impl.skickaMeddelande(meddelande);
-            if(resultat.getKod() != MeddelandeHandelse.SKICKAT_SERVER) {
+            if (resultat.getKod() != MeddelandeHandelse.SKICKAT_SERVER) {
                 System.out.println("Fel i meddelande " + i + ": " + resultat.getText());
             }
         }
@@ -64,7 +64,7 @@ public class MailTestEpostMeddelandeSenderImpl extends TestCase {
         Meddelande meddelande = new Meddelande("Testmeddelande", "Detta är från ett JUnit-test", "jonas.ohrnell@csn.se.nisse", "noreply@csn.se", "Noreply");
         meddelande.getMottagare()[0].setTyp("SMS");
 
-        Mottagare mott = new Mottagare("jonas.ohrnell@csn.se","Jonas å");
+        Mottagare mott = new Mottagare("jonas.ohrnell@csn.se", "Jonas å");
         mott.setTyp("EPOST,EPOSTCC");
         meddelande.addMottagare(mott);
 

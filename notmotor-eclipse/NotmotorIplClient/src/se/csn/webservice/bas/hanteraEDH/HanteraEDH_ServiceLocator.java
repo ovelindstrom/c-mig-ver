@@ -40,7 +40,7 @@ public class HanteraEDH_ServiceLocator extends org.apache.axis.client.Service im
     }
 
     public se.csn.webservice.bas.hanteraEDH.HanteraEDH_PortType gethanteraEDHSOAP() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(hanteraEDHSOAP_address);
         }
@@ -96,8 +96,7 @@ public class HanteraEDH_ServiceLocator extends org.apache.axis.client.Service im
         java.lang.String inputPortName = portName.getLocalPart();
         if ("hanteraEDHSOAP".equals(inputPortName)) {
             return gethanteraEDHSOAP();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -123,11 +122,10 @@ public class HanteraEDH_ServiceLocator extends org.apache.axis.client.Service im
     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
 
-if ("hanteraEDHSOAP".equals(portName)) {
+        if ("hanteraEDHSOAP".equals(portName)) {
             sethanteraEDHSOAPEndpointAddress(address);
-        }
-        else
-{ // Unknown Port Name
+        } else
+        { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }

@@ -31,16 +31,16 @@ public class TestSMSValidator extends TestCase {
         m.addMottagare(mott);
 
         String[][] dataFacit = {
-                {null, FELAKTIG_MOTTAGARE},
-                {"0705976212", OK},
-                {"070-5976212", FELAKTIG_MOTTAGARE},
-                {"07012345", FELAKTIG_MOTTAGARE},
-                {"as07012345", FELAKTIG_MOTTAGARE},
-                {"070asd12345", FELAKTIG_MOTTAGARE},
-                {"07012345", FELAKTIG_MOTTAGARE},
-                {"0+4547012345", FELAKTIG_MOTTAGARE},
-                {"0123456789123456789", FELAKTIG_MOTTAGARE},
-                {"+46705976212", OK},
+            {null, FELAKTIG_MOTTAGARE},
+            {"0705976212", OK},
+            {"070-5976212", FELAKTIG_MOTTAGARE},
+            {"07012345", FELAKTIG_MOTTAGARE},
+            {"as07012345", FELAKTIG_MOTTAGARE},
+            {"070asd12345", FELAKTIG_MOTTAGARE},
+            {"07012345", FELAKTIG_MOTTAGARE},
+            {"0+4547012345", FELAKTIG_MOTTAGARE},
+            {"0123456789123456789", FELAKTIG_MOTTAGARE},
+            {"+46705976212", OK},
         };
 
         //used to be SMSValidator class
@@ -53,10 +53,12 @@ public class TestSMSValidator extends TestCase {
 
 
         SMSValidator validator2 = new SMSValidator();
-        for(int i = 0; i < dataFacit.length; i++) {
+        for (int i = 0;i < dataFacit.length;i++) {
             mott.setAdress(dataFacit[i][0]);
             kt = validator2.getFelkodForMeddelande(m);
-            if(kt == null) { kt = new KodText(MeddelandeHandelse.OK, ""); }
+            if (kt == null) {
+                kt = new KodText(MeddelandeHandelse.OK, "");
+            }
             assertEquals("" + kt.getKod(), dataFacit[i][1]);
         }
         /*
@@ -86,7 +88,6 @@ public class TestSMSValidator extends TestCase {
         assertEquals(mh.getFelkod().intValue(), DTOMeddelandeHandelse.OK);
         */
     }
-
 
 
 }

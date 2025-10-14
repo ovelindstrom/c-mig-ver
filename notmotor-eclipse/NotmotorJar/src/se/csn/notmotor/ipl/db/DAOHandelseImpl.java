@@ -34,8 +34,8 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
         String feltext = quoteValue(h.getFeltext());
         String datum = quoteValue(h.getTidpunkt());
         qp.executeThrowException("INSERT INTO HANDELSE (ID,MEDDELANDEID,TYP,KOD,TEXT,TIDPUNKT,INSTANS) " +
-        		"VALUES (" + id + ", " + meddelandeid + ", " + typ + ", " + kod +
-        		", " + feltext + ", " + datum + ", " + instans +")");
+            "VALUES (" + id + ", " + meddelandeid + ", " + typ + ", " + kod +
+            ", " + feltext + ", " + datum + ", " + instans + ")");
         h.setId(new Long(id));
         return id;
     }
@@ -52,19 +52,19 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
     }
 
     @SuppressWarnings("unchecked")
-	public List<MeddelandeHandelse> getHandelserForMeddelande(long meddelandeid) {
+    public List<MeddelandeHandelse> getHandelserForMeddelande(long meddelandeid) {
         return qp.processQuery("SELECT * FROM HANDELSE WHERE MEDDELANDEID=" + meddelandeid + " ORDER BY ID", this);
     }
 
     public MeddelandeHandelse getHandelse(long id) {
-	    List list = qp.processQuery("SELECT * FROM HANDELSE WHERE ID=" + id, this);
-	    if(list.size() == 0) {
-	    	return null;
-	    }
-	    if(list.size() > 1) {
-	        throw new IllegalStateException("Hittade mer än ett meddelande med id " + id);
-	    }
-	    return (MeddelandeHandelse)list.get(0);
+        List list = qp.processQuery("SELECT * FROM HANDELSE WHERE ID=" + id, this);
+        if (list.size() == 0) {
+            return null;
+        }
+        if (list.size() > 1) {
+            throw new IllegalStateException("Hittade mer än ett meddelande med id " + id);
+        }
+        return (MeddelandeHandelse) list.get(0);
     }
 
 }

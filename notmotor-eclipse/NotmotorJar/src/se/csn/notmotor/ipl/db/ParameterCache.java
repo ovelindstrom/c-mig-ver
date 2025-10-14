@@ -65,11 +65,11 @@ public class ParameterCache implements ParameterKalla {
     }
 
     public String getStringParam(String namn, String defaultVarde) {
-        String val = (String)cache.get(namn);
-        if(val == null) {
+        String val = (String) cache.get(namn);
+        if (val == null) {
             // Cachemiss: slå mot databas
             val = qp.getString("SELECT VARDE FROM PARAMETER WHERE NAMN='" + namn + "'", defaultVarde);
-            if(val != null) {
+            if (val != null) {
                 cache.put(namn, val);
             }
         }
@@ -92,12 +92,12 @@ public class ParameterCache implements ParameterKalla {
         if (val == null) {
             return defaultVarde;
         } else {
-        	return val.trim().length() > 0 ? Integer.parseInt(val) : 0;
+            return val.trim().length() > 0 ? Integer.parseInt(val) : 0;
         }
     }
 
     public void setIntParam(String namn, int varde) {
-    	setStringParam(namn, Integer.toString(varde));
+        setStringParam(namn, Integer.toString(varde));
     }
 
     public long getLongParam(String namn, long defaultVarde) {
@@ -110,7 +110,7 @@ public class ParameterCache implements ParameterKalla {
     }
 
     public void setLongParam(String namn, long varde) {
-    	setStringParam(namn, Long.toString(varde));
+        setStringParam(namn, Long.toString(varde));
     }
 
 
@@ -128,18 +128,18 @@ public class ParameterCache implements ParameterKalla {
     }
 
     public static boolean strToBool(String value) {
-        for (int i = 0; i < TRUE_STRANGAR.length; i++) {
+        for (int i = 0;i < TRUE_STRANGAR.length;i++) {
             if (TRUE_STRANGAR[i].equalsIgnoreCase(value)) {
-            	return true;
+                return true;
             }
         }
-        for (int i = 0; i < FALSE_STRANGAR.length; i++) {
+        for (int i = 0;i < FALSE_STRANGAR.length;i++) {
             if (FALSE_STRANGAR[i].equalsIgnoreCase(value)) {
-            	return false;
+                return false;
             }
         }
         throw new IllegalArgumentException("Kunde inte konvertera '" + value + "' till true eller false");
-	}
+    }
 
     public void setBooleanParam(String namn, boolean varde) {
         setStringParam(namn, varde ? "J" : "N");
@@ -155,21 +155,24 @@ public class ParameterCache implements ParameterKalla {
 
     static class Entry {
         private String namn, varde;
+
         public Entry(String namn, String varde) {
             this.namn = namn;
             this.varde = varde;
         }
-		public String getNamn() {
-			return namn;
-		}
-		public String getVarde() {
-			return varde;
-		}
+
+        public String getNamn() {
+            return namn;
+        }
+
+        public String getVarde() {
+            return varde;
+        }
 
     }
 
-    public static class ParamMapper implements RowToObjectMapper{
-    	public Object newRow(ResultSet rs) throws SQLException {
+    public static class ParamMapper implements RowToObjectMapper {
+        public Object newRow(ResultSet rs) throws SQLException {
             return new Entry(rs.getString("NAMN"), rs.getString("VARDE"));
         }
     }
@@ -179,19 +182,19 @@ public class ParameterCache implements ParameterKalla {
 
         });
         Map<String, String> map = new HashMap<String, String>();
-        for(Iterator it = names.iterator();it.hasNext();) {
-            Entry entry = (Entry)it.next();
-           map.put(entry.namn, entry.varde);
+        for (Iterator it = names.iterator();it.hasNext();) {
+            Entry entry = (Entry) it.next();
+            map.put(entry.namn, entry.varde);
         }
         return map;
     }
 
     public String getDescription(String namn) {
-        if(namn == null) {
-        	return null;
+        if (namn == null) {
+            return null;
         }
-        if(beskrivningCol == null) {
-        	return "";
+        if (beskrivningCol == null) {
+            return "";
         }
         return qp.getString("SELECT " + beskrivningCol + " FROM " + tabellnamn + " WHERE " + namnCol + "='" + namn + "'", null);
     }

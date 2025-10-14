@@ -15,39 +15,39 @@ import se.csn.notmotor.ipl.model.Meddelande;
 public class CallbackTestServlet extends HttpServlet implements Servlet {
 
     private static Log log = Log.getInstance(CallbackTestServlet.class);
+
     /* (non-Java-doc)
-	 * @see javax.servlet.http.HttpServlet#HttpServlet()
-	 */
-	public CallbackTestServlet() {
-		super();
-	}
+     * @see javax.servlet.http.HttpServlet#HttpServlet()
+     */
+    public CallbackTestServlet() {
+        super();
+    }
 
-	/* (non-Java-doc)
-	 * @see javax.servlet.http.HttpServlet#doGet(HttpServletRequest arg0, HttpServletResponse arg1)
-	 */
-	protected void doGet(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
-		handleRequest(arg0);
-	}
+    /* (non-Java-doc)
+     * @see javax.servlet.http.HttpServlet#doGet(HttpServletRequest arg0, HttpServletResponse arg1)
+     */
+    protected void doGet(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
+        handleRequest(arg0);
+    }
 
-	/* (non-Java-doc)
-	 * @see javax.servlet.http.HttpServlet#doPost(HttpServletRequest arg0, HttpServletResponse arg1)
-	 */
-	protected void doPost(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
-	    handleRequest(arg0);
-	}
+    /* (non-Java-doc)
+     * @see javax.servlet.http.HttpServlet#doPost(HttpServletRequest arg0, HttpServletResponse arg1)
+     */
+    protected void doPost(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
+        handleRequest(arg0);
+    }
 
-	private void handleRequest(HttpServletRequest req) {
-	    log.debug("HandleRequest");
-	    String data = req.getParameter("MEDDELANDE");
-	    if(data == null) {
-	        log.error("Inget meddelandedata i förfrågan");
-	        return;
-	    }
-	    log.debug("Data: " + data);
-	    Meddelande m = (Meddelande)ObjectSerializer.toObjectFromBase64String(data);
-	    log.debug("Meddelande: " + m);
-	}
-
+    private void handleRequest(HttpServletRequest req) {
+        log.debug("HandleRequest");
+        String data = req.getParameter("MEDDELANDE");
+        if (data == null) {
+            log.error("Inget meddelandedata i förfrågan");
+            return;
+        }
+        log.debug("Data: " + data);
+        Meddelande m = (Meddelande) ObjectSerializer.toObjectFromBase64String(data);
+        log.debug("Meddelande: " + m);
+    }
 
 
 }

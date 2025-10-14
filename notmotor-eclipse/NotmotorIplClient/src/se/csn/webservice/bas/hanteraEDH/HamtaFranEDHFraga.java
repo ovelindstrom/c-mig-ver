@@ -15,7 +15,7 @@ public class HamtaFranEDHFraga  implements java.io.Serializable {
 
     public HamtaFranEDHFraga(
            java.lang.String famID) {
-           this.famID = famID;
+        this.famID = famID;
     }
 
 
@@ -39,6 +39,7 @@ public class HamtaFranEDHFraga  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof HamtaFranEDHFraga)) return false;
         HamtaFranEDHFraga other = (HamtaFranEDHFraga) obj;
@@ -50,14 +51,15 @@ public class HamtaFranEDHFraga  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true &&
-            ((this.famID==null && other.getFamID()==null) ||
-             (this.famID!=null &&
-              this.famID.equals(other.getFamID())));
+            ((this.famID == null && other.getFamID() == null) ||
+                (this.famID != null &&
+                    this.famID.equals(other.getFamID())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -100,8 +102,8 @@ public class HamtaFranEDHFraga  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -112,8 +114,8 @@ public class HamtaFranEDHFraga  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

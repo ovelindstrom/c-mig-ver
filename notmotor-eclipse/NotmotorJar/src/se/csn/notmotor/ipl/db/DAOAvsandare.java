@@ -17,11 +17,12 @@ public interface DAOAvsandare {
     List getAvsandare(String namn);
 
     Avsandare sokEnAvsandare(Avsandare avs);
+
     /**
      * Om nagon inparameter ar null sa anvands den inte i fragan
      */
     List getAvsandare(String namn, String programnamn,
-            String kategori, String epost, String replyto);
+                      String kategori, String epost, String replyto);
 
     List getAvsandare(Avsandare avs);
 

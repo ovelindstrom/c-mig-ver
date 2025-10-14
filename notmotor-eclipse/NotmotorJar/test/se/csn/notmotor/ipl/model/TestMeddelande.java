@@ -77,7 +77,6 @@ public class TestMeddelande extends TestCase {
         assertEquals(m.getHandelser()[1], h);
 
 
-
     }
 
     public void testConstructors() {
@@ -101,7 +100,6 @@ public class TestMeddelande extends TestCase {
     }
 
 
-
     public void testObjectFunctions() {
         Meddelande o1 = new Meddelande();
         Meddelande o2 = new Meddelande();
@@ -112,16 +110,16 @@ public class TestMeddelande extends TestCase {
 
         o1.setRubrik("rub");
         assertFalse(o1.equals(o2));
-        assertFalse(o1.hashCode() ==  o2.hashCode());
+        assertFalse(o1.hashCode() == o2.hashCode());
     }
 
     public void testToString() {
         Meddelande meddelande = new Meddelande("SMS", "Detta är ett test-SMS");
-        Mottagare mott = new Mottagare("0705976212","Jonas å");
+        Mottagare mott = new Mottagare("0705976212", "Jonas å");
         mott.setTyp("SMS");
         meddelande.addMottagare(mott);
 
-        mott = new Mottagare("jonas.ohrnell@csn.se","Jonas å");
+        mott = new Mottagare("jonas.ohrnell@csn.se", "Jonas å");
         mott.setTyp("EPOST,EPOSTCC");
         meddelande.addMottagare(mott);
 

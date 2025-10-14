@@ -17,11 +17,18 @@ import se.csn.notmotor.ipl.db.QueryProcessor;
 public interface ResourceFactory {
 
     void setTransactionIsolationLevel(int transactionIsolationLevel);
+
     ParameterKalla getParameterKalla();
+
     QueryProcessor getQueryProcessor();
+
     DAOSchema getDAOSchema();
+
     DAOServer getDAOServer();
+
     DAOStatus getDAOStatus();
+
     DAOMeddelande getDAOMeddelande();
+
     DAOHandelse getDAOHandelse();
 }

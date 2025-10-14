@@ -19,7 +19,7 @@ import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
  *
  */
 public class Meddelande extends CsnDataTransferObjectImpl {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
     // Databasnyckel för spårbarhet och omsändning
     private Long id;
@@ -80,7 +80,7 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     }
 
     public Meddelande(String rubrik, String text, String mottagare, String avsandaradress, String avsandarnamn, String applikation) {
-    	this(rubrik, text, mottagare, avsandaradress, avsandarnamn, applikation, null);
+        this(rubrik, text, mottagare, avsandaradress, avsandarnamn, applikation, null);
     }
 
     public Meddelande(String rubrik, String text, String mottagare, String avsandaradress, String avsandarnamn, String applikation, String kanal) {
@@ -106,11 +106,13 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     }
 
     public void addBilaga(Bilaga bilaga) {
-        if (bilaga == null) { return; }
+        if (bilaga == null) {
+            return;
+        }
 
         List<Bilaga> list = new ArrayList<Bilaga>();
         if (bilagor != null) {
-            for (int i = 0; i < bilagor.length; i++) {
+            for (int i = 0;i < bilagor.length;i++) {
                 list.add(bilagor[i]);
             }
         }
@@ -122,72 +124,94 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     public Integer getCsnnummer() {
         return csnnummer;
     }
+
     public void setCsnnummer(Integer csnnummer) {
         this.csnnummer = csnnummer;
     }
+
     public Integer getCallbackMask() {
         return callbackMask;
     }
+
     public void setCallbackMask(Integer callbackMask) {
         this.callbackMask = callbackMask;
     }
+
     public String getCallbackURL() {
         return callbackURL;
     }
+
     public void setCallbackURL(String callbackURL) {
         this.callbackURL = callbackURL;
     }
+
     public Avsandare getAvsandare() {
         return avsandare;
     }
+
     public final void setAvsandare(Avsandare avsandare) {
         this.avsandare = avsandare;
     }
+
     public Bilaga[] getBilagor() {
         return bilagor;
     }
+
     public void setBilagor(Bilaga[] bilagor) {
         this.bilagor = bilagor;
     }
+
     public Bilaga getBilaga(int i) {
         return this.bilagor[i];
     }
+
     public MeddelandeHandelse[] getHandelser() {
         return handelser;
     }
+
     public void setHandelser(MeddelandeHandelse[] handelser) {
         this.handelser = handelser;
     }
+
     public void addHandelse(MeddelandeHandelse h) {
-        if (h == null) { return; }
+        if (h == null) {
+            return;
+        }
 
         List<MeddelandeHandelse> list = new ArrayList<MeddelandeHandelse>();
         if (handelser != null) {
-            for (int i = 0; i < handelser.length; i++) {
+            for (int i = 0;i < handelser.length;i++) {
                 list.add(handelser[i]);
             }
         }
         list.add(h);
         handelser = (MeddelandeHandelse[]) list.toArray(new MeddelandeHandelse[0]);
     }
+
     public MeddelandeHandelse getHandelse(int i) {
         return this.handelser[i];
     }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getMeddelandeEncoding() {
         return meddelandeEncoding;
     }
+
     public void setMeddelandeEncoding(String meddelandeEncoding) {
         this.meddelandeEncoding = meddelandeEncoding;
     }
+
     public String getMeddelandetext() {
         return meddelandetext;
     }
+
     public void setMeddelandetext(String meddelandetext) {
         this.meddelandetext = meddelandetext;
     }
@@ -195,18 +219,23 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     public Mottagare[] getMottagare() {
         return mottagare;
     }
+
     public final void setMottagare(Mottagare[] mottagare) {
         this.mottagare = mottagare;
     }
+
     public Mottagare getMottagare(int i) {
         return this.mottagare[i];
     }
+
     public void addMottagare(Mottagare mott) {
-        if (mott == null) { return; }
+        if (mott == null) {
+            return;
+        }
 
         List<Mottagare> list = new ArrayList<Mottagare>();
         if (mottagare != null) {
-            for (int i = 0; i < mottagare.length; i++) {
+            for (int i = 0;i < mottagare.length;i++) {
                 list.add(mottagare[i]);
             }
         }
@@ -217,18 +246,23 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     public String getRubrik() {
         return rubrik;
     }
+
     public void setRubrik(String rubrik) {
         this.rubrik = rubrik;
     }
+
     public String getRubrikEncoding() {
         return rubrikEncoding;
     }
+
     public void setRubrikEncoding(String rubrikEncoding) {
         this.rubrikEncoding = rubrikEncoding;
     }
+
     public Date getSkapad() {
         return skapad;
     }
+
     public void setSkapad(Date skapad) {
         this.skapad = skapad;
     }
@@ -236,41 +270,60 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     public Date getSkickat() {
         return skickat;
     }
+
     public void setSkickat(Date skickat) {
         this.skickat = skickat;
     }
+
     public Date getSkickaTidigast() {
         return skickaTidigast;
     }
+
     public void setSkickaTidigast(Date skickaTidigast) {
         this.skickaTidigast = skickaTidigast;
     }
-    public String getMimetyp() {
-		return mimetyp;
-	}
-	public void setMimetyp(String mimetyp) {
-		this.mimetyp = mimetyp;
-	}
-	public String getKanal() {
-		return kanal;
-	}
-	public final void setKanal(String kanal) {
-		this.kanal = kanal;
-	}
 
-	public String toString() {
+    public String getMimetyp() {
+        return mimetyp;
+    }
+
+    public void setMimetyp(String mimetyp) {
+        this.mimetyp = mimetyp;
+    }
+
+    public String getKanal() {
+        return kanal;
+    }
+
+    public final void setKanal(String kanal) {
+        this.kanal = kanal;
+    }
+
+    public String toString() {
         StringBuffer sb = new StringBuffer();
-        sb.append("Id: "); sb.append(id); sb.append("\n");
-        sb.append("Rubrik: "); sb.append(rubrik); sb.append('\n');
-        sb.append("Text: "); sb.append(meddelandetext); sb.append('\n');
-        sb.append("Skapad: "); sb.append(skapad); sb.append('\n');
+        sb.append("Id: ");
+        sb.append(id);
+        sb.append("\n");
+        sb.append("Rubrik: ");
+        sb.append(rubrik);
+        sb.append('\n');
+        sb.append("Text: ");
+        sb.append(meddelandetext);
+        sb.append('\n');
+        sb.append("Skapad: ");
+        sb.append(skapad);
+        sb.append('\n');
         if (avsandare != null) {
-            sb.append(avsandare.toString()); sb.append('\n');
+            sb.append(avsandare.toString());
+            sb.append('\n');
         }
         if (mottagare != null) {
-            for (int i = 0; i < mottagare.length; i++) {
-                sb.append("Mottagare nr "); sb.append(i); sb.append(':');
-                sb.append(mottagare[i].toString()); sb.append('\n');
+            for (int i = 0;i < mottagare.length;i++) {
+                sb.append("Mottagare nr ");
+                sb.append(i);
+                sb.append(':');
+                sb.append(mottagare[i].toString());
+                sb.append('\n');
             }
         }
         return sb.toString();

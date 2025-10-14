@@ -30,12 +30,12 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
            java.lang.Integer felkod,
            java.lang.String feltext,
            java.lang.Integer instans) {
-           this.id = id;
-           this.handelsetyp = handelsetyp;
-           this.tidpunkt = tidpunkt;
-           this.felkod = felkod;
-           this.feltext = feltext;
-           this.instans = instans;
+        this.id = id;
+        this.handelsetyp = handelsetyp;
+        this.tidpunkt = tidpunkt;
+        this.felkod = felkod;
+        this.feltext = feltext;
+        this.instans = instans;
     }
 
 
@@ -159,6 +159,7 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof DTOMeddelandeHandelse)) return false;
         DTOMeddelandeHandelse other = (DTOMeddelandeHandelse) obj;
@@ -170,29 +171,30 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true &&
-            ((this.id==null && other.getId()==null) ||
-             (this.id!=null &&
-              this.id.equals(other.getId()))) &&
-            ((this.handelsetyp==null && other.getHandelsetyp()==null) ||
-             (this.handelsetyp!=null &&
-              this.handelsetyp.equals(other.getHandelsetyp()))) &&
-            ((this.tidpunkt==null && other.getTidpunkt()==null) ||
-             (this.tidpunkt!=null &&
-              this.tidpunkt.equals(other.getTidpunkt()))) &&
-            ((this.felkod==null && other.getFelkod()==null) ||
-             (this.felkod!=null &&
-              this.felkod.equals(other.getFelkod()))) &&
-            ((this.feltext==null && other.getFeltext()==null) ||
-             (this.feltext!=null &&
-              this.feltext.equals(other.getFeltext()))) &&
-            ((this.instans==null && other.getInstans()==null) ||
-             (this.instans!=null &&
-              this.instans.equals(other.getInstans())));
+            ((this.id == null && other.getId() == null) ||
+                (this.id != null &&
+                    this.id.equals(other.getId()))) &&
+            ((this.handelsetyp == null && other.getHandelsetyp() == null) ||
+                (this.handelsetyp != null &&
+                    this.handelsetyp.equals(other.getHandelsetyp()))) &&
+            ((this.tidpunkt == null && other.getTidpunkt() == null) ||
+                (this.tidpunkt != null &&
+                    this.tidpunkt.equals(other.getTidpunkt()))) &&
+            ((this.felkod == null && other.getFelkod() == null) ||
+                (this.felkod != null &&
+                    this.felkod.equals(other.getFelkod()))) &&
+            ((this.feltext == null && other.getFeltext() == null) ||
+                (this.feltext != null &&
+                    this.feltext.equals(other.getFeltext()))) &&
+            ((this.instans == null && other.getInstans() == null) ||
+                (this.instans != null &&
+                    this.instans.equals(other.getInstans())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -286,8 +288,8 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -298,8 +300,8 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

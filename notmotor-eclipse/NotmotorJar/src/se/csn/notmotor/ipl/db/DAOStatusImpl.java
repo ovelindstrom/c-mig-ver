@@ -19,13 +19,13 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
     }
 
     public Status getStatus(int instans) {
-        return (Status)qp.getObject("SELECT INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP FROM STATUS WHERE INSTANS=" + instans, this);
+        return (Status) qp.getObject("SELECT INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP FROM STATUS WHERE INSTANS=" + instans, this);
     }
 
     public List getStatus(Integer status, Integer server) {
         String where = addRestriction("", "STATUS", "=", status);
         where = addRestriction(where, "SERVER", "=", server);
-        if(where.length() > 0) {
+        if (where.length() > 0) {
             where = (" WHERE " + where);
         }
         where += " ORDER BY INSTANS";
@@ -33,13 +33,13 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
     }
 
     public int skapa(Status status) {
-        if(status == null) {
+        if (status == null) {
             throw new IllegalArgumentException("Status måste vara satt");
         }
-        int id = (int)qp.getCounter("SEKVENS", "STATUSID");
+        int id = (int) qp.getCounter("SEKVENS", "STATUSID");
         String sql = "INSERT INTO STATUS (INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP) VALUES " +
-        		"(" + id + "," + quoteValue(status.getStartad()) + "," + quoteValue(status.getStoppad())
-                + "," + status.getStatus()+ "," + quoteValue(status.getWatchdog()) + "," + status.getServer() + "," + quoteValue(status.getTyp()) + ")";
+            "(" + id + "," + quoteValue(status.getStartad()) + "," + quoteValue(status.getStoppad())
+            + "," + status.getStatus() + "," + quoteValue(status.getWatchdog()) + "," + status.getServer() + "," + quoteValue(status.getTyp()) + ")";
         qp.executeThrowException(sql);
         status.setInstans(id);
         return id;
@@ -49,11 +49,11 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
      * Uppdaterar endast STATUS, STOPPAD och WATCHDDOGTSTAMP
      */
     public void uppdatera(Status status) {
-        if(status == null) {
+        if (status == null) {
             throw new IllegalArgumentException("Status måste vara satt");
         }
         qp.executeThrowException("UPDATE STATUS SET STATUS=" + status.getStatus() + ", STOPPAD=" + quoteValue(status.getStoppad()) + ", " +
-        		"WATCHDOGTSTAMP=" + quoteValue(status.getWatchdog()) + " WHERE INSTANS=" + status.getInstans());
+            "WATCHDOGTSTAMP=" + quoteValue(status.getWatchdog()) + " WHERE INSTANS=" + status.getInstans());
     }
 
     public Object newRow(ResultSet rs) throws SQLException {

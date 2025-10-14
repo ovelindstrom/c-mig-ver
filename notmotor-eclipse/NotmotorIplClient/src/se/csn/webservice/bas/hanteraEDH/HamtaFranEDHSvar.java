@@ -18,8 +18,8 @@ public class HamtaFranEDHSvar  implements java.io.Serializable {
     public HamtaFranEDHSvar(
            byte[] data,
            int returkod) {
-           this.data = data;
-           this.returkod = returkod;
+        this.data = data;
+        this.returkod = returkod;
     }
 
 
@@ -63,6 +63,7 @@ public class HamtaFranEDHSvar  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof HamtaFranEDHSvar)) return false;
         HamtaFranEDHSvar other = (HamtaFranEDHSvar) obj;
@@ -74,15 +75,16 @@ public class HamtaFranEDHSvar  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true &&
-            ((this.data==null && other.getData()==null) ||
-             (this.data!=null &&
-              java.util.Arrays.equals(this.data, other.getData()))) &&
+            ((this.data == null && other.getData() == null) ||
+                (this.data != null &&
+                    java.util.Arrays.equals(this.data, other.getData()))) &&
             this.returkod == other.getReturkod();
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -90,8 +92,8 @@ public class HamtaFranEDHSvar  implements java.io.Serializable {
         __hashCodeCalc = true;
         int _hashCode = 1;
         if (getData() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getData());
+            for (int i = 0;
+                 i < java.lang.reflect.Array.getLength(getData());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getData(), i);
                 if (obj != null &&
@@ -140,8 +142,8 @@ public class HamtaFranEDHSvar  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -152,8 +154,8 @@ public class HamtaFranEDHSvar  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

@@ -36,14 +36,14 @@ public class SparaTillEDHFraga  implements java.io.Serializable {
            java.lang.String arendelopnr,
            java.lang.String inhandling,
            java.lang.String timestamp) {
-           this.data = data;
-           this.ocrstrang = ocrstrang;
-           this.signatur = signatur;
-           this.myndighetsstampling = myndighetsstampling;
-           this.csnnr = csnnr;
-           this.arendelopnr = arendelopnr;
-           this.inhandling = inhandling;
-           this.timestamp = timestamp;
+        this.data = data;
+        this.ocrstrang = ocrstrang;
+        this.signatur = signatur;
+        this.myndighetsstampling = myndighetsstampling;
+        this.csnnr = csnnr;
+        this.arendelopnr = arendelopnr;
+        this.inhandling = inhandling;
+        this.timestamp = timestamp;
     }
 
 
@@ -207,6 +207,7 @@ public class SparaTillEDHFraga  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof SparaTillEDHFraga)) return false;
         SparaTillEDHFraga other = (SparaTillEDHFraga) obj;
@@ -218,35 +219,36 @@ public class SparaTillEDHFraga  implements java.io.Serializable {
         __equalsCalc = obj;
         boolean _equals;
         _equals = true &&
-            ((this.data==null && other.getData()==null) ||
-             (this.data!=null &&
-              java.util.Arrays.equals(this.data, other.getData()))) &&
-            ((this.ocrstrang==null && other.getOcrstrang()==null) ||
-             (this.ocrstrang!=null &&
-              this.ocrstrang.equals(other.getOcrstrang()))) &&
-            ((this.signatur==null && other.getSignatur()==null) ||
-             (this.signatur!=null &&
-              this.signatur.equals(other.getSignatur()))) &&
-            ((this.myndighetsstampling==null && other.getMyndighetsstampling()==null) ||
-             (this.myndighetsstampling!=null &&
-              this.myndighetsstampling.equals(other.getMyndighetsstampling()))) &&
-            ((this.csnnr==null && other.getCsnnr()==null) ||
-             (this.csnnr!=null &&
-              this.csnnr.equals(other.getCsnnr()))) &&
-            ((this.arendelopnr==null && other.getArendelopnr()==null) ||
-             (this.arendelopnr!=null &&
-              this.arendelopnr.equals(other.getArendelopnr()))) &&
-            ((this.inhandling==null && other.getInhandling()==null) ||
-             (this.inhandling!=null &&
-              this.inhandling.equals(other.getInhandling()))) &&
-            ((this.timestamp==null && other.getTimestamp()==null) ||
-             (this.timestamp!=null &&
-              this.timestamp.equals(other.getTimestamp())));
+            ((this.data == null && other.getData() == null) ||
+                (this.data != null &&
+                    java.util.Arrays.equals(this.data, other.getData()))) &&
+            ((this.ocrstrang == null && other.getOcrstrang() == null) ||
+                (this.ocrstrang != null &&
+                    this.ocrstrang.equals(other.getOcrstrang()))) &&
+            ((this.signatur == null && other.getSignatur() == null) ||
+                (this.signatur != null &&
+                    this.signatur.equals(other.getSignatur()))) &&
+            ((this.myndighetsstampling == null && other.getMyndighetsstampling() == null) ||
+                (this.myndighetsstampling != null &&
+                    this.myndighetsstampling.equals(other.getMyndighetsstampling()))) &&
+            ((this.csnnr == null && other.getCsnnr() == null) ||
+                (this.csnnr != null &&
+                    this.csnnr.equals(other.getCsnnr()))) &&
+            ((this.arendelopnr == null && other.getArendelopnr() == null) ||
+                (this.arendelopnr != null &&
+                    this.arendelopnr.equals(other.getArendelopnr()))) &&
+            ((this.inhandling == null && other.getInhandling() == null) ||
+                (this.inhandling != null &&
+                    this.inhandling.equals(other.getInhandling()))) &&
+            ((this.timestamp == null && other.getTimestamp() == null) ||
+                (this.timestamp != null &&
+                    this.timestamp.equals(other.getTimestamp())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -254,8 +256,8 @@ public class SparaTillEDHFraga  implements java.io.Serializable {
         __hashCodeCalc = true;
         int _hashCode = 1;
         if (getData() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getData());
+            for (int i = 0;
+                 i < java.lang.reflect.Array.getLength(getData());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getData(), i);
                 if (obj != null &&
@@ -360,8 +362,8 @@ public class SparaTillEDHFraga  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanSerializer(
+                _javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -372,8 +374,8 @@ public class SparaTillEDHFraga  implements java.io.Serializable {
            java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
         return
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            new  org.apache.axis.encoding.ser.BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
     }
 
 }

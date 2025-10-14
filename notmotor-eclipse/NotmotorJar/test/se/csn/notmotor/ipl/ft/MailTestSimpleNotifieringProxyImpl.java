@@ -1,4 +1,5 @@
 package se.csn.notmotor.ipl.ft;
+
 import junit.framework.TestCase;
 import se.csn.notmotor.ipl.EpostMeddelandeSenderImpl;
 import se.csn.notmotor.ipl.MeddelandeSender;

@@ -28,7 +28,7 @@ public class Tidsintervall {
      */
     public boolean isInIntervall(Date tidpunkt) {
         if (tidpunkt == null) {
-        	return false;
+            return false;
         }
         if ((starttid == null) && (sluttid == null)) {
             return true;
@@ -46,31 +46,34 @@ public class Tidsintervall {
     public Date getSluttid() {
         return sluttid;
     }
+
     public void setSluttid(Date sluttid) {
         this.sluttid = sluttid;
     }
+
     public Date getStarttid() {
         return starttid;
     }
+
     public void setStarttid(Date starttid) {
         this.starttid = starttid;
     }
 
     private boolean dateEquals(Date d1, Date d2) {
         if (d1 == null) {
-        	return (d2 == null);
+            return (d2 == null);
         }
         return d1.equals(d2);
     }
 
     public boolean equals(Object o) {
         if (o == null) {
-        	return false;
+            return false;
         }
         if (!(o instanceof Tidsintervall)) {
-        	return false;
+            return false;
         }
-        Tidsintervall t = (Tidsintervall)o;
+        Tidsintervall t = (Tidsintervall) o;
         return (dateEquals(starttid, t.starttid) && dateEquals(sluttid, t.sluttid));
     }
 

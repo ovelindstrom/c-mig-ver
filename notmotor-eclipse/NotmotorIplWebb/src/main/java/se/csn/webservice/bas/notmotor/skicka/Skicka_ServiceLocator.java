@@ -40,7 +40,7 @@ public class Skicka_ServiceLocator extends org.apache.axis.client.Service implem
     }
 
     public se.csn.webservice.bas.notmotor.skicka.Skicka_PortType getSkickaSOAP() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(SkickaSOAP_address);
         }
@@ -96,8 +96,7 @@ public class Skicka_ServiceLocator extends org.apache.axis.client.Service implem
         java.lang.String inputPortName = portName.getLocalPart();
         if ("SkickaSOAP".equals(inputPortName)) {
             return getSkickaSOAP();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -123,11 +122,10 @@ public class Skicka_ServiceLocator extends org.apache.axis.client.Service implem
     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
 
-if ("SkickaSOAP".equals(portName)) {
+        if ("SkickaSOAP".equals(portName)) {
             setSkickaSOAPEndpointAddress(address);
-        }
-        else
-{ // Unknown Port Name
+        } else
+        { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }

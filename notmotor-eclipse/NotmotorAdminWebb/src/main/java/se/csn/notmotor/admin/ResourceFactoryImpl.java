@@ -37,13 +37,14 @@ public class ResourceFactoryImpl implements ResourceFactory {
     private int transactionIsolationLevel;
 
 
-
     public int getTransactionIsolationLevel() {
         return transactionIsolationLevel;
     }
+
     public void setTransactionIsolationLevel(int transactionIsolationLevel) {
         this.transactionIsolationLevel = transactionIsolationLevel;
     }
+
     public ResourceFactoryImpl(DataSource ds, int transactionIsolationLevel) {
         this.ds = ds;
         this.transactionIsolationLevel = transactionIsolationLevel;
@@ -59,7 +60,7 @@ public class ResourceFactoryImpl implements ResourceFactory {
      * loggen.
      */
     public QueryProcessor getQueryProcessor() {
-    	QueryListener ql = new QueryListenerImpl("ADMINWEBB");
+        QueryListener ql = new QueryListenerImpl("ADMINWEBB");
         QueryProcessor qp = new QueryProcessorImpl(ds, transactionIsolationLevel);
         qp.addQueryListener(ql);
         return qp;

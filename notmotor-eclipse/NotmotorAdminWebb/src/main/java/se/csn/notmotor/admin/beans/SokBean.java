@@ -4,6 +4,7 @@
  * 
  */
 package se.csn.notmotor.admin.beans;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -60,6 +61,7 @@ public class SokBean {
         private long id;
         private String status, skickat, applikation, mottagare, rubrik, skapat, skickaTidigast, kanal;
         private boolean markeradForOmsandning;
+
         public Meddelanderad(long id, String status, String skapat, String kanal, String skickat, String skickaTidigast, String applikation, String mottagare, String rubrik) {
             this.id = id;
             this.status = status;
@@ -79,74 +81,93 @@ public class SokBean {
          * @return true om meddelandet kan sändas om, annars false.
          */
         public boolean isOmsandningMojlig() {
-        	if (status != null) {
-        		int intStatus = Integer.parseInt(status);
-        		return intStatus == MeddelandeHandelse.MEDDELANDEFEL || intStatus == MeddelandeHandelse.TEKNISKT_FEL;
-        	}
-        	return false;
+            if (status != null) {
+                int intStatus = Integer.parseInt(status);
+                return intStatus == MeddelandeHandelse.MEDDELANDEFEL || intStatus == MeddelandeHandelse.TEKNISKT_FEL;
+            }
+            return false;
         }
 
 
         public String getApplikation() {
             return applikation;
         }
+
         public void setApplikation(String applikation) {
             this.applikation = applikation;
         }
+
         public long getId() {
             return id;
         }
+
         public void setId(long id) {
             this.id = id;
         }
+
         public String getMottagare() {
             return mottagare;
         }
+
         public void setMottagare(String mottagare) {
             this.mottagare = mottagare;
         }
+
         public String getRubrik() {
             return rubrik;
         }
+
         public void setRubrik(String rubrik) {
             this.rubrik = rubrik;
         }
+
         public String getSkickat() {
             return skickat;
         }
+
         public void setSkickat(String skickat) {
             this.skickat = skickat;
         }
+
         public String getSkapat() {
             return skapat;
         }
+
         public void setSkapat(String skapat) {
             this.skapat = skapat;
         }
+
         public String getSkickaTidigast() {
             return skickaTidigast;
         }
+
         public void setSkickaTidigast(String skickaTidigast) {
             this.skickaTidigast = skickaTidigast;
         }
+
         public String getStatus() {
             return status;
         }
+
         public void setStatus(String status) {
             this.status = status;
         }
+
         public String getKanal() {
             return kanal;
         }
+
         public void setKanal(String kanal) {
             this.kanal = kanal;
         }
+
         public boolean isMarkeradForOmsandning() {
-			return markeradForOmsandning;
-		}
+            return markeradForOmsandning;
+        }
+
         public void setMarkeradForOmsandning(boolean markeradForOmsandning) {
-			this.markeradForOmsandning = markeradForOmsandning;
-		}
+            this.markeradForOmsandning = markeradForOmsandning;
+        }
     }
 
     public SokBean() {
@@ -166,19 +187,19 @@ public class SokBean {
 
     public String getStatusBeskrivning(String status) {
 
-        for(int i = 0; i < allaStatusar.length; i++) {
+        for (int i = 0;i < allaStatusar.length;i++) {
             if (status.equals(allaStatusar[i].getValue().toString())) {
-            	return (String)allaStatusar[i].getLabel();
+                return (String) allaStatusar[i].getLabel();
             }
         }
         return "Okänt";
     }
 
     public void setValdaStatusar(int[] statusar) {
-       for(int i = 0; i < statusar.length; i++) {
-           log.debug("" + statusar[i]);
-       }
-       valdaStatusar = statusar;
+        for (int i = 0;i < statusar.length;i++) {
+            log.debug("" + statusar[i]);
+        }
+        valdaStatusar = statusar;
     }
 
     public int[] getValdaStatusar() {
@@ -189,14 +210,14 @@ public class SokBean {
         public Object newRow(ResultSet rs) throws SQLException {
             //log.debug("Ny rad");
             return new Meddelanderad(rs.getLong("ID"),
-                    				rs.getString("STATUS"),
-                    				rs.getString("SKAPAT"),
-                    				rs.getString("KANAL"),
-                    				rs.getString("SKICKAT"),
-                    				rs.getString("SKICKATIDIGAST"),
-                    				rs.getString("APPLIKATION"),
-                    				rs.getString("MOTTAGARE"),
-                    				rs.getString("RUBRIK"));
+                rs.getString("STATUS"),
+                rs.getString("SKAPAT"),
+                rs.getString("KANAL"),
+                rs.getString("SKICKAT"),
+                rs.getString("SKICKATIDIGAST"),
+                rs.getString("APPLIKATION"),
+                rs.getString("MOTTAGARE"),
+                rs.getString("RUBRIK"));
         }
     }
 
@@ -205,13 +226,13 @@ public class SokBean {
         sorteringsordningForSkapat = "descendingOrder";
         sorteringsordningForSkickat = "descendingOrder";
         if (orderByAscDesc.equals("ASC")) {
-        	if (orderBy.equals("ID")) {
+            if (orderBy.equals("ID")) {
                 sorteringsordningForId = "ascendingOrder";
-        	} else if (orderBy.equals("SKAPADTIDPUNKT")) {
+            } else if (orderBy.equals("SKAPADTIDPUNKT")) {
                 sorteringsordningForSkapat = "ascendingOrder";
-        	} else if (orderBy.equals("SANTTIDPUNKT")) {
+            } else if (orderBy.equals("SANTTIDPUNKT")) {
                 sorteringsordningForSkickat = "ascendingOrder";
-        	}
+            }
         }
 
         sok();
@@ -220,14 +241,14 @@ public class SokBean {
     /**
      * Utfor en sokning efter meddelanden enligt de villkor som fyllts pa webbsidan.
      */
-	private void sok() {
-		log.debug("sok");
+    private void sok() {
+        log.debug("sok");
         String sql = "SELECT MEDD.ID AS ID, MEDD.KANAL AS KANAL, MEDD.STATUS AS STATUS, "
-        		+ "MEDD.RUBRIK AS RUBRIK, MEDD.SKAPADTIDPUNKT AS SKAPAT, "
-        		+ "MEDD.SANTTIDPUNKT AS SKICKAT, MEDD.SKICKATIDIGAST AS SKICKATIDIGAST, "
-        		+ "AVS.PROGRAMNAMN AS APPLIKATION, MOTT.ADRESS AS MOTTAGARE "
-        		+ "FROM MEDDELANDE MEDD JOIN AVSANDARE AVS ON MEDD.AVSANDARE = AVS.ID "
-        		+ "JOIN MOTTAGARE MOTT ON MEDD.ID = MOTT.MEDDELANDEID ";
+            + "MEDD.RUBRIK AS RUBRIK, MEDD.SKAPADTIDPUNKT AS SKAPAT, "
+            + "MEDD.SANTTIDPUNKT AS SKICKAT, MEDD.SKICKATIDIGAST AS SKICKATIDIGAST, "
+            + "AVS.PROGRAMNAMN AS APPLIKATION, MOTT.ADRESS AS MOTTAGARE "
+            + "FROM MEDDELANDE MEDD JOIN AVSANDARE AVS ON MEDD.AVSANDARE = AVS.ID "
+            + "JOIN MOTTAGARE MOTT ON MEDD.ID = MOTT.MEDDELANDEID ";
 
         String where = skapaSokWherevillkor();
         if (where.length() > 0) {
@@ -244,7 +265,7 @@ public class SokBean {
         List meddelanderader = qp.processQuery(sql, new MeddelandeRowMapper());
         antalMeddelanden = meddelanderader.size();
         meddelanden.setWrappedData(meddelanderader);
-	}
+    }
 
     /**
      * @return en giltig SQL-sträng med de villkor som är angivna i bönan 
@@ -260,10 +281,10 @@ public class SokBean {
         String where = "";
         // Lägg till datumvillkor
         if (skapatFrom != null) {
-        	where = DAOImplBase.addRestriction(where, "MEDD.SKAPADTIDPUNKT", ">=", skapatFrom);
+            where = DAOImplBase.addRestriction(where, "MEDD.SKAPADTIDPUNKT", ">=", skapatFrom);
         } else {
-        	// Om man inte har angivit ett from-datum begränsar vi frågan. Vi hämtar ju ändå bara 1000 senaste medd.
-        	where += "MEDD.SKAPADTIDPUNKT > ((CURRENT TIMESTAMP)-7 DAYS)";
+            // Om man inte har angivit ett from-datum begränsar vi frågan. Vi hämtar ju ändå bara 1000 senaste medd.
+            where += "MEDD.SKAPADTIDPUNKT > ((CURRENT TIMESTAMP)-7 DAYS)";
         }
         where = DAOImplBase.addRestriction(where, "MEDD.SKAPADTIDPUNKT", "<=", skapatTom);
         where = DAOImplBase.addRestriction(where, "MEDD.SANTTIDPUNKT", ">=", skickatFrom);
@@ -282,55 +303,57 @@ public class SokBean {
         where = DAOImplBase.addLike(where, "AVS.PROGRAMNAMN", applikation, true);
         where = DAOImplBase.addLike(where, "AVS.KATEGORI", kategori, true);
         if (csnnummer != 0) {
-        	where = DAOImplBase.addRestriction(where, "MEDD.CSNNUMMER", "=",  new Integer(csnnummer));
+            where = DAOImplBase.addRestriction(where, "MEDD.CSNNUMMER", "=", new Integer(csnnummer));
         }
 
         // Lägg till tillståndsvillkor:
-        if(valdaStatusar != null && valdaStatusar.length > 0) {
-	        boolean underSandning = false;
-	        String inlist = "";
-	        for(int i = 0; i < valdaStatusar.length; i++) {
-	            if(valdaStatusar[i] == -1) {
-	                underSandning = true;
-	                continue;
-	            }
-	            if(inlist.length() > 0) {
-	                inlist += ",";
-	            }
-	            inlist = inlist + valdaStatusar[i];
-	        }
-	        // Här finns 4 möjligheter:
-	        String statusrestriction = "";
-	        if(inlist.length() > 0) {
-	            statusrestriction = "MEDD.STATUS IN (" + inlist + ")";
-	        }
-	        if(underSandning) {
-	            if(statusrestriction.length() > 0) {
-		            statusrestriction += " OR ";
-	            }
-	            statusrestriction += "MEDD.STATUS < 0";
-	        }
-	        where = DAOImplBase.addRestriction(where, statusrestriction);
+        if (valdaStatusar != null && valdaStatusar.length > 0) {
+            boolean underSandning = false;
+            String inlist = "";
+            for (int i = 0;i < valdaStatusar.length;i++) {
+                if (valdaStatusar[i] == -1) {
+                    underSandning = true;
+                    continue;
+                }
+                if (inlist.length() > 0) {
+                    inlist += ",";
+                }
+                inlist = inlist + valdaStatusar[i];
+            }
+            // Här finns 4 möjligheter:
+            String statusrestriction = "";
+            if (inlist.length() > 0) {
+                statusrestriction = "MEDD.STATUS IN (" + inlist + ")";
+            }
+            if (underSandning) {
+                if (statusrestriction.length() > 0) {
+                    statusrestriction += " OR ";
+                }
+                statusrestriction += "MEDD.STATUS < 0";
+            }
+            where = DAOImplBase.addRestriction(where, statusrestriction);
         }
         return where;
     }
 
-    private String skapaOrderByVillkor(){
-    	return " ORDER BY MEDD." + orderBy + " " + orderByAscDesc + " FETCH FIRST " + maxAntalMeddelanden + " ROWS ONLY";
+    private String skapaOrderByVillkor() {
+        return " ORDER BY MEDD." + orderBy + " " + orderByAscDesc + " FETCH FIRST " + maxAntalMeddelanden + " ROWS ONLY";
     }
 
-    public String getOrderBy(){
-    	return orderBy;
-    }
-    public void setOrderBy(String inOrderBy){
-    	orderBy = inOrderBy;
+    public String getOrderBy() {
+        return orderBy;
     }
 
-    public String getOrderByAscDesc(){
-    	return orderByAscDesc;
+    public void setOrderBy(String inOrderBy) {
+        orderBy = inOrderBy;
     }
-    public void setOrderByAscDesc(String inOrderByAscDesc){
-    	orderByAscDesc = inOrderByAscDesc;
+
+    public String getOrderByAscDesc() {
+        return orderByAscDesc;
+    }
+
+    public void setOrderByAscDesc(String inOrderByAscDesc) {
+        orderByAscDesc = inOrderByAscDesc;
     }
 
     /**
@@ -338,63 +361,63 @@ public class SokBean {
      * @param e action event från webbsidan
      */
     public void skickaOm(ActionEvent e) {
-    	try {
-    		DAOHandelse daoHandelse = ActionHelper.getResourceFactory().getDAOHandelse();
-    		QueryProcessor qp = ActionHelper.getResourceFactory().getQueryProcessor();
-    		for (Meddelanderad rad : getMeddelandenAsList()) {
-    			if (rad.markeradForOmsandning) {
-    				log.debug("skickaom, id:" + rad.getId());
-			    	MeddelandeHandelse handelse = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET, MeddelandeHandelse.OK, "Omsändning");
-			    	daoHandelse.createHandelse(handelse, rad.getId());
-			    	//Läs alla händelser för aktuellt meddelande
-			    	MeddelandeHandelse[] h = daoHandelse.getHandelserForMeddelande(rad.getId()).toArray(new MeddelandeHandelse[0]);
-			    	int forstaLikaMedd = 0;
-			    	Integer typ = -1;
-			    	Integer felkod = -1;
-			    	String feltext = "";
-			    	Date tidpunkt = null;
-			    	int antalLikaHandelser = 1;
-			    	for (int i = h.length - 1; i >= 0; i--) {
-			    		if ((h[i].getHandelsetyp().compareTo(typ) == 0)
-			    				&& (h[i].getFelkod().compareTo(felkod) == 0)
-			    				&& (h[i].getFeltext() != null && h[i].getFeltext().equals(feltext))) {
-			    			tidpunkt = h[i].getTidpunkt();
-			    			antalLikaHandelser++;
-			    			qp.executeThrowException("DELETE FROM HANDELSE WHERE ID=" + h[i].getId());
-			    			log.debug("delete handelse med id=" + h[i].getId());
-			    		} else {
-			    			// Om tidpunkt är satt har vi tagit bort ett meddelande tidigare.
-			    			// Vi har hittat minst en likadan händelse och grupperar ihop dessa
-			    			if (tidpunkt != null) {
-			    				log.debug("TIDPUNKT=" + tidpunkt);
-			    				qp.executeThrowException("UPDATE HANDELSE SET TEXT='"
-			    						+ h[forstaLikaMedd].getFeltext()
-			    						+ ", Antal likadana händelser: " + antalLikaHandelser
-			    						+ ", Första tidpunkt: " + tidpunkt
-			    						+ "' WHERE ID=" + h[forstaLikaMedd].getId());
-			    				log.debug("UPDATE HANDELSE SET TEXT="
-			    						+ h[forstaLikaMedd].getFeltext()
-			    						+ "\nAntal likadana händelser: " + antalLikaHandelser
-			    						+ "\nFörsta tidpunkt: " + tidpunkt
-			    						+ " WHERE ID=" + h[forstaLikaMedd].getId());
-			    				tidpunkt = null;
-			    				antalLikaHandelser = 1;
-			    			} else {
-			    				forstaLikaMedd = i;
-			    			}
-			    		}
-			    		typ = h[i].getHandelsetyp();
-			    		felkod = h[i].getFelkod();
-			    		feltext = h[i].getFeltext();
-			    	}
-			    	qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.MOTTAGET
-			    			+ " WHERE ID=" + rad.getId());
-    			}
-    		}
-    	} catch (Exception t) {
-    		log.error("Kunde inte skicka om meddelande, fel: ", t);
-    	}
-    	sok();
+        try {
+            DAOHandelse daoHandelse = ActionHelper.getResourceFactory().getDAOHandelse();
+            QueryProcessor qp = ActionHelper.getResourceFactory().getQueryProcessor();
+            for (Meddelanderad rad : getMeddelandenAsList()) {
+                if (rad.markeradForOmsandning) {
+                    log.debug("skickaom, id:" + rad.getId());
+                    MeddelandeHandelse handelse = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET, MeddelandeHandelse.OK, "Omsändning");
+                    daoHandelse.createHandelse(handelse, rad.getId());
+                    //Läs alla händelser för aktuellt meddelande
+                    MeddelandeHandelse[] h = daoHandelse.getHandelserForMeddelande(rad.getId()).toArray(new MeddelandeHandelse[0]);
+                    int forstaLikaMedd = 0;
+                    Integer typ = -1;
+                    Integer felkod = -1;
+                    String feltext = "";
+                    Date tidpunkt = null;
+                    int antalLikaHandelser = 1;
+                    for (int i = h.length - 1;i >= 0;i--) {
+                        if ((h[i].getHandelsetyp().compareTo(typ) == 0)
+                            && (h[i].getFelkod().compareTo(felkod) == 0)
+                            && (h[i].getFeltext() != null && h[i].getFeltext().equals(feltext))) {
+                            tidpunkt = h[i].getTidpunkt();
+                            antalLikaHandelser++;
+                            qp.executeThrowException("DELETE FROM HANDELSE WHERE ID=" + h[i].getId());
+                            log.debug("delete handelse med id=" + h[i].getId());
+                        } else {
+                            // Om tidpunkt är satt har vi tagit bort ett meddelande tidigare.
+                            // Vi har hittat minst en likadan händelse och grupperar ihop dessa
+                            if (tidpunkt != null) {
+                                log.debug("TIDPUNKT=" + tidpunkt);
+                                qp.executeThrowException("UPDATE HANDELSE SET TEXT='"
+                                    + h[forstaLikaMedd].getFeltext()
+                                    + ", Antal likadana händelser: " + antalLikaHandelser
+                                    + ", Första tidpunkt: " + tidpunkt
+                                    + "' WHERE ID=" + h[forstaLikaMedd].getId());
+                                log.debug("UPDATE HANDELSE SET TEXT="
+                                    + h[forstaLikaMedd].getFeltext()
+                                    + "\nAntal likadana händelser: " + antalLikaHandelser
+                                    + "\nFörsta tidpunkt: " + tidpunkt
+                                    + " WHERE ID=" + h[forstaLikaMedd].getId());
+                                tidpunkt = null;
+                                antalLikaHandelser = 1;
+                            } else {
+                                forstaLikaMedd = i;
+                            }
+                        }
+                        typ = h[i].getHandelsetyp();
+                        felkod = h[i].getFelkod();
+                        feltext = h[i].getFeltext();
+                    }
+                    qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.MOTTAGET
+                        + " WHERE ID=" + rad.getId());
+                }
+            }
+        } catch (Exception t) {
+            log.error("Kunde inte skicka om meddelande, fel: ", t);
+        }
+        sok();
     }
 
     /**
@@ -402,18 +425,18 @@ public class SokBean {
      * @return true om något meddelande kan skickas om, annars false.
      */
     public boolean getFinnsMeddelandenMojligaForOmsandning() {
-    	if (meddelanden != null && meddelanden.getWrappedData() != null) {
-	    	for (Meddelanderad rad : getMeddelandenAsList()) {
-	    		if (rad.isOmsandningMojlig()) {
-	    			return true;
-	    		}
-	    	}
-    	}
-    	return false;
+        if (meddelanden != null && meddelanden.getWrappedData() != null) {
+            for (Meddelanderad rad : getMeddelandenAsList()) {
+                if (rad.isOmsandningMojlig()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public boolean getFinnsMeddelanden() {
-    	return antalMeddelanden > 0;
+        return antalMeddelanden > 0;
     }
 
     public int getAntalMeddelanden() {
@@ -425,116 +448,116 @@ public class SokBean {
     }
 
     public String getSorteringsordningForId() {
-    	return sorteringsordningForId;
+        return sorteringsordningForId;
     }
 
     public void setSorteringsordningForId(String inSorteringsordningForId) {
-    	sorteringsordningForId = inSorteringsordningForId;
+        sorteringsordningForId = inSorteringsordningForId;
     }
 
     public String getSorteringsordningForSkapat() {
-    	return sorteringsordningForSkapat;
+        return sorteringsordningForSkapat;
     }
 
     public void setSorteringsordningForSkapat(String inSorteringsordningForSkapat) {
-    	sorteringsordningForSkapat = inSorteringsordningForSkapat;
+        sorteringsordningForSkapat = inSorteringsordningForSkapat;
     }
 
     public String getSorteringsordningForSkickat() {
-    	return sorteringsordningForSkickat;
+        return sorteringsordningForSkickat;
     }
 
     public void setSorteringsordningForSkickat(String inSorteringsordningForSkickat) {
-    	sorteringsordningForSkickat = inSorteringsordningForSkickat;
+        sorteringsordningForSkickat = inSorteringsordningForSkickat;
     }
 
     /* Jämförelse för sortering av listan med Id */
     public static Comparator<Meddelanderad> MeddelandeId_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
-		public int compare(Meddelanderad m1, Meddelanderad m2) {
-		   return m1.getId() > m2.getId() ? 1 : -1;
-	    }
-	};
-	public static Comparator<Meddelanderad> MeddelandeId_descendingOrder = new Comparator<SokBean.Meddelanderad>() {
-		public int compare(Meddelanderad m1, Meddelanderad m2) {
-		   return m2.getId() > m1.getId() ? 1 : -1;
-	    }
-	};
+        public int compare(Meddelanderad m1, Meddelanderad m2) {
+            return m1.getId() > m2.getId() ? 1 : -1;
+        }
+    };
+    public static Comparator<Meddelanderad> MeddelandeId_descendingOrder = new Comparator<SokBean.Meddelanderad>() {
+        public int compare(Meddelanderad m1, Meddelanderad m2) {
+            return m2.getId() > m1.getId() ? 1 : -1;
+        }
+    };
 
-	/* Jämförelse för sortering av listan med Skapat */
+    /* Jämförelse för sortering av listan med Skapat */
     public static Comparator<Meddelanderad> MeddelandeSkapat_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
-		public int compare(Meddelanderad m1, Meddelanderad m2) {
-		   String SkapatName1 = m1.getSkapat();
-		   String SkapatName2 = m2.getSkapat();
+        public int compare(Meddelanderad m1, Meddelanderad m2) {
+            String SkapatName1 = m1.getSkapat();
+            String SkapatName2 = m2.getSkapat();
 
-		   return SkapatName1.compareTo(SkapatName2);
-	    }
-	};
-	public static Comparator<Meddelanderad> MeddelandeSkapat_descendingOrder = new Comparator<SokBean.Meddelanderad>() {
-		public int compare(Meddelanderad m1, Meddelanderad m2) {
-		   String SkapatName1 = m1.getSkapat();
-		   String SkapatName2 = m2.getSkapat();
+            return SkapatName1.compareTo(SkapatName2);
+        }
+    };
+    public static Comparator<Meddelanderad> MeddelandeSkapat_descendingOrder = new Comparator<SokBean.Meddelanderad>() {
+        public int compare(Meddelanderad m1, Meddelanderad m2) {
+            String SkapatName1 = m1.getSkapat();
+            String SkapatName2 = m2.getSkapat();
 
-		   return SkapatName2.compareTo(SkapatName1);
-	    }
-	};
+            return SkapatName2.compareTo(SkapatName1);
+        }
+    };
 
 
-	/* Jämförelse för sortering av listan med Skickat */
-	public static Comparator<Meddelanderad> MeddelandeSkickat_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
-		public int compare(Meddelanderad m1, Meddelanderad m2) {
-			String SkickatName1 = m1.getSkickat() != null ? m1.getSkickat() : "";
-			String SkickatName2 = m2.getSkickat() != null ? m2.getSkickat() : "";
+    /* Jämförelse för sortering av listan med Skickat */
+    public static Comparator<Meddelanderad> MeddelandeSkickat_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
+        public int compare(Meddelanderad m1, Meddelanderad m2) {
+            String SkickatName1 = m1.getSkickat() != null ? m1.getSkickat() : "";
+            String SkickatName2 = m2.getSkickat() != null ? m2.getSkickat() : "";
 
-			return SkickatName1.compareTo(SkickatName2);
-	    }
-	};
-	public static Comparator<Meddelanderad> MeddelandeSkickat_descendingOrder = new Comparator<SokBean.Meddelanderad>() {
-		public int compare(Meddelanderad m1, Meddelanderad m2) {
-			String SkickatName1 = m1.getSkickat() != null ? m1.getSkickat() : "";
-			String SkickatName2 = m2.getSkickat() != null ? m2.getSkickat() : "";
+            return SkickatName1.compareTo(SkickatName2);
+        }
+    };
+    public static Comparator<Meddelanderad> MeddelandeSkickat_descendingOrder = new Comparator<SokBean.Meddelanderad>() {
+        public int compare(Meddelanderad m1, Meddelanderad m2) {
+            String SkickatName1 = m1.getSkickat() != null ? m1.getSkickat() : "";
+            String SkickatName2 = m2.getSkickat() != null ? m2.getSkickat() : "";
 
-		   return SkickatName2.compareTo(SkickatName1);
-	    }
-	};
+            return SkickatName2.compareTo(SkickatName1);
+        }
+    };
 
 
     //Sortering 
-    public void sorteraTabell(String kolumnNamn) throws ParseException{
-    	List<Meddelanderad> meddelandeList = getMeddelandenAsList();
-    	if (kolumnNamn.equals("Id")) {
-    		this.sorteringsordningForSkapat = "descendingOrder";
-    		this.sorteringsordningForSkickat = "descendingOrder";
+    public void sorteraTabell(String kolumnNamn) throws ParseException {
+        List<Meddelanderad> meddelandeList = getMeddelandenAsList();
+        if (kolumnNamn.equals("Id")) {
+            this.sorteringsordningForSkapat = "descendingOrder";
+            this.sorteringsordningForSkickat = "descendingOrder";
 
-    		if (this.sorteringsordningForId.equals("ascendingOrder")) {
-    			Collections.sort(meddelandeList, SokBean.MeddelandeId_descendingOrder);
-    			this.sorteringsordningForId = "descendingOrder";
-    		} else {
-    			Collections.sort(meddelandeList, SokBean.MeddelandeId_ascendingOrder);
-    			this.sorteringsordningForId = "ascendingOrder";
-    		}
-    	} else if(kolumnNamn.equals("Skapat")) {
-        	this.sorteringsordningForId = "descendingOrder";
-        	this.sorteringsordningForSkickat = "descendingOrder";
+            if (this.sorteringsordningForId.equals("ascendingOrder")) {
+                Collections.sort(meddelandeList, SokBean.MeddelandeId_descendingOrder);
+                this.sorteringsordningForId = "descendingOrder";
+            } else {
+                Collections.sort(meddelandeList, SokBean.MeddelandeId_ascendingOrder);
+                this.sorteringsordningForId = "ascendingOrder";
+            }
+        } else if (kolumnNamn.equals("Skapat")) {
+            this.sorteringsordningForId = "descendingOrder";
+            this.sorteringsordningForSkickat = "descendingOrder";
 
-    		if (this.sorteringsordningForSkapat.equals("ascendingOrder")) {
-    			Collections.sort(meddelandeList, SokBean.MeddelandeSkapat_descendingOrder);
-    			this.sorteringsordningForSkapat = "descendingOrder";
-    		} else {
-    			Collections.sort(meddelandeList, SokBean.MeddelandeSkapat_ascendingOrder);
-    			this.sorteringsordningForSkapat = "ascendingOrder";
-    		}
-    	} else if (kolumnNamn.equals("Skickat")) {
-    		this.sorteringsordningForId = "descendingOrder";
-    		this.sorteringsordningForSkapat = "descendingOrder";
+            if (this.sorteringsordningForSkapat.equals("ascendingOrder")) {
+                Collections.sort(meddelandeList, SokBean.MeddelandeSkapat_descendingOrder);
+                this.sorteringsordningForSkapat = "descendingOrder";
+            } else {
+                Collections.sort(meddelandeList, SokBean.MeddelandeSkapat_ascendingOrder);
+                this.sorteringsordningForSkapat = "ascendingOrder";
+            }
+        } else if (kolumnNamn.equals("Skickat")) {
+            this.sorteringsordningForId = "descendingOrder";
+            this.sorteringsordningForSkapat = "descendingOrder";
 
-    		if (this.sorteringsordningForSkickat.equals("ascendingOrder")) {
-    			Collections.sort(meddelandeList, SokBean.MeddelandeSkickat_descendingOrder);
-    			this.sorteringsordningForSkickat = "descendingOrder";
-    		} else {
-    			Collections.sort(meddelandeList, SokBean.MeddelandeSkickat_ascendingOrder);
-    			this.sorteringsordningForSkickat = "ascendingOrder";
-    		}
-    	}
+            if (this.sorteringsordningForSkickat.equals("ascendingOrder")) {
+                Collections.sort(meddelandeList, SokBean.MeddelandeSkickat_descendingOrder);
+                this.sorteringsordningForSkickat = "descendingOrder";
+            } else {
+                Collections.sort(meddelandeList, SokBean.MeddelandeSkickat_ascendingOrder);
+                this.sorteringsordningForSkickat = "ascendingOrder";
+            }
+        }
 
     }
 
@@ -543,12 +566,13 @@ public class SokBean {
      * @return akteulla meddelanden i form av en lista.
      */
     public List<Meddelanderad> getMeddelandenAsList() {
-    	ArrayList<Meddelanderad> meddelandeList = new ArrayList<SokBean.Meddelanderad>();
-    	if (meddelanden != null && meddelanden.getWrappedData() != null) {
-    		meddelandeList = (ArrayList<Meddelanderad>) meddelanden.getWrappedData();
-    	}
-    	return meddelandeList;
+        ArrayList<Meddelanderad> meddelandeList = new ArrayList<SokBean.Meddelanderad>();
+        if (meddelanden != null && meddelanden.getWrappedData() != null) {
+            meddelandeList = (ArrayList<Meddelanderad>) meddelanden.getWrappedData();
+        }
+        return meddelandeList;
     }
+
     public void setMeddelanden(ListDataModel meddelanden) {
         this.meddelanden = meddelanden;
     }
@@ -556,93 +580,122 @@ public class SokBean {
     public String getFromSkapat() {
         return fromSkapat;
     }
+
     public void setFromSkapat(String fromSkapat) {
         this.fromSkapat = fromSkapat;
     }
+
     public String getFromSkickat() {
         return fromSkickat;
     }
+
     public void setFromSkickat(String fromSkickat) {
         this.fromSkickat = fromSkickat;
     }
+
     public String getFromSkickaTidigast() {
         return fromSkickaTidigast;
     }
+
     public void setFromSkickaTidigast(String fromSkickaTidigast) {
         this.fromSkickaTidigast = fromSkickaTidigast;
     }
+
     public String getTomSkapat() {
         return tomSkapat;
     }
+
     public void setTomSkapat(String tomSkapat) {
         this.tomSkapat = tomSkapat;
     }
+
     public String getTomSkickat() {
         return tomSkickat;
     }
+
     public void setTomSkickat(String tomSkickat) {
         this.tomSkickat = tomSkickat;
     }
+
     public String getTomSkickaTidigast() {
         return tomSkickaTidigast;
     }
+
     public void setTomSkickaTidigast(String tomSkickaTidigast) {
         this.tomSkickaTidigast = tomSkickaTidigast;
     }
+
     public String getKanal() {
         return kanal;
     }
+
     public void setKanal(String kanal) {
         this.kanal = kanal;
     }
+
     public String getApplikation() {
         return applikation;
     }
+
     public void setApplikation(String applikation) {
         this.applikation = applikation;
     }
+
     public String getAvsandaradress() {
         return avsandaradress;
     }
+
     public void setAvsandaradress(String avsandaradress) {
         this.avsandaradress = avsandaradress;
     }
+
     public String getAvsandarnamn() {
         return avsandarnamn;
     }
+
     public void setAvsandarnamn(String avsandarnamn) {
         this.avsandarnamn = avsandarnamn;
     }
+
     public String getKategori() {
         return kategori;
     }
+
     public void setKategori(String kategori) {
         this.kategori = kategori;
     }
+
     public String getMottagaradress() {
         return mottagaradress;
     }
+
     public void setMottagaradress(String mottagaradress) {
         this.mottagaradress = mottagaradress;
     }
+
     public String getMottagarnamn() {
         return mottagarnamn;
     }
+
     public void setMottagarnamn(String mottagarnamn) {
         this.mottagarnamn = mottagarnamn;
     }
-	public int getCsnnummer() {
-		return csnnummer;
-	}
-	public void setCsnnummer(int csnnummer) {
-		this.csnnummer = csnnummer;
-	}
-	public int getMaxAntalMeddelanden() {
-		return maxAntalMeddelanden;
-	}
-	public void setMaxAntalMeddelanden(int maxAntalMeddelanden) {
-		this.maxAntalMeddelanden = maxAntalMeddelanden;
-	}
+
+    public int getCsnnummer() {
+        return csnnummer;
+    }
+
+    public void setCsnnummer(int csnnummer) {
+        this.csnnummer = csnnummer;
+    }
+
+    public int getMaxAntalMeddelanden() {
+        return maxAntalMeddelanden;
+    }
+
+    public void setMaxAntalMeddelanden(int maxAntalMeddelanden) {
+        this.maxAntalMeddelanden = maxAntalMeddelanden;
+    }
 
 
 }

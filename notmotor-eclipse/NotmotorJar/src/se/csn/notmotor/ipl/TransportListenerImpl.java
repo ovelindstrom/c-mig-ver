@@ -27,6 +27,7 @@ public class TransportListenerImpl implements TransportListener {
         log.debug("Meddelande EJ skickat: " + e.getMessage());
 
     }
+
     public void messagePartiallyDelivered(TransportEvent e) {
         log.debug("Meddelande DELVIS skickat: " + e.getMessage());
 
@@ -37,7 +38,7 @@ public class TransportListenerImpl implements TransportListener {
         try {
             id = msg.getHeader("csnid");
             return new Long(id[0]);
-        } catch(Exception e) {
+        } catch (Exception e) {
             log.error("Kunde inte hitta csnid för meddelande!");
             return new Long(-1);
         }
