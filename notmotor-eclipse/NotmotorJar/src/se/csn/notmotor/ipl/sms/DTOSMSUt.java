@@ -19,8 +19,8 @@ public class DTOSMSUt implements Serializable {
 	private boolean temporaryError;
 	
 	static final String[][] RETURKODTABELL = new String[][] {
-			{"902", "Kod 2 frÂn Telia: Wrong username or password is used or the content provider is barred"},
-			{"997", "Kunde inte tolka svaret frÂn sms-tj‰nsten"},
+			{"902", "Kod 2 fr√•n Telia: Wrong username or password is used or the content provider is barred"},
+			{"997", "Kunde inte tolka svaret fr√•n sms-tj√§nsten"},
 			{"998", "Webservice-fel"},
 	};
 
@@ -61,7 +61,7 @@ public class DTOSMSUt implements Serializable {
 	    	msg = responseMessage;
 	    }
 	    if (msg == null) {
-		    msg = "Ok‰nd status";
+		    msg = "Ok√§nd status";
 	    }
 	    return msg;
 	}

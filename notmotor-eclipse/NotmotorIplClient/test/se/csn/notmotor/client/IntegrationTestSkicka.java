@@ -15,14 +15,14 @@ public class IntegrationTestSkicka extends TestCase {
 	
 	public void setUp() {
 		proxy = new SkickaProxy();
-		// Peka ut grön systemtest
+		// Peka ut grÃ¶n systemtest
 		proxy.setEndpoint("http://gronintern.csn.se:8080/NotmotorIPL/services/SkickaSOAP");
 	}
 	
 	public void testSkickaEnkel() throws RemoteException {
 		DTOAvsandare avsandare = new DTOAvsandare();
 		avsandare.setApplikation("Clienttest");
-		avsandare.setNamn("Testsändare");
+		avsandare.setNamn("TestsÃ¤ndare");
 		avsandare.setEpostadress("joel.norberg@csn.se");
 		
 		DTOMottagare m1 = new DTOMottagare();
@@ -38,7 +38,7 @@ public class IntegrationTestSkicka extends TestCase {
 		meddelande.setAvsandare(avsandare);
 		meddelande.setMottagare(new DTOMottagare[]{m1, m2});
 		meddelande.setRubrik("Testrubrik");
-		meddelande.setMeddelandetext("Detta är ett testmeddelande");
+		meddelande.setMeddelandetext("Detta Ã¤r ett testmeddelande");
 		
 		DTONotifieringResultat res = proxy.skickaMeddelande(meddelande);
 		System.out.println("Kod: " + res.getResultat() + " text: " + res.getInfo());

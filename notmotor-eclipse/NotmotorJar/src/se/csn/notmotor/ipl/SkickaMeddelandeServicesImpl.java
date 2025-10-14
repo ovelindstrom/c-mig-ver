@@ -41,7 +41,7 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 	    
 	    super(qp, paramSource, daomeddelande, instansnummer);
 	    if (daohandelse == null) {
-	        throw new IllegalArgumentException("HandelseHandler får inte vara null");
+	        throw new IllegalArgumentException("HandelseHandler fÃ¥r inte vara null");
 	    }
 	    sandare = new ArrayList<MeddelandeSender>();
 	    this.daohandelse = daohandelse;
@@ -61,23 +61,23 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 	 * @return true om minst ett mail skickades
 	 */
 	public boolean skickaMeddelande() {
-	    // OBS! Kom ihåg att watchdog-timern måste sättas; vi anropar den setter-koden 
-	    // hela tiden. Den cachar ju och gör inga onödiga databasslagningar. 
-		// Läs max så många meddelanden som anges i maxMeddelanden
+	    // OBS! Kom ihÃ¥g att watchdog-timern mÃ¥ste sÃ¤ttas; vi anropar den setter-koden 
+	    // hela tiden. Den cachar ju och gÃ¶r inga onÃ¶diga databasslagningar. 
+		// LÃ¤s max sÃ¥ mÃ¥nga meddelanden som anges i maxMeddelanden
 	    
 	    // Ta ut connection
 	    // Set autocommit false
 	    // Uppdatera watchdog
-	    // Kör: Select for update på x antal meddelanden
+	    // KÃ¶r: Select for update pÃ¥ x antal meddelanden
 	    // Om inga meddelanden: returnera false
 	    // Uppdatera watchdog
 	    // Loopa:
-	    	// Sänd meddelande
+	    	// SÃ¤nd meddelande
 	    	// uppdatera watchdog
 	    	// Uppdatera db
 	    	// uppdatera watchdog
 	    
-	    // Sätt om status på misslyckade meddelanden:
+	    // SÃ¤tt om status pÃ¥ misslyckade meddelanden:
 	    
 	    try {
 		    Connection conn = qp.getConnection();
@@ -92,14 +92,14 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 			    
 			    long startTid = System.currentTimeMillis();
 			    
-			    // Initiera nedprioriterade inkanaler med begränsningar
+			    // Initiera nedprioriterade inkanaler med begrÃ¤nsningar
 			    List<Kanal> kanalerMedBegransningar = new ArrayList<Kanal>();
 			    for (String namn : paramSource.getStringParam("KANALER_MED_BEGRANSNINGAR", "").split("[, ]+")) {
 			    	if (namn.trim().length() == 0) {
 			    		break;
 			    	}
 			    	Kanal kanal = new Kanal(namn);
-			    	// Hämta parametrar
+			    	// HÃ¤mta parametrar
 			    	int pt = paramSource.getIntParam(kanal.getMaxAntalPerTimmeKey(), -1);
 			    	int bs = paramSource.getIntParam(kanal.getBatchStorlekKey(), -1);
 			    	int bk = paramSource.getIntParam(kanal.getBatchKvarKey(), bs);
@@ -115,32 +115,32 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 			    	if (soverTimestamp > 0) {
 			    		kanal.setSoverTimestamp(new Date(soverTimestamp));
 			    		if (!kanal.isSovande()) {
-			    			// Om vi har sovit men nyligen vaknat så nollställer vi sov-tidsstämpeln i parameterkällan.
+			    			// Om vi har sovit men nyligen vaknat sÃ¥ nollstÃ¤ller vi sov-tidsstÃ¤mpeln i parameterkÃ¤llan.
 			    			paramSource.setStringParam(kanal.getSoverTimestampKey(), null);
 			    		}
 			    	}
 			    	try {
 			    		kanal.setOppningstid(otid);
 			    	} catch (IllegalArgumentException e) {
-			    		log.error("Kunde inte sätta öppningstid på kanalen " + namn, e);
+			    		log.error("Kunde inte sÃ¤tta Ã¶ppningstid pÃ¥ kanalen " + namn, e);
 			    	}
 			    	try {
 			    		kanal.setStangningstid(stid);
 			    	} catch (IllegalArgumentException e) {
-			    		log.error("Kunde inte sätta stängningstid på kanalen " + namn, e);
+			    		log.error("Kunde inte sÃ¤tta stÃ¤ngningstid pÃ¥ kanalen " + namn, e);
 			    	}
 			    	kanalerMedBegransningar.add(kanal);
 			    }
 			    
 			    daomeddelande.markeraMeddelandenForInstans(instansnummer, batchStorlek, kanalerMedBegransningar);
 			    
-			    // Uppdatera parametrar för kanal
+			    // Uppdatera parametrar fÃ¶r kanal
 			    for (Kanal kanal : kanalerMedBegransningar) {
 			    	if (!kanal.isSovande() && kanal.getBatchStorlek() > 0) {
-		    			// Subtrahera antalet markerade meddelanden från aktuell batch
+		    			// Subtrahera antalet markerade meddelanden frÃ¥n aktuell batch
 		    			paramSource.setIntParam(kanal.getBatchKvarKey(), kanal.getBatchKvar() - kanal.getAntalMarkerade());
 			    		if (paramSource.getIntParam(kanal.getBatchKvarKey(), kanal.getBatchStorlek()) <= 0) {
-			    			// Om hela batchen nu har behandlats, vänta 'sovtid' innan ny batch påbörjas
+			    			// Om hela batchen nu har behandlats, vÃ¤nta 'sovtid' innan ny batch pÃ¥bÃ¶rjas
 			    			paramSource.setLongParam(kanal.getSoverTimestampKey(), new Date().getTime());
 			    			paramSource.setIntParam(kanal.getBatchKvarKey(), kanal.getBatchStorlek());
 			    		}
@@ -171,7 +171,7 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 				    log.info("Hittade " + meddelanden.size() + " meddelanden att skicka");
 				    long tid = stoppTid - startTid;
 				    long tid2 = stoppTid2 - startTid;
-	                log.info("Tid för att markera och hämta meddelanden: " + tid2 + " ms (varav " + tid + " ms för att markera).");
+	                log.info("Tid fÃ¶r att markera och hÃ¤mta meddelanden: " + tid2 + " ms (varav " + tid + " ms fÃ¶r att markera).");
 				}
 			    updateWatchdogFlag();
 			    conn.commit();
@@ -189,15 +189,15 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 				    }
 				    List sandresultat = skickaMeddelandeTillSandare(meddelande); 
 				    
-				    // Om det inte finns några sändresultat i listan så har inte 
-				    // meddelandet sänts; det fanns inga sändare som kunde hantera det.
+				    // Om det inte finns nÃ¥gra sÃ¤ndresultat i listan sÃ¥ har inte 
+				    // meddelandet sÃ¤nts; det fanns inga sÃ¤ndare som kunde hantera det.
 					if (sandresultat.size() == 0) {
 					    log.warn("Meddelandet saknar leveranstyp: " + meddelande);
 					    handelse = new MeddelandeHandelse(MeddelandeHandelse.MEDDELANDEFEL,
 					            						MeddelandeHandelse.FELAKTIG_MOTTAGARE,
 					            						"Meddelandet saknar leveranstyp");
 					} else {
-					// Loopa över sändresultaten; uppdatera varje mottagare med resp. status
+					// Loopa Ã¶ver sÃ¤ndresultaten; uppdatera varje mottagare med resp. status
 					    handelse = new MeddelandeHandelse(MeddelandeHandelse.SKICKAT_SERVER, MeddelandeHandelse.OK, null);
 					    for (Iterator resit = sandresultat.iterator(); resit.hasNext();) {
 					        SandResultat sr = (SandResultat) resit.next();
@@ -206,7 +206,7 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 					            mott[mottloop].setStatus(new Integer(sr.getHandelsetyp()));
 					            daomottagare.updateMottagare(mott[mottloop]);
 					        }
-					        // Uppdatera status. Fel har prioritet över SKICKAT_SERVER
+					        // Uppdatera status. Fel har prioritet Ã¶ver SKICKAT_SERVER
 					        if (sr.getHandelsetyp() != MeddelandeHandelse.SKICKAT_SERVER) {
 					            handelse.setHandelsetyp(new Integer(sr.getHandelsetyp()));
 					            handelse.setFelkod(new Integer(sr.getKod()));
@@ -222,20 +222,20 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 					updateWatchdogFlag();
 					conn.commit();
 					
-					// Om skickat, sätt skickatdatum
+					// Om skickat, sÃ¤tt skickatdatum
 					if (handelse.getHandelsetyp().intValue() == MeddelandeHandelse.SKICKAT_SERVER) {
 					    qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.SKICKAT_SERVER 
 					            + ",SANTTIDPUNKT=" + DAOImplBase.quoteValue(new Date()) + " WHERE ID=" + id);
-					} // Om meddelandefel, sätt status till meddelandefel 
+					} // Om meddelandefel, sÃ¤tt status till meddelandefel 
 					else if (handelse.getHandelsetyp().intValue() == MeddelandeHandelse.MEDDELANDEFEL) {
 					    qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.MEDDELANDEFEL 
 					            + " WHERE ID=" + id);
-					} // Om tekniskt fel och felkod är STOPPANDE_FEL, sätt status tekniskt fel
+					} // Om tekniskt fel och felkod Ã¤r STOPPANDE_FEL, sÃ¤tt status tekniskt fel
 					else if ((handelse.getHandelsetyp().intValue() == MeddelandeHandelse.TEKNISKT_FEL)
 							&& (handelse.getFelkod().intValue() == MeddelandeHandelse.STOPPANDE_FEL)) {
 					    qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.TEKNISKT_FEL 
 					            + " WHERE ID=" + id);
-					} // else: Om tekniskt fel och inte stoppande: försök sända om.
+					} // else: Om tekniskt fel och inte stoppande: fÃ¶rsÃ¶k sÃ¤nda om.
 
 					conn.commit();
 					if (log.isDebugEnabled()) {
@@ -243,27 +243,27 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 					            + getMeddelandeSummary(meddelande));
 					}
 					
-					// Rapportera händelsen till callbackinterface:
+					// Rapportera hÃ¤ndelsen till callbackinterface:
 					if (paramSource.getBooleanParam("CALLBACKS", false)) {
 					    makeCallback(meddelande);
 					}
 				}
 		    } catch (DatabaseException de) {
-	            log.error("Fångat DatabaseException", de);
+	            log.error("FÃ¥ngat DatabaseException", de);
 	            if (conn != null) {
 	                try {
 	                    conn.rollback();
 	                } catch (SQLException e2) {
-	                    log.error("Försökte köra rollback men misslyckades", e2);
+	                    log.error("FÃ¶rsÃ¶kte kÃ¶ra rollback men misslyckades", e2);
 	                }
 	            }
 	        } catch (SQLException e) {
-	            log.error("Fångat SQLException", e);
+	            log.error("FÃ¥ngat SQLException", e);
 	            if (conn != null) {
 	                try {
 	                    conn.rollback();
 	                } catch (SQLException e2) {
-	                    log.error("Försökte köra rollback men misslyckades", e2);
+	                    log.error("FÃ¶rsÃ¶kte kÃ¶ra rollback men misslyckades", e2);
 	                }
 	            }
 	        } finally {
@@ -271,33 +271,33 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 	        }
 	        return foundMessages;
 	    } catch (Exception e) {
-	        log.error("skickaMeddelande: Fångat throwable, returnerar FALSE", e);
+	        log.error("skickaMeddelande: FÃ¥ngat throwable, returnerar FALSE", e);
 	        return false;
 	    }
 	}
 	
 	/**
-	 * Metod som kontrollerar om antal sändningar har överskridit en viss gräns, MAXSANDFORSOK.
-	 * Sätter status till TEKNISKT_FEL om gränsen överskridits.
-	 * max antal sändningsförsök styrs av parametern MAXSANDFORSOK.
+	 * Metod som kontrollerar om antal sÃ¤ndningar har Ã¶verskridit en viss grÃ¤ns, MAXSANDFORSOK.
+	 * SÃ¤tter status till TEKNISKT_FEL om grÃ¤nsen Ã¶verskridits.
+	 * max antal sÃ¤ndningsfÃ¶rsÃ¶k styrs av parametern MAXSANDFORSOK.
 	 * @param meddelande DTOMeddelande
-	 * @return true om meddelandet har försökt sändas för många gånger,
+	 * @return true om meddelandet har fÃ¶rsÃ¶kt sÃ¤ndas fÃ¶r mÃ¥nga gÃ¥nger,
 	 * 			annars false.
 	 */
 	boolean forMangaSandningar(Meddelande meddelande) {
-	    // Kolla om det finns händelser:
+	    // Kolla om det finns hÃ¤ndelser:
 	    if ((meddelande.getHandelser() == null) || (meddelande.getHandelser().length == 0)) {
 	        return false;
 	    }
 
-	    // Kolla om det finns för många händelser:
+	    // Kolla om det finns fÃ¶r mÃ¥nga hÃ¤ndelser:
 	    int maxSandForsok = paramSource.getIntParam("MAXSANDFORSOK", 150);
 	    if (meddelande.getHandelser().length > maxSandForsok) {
-	        MeddelandeHandelse h = new MeddelandeHandelse(MeddelandeHandelse.TEKNISKT_FEL, MeddelandeHandelse.OKANT_FEL, "Satte status till TEKNISKT_FEL pga för många sändningsförsök");
+	        MeddelandeHandelse h = new MeddelandeHandelse(MeddelandeHandelse.TEKNISKT_FEL, MeddelandeHandelse.OKANT_FEL, "Satte status till TEKNISKT_FEL pga fÃ¶r mÃ¥nga sÃ¤ndningsfÃ¶rsÃ¶k");
 	        h.setInstans(new Integer(instansnummer));
 	        meddelande.addHandelse(h);
 	        daohandelse.createHandelse(h, meddelande.getId().longValue());
-	        log.error("Sätter status för meddelande " + meddelande.getId().longValue() + " till TEKNISKT_FEL pga för många händelser");
+	        log.error("SÃ¤tter status fÃ¶r meddelande " + meddelande.getId().longValue() + " till TEKNISKT_FEL pga fÃ¶r mÃ¥nga hÃ¤ndelser");
 	        qp.executeThrowException("UPDATE MEDDELANDE SET STATUS = " + MeddelandeHandelse.TEKNISKT_FEL + " WHERE ID = " + meddelande.getId().longValue());
 	        try {
 	            qp.getConnection().commit();
@@ -310,26 +310,26 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 	    return false;
 	}
 	/**
-	 * Metod som kollar om meddelandet nyligen sänts med tekniskt fel. 
-	 * Tid till senaste händelse styrs av parametern MINTIDTILLSENASTEFEL; 
+	 * Metod som kollar om meddelandet nyligen sÃ¤nts med tekniskt fel. 
+	 * Tid till senaste hÃ¤ndelse styrs av parametern MINTIDTILLSENASTEFEL; 
 	 * @param meddelande DTOMeddelande
-	 * @return true om meddelandet "nyligen" sändes med resultatet TEKNISKT_FEL
-	 * 		och då väntar vi med att skicka det till nästa tick,
-	 * 		annars false vilket innebär att det kommer att försöka sändas igen på en gång.
+	 * @return true om meddelandet "nyligen" sÃ¤ndes med resultatet TEKNISKT_FEL
+	 * 		och dÃ¥ vÃ¤ntar vi med att skicka det till nÃ¤sta tick,
+	 * 		annars false vilket innebÃ¤r att det kommer att fÃ¶rsÃ¶ka sÃ¤ndas igen pÃ¥ en gÃ¥ng.
 	 */
 	boolean nyligenSantMedTeknisktFel(Meddelande meddelande) {
-	    // Kolla om det finns händelser:
+	    // Kolla om det finns hÃ¤ndelser:
 	    if ((meddelande.getHandelser() == null) || (meddelande.getHandelser().length == 0)) {
 	        return false;
 	    }
-	    // Kolla om senaste händelsen är ett tekniskt fel:
-	    // I så fall kontrolleras min. tid till senaste fel
+	    // Kolla om senaste hÃ¤ndelsen Ã¤r ett tekniskt fel:
+	    // I sÃ¥ fall kontrolleras min. tid till senaste fel
 	    MeddelandeHandelse handelse = meddelande.getHandelser()[meddelande.getHandelser().length - 1];
 	    if (handelse.getHandelsetyp().intValue() != MeddelandeHandelse.TEKNISKT_FEL) {
 	        return false;
 	    }
 	    
-	    // kolla om senaste händelse ligger tillräckligt långt bort i tiden:
+	    // kolla om senaste hÃ¤ndelse ligger tillrÃ¤ckligt lÃ¥ngt bort i tiden:
 	    int minTidTillSenasteFel = paramSource.getIntParam("MINTIDTILLSENASTEFEL", 600);
 	    Calendar cal = Calendar.getInstance();
 	    cal.add(Calendar.SECOND, -minTidTillSenasteFel);
@@ -337,13 +337,13 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 	}
 	
 	/**
-	 * Gör callbackanrop om sådana efterfrågats. 
+	 * GÃ¶r callbackanrop om sÃ¥dana efterfrÃ¥gats. 
 	 * @param meddelande DTOMeddelande
 	 * @param handelse DTOMeddelandeHandelse
 	 */
 	void makeCallback(Meddelande meddelande) {
 	    if (log.isDebugEnabled()) {
-	        log.debug("Gör callback");
+	        log.debug("GÃ¶r callback");
 	    }
 	    
 	    MeddelandeHandelse handelse = meddelande.getHandelser()[meddelande.getHandelser().length - 1];
@@ -360,18 +360,18 @@ public class SkickaMeddelandeServicesImpl extends MeddelandeServicesImplBase imp
 	    }
 	    int mask = meddelande.getCallbackMask().intValue();
 	    if ((handelse.getHandelsetyp().intValue() & mask) == 0) {
-	        log.debug("Fanns callback-URL och -mask, men inget intresse för denna händelse");
+	        log.debug("Fanns callback-URL och -mask, men inget intresse fÃ¶r denna hÃ¤ndelse");
 	        return;
 	    }
 	    
-	    // Plocka upp callback-sändare: 
+	    // Plocka upp callback-sÃ¤ndare: 
 	    callbackClient.rapporteraHandelseWS(meddelande);
 	}
 	
 	/**
 	 * 
 	 * @param meddelande
-	 * @return En lista av sändresultat, som sedan ska bearbetas till databas. 
+	 * @return En lista av sÃ¤ndresultat, som sedan ska bearbetas till databas. 
 	 */
 	List skickaMeddelandeTillSandare(Meddelande meddelande) {
 	    List<SandResultat> list = new ArrayList<SandResultat>();

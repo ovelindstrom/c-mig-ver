@@ -11,13 +11,13 @@ import java.io.Serializable;
  * @author csn7478
  * @version 1.01
  *
- * Identifikatonsnummer pÂ ett dokument i edh.
+ * Identifikatonsnummer p√• ett dokument i edh.
  */
 public class DTOFamId implements Serializable {
 	private String sFamId;
 
 	/**
-	 * @return Dokumentets Id i str‰ngform
+	 * @return Dokumentets Id i str√§ngform
 	 */
 	public String getSFamId() {
 		return sFamId;
@@ -27,7 +27,7 @@ public class DTOFamId implements Serializable {
 
 
 	/**
-	 * @param string Dokumentets Id i str‰ngform
+	 * @param string Dokumentets Id i str√§ngform
 	 */
 	public void setSFamId(String string) {
 		sFamId = string;

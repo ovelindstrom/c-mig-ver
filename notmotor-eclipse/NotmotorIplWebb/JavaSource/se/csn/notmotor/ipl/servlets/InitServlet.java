@@ -34,7 +34,7 @@ import se.csn.notmotor.ipl.webservice.SkickaService;
 //import com.ibm.websphere.servlet.event.ServletListener;
 
 /**
- * Servlet som ska köras vid startup; används för att starta notmotorinstans.
+ * Servlet som ska kÃ¶ras vid startup; anvÃ¤nds fÃ¶r att starta notmotorinstans.
  */
 public class InitServlet extends HttpServlet implements Servlet { //, ServletListener {
 	private static final long serialVersionUID = 1L;
@@ -46,19 +46,19 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
 	}
 
 	/**
-	 * Testar externa beroenden, sätter upp beroenden, 
-	 * startar en notmotorinstans. Detta görs mha en tråd. 
+	 * Testar externa beroenden, sÃ¤tter upp beroenden, 
+	 * startar en notmotorinstans. Detta gÃ¶rs mha en trÃ¥d. 
 	 */
 	public void init(ServletConfig config) throws ServletException {
 	    checkExternalDependencies();
 	    setupDependencies();
 	    
-	    // Lägger upp serverrad i DB om den inte redan fanns:
+	    // LÃ¤gger upp serverrad i DB om den inte redan fanns:
 	    lagraServerIDB(Properties.getProperty(PROPERTIESFIL, "notmotor.url"));
 	}
 
 	private void setupDependencies() {
-	    System.out.println("Sätter upp dependencies för Notmotor");
+	    System.out.println("SÃ¤tter upp dependencies fÃ¶r Notmotor");
         ServiceLocator sl = new ServiceLocator();
         String datasourceJndi = Properties.getProperty(PROPERTIESFIL, "notmotor.ds.jndinamn");
         DataSource ds = sl.getDatasource(datasourceJndi);
@@ -70,7 +70,7 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
 	}
 	
     public void checkExternalDependencies() {
-	    System.out.println("Kontrollerar dependencies för Notmotor");
+	    System.out.println("Kontrollerar dependencies fÃ¶r Notmotor");
         try {
             // 0. Kolla att utils finns:
             Class.forName("se.csn.common.config.ConfigException");
@@ -99,7 +99,7 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
                 "sms.endpoint",
         };
         
-        // Anropa med propertiesfilen som argument för att sätta upp
+        // Anropa med propertiesfilen som argument fÃ¶r att sÃ¤tta upp
         // Log-klassens interna cache:
         Properties.getProperty(PROPERTIESFIL, "mail.user");
         PropertyDependencyTester.dumpPropertiesThrowIfMissing(properties);
@@ -122,7 +122,7 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
             }
         }
         
-        // Hittade ingen server: lägger upp.
+        // Hittade ingen server: lÃ¤gger upp.
         Server server = new Server();
         server.setAktiv(true);
         server.setPrestanda(1);

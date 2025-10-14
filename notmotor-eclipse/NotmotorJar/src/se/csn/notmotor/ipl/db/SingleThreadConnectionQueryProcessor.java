@@ -11,7 +11,7 @@ import se.csn.ark.common.dal.db.DatabaseException;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * QueryProcessor som använder en enda Connection. 
+ * QueryProcessor som anvÃ¤nder en enda Connection. 
  * Denna connection lagras i en statisk medlemsvariabel.
  * OBS! Kan leda till udda beteende om flera webappar delar klassladdare.
  */
@@ -19,7 +19,7 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
 	
 	private DataSource ds;
 	private Log log = Log.getInstance(SingleThreadConnectionQueryProcessor.class);
-	private static Map s_connections; // Innehåller ett antal Maps, en för varje DataSource
+	private static Map s_connections; // InnehÃ¥ller ett antal Maps, en fÃ¶r varje DataSource
 	private static Map<Connection, Boolean> s_commitFlags;
 	private static int connectionCount = 0;
 	private String tradNamn = Thread.currentThread().getName();
@@ -30,15 +30,15 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
 	
 	
 	/**
-	 * Hämtar connection, om det inte finns någon skapas en ny.
-	 * @return Samma connection för alla anrop i denna tråd med denna datasource
+	 * HÃ¤mtar connection, om det inte finns nÃ¥gon skapas en ny.
+	 * @return Samma connection fÃ¶r alla anrop i denna trÃ¥d med denna datasource
 	 */
 	public Connection getConnection() {
 	    try {
 		    Connection conn = getConnectionForThisThread();
 		    if((conn != null) && (conn.isClosed())) {
 		        if (log.isDebugEnabled()) {
-		            log.debug("Connection var stängd!");
+		            log.debug("Connection var stÃ¤ngd!");
 		        }
 		        ((Map) s_connections.get(ds)).remove(tradNamn);
 		        conn = null;
@@ -86,7 +86,7 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
     }
     
     /**
-     * Gör commit() och close() på en connection, samt lyfter bort den ur trådmappen.
+     * GÃ¶r commit() och close() pÃ¥ en connection, samt lyfter bort den ur trÃ¥dmappen.
      */
     public void removeConnectionForThisThread() {
 	    Connection conn = getConnectionForThisThread();
@@ -99,7 +99,7 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
                 conn.close();
             }
         } catch (SQLException e) {
-            throw new DatabaseException("Kunde inte göra commit() och/eller close():" + e);
+            throw new DatabaseException("Kunde inte gÃ¶ra commit() och/eller close():" + e);
         } finally {
             ((Map) s_connections.get(ds)).remove(tradNamn);
         }
@@ -107,7 +107,7 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
     
     
 	/**
-	 * @return Connection för denna tråd och datasource
+	 * @return Connection fÃ¶r denna trÃ¥d och datasource
 	 */
 	private Connection getConnectionForThisThread() {
 	    if (s_connections == null) {
@@ -125,8 +125,8 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
 	
 	
 	/**
-	 * Sätter connection för denna tråd och datasource.
-	 * @param conn Connection som ska sättas
+	 * SÃ¤tter connection fÃ¶r denna trÃ¥d och datasource.
+	 * @param conn Connection som ska sÃ¤ttas
 	 */
 	private void setConnectionForThisThread(Connection conn) {
 	    if (s_connections == null) {

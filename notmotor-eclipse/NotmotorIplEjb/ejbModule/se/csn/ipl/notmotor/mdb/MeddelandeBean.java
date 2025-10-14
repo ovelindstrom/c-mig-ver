@@ -44,8 +44,8 @@ import se.csn.webservice.bas.notmotor.skicka.Skicka_ServiceLocator;
 
 /**
  * Bean implementation class for Enterprise Bean: Meddelande.
- * Transaktionshantering är satt till container för att fMessageDrivenCtx.setRollbackOnly() ska
- * lägga tillbaka MQ meddelandet på kön igen.
+ * Transaktionshantering Ã¤r satt till container fÃ¶r att fMessageDrivenCtx.setRollbackOnly() ska
+ * lÃ¤gga tillbaka MQ meddelandet pÃ¥ kÃ¶n igen.
  */
 @MessageDriven
 public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.MessageDrivenBean, javax.jms.MessageListener {
@@ -58,7 +58,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 	private static final String PROPERTIES_FIL = "notmotor-ipl";
 	private static final String PROPERTIES_FIL_ARK = "ark";
 
-	/** Namn på inkommande kanal, om inget annat ges. */
+	/** Namn pÃ¥ inkommande kanal, om inget annat ges. */
 	private static final String KANAL_NAMN_DEFAULT = "MQMAAAUD";
 
 	/** 
@@ -100,10 +100,10 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 		String charset = null;
 
 		try {
-			// Hämta aktuellt character set
+			// HÃ¤mta aktuellt character set
 			charset = Properties.getProperty(PROPERTIES_FIL, "notmotor.mq.characterset");
 			if (charset == null) {
-				log.error("Värdet notmotor.mq.characterset saknas i propertiesfil");
+				log.error("VÃ¤rdet notmotor.mq.characterset saknas i propertiesfil");
 			}
 
 			if (log.isDebugEnabled()) { log.debug("Meddelande mottaget"); }
@@ -148,7 +148,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 				}
 			} else {
 				String message = "Meddelandetyp skall vara TextMessage eller JMSBytesMessage, men " 
-						+ "mottaget meddelande är " + inMessage.getClass().getName();
+						+ "mottaget meddelande Ã¤r " + inMessage.getClass().getName();
 				log.error(message);
 
 				throw new Exception(message);
@@ -190,7 +190,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 				meddelande.setMottagare(mottArr);
 				// CHECKSTYLE/ON: MagicNumber
 
-				// Sätt kanal (Hämta namn från Correlation-ID om det är satt, annars används standardnamnet)
+				// SÃ¤tt kanal (HÃ¤mta namn frÃ¥n Correlation-ID om det Ã¤r satt, annars anvÃ¤nds standardnamnet)
 				String kanalnamn = KANAL_NAMN_DEFAULT;
 				String correlationIDtext = new String(inMessage.getJMSCorrelationIDAsBytes(), charset).trim();
 				if (log.isDebugEnabled()) {
@@ -200,20 +200,20 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 					// filtrera bort ogiltiga tecken
 					String correlationIDtextFiltrerad = correlationIDtext.replaceAll("[^a-zA-Z0-9_ ]", "");
 					if (correlationIDtext.equals(correlationIDtextFiltrerad)) {
-						// använd correlations-ID som kanalnamn, men ersätt först alla blanksteg med "_" och gör om till versaler
+						// anvÃ¤nd correlations-ID som kanalnamn, men ersÃ¤tt fÃ¶rst alla blanksteg med "_" och gÃ¶r om till versaler
 						kanalnamn = correlationIDtext.replaceAll("\\s", "_").toUpperCase();
 					} else {
 						log.warn("Ogiltiga tecken i Correlation-ID: " + correlationIDtext + "\n"
-								+ "Kontrollera att teckenkodningen är korrekt konfigurerad; aktuellt värde: notmotor.mq.characterset=" + charset + "\n"
-								+ "I nuläget kommer kanalnamnet sättas till standardvärdet '" + KANAL_NAMN_DEFAULT + "'");
+								+ "Kontrollera att teckenkodningen Ã¤r korrekt konfigurerad; aktuellt vÃ¤rde: notmotor.mq.characterset=" + charset + "\n"
+								+ "I nulÃ¤get kommer kanalnamnet sÃ¤ttas till standardvÃ¤rdet '" + KANAL_NAMN_DEFAULT + "'");
 					}
 				}
 				if (log.isDebugEnabled()) {
-					log.debug("Sätter kanalnamn till '" + kanalnamn + "'");
+					log.debug("SÃ¤tter kanalnamn till '" + kanalnamn + "'");
 				}
 				meddelande.setKanal(kanalnamn);
 
-				// Sätt avsändare
+				// SÃ¤tt avsÃ¤ndare
 				DTOAvsandare avsandare = new DTOAvsandare();
 				avsandare.setApplikation(Properties.getProperty(PROPERTIES_FIL, "notmotor.mq.mail.applikation"));
 				avsandare.setEpostadress(Properties.getProperty(PROPERTIES_FIL, "notmotor.mq.mail.from"));
@@ -222,8 +222,8 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 				if (log.isDebugEnabled()) {
 					log.debug("\nKanal:" + meddelande.getKanal()
 							+ "\nApplikation:" + avsandare.getApplikation()
-							+ "\nAvsändare namn:" + avsandare.getNamn()
-							+ "\nAvsändare epostadress:" + avsandare.getEpostadress());
+							+ "\nAvsÃ¤ndare namn:" + avsandare.getNamn()
+							+ "\nAvsÃ¤ndare epostadress:" + avsandare.getEpostadress());
 				}
 			} catch (RuntimeException e1) {
 				String err = "Felaktigt indata!\n" + xml + "\n" + e1.getMessage();
@@ -232,7 +232,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 			}
             if (meddsaett.equals("MINMYNDPOST")) {
 
-            	//Hämta dokumentet i fam och lagra ner det i Bilaga
+            	//HÃ¤mta dokumentet i fam och lagra ner det i Bilaga
             	
             	byte[] doc = null;
             	try {
@@ -247,7 +247,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
             		doc = svar.getData();
             		
             		if (svar.getReturkod() != 0) {
-        				throw new IllegalStateException("Lyckades anropa webservice för att hämta dokument, " 
+        				throw new IllegalStateException("Lyckades anropa webservice fÃ¶r att hÃ¤mta dokument, " 
             		+ "men den gav fel tillbaka - returkod " 
         						+ svar.getReturkod());
         			}
@@ -257,7 +257,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 	            	DTOBilaga bilaga  = new DTOBilaga();
 	            	
         			if (doc != null && doc.length > 0) {
-        				log.debug("buf längd: " + doc.length);
+        				log.debug("buf lÃ¤ngd: " + doc.length);
 
         				//Uppdatera bilaga
         				bilaga.setData(doc);
@@ -271,12 +271,12 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
         			}
         			//**/
             	} catch (ServiceException s) {
-    				log.error("Fångat ett ServiceException." + s.getMessage());
-    				throw new IllegalStateException("Notmotorn kunde hämta dokument. ", s);
+    				log.error("FÃ¥ngat ett ServiceException." + s.getMessage());
+    				throw new IllegalStateException("Notmotorn kunde hÃ¤mta dokument. ", s);
     				/**
             	}  catch (RemoteException e) {
-    				log.error("Fångat ett RemoteException." + e.getMessage());
-    				throw new IllegalStateException("Notmotorn kunde hämta dokument. ", e);
+    				log.error("FÃ¥ngat ett RemoteException." + e.getMessage());
+    				throw new IllegalStateException("Notmotorn kunde hÃ¤mta dokument. ", e);
     				**/
         		}
             } 
@@ -285,22 +285,22 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 			try {
 				resultat = client.skickaMeddelande(meddelande);
 				if (log.isDebugEnabled()) {
-					log.debug("\nResultat från Notmotorn: " + resultat.getResultat() 
+					log.debug("\nResultat frÃ¥n Notmotorn: " + resultat.getResultat() 
 							+ "\nInfo:" + resultat.getInfo()
 							+ "\nMeddelandeId:" + resultat.getMeddelandeId());
 				}
 			} catch (RemoteException e) {
-				log.error("Fångat ett RemoteException." + e.getMessage());
+				log.error("FÃ¥ngat ett RemoteException." + e.getMessage());
 				throw new IllegalStateException("Notmotorn kunde inte ta emot meddelande. ", e);
 			}
 			if (resultat.getResultat().intValue() > 2) {
-				log.error("Fått ett resultat > 2" + resultat.getInfo());
+				log.error("FÃ¥tt ett resultat > 2" + resultat.getInfo());
 				throw new IllegalStateException("Notmotorn kunde inte ta emot meddelande. " + resultat.getInfo());
 			}
 			
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
-			// Ett exception måste kastas för att MQ meddelandet ska läggas tillbaka på kön
+			// Ett exception mÃ¥ste kastas fÃ¶r att MQ meddelandet ska lÃ¤ggas tillbaka pÃ¥ kÃ¶n
 			throw new RuntimeException("Backout on error");
 		}
 	}

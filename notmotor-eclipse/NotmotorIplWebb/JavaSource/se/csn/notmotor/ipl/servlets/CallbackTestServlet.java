@@ -40,7 +40,7 @@ public class CallbackTestServlet extends HttpServlet implements Servlet {
 	    log.debug("HandleRequest");
 	    String data = req.getParameter("MEDDELANDE");
 	    if(data == null) {
-	        log.error("Inget meddelandedata i förfrågan");
+	        log.error("Inget meddelandedata i fÃ¶rfrÃ¥gan");
 	        return;
 	    }
 	    log.debug("Data: " + data);

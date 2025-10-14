@@ -9,7 +9,7 @@ import se.csn.ark.common.dal.db.DatabaseException;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * QueryProcessor som anv‰nder en enda Connection. 
+ * QueryProcessor som anv√§nder en enda Connection. 
  * Denna connection lagras i en statisk medlemsvariabel.
  * OBS! Kan leda till udda beteende om flera webappar delar klassladdare.
  */

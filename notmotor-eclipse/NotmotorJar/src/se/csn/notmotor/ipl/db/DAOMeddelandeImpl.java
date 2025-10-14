@@ -25,7 +25,7 @@ import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 import se.csn.notmotor.ipl.model.Mottagare;
 
 /**
- * CRUD fˆr DTOMeddelande.
+ * CRUD f√∂r DTOMeddelande.
  */
 public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper, DAOMeddelande {
 
@@ -45,19 +45,19 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
     }
     
     public long createMeddelande(Meddelande m) {
-        // MÂste finnas: minst en mottagare, avs‰ndare. 
+        // M√•ste finnas: minst en mottagare, avs√§ndare. 
         if (m == null) {
-            throw new IllegalArgumentException("Meddelande mÂste vara satt");
+            throw new IllegalArgumentException("Meddelande m√•ste vara satt");
         }
         if (m.getAvsandare() == null) {
-            throw new IllegalArgumentException("Avs‰ndare mÂste vara satt");
+            throw new IllegalArgumentException("Avs√§ndare m√•ste vara satt");
         }
         if ((m.getMottagare() == null) || (m.getMottagare().length == 0)) {
-            throw new IllegalArgumentException("MÂste finnas minst en mottagare");
+            throw new IllegalArgumentException("M√•ste finnas minst en mottagare");
         }
         
         
-        // Skapa avs‰ndare (eller Âteranv‰nd om det finns en):
+        // Skapa avs√§ndare (eller √•teranv√§nd om det finns en):
         int avsandarid = avsandareHandler.getId(m.getAvsandare());
         if (avsandarid == -1) {
             avsandarid = avsandareHandler.createAvsandare(m.getAvsandare());
@@ -70,7 +70,7 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
             conn = qp.getConnection();
             ((ControlledCommitQueryProcessor) qp).setCommitConnection(conn, false);
             
-            // Vi hÂller ihop transaktionen sÂ att alla inserts/updates gˆrs samtidigt:
+            // Vi h√•ller ihop transaktionen s√• att alla inserts/updates g√∂rs samtidigt:
             
             String query = "INSERT INTO MEDDELANDE (ID,AVSANDARE,KANAL,RUBRIK,TEXT,"
         		+ "RUBRIKENCODING,TEXTENCODING,CALLBACKURL,CALLBACKMASK,CSNNUMMER,SKAPADTIDPUNKT,STATUS,SKICKATIDIGAST,MIMETYP) " 
@@ -135,7 +135,7 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
 	            }
             }
             
-            // Skapa h‰ndelserader:
+            // Skapa h√§ndelserader:
             if (m.getHandelser() != null) {
 	            for (int i = 0; i < m.getHandelser().length; i++) {
 	                handelseHandler.createHandelse(m.getHandelser()[i], id);
@@ -150,7 +150,7 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
                 try {
                     conn.rollback();
                 } catch (SQLException e2) {
-                    log.error("Fˆrsˆkte kˆra rollback men misslyckades", e2);
+                    log.error("F√∂rs√∂kte k√∂ra rollback men misslyckades", e2);
                 }
             }
             throw new IllegalStateException("Kunde inte skapa meddelande i databasen", e);
@@ -160,7 +160,7 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
                 try {
                     conn.rollback();
                 } catch (SQLException e2) {
-                    log.error("Fˆrsˆkte kˆra rollback men misslyckades", e2);
+                    log.error("F√∂rs√∂kte k√∂ra rollback men misslyckades", e2);
                 }
             }
             throw new IllegalStateException("Kunde inte skapa meddelande i databasen" + de);
@@ -169,55 +169,55 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
         	    ((ControlledCommitQueryProcessor) qp).setCommitConnection(conn, true);
 	            if (ps != null) { ps.close(); }
             } catch (SQLException sqle) {
-                throw new IllegalStateException("Kunde inte st‰nga resurser");
+                throw new IllegalStateException("Kunde inte st√§nga resurser");
             }
         }
     }
     
     /**
-     * Letar r‰tt pÂ meddelanderader som har status MOTTAGET och s‰tter om 
-     * deras status till -instans, detta fˆr att markera att de ska hanteras
+     * Letar r√§tt p√• meddelanderader som har status MOTTAGET och s√§tter om 
+     * deras status till -instans, detta f√∂r att markera att de ska hanteras
      * av en viss instans.
      * 
-     * Parametern 'kanalerMedBegransning' listar de inkommande kanaler som ‰r
-     * nedprioriterade och d‰r m‰ngden meddelanden som fÂr bearbetas ‰r begr‰nsad.
-     * Varje element i listan ‰r av typen Kanal och innehÂller uppgifter om kanalens
-     * ˆppettider och hur mÂnga meddelanden frÂn kanalen som fÂr bearbetas.
+     * Parametern 'kanalerMedBegransning' listar de inkommande kanaler som √§r
+     * nedprioriterade och d√§r m√§ngden meddelanden som f√•r bearbetas √§r begr√§nsad.
+     * Varje element i listan √§r av typen Kanal och inneh√•ller uppgifter om kanalens
+     * √∂ppettider och hur m√•nga meddelanden fr√•n kanalen som f√•r bearbetas.
      * 
-     * En kanal med begr‰nsningar kommer alltid att bearbetas efter kanaler utan begr‰nsningar,
-     * dvs ha en l‰gre prioritet. Om det finns flera begr‰nsade kanaler kommer de att
+     * En kanal med begr√§nsningar kommer alltid att bearbetas efter kanaler utan begr√§nsningar,
+     * dvs ha en l√§gre prioritet. Om det finns flera begr√§nsade kanaler kommer de att
      * bearbetas i den turordning som anges i listan 'kanalerMedBegransning'.
      * 
-     * Metoden markerar SOM MEST det angivna antalet meddelanden. Det kan bli f‰rre 
-     * ‰ven om det finns fler meddelanden ‰n de markerade i status MOTTAGET; det 
-     * beror pÂ hur det gÂtt med tidigare s‰ndningar mm. Om det finns meddelanden
-     * med status MOTTAGET (och en kanal som inte begr‰nsar utskick) sÂ kommer
+     * Metoden markerar SOM MEST det angivna antalet meddelanden. Det kan bli f√§rre 
+     * √§ven om det finns fler meddelanden √§n de markerade i status MOTTAGET; det 
+     * beror p√• hur det g√•tt med tidigare s√§ndningar mm. Om det finns meddelanden
+     * med status MOTTAGET (och en kanal som inte begr√§nsar utskick) s√• kommer
      * minst ett av dem att markeras.
      * 
-     * OBS! Metoden kommer att gˆra commit() fˆr att s‰kerst‰lla att det inte 
-     * blir deadlock. Deadlock kan annars potentiellt intr‰ffa i kombinationen
+     * OBS! Metoden kommer att g√∂ra commit() f√∂r att s√§kerst√§lla att det inte 
+     * blir deadlock. Deadlock kan annars potentiellt intr√§ffa i kombinationen
      * MEDDELANDE - HANDELSE.  
      * 
-     * @param instans Den instans som markeras som "‰gare" till meddelandena
+     * @param instans Den instans som markeras som "√§gare" till meddelandena
      * @param antalMeddelanden Det maximala antal meddelanden som markeras
-     * @param kanalerMedBegransningar Lista med nedprioriterade inkanaler med s‰rskilda begr‰nsningar
+     * @param kanalerMedBegransningar Lista med nedprioriterade inkanaler med s√§rskilda begr√§nsningar
      */
     @SuppressWarnings("unchecked")
 	public void markeraMeddelandenForInstans(int instans, int antalMeddelanden, List<Kanal> kanalerMedBegransningar) {
         if (instans < 1) {
-            throw new IllegalArgumentException("Instans mÂste vara stˆrre ‰n 1");
+            throw new IllegalArgumentException("Instans m√•ste vara st√∂rre √§n 1");
         }
         if (antalMeddelanden < 1) {
-            throw new IllegalArgumentException("MÂste h‰mta minst 1 meddelande");
+            throw new IllegalArgumentException("M√•ste h√§mta minst 1 meddelande");
         }
         if (kanalerMedBegransningar == null) {
-            throw new IllegalArgumentException("Listan med kanaler fÂr inte vara null");
+            throw new IllegalArgumentException("Listan med kanaler f√•r inte vara null");
         }
         
         // 1. SELECT:
         List<String> meddelandeNr = new ArrayList<String>();
                 
-        // H‰mta meddelanden som ligger pÂ en kanal utan nedprioritering
+        // H√§mta meddelanden som ligger p√• en kanal utan nedprioritering
         String sql = "SELECT ID FROM MEDDELANDE WHERE STATUS = " + MeddelandeHandelse.MOTTAGET;
         if (kanalerMedBegransningar.size() > 0) {
         	StringBuffer inClause = new StringBuffer();
@@ -233,21 +233,21 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
         		+ " FETCH FIRST " + antalMeddelanden + " ROWS ONLY";
         meddelandeNr.addAll(qp.processQuery(sql, new IdMapper()));
         
-        // H‰mta meddelanden som ligger pÂ nedprioriterade kanaler
+        // H√§mta meddelanden som ligger p√• nedprioriterade kanaler
         for (Kanal kanal : kanalerMedBegransningar) {
-        	// Kontrollera att kanalen ‰r ˆppen
+        	// Kontrollera att kanalen √§r √∂ppen
         	if (kanal.isOppen()) {
-        		// Kontrollera om kanalen ‰r sovande
+        		// Kontrollera om kanalen √§r sovande
         		if (kanal.isSovande()) {
         			if (log.isDebugEnabled()) {
         				log.info("Kanal " + kanal.getNamn() + " sover. "
-        						+ kanal.getSovtidKvarMillisekunder() + " ms kvar till n‰sta batch.");
+        						+ kanal.getSovtidKvarMillisekunder() + " ms kvar till n√§sta batch.");
         			}
         			break;
         		}
         		kanal.setSoverTimestamp(null);
         		
-        		// Ber‰kna hur mÂnga meddelanden som fÂr markeras i aktuell kanal
+        		// Ber√§kna hur m√•nga meddelanden som f√•r markeras i aktuell kanal
         		int antalSenasteTimmen = getMarkeradeSenasteTimmen(kanal.getNamn());
         		int maxAntalPerTimme = kanal.getMaxAntalPerTimme() >= 0 ? kanal.getMaxAntalPerTimme() : Integer.MAX_VALUE;
         		int batchstorlek = kanal.getBatchStorlek() >= 0 ? kanal.getBatchStorlek() : Integer.MAX_VALUE;
@@ -299,11 +299,11 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
         }
         
         if (log.isDebugEnabled()) {
-        	String msg = "Markerade " + updated + " rader fˆr instans " + instans;
+        	String msg = "Markerade " + updated + " rader f√∂r instans " + instans;
         	if (kanalerMedBegransningar.size() > 0) {
         		msg += " varav:";
         		for (Kanal kanal : kanalerMedBegransningar) {
-        			msg += "\n" + kanal.getAntalMarkerade() + " pÂ kanal '" + kanal.getNamn() + "'";
+        			msg += "\n" + kanal.getAntalMarkerade() + " p√• kanal '" + kanal.getNamn() + "'";
         		}
         	}
         	log.debug(msg);
@@ -311,14 +311,14 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
     }
     
     /**
-     * Returnerar antal meddelanden som markerats fˆr utskick senaste timmen
-     * frÂn en given inkanal. Antalet ‰r summan av de meddelanden som skickats
-     * och d‰rmed fÂtt en skickat-tidsst‰mpel plus de meddelanden som har
-     * markerats av nÂgon process och hÂller pÂ att skickas, men ‰nnu ej fÂtt nÂgon
-     * skickat-tidsst‰mpel.
+     * Returnerar antal meddelanden som markerats f√∂r utskick senaste timmen
+     * fr√•n en given inkanal. Antalet √§r summan av de meddelanden som skickats
+     * och d√§rmed f√•tt en skickat-tidsst√§mpel plus de meddelanden som har
+     * markerats av n√•gon process och h√•ller p√• att skickas, men √§nnu ej f√•tt n√•gon
+     * skickat-tidsst√§mpel.
      * 
-     * @param kanal namn pÂ kanal att h‰mta uppgifter om
-     * @return antal meddelanden som markerats/s‰nts senaste timmen
+     * @param kanal namn p√• kanal att h√§mta uppgifter om
+     * @return antal meddelanden som markerats/s√§nts senaste timmen
      */
     private int getMarkeradeSenasteTimmen(String kanal) {
     	Calendar cal = GregorianCalendar.getInstance();
@@ -330,8 +330,8 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
 	}
     
     /**
-     * Sˆker ut de meddelanden som har status satt till -instans, 
-     * alltsÂ de meddelanden som markerats med metoden markeraMeddelandenForInstans. 
+     * S√∂ker ut de meddelanden som har status satt till -instans, 
+     * allts√• de meddelanden som markerats med metoden markeraMeddelandenForInstans. 
      */
     public List getMarkeradeMeddelanden(int instans) {
 		List list = qp.processQuery("SELECT ID, AVSANDARE, KANAL, RUBRIK, TEXT, "
@@ -370,18 +370,18 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
 		m.setMimetyp(rs.getString("MIMETYP"));
 		m.setKanal(rs.getString("KANAL"));
 		
-		// H‰mta avs‰ndare:
+		// H√§mta avs√§ndare:
 		m.setAvsandare(avsandareHandler.getAvsandare(rs.getInt("AVSANDARE")));
 		
-		// H‰mta mottagare:
+		// H√§mta mottagare:
 		List<Mottagare> mottagare = mottagareHandler.getMottagareForMeddelande(id);
 		m.setMottagare((Mottagare[]) mottagare.toArray(new Mottagare[0]));
 		
-		// H‰mta bilagor:
+		// H√§mta bilagor:
 		List<Bilaga> bilagor = bilagaHandler.getBilagorForMeddelande(id);
 		m.setBilagor((Bilaga[]) bilagor.toArray(new Bilaga[0]));
 		
-		// H‰mta h‰ndelser:
+		// H√§mta h√§ndelser:
 		List<MeddelandeHandelse> handelser = handelseHandler.getHandelserForMeddelande(id);
 		m.setHandelser((MeddelandeHandelse[]) handelser.toArray(new MeddelandeHandelse[0]));
 		
@@ -392,7 +392,7 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
 	    List list = qp.processQuery("SELECT * FROM MEDDELANDE WHERE ID=" + meddelandeId, this);
 	    if (list.size() == 0) { return null; }
 	    if (list.size() > 1) {
-	        throw new IllegalStateException("Hittade mer ‰n ett meddelande med id " + meddelandeId);
+	        throw new IllegalStateException("Hittade mer √§n ett meddelande med id " + meddelandeId);
 	    }
 	    return (Meddelande) list.get(0);
 	}
@@ -422,14 +422,14 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
         where = addRestriction(where, "SKAPADTIDPUNKT", ">=", from);
         where = addRestriction(where, "SKAPADTIDPUNKT", "<=", tom);
         
-        // Bygg in-lista fˆr avs‰ndare:
+        // Bygg in-lista f√∂r avs√§ndare:
         if ((avsandare != null) && (avsandare.length > 0)) {
             String inAvsandare = "AVSANDARE IN ";
             for (int i = 0; i < avsandare.length; i++) {
                 if (avsandare[i] == null) { continue; }
                 Long id = avsandare[i].getId();
                 if (id == null) {
-                    throw new IllegalArgumentException("Felaktig avs‰ndare, sˆkning gˆrs pÂ ID: " + avsandare[i]);
+                    throw new IllegalArgumentException("Felaktig avs√§ndare, s√∂kning g√∂rs p√• ID: " + avsandare[i]);
                 }
                 inAvsandare = inAvsandare + id.intValue() + ",";
             }
@@ -439,12 +439,12 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
             } 
         }
         
-//        // Bygg frÂga fˆr mottagare. 
+//        // Bygg fr√•ga f√∂r mottagare. 
 //        if ((mottagare != null) && (mottagare.length > 0)) {
 //            
 //        }
         
-        // textinnehÂll:
+        // textinneh√•ll:
         if (textinnehall != null) {
             where = addRestriction(where, "TEXT LIKE '%" + textinnehall + "%'");
         }
@@ -452,7 +452,7 @@ public class DAOMeddelandeImpl extends DAOImplBase implements RowToObjectMapper,
         where = addRestriction(where, "SIZE(TEXT)", ">=", minstorlek);
         where = addRestriction(where, "SIZE(TEXT)", "<=", maxstorlek);
        
-        // Bygg frÂga fˆr h‰ndelser och status:
+        // Bygg fr√•ga f√∂r h√§ndelser och status:
         
         return null;
     }

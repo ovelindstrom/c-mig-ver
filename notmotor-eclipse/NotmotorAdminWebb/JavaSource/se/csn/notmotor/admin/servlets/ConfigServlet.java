@@ -45,8 +45,8 @@ public class ConfigServlet extends HttpServlet implements Servlet {
 
 	
 	/**
-	 * Kontrollerar att alla externa beroenden ‰r uppsatta enligt krav.
-	 * @return true om alla dependencies fanns och var r‰tt uppsatta,
+	 * Kontrollerar att alla externa beroenden √§r uppsatta enligt krav.
+	 * @return true om alla dependencies fanns och var r√§tt uppsatta,
 	 * false annars
 	 */
 	public boolean checkExternalDependencies() {
@@ -70,7 +70,7 @@ public class ConfigServlet extends HttpServlet implements Servlet {
                 "notmotor.ds.jndinamn",
         };
         
-        // Anropa med propertiesfilen som argument fˆr att s‰tta upp Log-klassens interna cache:
+        // Anropa med propertiesfilen som argument f√∂r att s√§tta upp Log-klassens interna cache:
         Properties.init(PROPERTIESFIL);
         PropertyDependencyTester.dumpPropertiesThrowIfMissing(properties);
         
@@ -84,7 +84,7 @@ public class ConfigServlet extends HttpServlet implements Servlet {
 	    String dsnamn =  Properties.getProperty(PROPERTIESFIL, "notmotor.ds.jndinamn");
 	    DataSource ds = sl.getDatasource(dsnamn);
 	    if (ds == null) {
-	        throw new ConfigException("Kunde inte hitta " + dsnamn, "Kontrollera att datasourcen finns i JNDI-tr‰det");
+	        throw new ConfigException("Kunde inte hitta " + dsnamn, "Kontrollera att datasourcen finns i JNDI-tr√§det");
 	    } 
 	    System.out.println("Datasource: " + ds);
 	    ActionHelper.setDatasource(ds);

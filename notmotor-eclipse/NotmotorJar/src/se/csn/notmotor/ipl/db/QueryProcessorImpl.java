@@ -9,7 +9,7 @@ import se.csn.ark.common.dal.db.DatabaseException;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * QueryProcessor som anv‰nder en enda Connection. 
+ * QueryProcessor som anv√§nder en enda Connection. 
  * Denna connection lagras i en statisk medlemsvariabel.
  * OBS! Kan leda till udda beteende om flera webappar delar klassladdare.
  */
@@ -25,9 +25,9 @@ public class QueryProcessorImpl extends QueryProcessorBase implements QueryProce
 	}
 
 	/**
-	 * @param ds Datasource som ska anv‰ndas fˆr SQL-slagningarna.
-	 * @param transactionIsolationLevel Anger den isolationsnivÂ som kommer att s‰ttas
-	 *        pÂ nya Connection-objekt n‰r de skapas.
+	 * @param ds Datasource som ska anv√§ndas f√∂r SQL-slagningarna.
+	 * @param transactionIsolationLevel Anger den isolationsniv√• som kommer att s√§ttas
+	 *        p√• nya Connection-objekt n√§r de skapas.
 	 */
 	public QueryProcessorImpl(DataSource ds, int transactionIsolationLevel) {
 	    this.ds = ds;
@@ -38,7 +38,7 @@ public class QueryProcessorImpl extends QueryProcessorBase implements QueryProce
 	    	case Connection.TRANSACTION_SERIALIZABLE:
 	    	    this.transactionIsolationLevel = transactionIsolationLevel;
 	    		break;
-	    	default: throw new IllegalArgumentException("OtillÂten isolationsnivÂ: " + transactionIsolationLevel);
+	    	default: throw new IllegalArgumentException("Otill√•ten isolationsniv√•: " + transactionIsolationLevel);
 	    }
 	}
 	

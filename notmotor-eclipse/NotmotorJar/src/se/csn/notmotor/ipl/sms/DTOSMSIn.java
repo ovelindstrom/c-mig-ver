@@ -20,7 +20,7 @@ public class DTOSMSIn {
 	private static final int MINTELELANGD = 10;
 	
 	/**
-	 * Parameterlös konstruktor för att uppfylla beankontraktet.
+	 * ParameterlÃ¶s konstruktor fÃ¶r att uppfylla beankontraktet.
 	 *
 	 */
 	public DTOSMSIn() {
@@ -45,14 +45,14 @@ public class DTOSMSIn {
 
 	public final void setMeddelande(String meddelande) {
 	    if((meddelande != null) && (meddelande.length() > MAXMEDDELANDELANGD)) {
-	        throw new IllegalArgumentException("Meddelandetexten får inte vara längre än 160 tecken, var " + meddelande.length() + " tecken lång");    
+	        throw new IllegalArgumentException("Meddelandetexten fÃ¥r inte vara lÃ¤ngre Ã¤n 160 tecken, var " + meddelande.length() + " tecken lÃ¥ng");    
 	    }
 	    this.meddelande = meddelande;
 	}
 
 	public final void setTelnummer(String telnr) {
 	    if(telnr == null || telnr.length() < MINTELELANGD) {
-	        throw new IllegalArgumentException("Ett SMS-mottagarnummer måste vara minst 10 tecken långt");
+	        throw new IllegalArgumentException("Ett SMS-mottagarnummer mÃ¥ste vara minst 10 tecken lÃ¥ngt");
 	    }
 		telnummer = telnr;
 	}
@@ -63,10 +63,10 @@ public class DTOSMSIn {
 
 	public final void setRubrik(String rubrik) {
 		if (rubrik == null || rubrik.length() < 1) {
-			throw new IllegalArgumentException("SMS-rubriken måste vara minst 1 tecken");
+			throw new IllegalArgumentException("SMS-rubriken mÃ¥ste vara minst 1 tecken");
 		}
 		if (rubrik.length() > MAXRUBRIKLANGD) {
-			throw new IllegalArgumentException("SMS-rubriken får inte vara längre än 11 tecken");
+			throw new IllegalArgumentException("SMS-rubriken fÃ¥r inte vara lÃ¤ngre Ã¤n 11 tecken");
 		}
 		this.rubrik = rubrik;
 	}

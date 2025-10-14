@@ -5,51 +5,51 @@ public interface MeddelandeServicesBase {
 	/**
 	 * 
 	 * @return true om nuvarande tidpunkt befinner sig i ett eller flera 
-	 * 			underhållsfönster; false annars
+	 * 			underhÃ¥llsfÃ¶nster; false annars
 	 */
 	public boolean inScheduledPause();
 	
 	/**
-	 * Sätter fältet WATCHDOGTIMESTAMP i tabellen STATUS för denna instans till nuvarande tid. 
-	 * Detta fält används för att kontrollera att alla instanser lever och gör det de ska.
-	 * En servlet läser fältet för alla aktiva instanser och kollar att de lever.
+	 * SÃ¤tter fÃ¤ltet WATCHDOGTIMESTAMP i tabellen STATUS fÃ¶r denna instans till nuvarande tid. 
+	 * Detta fÃ¤lt anvÃ¤nds fÃ¶r att kontrollera att alla instanser lever och gÃ¶r det de ska.
+	 * En servlet lÃ¤ser fÃ¤ltet fÃ¶r alla aktiva instanser och kollar att de lever.
 	 * 
-	 * OBS! Denna tjänst skriver bara till databas då det bedöms som nödvändigt. Den jämför 
-	 * nuvarande timestamp med det timestamp då det senast skrevs till databas och skriver 
-	 * bara om det är dags. Det är alltså rekommenderat att anropa denna metod ofta, då den 
-	 * är väldigt lättviktig. 
+	 * OBS! Denna tjÃ¤nst skriver bara till databas dÃ¥ det bedÃ¶ms som nÃ¶dvÃ¤ndigt. Den jÃ¤mfÃ¶r 
+	 * nuvarande timestamp med det timestamp dÃ¥ det senast skrevs till databas och skriver 
+	 * bara om det Ã¤r dags. Det Ã¤r alltsÃ¥ rekommenderat att anropa denna metod ofta, dÃ¥ den 
+	 * Ã¤r vÃ¤ldigt lÃ¤ttviktig. 
 	 */
 	public void updateWatchdogFlag();
 	
 	/**
-	 * @param milliseconds Det antal millisekunder som tråden ska sova
+	 * @param milliseconds Det antal millisekunder som trÃ¥den ska sova
 	 * @throws RuntimeException om sovandet misslyckades
 	 */
 	public void sleepTick();
 	public void sleepWaittime();
 	
 	/**
-	 * Ska anropas periodiskt av state-machine-tråden så att parametrarna
-	 * hålls rimligt uppdaterade
+	 * Ska anropas periodiskt av state-machine-trÃ¥den sÃ¥ att parametrarna
+	 * hÃ¥lls rimligt uppdaterade
 	 *
 	 */
 	public void updateParameters();
 	
 	/**
-	 * Läser den rad i STATUS-tabellen som matchar denna instans
-	 * @return aktuell status som den är satt i databasen för den här instansen
+	 * LÃ¤ser den rad i STATUS-tabellen som matchar denna instans
+	 * @return aktuell status som den Ã¤r satt i databasen fÃ¶r den hÃ¤r instansen
 	 */
 	public int getStatus();
 	
 	/**
-	 * Eftersom ett webb-gui kan gå in och modifiera tillstånd medan vi gör något
-	 * måste vi kontrollera att vi fortfarande befinner oss i samma tillstånd som 
-	 * vi trodde innan vi går till ett nytt.
+	 * Eftersom ett webb-gui kan gÃ¥ in och modifiera tillstÃ¥nd medan vi gÃ¶r nÃ¥got
+	 * mÃ¥ste vi kontrollera att vi fortfarande befinner oss i samma tillstÃ¥nd som 
+	 * vi trodde innan vi gÃ¥r till ett nytt.
 	 */
 	public boolean makeTransition(int fromState, int intoState);
 	
 	/**
-	 * Anropas när processen avslutas. Stäng öppna connections, skriv stängningstidpunkt till
+	 * Anropas nÃ¤r processen avslutas. StÃ¤ng Ã¶ppna connections, skriv stÃ¤ngningstidpunkt till
 	 * databasen mm.
 	 */
 	public void shutdown();

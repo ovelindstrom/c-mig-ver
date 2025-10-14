@@ -51,7 +51,7 @@ public class SMSTjaenst {
 	/**
 	 * Skapar en ny instans av SMSTjaenst OCH TESTAR ANSLUTNINGEN 
 	 * TILL DEN ENDPOINT SOM ANGAVS. Om endpointen har en port 
-	 * @throws IllegalArgumentException om endpointen inte kunde nås
+	 * @throws IllegalArgumentException om endpointen inte kunde nÃ¥s
 	 */
 	public SMSTjaenst(String endpoint) {
 	    this();
@@ -66,7 +66,7 @@ public class SMSTjaenst {
 	            }
             }
     	    /*if(!CommunicationTester.isPortOpen(host, port, CONNECT_TIMEOUT)) {
-    	        throw new IllegalStateException("Kunde inte nå endpoint: " + endpoint);
+    	        throw new IllegalStateException("Kunde inte nÃ¥ endpoint: " + endpoint);
     	    }*/
     	    this.endpoint = endpoint;
         } catch (MalformedURLException e) {
@@ -81,19 +81,19 @@ public class SMSTjaenst {
 	}
 	
 	/**
-	 * Kontrollerar att alla nödvändiga data är satta.
-	 * @throws IllegalStateException om någon parameter saknas för 
-	 * att tjänsten ska kunna användas
+	 * Kontrollerar att alla nÃ¶dvÃ¤ndiga data Ã¤r satta.
+	 * @throws IllegalStateException om nÃ¥gon parameter saknas fÃ¶r 
+	 * att tjÃ¤nsten ska kunna anvÃ¤ndas
 	 */
 	public void checkParams() {
 	    if (userid == null) {
-	        throw new IllegalStateException("userid måste vara satt");
+	        throw new IllegalStateException("userid mÃ¥ste vara satt");
 	    }
 	    if (password == null) {
-	        throw new IllegalStateException("password måste vara satt");
+	        throw new IllegalStateException("password mÃ¥ste vara satt");
 	    }
 		if (endpoint == null) {
-		    throw new IllegalStateException("endpoint måste vara satt");
+		    throw new IllegalStateException("endpoint mÃ¥ste vara satt");
 		}
     }
 	
@@ -118,7 +118,7 @@ public class SMSTjaenst {
 	    	try {
 				in.close();
 			} catch (IOException e) {
-				log.error("Kunde inte stänga BufferedReader...");
+				log.error("Kunde inte stÃ¤nga BufferedReader...");
 			}
 	    }
 	}
@@ -136,12 +136,12 @@ public class SMSTjaenst {
 	        log.info("Prop: " + props[i] + ": " + System.getProperty(props[i]));
 	    }
 		if (in == null) {
-		    throw new IllegalArgumentException("Indata måste vara satt");
+		    throw new IllegalArgumentException("Indata mÃ¥ste vara satt");
 		}
 		checkParams();
 
 		if (log.isDebugEnabled()) {
-			log.debug("Anropar sms-tjänsten med följande indata.\n  Telnr:" + in.getTelnummer()
+			log.debug("Anropar sms-tjÃ¤nsten med fÃ¶ljande indata.\n  Telnr:" + in.getTelnummer()
 					+ "\n  Meddelande:" + in.getMeddelande()
 					+ "\n  Userid:"	+ userid
 					+ "\n  Password:" + password
@@ -171,12 +171,12 @@ public class SMSTjaenst {
 			client.getState().setCredentials(AuthScope.ANY, defaultcreds);
 			client.executeMethod(post);
 		} catch (HttpException he) {
-			String error = "Fångade HttpException";
+			String error = "FÃ¥ngade HttpException";
 			log.error(error, he);
 			response.setReturStatus(998);
     		return response;
 		} catch (IOException ioe) {
-			String error = "Fångade IOException";
+			String error = "FÃ¥ngade IOException";
 			log.error(error, ioe);
 			response.setReturStatus(998);
     		return response;
@@ -185,7 +185,7 @@ public class SMSTjaenst {
 		try {
 			xml = post.getResponseBodyAsString();
 		} catch (IOException ioe) {
-			String error = "Fångade IOException";
+			String error = "FÃ¥ngade IOException";
 			log.error(error, ioe);
 			response.setReturStatus(997);
     		return response;
@@ -198,12 +198,12 @@ public class SMSTjaenst {
 		try {
 			parser.parse(new InputSource(new StringReader(xml)));
 		} catch (SAXException saxe) {
-			String error = "Fångade SAXException";
+			String error = "FÃ¥ngade SAXException";
 			log.error(error, saxe);
 			response.setReturStatus(997);
     		return response;
 		} catch (IOException ioe) {
-			String error = "Fångade IOException";
+			String error = "FÃ¥ngade IOException";
 			log.error(error, ioe);
 			response.setReturStatus(997);
     		return response;
@@ -219,13 +219,13 @@ public class SMSTjaenst {
     		return response;
 		}
 		
-		// Om vi får returkod 2 från telia använder vi 902 internt istället
-		// då kod 2 betyder "skickat server" i notmotorn
+		// Om vi fÃ¥r returkod 2 frÃ¥n telia anvÃ¤nder vi 902 internt istÃ¤llet
+		// dÃ¥ kod 2 betyder "skickat server" i notmotorn
 		if (responseCode == 2) {
 			responseCode = 902;
 		}
 		if (responseCode == 0) {
-			responseCode = 2; // Betyder att meddelandet är skickat
+			responseCode = 2; // Betyder att meddelandet Ã¤r skickat
 		}
 		response.setReturStatus(responseCode);
 		response.setResponseMessage(sResponseMessage);
@@ -236,7 +236,7 @@ public class SMSTjaenst {
 		if (response.sandningLyckad()) {
 		    log.debug("Skickat meddelande: " + in + " -> " + response);
 		} else {
-		    log.debug("Sändning misslyckades: " + in + " -> " + response);
+		    log.debug("SÃ¤ndning misslyckades: " + in + " -> " + response);
 		}
 		
 		return response;

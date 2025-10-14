@@ -26,14 +26,14 @@ import se.csn.notmotor.ipl.Notmotor;
 //import com.ibm.websphere.servlet.event.ServletListener;
 
 /**
- * Denna servlet tillhandahåller den tråd som notmotorn går i. 
- * Servleten hanterar två typer av anrop: ett testanrop (GET 
+ * Denna servlet tillhandahÃ¥ller den trÃ¥d som notmotorn gÃ¥r i. 
+ * Servleten hanterar tvÃ¥ typer av anrop: ett testanrop (GET 
  * eller POST utan speciella parametrar) och ett starta-anrop
  * (parametern 'start' satt till 'true').
  * Vid testanropet returnerar servleten ett enkelt, html-formaterat
  * OK-meddelande. 
- * Vid start-anropet kommer servleten att flusha buffern för att 
- * skicka meddelande tillbaka till anropande tråd. Därefter startas 
+ * Vid start-anropet kommer servleten att flusha buffern fÃ¶r att 
+ * skicka meddelande tillbaka till anropande trÃ¥d. DÃ¤refter startas 
  * notmotorn. 
  *   
  */
@@ -70,7 +70,7 @@ public class SkickaMotorServlet extends HttpServlet implements Servlet { //, Ser
 	    if ((start != null) && (start.equalsIgnoreCase("true"))) {
 	        startaNotmotor(req.getRequestURL().toString());
 	    } else {
-	        log.debug("Skickat svar på förfrågan från " + req.getRemoteHost());
+	        log.debug("Skickat svar pÃ¥ fÃ¶rfrÃ¥gan frÃ¥n " + req.getRemoteHost());
 	    }
 	}
 	
@@ -87,23 +87,23 @@ public class SkickaMotorServlet extends HttpServlet implements Servlet { //, Ser
 	
 	public void init(ServletConfig config) throws ServletException {
 	    log.debug("init");
-	    // Kontrollera om autostart är aktiverad och isåfall hur många instanser av Notmotorn
+	    // Kontrollera om autostart Ã¤r aktiverad och isÃ¥fall hur mÃ¥nga instanser av Notmotorn
 	    // som ska startas
 	    int autostart = Properties.getIntProperty(PROPERTIESFIL, "notmotor.autostart", 0);
-	    // Om autostart > 0, starta önskat antal instanser av Notmotorn
+	    // Om autostart > 0, starta Ã¶nskat antal instanser av Notmotorn
 	    if (autostart > 0) {
 	    	log.info("Autostart av " + autostart + " Notmotor-instanser ...");
 	    	String url = Properties.getProperty(PROPERTIESFIL, "notmotor.url");
 	    	for (int i = 0; i < autostart; i++) {
 	    		startaNotmotor(url);
 	    		try {
-	    			// Vänta 1000 millisekunder innan nästa instans startas.
-	    			// För att jobb-namnet för tråden ska bli unik får inte två instanser
+	    			// VÃ¤nta 1000 millisekunder innan nÃ¤sta instans startas.
+	    			// FÃ¶r att jobb-namnet fÃ¶r trÃ¥den ska bli unik fÃ¥r inte tvÃ¥ instanser
 	    			// startas inom samma millisekund.
 	    			Thread.sleep(1000);
 	    		} catch (InterruptedException e) {
-	    			log.warn("sleep avbröts", e);
-					// Fortsätt ändå
+	    			log.warn("sleep avbrÃ¶ts", e);
+					// FortsÃ¤tt Ã¤ndÃ¥
 				}
 	    	}
 	    } else {

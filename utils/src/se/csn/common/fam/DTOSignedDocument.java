@@ -18,7 +18,7 @@ import java.util.Map;
  *
  */
 public class DTOSignedDocument implements Serializable {
-    private final static String SEPARATOR = "#§";
+    private final static String SEPARATOR = "#¬§";
 	private byte[] data;
 	private String ocrdata;
 	private String attributes;
@@ -41,7 +41,7 @@ public class DTOSignedDocument implements Serializable {
     }
     
     /**
-     * @param Data i str‰ngformat
+     * @param Data i str√§ngformat
      */
     public void setData(String s) {
         if((s == null) || (s.length() == 0)) {
@@ -82,8 +82,8 @@ public class DTOSignedDocument implements Serializable {
     }
     
     /** 
-     * OCR-data som anv‰nds fˆr att simulera en inskanning frÂn pappersdokument.
-     * OCR-data lagras som en str‰ng pÂ formatet varde1=name1#varde2=varde2#....
+     * OCR-data som anv√§nds f√∂r att simulera en inskanning fr√•n pappersdokument.
+     * OCR-data lagras som en str√§ng p√• formatet varde1=name1#varde2=varde2#....
      */
     public void clearOcrdata() {
         ocrdata = "";
@@ -105,7 +105,7 @@ public class DTOSignedDocument implements Serializable {
        return (String)map.get(param);
     }
     /**
-     * @return En str‰ngrepresentation av ocrdatat
+     * @return En str√§ngrepresentation av ocrdatat
      */
     public String getOcrdataStrang() {
         return getTCLLista(toMap(ocrdata));
@@ -115,7 +115,7 @@ public class DTOSignedDocument implements Serializable {
     }
     
     /**
-     * @return En TCL-lista pÂ formatet {{param1}{verde1} {param2}{verde2}...}
+     * @return En TCL-lista p√• formatet {{param1}{verde1} {param2}{verde2}...}
      */
     public String getTCLLista(Map tuples) {
         StringBuffer sb = new StringBuffer();
@@ -139,8 +139,8 @@ public class DTOSignedDocument implements Serializable {
     
     
     /** 
-     * Attribut ‰r data som inte pÂverkar batch-uppdateringen, men som ‰ndÂ ska sparas.
-     * Attribut bestÂr av key-value-par, str‰ngar.
+     * Attribut √§r data som inte p√•verkar batch-uppdateringen, men som √§nd√• ska sparas.
+     * Attribut best√•r av key-value-par, str√§ngar.
      */
     public void clearAttributLista() {
         attributes = "";
@@ -160,7 +160,7 @@ public class DTOSignedDocument implements Serializable {
        return (String)map.get(param);
     }
     /**
-     * @return En str‰ngrepresentation av ocrdatat
+     * @return En str√§ngrepresentation av ocrdatat
      */
     public String getAttributStrang() {
         return getTCLLista(toMap(attributes));

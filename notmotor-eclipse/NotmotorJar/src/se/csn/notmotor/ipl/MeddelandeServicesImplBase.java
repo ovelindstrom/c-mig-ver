@@ -23,12 +23,12 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
     protected int instansnummer;
 	public static final int DEFAULT_SOVTID = 0;
 	public static final int DEFAULT_TICKTID = 1;
-	// Den längsta tid i sekunder som får förlöpa mellan uppdatering av watchdog-timern.
-	// Denna tid styr hur ofta watchdogfältet uppdateras.
+	// Den lÃ¤ngsta tid i sekunder som fÃ¥r fÃ¶rlÃ¶pa mellan uppdatering av watchdog-timern.
+	// Denna tid styr hur ofta watchdogfÃ¤ltet uppdateras.
 	public static final int DEFAULT_WATCHDOGTID = 120;
-	// Denna tid styr den kortast tillåtna watchdogtiden. Den är satt så att de längsta operationerna
-	// ska hinna fullbordas på kortare tid. Ändra inte utan att kolla upp hur lång tid som 
-	// går åt t.ex. för att slå upp en batch meddelanden.
+	// Denna tid styr den kortast tillÃ¥tna watchdogtiden. Den Ã¤r satt sÃ¥ att de lÃ¤ngsta operationerna
+	// ska hinna fullbordas pÃ¥ kortare tid. Ã„ndra inte utan att kolla upp hur lÃ¥ng tid som 
+	// gÃ¥r Ã¥t t.ex. fÃ¶r att slÃ¥ upp en batch meddelanden.
 	public static final int MIN_WATCHDOGTID = 20; 
 	
 	public static final int DEFAULT_BATCHSTORLEK = 100;
@@ -45,13 +45,13 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 	public MeddelandeServicesImplBase(ControlledCommitQueryProcessor qp, ParameterKalla paramSource, 
 	        DAOMeddelande meddelandehandler, int instansnummer) {
 	    if (qp == null) {
-	        throw new IllegalArgumentException("QueryProcessor får inte vara null");
+	        throw new IllegalArgumentException("QueryProcessor fÃ¥r inte vara null");
 	    }
 	    if (paramSource == null) {
-	        throw new IllegalArgumentException("parameterkälla får inte vara null");
+	        throw new IllegalArgumentException("parameterkÃ¤lla fÃ¥r inte vara null");
 	    }
 	    if (meddelandehandler == null) {
-	        throw new IllegalArgumentException("MeddelandeHandler får inte vara null");
+	        throw new IllegalArgumentException("MeddelandeHandler fÃ¥r inte vara null");
 	    }
 	    
 	    this.qp = qp;
@@ -77,15 +77,15 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 			        + " STANGNINGSTID < CURRENT TIMESTAMP AND OPPNINGSTID > CURRENT TIMESTAMP", 0);
 			return radcount > 0;
 	    } catch (Exception e) {
-	        log.error("inScheduledPause: Fångat exception, returnerar FALSE: ", e);
+	        log.error("inScheduledPause: FÃ¥ngat exception, returnerar FALSE: ", e);
 	        return false;
 	    }
 	}
 	
 	/**
-	 * Sätter fältet WATCHDOGTIMESTAMP i tabellen STATUS för denna instans till nuvarande tid. 
-	 * Detta fält används för att kontrollera att alla instanser lever och gör det de ska.
-	 * En servlet läser fältet för alla aktiva instanser och kollar att de lever.
+	 * SÃ¤tter fÃ¤ltet WATCHDOGTIMESTAMP i tabellen STATUS fÃ¶r denna instans till nuvarande tid. 
+	 * Detta fÃ¤lt anvÃ¤nds fÃ¶r att kontrollera att alla instanser lever och gÃ¶r det de ska.
+	 * En servlet lÃ¤ser fÃ¤ltet fÃ¶r alla aktiva instanser och kollar att de lever.
 	 */
 	public void updateWatchdogFlag() {
 	    try {
@@ -97,7 +97,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 		        senastUppdateradWatchdog = System.currentTimeMillis(); 
 		    }
 	    } catch (Exception e) {
-	        log.error("updateWatchdogFlag: Fångat exception: ", e);
+	        log.error("updateWatchdogFlag: FÃ¥ngat exception: ", e);
 	    }
 	}
 	
@@ -107,7 +107,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 	 */
 	public void sleep(int milliseconds) {
 	    if (milliseconds < 0) {
-	        throw new IllegalArgumentException("Sovtiden måste vara >= 0");
+	        throw new IllegalArgumentException("Sovtiden mÃ¥ste vara >= 0");
 	    }
 		try {
 			Thread.sleep(milliseconds);
@@ -122,10 +122,10 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 		    if (watchdogtid < MIN_WATCHDOGTID) {
 		        throw new IllegalArgumentException("Orimligt kort watchdogtid: " + watchdogtid);
 		    }
-		    // Börja med att uppdatera watchdog, vi vet ju inte hur länge sen det var sist
+		    // BÃ¶rja med att uppdatera watchdog, vi vet ju inte hur lÃ¤nge sen det var sist
 		    updateWatchdogFlag();
 		    
-		    // Om sovtiden är större än watchdogtiden:
+		    // Om sovtiden Ã¤r stÃ¶rre Ã¤n watchdogtiden:
 	    	// Sov watchdogtiden
 	    	// Uppdatera flaggan
 	    	// Minska sovtiden med watchdogtiden
@@ -137,18 +137,18 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 		        sovtid -= watchdogtid;
 		    }
 		    
-		    // Avsluta med att sova kvarstående sovtid
+		    // Avsluta med att sova kvarstÃ¥ende sovtid
 		    sleep(sovtid);
 	    } catch (Exception e) {
-	        log.error("sleepAndUpdate: Fångat exception: ", e);
+	        log.error("sleepAndUpdate: FÃ¥ngat exception: ", e);
 	    }
 
 	}
 	
 	public boolean makeTransition(int fromState, int toState) {
 		// Skriv status till databas
-	    //log.debug("Sätter status för instans " + instansnummer + " till " + status);
-	    // Kontrollera att vi befinner oss i rätt tillstånd:
+	    //log.debug("SÃ¤tter status fÃ¶r instans " + instansnummer + " till " + status);
+	    // Kontrollera att vi befinner oss i rÃ¤tt tillstÃ¥nd:
 	    if (getStatus() != fromState) {
 	        return false;
 	    }
@@ -164,19 +164,19 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 	
 	
 	/**
-	 * Läser den rad i STATUS-tabellen som matchar denna instans
-	 * @return aktuell status som den är satt i databasen för den här instansen
+	 * LÃ¤ser den rad i STATUS-tabellen som matchar denna instans
+	 * @return aktuell status som den Ã¤r satt i databasen fÃ¶r den hÃ¤r instansen
 	 */
 	public int getStatus() {
-		// Läs status i statustabellen
+		// LÃ¤s status i statustabellen
 	    int newStatus = MeddelandeStateMachineBase.UNKNOWN;
 	    try {
 			newStatus = qp.getInt("SELECT STATUS FROM STATUS WHERE INSTANS = " + instansnummer, -1);
 			if (newStatus == -1) {
-				throw new DatabaseException("Kunde inte läsa status för instans " + instansnummer);
+				throw new DatabaseException("Kunde inte lÃ¤sa status fÃ¶r instans " + instansnummer);
 			}
 	    } catch (Exception e) {
-	        log.error("Kunde inte läsa status", e);
+	        log.error("Kunde inte lÃ¤sa status", e);
 	        return MeddelandeStateMachineBase.UNKNOWN;
 	    }
 		return newStatus;
@@ -189,7 +189,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 		    
 		    sleepAndUpdate(sovtid, wdtid);
 	    } catch (Exception e) {
-	        log.error("sleepTick: Fångat exception: ", e);
+	        log.error("sleepTick: FÃ¥ngat exception: ", e);
 	    }
 	}
 
@@ -200,7 +200,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 		    
 		    sleepAndUpdate(sovtid, wdtid);
 	    } catch (Exception e) {
-	        log.error("sleepWaittime: Fångat exception: ", e);
+	        log.error("sleepWaittime: FÃ¥ngat exception: ", e);
 	    }
 	}
 	
@@ -230,7 +230,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 	    } else  {
 	        sb.append("NULL");
 	    }
-	    sb.append(" Från: ");
+	    sb.append(" FrÃ¥n: ");
 	    if(meddelande.getAvsandare() != null) {
 	        sb.append(meddelande.getAvsandare().getEpostadress());
 	    } else {
@@ -254,18 +254,18 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 	
 	
 	/**
-	 * Söker ut alla meddelanden för denna instans med negativ status 
-	 * (dvs. meddelanden som är markerade för pågående sändning) 
-	 * och sätter om dem till status MOTTAGET.
+	 * SÃ¶ker ut alla meddelanden fÃ¶r denna instans med negativ status 
+	 * (dvs. meddelanden som Ã¤r markerade fÃ¶r pÃ¥gÃ¥ende sÃ¤ndning) 
+	 * och sÃ¤tter om dem till status MOTTAGET.
 	*/
 	private void aterstallMeddelanden() {
 		String sql = "UPDATE MEDDELANDE SET STATUS = " + MeddelandeHandelse.MOTTAGET
     			+ " WHERE STATUS = " + (-instansnummer);
-	    log.info("Återställer meddelandestatus för avbrutna sändningar, sql: " + sql);
+	    log.info("Ã…terstÃ¤ller meddelandestatus fÃ¶r avbrutna sÃ¤ndningar, sql: " + sql);
 	
 	    int result = qp.executeThrowException(sql);
 	    
-	    log.debug("Återställde " + result + " meddelanden.");
+	    log.debug("Ã…terstÃ¤llde " + result + " meddelanden.");
 	}
 	
 
@@ -280,9 +280,9 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 	        
 	        SingleThreadConnectionQueryProcessor stp = (SingleThreadConnectionQueryProcessor) qp;
 	        stp.removeConnectionForThisThread();
-	        log.info("Stängt ner instans " + instansnummer);
+	        log.info("StÃ¤ngt ner instans " + instansnummer);
 	    } catch (Exception e) {
-	        log.error("shutdown: Fångat exception: ", e);
+	        log.error("shutdown: FÃ¥ngat exception: ", e);
 	    }
 	        
     }
