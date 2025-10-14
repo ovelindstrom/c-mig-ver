@@ -1,0 +1,58 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.AllRecipes
+displayName: All Modernization Recipes
+description: Applies all modernization recipes including changing to the new superpom, removing developers section, adding JUnit 3 dependency, and ordering imports.
+recipeList:
+  - se.csn.recipes.modernize.NewSuperPomParent
+  - se.csn.recepes.modernize.NewNotmotorParent
+  - se.csn.recipes.modernize.DropDevelopers
+  - se.csn.recipes.modernize.AddJunit3TestDependency
+  - org.openrewrite.staticanalysis.maven.MavenJavadocNonAsciiRecipe
+  - org.openrewrite.staticanalysis.RemoveEmptyJavaDocParameters
+  - org.openrewrite.java.cleanup.RemoveUnusedImports
+  - org.openrewrite.java.format.AutoFormat
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.NewSuperPomParent
+displayName: Change to use the new superpom as parent
+recipeList:
+  - org.openrewrite.maven.ChangeParentPom:
+      oldGroupId: se.csn
+      oldArtifactId: superpom
+      newVersion: 3.0-SNAPSHOT
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.NewNotmotorParent
+displayName: Make sure that all projects use the new Notmotor parent
+recipeList:
+  - org.openrewrite.maven.ChangeParentPom:
+      oldGroupId: se.csn
+      oldArtifactId: notmotor
+      newVersion: 1.0-SNAPSHOT
+
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.DropDevelopers
+displayName: Delete <developers> section
+description: Removes the <developers> section from Maven POM files.
+recipeList:
+  - org.openrewrite.xml.RemoveXmlTag:
+      # The XPath expression to target the <developers> element anywhere in a POM file.
+      xPath: /project/developers
+      fileMatcher: '**/pom.xml'
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.AddJunit3TestDependency
+displayName: Add JUnit 3 Test Dependency
+description: Adds the classic JUnit 3 dependency with test scope to pom.xml.
+recipeList:
+  - org.openrewrite.maven.AddDependency:
+      # Required parameters for the dependency coordinate
+      groupId: junit
+      artifactId: junit
+      version: 3.8.1 # Specify the version you need
+      # Optional parameter to set the scope
+      scope: test
+      # We only want to add JUnit 3 if the project is using it
+      onlyIfUsing: junit.framework.*
