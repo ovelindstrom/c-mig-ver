@@ -21,7 +21,7 @@ public class Tidsintervall {
         this.starttid = start;
         this.sluttid = slut;
     }
-    
+
     /**
      * Kontrollerar om inmatad tid befinner sig inom intervallet. 
      * @return 
@@ -41,8 +41,8 @@ public class Tidsintervall {
         }
         return (tidpunkt.before(sluttid) && tidpunkt.after(starttid));
     }
-    
-    
+
+
     public Date getSluttid() {
         return sluttid;
     }
@@ -55,14 +55,14 @@ public class Tidsintervall {
     public void setStarttid(Date starttid) {
         this.starttid = starttid;
     }
-    
+
     private boolean dateEquals(Date d1, Date d2) {
         if (d1 == null) {
         	return (d2 == null);
         }
         return d1.equals(d2);
     }
-    
+
     public boolean equals(Object o) {
         if (o == null) {
         	return false;
@@ -73,7 +73,7 @@ public class Tidsintervall {
         Tidsintervall t = (Tidsintervall)o;
         return (dateEquals(starttid, t.starttid) && dateEquals(sluttid, t.sluttid));
     }
-    
+
     public int hashCode() {
         int h1 = (starttid == null) ? 0 : starttid.hashCode();
         int h2 = (sluttid == null) ? 0 : sluttid.hashCode();

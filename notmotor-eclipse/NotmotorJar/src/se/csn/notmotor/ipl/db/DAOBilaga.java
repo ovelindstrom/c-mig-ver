@@ -17,6 +17,6 @@ public interface DAOBilaga {
     public long createBilaga(Bilaga b, long meddelandeid);
 
     public List<Bilaga> getBilagorForMeddelande(long meddelandeid);
-    
+
     public Bilaga getBilaga(long id);
 }

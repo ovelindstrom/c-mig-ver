@@ -36,11 +36,11 @@ public class StatusBean {
         private int nr, status;
         private String server, typ;
         private Date starttid, stopptid, watchdog;
-        
+
         public Statusrad() {
-            
+
         }
-        
+
         public Statusrad(int nr, int status, String server, Date startad, Date stoppad, Date watchdog, String typ, boolean isAktiv) {
             this.nr = nr;
             this.status = status;
@@ -51,8 +51,8 @@ public class StatusBean {
             this.typ = typ;
             this.aktiv = isAktiv;
         }
-        
-        
+
+
         public boolean getRensa() {
             return rensa;
         }
@@ -110,23 +110,23 @@ public class StatusBean {
         public void setPausa(boolean pausa) {
             this.pausa = pausa;
         }
-        
+
         public boolean isStoppad() {
             return (status == SkickaMeddelandeStateMachine.STOPPING) || (status == SkickaMeddelandeStateMachine.STOPPED);
         }
-        
+
         public int getStatus() {
             return status;
         }
         public void setStatus(int status) {
             this.status = status;
         }
-        
+
         private String getMsg(String msg) {
             return messages.getString(msg);
         }
         public String getStatustext() {
-        	
+
             switch(status) {
             	case SkickaMeddelandeStateMachine.INIT : return getMsg("status.init");
             	case SkickaMeddelandeStateMachine.RUNNING : return getMsg("status.running");
@@ -136,7 +136,7 @@ public class StatusBean {
             	case SkickaMeddelandeStateMachine.STOPPED : return getMsg("status.stopped");
             	case SkickaMeddelandeStateMachine.STOPPING : return getMsg("status.stopping");
             	case SkickaMeddelandeStateMachine.SCHEDULED_PAUSE : return getMsg("status.scheduledpause");
-            	
+
             	default : return "status.unknown";
             }
         }
@@ -147,13 +147,13 @@ public class StatusBean {
             this.aktiv = aktiv;
         }
     }
-    
+
     public static class Serverrad {
         private String adress;
         private int prestanda, processer;
         private boolean delete;
         private int id;
-        
+
         public boolean getDelete() {
             return delete;
         }
@@ -164,7 +164,7 @@ public class StatusBean {
         public Serverrad(int id, String adress, int prestanda, int processer) {
             this.id = id;
             this.adress = adress;
-            this.prestanda = prestanda; 
+            this.prestanda = prestanda;
             this.processer = processer;
             delete = false;
         }
@@ -193,32 +193,32 @@ public class StatusBean {
             this.adress = adress;
         }
     }
-    
+
     public static final int MAX_INSTANSER_PER_SERVER = 5;
     private int maxalder;
-    
+
     private ResourceBundle messages = ResourceBundle.getBundle("se.csn.notmotor.admin.resources.ApplicationResources");
-    
+
     private Log log = Log.getInstance(StatusBean.class);
     private ListDataModel statusrader, serverrader;
 
-    public StatusBean() { 
+    public StatusBean() {
         statusrader = new ListDataModel(hamtaStatusraderFranDB());
         serverrader = new ListDataModel(hamtaServerraderFranDB());
     }
-    
+
     final List<Statusrad> hamtaStatusraderFranDB() {
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
         List statuslist = dao.getStatus(null, null);
         List<Statusrad> rader = new ArrayList<Statusrad>();
         for (Iterator it = statuslist.iterator(); it.hasNext();) {
             Status s = (Status) it.next();
-            rader.add(new Statusrad(s.getInstans(), s.getStatus(), "" 
+            rader.add(new Statusrad(s.getInstans(), s.getStatus(), ""
                     + s.getServer(), s.getStartad(), s.getStoppad(), s.getWatchdog(), s.getTyp(), s.isAktiv()));
         }
         return rader;
     }
-    
+
     final List<Serverrad> hamtaServerraderFranDB() {
         DAOServer dao = ActionHelper.getResourceFactory().getDAOServer();
         List servers = dao.getAktiva(true);
@@ -229,7 +229,7 @@ public class StatusBean {
         }
         return rader;
     }
-    
+
     /**
      * Kontrollerar att processernas watchdogflaggor ar tillrackligt farska. 
      * Tillrackligt farsk anses vara inom 60 sekunder fran den satta parametern
@@ -245,7 +245,7 @@ public class StatusBean {
         for (Iterator it = statuslist.iterator(); it.hasNext();) {
             Status s = (Status) it.next();
             if (s.getStatus() == SkickaMeddelandeStateMachine.STOPPED) { continue; }
-            
+
             if (s.getWatchdog() == null) {
                 varning += "Process " + s.getInstans() + " har ingen tidsstämpel alls<br/>";
             } else if (s.getWatchdog().before(jamforelsetid)) {
@@ -256,16 +256,16 @@ public class StatusBean {
         }
         return varning;
     }
-    
+
     void uppdatera() {
         serverrader.setWrappedData(hamtaServerraderFranDB());
         statusrader.setWrappedData(hamtaStatusraderFranDB());
     }
-    
+
     public void uppdatera(ActionEvent e) {
         //uppdatera(); Kommentar: Konstruktorn körs så ett anrop till uppdatera är onödigt eftersom inget annat görs i denna metod.
     }
-    
+
     /**
      * Kan bara ta bort en statusrad om status ar stoppad eller watchdogtidpunkten har passerats sa
      * att varningstexten ar utlagd samtidigt som status ar stoppar.
@@ -287,7 +287,7 @@ public class StatusBean {
         }
         return false;
     }
-    
+
     public void taBortStoppadeStatusar(ActionEvent e) {
         log.debug("taBortStangdaStatusar");
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
@@ -302,7 +302,7 @@ public class StatusBean {
         statusrader.setWrappedData(rader);
         uppdatera();
     }
-    
+
     public void taBortStatusar(ActionEvent e) {
         log.debug("taBortStatusar");
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
@@ -317,7 +317,7 @@ public class StatusBean {
         statusrader.setWrappedData(rader);
         uppdatera();
     }
-    
+
     public void taBortServrar(ActionEvent e) {
         DAOServer dao = ActionHelper.getResourceFactory().getDAOServer();
         List rader = (List) serverrader.getWrappedData();
@@ -345,22 +345,22 @@ public class StatusBean {
             throw new IllegalArgumentException("Kunde inte hitta komponentnummer", t);
         }
     }
-    
+
 
     Serverrad getServerrad(int radnr) {
         List rader = (List) serverrader.getWrappedData();
         return (Serverrad) rader.get(radnr);
     }
-    
+
     Statusrad getStatusrad(int radnr) {
         List rader = (List) statusrader.getWrappedData();
         return (Statusrad) rader.get(radnr);
     }
-    
+
     public void startaProcess(ActionEvent e) {
         int radnr = getComponentNr(e);
         Serverrad rad = getServerrad(radnr);
-        
+
         DAOServer daoserver = ActionHelper.getResourceFactory().getDAOServer();
         Server server = daoserver.get(rad.getId());
 
@@ -387,9 +387,9 @@ public class StatusBean {
         }
         uppdatera();
     }
-    
+
     void styrProcess(ActionEvent e, int nyStatus) {
-        Statusrad rad = getStatusrad(getComponentNr(e)); 
+        Statusrad rad = getStatusrad(getComponentNr(e));
         log.debug("Styr process, status nr " + rad.getNr());
         DAOStatus daostatus = ActionHelper.getResourceFactory().getDAOStatus();
         Status s = daostatus.getStatus(rad.getNr());
@@ -397,13 +397,13 @@ public class StatusBean {
             throw new IllegalArgumentException("Finns ingen status med numret " + rad.getNr());
         }
         s.setStatus(nyStatus);
-        
+
         // Kolla watchdogtstamp
         kontrolleraWatchdogtid(s);
-        
+
         daostatus.uppdatera(s);
     }
-    
+
     private Date getJamforelsetid() {
         int watchdogtid = 0;
     	try {
@@ -415,10 +415,10 @@ public class StatusBean {
         int marginal = 60;
         maxalder = watchdogtid + marginal;
         Date jamforelsetid = new Date(System.currentTimeMillis() - 1000L * maxalder);
-        
+
         return jamforelsetid;
     }
-    
+
     private void kontrolleraWatchdogtid(Status s) {
         Date jamforelsetid = getJamforelsetid();
         if (jamforelsetid == null) {
@@ -433,17 +433,17 @@ public class StatusBean {
 	        s.setStatus(SkickaMeddelandeStateMachine.STOPPED);
         }
     }
-    
+
     public void pausaProcess(ActionEvent e) {
         styrProcess(e, SkickaMeddelandeStateMachine.PAUSING);
         uppdatera();
     }
-    
+
     public void stoppaProcess(ActionEvent e) {
         styrProcess(e, SkickaMeddelandeStateMachine.STOPPING);
         uppdatera();
     }
-    
+
     public void fortsattProcess(ActionEvent e) {
         styrProcess(e, SkickaMeddelandeStateMachine.RUNNING);
         uppdatera();
@@ -470,13 +470,13 @@ public class StatusBean {
     public void setStatusrader(ListDataModel statusrader) {
         this.statusrader = statusrader;
     }
-    
+
     public String getServertid() {
         return new Date().toString();
     }
-    
-    
-    
+
+
+
     public ListDataModel getKanaler() {
     	// Initiera nedprioriterade inkanaler med begränsningar
 	    List<Kanal> kanalerMedBegransningar = new ArrayList<Kanal>();
@@ -516,5 +516,5 @@ public class StatusBean {
 	    }
 	    return new ListDataModel(kanalerMedBegransningar);
     }
-    
+
 }

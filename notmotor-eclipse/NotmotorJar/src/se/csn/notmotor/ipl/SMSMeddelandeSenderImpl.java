@@ -22,12 +22,12 @@ public class SMSMeddelandeSenderImpl implements MeddelandeSender {
     public static final String NUMMERFORMAT = "^(\\+?)[\\d]{10,18}$";
     private SMSTjaenst smstjaenst;
     private Log log = Log.getInstance(SMSMeddelandeSenderImpl.class);
-    
+
     public SMSMeddelandeSenderImpl(SMSTjaenst smstjaenst) {
         this.smstjaenst = smstjaenst;
         smstjaenst.checkParams();
     }
-    
+
     public SandResultat skickaMeddelande(Meddelande meddelande) {
         Mottagare[] mott = meddelande.getMottagare();
         SandResultat handelse = null;
@@ -37,11 +37,11 @@ public class SMSMeddelandeSenderImpl implements MeddelandeSender {
                 if ((mott[i].getStatus() != null) && (mott[i].getStatus().intValue() == MeddelandeHandelse.SKICKAT_SERVER)) {
                     continue;
                 }
-                
+
                 // Skicka meddelandet
                 DTOSMSIn in = null;
                 try {
-                	in = new DTOSMSIn(mott[i].getAdress(), meddelande.getRubrik(), meddelande.getMeddelandetext(), 
+                	in = new DTOSMSIn(mott[i].getAdress(), meddelande.getRubrik(), meddelande.getMeddelandetext(),
                         meddelande.getAvsandare().getApplikation(), meddelande.getAvsandare().getKategori());
                 } catch (IllegalArgumentException iae) {
                 	return new SandResultat(MeddelandeHandelse.MEDDELANDEFEL, MeddelandeHandelse.OKANT_FEL, "Fel i inparametrar till SMS: " + iae.getMessage(), this, mott[i]);
@@ -63,7 +63,7 @@ public class SMSMeddelandeSenderImpl implements MeddelandeSender {
         }
         return handelse;
     }
-    
+
     SandResultat skapaSandResultat(Meddelande m, int handelsetyp, int kod, String text) {
         SandResultat sr = new SandResultat(handelsetyp, kod, text, this, null);
         // Sätt mottagare
@@ -81,14 +81,14 @@ public class SMSMeddelandeSenderImpl implements MeddelandeSender {
     public KodText getFelkodForMeddelande(Meddelande meddelande) {
         // Kontrollera: 
         // 1. telefonnumren
-        Mottagare[] mott = meddelande.getMottagare(); 
+        Mottagare[] mott = meddelande.getMottagare();
         for (int i = 0; i < mott.length; i++) {
 		    if ((mott[i].getTyp() != null) && (mott[i].getTyp().equalsIgnoreCase("SMS"))) {
 		        String nummer = mott[i].getAdress();
 		        if ((nummer == null) || (nummer.length() == 0)) {
-		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "SMS-nummer saknas"); 
+		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "SMS-nummer saknas");
 		        } else if (!nummer.matches(NUMMERFORMAT)) {
-		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, 
+		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE,
 		            		"SMS-numret måste vara mellan 10 och 18 tecken"
 		            		+ " och får bara innehålla inledande + och/eller siffror");
 		        }
@@ -103,12 +103,12 @@ public class SMSMeddelandeSenderImpl implements MeddelandeSender {
         // Allt är OK, returnera null
         return null;
     }
-    
+
     /**
      * @see se.csn.notmotor.ipl.MeddelandeSender#kanSkickaMeddelande(se.csn.notmotor.ipl.model.Meddelande)
      */
     public boolean kanSkickaMeddelande(Meddelande meddelande) {
-        Mottagare[] mott = meddelande.getMottagare(); 
+        Mottagare[] mott = meddelande.getMottagare();
         for (int i = 0; i < mott.length; i++) {
 		    if ((mott[i].getTyp() != null) && (mott[i].getTyp().equalsIgnoreCase("SMS"))) {
 		        return true;

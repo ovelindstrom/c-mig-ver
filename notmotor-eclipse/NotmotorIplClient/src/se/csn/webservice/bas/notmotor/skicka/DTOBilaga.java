@@ -145,20 +145,20 @@ public class DTOBilaga  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.id==null && other.getId()==null) || 
+        _equals = true &&
+            ((this.id==null && other.getId()==null) ||
              (this.id!=null &&
               this.id.equals(other.getId()))) &&
-            ((this.mimetyp==null && other.getMimetyp()==null) || 
+            ((this.mimetyp==null && other.getMimetyp()==null) ||
              (this.mimetyp!=null &&
               this.mimetyp.equals(other.getMimetyp()))) &&
-            ((this.filnamn==null && other.getFilnamn()==null) || 
+            ((this.filnamn==null && other.getFilnamn()==null) ||
              (this.filnamn!=null &&
               this.filnamn.equals(other.getFilnamn()))) &&
-            ((this.encoding==null && other.getEncoding()==null) || 
+            ((this.encoding==null && other.getEncoding()==null) ||
              (this.encoding!=null &&
               this.encoding.equals(other.getEncoding()))) &&
-            ((this.data==null && other.getData()==null) || 
+            ((this.data==null && other.getData()==null) ||
              (this.data!=null &&
               java.util.Arrays.equals(this.data, other.getData())));
         __equalsCalc = null;
@@ -253,10 +253,10 @@ public class DTOBilaga  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanSerializer(
             _javaType, _xmlType, typeDesc);
     }
@@ -265,10 +265,10 @@ public class DTOBilaga  implements java.io.Serializable {
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanDeserializer(
             _javaType, _xmlType, typeDesc);
     }

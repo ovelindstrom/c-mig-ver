@@ -40,7 +40,7 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
 	private static final long serialVersionUID = 1L;
     private static final String PROPERTIESFIL = "notmotor-ipl";
     private static Log log = Log.getInstance(InitServlet.class);
-    
+
 	public InitServlet() {
 		super();
 	}
@@ -52,7 +52,7 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
 	public void init(ServletConfig config) throws ServletException {
 	    checkExternalDependencies();
 	    setupDependencies();
-	    
+
 	    // Lägger upp serverrad i DB om den inte redan fanns:
 	    lagraServerIDB(Properties.getProperty(PROPERTIESFIL, "notmotor.url"));
 	}
@@ -68,7 +68,7 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
         NotifieringProxyFactory factory = new NotifieringProxyFactoryImpl(ds);
         SkickaService.setFactory(factory);
 	}
-	
+
     public void checkExternalDependencies() {
 	    System.out.println("Kontrollerar dependencies för Notmotor");
         try {
@@ -83,7 +83,7 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
                 ClassDependencyTester.COMMONS_LANG,
         };
         ClassDependencyTester.findClassesThrowException(CLASSTEST);
-        
+
         String[] properties = new String[] {
                 "mail.user",
                 "mail.password",
@@ -95,18 +95,18 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
                 "notmotor.autostart",
                 "notmotor.ds.jndinamn",
                 "sms.user",
-                "sms.password", 
+                "sms.password",
                 "sms.endpoint",
         };
-        
+
         // Anropa med propertiesfilen som argument för att sätta upp
         // Log-klassens interna cache:
         Properties.getProperty(PROPERTIESFIL, "mail.user");
         PropertyDependencyTester.dumpPropertiesThrowIfMissing(properties);
-        
+
         log.info("Kontrollerat dependencies");
     }
-    
+
     void lagraServerIDB(String url) {
         ServiceLocator sl = new ServiceLocator();
         String datasourceJndi = Properties.getProperty(PROPERTIESFIL, "notmotor.ds.jndinamn");
@@ -121,7 +121,7 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
                 return;
             }
         }
-        
+
         // Hittade ingen server: lägger upp.
         Server server = new Server();
         server.setAktiv(true);
@@ -130,11 +130,11 @@ public class InitServlet extends HttpServlet implements Servlet { //, ServletLis
         dao.skapa(server);
         log.info("Lade upp serverrad i databasen, url: " + url);
     }
-    
+
     public void destroy() {
 		log.info("InitServlet Destroying...");
 	}
-    
+
 //    public void onServletAvailableForService(ServletEvent arg0) {
 //        log.debug(arg0.getServletClassName() + "availableForService()");
 //    }

@@ -22,11 +22,11 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
 
     private QueryProcessor qp;
     private Log log = Log.getInstance(RowToObjectMapper.class);
-    
+
     public DAOBilagaImpl(QueryProcessor qp) {
         this.qp = qp;
     }
-    
+
     /**
      * Skapar bilaga i databasen
      * @return nyckeln för bilagan
@@ -35,15 +35,15 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
         if(b.getData() == null) {
             throw new IllegalArgumentException("Bilagan måste ha data.");
         }
-        
+
         Connection conn = null;
         PreparedStatement ps = null;
         try {
             conn = qp.getConnection();
-            
+
             String query = "INSERT INTO BILAGA (ID,MEDDELANDEID,DATA,MIMETYP,ENCODING,FILNAMN) " +
         		"VALUES(?,?,?,?,?,?)";
-        
+
             long id = qp.getCounter("SEKVENS", "BILAGAID");
             ps = conn.prepareStatement(query);
             ps.setLong(1,id);
@@ -52,7 +52,7 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
             ps.setString(4, b.getMimetyp());
             ps.setString(5, b.getEncoding());
             ps.setString(6, b.getFilnamn());
-            
+
             int result = ps.executeUpdate();
             if(result != 1) {
                 throw new SQLException("INSERT returnerade " + result);
@@ -70,7 +70,7 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
             }
         }
     }
-    
+
     public Object newRow(ResultSet rs) throws SQLException {
         Bilaga b = new Bilaga();
         b.setId(new Long(rs.getLong("ID")));
@@ -80,15 +80,15 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
         b.setMimetyp(rs.getString("MIMETYP"));
         return b;
     }
-    
+
     @SuppressWarnings("unchecked")
 	public List<Bilaga> getBilagorForMeddelande(long meddelandeid) {
         return qp.processQuery("SELECT ID,DATA,ENCODING,FILNAMN,MIMETYP FROM BILAGA WHERE MEDDELANDEID=" + meddelandeid, this);
     }
-    
+
     public Bilaga getBilaga(long id) {
         return (Bilaga)qp.getObject("SELECT ID,DATA,ENCODING,FILNAMN,MIMETYP FROM BILAGA WHERE ID=" + id, this);
     }
-    
-    
+
+
 }

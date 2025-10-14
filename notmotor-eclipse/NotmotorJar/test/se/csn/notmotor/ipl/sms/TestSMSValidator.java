@@ -15,11 +15,11 @@ import se.csn.notmotor.ipl.validators.SMSValidator;
  * @author Jonas åhrnell - csn7821
  */
 public class TestSMSValidator extends TestCase {
-    
+
     private final String TEXT_200 = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";
     private static final String OK = "" + MeddelandeHandelse.OK;
     private static final String FELAKTIG_MOTTAGARE = "" + MeddelandeHandelse.FELAKTIG_MOTTAGARE;
-    
+
     public void testGetFelkodForMeddelande() {
         // Testa meddelande med för lång text
         // Med mottagare med: 
@@ -29,7 +29,7 @@ public class TestSMSValidator extends TestCase {
         Mottagare mott = new Mottagare("0705976212");
         mott.setTyp("SMS");
         m.addMottagare(mott);
-        
+
         String[][] dataFacit = {
                 {null, FELAKTIG_MOTTAGARE},
                 {"0705976212", OK},
@@ -42,15 +42,15 @@ public class TestSMSValidator extends TestCase {
                 {"0123456789123456789", FELAKTIG_MOTTAGARE},
                 {"+46705976212", OK},
         };
-        
+
         //used to be SMSValidator class
         BasicMeddelandeValidator validator = new BasicMeddelandeValidator();
-        
+
         KodText kt = validator.getFelkodForMeddelande(m);
-        
+
         assertEquals(kt.getKod(), MeddelandeHandelse.FELAKTIG_AVSANDARE); //OLD: FELAKTIG_AVSANDARE
         m.setMeddelandetext("Testmeddelande");
-        
+
 
         SMSValidator validator2 = new SMSValidator();
         for(int i = 0; i < dataFacit.length; i++) {
@@ -86,7 +86,7 @@ public class TestSMSValidator extends TestCase {
         assertEquals(mh.getFelkod().intValue(), DTOMeddelandeHandelse.OK);
         */
     }
-    
-    
+
+
 
 }

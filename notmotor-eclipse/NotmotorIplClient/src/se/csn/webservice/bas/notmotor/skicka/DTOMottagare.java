@@ -169,23 +169,23 @@ public class DTOMottagare  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.id==null && other.getId()==null) || 
+        _equals = true &&
+            ((this.id==null && other.getId()==null) ||
              (this.id!=null &&
               this.id.equals(other.getId()))) &&
-            ((this.namn==null && other.getNamn()==null) || 
+            ((this.namn==null && other.getNamn()==null) ||
              (this.namn!=null &&
               this.namn.equals(other.getNamn()))) &&
-            ((this.adress==null && other.getAdress()==null) || 
+            ((this.adress==null && other.getAdress()==null) ||
              (this.adress!=null &&
               this.adress.equals(other.getAdress()))) &&
-            ((this.csnnummer==null && other.getCsnnummer()==null) || 
+            ((this.csnnummer==null && other.getCsnnummer()==null) ||
              (this.csnnummer!=null &&
               this.csnnummer.equals(other.getCsnnummer()))) &&
-            ((this.typ==null && other.getTyp()==null) || 
+            ((this.typ==null && other.getTyp()==null) ||
              (this.typ!=null &&
               this.typ.equals(other.getTyp()))) &&
-            ((this.status==null && other.getStatus()==null) || 
+            ((this.status==null && other.getStatus()==null) ||
              (this.status!=null &&
               this.status.equals(other.getStatus())));
         __equalsCalc = null;
@@ -281,10 +281,10 @@ public class DTOMottagare  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanSerializer(
             _javaType, _xmlType, typeDesc);
     }
@@ -293,10 +293,10 @@ public class DTOMottagare  implements java.io.Serializable {
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanDeserializer(
             _javaType, _xmlType, typeDesc);
     }

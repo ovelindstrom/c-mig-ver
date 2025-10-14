@@ -14,12 +14,12 @@ import se.csn.ark.common.util.logging.Log;
  * OBS! Kan leda till udda beteende om flera webappar delar klassladdare.
  */
 public class QueryProcessorImpl extends QueryProcessorBase implements QueryProcessor {
-	
+
 	private DataSource ds;
 	private Connection conn;
 	private Log log = Log.getInstance(QueryProcessorImpl.class);
 	private int transactionIsolationLevel;
-	
+
 	public QueryProcessorImpl(DataSource ds) {
 		this(ds, Connection.TRANSACTION_REPEATABLE_READ);
 	}
@@ -41,7 +41,7 @@ public class QueryProcessorImpl extends QueryProcessorBase implements QueryProce
 	    	default: throw new IllegalArgumentException("Otillåten isolationsnivå: " + transactionIsolationLevel);
 	    }
 	}
-	
+
     public Connection getConnection() {
        if(conn != null) {
            return conn;
@@ -55,18 +55,18 @@ public class QueryProcessorImpl extends QueryProcessorBase implements QueryProce
            throw new DatabaseException("Kunde inte skapa ny connection", e);
        }
     }
-    
+
     public void setConnection(Connection conn, boolean handleConnection) {
         this.conn = conn;
         this.handleConnection = handleConnection;
     }
-    
+
     protected void handleConnection(Connection c) throws SQLException {
         if((c != null) && !c.isClosed()) {
             c.commit();
         	c.close();
         }
     }
-    
+
 
 }

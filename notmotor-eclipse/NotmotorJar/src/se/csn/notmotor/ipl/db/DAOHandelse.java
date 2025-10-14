@@ -18,6 +18,6 @@ public interface DAOHandelse {
             long meddelandeid, Connection conn);
 
     public List<MeddelandeHandelse> getHandelserForMeddelande(long meddelandeid);
-    
+
     public MeddelandeHandelse getHandelse(long id);
 }

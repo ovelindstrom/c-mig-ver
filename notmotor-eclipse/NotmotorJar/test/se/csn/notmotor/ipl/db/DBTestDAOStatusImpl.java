@@ -19,10 +19,10 @@ public class DBTestDAOStatusImpl extends TestCase {
     private QueryProcessor getQueryProcessor() {
         return new SingleConnectionQueryProcessor(TestUtils.getTestDB2DataSource("csn24utv", 50000, "WDBUTV", "notmotor", "notmotor"));
     }
-    
+
     public void testCRU() {
         DAOStatusImpl dao = new DAOStatusImpl(getQueryProcessor());
-        
+
         // Skapa
         Status s = new Status();
         s.setServer(10);
@@ -35,7 +35,7 @@ public class DBTestDAOStatusImpl extends TestCase {
         // Hämta
         Status s2 = dao.getStatus(id);
         assertEquals(s, s2);
-        
+
         // Uppdatera
         Date stoppaddat = datumUtanMillis();
         s.setStoppad(stoppaddat);
@@ -45,7 +45,7 @@ public class DBTestDAOStatusImpl extends TestCase {
         s2 = dao.getStatus(id);
         assertEquals(s, s2);
     }
-    
+
     public void testGet() {
         DAOStatusImpl dao = new DAOStatusImpl(getQueryProcessor());
         // Skapa tre, två med samma server, en med annan
@@ -54,13 +54,13 @@ public class DBTestDAOStatusImpl extends TestCase {
         int status = serverid - 10000000;
         s.setServer(serverid);
         s.setStatus(status);
-        
+
         int id1 = dao.skapa(s);
         int id2 = dao.skapa(s);
-        
+
         s.setServer(serverid-1);
         int id3 = dao.skapa(s);
-        
+
         List list = dao.getStatus(null, new Integer(serverid));
         assertEquals(list.size(), 2);
         list = dao.getStatus(null, new Integer(serverid-1));
@@ -68,7 +68,7 @@ public class DBTestDAOStatusImpl extends TestCase {
         list = dao.getStatus(new Integer(status), null);
         assertEquals(list.size(), 3);
     }
-    
+
     private Date datumUtanMillis() {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.MILLISECOND, 0);

@@ -18,10 +18,10 @@ import se.csn.notmotor.ipl.model.NotifieringResultat;
 public class TestMeddelandeMottagare extends TestCase {
 
     public void testSkickaMeddelande()  {
-        
+
         MockControl daoControl = MockControl.createControl(DAOMeddelande.class);
         DAOMeddelande dao = (DAOMeddelande)daoControl.getMock();
-        
+
         // Kolla att validering görs
 	    // Validering fel
     	Meddelande m = new Meddelande();
@@ -38,13 +38,13 @@ public class TestMeddelandeMottagare extends TestCase {
     	daoControl.setReturnValue(id);
 
     	daoControl.replay();
-    	
+
     	res = mm.skickaMeddelande(m, dao);
     	assertEquals(res.getMeddelandeId().intValue(), id);
 
     	daoControl.verify();
-    	daoControl.reset();	
-        		
+    	daoControl.reset();
+
         // Kolla att det läggs till händelse
     	// Inga händelser innan
     	m.setHandelser(new MeddelandeHandelse[0]);
@@ -54,8 +54,8 @@ public class TestMeddelandeMottagare extends TestCase {
     	res = mm.skickaMeddelande(m, dao);
     	assertEquals(m.getHandelser().length, 1);
     	daoControl.verify();
-    	daoControl.reset();	
-    	
+    	daoControl.reset();
+
     	// Händelser innan
     	m.setHandelser(new MeddelandeHandelse[3]);
     	dao.createMeddelande(m);
@@ -64,16 +64,16 @@ public class TestMeddelandeMottagare extends TestCase {
     	res = mm.skickaMeddelande(m, dao);
     	assertEquals(m.getHandelser().length, 4);
     	daoControl.verify();
-    	daoControl.reset();	
-        
+    	daoControl.reset();
+
         // Kolla att det görs lagring
     	// -> gjort ovan
     }
-    
+
     public void testMottagareStatusSattTillMottaget() {
         MockControl daoControl = MockControl.createControl(DAOMeddelande.class);
         DAOMeddelande dao = (DAOMeddelande)daoControl.getMock();
-        
+
         // Kolla att validering görs
 	    // Validering fel
     	Meddelande m = new Meddelande("Rubrik", "Text", "mottagare@csn.se", "avs@csn.se", "Avsandare");
@@ -84,13 +84,13 @@ public class TestMeddelandeMottagare extends TestCase {
     	// Rigga mocken: 
     	dao.createMeddelande(m);
     	daoControl.setReturnValue(id);
-    	
+
     	daoControl.replay();
     	MeddelandeMottagare mm = new MeddelandeMottagare();
     	NotifieringResultat res = mm.skickaMeddelande(m, dao);
     	daoControl.verify();
-    	
+
     	assertEquals(m.getMottagare()[0].getStatus(), new Integer(MeddelandeHandelse.MOTTAGET));
     }
-    
+
 }

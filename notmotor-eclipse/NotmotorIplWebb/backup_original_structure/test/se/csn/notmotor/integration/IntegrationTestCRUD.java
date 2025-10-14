@@ -18,9 +18,9 @@ public class IntegrationTestCRUD extends IntegrationTestSkeleton {
 		try {
 			res = client.skickaMeddelande(m);
 			assertEquals(res.getResultat().intValue(), 0);
-	        
+
 	        DTOMeddelande hamta = client.hamtaMeddelande(res.getMeddelandeId());
-	        
+
 	        assertEquals(m.getRubrik(), hamta.getRubrik());
 	        assertEquals(m.getMeddelandetext(), hamta.getMeddelandetext());
 		} catch (Exception e) {
@@ -28,12 +28,12 @@ public class IntegrationTestCRUD extends IntegrationTestSkeleton {
 			fail();
 		}
     }
-    
+
     public void testSkickaMedBilagor() {
         DTOMeddelande m = skapaTestMeddelande("testSkickaMedBilagor");
         // TODO: bygg test
     }
-    
+
     public void testSkickaSandSenare() {
         // Skapa meddelande som ska skickas om 1 minut
         // (får inte vara för kort tid, måste hinna refresha i notmotorn etc)
@@ -41,7 +41,7 @@ public class IntegrationTestCRUD extends IntegrationTestSkeleton {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MINUTE, 1);
         m.setSkickaTidigast(cal);
-        
+
         // Skicka. Hämta efter 40 sek. Kolla att inte sänt.
         try {
 	        DTONotifieringResultat res = client.skickaMeddelande(m);
@@ -49,7 +49,7 @@ public class IntegrationTestCRUD extends IntegrationTestSkeleton {
 	        DTOMeddelande hamta = client.hamtaMeddelande(res.getMeddelandeId());
 	        assertNull(hamta.getSkickat());
 	        assertNotNull(hamta.getSkickaTidigast());
-	        
+
 	        // Vänta ytterligare 40 sekunder. Nu ska meddelandet vara skickat.
 	        vantaOchSkriv(5, 8);
 	        hamta = client.hamtaMeddelande(res.getMeddelandeId());
@@ -58,14 +58,14 @@ public class IntegrationTestCRUD extends IntegrationTestSkeleton {
 			e.printStackTrace();
 		}
     }
-    
+
     public void testTaBort() {
         // Skapa meddelande som ska skickas om 20 sekunder
         DTOMeddelande m = skapaTestMeddelande("testSkickaSandSenare");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.SECOND, 10);
         m.setSkickaTidigast(cal);
-        
+
         // Skicka. Ta bort. Hämta efter 40 sek. Kolla att inte sänt.
         try {
 	        DTONotifieringResultat res = client.skickaMeddelande(m);
@@ -79,5 +79,5 @@ public class IntegrationTestCRUD extends IntegrationTestSkeleton {
 			fail();
 		}
     }
-    
+
 }

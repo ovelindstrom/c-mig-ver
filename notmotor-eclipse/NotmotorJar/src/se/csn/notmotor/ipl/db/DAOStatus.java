@@ -16,12 +16,12 @@ public interface DAOStatus {
      * Skapar en ny rad i tabellen Status
      */
     public int skapa(Status status);
-    
+
     /**
      * Uppdaterar statusraden.
      */
     public void uppdatera(Status status);
-    
+
     /**
      * Soker ut de statusar som matchar sokkriterierna
      * @param status Begränsa sökningen till de rader som har denna status. 
@@ -30,12 +30,12 @@ public interface DAOStatus {
      *        Om null så begränsas inte sökningen på server.
      */
     public List getStatus(Integer status, Integer server);
-    
+
     /**
      * Laser upp ett statusonbjekt fran databas.
      */
     public Status getStatus(int instans);
-    
+
     /**
      * Tar bort motsvarande rad ur databasen. 
      * OBS! Kan ge markliga problem om raden anvands av en aktiv instans. 

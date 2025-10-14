@@ -31,8 +31,8 @@ public class IntegrationTestSMS extends IntegrationTestSkeleton {
         }
         System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
     }
-    
-    
+
+
     public void testSkickaSMSochEpost() {
         long cnt = System.currentTimeMillis();
 
@@ -49,13 +49,13 @@ public class IntegrationTestSMS extends IntegrationTestSkeleton {
         }
         System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
     }
-    
+
     public void testSkickaSMSLangreAn160Tecken() {
     	long cnt = System.currentTimeMillis();
-    	
+
     	try {
     		final String meddelande161Tecken = "abcdefghijklmnopqrstuvxyz0123456789abcdefghijklmnopqrstuvxyz0123456789abcdefghijklmnopqrstuvxyz0123456789abcdefghijklmnopqrstuvxyz0123456789AAAAAAAAAAAAAAAAAAAAA";
-    		
+
     		DTOMeddelande meddelande = skapaTestMeddelande("Meddelande", meddelande161Tecken, "SMS");
     		DTONotifieringResultat resultat = client.skickaMeddelande(meddelande);
     		if (resultat.getResultat().intValue() != 0) {
@@ -69,7 +69,7 @@ public class IntegrationTestSMS extends IntegrationTestSkeleton {
     	}
     	System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
     }
-    
+
     public void testSkickaEpost() {
         long cnt = System.currentTimeMillis();
 
@@ -86,5 +86,5 @@ public class IntegrationTestSMS extends IntegrationTestSkeleton {
         }
         System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
     }
-    
+
 }

@@ -20,13 +20,13 @@ public class BasicMeddelandeValidator implements MeddelandeValidator {
     public boolean isValid(Meddelande meddelande) {
         return getFelkodForMeddelande(meddelande) == null;
     }
-    
+
     public KodText getFelkodForMeddelande(Meddelande meddelande) {
         if(meddelande == null) {
             return new KodText(MeddelandeHandelse.FELAKTIG_SUBJECT, "Inget meddelande!");
         }
-        
-        Avsandare avs = meddelande.getAvsandare(); 
+
+        Avsandare avs = meddelande.getAvsandare();
         if(avs == null) {
            return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Avsändare saknas");
         } else {
@@ -35,12 +35,12 @@ public class BasicMeddelandeValidator implements MeddelandeValidator {
             }
             //if(avs.getReplyTo() == null) return skapaHandelse(DTOMeddelandeHandelse.FELAKTIG_AVSANDARE, "Returadress saknas");
         }
-        
+
         Mottagare[] mott = meddelande.getMottagare();
         if((mott == null) || (mott.length == 0)) {
             return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "Mottagare saknas");
-        } 
+        }
         return null;
     }
-    
+
 }

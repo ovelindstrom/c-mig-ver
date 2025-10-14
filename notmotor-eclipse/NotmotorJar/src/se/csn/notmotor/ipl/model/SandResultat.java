@@ -16,7 +16,7 @@ public class SandResultat extends KodText {
 	private int handelsetyp;
     private List<Mottagare> mottagare;
     private MeddelandeSender sandare;
-    
+
     public SandResultat(int handelsetyp, int kod, String text, MeddelandeSender sandare, Mottagare mott) {
         super(kod, text);
         this.handelsetyp = handelsetyp;
@@ -26,7 +26,7 @@ public class SandResultat extends KodText {
             mottagare.add(mott);
         }
     }
-    
+
     public Mottagare[] getMottagare() {
         return (Mottagare[]) mottagare.toArray(new Mottagare[0]);
     }
@@ -34,7 +34,7 @@ public class SandResultat extends KodText {
     public void addMottagare(Mottagare mott) {
         mottagare.add(mott);
     }
-    
+
     public MeddelandeSender getSandare() {
         return sandare;
     }
@@ -49,5 +49,5 @@ public class SandResultat extends KodText {
 	public void setHandelsetyp(int handelsetyp) {
 		this.handelsetyp = handelsetyp;
 	}
-    
+
 }

@@ -31,7 +31,7 @@ public class IntegrationTestMassMail extends IntegrationTestSkeleton {
             }
             try {
 	            DTOMeddelande meddelande = skapaTestMeddelande("skickaTestManga", i);
-	            
+
 	            // För test av mimetyp på meddelande:
 	            // Observera att man sätter encoding (charset) i samma sträng.
 	            //meddelande.setMimetyp("text/html;charset=iso-8859-1");
@@ -53,13 +53,13 @@ public class IntegrationTestMassMail extends IntegrationTestSkeleton {
         	fail();
         }
     }
-    
-    
+
+
     public void testSkicka100SandSenare() {
         int antal = 100;
         int fordrojningIMinuter = 5;
-        
-        
+
+
         // Sänd om 5 mi
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MINUTE, fordrojningIMinuter);
@@ -86,5 +86,5 @@ public class IntegrationTestMassMail extends IntegrationTestSkeleton {
         System.out.println("Sänt " + antal + " meddelanden på " + (System.currentTimeMillis() - cnt) + " millis");
         System.out.println("OK: " + ok + "  Fel: " + fel + "  Error: " + error);
     }
-    
+
 }

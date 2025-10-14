@@ -21,7 +21,7 @@ public class TilesIntegrationContextListener implements ServletContextListener {
         // TODO Auto-generated method stub
 
     }
-    
+
     /**
      * Denna kod nodvandig for att kunna satta en ny ViewHandler i 
      * Faces-systemet. 
@@ -34,7 +34,7 @@ public class TilesIntegrationContextListener implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent arg0) {
 //      Get the LifecycleFactory from the Factory Finder
-        LifecycleFactory factory = (LifecycleFactory) 
+        LifecycleFactory factory = (LifecycleFactory)
           FactoryFinder.getFactory("javax.faces.lifecycle.LifecycleFactory");
 
 //        Create a new instance of Lifecycle implementation - 

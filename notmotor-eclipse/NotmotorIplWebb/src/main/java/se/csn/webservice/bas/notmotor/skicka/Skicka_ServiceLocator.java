@@ -122,11 +122,11 @@ public class Skicka_ServiceLocator extends org.apache.axis.client.Service implem
     * Set the endpoint address for the specified port name.
     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
+
 if ("SkickaSOAP".equals(portName)) {
             setSkickaSOAPEndpointAddress(address);
         }
-        else 
+        else
 { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }

@@ -22,13 +22,13 @@ public class WebserviceTestSkickaSMS extends TestCase {
 		//System.setProperty("javax.net.ssl.trustStore", "C:/Program Files/Java/j2re1.4.2_11/lib/security/cacerts");
         System.setProperty("javax.net.ssl.trustStore", "test/cacerts");
 		System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
-        
+
         SMSTjaenst tjaenst = new SMSTjaenst("https://ssc.telia.se/smsplus/sendsms", "CSN", "Stud13r");
         DTOSMSIn in = new DTOSMSIn("0705976212", "CSN", "testing testing", "NOTMOTOR", "TEST");
         DTOSMSUt ut = tjaenst.execute(in);
         System.out.println("Ut: " + ut);
     }
-    
+
     public void testSkickaJDK() throws IOException {
         System.setProperty("javax.net.ssl.trustStore", "test/cacerts");
 		System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
@@ -47,5 +47,5 @@ public class WebserviceTestSkickaSMS extends TestCase {
         }
         in.close();
     }
-    
+
 }

@@ -12,7 +12,7 @@ import junit.framework.TestCase;
 
 
 public class TestDAOImplBase extends TestCase {
-    
+
     class HandlerBaseTestSub extends DAOImplBase {
         public HandlerBaseTestSub() {
             super(null);
@@ -21,7 +21,7 @@ public class TestDAOImplBase extends TestCase {
             return null;
         }
     }
-    
+
     public void testQuoteValue() {
         HandlerBaseTestSub hb = new HandlerBaseTestSub();
         assertEquals(DAOImplBase.quoteValue(null), "NULL");
@@ -29,7 +29,7 @@ public class TestDAOImplBase extends TestCase {
         assertEquals(DAOImplBase.quoteValue(new Integer(123)), "123");
         assertEquals(DAOImplBase.quoteValue(new Long(123)), "123");
     }
-    
+
     public void testMakeUpdateQuery() {
         HandlerBaseTestSub hb = new HandlerBaseTestSub();
         String uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1", "COL2", new Integer(2)},null);
@@ -43,7 +43,7 @@ public class TestDAOImplBase extends TestCase {
         assertEquals(uq, "UPDATE TABNAMN SET COL1='VAL1' WHERE COL2='VAL2'");
 
     }
-    
+
     public void testAddLike() {
         // Testa med eller utan AND
         String res = DAOImplBase.addLike("ORIG", "COL", "VALUE", false);

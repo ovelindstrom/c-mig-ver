@@ -97,12 +97,12 @@ public class DTONotifieringResultat  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
+        _equals = true &&
             this.meddelandeId == other.getMeddelandeId() &&
-            ((this.resultat==null && other.getResultat()==null) || 
+            ((this.resultat==null && other.getResultat()==null) ||
              (this.resultat!=null &&
               this.resultat.equals(other.getResultat()))) &&
-            ((this.info==null && other.getInfo()==null) || 
+            ((this.info==null && other.getInfo()==null) ||
              (this.info!=null &&
               this.info.equals(other.getInfo())));
         __equalsCalc = null;
@@ -166,10 +166,10 @@ public class DTONotifieringResultat  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanSerializer(
             _javaType, _xmlType, typeDesc);
     }
@@ -178,10 +178,10 @@ public class DTONotifieringResultat  implements java.io.Serializable {
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanDeserializer(
             _javaType, _xmlType, typeDesc);
     }

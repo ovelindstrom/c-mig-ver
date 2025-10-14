@@ -42,12 +42,12 @@ public class SMSTjaenst {
 	private String endpoint;
 	private Log log = Log.getInstance(SMSTjaenst.class);
 
-	
+
 	//private static final int CONNECT_TIMEOUT = 3000;
 
 	public SMSTjaenst() {
 	}
-	
+
 	/**
 	 * Skapar en ny instans av SMSTjaenst OCH TESTAR ANSLUTNINGEN 
 	 * TILL DEN ENDPOINT SOM ANGAVS. Om endpointen har en port 
@@ -73,13 +73,13 @@ public class SMSTjaenst {
             throw new IllegalArgumentException("Felaktig endpoint-URL " + endpoint, e);
         }
 	}
-	
+
 	public SMSTjaenst(String endpoint, String userid, String password) {
 	    this(endpoint);
 	    this.userid = userid;
 	    this.password = password;
 	}
-	
+
 	/**
 	 * Kontrollerar att alla nodvandiga data ar satta.
 	 * @throws IllegalStateException om någon parameter saknas för 
@@ -96,7 +96,7 @@ public class SMSTjaenst {
 		    throw new IllegalStateException("endpoint måste vara satt");
 		}
     }
-	
+
 	public boolean testConnection() {
 		BufferedReader in = null;
 	    try {
@@ -122,7 +122,7 @@ public class SMSTjaenst {
 			}
 	    }
 	}
-	
+
 	/**
 	 * Skickar SMS till Telia.
 	 * @param in DTOSMSIn
@@ -181,7 +181,7 @@ public class SMSTjaenst {
 			response.setReturStatus(998);
     		return response;
 		}
-		
+
 		try {
 			xml = post.getResponseBodyAsString();
 		} catch (IOException ioe) {
@@ -218,7 +218,7 @@ public class SMSTjaenst {
 			response.setReturStatus(997);
     		return response;
 		}
-		
+
 		// Om vi får returkod 2 från telia använder vi 902 internt istället
 		// då kod 2 betyder "skickat server" i notmotorn
 		if (responseCode == 2) {
@@ -232,14 +232,14 @@ public class SMSTjaenst {
 		if (sTemporaryError != null && "true".equals(sTemporaryError)) {
 			response.setTemporaryError(true);
 		}
-		
+
 		if (response.sandningLyckad()) {
 		    log.debug("Skickat meddelande: " + in + " -> " + response);
 		} else {
 		    log.debug("Sändning misslyckades: " + in + " -> " + response);
 		}
-		
+
 		return response;
 	}
-	
+
 }

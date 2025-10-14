@@ -12,7 +12,7 @@ public class QueryListenerImpl implements QueryListener {
 
     private Log log = Log.getInstance(QueryListenerImpl.class);
     private String logPrefix;
-    
+
     /**
      * @param logPrefix En sträng som kommer att skrivas ut före varje 
      *   sql- eller error-sträng.
@@ -23,11 +23,11 @@ public class QueryListenerImpl implements QueryListener {
     public QueryListenerImpl(String logPrefix) {
         this.logPrefix = logPrefix;
     }
-    
+
     public void sqlError(String error) {
         log.error(logPrefix + ": ** ERROR **: " + error);
     }
-    
+
     public void sqlQuery(String sql) {
         if(sql.indexOf("PARAMETER") >= 0) {
         	return;

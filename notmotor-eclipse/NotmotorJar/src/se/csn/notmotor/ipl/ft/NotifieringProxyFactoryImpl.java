@@ -30,7 +30,7 @@ public class NotifieringProxyFactoryImpl implements NotifieringProxyFactory {
     
     private static int noofcreates = 0;
     private DataSource ds;
-    
+
     public NotifieringProxyFactoryImpl(DataSource ds) {
         this.ds = ds;
     }
@@ -41,9 +41,9 @@ public class NotifieringProxyFactoryImpl implements NotifieringProxyFactory {
         QueryProcessor qp = new WebServiceQueryProcessor(ds);
         qp.addQueryListener(new QueryListenerImpl("WEBSERVICE"));
         DAOMeddelande dao = new DAOMeddelandeImpl(
-                				qp, 
-                				new DAOAvsandareImpl(qp), 
-                				new DAOMottagareImpl(qp), 
+                				qp,
+                				new DAOAvsandareImpl(qp),
+                				new DAOMottagareImpl(qp),
                 				new DAOBilagaImpl(qp),
                 				new DAOHandelseImpl(qp));
         MeddelandeMottagare mm = new MeddelandeMottagare();

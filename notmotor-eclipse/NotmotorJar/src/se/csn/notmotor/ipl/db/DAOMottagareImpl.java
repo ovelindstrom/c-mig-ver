@@ -19,20 +19,20 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
     public DAOMottagareImpl(QueryProcessor qp) {
         super(qp);
     }
-    
+
     public int createMottagare(Mottagare mott, long meddelandeId) {
         if(mott == null) {
             throw new IllegalArgumentException("Mottagare måste vara satt");
         }
         int id = (int)qp.getCounter("SEKVENS", "MOTTAGARE");
         qp.executeThrowException("INSERT INTO MOTTAGARE(ID,TYP,MEDDELANDEID,NAMN,ADRESS,CSNNUMMER,STATUS) "
-                + "VALUES(" + id + ", " + quoteValue(mott.getTyp()) + ", " + meddelandeId + ", " 
+                + "VALUES(" + id + ", " + quoteValue(mott.getTyp()) + ", " + meddelandeId + ", "
                 + quoteValue(mott.getNamn()) + ", " + quoteValue(mott.getAdress()) + ", " + quoteValue(mott.getCsnnummer()) + ", "
                 + quoteValue(mott.getStatus()) + ")");
         mott.setId(new Long(id));
         return id;
     }
-    
+
     public Object newRow(ResultSet rs) throws SQLException {
         Mottagare mott = new Mottagare();
         mott.setId(new Long(rs.getLong("ID")));
@@ -44,7 +44,7 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
         mott.setStatus((Integer)rs.getObject("STATUS"));
         return mott;
     }
-    
+
     public List getMottagare(String namn, String adress, String typ, Integer csnnummer) {
         String sql = "SELECT ID,TYP,MEDDELANDEID,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE";
         String where = "";
@@ -55,32 +55,32 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
         if(where.length() > 0) {
             sql += (" WHERE " + where);
         }
-        return qp.processQuery(sql, this);         
+        return qp.processQuery(sql, this);
     }
-    
+
     @SuppressWarnings("unchecked")
 	public List<Mottagare> getMottagare(Mottagare mott) {
         return getMottagare(mott.getNamn(), mott.getAdress(), mott.getTyp(), mott.getCsnnummer());
     }
-    
+
     public Mottagare getMottagare(long id) {
         return (Mottagare)qp.getObject("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE " +
         		"WHERE ID=" + id, this);
     }
-    
+
     @SuppressWarnings("unchecked")
 	public List<Mottagare> getMottagareForMeddelande(long meddelandeId) {
         return qp.processQuery("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE " +
         		"WHERE MEDDELANDEID=" + meddelandeId, this);
     }
-    
+
     public void updateMottagare(Mottagare mott) {
-        String query = makeUpdateQuery("MOTTAGARE", new Object[]{"TYP", mott.getTyp(), "NAMN", mott.getNamn(), 
-                "ADRESS", mott.getAdress(), "CSNNUMMER", mott.getCsnnummer(), "STATUS", mott.getStatus()}, 
+        String query = makeUpdateQuery("MOTTAGARE", new Object[]{"TYP", mott.getTyp(), "NAMN", mott.getNamn(),
+                "ADRESS", mott.getAdress(), "CSNNUMMER", mott.getCsnnummer(), "STATUS", mott.getStatus()},
                 new Object[]{"ID", mott.getId()});
         qp.executeThrowException(query);
     }
-    
+
     public void deleteMottagare(Mottagare mott) {
         qp.executeThrowException("DELETE FROM MOTTAGARE WHERE ID=" + mott.getId());
     }

@@ -18,15 +18,15 @@ public class DTOSMSIn {
 	private static final int MAXRUBRIKLANGD = 11;
 	private static final int MAXMEDDELANDELANGD = 160;
 	private static final int MINTELELANGD = 10;
-	
+
 	/**
 	 * Parameterlos konstruktor for att uppfylla beankontraktet.
 	 *
 	 */
 	public DTOSMSIn() {
 	}
-	
-	public DTOSMSIn(String telnr, String rubrik, String meddelande, 
+
+	public DTOSMSIn(String telnr, String rubrik, String meddelande,
 			String applikationsnamn, String funktionsnamn) {
 	    setTelnummer(telnr);
 	    setRubrik(rubrik);
@@ -45,7 +45,7 @@ public class DTOSMSIn {
 
 	public final void setMeddelande(String meddelande) {
 	    if((meddelande != null) && (meddelande.length() > MAXMEDDELANDELANGD)) {
-	        throw new IllegalArgumentException("Meddelandetexten får inte vara längre än 160 tecken, var " + meddelande.length() + " tecken lång");    
+	        throw new IllegalArgumentException("Meddelandetexten får inte vara längre än 160 tecken, var " + meddelande.length() + " tecken lång");
 	    }
 	    this.meddelande = meddelande;
 	}
@@ -84,8 +84,8 @@ public class DTOSMSIn {
         this.funktionsnamn = funktionsnamn;
     }
     public String toString() {
-        return "Tel: " + telnummer + " App: " + applikationsnamn 
+        return "Tel: " + telnummer + " App: " + applikationsnamn
         	+ " Funk: " + funktionsnamn + " Rubrik: " + rubrik + " Text: " + meddelande;
     }
-    
+
 }

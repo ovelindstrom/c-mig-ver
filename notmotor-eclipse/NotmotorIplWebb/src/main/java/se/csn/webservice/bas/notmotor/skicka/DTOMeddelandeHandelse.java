@@ -169,23 +169,23 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.id==null && other.getId()==null) || 
+        _equals = true &&
+            ((this.id==null && other.getId()==null) ||
              (this.id!=null &&
               this.id.equals(other.getId()))) &&
-            ((this.handelsetyp==null && other.getHandelsetyp()==null) || 
+            ((this.handelsetyp==null && other.getHandelsetyp()==null) ||
              (this.handelsetyp!=null &&
               this.handelsetyp.equals(other.getHandelsetyp()))) &&
-            ((this.tidpunkt==null && other.getTidpunkt()==null) || 
+            ((this.tidpunkt==null && other.getTidpunkt()==null) ||
              (this.tidpunkt!=null &&
               this.tidpunkt.equals(other.getTidpunkt()))) &&
-            ((this.felkod==null && other.getFelkod()==null) || 
+            ((this.felkod==null && other.getFelkod()==null) ||
              (this.felkod!=null &&
               this.felkod.equals(other.getFelkod()))) &&
-            ((this.feltext==null && other.getFeltext()==null) || 
+            ((this.feltext==null && other.getFeltext()==null) ||
              (this.feltext!=null &&
               this.feltext.equals(other.getFeltext()))) &&
-            ((this.instans==null && other.getInstans()==null) || 
+            ((this.instans==null && other.getInstans()==null) ||
              (this.instans!=null &&
               this.instans.equals(other.getInstans())));
         __equalsCalc = null;
@@ -282,10 +282,10 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanSerializer(
             _javaType, _xmlType, typeDesc);
     }
@@ -294,10 +294,10 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanDeserializer(
             _javaType, _xmlType, typeDesc);
     }

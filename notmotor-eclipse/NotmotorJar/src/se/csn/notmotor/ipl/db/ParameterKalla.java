@@ -11,7 +11,7 @@ import se.csn.notmotor.ipl.model.Setting;
 
 
 public interface ParameterKalla {
-	
+
     String getStringParam(String namn);
     String getStringParam(String namn, String defaultVarde);
     void setStringParam(String namn, String varde);
@@ -23,7 +23,7 @@ public interface ParameterKalla {
     boolean getBooleanParam(String namn, boolean defaultVarde);
     String getDescription(String namn);
     void reload();
-    
+
     /**
      * Returnerar en map av namn-vardepar.
      */

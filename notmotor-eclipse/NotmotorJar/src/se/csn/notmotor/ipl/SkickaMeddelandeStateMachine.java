@@ -12,29 +12,29 @@ import se.csn.common.servlet.RunControl;
 public class SkickaMeddelandeStateMachine extends MeddelandeStateMachineBase {
 
     private SkickaMeddelandeServices services;
-    
+
 	public SkickaMeddelandeStateMachine(SkickaMeddelandeServices services, RunControl runControl) {
 	    super(runControl);
 	    this.services = services;
 	}
-	
+
 	public void run() {
 		mainLoop: while (runControl.isRunning()) {
-		
+
 			// Sätt watchdog timer (oavsett status):
 			services.updateWatchdogFlag();
-		
+
 			// Läs parametrar (görs 1 gång per tick). 
 			// Man skulle kunna sätta ett annat intervall för
 			// parameteruppdatering, men det skulle bara komplicera
 			// koden utan att tillföra nödvändig funktionalitet
 			services.updateParameters();
-			
+
 			// Läs den status som är satt i databasen. 
 			int status = services.getStatus();
-			
+
 			switch(status) {
-			case INIT: 
+			case INIT:
 			    // Markörtillstånd för första varvet. Gå till RUNNING:
 			    services.makeTransition(INIT, RUNNING);
 			    // faller igenom
@@ -72,13 +72,13 @@ public class SkickaMeddelandeStateMachine extends MeddelandeStateMachineBase {
 			case UNKNOWN: // Fortsätt som i PAUSED: kommer bara härifrån om status
 			    		  // ändras i databasen
 			    break; // NOSONAR
-			default: throw new IllegalStateException("Okänt tillstånd: " + status); 
+			default: throw new IllegalStateException("Okänt tillstånd: " + status);
 			}
-			
+
 			// Sov en ticktid, för att inte lasta i onödan
 			services.sleepTick();
 		}
 		services.shutdown();
 	}
-	
+
 }

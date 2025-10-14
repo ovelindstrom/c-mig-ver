@@ -24,7 +24,7 @@ public class SchemaBean {
 
     private ListDataModel model;
     private String startdatum, slutdatum;
-    
+
     public static class Schemarad {
         private boolean delete;
         private Date from, tom;
@@ -33,7 +33,7 @@ public class SchemaBean {
             this.tom = stop;
             delete = false;
         }
-        
+
         public boolean getDelete() {
             return delete;
         }
@@ -54,31 +54,31 @@ public class SchemaBean {
             this.tom = tom;
         }
     }
-    
-    public SchemaBean() { 
+
+    public SchemaBean() {
         DAOSchema dao = ActionHelper.getResourceFactory().getDAOSchema();
         List intervall = dao.getIntervall();
         List<Schemarad> schemarader = new ArrayList<Schemarad>(intervall.size());
         for(Iterator it = intervall.iterator();it.hasNext();) {
             Tidsintervall ti = (Tidsintervall)it.next();
             schemarader.add(new Schemarad(ti.getStarttid(), ti.getSluttid()));
-            
+
         }
         model = new ListDataModel(schemarader);
-        
+
         // Sätt defaultvärden för datumraderna:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         startdatum = sdf.format(new Date());
         slutdatum = sdf.format(new Date());
-        
+
     }
-    
+
     Tidsintervall skapaIntervall() {
         Date from = DateUtils.strToDate(startdatum, true);
         Date tom = DateUtils.strToDate(slutdatum, false);
         return new Tidsintervall(from, tom);
     }
-    
+
     public void taBortRader(ActionEvent e) {
         DAOSchema dao = ActionHelper.getResourceFactory().getDAOSchema();
         List rader = (List)model.getWrappedData();
@@ -90,7 +90,7 @@ public class SchemaBean {
             }
         }
     }
-    
+
     @SuppressWarnings("unchecked")
 	public void laggTillRad(ActionEvent e) {
         Tidsintervall intervall = skapaIntervall();
@@ -100,16 +100,16 @@ public class SchemaBean {
         rader.add(new Schemarad(intervall.getStarttid(), intervall.getSluttid()));
         model.setWrappedData(rader);
     }
-    
-  
+
+
     public ListDataModel getSchemarader() {
         return model;
     }
     public void setSchemarader(ListDataModel schemarader) {
         this.model = schemarader;
     }
-    
-    
+
+
     public String getSlutdatum() {
         return slutdatum;
     }

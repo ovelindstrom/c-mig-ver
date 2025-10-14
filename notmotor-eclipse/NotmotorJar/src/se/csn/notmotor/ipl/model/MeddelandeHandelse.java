@@ -14,34 +14,34 @@ import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
 
 
 public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
-    
+
     private static final long serialVersionUID = 1L;
 	// Händelsetyp
-    public static final int 
+    public static final int
     	// Notmotorn har tagit emot meddelandet och lagt det i databasen
 		MOTTAGET = 1,
-		
+
 		// Meddelandet skickat till mailserver el dyl för vidare befordran
 		SKICKAT_SERVER = 2,
-		
+
 		// Meddelandet kom i retur; detta ska normalt inte hända. Kan bero på att
 		// mottagarens mailbox är full, att meddelandet fastnat i spamfilter, 
 		// att användaren inte finns, autoreply etc etc
 		BESVARAT = 4,
-		
+
 		// Meddelandet togs bort av användande applikation
 		BORTTAGET = 8,
-		
+
 		// Kunde inte sända meddelandet till mailservern pga fel i meddelandet
 		MEDDELANDEFEL = 16,
-		
+
 		// Kunde inte sända meddelandet till mailservern pga bruten koppling
 		TEKNISKT_FEL = 32,
-		
+
     	// Värde som kan användas om man är intresserad av alla händelser
     	ALLA_HANDELSER = Integer.MAX_VALUE;
-    
-    
+
+
     public static String getTyptext(int typ) {
         switch(typ) {
         	case MeddelandeHandelse.BESVARAT : return "Besvarat";
@@ -57,8 +57,8 @@ public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
         	}
         }
     }
-    
-    
+
+
     // Felkoder:
     public static final int OK = 0, // dvs inget fel
     						FELAKTIG_MOTTAGARE = 1,
@@ -70,7 +70,7 @@ public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
     						FELAKTIG_AVSANDARE = 64,
     						ALLMANT_FEL = 128,
     						STOPPANDE_FEL = 256,
-    						
+
     						OKANT_FEL = 1073741824; // 2^30
 	
     public static String getKodtext(int kod) {
@@ -89,30 +89,30 @@ public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
         	default : return "Okänd (" + kod + ")";
         }
     }
-    
+
     // Databasnyckel för spårbarhet
     private Long id;
     // Flagga som beskriver vad som skedde, exempelvis SÄND, ADRESSAT OKÄND, OMSÄND, EJ KONTAKT
     private Integer handelsetyp;
     // När händelsen ägde rum
-    private Date tidpunkt; 
+    private Date tidpunkt;
 	// En av ovanstående felkoder. 
 	private Integer felkod;
 	// Detaljerad feltext som pekar ut vilket data som var felaktigt (om något).
 	private String feltext;
 	// Nyckel till den programinstans som genererade händelsen
-	private Integer instans;    
-    
+	private Integer instans;
+
 	public MeddelandeHandelse() {
 	}
-		
-	
+
+
 	public MeddelandeHandelse(int handelsetyp) {
 	    this.handelsetyp = new Integer(handelsetyp);
 	    tidpunkt = new Date();
 	    felkod = new Integer(OK);
 	}
-	
+
 	public MeddelandeHandelse(int handelsetyp, int felkod, String felmeddelande) {
 	    this.handelsetyp = new Integer(handelsetyp);
 	    tidpunkt = new Date();
@@ -120,9 +120,9 @@ public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
 	    this.feltext = felmeddelande;
 	}
 
-	
-	
-    
+
+
+
     public Integer getFelkod() {
         return felkod;
     }
@@ -153,7 +153,7 @@ public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
     public void setTidpunkt(Date tidpunkt) {
         this.tidpunkt = tidpunkt;
     }
-    
+
     public Integer getInstans() {
         return instans;
     }

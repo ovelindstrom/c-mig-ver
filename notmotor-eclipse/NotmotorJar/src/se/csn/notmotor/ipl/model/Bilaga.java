@@ -25,19 +25,19 @@ public class Bilaga  extends CsnDataTransferObjectImpl {
     private String encoding;
     // Data för bilagan, måste sättas
     private byte[] data;
-    
+
     public Bilaga() {
     }
-    
+
     public Bilaga(byte[] data) {
         this.data = data;
     }
-    
+
     public Bilaga(byte[] data, String filnamn) {
         this.data = data;
         this.filnamn = filnamn;
     }
-    
+
     public String getFilnamn() {
         return filnamn;
     }
@@ -68,7 +68,7 @@ public class Bilaga  extends CsnDataTransferObjectImpl {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }

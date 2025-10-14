@@ -17,11 +17,11 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
     public DAOStatusImpl(QueryProcessor qp) {
         super(qp);
     }
-    
+
     public Status getStatus(int instans) {
         return (Status)qp.getObject("SELECT INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP FROM STATUS WHERE INSTANS=" + instans, this);
     }
-    
+
     public List getStatus(Integer status, Integer server) {
         String where = addRestriction("", "STATUS", "=", status);
         where = addRestriction(where, "SERVER", "=", server);
@@ -31,14 +31,14 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
         where += " ORDER BY INSTANS";
         return qp.processQuery("SELECT INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP FROM STATUS " + where, this);
     }
-    
+
     public int skapa(Status status) {
         if(status == null) {
             throw new IllegalArgumentException("Status måste vara satt");
         }
         int id = (int)qp.getCounter("SEKVENS", "STATUSID");
         String sql = "INSERT INTO STATUS (INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP) VALUES " +
-        		"(" + id + "," + quoteValue(status.getStartad()) + "," + quoteValue(status.getStoppad()) 
+        		"(" + id + "," + quoteValue(status.getStartad()) + "," + quoteValue(status.getStoppad())
                 + "," + status.getStatus()+ "," + quoteValue(status.getWatchdog()) + "," + status.getServer() + "," + quoteValue(status.getTyp()) + ")";
         qp.executeThrowException(sql);
         status.setInstans(id);
@@ -55,7 +55,7 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
         qp.executeThrowException("UPDATE STATUS SET STATUS=" + status.getStatus() + ", STOPPAD=" + quoteValue(status.getStoppad()) + ", " +
         		"WATCHDOGTSTAMP=" + quoteValue(status.getWatchdog()) + " WHERE INSTANS=" + status.getInstans());
     }
-    
+
     public Object newRow(ResultSet rs) throws SQLException {
         Status s = new Status();
         s.setInstans(rs.getInt("INSTANS"));
@@ -67,8 +67,8 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
         s.setTyp(rs.getString("TYP"));
         return s;
     }
-    
-    
+
+
     public void delete(int instans) {
         qp.executeThrowException("DELETE FROM STATUS WHERE INSTANS=" + instans);
     }

@@ -11,17 +11,17 @@ public class Server {
     private int id, prestanda;
     private String servleturl;
     private boolean aktiv;
-    
+
     public Server() {
     }
-    
+
     public Server(int id, boolean aktiv, int prestanda, String url) {
         this.id = id;
         this.aktiv = aktiv;
         this.prestanda = prestanda;
         this.servleturl = url;
     }
-    
+
     public boolean isAktiv() {
         return aktiv;
     }

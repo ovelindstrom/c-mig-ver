@@ -18,10 +18,10 @@ public class Status {
     private int instans, status, server;
     private String typ;
     private Date startad, stoppad, watchdog;
- 
+
     public Status() {
     }
-    
+
     public Status(int instansnr, int status, int server, Date startad, Date stoppad, Date watchdog, String typ) {
         this.instans = instansnr;
         this.status = status;
@@ -31,7 +31,7 @@ public class Status {
         this.watchdog = watchdog;
         this.typ = typ;
     }
-    
+
     public int getInstans() {
         return instans;
     }
@@ -74,7 +74,7 @@ public class Status {
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
-    
+
     public String getTyp() {
         return typ;
     }

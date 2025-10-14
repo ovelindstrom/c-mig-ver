@@ -18,5 +18,5 @@ public class MailTestSimpleNotifieringProxyImpl extends TestCase {
         NotifieringProxy proxy = new SimpleNotifieringProxyImpl(sender);
         proxy.skickaMeddelande(meddelande);
     }
-    
+
 }

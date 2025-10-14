@@ -28,7 +28,7 @@ public class EpostValidator implements MeddelandeValidator {
         }
         return null;
     }
-    
+
     boolean matchandeTyp(String typ) {
         // EpostMeddelandeSendern är defaultsändare -> accepterar NULL
         if((typ == null) || (typ.length() == 0)) {
@@ -43,8 +43,8 @@ public class EpostValidator implements MeddelandeValidator {
         }
         return false;
     }
-    
-    
+
+
 
     /** 
      * @see se.csn.notmotor.ipl.validators.MeddelandeValidator#isValid(se.csn.notmotor.ipl.model.Meddelande)

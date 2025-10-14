@@ -169,23 +169,23 @@ public class DTOAvsandare  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.id==null && other.getId()==null) || 
+        _equals = true &&
+            ((this.id==null && other.getId()==null) ||
              (this.id!=null &&
               this.id.equals(other.getId()))) &&
-            ((this.applikation==null && other.getApplikation()==null) || 
+            ((this.applikation==null && other.getApplikation()==null) ||
              (this.applikation!=null &&
               this.applikation.equals(other.getApplikation()))) &&
-            ((this.kategori==null && other.getKategori()==null) || 
+            ((this.kategori==null && other.getKategori()==null) ||
              (this.kategori!=null &&
               this.kategori.equals(other.getKategori()))) &&
-            ((this.namn==null && other.getNamn()==null) || 
+            ((this.namn==null && other.getNamn()==null) ||
              (this.namn!=null &&
               this.namn.equals(other.getNamn()))) &&
-            ((this.epostadress==null && other.getEpostadress()==null) || 
+            ((this.epostadress==null && other.getEpostadress()==null) ||
              (this.epostadress!=null &&
               this.epostadress.equals(other.getEpostadress()))) &&
-            ((this.replyTo==null && other.getReplyTo()==null) || 
+            ((this.replyTo==null && other.getReplyTo()==null) ||
              (this.replyTo!=null &&
               this.replyTo.equals(other.getReplyTo())));
         __equalsCalc = null;
@@ -282,10 +282,10 @@ public class DTOAvsandare  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanSerializer(
             _javaType, _xmlType, typeDesc);
     }
@@ -294,10 +294,10 @@ public class DTOAvsandare  implements java.io.Serializable {
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanDeserializer(
             _javaType, _xmlType, typeDesc);
     }

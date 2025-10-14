@@ -17,7 +17,7 @@ public class DTOSMSUt implements Serializable {
 	private int returStatus;
 	private String responseMessage;
 	private boolean temporaryError;
-	
+
 	static final String[][] RETURKODTABELL = new String[][] {
 			{"902", "Kod 2 från Telia: Wrong username or password is used or the content provider is barred"},
 			{"997", "Kunde inte tolka svaret från sms-tjänsten"},
@@ -26,7 +26,7 @@ public class DTOSMSUt implements Serializable {
 
 	private static Map<String, String> returkoder;
 	private static Object lock = new Object();
-	
+
 	public DTOSMSUt() {
 		synchronized (lock) {
 		    if (returkoder != null) {
@@ -41,7 +41,7 @@ public class DTOSMSUt implements Serializable {
 			temporaryError = false;
 		}
 	}
-	
+
 	public boolean sandningLyckad() {
 		switch(returStatus) {
 		case 2:
@@ -54,7 +54,7 @@ public class DTOSMSUt implements Serializable {
 	public int getReturStatus() {
 		return returStatus;
 	}
-	
+
 	public String getReturStatusText() {
 	    String msg = (String) returkoder.get("" + returStatus);
 	    if (msg == null) {
@@ -69,7 +69,7 @@ public class DTOSMSUt implements Serializable {
 	public void setReturStatus(int i) {
 		returStatus = i;
 	}
-	
+
 	public String getResponseMessage() {
 		return responseMessage;
 	}

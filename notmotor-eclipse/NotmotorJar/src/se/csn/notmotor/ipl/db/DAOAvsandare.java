@@ -15,7 +15,7 @@ public interface DAOAvsandare {
     Avsandare getAvsandare(int id);
 
     List getAvsandare(String namn);
-    
+
     Avsandare sokEnAvsandare(Avsandare avs);
     /**
      * Om nagon inparameter ar null sa anvands den inte i fragan
@@ -24,10 +24,10 @@ public interface DAOAvsandare {
             String kategori, String epost, String replyto);
 
     List getAvsandare(Avsandare avs);
-    
+
     void updateAvsandare(Avsandare avs);
 
     void deleteAvsandare(Avsandare avs);
-    
+
     int getId(Avsandare avsandare);
 }

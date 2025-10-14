@@ -27,22 +27,22 @@ public class TestMeddelandeHandelse extends TestCase {
         h.setTidpunkt(d);
         assertEquals(h.getTidpunkt(), d);
     }
-    
+
     public void testConstructors() {
         MeddelandeHandelse h = new MeddelandeHandelse(1);
         assertEquals(h.getHandelsetyp(), new Integer(1));
-        
+
         h = new MeddelandeHandelse(2, 3, "fel");
         assertEquals(h.getHandelsetyp(), new Integer(2));
         assertEquals(h.getFelkod(), new Integer(3));
         assertEquals(h.getFeltext(), "fel");
     }
-    
-    
+
+
     public void testObjectFunctions() {
         MeddelandeHandelse o1 = new MeddelandeHandelse();
         MeddelandeHandelse o2 = new MeddelandeHandelse();
-        
+
         assertEquals(o1, o2);
         assertEquals(o1.hashCode(), o2.hashCode());
         assertNotNull(o1.toString());
@@ -50,7 +50,7 @@ public class TestMeddelandeHandelse extends TestCase {
         assertFalse(o1.equals(o2));
         assertFalse(o1.hashCode() ==  o2.hashCode());
     }
-    
+
     public void testHandelsetexter() {
         assertEquals(MeddelandeHandelse.getTyptext(MeddelandeHandelse.BESVARAT), "Besvarat");
         assertEquals(MeddelandeHandelse.getTyptext(MeddelandeHandelse.MOTTAGET), "Mottaget");

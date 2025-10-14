@@ -15,9 +15,9 @@ public interface DAOMottagare {
     public List<Mottagare> getMottagareForMeddelande(long meddelandeId);
 
     public List<Mottagare> getMottagare(Mottagare mott);
-    
+
     public Mottagare getMottagare(long id);
-    
+
     public void updateMottagare(Mottagare mott);
 
     public void deleteMottagare(Mottagare mott);

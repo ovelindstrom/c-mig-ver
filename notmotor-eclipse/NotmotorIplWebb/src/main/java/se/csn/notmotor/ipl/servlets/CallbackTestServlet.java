@@ -13,7 +13,7 @@ import se.csn.common.serializing.ObjectSerializer;
 import se.csn.notmotor.ipl.model.Meddelande;
 
 public class CallbackTestServlet extends HttpServlet implements Servlet {
-	
+
     private static Log log = Log.getInstance(CallbackTestServlet.class);
     /* (non-Java-doc)
 	 * @see javax.servlet.http.HttpServlet#HttpServlet()
@@ -35,7 +35,7 @@ public class CallbackTestServlet extends HttpServlet implements Servlet {
 	protected void doPost(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
 	    handleRequest(arg0);
 	}
-	
+
 	private void handleRequest(HttpServletRequest req) {
 	    log.debug("HandleRequest");
 	    String data = req.getParameter("MEDDELANDE");
@@ -47,7 +47,7 @@ public class CallbackTestServlet extends HttpServlet implements Servlet {
 	    Meddelande m = (Meddelande)ObjectSerializer.toObjectFromBase64String(data);
 	    log.debug("Meddelande: " + m);
 	}
-	
-	
+
+
 
 }

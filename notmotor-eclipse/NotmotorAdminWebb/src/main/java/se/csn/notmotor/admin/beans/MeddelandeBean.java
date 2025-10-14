@@ -38,16 +38,16 @@ public class MeddelandeBean {
     private DAOMeddelande dao;
     private DAOHandelse daoHandelse;
     private ListDataModel handelser;
-    
+
     private Log log = Log.getInstance(MeddelandeBean.class);
-	
+
     public static class Handelserad {
         private int typ, kod;
         private String text;
         private long id;
         private Date tidpunkt;
         private boolean delete;
-        
+
         public Handelserad(long id, int typ, int kod, String text, Date tidpunkt) {
             this.id = id;
             this.typ = typ;
@@ -56,7 +56,7 @@ public class MeddelandeBean {
             this.tidpunkt = tidpunkt;
             delete = false;
         }
-        
+
         public boolean isDelete() {
 			return delete;
 		}
@@ -100,14 +100,14 @@ public class MeddelandeBean {
             this.typ = typ;
         }
     }
-    
+
     public static class HandelseradMapper implements RowToObjectMapper {
-        
+
         public Object newRow(ResultSet rs) throws SQLException {
             return new Handelserad(rs.getLong("ID"), rs.getInt("TYP"), rs.getInt("KOD"), rs.getString("TEXT"), rs.getTimestamp("TIDPUNKT"));
         }
     }
-    
+
     public MeddelandeBean() {
     	// Skapa meddelandeHandler:
     	qp = ActionHelper.getResourceFactory().getQueryProcessor();
@@ -129,24 +129,24 @@ public class MeddelandeBean {
         }
         lasMeddelandeFranDB();
     }
-    
+
     public boolean getFinnsForegaende() {
         long i = getForegaendeMeddelande(id);
         log.debug("FinnsForegaende, id: " + i);
         return i > 0;
     }
-    
+
     public boolean getFinnsNasta() {
         long i = getNastaMeddelande(id);
         log.debug("FinnsNasta, id: " + i);
         return i > 0;
     }
-    
+
     public boolean getFel() {
         int status = qp.getInt("SELECT STATUS FROM MEDDELANDE WHERE ID=" + id, -1);
         return status > MeddelandeHandelse.SKICKAT_SERVER;
     }
-    
+
     public void visaForegaende(ActionEvent e) {
     	log.debug("ID före: " + id);
     	id = getForegaendeMeddelande(id);
@@ -160,24 +160,24 @@ public class MeddelandeBean {
         log.debug("ID efter: " + id);
         uppdatera();
     }
-    
+
     public void testAction(ActionEvent e) {
         log.debug("TA: ID före: " + id);
         id = getNastaMeddelande(id);
         log.debug("TA: ID efter: " + id);
         uppdatera();
-    }    
-    
+    }
+
     public void uppdatera(ActionEvent e) {
     	uppdatera();
     }
-    
+
     public void skickaOm(ActionEvent e) {
     	log.debug("skickaom, id:" + id);
     	try {
     	MeddelandeHandelse handelse = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET, MeddelandeHandelse.OK, "Omsändning");
     	daoHandelse.createHandelse(handelse, id);
-    	
+
     	MeddelandeHandelse[] h = meddelande.getHandelser();
     	int forstaLikaMedd = 0;
     	Integer typ = -1;
@@ -186,7 +186,7 @@ public class MeddelandeBean {
     	Date tidpunkt = null;
     	int antalLikaHandelser = 1;
     	for (int i = h.length - 1; i >= 0; i--) {
-    		if ((h[i].getHandelsetyp().compareTo(typ) == 0) 
+    		if ((h[i].getHandelsetyp().compareTo(typ) == 0)
     				&& (h[i].getFelkod().compareTo(felkod) == 0)
     				&& (h[i].getFeltext() != null && h[i].getFeltext().equals(feltext))) {
     			tidpunkt = h[i].getTidpunkt();
@@ -198,14 +198,14 @@ public class MeddelandeBean {
     			// Vi har hittat minst en likadan händelse och grupperar ihop dessa
     			if (tidpunkt != null) {
     				log.debug("TIDPUNKT=" + tidpunkt);
-    				qp.executeThrowException("UPDATE HANDELSE SET TEXT='" 
-    						+ h[forstaLikaMedd].getFeltext() 
-    						+ ", Antal likadana händelser: " + antalLikaHandelser 
+    				qp.executeThrowException("UPDATE HANDELSE SET TEXT='"
+    						+ h[forstaLikaMedd].getFeltext()
+    						+ ", Antal likadana händelser: " + antalLikaHandelser
     						+ ", Första tidpunkt: " + tidpunkt
     						+ "' WHERE ID=" + h[forstaLikaMedd].getId());
-    				log.debug("UPDATE HANDELSE SET TEXT=" 
-    						+ h[forstaLikaMedd].getFeltext() 
-    						+ "\nAntal likadana händelser: " + antalLikaHandelser 
+    				log.debug("UPDATE HANDELSE SET TEXT="
+    						+ h[forstaLikaMedd].getFeltext()
+    						+ "\nAntal likadana händelser: " + antalLikaHandelser
     						+ "\nFörsta tidpunkt: " + tidpunkt
     						+ " WHERE ID=" + h[forstaLikaMedd].getId());
     				tidpunkt = null;
@@ -218,15 +218,15 @@ public class MeddelandeBean {
     		felkod = h[i].getFelkod();
     		feltext = h[i].getFeltext();
     	}
-    	qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.MOTTAGET 
+    	qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.MOTTAGET
     			+ " WHERE ID=" + id);
-    	
+
     	uppdatera();
     	} catch (Exception t) {
     		log.error("Kunde inte skicka om meddelande, fel: ", t);
     	}
     }
-    
+
     public void taBortHandelse(ActionEvent e) {
     	List rader = (List) handelser.getWrappedData();
         for (int i = rader.size() - 1; i >= 0; i--) {
@@ -239,7 +239,7 @@ public class MeddelandeBean {
         }
         uppdatera();
     }
-    
+
     public void taBortMeddelande(ActionEvent e) {
     	log.debug("Ta bort meddelande, id:" + id);
     	qp.executeThrowException("UPDATE MEDDELANDE SET STATUS="
@@ -249,14 +249,14 @@ public class MeddelandeBean {
     	uppdatera();
     }
 
-    
+
     long getNastaMeddelande(long nuvarandeId) {
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		SokBean sokBean = (SokBean) FacesContext.getCurrentInstance().getApplication()
-			    .getELResolver().getValue(elContext, null, "sokBean");	
+			    .getELResolver().getValue(elContext, null, "sokBean");
     	List<Meddelanderad> meddelanden = sokBean.getMeddelandenAsList();
-	    
-    	if (meddelanden != null) {	    	 	
+
+    	if (meddelanden != null) {
 		    int i = 0;
 	    	while (i < meddelanden.size()-1) {
 	    		if (meddelanden.get(i).getId() == nuvarandeId) {
@@ -267,14 +267,14 @@ public class MeddelandeBean {
     	}
     	return 0;
     }
-    
-    
+
+
     long getForegaendeMeddelande(long nuvarandeId){
 		ELContext elContext = FacesContext.getCurrentInstance().getELContext();
 		SokBean sokBean = (SokBean) FacesContext.getCurrentInstance().getApplication()
-			    .getELResolver().getValue(elContext, null, "sokBean");	
+			    .getELResolver().getValue(elContext, null, "sokBean");
     	List<Meddelanderad> meddelanden = sokBean.getMeddelandenAsList();
-	    
+
     	if (meddelanden != null) {
 	    	int i = meddelanden.size() - 1;
 	    	while (i > 0) {
@@ -284,10 +284,10 @@ public class MeddelandeBean {
 	    		i--;
 		    }
     	}
-	    	
-    	return 0;  
-    }    
-    
+
+    	return 0;
+    }
+
     public long getForstaId() {
         return qp.getLong("SELECT MIN(ID) FROM MEDDELANDE", 0);
     }
@@ -319,12 +319,12 @@ public class MeddelandeBean {
             }
         }
     }
-    
+
     public Meddelande getMeddelande() {
         lasMeddelandeFranDB();
         return meddelande;
     }
-    
+
     /**
      * Specialare for att formatera ut mottagarna som en strang.
      * @return String med alla mottagare för meddelandet.
@@ -351,7 +351,7 @@ public class MeddelandeBean {
         }
         return s;
     }
-    
+
     public String getAvsandarstrang() {
         lasMeddelandeFranDB();
         if (meddelande == null) { return ""; }
@@ -363,7 +363,7 @@ public class MeddelandeBean {
         }
         return s;
     }
-    
+
     public String getCsnnummer() {
         lasMeddelandeFranDB();
         if (meddelande == null) { return ""; }
@@ -372,7 +372,7 @@ public class MeddelandeBean {
         }
         return meddelande.getCsnnummer().toString();
     }
-    
+
     private List getHandelserFranMeddelande() {
         List<Handelserad> list = new ArrayList<Handelserad>();
         long tick = System.currentTimeMillis();
@@ -383,12 +383,12 @@ public class MeddelandeBean {
         }
         int maxAntalHandelser = 50;
         for (int i = h.length - 1, min = Math.max(0, h.length - maxAntalHandelser); i >= min; i--) {
-            list.add(new Handelserad(h[i].getId().longValue(), h[i].getHandelsetyp().intValue(), 
+            list.add(new Handelserad(h[i].getId().longValue(), h[i].getHandelsetyp().intValue(),
                     h[i].getFelkod().intValue(), h[i].getFeltext(), h[i].getTidpunkt()));
         }
         return list;
     }
-    
+
     public boolean getFinnsHandelser() {
         lasMeddelandeFranDB();
     	if (meddelande == null || meddelande.getHandelser() == null) {
@@ -396,7 +396,7 @@ public class MeddelandeBean {
     	}
         return meddelande.getHandelser().length > 0;
     }
-    
+
     public boolean getKunnaTaBortMeddelande() {
     	int status = qp.getInt("SELECT STATUS FROM MEDDELANDE WHERE ID=" + id, 0);
     	if ((status == MeddelandeHandelse.MOTTAGET || status > MeddelandeHandelse.SKICKAT_SERVER)
@@ -405,11 +405,11 @@ public class MeddelandeBean {
     	}
         return false;
     }
-    
+
     public long getId() {
         return id;
     }
-    
+
     public void setId(long id) {
         log.debug("SetId: " + id);
         this.id = id;
@@ -422,9 +422,9 @@ public class MeddelandeBean {
 	public void setHandelser(ListDataModel handelser) {
 		this.handelser = handelser;
 	}
-    
+
     private void uppdatera() {
     	meddelande = null;
     	lasMeddelandeFranDB();
-    }    
+    }
 }

@@ -13,13 +13,13 @@ import se.csn.webservice.bas.notmotor.callback.CallbackProxy;
  * @author Jonas åhrnell - csn7821
  */
 public class CallbackClient {
-    
+
     private static Log log = Log.getInstance(CallbackClient.class);
-    
+
     public CallbackClient() {
-        
+
     }
-    
+
     public void rapporteraHandelseWS(Meddelande meddelande) {
         String url = meddelande.getCallbackURL();
         if (url == null) {
@@ -35,5 +35,5 @@ public class CallbackClient {
 			log.error("Kunde inte anropa url: " + url + " för att meddela ny händelse.");
 		}
     }
-    
+
 }

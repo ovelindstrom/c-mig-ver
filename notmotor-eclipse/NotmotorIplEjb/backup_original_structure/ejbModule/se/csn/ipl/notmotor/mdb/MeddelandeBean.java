@@ -109,9 +109,9 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 			if (log.isDebugEnabled()) { log.debug("Meddelande mottaget"); }
 			if (inMessage instanceof TextMessage || inMessage instanceof BytesMessage) {
 				if (inMessage instanceof TextMessage) {
-					xml = ((TextMessage) inMessage).getText();	
+					xml = ((TextMessage) inMessage).getText();
 				} else {
-					BytesMessage byteMessage = (BytesMessage) inMessage; 
+					BytesMessage byteMessage = (BytesMessage) inMessage;
 					byte[] bytes = new byte[(int) byteMessage.getBodyLength()];
 					byteMessage.readBytes(bytes);
 					xml = new String(bytes, charset);
@@ -147,7 +147,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 					throw new IllegalStateException(e);
 				}
 			} else {
-				String message = "Meddelandetyp skall vara TextMessage eller JMSBytesMessage, men " 
+				String message = "Meddelandetyp skall vara TextMessage eller JMSBytesMessage, men "
 						+ "mottaget meddelande är " + inMessage.getClass().getName();
 				log.error(message);
 
@@ -240,22 +240,22 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
             		HanteraEDH_ServiceLocator service = new HanteraEDH_ServiceLocator();
 
             		URL basEndpoint = new URL(Properties.getProperty(PROPERTIES_FIL_ARK, "dao.ws.bas.ipl.csn.se")  + "/hanteraEDHSOAP");
-            		
+
             		clientEDH = service.gethanteraEDHSOAP(basEndpoint);
             		HamtaFranEDHFraga fraga = new HamtaFranEDHFraga(docId);
             		HamtaFranEDHSvar svar = clientEDH.hamtaFranEDH(fraga);
             		doc = svar.getData();
-            		
+
             		if (svar.getReturkod() != 0) {
-        				throw new IllegalStateException("Lyckades anropa webservice för att hämta dokument, " 
-            		+ "men den gav fel tillbaka - returkod " 
+        				throw new IllegalStateException("Lyckades anropa webservice för att hämta dokument, "
+            		+ "men den gav fel tillbaka - returkod "
         						+ svar.getReturkod());
         			}
-            		
+
 	            	int antalBilagor = 1;
 	            	DTOBilaga[] bilagor = new DTOBilaga[antalBilagor];
 	            	DTOBilaga bilaga  = new DTOBilaga();
-	            	
+
         			if (doc != null && doc.length > 0) {
         				log.debug("buf längd: " + doc.length);
 
@@ -279,13 +279,13 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
     				throw new IllegalStateException("Notmotorn kunde hämta dokument. ", e);
     				**/
         		}
-            } 
-			
+            }
+
 			DTONotifieringResultat resultat;
 			try {
 				resultat = client.skickaMeddelande(meddelande);
 				if (log.isDebugEnabled()) {
-					log.debug("\nResultat från Notmotorn: " + resultat.getResultat() 
+					log.debug("\nResultat från Notmotorn: " + resultat.getResultat()
 							+ "\nInfo:" + resultat.getInfo()
 							+ "\nMeddelandeId:" + resultat.getMeddelandeId());
 				}
@@ -297,7 +297,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 				log.error("Fått ett resultat > 2" + resultat.getInfo());
 				throw new IllegalStateException("Notmotorn kunde inte ta emot meddelande. " + resultat.getInfo());
 			}
-			
+
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			// Ett exception måste kastas för att MQ meddelandet ska läggas tillbaka på kön
@@ -353,7 +353,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
 			case Node.TEXT_NODE:
 				dataVarde = node.getNodeValue();
 				break;
-			default : 
+			default :
 			}
 		}
 	}

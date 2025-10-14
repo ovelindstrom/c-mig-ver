@@ -25,17 +25,17 @@ public class ParameterCache implements ParameterKalla {
     public static final int DEFAULT_REFRESHTID = -1;
     static final String[] FALSE_STRANGAR = {"N", "NEJ", "NO", "F", "FALSE", "0"};
     static final String[] TRUE_STRANGAR = {"J", "JA", "Y", "YES", "T", "TRUE", "1"};
-    
+
     private TimeoutCache cache;
     private QueryProcessor qp;
     private Log log = Log.getInstance(ParameterCache.class);
-    
+
     private String tabellnamn, namnCol, beskrivningCol;
-    
+
     public ParameterCache(QueryProcessor qp) {
         this(qp, DEFAULT_REFRESHTID);
     }
-    
+
     public ParameterCache(QueryProcessor qp, String namnkolumn, String vardekolumn) {
         if (qp == null) {
             throw new IllegalArgumentException("QueryProcessor måste anges");
@@ -46,10 +46,10 @@ public class ParameterCache implements ParameterKalla {
         if (vardekolumn == null) {
             throw new IllegalArgumentException("Vardekolumn måste anges");
         }
-        
+
         namnCol = namnkolumn;
     }
-    
+
     /**
      * 
      * @param ds
@@ -59,11 +59,11 @@ public class ParameterCache implements ParameterKalla {
         this.qp = qp;
         cache = new TimeoutCache(refreshtidIMillis);
     }
-    
+
     public String getStringParam(String namn) {
         return getStringParam(namn, null);
     }
-    
+
     public String getStringParam(String namn, String defaultVarde) {
         String val = (String)cache.get(namn);
         if(val == null) {
@@ -75,7 +75,7 @@ public class ParameterCache implements ParameterKalla {
         }
         return val;
     }
-    
+
     public void setStringParam(String namn, String varde) {
         cache.put(namn, varde);
         // Kolla om parametern finns:
@@ -86,7 +86,7 @@ public class ParameterCache implements ParameterKalla {
             qp.executeThrowException("UPDATE PARAMETER SET VARDE=" + DAOImplBase.quoteValue(varde) + " WHERE NAMN='" + namn + "'");
         }
     }
-    
+
     public int getIntParam(String namn, int defaultVarde) {
         String val = getStringParam(namn);
         if (val == null) {
@@ -95,11 +95,11 @@ public class ParameterCache implements ParameterKalla {
         	return val.trim().length() > 0 ? Integer.parseInt(val) : 0;
         }
     }
-    
+
     public void setIntParam(String namn, int varde) {
     	setStringParam(namn, Integer.toString(varde));
     }
-    
+
     public long getLongParam(String namn, long defaultVarde) {
         String val = getStringParam(namn);
         if (val == null) {
@@ -108,12 +108,12 @@ public class ParameterCache implements ParameterKalla {
             return val.trim().length() > 0 ? Long.parseLong(val) : 0;
         }
     }
-    
+
     public void setLongParam(String namn, long varde) {
     	setStringParam(namn, Long.toString(varde));
     }
-    
-    
+
+
     public boolean getBooleanParam(String namn, boolean defaultVarde) {
         String val = getStringParam(namn);
         if (val == null) {
@@ -126,7 +126,7 @@ public class ParameterCache implements ParameterKalla {
             return defaultVarde;
         }
     }
-    
+
     public static boolean strToBool(String value) {
         for (int i = 0; i < TRUE_STRANGAR.length; i++) {
             if (TRUE_STRANGAR[i].equalsIgnoreCase(value)) {
@@ -140,19 +140,19 @@ public class ParameterCache implements ParameterKalla {
         }
         throw new IllegalArgumentException("Kunde inte konvertera '" + value + "' till true eller false");
 	}
-    
+
     public void setBooleanParam(String namn, boolean varde) {
         setStringParam(namn, varde ? "J" : "N");
     }
-    
+
     public void reload() {
         cache.clear();
     }
-    
+
     public void setRefreshtid(long refreshtidIMillis) {
         cache.setLifetimeInMilliseconds(refreshtidIMillis);
     }
-    
+
     static class Entry {
         private String namn, varde;
         public Entry(String namn, String varde) {
@@ -167,25 +167,25 @@ public class ParameterCache implements ParameterKalla {
 		}
 
     }
-    
+
     public static class ParamMapper implements RowToObjectMapper{
     	public Object newRow(ResultSet rs) throws SQLException {
             return new Entry(rs.getString("NAMN"), rs.getString("VARDE"));
         }
     }
-    
+
     public Map<String, String> getStringParamMap() {
         List names = qp.processQuery("SELECT NAMN, VARDE FROM PARAMETER", new ParamMapper() {
-            
+
         });
         Map<String, String> map = new HashMap<String, String>();
         for(Iterator it = names.iterator();it.hasNext();) {
-            Entry entry = (Entry)it.next(); 
+            Entry entry = (Entry)it.next();
            map.put(entry.namn, entry.varde);
         }
         return map;
     }
-    
+
     public String getDescription(String namn) {
         if(namn == null) {
         	return null;
@@ -195,8 +195,8 @@ public class ParameterCache implements ParameterKalla {
         }
         return qp.getString("SELECT " + beskrivningCol + " FROM " + tabellnamn + " WHERE " + namnCol + "='" + namn + "'", null);
     }
-    
-    
+
+
     public Setting[] getSettings() {
         // TODO: Implementera.
         return null;

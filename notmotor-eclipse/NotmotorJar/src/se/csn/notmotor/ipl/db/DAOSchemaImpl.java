@@ -14,26 +14,26 @@ import se.csn.notmotor.ipl.model.Tidsintervall;
 
 public class DAOSchemaImpl extends DAOImplBase implements DAOSchema {
 
-    
+
     public DAOSchemaImpl(QueryProcessor qp) {
         super(qp);
     }
-    
+
     public void delete(Tidsintervall intervall) {
-        qp.executeThrowException("DELETE FROM KORSCHEMA WHERE STANGNINGSTID=" + 
+        qp.executeThrowException("DELETE FROM KORSCHEMA WHERE STANGNINGSTID=" +
                 quoteValue(intervall.getStarttid()) + " AND OPPNINGSTID=" + quoteValue(intervall.getSluttid()));
 
     }
-    
-    
+
+
     public Object newRow(ResultSet rs) throws SQLException {
         return new Tidsintervall(rs.getTimestamp("STANGNINGSTID"), rs.getTimestamp("OPPNINGSTID"));
     }
-    
+
     public List getIntervall() {
         return qp.processQuery("SELECT STANGNINGSTID, OPPNINGSTID FROM KORSCHEMA", this);
     }
-    
+
     public void skapaIntervall(Tidsintervall intervall) {
         qp.executeThrowException("INSERT INTO KORSCHEMA (STANGNINGSTID, OPPNINGSTID) VALUES " +
         		"(" + quoteValue(intervall.getStarttid()) + ", " + quoteValue(intervall.getSluttid()) + ")");

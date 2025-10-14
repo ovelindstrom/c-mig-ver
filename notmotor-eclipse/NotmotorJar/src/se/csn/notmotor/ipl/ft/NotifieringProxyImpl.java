@@ -26,13 +26,13 @@ public class NotifieringProxyImpl implements NotifieringProxy {
     private MeddelandeMottagare meddelandeMottagare;
     private QueryProcessor qp;
     private Log log = Log.getInstance(NotifieringProxyImpl.class);
-    
+
     public NotifieringProxyImpl(DAOMeddelande mh, QueryProcessor qp, MeddelandeMottagare mm) {
         meddelandeHandler = mh;
         meddelandeMottagare = mm;
         this.qp = qp;
     }
-    
+
     public Meddelande hamtaMeddelande(Long meddelandeId) {
         return meddelandeHandler.getMeddelande(meddelandeId.longValue());
     }
@@ -48,7 +48,7 @@ public class NotifieringProxyImpl implements NotifieringProxy {
             return new NotifieringResultat(-1, NotifieringResultat.FEL, "Tekniskt fel.");
         }
     }
-    
+
     public NotifieringResultat taBortMeddelande(Long meddelandeId) {
         try {
         	Connection conn = qp.getConnection();
@@ -68,7 +68,7 @@ public class NotifieringProxyImpl implements NotifieringProxy {
             return new NotifieringResultat(meddelandeId.longValue(), NotifieringResultat.FEL, "Fel, meddelande " + meddelandeId.longValue() + ": " + e);
         }
     }
-    
+
     public Avsandare[] sokAvsandare(String namndel, String applikationsdel,
             String kategoridel, String adressdel, String replytoDel) {
         return null;

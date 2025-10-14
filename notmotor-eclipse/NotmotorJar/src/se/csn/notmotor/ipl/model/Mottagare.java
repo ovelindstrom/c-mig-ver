@@ -23,7 +23,7 @@ public class Mottagare extends CsnDataTransferObjectImpl {
 
     // CSN-nummer, måste inte anges
     private Integer csnnummer;
-    
+
     // Kan vara EPOST,EPOSTCC,EPOSTBCC och/eller SMS (kommaseparerat)
     // Måste inte anges. Tomt fält ger EPOST
     private String typ;
@@ -33,24 +33,24 @@ public class Mottagare extends CsnDataTransferObjectImpl {
     public Mottagare() {
     }
 
-    
+
     public Mottagare(String adress) {
         this.adress = adress;
     }
-    
+
     public Mottagare(String adress, String namn) {
         this.adress = adress;
         this.namn = namn;
     }
-    
+
     public Mottagare(String adress, String namn, int csnnummer) {
         this.adress = adress;
         this.namn = namn;
         this.csnnummer = new Integer(csnnummer);
     }
 
-    
-    
+
+
     public Integer getCsnnummer() {
         return csnnummer;
     }
@@ -87,7 +87,7 @@ public class Mottagare extends CsnDataTransferObjectImpl {
     public void setStatus(Integer status) {
         this.status = status;
     }
-    
+
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }

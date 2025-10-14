@@ -217,29 +217,29 @@ public class SparaTillEDHFraga  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.data==null && other.getData()==null) || 
+        _equals = true &&
+            ((this.data==null && other.getData()==null) ||
              (this.data!=null &&
               java.util.Arrays.equals(this.data, other.getData()))) &&
-            ((this.ocrstrang==null && other.getOcrstrang()==null) || 
+            ((this.ocrstrang==null && other.getOcrstrang()==null) ||
              (this.ocrstrang!=null &&
               this.ocrstrang.equals(other.getOcrstrang()))) &&
-            ((this.signatur==null && other.getSignatur()==null) || 
+            ((this.signatur==null && other.getSignatur()==null) ||
              (this.signatur!=null &&
               this.signatur.equals(other.getSignatur()))) &&
-            ((this.myndighetsstampling==null && other.getMyndighetsstampling()==null) || 
+            ((this.myndighetsstampling==null && other.getMyndighetsstampling()==null) ||
              (this.myndighetsstampling!=null &&
               this.myndighetsstampling.equals(other.getMyndighetsstampling()))) &&
-            ((this.csnnr==null && other.getCsnnr()==null) || 
+            ((this.csnnr==null && other.getCsnnr()==null) ||
              (this.csnnr!=null &&
               this.csnnr.equals(other.getCsnnr()))) &&
-            ((this.arendelopnr==null && other.getArendelopnr()==null) || 
+            ((this.arendelopnr==null && other.getArendelopnr()==null) ||
              (this.arendelopnr!=null &&
               this.arendelopnr.equals(other.getArendelopnr()))) &&
-            ((this.inhandling==null && other.getInhandling()==null) || 
+            ((this.inhandling==null && other.getInhandling()==null) ||
              (this.inhandling!=null &&
               this.inhandling.equals(other.getInhandling()))) &&
-            ((this.timestamp==null && other.getTimestamp()==null) || 
+            ((this.timestamp==null && other.getTimestamp()==null) ||
              (this.timestamp!=null &&
               this.timestamp.equals(other.getTimestamp())));
         __equalsCalc = null;
@@ -356,10 +356,10 @@ public class SparaTillEDHFraga  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanSerializer(
             _javaType, _xmlType, typeDesc);
     }
@@ -368,10 +368,10 @@ public class SparaTillEDHFraga  implements java.io.Serializable {
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
+           java.lang.String mechType,
+           java.lang.Class _javaType,
            javax.xml.namespace.QName _xmlType) {
-        return 
+        return
           new  org.apache.axis.encoding.ser.BeanDeserializer(
             _javaType, _xmlType, typeDesc);
     }

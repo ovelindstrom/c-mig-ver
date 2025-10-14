@@ -20,27 +20,27 @@ import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 public class NotmotorBase {
 
     private Log log = Log.getInstance(NotmotorBase.class);
-    
+
     protected static final String PROPERTYFIL = "notmotor-ipl";
     protected static final String PROPERTYFIL_ARK = "ark";
-    
+
     protected static final String NOTMOTOR_DS_JNDI_PROP = "notmotor.ds.jndinamn";
     protected static final String REFRESHTID_PROP = "param.refreshtid";
-    
+
     /**
      * Skapar ny instans av NotmotorBase. 
      *
      */
     public NotmotorBase() {
-        
+
     }
-    
+
     protected QueryProcessor getQP(DataSource ds, String engine) {
         QueryProcessor qp = new SingleThreadConnectionQueryProcessor(ds);
         qp.addQueryListener(new QueryListenerImpl(engine));
         return qp;
     }
-    
+
     /**
      * Metoden satter alla statusrader som matchar URL:en till STOPPED.
      * Nodvandigt ifall nagon process dor okontrollerat.
@@ -49,18 +49,18 @@ public class NotmotorBase {
      * @param qp QueryProcessor
      */
     protected void stangOppnaInstanser(String anropadURL, QueryProcessor qp) {
-        String sql = "UPDATE STATUS SET STATUS=" 
+        String sql = "UPDATE STATUS SET STATUS="
             + MeddelandeStateMachineBase.STOPPED
             + " WHERE SERVER="
             + "(SELECT ID FROM SERVER WHERE NOTMOTORSERVLETURL='" + anropadURL + "')"
             + " AND STATUS <>" + MeddelandeStateMachineBase.STOPPED;
         log.info("Stänger ej stangda instanser, sql: " + sql);
-            
+
         int result = qp.executeThrowException(sql);
-        
+
         log.debug("Stängde " + result + " instanser.");
     }
-    
+
     /**
     * Soker ut alla meddelanden med negativ status (dvs. meddelanden
     * som ar markerade for pagaende sandning) och satter om dem till 
@@ -74,8 +74,8 @@ public class NotmotorBase {
         log.info("Återställer meddelandestatus för avbrutna sändningar, sql: " + sql);
 
         int result = qp.executeThrowException(sql);
-        
+
         log.debug("Återställde " + result + " meddelanden.");
     }
-    
+
 }

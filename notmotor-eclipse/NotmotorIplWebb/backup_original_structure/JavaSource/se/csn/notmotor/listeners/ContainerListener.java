@@ -14,7 +14,7 @@ import se.csn.ark.common.util.logging.Log;
 public class ContainerListener implements ServletContextListener {
 
     private Log log = Log.getInstance(ContainerListener.class);
-    
+
     public void contextDestroyed(ServletContextEvent arg0) {
         log.info("CONTEXT DESTROY");
     }

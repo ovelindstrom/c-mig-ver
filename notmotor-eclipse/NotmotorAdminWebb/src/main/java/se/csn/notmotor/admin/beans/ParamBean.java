@@ -19,7 +19,7 @@ import se.csn.notmotor.ipl.model.Setting;
 
 
 public class ParamBean {
-	
+
     private static final String[][] params = {
             {"WATCHDOGTID", "Sekunder mellan uppdatering av processernas watchdogflagga"},
             {"TICKTID", "Väntetid i sekunder efter varje arbetsmoment"},
@@ -30,7 +30,7 @@ public class ParamBean {
             {"MAXSANDFORSOK", "Max antal omsändningsförsök per meddelande"},
             {"KANALER_MED_BEGRANSNINGAR", "Nedprioriterade inkanaler med begränsningar. Kommaseparerad lista."},
     };
-    
+
     /**
      * Lista med de parametrar som finns tillgangliga for nedprioriterade kanaler.
      * Varje element i listan bestar i sin tur av en lista som innehaller tva element;
@@ -44,14 +44,14 @@ public class ParamBean {
         {"KANAL_{{KANAL}}_OPPNINGSTID", "åppningstid för aktuell kanal. (HH:mm:ss)"},
         {"KANAL_{{KANAL}}_STANGNINGSTID", "Stängningstid för aktuell kanal. (HH:mm:ss)"},
     };
-    
+
     private ListDataModel parametrar;
     private ListDataModel parametrarKanaler;
-    
+
     public ParamBean() {
         init();
     }
-    
+
     private void init() {
     	ParameterKalla paramKalla = ActionHelper.getResourceFactory().getParameterKalla();
         List<Setting> plist = new ArrayList<Setting>();
@@ -60,7 +60,7 @@ public class ParamBean {
             plist.add(s);
         }
         parametrar = new ListDataModel(plist);
-        
+
         List<Setting> pklist = new ArrayList<Setting>();
         for (String kanal : paramKalla.getStringParam("KANALER_MED_BEGRANSNINGAR", "").split("[, ]+")) {
         	if (kanal.trim().length() > 0) {
@@ -73,7 +73,7 @@ public class ParamBean {
         }
         parametrarKanaler = new ListDataModel(pklist);
     }
-    
+
     public void uppdatera(ActionEvent e) {
         ParameterKalla paramKalla = ActionHelper.getResourceFactory().getParameterKalla();
         List settings = (List) parametrar.getWrappedData();
@@ -83,7 +83,7 @@ public class ParamBean {
         }
         init();
     }
-    
+
     public void uppdateraKanaler(ActionEvent e) {
         ParameterKalla paramKalla = ActionHelper.getResourceFactory().getParameterKalla();
         // Nollställ temporära parametrar
@@ -101,18 +101,18 @@ public class ParamBean {
         }
         init();
     }
-    
+
     public ListDataModel getParametrar() {
         return parametrar;
     }
     public void setParametrar(ListDataModel parametrar) {
         this.parametrar = parametrar;
     }
-    
+
     public ListDataModel getParametrarKanaler() {
         return parametrarKanaler;
     }
-    
+
     public void setParametrarKanaler(ListDataModel parametrar) {
     	this.parametrarKanaler = parametrar;
     }

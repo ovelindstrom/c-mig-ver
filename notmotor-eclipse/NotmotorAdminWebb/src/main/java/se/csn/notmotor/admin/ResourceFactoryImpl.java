@@ -35,9 +35,9 @@ public class ResourceFactoryImpl implements ResourceFactory {
 
     private DataSource ds;
     private int transactionIsolationLevel;
-    
-    
-    
+
+
+
     public int getTransactionIsolationLevel() {
         return transactionIsolationLevel;
     }
@@ -48,7 +48,7 @@ public class ResourceFactoryImpl implements ResourceFactory {
         this.ds = ds;
         this.transactionIsolationLevel = transactionIsolationLevel;
     }
-    
+
     public ParameterKalla getParameterKalla() {
         return new ParameterCache(getQueryProcessor());
     }
@@ -59,24 +59,24 @@ public class ResourceFactoryImpl implements ResourceFactory {
      * loggen.
      */
     public QueryProcessor getQueryProcessor() {
-    	QueryListener ql = new QueryListenerImpl("ADMINWEBB"); 
+    	QueryListener ql = new QueryListenerImpl("ADMINWEBB");
         QueryProcessor qp = new QueryProcessorImpl(ds, transactionIsolationLevel);
         qp.addQueryListener(ql);
         return qp;
     }
-    
+
     public DAOSchema getDAOSchema() {
         return new DAOSchemaImpl(getQueryProcessor());
     }
-    
+
     public DAOServer getDAOServer() {
         return new DAOServerImpl(getQueryProcessor());
     }
-    
+
     public DAOStatus getDAOStatus() {
         return new DAOStatusImpl(getQueryProcessor());
     }
-    
+
     public DAOMeddelande getDAOMeddelande() {
         QueryProcessor qp = getQueryProcessor();
         DAOAvsandare daoavsandare = new DAOAvsandareImpl(qp);
@@ -85,7 +85,7 @@ public class ResourceFactoryImpl implements ResourceFactory {
         DAOHandelse daohandelse = new DAOHandelseImpl(qp);
         return new DAOMeddelandeImpl(qp, daoavsandare, daomottagare, daobilaga, daohandelse);
     }
-    
+
     public DAOHandelse getDAOHandelse() {
         return new DAOHandelseImpl(getQueryProcessor());
     }

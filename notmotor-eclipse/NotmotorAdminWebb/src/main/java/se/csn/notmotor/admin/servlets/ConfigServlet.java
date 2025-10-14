@@ -18,10 +18,10 @@ import se.csn.common.jndi.ServiceLocator;
 import se.csn.notmotor.admin.actions.ActionHelper;
 
 public class ConfigServlet extends HttpServlet implements Servlet {
-	
+
 	private static final long serialVersionUID = 1L;
     private static final String PROPERTIESFIL = "notmotor-iw";
-    
+
     /* (non-Java-doc)
 	 * @see javax.servlet.http.HttpServlet#HttpServlet()
 	 */
@@ -43,7 +43,7 @@ public class ConfigServlet extends HttpServlet implements Servlet {
 		setupDependencies();
 	}
 
-	
+
 	/**
 	 * Kontrollerar att alla externa beroenden ar uppsatta enligt krav.
 	 * @return true om alla dependencies fanns och var rätt uppsatta,
@@ -63,34 +63,34 @@ public class ConfigServlet extends HttpServlet implements Servlet {
                 ClassDependencyTester.ARKALL,
         };
         ClassDependencyTester.findClassesThrowException(CLASSTEST);
-        
+
         ClassDependencyTester.findClassThrowException("se.csn.common.util.cache.TimeoutCache", "Utils");
-        
+
         String[] properties = new String[] {
                 "notmotor.ds.jndinamn",
         };
-        
+
         // Anropa med propertiesfilen som argument för att sätta upp Log-klassens interna cache:
         Properties.init(PROPERTIESFIL);
         PropertyDependencyTester.dumpPropertiesThrowIfMissing(properties);
-        
+
         System.out.println("Kontrollerat dependencies i NotmotorAdmin");
-	    
+
 	    return true;
 	}
-	
+
 	public boolean setupDependencies() {
 	    ServiceLocator sl = new ServiceLocator();
 	    String dsnamn =  Properties.getProperty(PROPERTIESFIL, "notmotor.ds.jndinamn");
 	    DataSource ds = sl.getDatasource(dsnamn);
 	    if (ds == null) {
 	        throw new ConfigException("Kunde inte hitta " + dsnamn, "Kontrollera att datasourcen finns i JNDI-trädet");
-	    } 
+	    }
 	    System.out.println("Datasource: " + ds);
 	    ActionHelper.setDatasource(ds);
 	    return true;
 	}
-	
+
 	/* (non-Java-doc)
 	 * @see javax.servlet.Servlet#destroy()
 	 */

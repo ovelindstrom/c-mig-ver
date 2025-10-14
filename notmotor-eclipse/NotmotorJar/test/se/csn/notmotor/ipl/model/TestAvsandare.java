@@ -29,12 +29,12 @@ public class TestAvsandare extends TestCase {
         Avsandare a = new Avsandare("namn", "adr");
         assertEquals(a.getNamn(), "namn");
         assertEquals(a.getEpostadress(), "adr");
-        
+
         a = new Avsandare("namn", "adr", "app", "kat");
         assertEquals(a.getApplikation(), "app");
         assertEquals(a.getKategori(), "kat");
     }
-    
+
     public void testObjectFunctions() {
         Avsandare o1 = new Avsandare();
         Avsandare o2 = new Avsandare();

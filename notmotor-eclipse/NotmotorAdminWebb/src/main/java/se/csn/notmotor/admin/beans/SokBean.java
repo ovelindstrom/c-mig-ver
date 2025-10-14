@@ -47,15 +47,15 @@ public class SokBean {
     private int antalMeddelanden;
     private int maxAntalMeddelanden = MAXANTALMEDDELANDEN;
     private int[] valdaStatusar;
-    
+
     private ListDataModel meddelanden;
     private String orderBy = "";
     private String orderByAscDesc = "";
     private String sorteringsordningForId = "ascendingOrder";
     private String sorteringsordningForSkapat = "ascendingOrder";
     private String sorteringsordningForSkickat = "ascendingOrder";
-    
-    
+
+
     public static class Meddelanderad {
         private long id;
         private String status, skickat, applikation, mottagare, rubrik, skapat, skickaTidigast, kanal;
@@ -67,12 +67,12 @@ public class SokBean {
             this.kanal = kanal;
             this.skickat = skickat;
             this.skickaTidigast = skickaTidigast;
-            this.applikation = applikation; 
+            this.applikation = applikation;
             this.mottagare = mottagare;
             this.rubrik = rubrik;
             this.markeradForOmsandning = false;
         }
-        
+
         /**
          * Returnerar true om meddelandet ska vara mojligt att sanda om. Omsandningen ar mojligt i de fall
          * ett meddelande har statuskod 32(Meddelandefel) eller 16(Tekniskt fel).
@@ -85,8 +85,8 @@ public class SokBean {
         	}
         	return false;
         }
-        
-        
+
+
         public String getApplikation() {
             return applikation;
         }
@@ -146,10 +146,10 @@ public class SokBean {
 		}
         public void setMarkeradForOmsandning(boolean markeradForOmsandning) {
 			this.markeradForOmsandning = markeradForOmsandning;
-		}        
+		}
     }
-    
-    public SokBean() { 
+
+    public SokBean() {
         meddelanden = new ListDataModel();
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DAY_OF_MONTH, -1);
@@ -159,36 +159,36 @@ public class SokBean {
         Date tom = new Date();
         tomSkapat = sdf.format(tom);
     }
-    
+
     public SelectItem[] getAllaStatusar() {
         return allaStatusar;
     }
-    
+
     public String getStatusBeskrivning(String status) {
-    	
+
         for(int i = 0; i < allaStatusar.length; i++) {
             if (status.equals(allaStatusar[i].getValue().toString())) {
             	return (String)allaStatusar[i].getLabel();
             }
-        }    	
+        }
         return "Okänt";
     }
-    
+
     public void setValdaStatusar(int[] statusar) {
        for(int i = 0; i < statusar.length; i++) {
            log.debug("" + statusar[i]);
        }
        valdaStatusar = statusar;
     }
-    
+
     public int[] getValdaStatusar() {
         return valdaStatusar;
     }
-    
+
     public static class MeddelandeRowMapper implements RowToObjectMapper {
         public Object newRow(ResultSet rs) throws SQLException {
             //log.debug("Ny rad");
-            return new Meddelanderad(rs.getLong("ID"), 
+            return new Meddelanderad(rs.getLong("ID"),
                     				rs.getString("STATUS"),
                     				rs.getString("SKAPAT"),
                     				rs.getString("KANAL"),
@@ -199,20 +199,20 @@ public class SokBean {
                     				rs.getString("RUBRIK"));
         }
     }
-    
+
     public void sok(ActionEvent e) {
         sorteringsordningForId = "descendingOrder";
         sorteringsordningForSkapat = "descendingOrder";
         sorteringsordningForSkickat = "descendingOrder";
         if (orderByAscDesc.equals("ASC")) {
         	if (orderBy.equals("ID")) {
-                sorteringsordningForId = "ascendingOrder";        		
+                sorteringsordningForId = "ascendingOrder";
         	} else if (orderBy.equals("SKAPADTIDPUNKT")) {
-                sorteringsordningForSkapat = "ascendingOrder";        		
+                sorteringsordningForSkapat = "ascendingOrder";
         	} else if (orderBy.equals("SANTTIDPUNKT")) {
-                sorteringsordningForSkickat = "ascendingOrder";        		
+                sorteringsordningForSkickat = "ascendingOrder";
         	}
-        } 
+        }
 
         sok();
     }
@@ -233,9 +233,9 @@ public class SokBean {
         if (where.length() > 0) {
             sql = sql + "WHERE " + where;
         }
-        
+
         String orderBy = skapaOrderByVillkor();
-        
+
         sql = sql + orderBy;
 
         log.debug("SQL: " + sql);
@@ -245,7 +245,7 @@ public class SokBean {
         antalMeddelanden = meddelanderader.size();
         meddelanden.setWrappedData(meddelanderader);
 	}
-    
+
     /**
      * @return en giltig SQL-sträng med de villkor som är angivna i bönan 
      */
@@ -256,7 +256,7 @@ public class SokBean {
         Date skickatTom = DateUtils.strToDate(tomSkickat, false);
         Date skickaTidigastFrom = DateUtils.strToDate(fromSkickaTidigast, true);
         Date skickaTidigastTom = DateUtils.strToDate(tomSkickaTidigast, false);
-        
+
         String where = "";
         // Lägg till datumvillkor
         if (skapatFrom != null) {
@@ -276,7 +276,7 @@ public class SokBean {
         where = DAOImplBase.addLike(where, "AVS.EPOST", avsandaradress, true);
         where = DAOImplBase.addLike(where, "MOTT.NAMN", mottagarnamn, true);
         where = DAOImplBase.addLike(where, "MOTT.ADRESS", mottagaradress, true);
-        
+
         // Lägg till kanal, programnamn, csnnummer etc.
         where = DAOImplBase.addLike(where, "MEDD.KANAL", kanal, true);
         where = DAOImplBase.addLike(where, "AVS.PROGRAMNAMN", applikation, true);
@@ -284,7 +284,7 @@ public class SokBean {
         if (csnnummer != 0) {
         	where = DAOImplBase.addRestriction(where, "MEDD.CSNNUMMER", "=",  new Integer(csnnummer));
         }
-        
+
         // Lägg till tillståndsvillkor:
         if(valdaStatusar != null && valdaStatusar.length > 0) {
 	        boolean underSandning = false;
@@ -314,25 +314,25 @@ public class SokBean {
         }
         return where;
     }
-    
-    private String skapaOrderByVillkor(){    	
+
+    private String skapaOrderByVillkor(){
     	return " ORDER BY MEDD." + orderBy + " " + orderByAscDesc + " FETCH FIRST " + maxAntalMeddelanden + " ROWS ONLY";
     }
- 
+
     public String getOrderBy(){
     	return orderBy;
     }
     public void setOrderBy(String inOrderBy){
     	orderBy = inOrderBy;
     }
-    
+
     public String getOrderByAscDesc(){
     	return orderByAscDesc;
     }
     public void setOrderByAscDesc(String inOrderByAscDesc){
     	orderByAscDesc = inOrderByAscDesc;
     }
-    
+
     /**
      * Skickar om ett flera meddelanden som valts pa webbsidan.
      * @param e action event från webbsidan
@@ -347,7 +347,7 @@ public class SokBean {
 			    	MeddelandeHandelse handelse = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET, MeddelandeHandelse.OK, "Omsändning");
 			    	daoHandelse.createHandelse(handelse, rad.getId());
 			    	//Läs alla händelser för aktuellt meddelande
-			    	MeddelandeHandelse[] h = daoHandelse.getHandelserForMeddelande(rad.getId()).toArray(new MeddelandeHandelse[0]); 
+			    	MeddelandeHandelse[] h = daoHandelse.getHandelserForMeddelande(rad.getId()).toArray(new MeddelandeHandelse[0]);
 			    	int forstaLikaMedd = 0;
 			    	Integer typ = -1;
 			    	Integer felkod = -1;
@@ -355,7 +355,7 @@ public class SokBean {
 			    	Date tidpunkt = null;
 			    	int antalLikaHandelser = 1;
 			    	for (int i = h.length - 1; i >= 0; i--) {
-			    		if ((h[i].getHandelsetyp().compareTo(typ) == 0) 
+			    		if ((h[i].getHandelsetyp().compareTo(typ) == 0)
 			    				&& (h[i].getFelkod().compareTo(felkod) == 0)
 			    				&& (h[i].getFeltext() != null && h[i].getFeltext().equals(feltext))) {
 			    			tidpunkt = h[i].getTidpunkt();
@@ -367,14 +367,14 @@ public class SokBean {
 			    			// Vi har hittat minst en likadan händelse och grupperar ihop dessa
 			    			if (tidpunkt != null) {
 			    				log.debug("TIDPUNKT=" + tidpunkt);
-			    				qp.executeThrowException("UPDATE HANDELSE SET TEXT='" 
-			    						+ h[forstaLikaMedd].getFeltext() 
-			    						+ ", Antal likadana händelser: " + antalLikaHandelser 
+			    				qp.executeThrowException("UPDATE HANDELSE SET TEXT='"
+			    						+ h[forstaLikaMedd].getFeltext()
+			    						+ ", Antal likadana händelser: " + antalLikaHandelser
 			    						+ ", Första tidpunkt: " + tidpunkt
 			    						+ "' WHERE ID=" + h[forstaLikaMedd].getId());
-			    				log.debug("UPDATE HANDELSE SET TEXT=" 
-			    						+ h[forstaLikaMedd].getFeltext() 
-			    						+ "\nAntal likadana händelser: " + antalLikaHandelser 
+			    				log.debug("UPDATE HANDELSE SET TEXT="
+			    						+ h[forstaLikaMedd].getFeltext()
+			    						+ "\nAntal likadana händelser: " + antalLikaHandelser
 			    						+ "\nFörsta tidpunkt: " + tidpunkt
 			    						+ " WHERE ID=" + h[forstaLikaMedd].getId());
 			    				tidpunkt = null;
@@ -387,7 +387,7 @@ public class SokBean {
 			    		felkod = h[i].getFelkod();
 			    		feltext = h[i].getFeltext();
 			    	}
-			    	qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.MOTTAGET 
+			    	qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.MOTTAGET
 			    			+ " WHERE ID=" + rad.getId());
     			}
     		}
@@ -396,13 +396,13 @@ public class SokBean {
     	}
     	sok();
     }
-    
+
     /**
      * Kontrollerar om nagra meddelanden som hittades i sokningen ar mojliga att skicka om.
      * @return true om något meddelande kan skickas om, annars false.
      */
     public boolean getFinnsMeddelandenMojligaForOmsandning() {
-    	if (meddelanden != null && meddelanden.getWrappedData() != null) { 
+    	if (meddelanden != null && meddelanden.getWrappedData() != null) {
 	    	for (Meddelanderad rad : getMeddelandenAsList()) {
 	    		if (rad.isOmsandningMojlig()) {
 	    			return true;
@@ -411,23 +411,23 @@ public class SokBean {
     	}
     	return false;
     }
-    
+
     public boolean getFinnsMeddelanden() {
     	return antalMeddelanden > 0;
     }
-    
+
     public int getAntalMeddelanden() {
         return antalMeddelanden;
     }
-    
+
     public ListDataModel getMeddelanden() {
         return meddelanden;
     }
-    
+
     public String getSorteringsordningForId() {
     	return sorteringsordningForId;
     }
-    
+
     public void setSorteringsordningForId(String inSorteringsordningForId) {
     	sorteringsordningForId = inSorteringsordningForId;
     }
@@ -435,7 +435,7 @@ public class SokBean {
     public String getSorteringsordningForSkapat() {
     	return sorteringsordningForSkapat;
     }
-    
+
     public void setSorteringsordningForSkapat(String inSorteringsordningForSkapat) {
     	sorteringsordningForSkapat = inSorteringsordningForSkapat;
     }
@@ -443,7 +443,7 @@ public class SokBean {
     public String getSorteringsordningForSkickat() {
     	return sorteringsordningForSkickat;
     }
-    
+
     public void setSorteringsordningForSkickat(String inSorteringsordningForSkickat) {
     	sorteringsordningForSkickat = inSorteringsordningForSkickat;
     }
@@ -451,7 +451,7 @@ public class SokBean {
     /* Jämförelse för sortering av listan med Id */
     public static Comparator<Meddelanderad> MeddelandeId_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
 		public int compare(Meddelanderad m1, Meddelanderad m2) {
-		   return m1.getId() > m2.getId() ? 1 : -1; 
+		   return m1.getId() > m2.getId() ? 1 : -1;
 	    }
 	};
 	public static Comparator<Meddelanderad> MeddelandeId_descendingOrder = new Comparator<SokBean.Meddelanderad>() {
@@ -459,63 +459,63 @@ public class SokBean {
 		   return m2.getId() > m1.getId() ? 1 : -1;
 	    }
 	};
-	
+
 	/* Jämförelse för sortering av listan med Skapat */
     public static Comparator<Meddelanderad> MeddelandeSkapat_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
 		public int compare(Meddelanderad m1, Meddelanderad m2) {
 		   String SkapatName1 = m1.getSkapat();
 		   String SkapatName2 = m2.getSkapat();
 
-		   return SkapatName1.compareTo(SkapatName2); 
+		   return SkapatName1.compareTo(SkapatName2);
 	    }
 	};
 	public static Comparator<Meddelanderad> MeddelandeSkapat_descendingOrder = new Comparator<SokBean.Meddelanderad>() {
 		public int compare(Meddelanderad m1, Meddelanderad m2) {
 		   String SkapatName1 = m1.getSkapat();
 		   String SkapatName2 = m2.getSkapat();
-		  
+
 		   return SkapatName2.compareTo(SkapatName1);
 	    }
 	};
-    
-	
+
+
 	/* Jämförelse för sortering av listan med Skickat */
 	public static Comparator<Meddelanderad> MeddelandeSkickat_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
 		public int compare(Meddelanderad m1, Meddelanderad m2) {
 			String SkickatName1 = m1.getSkickat() != null ? m1.getSkickat() : "";
 			String SkickatName2 = m2.getSkickat() != null ? m2.getSkickat() : "";
-			
-			return SkickatName1.compareTo(SkickatName2); 
+
+			return SkickatName1.compareTo(SkickatName2);
 	    }
 	};
 	public static Comparator<Meddelanderad> MeddelandeSkickat_descendingOrder = new Comparator<SokBean.Meddelanderad>() {
 		public int compare(Meddelanderad m1, Meddelanderad m2) {
 			String SkickatName1 = m1.getSkickat() != null ? m1.getSkickat() : "";
 			String SkickatName2 = m2.getSkickat() != null ? m2.getSkickat() : "";
-		  
+
 		   return SkickatName2.compareTo(SkickatName1);
 	    }
 	};
 
-	
+
     //Sortering 
     public void sorteraTabell(String kolumnNamn) throws ParseException{
     	List<Meddelanderad> meddelandeList = getMeddelandenAsList();
     	if (kolumnNamn.equals("Id")) {
     		this.sorteringsordningForSkapat = "descendingOrder";
     		this.sorteringsordningForSkickat = "descendingOrder";
-    		
+
     		if (this.sorteringsordningForId.equals("ascendingOrder")) {
     			Collections.sort(meddelandeList, SokBean.MeddelandeId_descendingOrder);
     			this.sorteringsordningForId = "descendingOrder";
     		} else {
     			Collections.sort(meddelandeList, SokBean.MeddelandeId_ascendingOrder);
     			this.sorteringsordningForId = "ascendingOrder";
-    		}	
+    		}
     	} else if(kolumnNamn.equals("Skapat")) {
         	this.sorteringsordningForId = "descendingOrder";
         	this.sorteringsordningForSkickat = "descendingOrder";
-    		
+
     		if (this.sorteringsordningForSkapat.equals("ascendingOrder")) {
     			Collections.sort(meddelandeList, SokBean.MeddelandeSkapat_descendingOrder);
     			this.sorteringsordningForSkapat = "descendingOrder";
@@ -526,7 +526,7 @@ public class SokBean {
     	} else if (kolumnNamn.equals("Skickat")) {
     		this.sorteringsordningForId = "descendingOrder";
     		this.sorteringsordningForSkapat = "descendingOrder";
-    		
+
     		if (this.sorteringsordningForSkickat.equals("ascendingOrder")) {
     			Collections.sort(meddelandeList, SokBean.MeddelandeSkickat_descendingOrder);
     			this.sorteringsordningForSkickat = "descendingOrder";
@@ -535,16 +535,16 @@ public class SokBean {
     			this.sorteringsordningForSkickat = "ascendingOrder";
     		}
     	}
-    
+
     }
-            
+
     /**
      * Returnerar sokta meddelanden i en lista.
      * @return akteulla meddelanden i form av en lista.
      */
     public List<Meddelanderad> getMeddelandenAsList() {
     	ArrayList<Meddelanderad> meddelandeList = new ArrayList<SokBean.Meddelanderad>();
-    	if (meddelanden != null && meddelanden.getWrappedData() != null) { 
+    	if (meddelanden != null && meddelanden.getWrappedData() != null) {
     		meddelandeList = (ArrayList<Meddelanderad>) meddelanden.getWrappedData();
     	}
     	return meddelandeList;
@@ -552,7 +552,7 @@ public class SokBean {
     public void setMeddelanden(ListDataModel meddelanden) {
         this.meddelanden = meddelanden;
     }
-    
+
     public String getFromSkapat() {
         return fromSkapat;
     }

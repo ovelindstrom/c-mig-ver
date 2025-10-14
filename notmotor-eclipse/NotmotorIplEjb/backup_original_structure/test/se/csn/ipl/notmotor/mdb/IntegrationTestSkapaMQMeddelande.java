@@ -27,11 +27,11 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 	//public static final String JNDI_PROVIDER_URL = "iiop://csnwebi003.csnnet.int:22204";
 	public static final String JNDI_JMS_FACTORY = "jms/NotmotorMqConnFactory";
 	public static final String JNDI_JMS_QUEUE = "queue/MAAAUD";
-	
+
 	private MQProducer mqproducer;
 	private int msgcounter;
 	private int antal;
-	
+
 	@Override
 	protected void setUp() throws Exception {
 		System.out.println("Skapar MQProducer");
@@ -47,37 +47,37 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 		super.tearDown();
 		mqproducer.close();
 	}
-	
-	
+
+
 	public void testSkapaEttMQMeddelande() {
 		skapaMQMeddelande(1);
 	}
-	
+
 	public void testSkapa10MQMeddelanden() {
 		skapaMQMeddelande(10);
 	}
-	
+
 	public void testSkapa100MQMeddelanden() {
 		skapaMQMeddelande(100);
 	}
-	
+
 	public void testSkapa1000MQMeddelanden() {
 		skapaMQMeddelande(1000);
 	}
-	
+
 	public void testSkapaEttMQMeddelandeELUR() {
 		skapaMQMeddelande(1, "EPOST UPPMANING ORG");
 	}
-	
+
 	public void testSkapa10MQMeddelandenELUR() {
 		skapaMQMeddelande(10, "EPOST UPPMANING ORG");
 	}
-	
-	
+
+
 	private void skapaMQMeddelande(int antal) {
 		skapaMQMeddelande(antal, "                        ");
 	}
-	
+
 	private void skapaMQMeddelande(int antal, String correlationId) {
 		this.antal = antal;
 		Message msg;
@@ -90,7 +90,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 		System.out.println("Commit");
 		mqproducer.commit();
 	}
-		
+
 	private Message createMessage(String correlationId) {
 		StringBuffer msg = new StringBuffer();
 		msg.append("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
@@ -118,18 +118,18 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 		}
 		return tmsg;
 	}
-		
-	
+
+
 	class MQProducer {
-		
+
 		private QueueConnection qcon;
 		private QueueSession qsession;
 		private QueueSender qsender;
-		
+
 		public MQProducer() {
 			init();
 		}
-				
+
 		private void init() {
 			Context ctx;
 			QueueConnectionFactory qcfactory;
@@ -158,7 +158,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 				throw new IllegalStateException("Kunde inte skapa QueueSender", e);
 			}
 		}
-		
+
 		public TextMessage createTextMessage() {
 			try {
 				return qsession.createTextMessage();
@@ -167,7 +167,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 				return null;
 			}
 		}
-		
+
 		public boolean send(Message msg) {
 			try {
 				qsender.send(msg);
@@ -177,7 +177,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 				return false;
 			}
 		}
-		
+
 		public boolean commit() {
 			try {
 				qsession.commit();
@@ -187,7 +187,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 				return false;
 			}
 		}
-		
+
 		public boolean rollback() {
 			try {
 				qsession.rollback();
@@ -197,7 +197,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 				return false;
 			}
 		}
-		
+
 		public void close() {
 			try {
 				if (qsender != null) {
@@ -213,7 +213,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 				throw new IllegalStateException("Kunde inte stänga QueueSender, QueueSession och QueueConnection", e);
 			}
 		}
-		
+
 	}
-	
+
 }

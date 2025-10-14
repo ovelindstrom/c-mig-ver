@@ -42,7 +42,7 @@ public class SkickaMotorServlet extends HttpServlet implements Servlet { //, Ser
 	private static final String PROPERTIESFIL = "notmotor-ipl";
     private Log log = Log.getInstance(SkickaMotorServlet.class);
     private RunControl runControl;
-    
+
     public SkickaMotorServlet() {
 		super();
 		runControl = new RunControl();
@@ -63,7 +63,7 @@ public class SkickaMotorServlet extends HttpServlet implements Servlet { //, Ser
 	    log.debug("SkickaMotorServlet doPost");
 	    hanteraAnrop(req, resp);
 	}
-	
+
 	private void hanteraAnrop(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	    String start = req.getParameter("start");
 	    skickaSvar(req, resp);
@@ -73,7 +73,7 @@ public class SkickaMotorServlet extends HttpServlet implements Servlet { //, Ser
 	        log.debug("Skickat svar på förfrågan från " + req.getRemoteHost());
 	    }
 	}
-	
+
 	private void skickaSvar(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	    resp.getWriter().write("<html><body>");
 	    resp.getWriter().write("SkickaMotorServlet<br/>");
@@ -84,7 +84,7 @@ public class SkickaMotorServlet extends HttpServlet implements Servlet { //, Ser
 	    resp.getWriter().write("URL: " + req.getRequestURL() + "<br/>");
 	    resp.getWriter().write("</body></html>");
 	}
-	
+
 	public void init(ServletConfig config) throws ServletException {
 	    log.debug("init");
 	    // Kontrollera om autostart är aktiverad och isåfall hur många instanser av Notmotorn
@@ -110,8 +110,8 @@ public class SkickaMotorServlet extends HttpServlet implements Servlet { //, Ser
 	    	log.info("Autostart inaktiverad. Ingen Notmotor-instans startas.");
 	    }
 	}
-	
-    
+
+
     void startaNotmotor(String anropadURL) {
         log.info("Startar ny notmotorinstans");
         long tid = Calendar.getInstance().getTimeInMillis();
@@ -119,29 +119,29 @@ public class SkickaMotorServlet extends HttpServlet implements Servlet { //, Ser
 	        SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();
 	        Scheduler sched = schedFact.getScheduler();
 	        sched.start();
-	
+
 	        JobDetail jobDetail = new JobDetail("myJob" + tid,
 	                                            null,
 	                                            Notmotor.class);
 	        jobDetail.getJobDataMap().put("url", anropadURL);
 	        jobDetail.getJobDataMap().put("runCon", runControl);
-	        
+
 	        Trigger trigger = TriggerUtils.makeImmediateTrigger(0, 0);
 	        trigger.setName("myTrigger" + tid);
-	        
+
 	        sched.scheduleJob(jobDetail, trigger);
         } catch (SchedulerException se) {
         	log.error("Kunde inte starta ny instans av notmotorn", se);
         }
     }
-    
+
 	public void destroy() {
 		log.info("SkickaMotorServlet Destroying...");
 		if (runControl != null) {
 			runControl.setRunning(false);
 		}
 	}
-	
+
 //    public void onServletAvailableForService(ServletEvent arg0) {
 //        log.debug(arg0.getServletClassName() + "availableForService()");
 //    }

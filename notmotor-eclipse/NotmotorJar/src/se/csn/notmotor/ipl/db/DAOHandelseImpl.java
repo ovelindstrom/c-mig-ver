@@ -18,11 +18,11 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
     public DAOHandelseImpl(QueryProcessor qp) {
         super(qp);
     }
-    
+
     public long createHandelse(MeddelandeHandelse h, long meddelandeid) {
         return createHandelse(h, meddelandeid, null);
     }
-    
+
     /**
      * Skapar en rad i databasen och 
      */
@@ -34,12 +34,12 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
         String feltext = quoteValue(h.getFeltext());
         String datum = quoteValue(h.getTidpunkt());
         qp.executeThrowException("INSERT INTO HANDELSE (ID,MEDDELANDEID,TYP,KOD,TEXT,TIDPUNKT,INSTANS) " +
-        		"VALUES (" + id + ", " + meddelandeid + ", " + typ + ", " + kod + 
+        		"VALUES (" + id + ", " + meddelandeid + ", " + typ + ", " + kod +
         		", " + feltext + ", " + datum + ", " + instans +")");
         h.setId(new Long(id));
         return id;
     }
-   
+
     public Object newRow(ResultSet rs) throws SQLException {
         MeddelandeHandelse h = new MeddelandeHandelse();
         h.setId(new Long(rs.getLong("ID")));
@@ -50,12 +50,12 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
         h.setInstans(new Integer(rs.getInt("INSTANS")));
         return h;
     }
-    
+
     @SuppressWarnings("unchecked")
 	public List<MeddelandeHandelse> getHandelserForMeddelande(long meddelandeid) {
         return qp.processQuery("SELECT * FROM HANDELSE WHERE MEDDELANDEID=" + meddelandeid + " ORDER BY ID", this);
     }
-    
+
     public MeddelandeHandelse getHandelse(long id) {
 	    List list = qp.processQuery("SELECT * FROM HANDELSE WHERE ID=" + id, this);
 	    if(list.size() == 0) {

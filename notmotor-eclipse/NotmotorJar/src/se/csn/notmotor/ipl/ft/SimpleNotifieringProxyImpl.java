@@ -26,14 +26,14 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
 
     private MeddelandeSender sender;
     private Log log = Log.getInstance(SimpleNotifieringProxyImpl.class);
-    
+
     public SimpleNotifieringProxyImpl(MeddelandeSender sender) {
         if(sender == null) {
             throw new IllegalArgumentException("sender får inte vara null");
         }
         this.sender = sender;
     }
-    
+
     /**
      * Enklast mojliga implementation. Skickar meddelandet men returnerar
      * inget meddelande-id
@@ -56,15 +56,15 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
      */
     public NotifieringResultat taBortMeddelande(Long meddelandeId) {
         throw new UnsupportedOperationException();    }
-    
+
     /**
      * Ej implementerad
      */
     public Avsandare[] sokAvsandare(String namndel, String applikationsdel,
             String kategoridel, String adressdel, String replytoDel) {
         throw new UnsupportedOperationException();    }
-    
-  
+
+
     /**
      * Ej implementerad
      */
@@ -72,7 +72,7 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
             Avsandare[] avsandare, Mottagare[] mottagare,
             String textinnehall, Integer minstorlek, Integer maxstorlek,
             Integer handelseMask, Integer felmask, Bilaga[] bilagor) {
-        throw new UnsupportedOperationException();    
+        throw new UnsupportedOperationException();
     }
     /**
      * Ej implementerad

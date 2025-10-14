@@ -15,14 +15,14 @@ import se.csn.webservice.bas.notmotor.callback.DTOMottagare;
  *
  */
 public abstract class ConvertCallbackDTO {
-	
+
 	/**
 	 * Konstruktor.
 	 *
 	 */
-	private ConvertCallbackDTO() {	
+	private ConvertCallbackDTO() {
 	}
-	
+
 	/**
 	 * 
 	 * @param dto - webservice dto
@@ -36,7 +36,7 @@ public abstract class ConvertCallbackDTO {
 		nyDto.setMeddelandetext(dto.getMeddelandetext());
 		nyDto.setRubrikEncoding(dto.getRubrikEncoding());
 		nyDto.setMeddelandeEncoding(dto.getMeddelandeEncoding());
-		
+
 		if (dto.getBilagor() != null) {
 			Bilaga[] bilagor = new Bilaga[dto.getBilagor().length];
 			for (int i = 0; i < dto.getBilagor().length; i++) {
@@ -45,7 +45,7 @@ public abstract class ConvertCallbackDTO {
 				bilagor[i].setMimetyp(dto.getBilagor(i).getMimetyp());
 				bilagor[i].setFilnamn(dto.getBilagor(i).getFilnamn());
 				bilagor[i].setEncoding(dto.getBilagor(i).getEncoding());
-	            
+
 	            if (dto.getBilagor(i).getData() != null) {
 	            	int langd = dto.getBilagor(i).getData().length;
 	            	byte[] data = new byte[langd];
@@ -55,7 +55,7 @@ public abstract class ConvertCallbackDTO {
 	        }
 			nyDto.setBilagor(bilagor);
 		}
-		
+
 		if (dto.getSkapad() != null) {
 			nyDto.setSkapad(dto.getSkapad().getTime());
 		}
@@ -65,7 +65,7 @@ public abstract class ConvertCallbackDTO {
 		if (dto.getSkickaTidigast() != null) {
 			nyDto.setSkickaTidigast(dto.getSkickaTidigast().getTime());
 		}
-		
+
 		if (dto.getAvsandare() != null) {
         	Avsandare avs = new Avsandare();
         	avs.setApplikation(dto.getAvsandare().getApplikation());
@@ -75,7 +75,7 @@ public abstract class ConvertCallbackDTO {
         	avs.setReplyTo(dto.getAvsandare().getReplyTo());
         	nyDto.setAvsandare(avs);
         }
-		
+
 		if (dto.getMottagare() != null) {
 			Mottagare[] mott = new Mottagare[dto.getMottagare().length];
 			for (int i = 0; i < dto.getMottagare().length; i++) {
@@ -89,7 +89,7 @@ public abstract class ConvertCallbackDTO {
 	        }
 			nyDto.setMottagare(mott);
 		}
-		
+
 		if (dto.getHandelser() != null) {
 			MeddelandeHandelse[] handelser = new MeddelandeHandelse[dto.getHandelser().length];
 			for (int i = 0; i < dto.getHandelser().length; i++) {
@@ -105,16 +105,16 @@ public abstract class ConvertCallbackDTO {
 	        }
 			nyDto.setHandelser(handelser);
 		}
-		
+
 		nyDto.setCallbackURL(dto.getCallbackURL());
 		nyDto.setCallbackMask(dto.getCallbackMask());
 		nyDto.setMimetyp(dto.getMimetyp());
 		nyDto.setKanal(dto.getKanal());
-		
+
 		return nyDto;
 	}
-	
-	
+
+
 	/**
 	 * 
 	 * @param dto - intern dto
@@ -128,7 +128,7 @@ public abstract class ConvertCallbackDTO {
 		nyDto.setMeddelandetext(dto.getMeddelandetext());
 		nyDto.setRubrikEncoding(dto.getRubrikEncoding());
 		nyDto.setMeddelandeEncoding(dto.getMeddelandeEncoding());
-		
+
 		if (dto.getBilagor() != null) {
 			DTOBilaga[] bilagor = new DTOBilaga[dto.getBilagor().length];
 			for (int i = 0; i < dto.getBilagor().length; i++) {
@@ -137,7 +137,7 @@ public abstract class ConvertCallbackDTO {
 				bilagor[i].setMimetyp(dto.getBilaga(i).getMimetyp());
 				bilagor[i].setFilnamn(dto.getBilaga(i).getFilnamn());
 				bilagor[i].setEncoding(dto.getBilaga(i).getEncoding());
-	            
+
 	            if (dto.getBilaga(i).getData() != null) {
 	            	int langd = dto.getBilaga(i).getData().length;
 	            	byte[] data = new byte[langd];
@@ -147,7 +147,7 @@ public abstract class ConvertCallbackDTO {
 	        }
 			nyDto.setBilagor(bilagor);
 		}
-		
+
 		if (dto.getSkapad() != null) {
 			Calendar c = new GregorianCalendar();
 			c.setTime(dto.getSkapad());
@@ -163,7 +163,7 @@ public abstract class ConvertCallbackDTO {
 			c.setTime(dto.getSkickaTidigast());
 			nyDto.setSkickaTidigast(c);
 		}
-		
+
 		if (dto.getAvsandare() != null) {
 			DTOAvsandare avs = new DTOAvsandare();
         	avs.setApplikation(dto.getAvsandare().getApplikation());
@@ -173,7 +173,7 @@ public abstract class ConvertCallbackDTO {
         	avs.setReplyTo(dto.getAvsandare().getReplyTo());
         	nyDto.setAvsandare(avs);
         }
-		
+
 		if (dto.getMottagare() != null) {
 			DTOMottagare[] mott = new DTOMottagare[dto.getMottagare().length];
 			for (int i = 0; i < dto.getMottagare().length; i++) {
@@ -187,7 +187,7 @@ public abstract class ConvertCallbackDTO {
 	        }
 			nyDto.setMottagare(mott);
 		}
-		
+
 		if (dto.getHandelser() != null) {
 			DTOMeddelandeHandelse[] handelser = new DTOMeddelandeHandelse[dto.getHandelser().length];
 			for (int i = 0; i < dto.getHandelser().length; i++) {
@@ -205,13 +205,13 @@ public abstract class ConvertCallbackDTO {
 	        }
 			nyDto.setHandelser(handelser);
 		}
-		
+
 		nyDto.setCallbackURL(dto.getCallbackURL());
 		nyDto.setCallbackMask(dto.getCallbackMask());
 		nyDto.setMimetyp(dto.getMimetyp());
 		nyDto.setKanal(dto.getKanal());
-		
+
 		return nyDto;
 	}
-	
+
 }

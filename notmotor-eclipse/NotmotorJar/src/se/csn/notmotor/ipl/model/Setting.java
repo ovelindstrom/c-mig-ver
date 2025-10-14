@@ -9,13 +9,13 @@ package se.csn.notmotor.ipl.model;
 public class Setting {
 
     private String namn, beskrivning, varde;
-    
+
     public Setting(String namn, String varde, String beskrivning) {
-        this.namn = namn; 
+        this.namn = namn;
         this.varde = varde;
         this.beskrivning = beskrivning;
     }
-    
+
     public String getBeskrivning() {
         return beskrivning;
     }

@@ -26,24 +26,24 @@ public class Avsandare extends CsnDataTransferObjectImpl {
     private String epostadress;
     // Mailsvarsadress. Får vara null, måste vara riktig om satt
     private String replyTo;
-    
+
     public Avsandare() {
-        
+
     }
-    
+
     public Avsandare(String namn, String adress) {
         this.namn = namn;
         this.epostadress = adress;
     }
-    
+
     public Avsandare(String namn, String adress, String applikation, String kategori) {
         this.namn = namn;
         this.epostadress = adress;
         this.applikation = applikation;
         this.kategori = kategori;
     }
-    
-    
+
+
     public Long getId() {
         return id;
     }
@@ -80,7 +80,7 @@ public class Avsandare extends CsnDataTransferObjectImpl {
     public void setReplyTo(String replyTo) {
         this.replyTo = replyTo;
     }
-    
+
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
@@ -90,5 +90,5 @@ public class Avsandare extends CsnDataTransferObjectImpl {
     public boolean equals(Object o) {
         return EqualsBuilder.reflectionEquals(this, o);
     }
-    
+
 }

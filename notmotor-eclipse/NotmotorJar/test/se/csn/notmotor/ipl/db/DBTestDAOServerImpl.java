@@ -23,8 +23,8 @@ public class DBTestDAOServerImpl extends TestCase {
         // Uppdatera
         // Hämta
     }
-    
+
     public void testGet() {
-        
+
     }
 }

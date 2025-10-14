@@ -11,11 +11,11 @@ import org.apache.commons.logging.Log;
 public class CustomLog implements Log {
 
     private String classname;
-    
+
     public CustomLog(String classname) {
         this.classname = classname;
     }
-    
+
     public void debug(Object arg0, Throwable arg1) {
         System.out.println(classname + ": " + arg0);
     }

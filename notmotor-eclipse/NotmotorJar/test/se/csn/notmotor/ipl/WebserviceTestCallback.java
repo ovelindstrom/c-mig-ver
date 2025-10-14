@@ -28,7 +28,7 @@ public class WebserviceTestCallback extends TestCase {
         }
         */
     }
-    
+
     public void testServlet() throws IOException {
         Meddelande m = new Meddelande("Rubrik", "Text", "Mottagare", "Avsadr", "Avsnamn");
         String data = ObjectSerializer.toBase64String(m);

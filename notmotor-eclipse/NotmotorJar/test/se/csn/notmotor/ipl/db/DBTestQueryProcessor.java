@@ -13,7 +13,7 @@ public class DBTestQueryProcessor extends TestCase {
 
     public void testGetCounter() {
         SingleConnectionQueryProcessor qp = new SingleConnectionQueryProcessor(TestUtils.getTestDB2DataSource("csn24utv",50000, "WDBUTV", "notmotor", "notmotor"));
-        
+
         String countername = "Test" + System.currentTimeMillis();
         // Hämta testvärde
         long cnt = qp.getCounter("SEKVENS", countername);
@@ -23,7 +23,7 @@ public class DBTestQueryProcessor extends TestCase {
         cnt = qp.getCounter("SEKVENS", countername);
         // Kolla att värdet är 2
         assertEquals(cnt, 2L);
-        
+
         // Loopa 1000 st, kolla lite prestanda
         long tick = System.currentTimeMillis();
         for(int i = 0; i < 1000; i++) {
@@ -31,5 +31,5 @@ public class DBTestQueryProcessor extends TestCase {
         }
         System.out.println("Tid: " + (System.currentTimeMillis() - tick));
     }
-    
+
 }

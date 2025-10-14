@@ -9,19 +9,19 @@ package se.csn.notmotor.ipl.model;
  */
 public class KodText {
 
-    private int kod; 
+    private int kod;
     private String text;
-    
+
     public KodText(int kod, String text) {
         this.kod = kod;
         this.text = text;
     }
-    
+
     public String toString() {
         return "" + kod + ": " + text;
     }
-    
-    
+
+
     public int getKod() {
         return kod;
     }

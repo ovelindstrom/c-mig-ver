@@ -18,11 +18,11 @@ import se.csn.ark.common.util.logging.Log;
 public class TransportListenerImpl implements TransportListener {
 
     private Log log = Log.getInstance(TransportListenerImpl.class);
-    
+
     public void messageDelivered(TransportEvent e) {
         log.debug("Meddelande skickat, csnid: " + getMessageId(e.getMessage()).longValue());
     }
-    
+
     public void messageNotDelivered(TransportEvent e) {
         log.debug("Meddelande EJ skickat: " + e.getMessage());
 
@@ -31,7 +31,7 @@ public class TransportListenerImpl implements TransportListener {
         log.debug("Meddelande DELVIS skickat: " + e.getMessage());
 
     }
-    
+
     private Long getMessageId(Message msg) {
         String[] id = new String[]{"NI"};
         try {

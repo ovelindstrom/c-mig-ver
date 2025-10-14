@@ -14,16 +14,16 @@ import se.csn.ark.common.util.logging.Log;
  * OBS! Kan leda till udda beteende om flera webappar delar klassladdare.
  */
 public class WebServiceQueryProcessor extends QueryProcessorBase implements ControlledCommitQueryProcessor {
-	
+
 	private DataSource ds;
 	private Connection connection;
 	private boolean commit = false;
 	private Log log = Log.getInstance(WebServiceQueryProcessor.class);
-	
+
 	public WebServiceQueryProcessor(DataSource ds) {
 		this.ds = ds;
 	}
-	
+
 	/**
 	 * 
 	 */

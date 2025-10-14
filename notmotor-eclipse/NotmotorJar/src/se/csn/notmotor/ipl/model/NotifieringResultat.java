@@ -17,7 +17,7 @@ public class NotifieringResultat  extends CsnDataTransferObjectImpl {
 	private static final long serialVersionUID = 1L;
 
 	public static final int OK = 0,
-    						NOT = 1, 
+    						NOT = 1,
     						VARNING = 2,
     						FEL = 3;
 
@@ -27,16 +27,16 @@ public class NotifieringResultat  extends CsnDataTransferObjectImpl {
     private Integer resultat;
     // Information om resultatet. Null om resultatet var OK, annars en beskrivande text
     private String info;
-    
+
     public NotifieringResultat() {
         resultat = new Integer(0);
     }
-    
+
     public NotifieringResultat(long meddelandeid) {
         resultat = new Integer(0);
         this.meddelandeId = new Long(meddelandeid);
     }
-    
+
     public NotifieringResultat(long meddelandeid, int resultat, String text) {
         if(!((resultat == OK) || (resultat == NOT) || (resultat == VARNING) || (resultat == FEL))) {
             throw new IllegalArgumentException("Okänd resultatkod: " + resultat);
@@ -45,7 +45,7 @@ public class NotifieringResultat  extends CsnDataTransferObjectImpl {
         this.meddelandeId = new Long(meddelandeid);
         this.info = text;
     }
-    
+
     public String getInfo() {
         return info;
     }

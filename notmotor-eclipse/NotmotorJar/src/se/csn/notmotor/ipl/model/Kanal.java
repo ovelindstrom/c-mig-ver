@@ -18,36 +18,36 @@ import java.util.regex.Pattern;
  * @author Petrus Bergman, csn7820
  */
 public class Kanal {
-	
+
 	/** Kanalens namn. */
 	private String namn;
-	
+
 	/** Kanalens oppningstid (endast klockslag). */
 	private Calendar oppningstid;
-	
+
 	/** Kanalens stangningstid (endast klockslag). */
 	private Calendar stangningstid;
-	
+
 	/** Det maximala antalet meddelanden som far bearbetas per timme. */
 	private int maxAntalPerTimme;
-	
+
 	/** Antal meddelanden som ska bearbetas i en foljd. */
 	private int batchStorlek;
-	
+
 	/** Antal meddelanden som aterstar i aktuell batch. */
 	private int batchKvar;
-	
+
 	/** Tid i sekunder mellan varje batch. */
 	private int sovtid;
-	
+
 	/** Tidsstampel da kanalen senast somnat, eller null om vaken. */
 	private Date soverTimestamp;
-	
+
 	/** Antal meddelanden som senast markerats. */
 	private int markerade;
 
-	
-	
+
+
 	/**
 	 * Skapar en ny instans av en inkanal med angivet namn.
 	 * 
@@ -62,11 +62,11 @@ public class Kanal {
 		setOppningstid(0, 0, 0);
 		setStangningstid(23, 59, 59);
 	}
-	
+
 	public String getNamn() {
 		return namn;
 	}
-	
+
 	public String getStatus() {
 		String status = "";
 		if (isOppen()) {
@@ -80,7 +80,7 @@ public class Kanal {
 		}
 		return status;
 	}
-	
+
 	/**
 	 * Returnerar huruvida kanalen ar oppen eller stangd.
 	 * Kanalen anses vara oppen om nuvarande tidpunkt ar inom aktuell oppet-
@@ -98,15 +98,15 @@ public class Kanal {
 			return (nu.before(stangningstid)) || (nu.after(oppningstid));
 		}
 	}
-	
+
 	public String getOppningstidString() {
 		return new SimpleDateFormat("HH:mm:ss").format(oppningstid.getTime());
 	}
-	
+
 	public String getOppningstidKey() {
 		return "KANAL_" + namn + "_OPPNINGSTID";
 	}
-	
+
 	/**
 	 * Satt klockslag da kanalen ska oppnas.
 	 * 
@@ -129,7 +129,7 @@ public class Kanal {
 			throw new IllegalArgumentException("Ogiltigt format på klockslag: " + klockslag);
 		}
 	}
-	
+
 	/**
 	 * Satt klockslag da kanalen ska oppnas.
 	 * 
@@ -139,16 +139,16 @@ public class Kanal {
 	 */
 	public final void setOppningstid(int hh, int mm, int ss) {
 		this.oppningstid = new GregorianCalendar(0, 0, 0, hh, mm, ss);
-	}	
-	
+	}
+
 	public String getStangningstidString() {
 		return new SimpleDateFormat("HH:mm:ss").format(stangningstid.getTime());
 	}
-	
+
 	public String getStangningstidKey() {
 		return "KANAL_" + namn + "_STANGNINGSTID";
 	}
-	
+
 	/**
 	 * Satt klockslag da kanalen ska stangas.
 	 * 
@@ -171,7 +171,7 @@ public class Kanal {
 			throw new IllegalArgumentException("Ogiltigt format på klockslag: " + klockslag);
 		}
 	}
-	
+
 	/**
 	 * Satt klockslag da kanalen ska stangas.
 	 * 
@@ -182,15 +182,15 @@ public class Kanal {
 	public final void setStangningstid(int hh, int mm, int ss) {
 		this.stangningstid = new GregorianCalendar(0, 0, 0, hh, mm, ss);
 	}
-	
+
 	public String getMaxAntalPerTimmeKey() {
 		return "KANAL_" + namn + "_PERTIMME";
 	}
-	
+
 	public int getMaxAntalPerTimme() {
 		return maxAntalPerTimme;
 	}
-	
+
 	/**
 	 * Satter maximala antalet meddelanden som far bearbetas per timme.
 	 * 
@@ -199,56 +199,56 @@ public class Kanal {
 	public void setMaxAntalPerTimme(int antal) {
 		this.maxAntalPerTimme = antal;
 	}
-	
+
 	public String getBatchStorlekKey() {
 		return "KANAL_" + namn + "_BATCHSTORLEK";
 	}
-	
+
 	public int getBatchStorlek() {
 		return batchStorlek;
 	}
-	
+
 	public void setBatchStorlek(int antal) {
 		this.batchStorlek = antal;
 	}
-	
+
 	public String getBatchKvarKey() {
 		// Denna parameter är ej statisk utan uppdateras regelbundet,
 		// därför är nyckeln skriven med gemener.
 		return "kanal_" + namn.toLowerCase() + "_batchkvar";
 	}
-	
+
 	public int getBatchKvar() {
 		return batchKvar;
 	}
-	
+
 	public void setBatchKvar(int antal) {
 		this.batchKvar = antal;
 	}
-	
+
 	public String getSovtidKey() {
 		return "KANAL_" + namn + "_SOVTID";
 	}
-	
+
 	public int getSovtid() {
 		return sovtid;
 	}
-	
+
 	public void setSovtid(int sekunder) {
 		this.sovtid = sekunder;
 	}
-	
+
 	public int getSovtidKvar() {
 		return Math.round((float) getSovtidKvarMillisekunder() / 1000);
 	}
-	
+
 	public long getSovtidKvarMillisekunder() {
 		if (soverTimestamp == null) {
 			return 0;
 		}
 		return Math.max(0, soverTimestamp.getTime() + (sovtid * 1000L) - System.currentTimeMillis());
 	}
-	
+
 	public boolean isSovande() {
 		if (soverTimestamp != null) {
 			Calendar nu = new GregorianCalendar();
@@ -259,29 +259,29 @@ public class Kanal {
 		}
 		return false;
 	}
-	
+
 	public String getSoverTimestampKey() {
 		// Denna parameter är ej statisk utan uppdateras regelbundet,
 		// därför är nyckeln skriven med gemener.
 		return "kanal_" + namn.toLowerCase() + "_sover";
 	}
-	
+
 	public Date getSoverTimestamp() {
 		return soverTimestamp;
 	}
-	
+
 	public void setSoverTimestamp(Date timestamp) {
 		this.soverTimestamp = timestamp;
 	}
-	
+
 	public void setAntalMarkerade(int antal) {
 		this.markerade = antal;
 	}
-	
+
 	public int getAntalMarkerade() {
 		return markerade;
 	}
-	
+
 	public String toString() {
 		return "Kanal(namn = " + namn + ", öppettider = "
 				+ new SimpleDateFormat("HH:mm:ss").format(oppningstid.getTime())
@@ -295,5 +295,5 @@ public class Kanal {
 				+ ", senast markerade = " + markerade
 				+ ")";
 	}
-	
+
 }

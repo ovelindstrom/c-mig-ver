@@ -20,7 +20,7 @@ import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
  */
 public class Meddelande extends CsnDataTransferObjectImpl {
 	private static final long serialVersionUID = 1L;
-	
+
     // Databasnyckel för spårbarhet och omsändning
     private Long id;
     // Självförklarande
@@ -33,7 +33,7 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     private String rubrikEncoding;
     // Encoding för meddelande; om inget anges används iso-8859-1
     private String meddelandeEncoding;
-    
+
     // X antal bilagor
     private Bilaga[] bilagor;
     // Datum. Om null så sätts det vid sändningstillfället, annars är det ok att sätta ett eget
@@ -42,39 +42,39 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     private Date skickat;
     // Tidpunkt då meddelandet SOM TIDIGAST får sändas. För att batcha mailutskick.
     private Date skickaTidigast;
-    
+
     // Avsändare, måste vara satt
     private Avsandare avsandare;
-    
+
     // Måste sätta minst en mottagare
     private Mottagare[] mottagare;
-    
+
     // Händelser för meddelandet
     private MeddelandeHandelse[] handelser;
-    
+
     // Callbackparametrar:
     private String callbackURL;
     private Integer callbackMask;
-    
+
     //  Mimetyp.
     private String mimetyp;
-    
+
     // Kanal. Olika meddelandekanaler kan ha olika prioritering.
     private String kanal;
-    
+
     public Meddelande() {
-        
+
     }
-    
+
     public Meddelande(String rubrik, String text) {
         this.rubrik = rubrik;
         this.meddelandetext = text;
     }
-    
+
     public Meddelande(String rubrik, String text, String mottagare, String avsandaradress) {
         this(rubrik, text, mottagare, avsandaradress, null, null, null);
     }
-    
+
     public Meddelande(String rubrik, String text, String mottagare, String avsandaradress, String avsandarnamn) {
         this(rubrik, text, mottagare, avsandaradress, avsandarnamn, null, null);
     }
@@ -82,7 +82,7 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     public Meddelande(String rubrik, String text, String mottagare, String avsandaradress, String avsandarnamn, String applikation) {
     	this(rubrik, text, mottagare, avsandaradress, avsandarnamn, applikation, null);
     }
-    
+
     public Meddelande(String rubrik, String text, String mottagare, String avsandaradress, String avsandarnamn, String applikation, String kanal) {
         this.rubrik = rubrik;
         this.meddelandetext = text;
@@ -92,22 +92,22 @@ public class Meddelande extends CsnDataTransferObjectImpl {
         setAvsandare(avs);
         setKanal(kanal);
     }
-    
-    
+
+
     public Meddelande(String rubrik, String text, Mottagare[] mottagare) {
         this.rubrik = rubrik;
         this.meddelandetext = text;
         setMottagare(mottagare);
     }
 
-    
+
     public boolean hasBilagor() {
         return (bilagor != null) && (bilagor.length > 0);
     }
-    
+
     public void addBilaga(Bilaga bilaga) {
         if (bilaga == null) { return; }
-        
+
         List<Bilaga> list = new ArrayList<Bilaga>();
         if (bilagor != null) {
             for (int i = 0; i < bilagor.length; i++) {
@@ -117,8 +117,8 @@ public class Meddelande extends CsnDataTransferObjectImpl {
         list.add(bilaga);
         bilagor = (Bilaga[]) list.toArray(new Bilaga[0]);
     }
-    
-    
+
+
     public Integer getCsnnummer() {
         return csnnummer;
     }
@@ -160,7 +160,7 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     }
     public void addHandelse(MeddelandeHandelse h) {
         if (h == null) { return; }
-        
+
         List<MeddelandeHandelse> list = new ArrayList<MeddelandeHandelse>();
         if (handelser != null) {
             for (int i = 0; i < handelser.length; i++) {
@@ -191,7 +191,7 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     public void setMeddelandetext(String meddelandetext) {
         this.meddelandetext = meddelandetext;
     }
-    
+
     public Mottagare[] getMottagare() {
         return mottagare;
     }
@@ -203,7 +203,7 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     }
     public void addMottagare(Mottagare mott) {
         if (mott == null) { return; }
-        
+
         List<Mottagare> list = new ArrayList<Mottagare>();
         if (mottagare != null) {
             for (int i = 0; i < mottagare.length; i++) {
@@ -213,7 +213,7 @@ public class Meddelande extends CsnDataTransferObjectImpl {
         list.add(mott);
         mottagare = (Mottagare[]) list.toArray(new Mottagare[0]);
     }
-    
+
     public String getRubrik() {
         return rubrik;
     }
@@ -232,7 +232,7 @@ public class Meddelande extends CsnDataTransferObjectImpl {
     public void setSkapad(Date skapad) {
         this.skapad = skapad;
     }
-    
+
     public Date getSkickat() {
         return skickat;
     }
@@ -269,17 +269,17 @@ public class Meddelande extends CsnDataTransferObjectImpl {
         }
         if (mottagare != null) {
             for (int i = 0; i < mottagare.length; i++) {
-                sb.append("Mottagare nr "); sb.append(i); sb.append(':'); 
+                sb.append("Mottagare nr "); sb.append(i); sb.append(':');
                 sb.append(mottagare[i].toString()); sb.append('\n');
             }
         }
         return sb.toString();
     }
-    
+
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
-    
+
     public boolean equals(Object o) {
         return EqualsBuilder.reflectionEquals(this, o);
     }
