@@ -130,6 +130,47 @@ def move_webcontent(source_dir, target_dir, description):
     
     return moved_count
 
+def move_ejb_module(source_dir, java_target_dir, resources_target_dir, description):
+    """
+    Move EJB module directory to Maven structure:
+    - Java files go to src/main/java/
+    - META-INF and other resources go to src/main/resources/
+    """
+    if not os.path.exists(source_dir):
+        print(f"Source directory {source_dir} does not exist, skipping {description}")
+        return 0, 0
+    
+    java_count = 0
+    resource_count = 0
+    
+    # Walk through all files in ejbModule directory
+    for root, dirs, files in os.walk(source_dir):
+        for file in files:
+            source_file = os.path.join(root, file)
+            # Calculate relative path from source_dir
+            rel_path = os.path.relpath(source_file, source_dir)
+            
+            if file.endswith('.java'):
+                # Move Java files to src/main/java
+                target_file = os.path.join(java_target_dir, rel_path)
+                target_file_dir = os.path.dirname(target_file)
+                os.makedirs(target_file_dir, exist_ok=True)
+                
+                shutil.move(source_file, target_file)
+                print(f"Moved EJB Java file: {rel_path} -> src/main/java/{rel_path}")
+                java_count += 1
+            else:
+                # Move resources (including META-INF) to src/main/resources
+                target_file = os.path.join(resources_target_dir, rel_path)
+                target_file_dir = os.path.dirname(target_file)
+                os.makedirs(target_file_dir, exist_ok=True)
+                
+                shutil.move(source_file, target_file)
+                print(f"Moved EJB resource: {rel_path} -> src/main/resources/{rel_path}")
+                resource_count += 1
+    
+    return java_count, resource_count
+
 def detect_source_directories(project_root):
     """
     Detect source directories in the project, handling both standard and custom layouts.
@@ -138,10 +179,17 @@ def detect_source_directories(project_root):
     directories = {
         'main_source': None,
         'test_source': None,
-        'webcontent': None
+        'webcontent': None,
+        'ejb_module': None
     }
     
-    # Check for custom source directories first (JavaSource, etc.)
+    # Check for EJB module directory first (Eclipse EJB projects)
+    ejb_module_dir = os.path.join(project_root, 'ejbModule')
+    if os.path.exists(ejb_module_dir):
+        directories['ejb_module'] = ejb_module_dir
+        print(f"Detected EJB module directory: ejbModule")
+    
+    # Check for custom source directories (JavaSource, etc.)
     potential_main_dirs = ['JavaSource', 'src']
     for dir_name in potential_main_dirs:
         dir_path = os.path.join(project_root, dir_name)
@@ -214,6 +262,11 @@ def backup_structure(project_root, directories):
         shutil.copytree(directories['main_source'], os.path.join(backup_dir, source_name))
         print(f"Backed up: {source_name}/ -> backup_original_structure/{source_name}/")
     
+    # Copy EJB module directory if it exists
+    if directories['ejb_module']:
+        shutil.copytree(directories['ejb_module'], os.path.join(backup_dir, 'ejbModule'))
+        print("Backed up: ejbModule/ -> backup_original_structure/ejbModule/")
+    
     # Copy test directory if it exists
     if directories['test_source']:
         shutil.copytree(directories['test_source'], os.path.join(backup_dir, 'test'))
@@ -257,6 +310,7 @@ def convert_to_maven_structure(project_root, create_backup=True):
     old_src_dir = directories['main_source']  # Could be JavaSource, src, etc.
     old_test_dir = directories['test_source']
     old_webcontent_dir = directories['webcontent']
+    old_ejb_module_dir = directories['ejb_module']
     
     # Create temporary directories for the move
     temp_main_java = os.path.join(project_root, 'temp_main_java')
@@ -264,6 +318,8 @@ def convert_to_maven_structure(project_root, create_backup=True):
     temp_test_java = os.path.join(project_root, 'temp_test_java')
     temp_test_resources = os.path.join(project_root, 'temp_test_resources')
     temp_webapp = os.path.join(project_root, 'temp_webapp')
+    temp_ejb_java = os.path.join(project_root, 'temp_ejb_java')
+    temp_ejb_resources = os.path.join(project_root, 'temp_ejb_resources')
     
     try:
         main_java_count = 0
@@ -271,9 +327,24 @@ def convert_to_maven_structure(project_root, create_backup=True):
         test_java_count = 0
         test_resource_count = 0
         webapp_count = 0
+        ejb_java_count = 0
+        ejb_resource_count = 0
         
-        # Move main source files to temporary directories
-        if old_src_dir:
+        # Move EJB module files to temporary directories (takes precedence over regular src)
+        if old_ejb_module_dir:
+            print("Moving EJB module files...")
+            os.makedirs(temp_ejb_java, exist_ok=True)
+            os.makedirs(temp_ejb_resources, exist_ok=True)
+            
+            ejb_java_count, ejb_resource_count = move_ejb_module(
+                old_ejb_module_dir, temp_ejb_java, temp_ejb_resources, "EJB module files"
+            )
+            
+            print(f"✓ Moved {ejb_java_count} EJB Java files and {ejb_resource_count} EJB resources from ejbModule/")
+            print()
+        
+        # Move main source files to temporary directories (if no EJB module)
+        elif old_src_dir:
             print(f"Moving main source files from {os.path.basename(old_src_dir)}/...")
             os.makedirs(temp_main_java, exist_ok=True)
             os.makedirs(temp_main_resources, exist_ok=True)
@@ -310,6 +381,8 @@ def convert_to_maven_structure(project_root, create_backup=True):
         print("Cleaning up empty directories...")
         if old_src_dir:
             cleanup_empty_directories(old_src_dir)
+        if old_ejb_module_dir:
+            cleanup_empty_directories(old_ejb_module_dir)
         if old_test_dir:
             cleanup_empty_directories(old_test_dir)
         if old_webcontent_dir:
@@ -320,6 +393,35 @@ def convert_to_maven_structure(project_root, create_backup=True):
         print("Moving to final Maven structure...")
         
         # Move temp directories to final locations
+        # Handle EJB module files first (they go to main/)
+        if os.path.exists(temp_ejb_java) and os.listdir(temp_ejb_java):
+            target_main_java = os.path.join(project_root, 'src', 'main', 'java')
+            for item in os.listdir(temp_ejb_java):
+                src_path = os.path.join(temp_ejb_java, item)
+                dest_path = os.path.join(target_main_java, item)
+                if os.path.exists(dest_path):
+                    if os.path.isdir(dest_path):
+                        shutil.rmtree(dest_path)
+                    else:
+                        os.remove(dest_path)
+                shutil.move(src_path, dest_path)
+            shutil.rmtree(temp_ejb_java, ignore_errors=True)
+            print(f"✓ Moved EJB Java files to src/main/java/")
+            
+        if os.path.exists(temp_ejb_resources) and os.listdir(temp_ejb_resources):
+            target_main_resources = os.path.join(project_root, 'src', 'main', 'resources')
+            for item in os.listdir(temp_ejb_resources):
+                src_path = os.path.join(temp_ejb_resources, item)
+                dest_path = os.path.join(target_main_resources, item)
+                if os.path.exists(dest_path):
+                    if os.path.isdir(dest_path):
+                        shutil.rmtree(dest_path)
+                    else:
+                        os.remove(dest_path)
+                shutil.move(src_path, dest_path)
+            shutil.rmtree(temp_ejb_resources, ignore_errors=True)
+            print(f"✓ Moved EJB resources to src/main/resources/")
+        
         if os.path.exists(temp_main_java) and os.listdir(temp_main_java):
             target_main_java = os.path.join(project_root, 'src', 'main', 'java')
             shutil.rmtree(target_main_java, ignore_errors=True)  # Remove empty dir first
@@ -387,7 +489,7 @@ def is_project_directory(directory):
     Check if a directory looks like a single project (has pom.xml, JavaSource, src, etc.)
     vs a parent directory containing multiple modules.
     """
-    project_indicators = ['pom.xml', 'JavaSource', 'src', 'WebContent', 'build.xml']
+    project_indicators = ['pom.xml', 'JavaSource', 'src', 'WebContent', 'ejbModule', 'build.xml']
     return any(os.path.exists(os.path.join(directory, indicator)) for indicator in project_indicators)
 
 def main():
