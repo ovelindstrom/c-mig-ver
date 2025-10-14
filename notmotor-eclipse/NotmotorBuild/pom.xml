@@ -1,78 +1,58 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>se.csn</groupId>
-  <artifactId>notmotor</artifactId>
-  <packaging>pom</packaging>
-  <name>Notmotor Build - Parent</name>
-  <version>1.0-SNAPSHOT</version>
-  <url>http://www.csn.se/</url>
-  <issueManagement>
-    <system>Testdirector</system>
-    <url>http://tdsrv2003/tdbin/start_a.htm</url>
-  </issueManagement>
-  <inceptionYear>2007</inceptionYear>
-  <organization>
-    <name>Centrala studiest�dsn�mnden</name>
-    <url>http://www.csn.se/</url>
-  </organization>
-  <developers>
-   <developer>
-      <name>Jonas �hrnell</name>
-      <email>jonas.ohrnell@csn.se</email>
-      <organization>CSN</organization>
-      <organizationUrl>http://www.csn.se/</organizationUrl>
-      <roles>
-        <role>Lead Developer</role>
-      </roles>
-    </developer>
-       <developer>
-      <name>Anders Berglund</name>
-      <email>anders.berglund@csn.se</email>
-      <organization>CSN</organization>
-      <organizationUrl>http://www.csn.se/</organizationUrl>
-      <roles>
-        <role>Developer</role>
-      </roles>
-    </developer>
-  </developers>
-  
-  <parent>
-    <groupId>se.csn</groupId>
-    <artifactId>superpom</artifactId>
-    <version>3.0-SNAPSHOT</version>
-  </parent>
-
-  <modules>
-  	<module>../NotmotorJar</module>
-  	<module>../NotmotorIplWebb</module>
-  	<module>../NotmotorIplEjb</module>
-  	<module>../NotmotorIplEAR</module>
-  	<module>../NotmotorAdminEAR</module>
-  	<module>../NotmotorAdminWebb</module>
-	<module>../NotmotorIplClient</module>
-  	<!-- Och NotmotorIplClient? Den modulen �r frikopplad fr�n den �vriga notmotorn.
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>se.csn</groupId>
+		<artifactId>superpom</artifactId>
+		<version>3.0-SNAPSHOT</version>
+	</parent>
+	<groupId>se.csn</groupId>
+	<artifactId>notmotor</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Notmotor Build - Parent</name>
+	<url>http://www.csn.se/</url>
+	<inceptionYear>2007</inceptionYear>
+	<organization>
+		<name>Centrala studiest�dsn�mnden</name>
+		<url>http://www.csn.se/</url>
+	</organization>
+	
+	<modules>
+		<module>../NotmotorJar</module>
+		<module>../NotmotorIplWebb</module>
+		<module>../NotmotorIplEjb</module>
+		<module>../NotmotorIplEAR</module>
+		<module>../NotmotorAdminEAR</module>
+		<module>../NotmotorAdminWebb</module>
+		<module>../NotmotorIplClient</module>
+		<!-- Och NotmotorIplClient? Den modulen �r frikopplad fr�n den �vriga notmotorn.
   	     Grundprincipen �r att om det �r olika releasecykler (och det kommer det 
   	     troligtvis att vara) s� ska projekten ligga i olika projekt. -->
-  </modules>
+	</modules>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
-      <version>3.12.0</version>
-    </dependency>
-  </dependencies>
-  
-  <build>
-  </build>
-  
-  <reporting>
-  </reporting>
-  
-  <profiles>
-  </profiles>
+	<issueManagement>
+		<system>Testdirector</system>
+		<url>http://tdsrv2003/tdbin/start_a.htm</url>
+	</issueManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.12.0</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+	</build>
+	
+	<reporting>
+	</reporting>
+	
+	<profiles>
+	</profiles>
 </project>

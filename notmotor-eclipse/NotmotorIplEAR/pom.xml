@@ -3,223 +3,225 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>se.csn.notmotor</groupId>
-  <artifactId>notmotoriplear</artifactId>
-  <version>2.0-SNAPSHOT</version>
+ <modelVersion>4.0.0</modelVersion>
+ <parent>
+  <groupId>se.csn</groupId>
+  <artifactId>notmotor</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <relativePath>../NotmotorBuild</relativePath>    
+ </parent>
+ <groupId>se.csn.notmotor</groupId>
+ <artifactId>notmotoriplear</artifactId>
 
-  <packaging>ear</packaging>
+ <version>2.0-SNAPSHOT</version>
 
-  <name>NotmotorIplEar</name>
-   <url>../../../NotmotorIplEAR/target/site</url>
-  <inceptionYear>2007</inceptionYear>
-  <organization>
-    <name>Centrala studiestödsnämnden</name>
-    <url>http://www.csn.se/</url>
-  </organization>
-  <parent>
-    <groupId>se.csn</groupId>
-    <artifactId>notmotor</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <relativePath>../NotmotorBuild</relativePath>    
-  </parent>
+ <packaging>ear</packaging>
+ <name>NotmotorIplEar</name>
+ <url>../../../NotmotorIplEAR/target/site</url>
+ <inceptionYear>2007</inceptionYear>
+ <organization>
+  <name>Centrala studiestödsnämnden</name>
+  <url>http://www.csn.se/</url>
+ </organization>
 
-  <dependencies>
-  	<dependency>
-	  	<groupId>se.csn.notmotor</groupId>
-		<artifactId>notmotoriplwebb</artifactId>
-		<type>war</type>
-  		<version>2.0-SNAPSHOT</version>
-  	</dependency>
-  	<dependency>
-	  	<groupId>se.csn.notmotor</groupId>
-		<artifactId>notmotoriplejb</artifactId>
-		<type>ejb</type>
-  		<version>2.0-SNAPSHOT</version>
-  	</dependency>
-<!--   	<dependency> -->
-<!--       <groupId>se.csn</groupId> -->
-<!-- 	  <artifactId>ark</artifactId> -->
-<!--   	  <version>3.0.1</version> -->
-<!--     </dependency> -->
-<!--   	<dependency> -->
-<!--       <groupId>se.csn</groupId> -->
-<!-- 	  <artifactId>utils</artifactId> -->
-<!--   	  <version>1.0.0</version> -->
-<!--     </dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>se.csn.notmotor</groupId> -->
-<!-- 		<artifactId>notmotorjar</artifactId> -->
-<!--   		<version>2.0-SNAPSHOT</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>se.csn</groupId> -->
-<!-- 		<artifactId>notmotoriplclient</artifactId> -->
-<!--   		<version>2.1-SNAPSHOT</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>axis</groupId> -->
-<!-- 		<artifactId>axis</artifactId> -->
-<!--   		<version>1.3</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>axis</groupId> -->
-<!-- 		<artifactId>axis-jaxrpc</artifactId> -->
-<!--   		<version>1.3</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>axis</groupId> -->
-<!-- 		<artifactId>axis-saaj</artifactId> -->
-<!--   		<version>1.3</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>wsdl4j</groupId> -->
-<!-- 		<artifactId>wsdl4j</artifactId> -->
-<!--   		<version>1.5.1</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>commons-codec</groupId> -->
-<!-- 		<artifactId>commons-codec</artifactId> -->
-<!--   		<version>1.3</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>commons-httpclient</groupId> -->
-<!-- 		<artifactId>commons-httpclient</artifactId> -->
-<!--   		<version>3.1</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>commons-lang</groupId> -->
-<!-- 		<artifactId>commons-lang</artifactId> -->
-<!--   		<version>2.2</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>log4j</groupId> -->
-<!-- 		<artifactId>log4j</artifactId> -->
-<!--   		<version>1.2.8</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>commons-collections</groupId> -->
-<!-- 		<artifactId>commons-collections</artifactId> -->
-<!--   		<version>3.2</version> -->
-<!--   	</dependency> -->
-<!--   	<dependency> -->
-<!-- 	  	<groupId>opensymphony</groupId> -->
-<!-- 		<artifactId>quartz</artifactId> -->
-<!--   		<version>1.6.0</version> -->
-<!--   	</dependency> -->
-<!--   	-->
-<!--   	<dependency> -->
-<!-- 		<groupId>se.csn.integration</groupId> -->
-<!-- 		<artifactId>tietoformedlingstjanst</artifactId> -->
-<!-- 		<version>r17.47.04</version> -->
-<!-- 	</dependency> -->
-<!-- 	 -->
-<!--   	<dependency> -->
-<!--   		<groupId>se.csn.bas</groupId> -->
-<!--   		<artifactId>basiplclient</artifactId> -->
-<!--   		<version>r16.21.05</version> -->
-<!-- 	</dependency> -->
-<!-- 	<dependency> -->
-<!-- 	  	<groupId>se.csn.bas</groupId> -->
-<!-- 	 	<artifactId>basipldto</artifactId> -->
-<!-- 	  	<version>r16.21.04</version> -->
-<!-- 	</dependency> -->
-  </dependencies>
+ <dependencies>
+  <dependency>
+   <groupId>se.csn.notmotor</groupId>
+   <artifactId>notmotoriplwebb</artifactId>
+   <type>war</type>
+   <version>2.0-SNAPSHOT</version>
+  </dependency>
+  <dependency>
+   <groupId>se.csn.notmotor</groupId>
+   <artifactId>notmotoriplejb</artifactId>
+   <type>ejb</type>
+   <version>2.0-SNAPSHOT</version>
+  </dependency>
+  <!--   	<dependency> -->
+  <!--       <groupId>se.csn</groupId> -->
+  <!-- 	  <artifactId>ark</artifactId> -->
+  <!--   	  <version>3.0.1</version> -->
+  <!--     </dependency> -->
+  <!--   	<dependency> -->
+  <!--       <groupId>se.csn</groupId> -->
+  <!-- 	  <artifactId>utils</artifactId> -->
+  <!--   	  <version>1.0.0</version> -->
+  <!--     </dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>se.csn.notmotor</groupId> -->
+  <!-- 		<artifactId>notmotorjar</artifactId> -->
+  <!--   		<version>2.0-SNAPSHOT</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>se.csn</groupId> -->
+  <!-- 		<artifactId>notmotoriplclient</artifactId> -->
+  <!--   		<version>2.1-SNAPSHOT</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>axis</groupId> -->
+  <!-- 		<artifactId>axis</artifactId> -->
+  <!--   		<version>1.3</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>axis</groupId> -->
+  <!-- 		<artifactId>axis-jaxrpc</artifactId> -->
+  <!--   		<version>1.3</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>axis</groupId> -->
+  <!-- 		<artifactId>axis-saaj</artifactId> -->
+  <!--   		<version>1.3</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>wsdl4j</groupId> -->
+  <!-- 		<artifactId>wsdl4j</artifactId> -->
+  <!--   		<version>1.5.1</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>commons-codec</groupId> -->
+  <!-- 		<artifactId>commons-codec</artifactId> -->
+  <!--   		<version>1.3</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>commons-httpclient</groupId> -->
+  <!-- 		<artifactId>commons-httpclient</artifactId> -->
+  <!--   		<version>3.1</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>commons-lang</groupId> -->
+  <!-- 		<artifactId>commons-lang</artifactId> -->
+  <!--   		<version>2.2</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>log4j</groupId> -->
+  <!-- 		<artifactId>log4j</artifactId> -->
+  <!--   		<version>1.2.8</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>commons-collections</groupId> -->
+  <!-- 		<artifactId>commons-collections</artifactId> -->
+  <!--   		<version>3.2</version> -->
+  <!--   	</dependency> -->
+  <!--   	<dependency> -->
+  <!-- 	  	<groupId>opensymphony</groupId> -->
+  <!-- 		<artifactId>quartz</artifactId> -->
+  <!--   		<version>1.6.0</version> -->
+  <!--   	</dependency> -->
+  <!--   	-->
+  <!--   	<dependency> -->
+  <!-- 		<groupId>se.csn.integration</groupId> -->
+  <!-- 		<artifactId>tietoformedlingstjanst</artifactId> -->
+  <!-- 		<version>r17.47.04</version> -->
+  <!-- 	</dependency> -->
+  <!-- 	 -->
+  <!--   	<dependency> -->
+  <!--   		<groupId>se.csn.bas</groupId> -->
+  <!--   		<artifactId>basiplclient</artifactId> -->
+  <!--   		<version>r16.21.05</version> -->
+  <!-- 	</dependency> -->
+  <!-- 	<dependency> -->
+  <!-- 	  	<groupId>se.csn.bas</groupId> -->
+  <!-- 	 	<artifactId>basipldto</artifactId> -->
+  <!-- 	  	<version>r16.21.04</version> -->
+  <!-- 	</dependency> -->
+ </dependencies>
   
-  <build>
-    <sourceDirectory>${basedir}/src</sourceDirectory>
-    <testSourceDirectory>${basedir}/src</testSourceDirectory>
-    <outputDirectory>${basedir}/target/classes</outputDirectory>
-    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>    
-    <defaultGoal>compile</defaultGoal>
+ <build>
+  <sourceDirectory>${project.basedir}/src</sourceDirectory>
+  <testSourceDirectory>${project.basedir}/src</testSourceDirectory>
+  <outputDirectory>${project.basedir}/target/classes</outputDirectory>
+  <testOutputDirectory>${project.basedir}/target/test-classes</testOutputDirectory>    
+  <defaultGoal>compile</defaultGoal>
 
-    <plugins>
-	  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-ear-plugin</artifactId>
-        <version>2.8</version>
-        <configuration>
-          	<applicationXml>${basedir}/META-INF/application.xml</applicationXml>
-  	     	<archive><addMavenDescriptor>false</addMavenDescriptor></archive>
-            <earSourceDirectory>${basedir}/</earSourceDirectory>
-          	<earSourceExcludes>target/**,*.log,*.ddl,.*,*.jar,.settings/**,META-INF/ibmconfig/**</earSourceExcludes>
-            	
-            <modules>
-              <webModule>
-                <groupId>se.csn.notmotor</groupId>
-                <artifactId>notmotoriplwebb</artifactId>
-                <bundleFileName>NotmotorIplWebb.war</bundleFileName>
-              </webModule>
-              <ejbModule>
-                <groupId>se.csn.notmotor</groupId>
-                <artifactId>notmotoriplejb</artifactId>
-                <bundleFileName>NotmotorIplEjb.jar</bundleFileName>
-              </ejbModule>
-<!--               <jarModule> -->
-<!--                 <groupId>se.csn</groupId> -->
-<!-- 		<artifactId>ark</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>se.csn</groupId> -->
-<!-- 		<artifactId>utils</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>se.csn.notmotor</groupId> -->
-<!--                 <artifactId>notmotorjar</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>se.csn</groupId> -->
-<!-- 		<artifactId>notmotoriplclient</artifactId> -->
-<!-- 	      </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>axis</groupId> -->
-<!-- 				<artifactId>axis</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>axis</groupId> -->
-<!-- 				<artifactId>axis-jaxrpc</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>axis</groupId> -->
-<!-- 				<artifactId>axis-saaj</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>wsdl4j</groupId> -->
-<!-- 				<artifactId>wsdl4j</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>commons-codec</groupId> -->
-<!-- 				<artifactId>commons-codec</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>commons-httpclient</groupId> -->
-<!-- 				<artifactId>commons-httpclient</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>commons-lang</groupId> -->
-<!-- 				<artifactId>commons-lang</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>log4j</groupId> -->
-<!-- 				<artifactId>log4j</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>commons-collections</groupId> -->
-<!-- 				<artifactId>commons-collections</artifactId> -->
-<!--               </jarModule> -->
-<!--               <jarModule> -->
-<!--                 <groupId>opensymphony</groupId> -->
-<!-- 				<artifactId>quartz</artifactId> -->
-<!--               </jarModule> -->
-            </modules>
-            <archive>
-	          <manifest>
-	            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-	          </manifest>
-	        </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
+  <plugins>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-ear-plugin</artifactId>
+    <version>2.8</version>
+    <configuration>
+     <applicationXml>${project.basedir}/META-INF/application.xml</applicationXml>
+     <archive>
+      <addMavenDescriptor>false</addMavenDescriptor>
+     </archive>
+     <earSourceDirectory>${project.basedir}/</earSourceDirectory>
+     <earSourceExcludes>target/**,*.log,*.ddl,.*,*.jar,.settings/**,META-INF/ibmconfig/**</earSourceExcludes>
+             
+     <modules>
+      <webModule>
+       <groupId>se.csn.notmotor</groupId>
+       <artifactId>notmotoriplwebb</artifactId>
+       <bundleFileName>NotmotorIplWebb.war</bundleFileName>
+      </webModule>
+      <ejbModule>
+       <groupId>se.csn.notmotor</groupId>
+       <artifactId>notmotoriplejb</artifactId>
+       <bundleFileName>NotmotorIplEjb.jar</bundleFileName>
+      </ejbModule>
+      <!--               <jarModule> -->
+      <!--                 <groupId>se.csn</groupId> -->
+      <!-- 		<artifactId>ark</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>se.csn</groupId> -->
+      <!-- 		<artifactId>utils</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>se.csn.notmotor</groupId> -->
+      <!--                 <artifactId>notmotorjar</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>se.csn</groupId> -->
+      <!-- 		<artifactId>notmotoriplclient</artifactId> -->
+      <!-- 	      </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>axis</groupId> -->
+      <!-- 				<artifactId>axis</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>axis</groupId> -->
+      <!-- 				<artifactId>axis-jaxrpc</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>axis</groupId> -->
+      <!-- 				<artifactId>axis-saaj</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>wsdl4j</groupId> -->
+      <!-- 				<artifactId>wsdl4j</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>commons-codec</groupId> -->
+      <!-- 				<artifactId>commons-codec</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>commons-httpclient</groupId> -->
+      <!-- 				<artifactId>commons-httpclient</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>commons-lang</groupId> -->
+      <!-- 				<artifactId>commons-lang</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>log4j</groupId> -->
+      <!-- 				<artifactId>log4j</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>commons-collections</groupId> -->
+      <!-- 				<artifactId>commons-collections</artifactId> -->
+      <!--               </jarModule> -->
+      <!--               <jarModule> -->
+      <!--                 <groupId>opensymphony</groupId> -->
+      <!-- 				<artifactId>quartz</artifactId> -->
+      <!--               </jarModule> -->
+     </modules>
+     <archive>
+      <manifest>
+       <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+      </manifest>
+     </archive>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
 
 </project>
