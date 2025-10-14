@@ -30,7 +30,7 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import org.apache.soap.util.mime.ByteArrayDataSource;
+import javax.mail.util.ByteArrayDataSource;
 
 import se.csn.ark.common.util.logging.Log;
 import se.csn.common.config.CommunicationTester;
