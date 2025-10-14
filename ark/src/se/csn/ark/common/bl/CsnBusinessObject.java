@@ -7,9 +7,9 @@ package se.csn.ark.common.bl;
 import se.csn.ark.common.CsnArkBaseObject;
 
 /**
- * Basgränsnsitt för affärslogik objekt.
+ * BasgrÃ¤nsnsitt fÃ¶r affÃ¤rslogik objekt.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040907
  * @version 1 skapad
  *

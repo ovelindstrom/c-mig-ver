@@ -2,7 +2,7 @@
 package se.csn.ark.common.util;
 
 /**
- * Klass med hjälpmetoder för generell formatering av nummer.
+ * Klass med hjÃ¤lpmetoder fÃ¶r generell formatering av nummer.
  *
  * @author 
  * @since 20050920
@@ -12,7 +12,7 @@ package se.csn.ark.common.util;
 public final class FormatNumber {
     
     /**
-     * Privat konstruktor för en utility-klass.
+     * Privat konstruktor fÃ¶r en utility-klass.
      * Dvs med endast statisak metoder.
      *
      */
@@ -21,15 +21,15 @@ public final class FormatNumber {
 
 
 	/**
-	 * Formaterar ett givet belopp till en sträng med tusenavskiljare.
-	 * Som tecken för avskiljare används ett mellanslag.
-	 * Metoden klarar alla belopp inom intervallet Integer (även negativa).
+	 * Formaterar ett givet belopp till en strÃ¤ng med tusenavskiljare.
+	 * Som tecken fÃ¶r avskiljare anvÃ¤nds ett mellanslag.
+	 * Metoden klarar alla belopp inom intervallet Integer (Ã¤ven negativa).
 	 * 
 	 * @param belopp som ska formateras
-	 * @return String en sträng med ett mellangslag varje tusendel.
-	 *         Om beloppet in är null returneras en tom sträng.
+	 * @return String en strÃ¤ng med ett mellangslag varje tusendel.
+	 *         Om beloppet in Ã¤r null returneras en tom strÃ¤ng.
 	 * 
-	 * @author Andreas Hellström
+	 * @author Andreas HellstrÃ¶m
 	 * @since 20050920
 	 * @version 1 skapad
 	 */
@@ -44,15 +44,15 @@ public final class FormatNumber {
 	
 		stringBuffer.append(belopp.toString()); 
 	
-		// Gå från slutet av strängen och skjut in ett mellanslag var tredje position
+		// GÃ¥ frÃ¥n slutet av strÃ¤ngen och skjut in ett mellanslag var tredje position
 		int sistaPos = stringBuffer.length();
 		for (int i = sistaPos - separatorPosition; i >= 0; i -= separatorPosition) {
 			stringBuffer.insert(i, " ");
 		}		
 	
-		// Algoritmen ovan tar ingen hänsyn till att det blir ett mellanslag som första tecken.
-		// Därför måste vi trimma till den lite grann, innan vi kan returnera en korrekt
-		// tusenavkiljd beloppssträng.		
+		// Algoritmen ovan tar ingen hÃ¤nsyn till att det blir ett mellanslag som fÃ¶rsta tecken.
+		// DÃ¤rfÃ¶r mÃ¥ste vi trimma till den lite grann, innan vi kan returnera en korrekt
+		// tusenavkiljd beloppsstrÃ¤ng.		
 		String beloppMedTusenAvskiljare = stringBuffer.toString();			
 		beloppMedTusenAvskiljare = beloppMedTusenAvskiljare.trim();
 		beloppMedTusenAvskiljare = beloppMedTusenAvskiljare.replaceFirst("- ", "-");
@@ -61,7 +61,7 @@ public final class FormatNumber {
 	}
 	
 	/**
-	 * Kollar om det är ett nummer av en sträng.
+	 * Kollar om det Ã¤r ett nummer av en strÃ¤ng.
 	 * @param n String
 	 * @return boolean
 	 * @author Tobias Larsson

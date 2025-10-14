@@ -7,7 +7,7 @@ import java.util.Map;
 
 
 /**
- * Properties för jsp-sidorna.
+ * Properties fÃ¶r jsp-sidorna.
  *
  * @author Joakim Olsson
  * @since 20041202
@@ -29,8 +29,8 @@ public class PageProperties {
 
 
 	/**
-	 * @param pageId id för aktuell sida
-	 * @param pageContext context för aktuell sida
+	 * @param pageId id fÃ¶r aktuell sida
+	 * @param pageContext context fÃ¶r aktuell sida
 	 */
 	public PageProperties(String pageId, String pageContext) {
 		this.propertyPagePart = pageId + ".";
@@ -53,7 +53,7 @@ public class PageProperties {
 
 
 	/**
-	 * @return länkar för navigering
+	 * @return lÃ¤nkar fÃ¶r navigering
 	 */
 	public Map getNavigate() {
 		return navigate;
@@ -64,7 +64,7 @@ public class PageProperties {
 
 	/**
 	 * @param direction navigeringsriktning
-	 * @return url för navigeringsriktningen
+	 * @return url fÃ¶r navigeringsriktningen
 	 */
 	public String getNavigate(String direction) {
 		return Properties.getProperty("navigate." + propertyPagePart + direction);
@@ -102,7 +102,7 @@ public class PageProperties {
 
 
 	/**
-	 * @return alla properties för den här sidan
+	 * @return alla properties fÃ¶r den hÃ¤r sidan
 	 */
 	public Map getProperties() {
 		return properties;

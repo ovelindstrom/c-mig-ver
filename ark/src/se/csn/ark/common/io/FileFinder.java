@@ -11,8 +11,8 @@ import java.util.StringTokenizer;
  * Does NOT look inside a jar or zip file for the specified file. Returns the file if found, 
  * otherwise null.
  *
- * @deprecated Använd inte denna längre. Använd <b>se.csn.ark.common.util.Properties</b> istället.
- * @author K-G Sjöström
+ * @deprecated AnvÃ¤nd inte denna lÃ¤ngre. AnvÃ¤nd <b>se.csn.ark.common.util.Properties</b> istÃ¤llet.
+ * @author K-G SjÃ¶strÃ¶m
  * @since 20040920
  * @version 1 skapad
  * @see se.csn.ark.common.util.Properties
@@ -26,8 +26,8 @@ public class FileFinder {
 
 	/**
 	 * @param filename fil att hitta
-	 * @param concatenatedPath path att söka i 
-	 * @return eftersökt fil
+	 * @param concatenatedPath path att sÃ¶ka i 
+	 * @return eftersÃ¶kt fil
 	 * @throws FileNotFoundException filen finns ej
 	 */
 	public File findFile(String filename, String concatenatedPath)
@@ -45,7 +45,7 @@ public class FileFinder {
 				                    System.getProperty("path.separator"));
 
 			while (st.hasMoreTokens() & !done) {
-				// loop över alla directories i pathen:
+				// loop Ã¶ver alla directories i pathen:
 				File searchDirectory = new File(st.nextToken());
 
 				if (!searchDirectory.exists() | searchDirectory.isFile()) {
@@ -57,7 +57,7 @@ public class FileFinder {
 					// for jdk 1.1:
 					filenames = searchDirectory.list();
 
-					// loop över alla filer i aktuellt bibliotek:
+					// loop Ã¶ver alla filer i aktuellt bibliotek:
 					//  jdk 1.2:   for (i=0 ; i  < files.length & !done; i++ ) {
 					for (i = 0; (i < filenames.length) & !done; i++) {
 						try {

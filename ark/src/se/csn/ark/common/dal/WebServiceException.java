@@ -7,9 +7,9 @@ package se.csn.ark.common.dal;
 import se.csn.ark.common.CsnSystemException;
 
 /**
- * Basklass för Web Service fel.
+ * Basklass fÃ¶r Web Service fel.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041116
  * @version 1 skapad
  *
@@ -35,7 +35,7 @@ public class WebServiceException extends CsnSystemException {
 
     /**
      * @param message felmeddelande
-     * @param errorId id på felet
+     * @param errorId id pÃ¥ felet
      * @param cause exception som orsakade felet
      */
 	public WebServiceException(

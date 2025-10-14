@@ -6,7 +6,7 @@ import se.csn.ark.www.jsptag.CsnJspException;
 
 
 /**
- * Interface för hjälpklasser till jsp-sidorna. 
+ * Interface fÃ¶r hjÃ¤lpklasser till jsp-sidorna. 
  *
  * @author Joakim Olsson
  * @since 20050103
@@ -15,18 +15,18 @@ import se.csn.ark.www.jsptag.CsnJspException;
 public interface CsnHelperController {
 
 	/**
-     * Initierar helper-klassen från HelperInitTag.
+     * Initierar helper-klassen frÃ¥n HelperInitTag.
      * 
-	 * @param pageContext context för den jsp-sida som kör helpern
-	 * @param pageid identifierare för helpern
-	 * @return SKIP_PAGE eller 0 för att fortsätta
+	 * @param pageContext context fÃ¶r den jsp-sida som kÃ¶r helpern
+	 * @param pageid identifierare fÃ¶r helpern
+	 * @return SKIP_PAGE eller 0 fÃ¶r att fortsÃ¤tta
 	 */
 	public int init(PageContext pageContext, String pageid);
 
 
     /**
-     * Här kan man lägga initieringskod som ska köras varje gång 
-     * helpern laddas = varje gång sidan laddas.
+     * HÃ¤r kan man lÃ¤gga initieringskod som ska kÃ¶ras varje gÃ¥ng 
+     * helpern laddas = varje gÃ¥ng sidan laddas.
      * 
      * @throws CsnJspException om helper inte initieras
      */

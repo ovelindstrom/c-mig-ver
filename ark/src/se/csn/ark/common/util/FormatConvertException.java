@@ -20,7 +20,7 @@ import se.csn.ark.common.DTOException;
 public final class FormatConvertException {
 
 	/**
-	 * konvertera från dto till exception
+	 * konvertera frÃ¥n dto till exception
 	 * @param dtoException dto att konvertera
 	 * @return exception-representation av dto
 	 */
@@ -38,7 +38,7 @@ public final class FormatConvertException {
 	}
 	
 	/**
-	 * konvertera från exception till dto
+	 * konvertera frÃ¥n exception till dto
 	 * @param csnException exception att konvertera
 	 * @return dto-representation av exception
 	 */

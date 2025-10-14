@@ -17,7 +17,7 @@
 //
 //
 ///**
-// * Testklass för FilePlugin.
+// * Testklass fÃ¶r FilePlugin.
 // *
 // * @author Joakim Olsson
 // * @since 20041007
@@ -29,7 +29,7 @@
 //	/**
 //	 * Constructor for TestDataOnlinePluginTest.
 //     * 
-//	 * @param arg0 argument för junit.framework.TestCase
+//	 * @param arg0 argument fÃ¶r junit.framework.TestCase
 //	 */
 //	public FilePluginTest(String arg0) {
 //		super(arg0);
@@ -165,7 +165,7 @@
 //
 //
 //	/**
-//	 * Hjälpmetod för att skapa dummy-data
+//	 * HjÃ¤lpmetod fÃ¶r att skapa dummy-data
 //     * 
 //     * @return en dummy instans
 //	 */
@@ -202,7 +202,7 @@
 //
 //
 //	/**
-//	 * Hjälpmetod för att skapa dummy-data
+//	 * HjÃ¤lpmetod fÃ¶r att skapa dummy-data
 //     * 
 //     * @return en dummy instans
 //	 */
@@ -307,9 +307,9 @@
 //
 //
 //	/**
-//	 * Hjälpmetod för att skapa dummy-data
+//	 * HjÃ¤lpmetod fÃ¶r att skapa dummy-data
 //     *
-//     * @param in input-stream för första datadelen i meddelandet
+//     * @param in input-stream fÃ¶r fÃ¶rsta datadelen i meddelandet
 //     *  
 //     * @return en dummy instans
 //	 */
@@ -336,9 +336,9 @@
 //
 //
 //	/**
-//	 * Hjälpmetod för att skapa dummy-data
+//	 * HjÃ¤lpmetod fÃ¶r att skapa dummy-data
 //     * 
-//     * @param in input-stream för datadelen
+//     * @param in input-stream fÃ¶r datadelen
 //     *  
 //     * @return en dummy instans
 //	 */

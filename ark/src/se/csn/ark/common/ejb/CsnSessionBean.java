@@ -5,9 +5,9 @@ import javax.ejb.SessionBean;
 import se.csn.ark.common.CsnArkBaseObject;
 
 /**
- * Basgränssnitt för sessions bönor.
+ * BasgrÃ¤nssnitt fÃ¶r sessions bÃ¶nor.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041201
  * @version 1 skapad
  *

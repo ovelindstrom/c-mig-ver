@@ -23,7 +23,7 @@ public class CsnJspException extends JspException implements CsnException {
 	 * Skapar ett applikations fel.
 	 *
 	 * @param message Felmeddelande
-	 * @param errorId Identitiet för att kunna hämta feltext
+	 * @param errorId Identitiet fÃ¶r att kunna hÃ¤mta feltext
 	 */
 	protected CsnJspException(String message, Integer errorId) {
 		this(message, errorId, null);
@@ -36,7 +36,7 @@ public class CsnJspException extends JspException implements CsnException {
 	 * Skapar ett applikations fel.
 	 *
 	 * @param message Felmeddelande
-	 * @param errorId Identitiet för att kunna hämta feltext
+	 * @param errorId Identitiet fÃ¶r att kunna hÃ¤mta feltext
 	 * @param cause Orsak
 	 */
 	protected CsnJspException(String message, Integer errorId, Throwable cause) {
@@ -59,8 +59,8 @@ public class CsnJspException extends JspException implements CsnException {
 
 
 	/**
-	 * Fel id för detta applikations fel som kan användas för att hämta motsvarande
-	 * felmeddelande från fil eller databas.
+	 * Fel id fÃ¶r detta applikations fel som kan anvÃ¤ndas fÃ¶r att hÃ¤mta motsvarande
+	 * felmeddelande frÃ¥n fil eller databas.
 	 *
 	 * @see se.csn.ipl.webbansokan.arkitektur.CsnException#getFelId()
 	 * @return Returnerar <code>null</code> om id ej definierat

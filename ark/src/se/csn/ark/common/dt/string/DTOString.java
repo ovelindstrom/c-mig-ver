@@ -4,7 +4,7 @@ import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
 
 
 /**
- * Datatransport-objekt fˆr en str‰ng.
+ * Datatransport-objekt f√∂r en str√§ng.
  *
  * @author Joakim Olsson
  * @since 20050221
@@ -15,7 +15,7 @@ public class DTOString extends CsnDataTransferObjectImpl {
 	private String value;
 
     /**
-     * skapa DTO med v‰rde null
+     * skapa DTO med v√§rde null
      */
 	public DTOString() {
 		this.value = null;
@@ -25,7 +25,7 @@ public class DTOString extends CsnDataTransferObjectImpl {
 
 
     /**
-     * @param value skapa DTO med v‰rde
+     * @param value skapa DTO med v√§rde
      */
 	public DTOString(String value) {
 		this.value = value;
@@ -35,7 +35,7 @@ public class DTOString extends CsnDataTransferObjectImpl {
 
 
     /**
-     * @return v‰rdet
+     * @return v√§rdet
      */
 	public String getValue() {
 		return value;
@@ -45,7 +45,7 @@ public class DTOString extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * @param string v‰rdet
+	 * @param string v√§rdet
 	 */
 	public void setValue(String string) {
 		value = string;
@@ -55,7 +55,7 @@ public class DTOString extends CsnDataTransferObjectImpl {
 
 
 	/**
-     * Str‰ngrepresentationen av detta objekt.
+     * Str√§ngrepresentationen av detta objekt.
      * 
 	 * @see java.lang.Object#toString()
 	 */

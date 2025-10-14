@@ -6,22 +6,22 @@ package se.csn.ark.common.dal;
 
 
 /**
- * Grundklass för access mot COOL tjänster.
+ * Grundklass fÃ¶r access mot COOL tjÃ¤nster.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040914
  * @version 1 skapad
  *
  */
 public class CsnDAOGenImpl extends CsnDataAccessObjectImpl implements CsnDAOGen {
 	/**
-	 * COOL tjänsterna levererar data med en massa blanktecken
-	 * dvs strängar verkar ha fyllts ut. Med denna metod tar vi
-	 * bort detta även om data egentligen skall formateras i
-	 * presentationskiktet och inte här.
+	 * COOL tjÃ¤nsterna levererar data med en massa blanktecken
+	 * dvs strÃ¤ngar verkar ha fyllts ut. Med denna metod tar vi
+	 * bort detta Ã¤ven om data egentligen skall formateras i
+	 * presentationskiktet och inte hÃ¤r.
 	 *
-	 * @param stringWithLotsOfSpaces sträng som ska trimmas
-	 * @return En sträng utan onödiga blanktecken.
+	 * @param stringWithLotsOfSpaces strÃ¤ng som ska trimmas
+	 * @return En strÃ¤ng utan onÃ¶diga blanktecken.
 	 */
 	protected String trim(String stringWithLotsOfSpaces) {
 		return stringWithLotsOfSpaces.trim();
@@ -31,14 +31,14 @@ public class CsnDAOGenImpl extends CsnDataAccessObjectImpl implements CsnDAOGen 
 
 
 	/**
-	 * Bygger en felstäng från inparametrarna
+	 * Bygger en felstÃ¤ng frÃ¥n inparametrarna
 	 *
-	 * @param status från cool
-	 * @param beskrivning från cool
-	 * @param modul från cool
-	 * @param nyckel från cool
-	 * @param indata från cool
-	 * @return En sträng från parametrarna ovan
+	 * @param status frÃ¥n cool
+	 * @param beskrivning frÃ¥n cool
+	 * @param modul frÃ¥n cool
+	 * @param nyckel frÃ¥n cool
+	 * @param indata frÃ¥n cool
+	 * @return En strÃ¤ng frÃ¥n parametrarna ovan
 	 */
 	public String buildCoolErrorMessage(
 	                                    short status,

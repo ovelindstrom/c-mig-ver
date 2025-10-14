@@ -9,9 +9,9 @@ import org.apache.log4j.Category;
 import se.csn.ark.common.util.logging.LogLevel;
 
 /**
- * Logger för att skriva kritiska systemfel till en egen loggfil.
+ * Logger fÃ¶r att skriva kritiska systemfel till en egen loggfil.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20050124
  * @version 1 skapad
  *
@@ -31,14 +31,14 @@ public final class CriticalLog {
 	}
 
 	/**
-	 * Category är log4j klassen som används för loggningen av denna log wrapper.
+	 * Category Ã¤r log4j klassen som anvÃ¤nds fÃ¶r loggningen av denna log wrapper.
 	 */
 	private static Category log;
 	
 	/**
 	 * Ger en critical-logger-instans.
 	 * 
-	 * @return logger för critical-fel.
+	 * @return logger fÃ¶r critical-fel.
 	 */
 	public static CriticalLog getLoggerInstance() {
 		

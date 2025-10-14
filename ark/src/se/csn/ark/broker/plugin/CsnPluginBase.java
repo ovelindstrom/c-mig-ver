@@ -38,8 +38,8 @@
 //
 // 
 ///**
-// * CsnPluginBase är en hjälpklass för att bygga Online Plugins
-// * och Push Plugins. Den har funktioner för att parsa frågor och
+// * CsnPluginBase Ã¤r en hjÃ¤lpklass fÃ¶r att bygga Online Plugins
+// * och Push Plugins. Den har funktioner fÃ¶r att parsa frÃ¥gor och
 // * bygga upp svar.
 // *
 // * @author Joakim Olsson
@@ -58,7 +58,7 @@
 //	private Logger mLog;
 //
 //	/**
-//	 * Anropas när plug-inen laddas i brokern. Ger den Logger-klass som
+//	 * Anropas nÃ¤r plug-inen laddas i brokern. Ger den Logger-klass som
 //	 * man loggar till. Konstruerar en DOM-hanterare och en SAX-parser.
 //	 *
 //	 * @param pluginLogger a Logger object to be used by the plugin
@@ -95,9 +95,9 @@
 //
 //
 //	/**
-//	 * Returnerar 'mime headers' som används i SOAP-svar
+//	 * Returnerar 'mime headers' som anvÃ¤nds i SOAP-svar
 //	 *
-//	 * @return 'mime headers' som används i SOAP-svar
+//	 * @return 'mime headers' som anvÃ¤nds i SOAP-svar
 //	 */
 //	public MimeHeaders getMimeHeaders() {
 //		
@@ -115,7 +115,7 @@
 //	/**
 //	 * Returnerar DocumentBuilder
 //	 *
-//	 * @return DocumentBuilder som används i SOAP-svar
+//	 * @return DocumentBuilder som anvÃ¤nds i SOAP-svar
 //	 */
 //	protected DocumentBuilder getBuilder() {
 //		return mBuilder;
@@ -125,13 +125,13 @@
 //
 //
 //	/**
-//	 * Parsar en SOAP-fråga och genererar händelser till en XML-hanterare.
+//	 * Parsar en SOAP-frÃ¥ga och genererar hÃ¤ndelser till en XML-hanterare.
 //	 *
-//	 * @param  in strömmen som innehåller SOAP-frågan
-//	 * @param  handler hanterar händelser för varje XML-tagg
+//	 * @param  in strÃ¶mmen som innehÃ¥ller SOAP-frÃ¥gan
+//	 * @param  handler hanterar hÃ¤ndelser fÃ¶r varje XML-tagg
 //	 * @return handler som haterat parsningen
 //	 * @throws SAXException vid misslyckad parsnins
-//	 * @throws IOException vid misslyckad läsning av strömmen
+//	 * @throws IOException vid misslyckad lÃ¤sning av strÃ¶mmen
 //	 */
 //	protected CsnXmlHandler parseSoapRequest(
 //	                                         InputStream in,
@@ -156,10 +156,10 @@
 //
 //
 //	/**
-//     * Läser in strömmen gör viss teckenkonvertering
-//	 * @param in inströmmen
-//	 * @return samma ström
-//	 * @throws IOException vid fel vid läsning av in
+//     * LÃ¤ser in strÃ¶mmen gÃ¶r viss teckenkonvertering
+//	 * @param in instrÃ¶mmen
+//	 * @return samma strÃ¶m
+//	 * @throws IOException vid fel vid lÃ¤sning av in
 //	 */
 //	protected ByteArrayOutputStream readTheStream(InputStream in)
 //	                                       throws IOException {
@@ -191,11 +191,11 @@
 //
 //
 //	/**
-//     * Loggar retur-strömmen
-//	 * @param out retur-ström som ska loggas
-//	 * @param logLevel nivå för loggning
-//	 * @return out-strömmen som in-ström
-//	 * @throws IOException vid läsfel
+//     * Loggar retur-strÃ¶mmen
+//	 * @param out retur-strÃ¶m som ska loggas
+//	 * @param logLevel nivÃ¥ fÃ¶r loggning
+//	 * @return out-strÃ¶mmen som in-strÃ¶m
+//	 * @throws IOException vid lÃ¤sfel
 //	 */
 //	protected InputStream logTheStream(
 //	                                   ByteArrayOutputStream out,
@@ -212,13 +212,13 @@
 //
 //
 //	/**
-//	 * Parsar XML från en 'push' och genererar händelser till en XML-hanterare
+//	 * Parsar XML frÃ¥n en 'push' och genererar hÃ¤ndelser till en XML-hanterare
 //	 *
-//	 * @param  in strömmen som innehåller SOAP-frågan
-//	 * @param  handler hanterar händelser för varje XML-tagg
+//	 * @param  in strÃ¶mmen som innehÃ¥ller SOAP-frÃ¥gan
+//	 * @param  handler hanterar hÃ¤ndelser fÃ¶r varje XML-tagg
 //	 * @return handler som haterat parsningen
 //	 * @throws SAXException vid misslyckad parsnins
-//	 * @throws IOException vid misslyckad läsning av strömmen
+//	 * @throws IOException vid misslyckad lÃ¤sning av strÃ¶mmen
 //	 */
 //	protected CsnXmlHandler parseXmlPush(InputStream in, CsnXmlHandler handler)
 //	                              throws SAXException, IOException {
@@ -239,11 +239,11 @@
 //
 //
 //	/**
-//	 * Skriver ett SOAP-svar från ett DOM-dokument till en OutpuStream.
+//	 * Skriver ett SOAP-svar frÃ¥n ett DOM-dokument till en OutpuStream.
 //	 *
-//	 * @param creator skapare av XML-träd
-//	 * @param methodName namnet på den metod som svaret skapas till
-//	 * @param out strömmen dit svaret ska skrivas
+//	 * @param creator skapare av XML-trÃ¤d
+//	 * @param methodName namnet pÃ¥ den metod som svaret skapas till
+//	 * @param out strÃ¶mmen dit svaret ska skrivas
 //	 * @throws TransformerException transformer misslyckades
 //	 */
 //	protected void writeSoapResponse(
@@ -296,10 +296,10 @@
 //	/**
 //	 * Skriver ett Exception till svar.
 //	 *
-//	 * @param out output ström
+//	 * @param out output strÃ¶m
 //	 * @param csnExc det Exception som ska skickas tillbaks
-//	 * @param methodName soap-metod som detta är svar till
-//	 * @throws PluginException om något går fel
+//	 * @param methodName soap-metod som detta Ã¤r svar till
+//	 * @throws PluginException om nÃ¥got gÃ¥r fel
 //	 */
 //	protected void creatExceptionResponse(
 //	                                      OutputStream out,
@@ -336,9 +336,9 @@
 //	/**
 //	 * Skapar och initierar ett SOAP-svar i ett DOM-dokument.
 //	 *
-//	 * @param methodName namnet på frågan som det ska skapas ett svar till
-//	 * @param docOut dokumentet där svaret ska skapas
-//	 * @return den nod där svars-parametrarna ska skrivas
+//	 * @param methodName namnet pÃ¥ frÃ¥gan som det ska skapas ett svar till
+//	 * @param docOut dokumentet dÃ¤r svaret ska skapas
+//	 * @return den nod dÃ¤r svars-parametrarna ska skrivas
 //	 */
 //	private Element createResponseInDocument(
 //	                                         String methodName,

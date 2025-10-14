@@ -4,7 +4,7 @@ import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
 
 
 /**
- * Datatransport-objekt fˆr en integer.
+ * Datatransport-objekt f√∂r en integer.
  *
  * @author Joakim Olsson
  * @since 20050221
@@ -15,7 +15,7 @@ public class DTOInteger extends CsnDataTransferObjectImpl {
 	private Integer value;
 
     /**
-     * skapa DTO med v‰rde null
+     * skapa DTO med v√§rde null
      */
 	public DTOInteger() {
 		this.value = null;
@@ -24,7 +24,7 @@ public class DTOInteger extends CsnDataTransferObjectImpl {
 
 
     /**
-     * @param value skapa DTO med v‰rde
+     * @param value skapa DTO med v√§rde
      */
 	public DTOInteger(int value) {
 		this.value = new Integer(value);
@@ -34,14 +34,14 @@ public class DTOInteger extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * @param value skapa DTO med v‰rde
+	 * @param value skapa DTO med v√§rde
 	 */
 	public DTOInteger(Integer value) {
 		this.value = value;
 	}
 
 	/**
-	 * @return v‰rdet
+	 * @return v√§rdet
 	 */
 	public Integer getValue() {
 		return value;
@@ -51,7 +51,7 @@ public class DTOInteger extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * @param integer v‰rdet
+	 * @param integer v√§rdet
 	 */
 	public void setValue(Integer integer) {
 		value = integer;
@@ -61,7 +61,7 @@ public class DTOInteger extends CsnDataTransferObjectImpl {
 
 
 	/**
-     * Str‰ngrepresentationen av detta objekt.
+     * Str√§ngrepresentationen av detta objekt.
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {

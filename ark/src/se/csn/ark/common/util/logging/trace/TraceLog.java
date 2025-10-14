@@ -11,18 +11,18 @@ import se.csn.ark.common.util.logging.LogLevel;
 
 /**
  *
- * Spårbarhetsloggningn som används för att kunna logga alla tjänster
- * för att kunna plocka ut statistik/spårbarhet för en person.
+ * SpÃ¥rbarhetsloggningn som anvÃ¤nds fÃ¶r att kunna logga alla tjÃ¤nster
+ * fÃ¶r att kunna plocka ut statistik/spÃ¥rbarhet fÃ¶r en person.
  * 
- * Används också för att logga inloggningen.
- * Både om det går bra vilken typ av e-legitimation som används och
- * vid fel, vad felet beror på.
+ * AnvÃ¤nds ocksÃ¥ fÃ¶r att logga inloggningen.
+ * BÃ¥de om det gÃ¥r bra vilken typ av e-legitimation som anvÃ¤nds och
+ * vid fel, vad felet beror pÃ¥.
  *   
  * @author Hasse Zetterberg
  * @since 2005-02-04
- * @version 2 Förbättringar - K-G Sjöström AcandoFrontec
- *          Nu trådsäker och inget attribut sätts i själva loggklassen. 
- *          Enklare gränssnitt då man loggar TraceRecord.
+ * @version 2 FÃ¶rbÃ¤ttringar - K-G SjÃ¶strÃ¶m AcandoFrontec
+ *          Nu trÃ¥dsÃ¤ker och inget attribut sÃ¤tts i sjÃ¤lva loggklassen. 
+ *          Enklare grÃ¤nssnitt dÃ¥ man loggar TraceRecord.
  * @version 1 Skapad - Hasse Zetterberg
  */
 public final class TraceLog {
@@ -44,7 +44,7 @@ public final class TraceLog {
 	}
 	
 	/**
-	 * Laddar in egenskaper för denna loggklass på nytt.
+	 * Laddar in egenskaper fÃ¶r denna loggklass pÃ¥ nytt.
 	 */
 	public static void reloadProperties() {
 		
@@ -52,7 +52,7 @@ public final class TraceLog {
 	}
 	
 	/**
-	 * Category är log4j klassen som används för loggningen av denna log wrapper.
+	 * Category Ã¤r log4j klassen som anvÃ¤nds fÃ¶r loggningen av denna log wrapper.
 	 */
 	private static Category log;
 		
@@ -67,9 +67,9 @@ public final class TraceLog {
 	}
 
 	/**
-	 * Indikerar om spårbarhetsloggning är aktiverad.
+	 * Indikerar om spÃ¥rbarhetsloggning Ã¤r aktiverad.
 	 *
-	 * @return true om Spårbarhetsloggen är påslagen.
+	 * @return true om SpÃ¥rbarhetsloggen Ã¤r pÃ¥slagen.
 	 */
 	public static boolean isTraceing() {
 		
@@ -90,40 +90,40 @@ public final class TraceLog {
 	}
 			
 	/**
-	 * Skriver spårbarhetsinformation till loggen.
+	 * Skriver spÃ¥rbarhetsinformation till loggen.
 	 * 
-	 * @param traceRecord Innehåller allt som skall loggas.
+	 * @param traceRecord InnehÃ¥ller allt som skall loggas.
 	 */
 	public synchronized void trace(TraceRecord traceRecord) {
 		
 		if (isTraceing()) {
-			// Tråda av en loggskrivare så kan exekveringen fortsätta.
+			// TrÃ¥da av en loggskrivare sÃ¥ kan exekveringen fortsÃ¤tta.
 			new LogWriter(traceRecord);
 		}
 	}
 
 	/**
-     * Tråd som sköter skrivandet till fil
+     * TrÃ¥d som skÃ¶ter skrivandet till fil
 	 */
 	class LogWriter implements Runnable {
 		private TraceRecord traceObjekt;
 				
 		/**
-         * Skapa tråd
+         * Skapa trÃ¥d
 		 * @param traceObjekt det som ska loggas
 		 */
 		LogWriter(TraceRecord traceObjekt) {
 			
 			// Spara data.
 			this.traceObjekt = traceObjekt;
-			// Skapa en tråd med detta objekt.
+			// Skapa en trÃ¥d med detta objekt.
 			Thread t = new Thread(this);
-			// Kör
+			// KÃ¶r
 			t.start();
 		}
 		
 		/**
-		 * Sköter loggandet
+		 * SkÃ¶ter loggandet
 		 */
 		public void run() {
             String pnr = null;

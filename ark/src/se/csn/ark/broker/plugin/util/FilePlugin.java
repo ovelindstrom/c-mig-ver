@@ -59,7 +59,7 @@
 //    private Logger mLog;
 //
 //	/**
-//	 * Används av junit-testklassen.
+//	 * AnvÃ¤nds av junit-testklassen.
 //	 *
 //	 * @param  root a Logger object to be used by the plugin
 //	 *
@@ -72,7 +72,7 @@
 //
 //
 //	/**
-//	 * Anropas när plug-inen laddas i brokern. Ger den Logger-klass som
+//	 * Anropas nÃ¤r plug-inen laddas i brokern. Ger den Logger-klass som
 //	 * man loggar till. Konstruerar en DOM-hanterare och en SAX-parser.
 //	 *
 //	 * @param pluginLogger a Logger object to be used by the plugin
@@ -336,12 +336,12 @@
 //
 //
 //	/**
-//	 * Parsar en SOAP-fråga från en InputStream till ett DOM Document.
+//	 * Parsar en SOAP-frÃ¥ga frÃ¥n en InputStream till ett DOM Document.
 //	 *
-//	 * @param  in strömmen som innehåller SOAP-frågan
-//	 * @return den nod som pekar på metoden i SOAP-frågan
+//	 * @param  in strÃ¶mmen som innehÃ¥ller SOAP-frÃ¥gan
+//	 * @return den nod som pekar pÃ¥ metoden i SOAP-frÃ¥gan
 //	 * @throws SAXException vid misslyckad parsnins
-//	 * @throws IOException vid misslyckad läsning av strömmen
+//	 * @throws IOException vid misslyckad lÃ¤sning av strÃ¶mmen
 //	 */
 //	protected Node parseSoapRequest(InputStream in)
 //	                         throws SAXException, IOException {
@@ -376,7 +376,7 @@
 //
 //
 //	/**
-//	 * Skapar ett Document som används för att bygga xml(SOAP) svar
+//	 * Skapar ett Document som anvÃ¤nds fÃ¶r att bygga xml(SOAP) svar
 //	 *
 //	 * @return  nytt Document
 //	 */
@@ -392,9 +392,9 @@
 //	/**
 //	 * Skapar och initierar ett SOAP-svar i ett DOM-dokument.
 //	 *
-//	 * @param methodName namnet på frågan som det ska skapas ett svar till
-//	 * @param docOut dokumentet där svaret ska skapas
-//	 * @return den nod där svars-parametrarna ska skrivas
+//	 * @param methodName namnet pÃ¥ frÃ¥gan som det ska skapas ett svar till
+//	 * @param docOut dokumentet dÃ¤r svaret ska skapas
+//	 * @return den nod dÃ¤r svars-parametrarna ska skrivas
 //	 */
 //	protected Element createResponseInDocument(
 //	                                           String methodName,
@@ -436,10 +436,10 @@
 //
 //
 //	/**
-//	 * Skriver ett SOAP-svar från ett DOM-dokument till en OutpuStream.
+//	 * Skriver ett SOAP-svar frÃ¥n ett DOM-dokument till en OutpuStream.
 //	 *
-//	 * @param soapResponse dokumentet som innehåller ett SOAP-svar
-//	 * @param out strömmen dit svaret ska skrivas
+//	 * @param soapResponse dokumentet som innehÃ¥ller ett SOAP-svar
+//	 * @param out strÃ¶mmen dit svaret ska skrivas
 //	 * @throws TransformerException misslyckads skriva svar
 //	 */
 //	protected void writeSoapResponse(Document soapResponse, OutputStream out)
@@ -457,12 +457,12 @@
 //
 //
 //	/**
-//	 * Parsar XML från en 'push' från en InputStream till ett DOM Document.
+//	 * Parsar XML frÃ¥n en 'push' frÃ¥n en InputStream till ett DOM Document.
 //	 *
-//	 * @param  in strömmen som innehåller SOAP-frågan
-//	 * @return den nod som pekar på metoden i SOAP-frågan
+//	 * @param  in strÃ¶mmen som innehÃ¥ller SOAP-frÃ¥gan
+//	 * @return den nod som pekar pÃ¥ metoden i SOAP-frÃ¥gan
 //	 * @throws SAXException vid misslyckad parsnins
-//	 * @throws IOException vid misslyckad läsning av strömmen
+//	 * @throws IOException vid misslyckad lÃ¤sning av strÃ¶mmen
 //	 */
 //	protected Node parseXmlPush(InputStream in)
 //	                     throws SAXException, IOException {
@@ -482,7 +482,7 @@
 //    
 //    
 //	/**
-//	 * @return tidpunkt för lagring
+//	 * @return tidpunkt fÃ¶r lagring
 //	 */
 //	public String getStoreTimeStamp() {
 //		return storeTimeStamp;

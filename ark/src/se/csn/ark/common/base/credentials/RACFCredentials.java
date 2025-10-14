@@ -8,17 +8,17 @@ import se.csn.ark.common.util.logging.Log;
 
 
 /**
- * Denna klass returnerar det användarid och lösenord som skall användas vid autentisering 
+ * Denna klass returnerar det anvÃ¤ndarid och lÃ¶senord som skall anvÃ¤ndas vid autentisering 
  * mot stordator/RACF, exempelvis mha Advantage:Gen's java-proxies.
  * 
- * I praktiken hämtar denna klass upp själva användarid och lösenord från propertiesfilen 
+ * I praktiken hÃ¤mtar denna klass upp sjÃ¤lva anvÃ¤ndarid och lÃ¶senord frÃ¥n propertiesfilen 
  * racf.properties som skall ligga i classpath.
  * 
- * Denna klass följer Singleton-mönster för att den om möjligt endast instansieras en enda gång.
- * Detta för att i praktiken cacha användarid och lösenord för att slippa läsa propertiesfil 
- * varje gång ett anrop sker.
+ * Denna klass fÃ¶ljer Singleton-mÃ¶nster fÃ¶r att den om mÃ¶jligt endast instansieras en enda gÃ¥ng.
+ * Detta fÃ¶r att i praktiken cacha anvÃ¤ndarid och lÃ¶senord fÃ¶r att slippa lÃ¤sa propertiesfil 
+ * varje gÃ¥ng ett anrop sker.
  * 
- * Observera att man vid förändringar i racf.properties för säkerhets skull måste tillse att 
+ * Observera att man vid fÃ¶rÃ¤ndringar i racf.properties fÃ¶r sÃ¤kerhets skull mÃ¥ste tillse att 
  * ladda om informationen genom att starta om den virtuella maskinen eller anropa reload-metoden.
  * 
  * @author Vincent Wong, Iocore
@@ -39,7 +39,7 @@ public final class RACFCredentials implements ICredentials, IReloadableCache {
 	 */
 	public void reload() throws CacheReloadException {
 		
-		// Ladda in properties från properties-fil:
+		// Ladda in properties frÃ¥n properties-fil:
 		try {
 //			properties = new Properties();
 //			File propsFile= new File(this.getClass().getClassLoader().
@@ -70,19 +70,19 @@ public final class RACFCredentials implements ICredentials, IReloadableCache {
 	}
 	
     /**
-     * Skapa RACFCredentials. Privat, använd getInstance istället 
+     * Skapa RACFCredentials. Privat, anvÃ¤nd getInstance istÃ¤llet 
      * @throws CacheReloadException gick ej att ladda properties
      */
 	private RACFCredentials() throws CacheReloadException {
 		
 		reload();
-		// "Registrera" dig hos SingeltonKeepern så att det alltid finns en referens 
-        // till detta object, för att förhindra GC:n att städa bort dig.
+		// "Registrera" dig hos SingeltonKeepern sÃ¥ att det alltid finns en referens 
+        // till detta object, fÃ¶r att fÃ¶rhindra GC:n att stÃ¤da bort dig.
 		ObjectKeeper.getInstance().addObject(this);
 	}
 
 	/**
-	 * Använd denna metod för att erhålla en instans av RACFCredentials.
+	 * AnvÃ¤nd denna metod fÃ¶r att erhÃ¥lla en instans av RACFCredentials.
      * @return singelton-instansen
      * @throws CacheReloadException gick ej att ladda properties
 	 */
@@ -108,9 +108,9 @@ public final class RACFCredentials implements ICredentials, IReloadableCache {
 	}
 	
 	/**
-	 * Overrides toString() i java.lang.Object för att göra en mer lättläst utskrift,
-	 * dock med lösenordet "gömt".
-     * @return info-sträng
+	 * Overrides toString() i java.lang.Object fÃ¶r att gÃ¶ra en mer lÃ¤ttlÃ¤st utskrift,
+	 * dock med lÃ¶senordet "gÃ¶mt".
+     * @return info-strÃ¤ng
 	 */
 	public String toString() {
 		StringBuffer stringBuffer = new StringBuffer();

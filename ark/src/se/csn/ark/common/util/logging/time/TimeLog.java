@@ -12,7 +12,7 @@ import se.csn.ark.common.util.logging.LogLevel;
  *
  * Enkel prestandalogg.
  *
- * @author K-G sjˆstrˆm - AcandoFrontec
+ * @author K-G sj√∂str√∂m - AcandoFrontec
  * @since 20041129
  * @version 1 skapad
  *
@@ -47,7 +47,7 @@ public final class TimeLog {
 	}
 	
 	/**
-	 * Laddar in egenskaper fˆr denna loggklass pÂ nytt.
+	 * Laddar in egenskaper f√∂r denna loggklass p√• nytt.
 	 */
 	public static void reloadProperties() {
 		
@@ -55,12 +55,12 @@ public final class TimeLog {
 	}
 	
 	/**
-	 * Category ‰r log4j klassen som anv‰nds fˆr loggningen av denna log wrapper.
+	 * Category √§r log4j klassen som anv√§nds f√∂r loggningen av denna log wrapper.
 	 */
 	private static Category log = Category.getInstance(TimeLog.class);
 
 	/**
-	 * Skapar en prestandaloggerinstans utifrÂn det objekt som vill tidslogga.
+	 * Skapar en prestandaloggerinstans utifr√•n det objekt som vill tidslogga.
 	 *
 	 * @param loggingObject Det objekt som vill logga.
 	 */
@@ -71,7 +71,7 @@ public final class TimeLog {
 	}
 
 	/**
-	 * Ger en prestandaloggerinstans utifrÂn det objekt som vill tidslogga.
+	 * Ger en prestandaloggerinstans utifr√•n det objekt som vill tidslogga.
 	 *
 	 * @param loggingObject Det objekt som vill logga.
      * @return tids-logger
@@ -87,50 +87,50 @@ public final class TimeLog {
 	/**
 	 * Startar klockan, tick, tack ....
 	 *
-	 * @param methodName Namnet pÂ den metod som loggar.
-	 * @return Ett id som skall anv‰ndas n‰r man stoppar klockan.
+	 * @param methodName Namnet p√• den metod som loggar.
+	 * @return Ett id som skall anv√§ndas n√§r man stoppar klockan.
 	 */
 	public synchronized Integer startClock(String methodName) {
 		Integer id = new Integer(-1);
 		long startTime;
 
-		// Intern koll sÂ att inte  nÂgon fˆrsˆker nÂgon anv‰nda
-		//  loggen fast den ‰r avslagen?
+		// Intern koll s√• att inte  n√•gon f√∂rs√∂ker n√•gon anv√§nda
+		//  loggen fast den √§r avslagen?
 		if (isTiming()) {
-			// H‰mta id och ...
+			// H√§mta id och ...
 			id = getLogId();
-			// ... fixa starttiden sÂ ...
+			// ... fixa starttiden s√• ...
 			startTime = System.currentTimeMillis();
-			// ... trÂdar vi sÂ fort det bara gÂr.
+			// ... tr√•dar vi s√• fort det bara g√•r.
 			new Starter(logRecords, id, startTime, methodName);
-			// LÂt trÂden fixa loggning m.m. sÂ returnerar vi.
+			// L√•t tr√•den fixa loggning m.m. s√• returnerar vi.
 		}
 		return id;
 	}
 
 	/**
-	 * Stoppar klockan med det id som erhˆlls vi startClock.
+	 * Stoppar klockan med det id som erh√∂lls vi startClock.
 	 *
 	 * @param logId id var tid ska stoppas
 	 */
 	public synchronized void stopClock(Integer logId) {
 		long stopTime;
 		
-		// Intern koll sÂ att inte  nÂgon fˆrsˆker nÂgon anv‰nda
-		//  loggen fast den ‰r avslagen?
+		// Intern koll s√• att inte  n√•gon f√∂rs√∂ker n√•gon anv√§nda
+		//  loggen fast den √§r avslagen?
 		if (isTiming()) {
-			// Fixa stoptiden sÂ ...
+			// Fixa stoptiden s√• ...
 			stopTime = System.currentTimeMillis();
-			// ... trÂdar vi sÂ fort det bara gÂr.
+			// ... tr√•dar vi s√• fort det bara g√•r.
 			new Stopper(logRecords, logId, stopTime);
-			// LÂt trÂden fixa loggning m.m. sÂ returnerar vi.
+			// L√•t tr√•den fixa loggning m.m. s√• returnerar vi.
 		}
 	}
 
 	/**
-	 * Indikerar om prestandaloggning ‰r aktiverad.
+	 * Indikerar om prestandaloggning √§r aktiverad.
 	 *
-	 * @return true om Prestandaloggen ‰r pÂslagen.
+	 * @return true om Prestandaloggen √§r p√•slagen.
 	 */
 	public static boolean isTiming() {
 		
@@ -138,18 +138,18 @@ public final class TimeLog {
 	}
 	
 	/**
-	 * Ger en str‰ngrepresentation vilka tidloggningar som ‰r under behandling just nu.
-     * @return str‰ngrepresentaiton av klassen
+	 * Ger en str√§ngrepresentation vilka tidloggningar som √§r under behandling just nu.
+     * @return str√§ngrepresentaiton av klassen
 	 */
 	public String toString() {
 	
-		String str = "Fˆjande tidloggningsposter ‰r under behandling:\n"
+		String str = "F√∂jande tidloggningsposter √§r under behandling:\n"
 			+ logRecords;
 		return str;
 	}
 
 	/**
-	 * @param logStr str‰ng som loggas till timeloggen
+	 * @param logStr str√§ng som loggas till timeloggen
 	 */
 	private static synchronized void log(String logStr) {
 		
@@ -171,7 +171,7 @@ public final class TimeLog {
 	}
 
 	/**
-	 * @return namn pÂ instansen
+	 * @return namn p√• instansen
 	 */
 	private String getInstanceName() {
 		
@@ -192,8 +192,8 @@ public final class TimeLog {
          * 
 		 * @param className klass som loggas
 		 * @param method metod som loggas
-		 * @param id id pÂ tidsm‰tningen
-		 * @param startTime m‰tning startad
+		 * @param id id p√• tidsm√§tningen
+		 * @param startTime m√§tning startad
 		 */
 		public TimeLogRecord(String className, String method, Integer id, long startTime) {
 			this.method = method;
@@ -203,7 +203,7 @@ public final class TimeLog {
 		}
 
 		/**
-		 * @param stopTime m‰tning avslutad
+		 * @param stopTime m√§tning avslutad
 		 */
 		void stop(long stopTime) {
 			long totalTime;
@@ -221,7 +221,7 @@ public final class TimeLog {
 		}
 
 		/** 
-		 * @return Str‰ngrepresentation av klassen
+		 * @return Str√§ngrepresentation av klassen
 		 */
 		public String toString() {
 			String str = "[";
@@ -233,7 +233,7 @@ public final class TimeLog {
 	}
 	
 	/**
-     * TrÂd som loggar och lagrar start av m‰tning
+     * Tr√•d som loggar och lagrar start av m√§tning
 	 */
 	public class Starter implements Runnable {
 		private Hashtable logRecords; 
@@ -243,8 +243,8 @@ public final class TimeLog {
 				
 		/**
 		 * @param logRecords lagring av records
-		 * @param id id pÂ denna loggning
-		 * @param startTime m‰tning startad
+		 * @param id id p√• denna loggning
+		 * @param startTime m√§tning startad
 		 * @param methodName metod som loggas
 		 */
 		public Starter(Hashtable logRecords, Integer id, long startTime, String methodName) {
@@ -258,7 +258,7 @@ public final class TimeLog {
 		}
 				
 		/**
-		 * Loggar och lagrar start av m‰tning
+		 * Loggar och lagrar start av m√§tning
 		 */
 		public void run() {
 
@@ -277,7 +277,7 @@ public final class TimeLog {
 	}
 	
 	/**
-     * TrÂd som loggar avslutad m‰tning
+     * Tr√•d som loggar avslutad m√§tning
 	 */
 	public class Stopper implements Runnable {
 		private Hashtable logRecords; 
@@ -287,8 +287,8 @@ public final class TimeLog {
 
         /**
          * @param logRecords lagring av records
-         * @param logId id pÂ denna loggning
-         * @param stopTime m‰tning avslutad
+         * @param logId id p√• denna loggning
+         * @param stopTime m√§tning avslutad
          */
 		public Stopper(Hashtable logRecords, Integer logId, long stopTime) {
 			
@@ -300,7 +300,7 @@ public final class TimeLog {
 		}
 				
         /**
-         * Loggar och lagrar avslutad m‰tning
+         * Loggar och lagrar avslutad m√§tning
          */
 		public void run() {
 
@@ -309,7 +309,7 @@ public final class TimeLog {
 				timeLogRecord.stop(stopTime);
 				logRecords.remove(logId);
 			} else {
-				log.error("Felaktigt logId " + logId + ". Fˆljande log id finns:" + logRecords);
+				log.error("Felaktigt logId " + logId + ". F√∂ljande log id finns:" + logRecords);
 			}
 		}
 

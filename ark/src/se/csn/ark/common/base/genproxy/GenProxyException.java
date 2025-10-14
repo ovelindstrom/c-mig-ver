@@ -4,11 +4,11 @@ import se.csn.ark.common.CsnSystemException;
 
 
 /**
- * Indikerar fel pÂ COOL/GEN service.
+ * Indikerar fel p√• COOL/GEN service.
  * 
- * @author K-G Sjˆstrˆm
+ * @author K-G Sj√∂str√∂m
  * @since 20040901
- * @version 1.1 ‰ndrad typ frÂn CsnApplicationException till CsnSystemException
+ * @version 1.1 √§ndrad typ fr√•n CsnApplicationException till CsnSystemException
  * @version 1 skapad
  *
  */
@@ -17,7 +17,7 @@ public class GenProxyException extends CsnSystemException {
 	
 	/**
 	 * @param message felmeddelande
-	 * @param serviceName den coolgen-tj‰nst som felar
+	 * @param serviceName den coolgen-tj√§nst som felar
 	 */
 	public GenProxyException(String message, String serviceName) {
 		super("[" + serviceName + "] " + message, COOLGEN_ERROR);
@@ -26,7 +26,7 @@ public class GenProxyException extends CsnSystemException {
 
     /**
      * @param message felmeddelande
-     * @param serviceName den coolgen-tj‰nst som felar
+     * @param serviceName den coolgen-tj√§nst som felar
      * @param cause exception som orsakat felet
      */
 	public GenProxyException(String message, String serviceName, Throwable cause) {
@@ -35,7 +35,7 @@ public class GenProxyException extends CsnSystemException {
 	}
 
 	/**
-	 * @return den tj‰nst som felar
+	 * @return den tj√§nst som felar
 	 */
 	public String getServiceName() {
 		return serviceName;

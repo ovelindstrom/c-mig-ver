@@ -1,9 +1,9 @@
 package se.csn.ark.common.dal;
 
 /**
- * Basklass för fil access.
+ * Basklass fÃ¶r fil access.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041103
  * @version 1 skapad
  *

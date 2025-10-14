@@ -7,8 +7,8 @@ import se.csn.ark.common.dt.CsnDataTransferObject;
 
 
 /**
- * CsnXmlHandler är en abstrakt hjälpklass som används av SAX-parsern
- * när den parsar en fråga. Ärv ifrån denna klass och implementera
+ * CsnXmlHandler Ã¤r en abstrakt hjÃ¤lpklass som anvÃ¤nds av SAX-parsern
+ * nÃ¤r den parsar en frÃ¥ga. Ã„rv ifrÃ¥n denna klass och implementera
  * startElement(name) och endElement(name, value).
  *
  *
@@ -26,7 +26,7 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 	private int ignoreLevels = 1;
 
 	/**
-	 * @param iipaxTxId id som används från DTO-object vid
+	 * @param iipaxTxId id som anvÃ¤nds frÃ¥n DTO-object vid
      * transaktions-loggning
 	 */
 	public CsnXmlHandler(String iipaxTxId) {
@@ -34,11 +34,11 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 	}
 
 	/**
-	 * Ska implementeras av subklass. Convertern kan används för konvertering
-	 * från xml till flera DTO-er. Beroende på rootName ska den valda
-	 * DTO'en retruneras här.
+	 * Ska implementeras av subklass. Convertern kan anvÃ¤nds fÃ¶r konvertering
+	 * frÃ¥n xml till flera DTO-er. Beroende pÃ¥ rootName ska den valda
+	 * DTO'en retruneras hÃ¤r.
 	 *
-	 * @param rootName namnet på root-taggen == den funktion som anropas
+	 * @param rootName namnet pÃ¥ root-taggen == den funktion som anropas
      * @return transformerat DTO
 	 */
 	public abstract CsnDataTransferObject getDto(String rootName);
@@ -47,9 +47,9 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 
 
 	/**
-	 * Ska implementeras av subklass. Hanterar händelsen startElement.
+	 * Ska implementeras av subklass. Hanterar hÃ¤ndelsen startElement.
 	 *
-	 * @param name namnet på taggen enligt 'tag name 1'.'tag name 2'. etc
+	 * @param name namnet pÃ¥ taggen enligt 'tag name 1'.'tag name 2'. etc
 	 */
 	public abstract void startElement(String name);
 
@@ -57,10 +57,10 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 
 
 	/**
-	 * Ska implementeras av subklass. Hanterar händelsen endElement.
+	 * Ska implementeras av subklass. Hanterar hÃ¤ndelsen endElement.
 	 *
-	 * @param name namnet på taggen enligt 'tag name 1'.'tag name 2'. etc
-	 * @param value det data som följer med namnet, null om inget data finns
+	 * @param name namnet pÃ¥ taggen enligt 'tag name 1'.'tag name 2'. etc
+	 * @param value det data som fÃ¶ljer med namnet, null om inget data finns
 	 */
 	public abstract void endElement(String name, String value);
 
@@ -68,10 +68,10 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 
 
 	/**
-	 * Sätter hur många XML-nivåer som ska ignoreras innan händelser börjar
+	 * SÃ¤tter hur mÃ¥nga XML-nivÃ¥er som ska ignoreras innan hÃ¤ndelser bÃ¶rjar
 	 * genereras.
 	 *
-	 * @param ignore antal nivåer som ska ignoreras
+	 * @param ignore antal nivÃ¥er som ska ignoreras
 	 */
 	public void setIgnoreLevels(int ignore) {
 		if (ignore < 0) {
@@ -85,9 +85,9 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 
 
 	/**
-	 * Ger namnet på root-noden.
+	 * Ger namnet pÃ¥ root-noden.
 	 *
-	 * @return namnet på root-noden
+	 * @return namnet pÃ¥ root-noden
 	 */
 	public String getRootName() {
 		return rootNodeName;
@@ -99,7 +99,7 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 	/**
 	 * Ger parsade dto-object.
 	 *
-	 * @return namnet på root-noden
+	 * @return namnet pÃ¥ root-noden
 	 */
 	public CsnDataTransferObject getDto() {
 		return dto;
@@ -109,12 +109,12 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 
 
 	/**
-	 * Hanterar händelsen startElement.
+	 * Hanterar hÃ¤ndelsen startElement.
 	 *
 	 * @param uri namespace-uri'n
-	 * @param localName 'local name' utan prefix, tomma strängen om inga namespace används
-	 * @param qName 'qualified name' med prefix, tomma strängen om inga 'qualified name' finns
-	 * @param attributes tillhörande attribut, specificerade eller default
+	 * @param localName 'local name' utan prefix, tomma strÃ¤ngen om inga namespace anvÃ¤nds
+	 * @param qName 'qualified name' med prefix, tomma strÃ¤ngen om inga 'qualified name' finns
+	 * @param attributes tillhÃ¶rande attribut, specificerade eller default
 	 */
 	public void startElement(
 	                         String uri,
@@ -130,7 +130,7 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 
 			// mLog.finest("Start - "+mCurrentName);
 			if (currentName.toString().startsWith("trace")) {
-				; // Gör ingenting
+				; // GÃ¶r ingenting
 			} else {
 				startElement(currentName.toString());
 			}
@@ -154,11 +154,11 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 
 
 	/**
-	 * Hanterar händelsen endElement.
+	 * Hanterar hÃ¤ndelsen endElement.
 	 *
 	 * @param uri namespace-uri'n
-	 * @param localName 'local name' utan prefix, tomma strängen om inga namespace används
-	 * @param qName 'qualified name' med prefix, tomma strängen om inga 'qualified name' finns
+	 * @param localName 'local name' utan prefix, tomma strÃ¤ngen om inga namespace anvÃ¤nds
+	 * @param qName 'qualified name' med prefix, tomma strÃ¤ngen om inga 'qualified name' finns
 	 */
 	public void endElement(String uri, String localName, String qName) {
 		if (currentName.length() > 0) {
@@ -199,10 +199,10 @@ public abstract class CsnXmlHandler extends DefaultHandler {
 
 
 	/**
-	 * Hanterar händelsen att fler char finns tillgängliga.
+	 * Hanterar hÃ¤ndelsen att fler char finns tillgÃ¤ngliga.
 	 *
 	 * @param ch buffer med char's
-	 * @param start första char som ska hanteras
+	 * @param start fÃ¶rsta char som ska hanteras
 	 * @param length antal chars som ska hanteras
 	 */
 	public void characters(char[] ch, int start, int length) {

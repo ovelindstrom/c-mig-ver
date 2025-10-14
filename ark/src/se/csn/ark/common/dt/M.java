@@ -8,9 +8,9 @@ import java.io.Serializable;
 
 
 /**
- * Basgränsnsitt för datatransport objekt.
+ * BasgrÃ¤nsnsitt fÃ¶r datatransport objekt.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040914
  * @version 1 skapad
  *

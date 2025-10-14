@@ -7,8 +7,8 @@ import se.csn.ark.common.CsnApplicationException;
  * @version 1.0
  * @since 2002-02-28, v1.0
  * 
- * Denna exception kan användas då en egenskriven klass för Credentials 
- * (som då bör implementera ICredentials) av någon anledning misslyckas.
+ * Denna exception kan anvÃ¤ndas dÃ¥ en egenskriven klass fÃ¶r Credentials 
+ * (som dÃ¥ bÃ¶r implementera ICredentials) av nÃ¥gon anledning misslyckas.
  * 
  * @see se.csn.credentials.ICredentials
  */

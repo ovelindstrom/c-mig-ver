@@ -6,16 +6,16 @@ import se.csn.ark.common.base.caching.ObjectKeeper;
 import se.csn.ark.common.util.logging.Log;
 
 
-/** Denna klass returnerar de inställningar som behövs för att köra mot JFam/Edh
- * Denna klass instansieras en gång därefter "cachas" värderna som static, detta
- * för att slippa läsa propertiesfilen varje gång ett anrop sker.
- * OBSERVERA att man vid förändringar i jfam.properties för säkerhets skull måste 
+/** Denna klass returnerar de instÃ¤llningar som behÃ¶vs fÃ¶r att kÃ¶ra mot JFam/Edh
+ * Denna klass instansieras en gÃ¥ng dÃ¤refter "cachas" vÃ¤rderna som static, detta
+ * fÃ¶r att slippa lÃ¤sa propertiesfilen varje gÃ¥ng ett anrop sker.
+ * OBSERVERA att man vid fÃ¶rÃ¤ndringar i jfam.properties fÃ¶r sÃ¤kerhets skull mÃ¥ste 
  * se till att ladda om informationen genom att starta om den virtuella maskinen 
  * eller anropa reload-metoden.
  */
 
 /**
- * Properties för koppling mot jfam
+ * Properties fÃ¶r koppling mot jfam
  * 
  * @author Daniel Nordkvist
  * @since 20041028
@@ -40,7 +40,7 @@ public final class JFamProperties implements IReloadableCache {
 	 * @see se.csn.ark.common.base.caching.IReloadableCache#reload()
 	 */
 	public void reload() throws CacheReloadException {
-		// ladda in inställningarna från JFAMfil
+		// ladda in instÃ¤llningarna frÃ¥n JFAMfil
 		try {
 			famHost = Properties.getProperty("jfam", "famHost");
 			famPort = Properties.getProperty("jfam", "famPort");
@@ -51,11 +51,11 @@ public final class JFamProperties implements IReloadableCache {
 			pwd = Properties.getProperty("jfam", "pwd");
 			configfil = Properties.getProperty("jfam", "configfil");
 			if (log.isInfoEnabled()) {
-				log.info("JFaminställningarna inladdad");			
+				log.info("JFaminstÃ¤llningarna inladdad");			
 			}
 			if (log.isDebugEnabled()) {
 				log.debug(
-					"Debugläge - följande Faminställningar laddades in : famhost = "
+					"DebuglÃ¤ge - fÃ¶ljande FaminstÃ¤llningar laddades in : famhost = "
 						+ famHost
 						+ " famport = "
 						+ famPort
@@ -84,13 +84,13 @@ public final class JFamProperties implements IReloadableCache {
 	 */
 	private JFamProperties() throws CacheReloadException {
 		reload();
-		// För att förhindra att GC:n ska städa bort oss så "registrerar" vi oss 
-        // hos singeltonkeepern. Då finns det alltid en referens till detta objekt.
+		// FÃ¶r att fÃ¶rhindra att GC:n ska stÃ¤da bort oss sÃ¥ "registrerar" vi oss 
+        // hos singeltonkeepern. DÃ¥ finns det alltid en referens till detta objekt.
 		ObjectKeeper.getInstance().addObject(this);
 	}
 
 	/**
-	 * Använd denna metod för att erhålla en instans av HamtaJFamInstallningar
+	 * AnvÃ¤nd denna metod fÃ¶r att erhÃ¥lla en instans av HamtaJFamInstallningar
      * @return jfam-properties
      * @throws CacheReloadException gick ej att ladda properties
 	 */

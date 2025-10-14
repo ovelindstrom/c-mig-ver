@@ -11,9 +11,9 @@ import javax.servlet.ServletResponse;
 import se.csn.ark.common.CsnArkBaseObjectImpl;
 
 /**
- * Basklass för Filter.
+ * Basklass fÃ¶r Filter.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20050324
  * @version 1 skapad
  *

@@ -3,18 +3,18 @@ package se.csn.ark.common.base.caching;
 import java.util.Enumeration;
 import java.util.Vector;
 /**
- * ObjectKeeper skall instansieras när man startar den virtuella maskinen (t.ex. Websphere-servern).
- * Den håller sedan reda på (referenser till) alla singleton-objekt eller andra objekt som man 
- * vill förhindra att garbage collectorn tar bort.
- * Detta t.ex. för att tillse att olika egna cachar inte försvinner då ingen längre för tillfället
- * råkar referera till dem.
+ * ObjectKeeper skall instansieras nÃ¤r man startar den virtuella maskinen (t.ex. Websphere-servern).
+ * Den hÃ¥ller sedan reda pÃ¥ (referenser till) alla singleton-objekt eller andra objekt som man 
+ * vill fÃ¶rhindra att garbage collectorn tar bort.
+ * Detta t.ex. fÃ¶r att tillse att olika egna cachar inte fÃ¶rsvinner dÃ¥ ingen lÃ¤ngre fÃ¶r tillfÃ¤llet
+ * rÃ¥kar referera till dem.
  * 
- * Den följer själv Singleton-mönstret.
+ * Den fÃ¶ljer sjÃ¤lv Singleton-mÃ¶nstret.
  * 
  * Alla objekt som man vill skall refereras till av detta objekt (= ej kunna tas bort av GC:n) 
- * måste själva "registrera" sig hos denna klass medelst metoden addObject().
+ * mÃ¥ste sjÃ¤lva "registrera" sig hos denna klass medelst metoden addObject().
  * 
- * Alla objekt som registrerats kan man sedan (om de implementerar IReloadableCache) fås att
+ * Alla objekt som registrerats kan man sedan (om de implementerar IReloadableCache) fÃ¥s att
  * ladda om sig medelst metoden reloadAllObjects.
  * 
  * @author Vincent Wong, Iocore
@@ -23,21 +23,21 @@ import java.util.Vector;
  */
 public final class ObjectKeeper {
 	
-	// Självreferensen:
+	// SjÃ¤lvreferensen:
 	private static ObjectKeeper myself;
 	
 	// Alla registerade objekt vi har referenser till:
 	private Vector objects;
 
 	/**
-	 * Skapa ObjectKeeper. Privat, använd getInstance istället 
+	 * Skapa ObjectKeeper. Privat, anvÃ¤nd getInstance istÃ¤llet 
 	 */
 	private ObjectKeeper() {
 		objects = new Vector();
 	}
 	
 	/**
-	 * Använd denna metod för att erhålla en instans av denna klass(den enda).
+	 * AnvÃ¤nd denna metod fÃ¶r att erhÃ¥lla en instans av denna klass(den enda).
      * @return singelton-instansen
 	 */
 	public static ObjectKeeper getInstance() {
@@ -48,9 +48,9 @@ public final class ObjectKeeper {
 	}
 	
 	/**
-	 * Använd denna metod för att "registrera" ett godtyckligt java-objekt hos ObjectKeepern.
-	 * Registrerade objekt är sedan refererade till av denna klass för att förhindra att garbage
-	 * collectorn städar bort dem (under förutsättning av ObjectKeepern själv inte städas bort).
+	 * AnvÃ¤nd denna metod fÃ¶r att "registrera" ett godtyckligt java-objekt hos ObjectKeepern.
+	 * Registrerade objekt Ã¤r sedan refererade till av denna klass fÃ¶r att fÃ¶rhindra att garbage
+	 * collectorn stÃ¤dar bort dem (under fÃ¶rutsÃ¤ttning av ObjectKeepern sjÃ¤lv inte stÃ¤das bort).
      * @param object som ska registreras
 	 */
 	public void addObject(Object object) {
@@ -58,8 +58,8 @@ public final class ObjectKeeper {
 	}
 	
 	/**
-	 * Går igenom alla object som registrerats med addObject() och ifall de implementerar 
-     * IReloadableCache så anropas dess reload-metod.
+	 * GÃ¥r igenom alla object som registrerats med addObject() och ifall de implementerar 
+     * IReloadableCache sÃ¥ anropas dess reload-metod.
      * @throws CacheReloadException gick ej att ladda om
 	 */
 	public void reloadAllObjects() throws CacheReloadException {
@@ -71,12 +71,12 @@ public final class ObjectKeeper {
 				iReloadableCache.reload();
 			} catch (ClassCastException c) {
 				// Om detta inte var ett objekt som implementerade IReloadableCache 
-                // så ignorerar vi det bara.
+                // sÃ¥ ignorerar vi det bara.
 			}
 		}
 	}
 	/**
-	 * @return Returnerar en Vector innehållande alla Object som registrerats medelst addObject.
+	 * @return Returnerar en Vector innehÃ¥llande alla Object som registrerats medelst addObject.
 	 */
 	public Vector getObjects() {
 		return objects;

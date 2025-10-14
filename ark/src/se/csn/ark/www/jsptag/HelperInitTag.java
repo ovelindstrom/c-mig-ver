@@ -7,12 +7,12 @@ import javax.servlet.jsp.JspException;
 
 /**
  * Tag som laddar en helper-klass till sidan.
- * Den utfˆr den logik/"anropar nerÂt" som kr‰vs fˆr sidan.
+ * Den utf√∂r den logik/"anropar ner√•t" som kr√§vs f√∂r sidan.
  *
  * @author Joakim Olsson
  * @since 20050103
  * @version 0.1 skapad
- * @version 1.0 Fˆr‰ndringar av Jacob Nordin 2005-09-21. Se kommentarer i basklassen HelperTag.
+ * @version 1.0 F√∂r√§ndringar av Jacob Nordin 2005-09-21. Se kommentarer i basklassen HelperTag.
  */
 public class HelperInitTag extends HelperTag {
 
@@ -23,19 +23,19 @@ public class HelperInitTag extends HelperTag {
    private final Log log = Log.getInstance(HelperInitTag.class);
 
    /**
-    * S‰tter hj‰lp-klass-namn
+    * S√§tter hj√§lp-klass-namn
     *
-    * @param  name namn pÂ hj‰lp-klass
+    * @param  name namn p√• hj√§lp-klass
     */
    public void setName(String name) {
       this.helperClassName = name;
    }
 
    /**
-    * Initierar hj‰lpklass.
+    * Initierar hj√§lpklass.
     *
     * @return id som definierar hur app-servern ska hantera sidan.
-     * @throws JspException om initiering av helper-klass ej gÂr att exekvera
+     * @throws JspException om initiering av helper-klass ej g√•r att exekvera
     */
    public int doStartTag() throws JspException {
 
@@ -43,7 +43,7 @@ public class HelperInitTag extends HelperTag {
 
       CsnHelperController helper = getHelper();
       if (helper != null && helper.getClass().getName().equals(helperClassName)) {
-         log.debug("Anv‰nder befintlig helper. " + "[helper=" + helper.getClass().getName() + ", "                   + "pageid=" + getPageid() + ", scope=" + getScope() + "]");
+         log.debug("Anv√§nder befintlig helper. " + "[helper=" + helper.getClass().getName() + ", "                   + "pageid=" + getPageid() + ", scope=" + getScope() + "]");
       } else {
          try {
             helper = (CsnHelperController) Class.forName(helperClassName).newInstance();
@@ -57,7 +57,7 @@ public class HelperInitTag extends HelperTag {
 
       setHelper(helper);
 
-      // Gˆr alltid init pÂ hj‰lpklassen ‰ven om hj‰lpklassen Âteranv‰nds pga bakÂtkompatibelitet
+      // G√∂r alltid init p√• hj√§lpklassen √§ven om hj√§lpklassen √•teranv√§nds pga bak√•tkompatibelitet
       initHelper(helper);
 
       log.debug("<== tag " + this.getClass().getName());
@@ -74,7 +74,7 @@ public class HelperInitTag extends HelperTag {
 
    /**
     * @param helper helper-klass som initieras
-    * @throws CsnJspException om initiering ej gÂr att exekvera
+    * @throws CsnJspException om initiering ej g√•r att exekvera
     */
    private void initHelper(CsnHelperController helper) throws CsnJspException {
       if (helper.init(pageContext, getPageid()) == SKIP_PAGE) {

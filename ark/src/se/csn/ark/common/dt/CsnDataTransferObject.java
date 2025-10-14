@@ -9,9 +9,9 @@ import java.io.Serializable;
 import se.csn.ark.common.DTOException;
 
 /**
- * Basgränsnsitt för datatransport objekt.
+ * BasgrÃ¤nsnsitt fÃ¶r datatransport objekt.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040914
  * @version 1 skapad
  *
@@ -19,14 +19,14 @@ import se.csn.ark.common.DTOException;
 public interface CsnDataTransferObject extends Serializable {
 
 	/**
-	 * Sätter datatransport objekt för exception.
+	 * SÃ¤tter datatransport objekt fÃ¶r exception.
 	 * 
-	 * @param de Exception för transport.
+	 * @param de Exception fÃ¶r transport.
 	 */
 	public void setDTOException(DTOException de);
 	
 	/**
-	 * Ger datatransport objekt för exception.
+	 * Ger datatransport objekt fÃ¶r exception.
 	 * 
 	 * @return Transporterat exception.
 	 */
@@ -34,35 +34,35 @@ public interface CsnDataTransferObject extends Serializable {
 	
 	
 	/**
-	 * Sätter transactionsid.
-	 * Används i första hand för loggning.
+	 * SÃ¤tter transactionsid.
+	 * AnvÃ¤nds i fÃ¶rsta hand fÃ¶r loggning.
 	 * 
-	 * @param transactionId Id för aktuell trnsaktion.
+	 * @param transactionId Id fÃ¶r aktuell trnsaktion.
 	 */
 	public void setTransactionId(String transactionId);
 	
 	/**
-	 * Ger transaktions id för pågående trsaktion.
-	 * Används i första hand för loggning.
+	 * Ger transaktions id fÃ¶r pÃ¥gÃ¥ende trsaktion.
+	 * AnvÃ¤nds i fÃ¶rsta hand fÃ¶r loggning.
 	 * 
-	 * @return Id för aktuell transaktion.
+	 * @return Id fÃ¶r aktuell transaktion.
 	 */
 	public String getTransactionId();
 	
 	
 	/**
-	 * Ger händelse.
-	 * Används i första hand för loggning.
+	 * Ger hÃ¤ndelse.
+	 * AnvÃ¤nds i fÃ¶rsta hand fÃ¶r loggning.
 	 * 
-	 * @return  Beskrivning av den händelse som skall loggas.
+	 * @return  Beskrivning av den hÃ¤ndelse som skall loggas.
 	 */
 	public String getEvent();
 
 	/**
-	 * Sätter händelse.
-	 * Används i första hand för loggning.
+	 * SÃ¤tter hÃ¤ndelse.
+	 * AnvÃ¤nds i fÃ¶rsta hand fÃ¶r loggning.
 	 * 
-	 * @param event Beskrivning av den händelse som skall loggas.
+	 * @param event Beskrivning av den hÃ¤ndelse som skall loggas.
 	 */
 	public void setEvent(String event);
 	

@@ -10,62 +10,62 @@ import se.csn.ark.common.util.logging.trace.TraceRecord;
 import se.csn.ark.common.util.logging.activity.ActivityRecord;
 
 /**
- * Grundklassernas grundgränssnitt för CSN:s arkitekturramverk.
+ * Grundklassernas grundgrÃ¤nssnitt fÃ¶r CSN:s arkitekturramverk.
  * <br>
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 2005-04-21
  * @version 1 skapad
- * @version 2 2007-04-13 E-tjänster 2007 Lagt till aktivitetsloggning csn7571
+ * @version 2 2007-04-13 E-tjÃ¤nster 2007 Lagt till aktivitetsloggning csn7571
  *
  */
 public interface CsnArkBaseObject {
 	
 	/**
-	 * Indikerar om traceloggning är aktiverad.
+	 * Indikerar om traceloggning Ã¤r aktiverad.
 	 *
-	 * @return true om Traceloggen är påslagen.
+	 * @return true om Traceloggen Ã¤r pÃ¥slagen.
 	 */
 	public boolean isTraceing();
 
 	/**
-	 * Skriver spårbarhetsinformation till loggen.
+	 * Skriver spÃ¥rbarhetsinformation till loggen.
 	 * 
-	 * @param traceRecord Innehåller allt som skall loggas.
+	 * @param traceRecord InnehÃ¥ller allt som skall loggas.
 	 */
 	public void trace(TraceRecord traceRecord);
 
 	/**
-	 * Indikerar om aktivitetsloggning är aktiverad.
+	 * Indikerar om aktivitetsloggning Ã¤r aktiverad.
 	 *
-	 * @return true om Activityloggen är påslagen.
+	 * @return true om Activityloggen Ã¤r pÃ¥slagen.
 	 */
 	public boolean isTraceingActivities();
 
 	/**
-	 * Skriver spårbarhetsinformation till aktivitetsloggen.
+	 * Skriver spÃ¥rbarhetsinformation till aktivitetsloggen.
 	 * 
-	 * @param activityRecord Innehåller allt som skall loggas.
+	 * @param activityRecord InnehÃ¥ller allt som skall loggas.
 	 */
 	public void activity(ActivityRecord activityRecord);
 
 	/**
-	 * Indikerar om prestandaloggning är aktiverad.
+	 * Indikerar om prestandaloggning Ã¤r aktiverad.
 	 *
-	 * @return true om Prestandaloggen är påslagen.
+	 * @return true om Prestandaloggen Ã¤r pÃ¥slagen.
 	 */
 	public boolean isTiming();
 
 	/**
-	 * Startar klockan för prestandaloggningen. Tick, tack, ...
+	 * Startar klockan fÃ¶r prestandaloggningen. Tick, tack, ...
 	 *
 	 * @param loggingObject Det objekt som loggar.
-	 * @param methodName Namnet på metoden som loggar.
+	 * @param methodName Namnet pÃ¥ metoden som loggar.
 	 */
 	public void startClock(CsnArkBaseObjectImpl loggingObject, String methodName);
 
 	/**
-	 * Stoppar klockan för prestandaloggningen.
+	 * Stoppar klockan fÃ¶r prestandaloggningen.
 	 *
 	 */
 	public void stopClock();

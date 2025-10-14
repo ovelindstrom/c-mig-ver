@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041130
  * @version 1 skapad
  *
@@ -55,7 +55,7 @@ public class ManagableThreadDummyImpl extends CsnManagableThread {
 
 
 	/** 
-     * Simulera att det ibland finns mer att göra och ibland inte.
+     * Simulera att det ibland finns mer att gÃ¶ra och ibland inte.
 	 * @see se.csn.ark.common.manage.CsnManagableThread#hasMoreToDo()
 	 */
 	public boolean hasMoreToDo() throws UnManagableException {
@@ -80,7 +80,7 @@ public class ManagableThreadDummyImpl extends CsnManagableThread {
 	 * @see se.csn.ark.common.manage.CsnManagableThread#doMore()
 	 */
 	public void doMore() throws UnManagableException {
-		// Är detta första anropet eller har vi redan startat?
+		// Ã„r detta fÃ¶rsta anropet eller har vi redan startat?
 		if (!running) {
 			running = true;
 		}
@@ -89,7 +89,7 @@ public class ManagableThreadDummyImpl extends CsnManagableThread {
 			log.debug("doMore " + new Date());
 		}
 
-		// Ännu ett låtsas anrop till något ;-)
+		// Ã„nnu ett lÃ¥tsas anrop till nÃ¥got ;-)
 		calls++;
 	}
 

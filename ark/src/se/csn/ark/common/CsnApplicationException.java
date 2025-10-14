@@ -3,15 +3,15 @@ package se.csn.ark.common;
 
 /**
  *
- * Basklass för applikations fel. Skall användas för att indikera fel som
+ * Basklass fÃ¶r applikations fel. Skall anvÃ¤ndas fÃ¶r att indikera fel som
  * hanteras av applikationen som t.ex. felaktig inmatning m.m.
  *
- * @author K-G Sjöström
+ * @author K-G SjÃ¶strÃ¶m
  * @since 040809
  * @version 1 Skapad
- * @version 2 Förändringar av Jacob Nordin 2005-09-16. Ändrat konstruktorerna från protected
- *            till public så att instanser av CsnApplicationException kan skapas direkt utan
- *            att behöva skapa en subklass.
+ * @version 2 FÃ¶rÃ¤ndringar av Jacob Nordin 2005-09-16. Ã„ndrat konstruktorerna frÃ¥n protected
+ *            till public sÃ¥ att instanser av CsnApplicationException kan skapas direkt utan
+ *            att behÃ¶va skapa en subklass.
  * @see se.csn.ark.common.CsnSystemException
  *
  */
@@ -43,7 +43,7 @@ public class CsnApplicationException extends Exception implements CsnException {
 	 * Skapar ett applikations fel.
 	 *
 	 * @param message Felmeddelande
-	 * @param errorId Identitiet för att kunna hämta feltext
+	 * @param errorId Identitiet fÃ¶r att kunna hÃ¤mta feltext
 	 */
 	public CsnApplicationException(String message, Integer errorId) {
 		this(message, errorId, null);
@@ -81,7 +81,7 @@ public class CsnApplicationException extends Exception implements CsnException {
 	 * Skapar ett applikations fel.
 	 *
 	 * @param message Felmeddelande
-	 * @param errorId Identitiet för att kunna hämta feltext
+	 * @param errorId Identitiet fÃ¶r att kunna hÃ¤mta feltext
 	 * @param cause Orsak
 	 */
 	public CsnApplicationException(String message,
@@ -89,9 +89,9 @@ public class CsnApplicationException extends Exception implements CsnException {
 	                                  Throwable cause) {
 		super(message, cause);
 		if (errorId == APPLICATION_EXCEPTION) {
-			// Om errorid är satt till APPLICATION_EXCEPTION dvs 
-			// det fanns inget eget id för det sista exception så sätter
-			// vi id till föregående exceptions id.
+			// Om errorid Ã¤r satt till APPLICATION_EXCEPTION dvs 
+			// det fanns inget eget id fÃ¶r det sista exception sÃ¥ sÃ¤tter
+			// vi id till fÃ¶regÃ¥ende exceptions id.
 			if ((cause != null) && (cause instanceof CsnApplicationException))  {
 				CsnException csnException = (CsnException) cause;
 				this.errorId = csnException.getErrorId();
@@ -116,8 +116,8 @@ public class CsnApplicationException extends Exception implements CsnException {
 
 
 	/**
-	 * Fel id för detta applikations fel som kan användas för att hämta motsvarande
-	 * felmeddelande från fil eller databas.
+	 * Fel id fÃ¶r detta applikations fel som kan anvÃ¤ndas fÃ¶r att hÃ¤mta motsvarande
+	 * felmeddelande frÃ¥n fil eller databas.
 	 *
 	 * @see se.csn.ipl.webbansokan.arkitektur.CsnException#getFelId()
 	 * @return Returnerar <code>null</code> om id ej definierat
@@ -130,10 +130,10 @@ public class CsnApplicationException extends Exception implements CsnException {
 
 
 	/**
-	 * Returnerar en sträng representation av detta objekt innehållande
-	 * alla eventuellt nästade <code>Exception</code>
+	 * Returnerar en strÃ¤ng representation av detta objekt innehÃ¥llande
+	 * alla eventuellt nÃ¤stade <code>Exception</code>
 	 *
-	 * @return En sträng med all felbeskrivning
+	 * @return En strÃ¤ng med all felbeskrivning
 	 */
 	public String toString() {
 		String msg =
@@ -151,11 +151,11 @@ public class CsnApplicationException extends Exception implements CsnException {
 
 
     /**
-     * Återskapar CsnException utifrån indata
+     * Ã…terskapar CsnException utifrÃ¥n indata
      *
      * @param message exception-meddelande
-     * @param errorId id på CsnException
-     * @return återskapt exception
+     * @param errorId id pÃ¥ CsnException
+     * @return Ã¥terskapt exception
      */
 	public static CsnException reCreateCsnException(String message,
 	                                                Integer errorId) {

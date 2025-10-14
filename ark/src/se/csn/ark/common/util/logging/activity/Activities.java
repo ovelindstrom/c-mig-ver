@@ -11,7 +11,7 @@ import org.apache.log4j.MDC;
 
 /**
  *
- * Gränssnitt för det som skall kunna loggas av aktivitetsloggningen 
+ * GrÃ¤nssnitt fÃ¶r det som skall kunna loggas av aktivitetsloggningen 
  *
  * @author csn7571
  * @since 2007-04-13

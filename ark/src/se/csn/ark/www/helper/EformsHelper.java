@@ -25,8 +25,8 @@
 //
 //
 ///**
-// * Tillhandahåller validering och uppdatering av eforms-träd.
-// * Ärv och implementera update och validate.
+// * TillhandahÃ¥ller validering och uppdatering av eforms-trÃ¤d.
+// * Ã„rv och implementera update och validate.
 // *
 // * @author Joakim Olsson
 // * @since 20050103
@@ -61,7 +61,7 @@
 //
 //	/**
 //	 * laddar om POST'ad sida med GET
-//	 * @return SKIP_PAGE eller 0 för att fortsätta
+//	 * @return SKIP_PAGE eller 0 fÃ¶r att fortsÃ¤tta
 //	 */
 //	protected int reloadWhenPost() {
 //		HttpServletRequest req =
@@ -81,9 +81,9 @@
 //
 //
 //	/**
-//	 * Implementeras av sub-klasser. Körs första gången en sida laddas.
+//	 * Implementeras av sub-klasser. KÃ¶rs fÃ¶rsta gÃ¥ngen en sida laddas.
 //	 *
-//	 * @param tree eforms-trädet
+//	 * @param tree eforms-trÃ¤det
 //	 * @return default null, sub-klass kan returnera resultat-information till sidan
 //	 * @throws ValidatorException vid misslyckad uppdatering
 //	 */
@@ -96,9 +96,9 @@
 //
 //
 //	/**
-//	 * Implementeras av sub-klasser. Körs alla gånger utom första gången en sida laddas.
+//	 * Implementeras av sub-klasser. KÃ¶rs alla gÃ¥nger utom fÃ¶rsta gÃ¥ngen en sida laddas.
 //	 *
-//	 * @param tree eforms-trädet
+//	 * @param tree eforms-trÃ¤det
 //	 * @return default null, sub-klass kan returnera resultat-information till sidan
 //	 * @throws ValidatorException vid misslyckad uppdatering
 //	 */
@@ -111,11 +111,11 @@
 //
 //
 //	/**
-//	 * Letar fram eforms-träd och anropar validate.
-//	 * OBS första gången sker ingen validering
+//	 * Letar fram eforms-trÃ¤d och anropar validate.
+//	 * OBS fÃ¶rsta gÃ¥ngen sker ingen validering
 //     * 
-//     * @return Tag.SKIP_BODY eller Tag.SKIP_PAGE om vi går
-//     * till nästa sida
+//     * @return Tag.SKIP_BODY eller Tag.SKIP_PAGE om vi gÃ¥r
+//     * till nÃ¤sta sida
 //	 */
 //	public int doValidate() {
 //		int ret = Tag.SKIP_BODY;
@@ -127,7 +127,7 @@
 //			(HttpServletRequest)getPageContext().getRequest();
 //		String query = request.getQueryString();
 //
-//		// Om det inte är första gången
+//		// Om det inte Ã¤r fÃ¶rsta gÃ¥ngen
 //		if (
 //		    (getValid() != null)
 //		    && (query != null)
@@ -139,7 +139,7 @@
 //			// Kontroll av inparametrar
 //			if (tree == null) {
 //				String message =
-//					"Det gick inte att validera. Inget träd finns.";
+//					"Det gick inte att validera. Inget trÃ¤d finns.";
 //
 //				log.error(message);
 //				result.couldNotExecute(message);
@@ -155,7 +155,7 @@
 //			} catch (Exception e) {
 //				final String message =
 //					"Det gick inte att validera. "
-//					+ "Validatorn misslyckades att köra";
+//					+ "Validatorn misslyckades att kÃ¶ra";
 //
 //				log.error(message, e);
 //				result = new DTOValidateResult();
@@ -171,7 +171,7 @@
 //				ret = Tag.SKIP_PAGE;
 //
 //				/**
-//				 * Om ingen ny url property är satt då körs den vanliga..default
+//				 * Om ingen ny url property Ã¤r satt dÃ¥ kÃ¶rs den vanliga..default
 //				 */
 //				if (result.getSAlternativeUrlProperty() == null) {
 //					forwardAppendContext(
@@ -196,7 +196,7 @@
 //
 //
 //	/**
-//	 * Letar fram eforms-träd och anropar update.
+//	 * Letar fram eforms-trÃ¤d och anropar update.
 //     * @return Tag.SKIP_BODY
 //	 */
 //	public int doUpdate() {
@@ -209,7 +209,7 @@
 //		ParameterTree tree = formData.getTree();
 //
 //		if (tree == null) {
-//			String message = "Det gick inte att updatera. Inget eforms-träd";
+//			String message = "Det gick inte att updatera. Inget eforms-trÃ¤d";
 //
 //			log.error(message);
 //			result.couldNotExecute(message);
@@ -271,10 +271,10 @@
 //			(String)getNavigate().get("sammanstallning");
 //
 //		/*
-//		 * Om referer, nextPage eller currentPage inte är satta i konfigurationen så körs
+//		 * Om referer, nextPage eller currentPage inte Ã¤r satta i konfigurationen sÃ¥ kÃ¶rs
 //		 * update.
-//		 * Om man inte kommer framifrån (alltså backar in till sidan) och inte
-//		 * kommer från samma sida (alltså sidan laddas om) så körs update.
+//		 * Om man inte kommer framifrÃ¥n (alltsÃ¥ backar in till sidan) och inte
+//		 * kommer frÃ¥n samma sida (alltsÃ¥ sidan laddas om) sÃ¥ kÃ¶rs update.
 //		 */
 //		boolean doUpdate = false;
 //
@@ -296,7 +296,7 @@
 //			} catch (Exception e) {
 //				final String message =
 //					"Det gick inte att uppdatera. "
-//					+ "Updater misslyckades att köra";
+//					+ "Updater misslyckades att kÃ¶ra";
 //
 //				log.error(message, e);
 //
@@ -322,7 +322,7 @@
 //	/**
 //	 * @param referer refererande sida
 //	 * @param page denna sida
-//	 * @return true om denna sida är samma som refererande
+//	 * @return true om denna sida Ã¤r samma som refererande
 //	 */
 //	private boolean refersToSamePage(String referer, String page) {
 //		return referer.endsWith(page);
@@ -333,9 +333,9 @@
 //
 //	/**
 //	 * @param referer refererande sida
-//	 * @param nextPage nästa sida
+//	 * @param nextPage nÃ¤sta sida
 //	 * @param currentPage denna sida
-//	 * @return true om ingen sida är null
+//	 * @return true om ingen sida Ã¤r null
 //	 */
 //	private boolean configParameterMissing(
 //	                                       String referer,
@@ -348,9 +348,9 @@
 //
 //
 //	/**
-//     * Sätter ev trace-parametrar i trädet.
+//     * SÃ¤tter ev trace-parametrar i trÃ¤det.
 //     * 
-//	 * @param event namn på trace-händelse
+//	 * @param event namn pÃ¥ trace-hÃ¤ndelse
 //	 * @return Tag.SKIP_BODY
 //	 */
 //	public int doInitTrace(String event) {
@@ -379,9 +379,9 @@
 //
 //
 //	/**
-//     * Sätter pathen i eforms-trädet
-//	 * @param path path i eforms-trädet
-//	 * @param isAbsolute true om path är absolut, false om relativ
+//     * SÃ¤tter pathen i eforms-trÃ¤det
+//	 * @param path path i eforms-trÃ¤det
+//	 * @param isAbsolute true om path Ã¤r absolut, false om relativ
 //	 */
 //	public void setPath(String path, boolean isAbsolute) {
 //		eformsPath = path;
@@ -392,7 +392,7 @@
 //
 //
 //	/**
-//	 * @return värde på nod som pekas ut av setPath
+//	 * @return vÃ¤rde pÃ¥ nod som pekas ut av setPath
 //	 */
 //	public String getNodeValue() {
 //		String nodeValue = "";
@@ -492,11 +492,11 @@
 //
 //
 //	/**
-//     * Gör forward till fileName med query som query-sträng,
-//     * lägger till context framför fileName.
+//     * GÃ¶r forward till fileName med query som query-strÃ¤ng,
+//     * lÃ¤gger till context framfÃ¶r fileName.
 //     * 
-//	 * @param fileName dit vi ska göra forward
-//	 * @param query query-sträng
+//	 * @param fileName dit vi ska gÃ¶ra forward
+//	 * @param query query-strÃ¤ng
 //	 */
 //	public void forwardAppendContext(String fileName, String query) {
 //		HttpServletRequest request =
@@ -509,11 +509,11 @@
 //
 //
 //	/**
-//	 * Gör en forward med requesten anpassad för eforms.
+//	 * GÃ¶r en forward med requesten anpassad fÃ¶r eforms.
 //	 *
-//     * @param fileName dit vi ska göra forward
-//     * @param query query-sträng
-//     * @return SKIP_PAGE eller 0 för att fortsätta
+//     * @param fileName dit vi ska gÃ¶ra forward
+//     * @param query query-strÃ¤ng
+//     * @return SKIP_PAGE eller 0 fÃ¶r att fortsÃ¤tta
 //	 */
 //	public int forward(String fileName, String query) {
 //		log.debug("forward to " + fileName);
@@ -540,7 +540,7 @@
 //
 //            ret = Tag.SKIP_PAGE;
 //		} catch (Exception e) {
-//			log.error("Exception: Gick inte att göra forward till " + fileName + 
+//			log.error("Exception: Gick inte att gÃ¶ra forward till " + fileName + 
 //			"Query = " + query + "Felet som kastades = " + e.getLocalizedMessage());
 //		}
 //        
@@ -551,13 +551,13 @@
 //
 //
 //	/**
-//	 * Laddar om sidan page men med GET och eforms-trädet på query-strängen.
-//	 * Syftet är att kunna skapa ett eforms-träd och sedan använda parametrar
-//	 * ur trädet till <efroms:import> som bara körs på GET och med parametrar
-//	 * från querysträngen
+//	 * Laddar om sidan page men med GET och eforms-trÃ¤det pÃ¥ query-strÃ¤ngen.
+//	 * Syftet Ã¤r att kunna skapa ett eforms-trÃ¤d och sedan anvÃ¤nda parametrar
+//	 * ur trÃ¤det till <efroms:import> som bara kÃ¶rs pÃ¥ GET och med parametrar
+//	 * frÃ¥n querystrÃ¤ngen
 //	 *
 //	 * @param page sida att ladda om
-//	 * @param path del av trädet att skicka på querysträngen
+//	 * @param path del av trÃ¤det att skicka pÃ¥ querystrÃ¤ngen
 //     * @throws Exception om forward misslyckas
 //	 */
 //	protected void reloadPostAsGet(String page, String path)
@@ -589,7 +589,7 @@
 //
 //
 ///**
-// * Private class för att anpassa/wrappa requesten till eforms.
+// * Private class fÃ¶r att anpassa/wrappa requesten till eforms.
 // *
 // * @author Joakim Olsson
 // * @since 20050103
@@ -600,10 +600,10 @@
 //	private String txId;
 //
 //	/**
-//     * Constructor för requesten
+//     * Constructor fÃ¶r requesten
 //	 * @param request original-request
 //	 * @param txId transaktions id
-//	 * @param event trace-händelse
+//	 * @param event trace-hÃ¤ndelse
 //	 */
 //	GetWithTraceRequest(HttpServletRequest request, String txId, String event) {
 //		super(request);
@@ -628,7 +628,7 @@
 //
 //
 ///**
-// * Privat klass för att anpassa/wrappa requesten till eforms.
+// * Privat klass fÃ¶r att anpassa/wrappa requesten till eforms.
 // *
 // * @author Joakim Olsson
 // * @since 20050103
@@ -645,7 +645,7 @@
 //     * Konstruera en request 
 //	 * @param req original-request
 //	 * @param session nuvarande session
-//	 * @param path path i eforms-trädet
+//	 * @param path path i eforms-trÃ¤det
 //	 */
 //	public PostAsGetRequestWrapper(HttpServletRequest req,
 //	                               HttpSession session,
@@ -658,7 +658,7 @@
 //	}
 //
 //	/**
-//	 * Skapar en query-strän från noden "path" i trädet och nedåt
+//	 * Skapar en query-strÃ¤n frÃ¥n noden "path" i trÃ¤det och nedÃ¥t
 //     * Dessutom noden "trace" om den finns
 //	 */
 //	public void createQueryString() {
@@ -693,9 +693,9 @@
 //
 //
 //	/**
-//	 * @param query lägger till all child-noder till query-strängen
-//	 * @param node den nod vi börjar vid
-//	 * @param startPath den path vi börjar vid
+//	 * @param query lÃ¤gger till all child-noder till query-strÃ¤ngen
+//	 * @param node den nod vi bÃ¶rjar vid
+//	 * @param startPath den path vi bÃ¶rjar vid
 //	 */
 //	private void addChildren(StringBuffer query, Node node, String startPath) {
 //		int nChildren = node.numberOfChildren();
@@ -715,11 +715,11 @@
 //
 //
 //    /**
-//     * @param query lägger till noden till query-strängen
-//     * @param node den nod vi börjar vid
-//     * @param startPath den path vi börjar vid
+//     * @param query lÃ¤gger till noden till query-strÃ¤ngen
+//     * @param node den nod vi bÃ¶rjar vid
+//     * @param startPath den path vi bÃ¶rjar vid
 //     * 
-//     * @return namn på noden som lagts till
+//     * @return namn pÃ¥ noden som lagts till
 //     */
 //	private String addNode(StringBuffer query, Node node, String startPath) {
 //		String name;
@@ -736,7 +736,7 @@
 //		try {
 //			urlEncodedValue = URLEncoder.encode(value, "ISO-8859-1");
 //		} catch (UnsupportedEncodingException e) {
-//			log.error("Misslyckades med att URLenkoda följande sträng :" + value, e);
+//			log.error("Misslyckades med att URLenkoda fÃ¶ljande strÃ¤ng :" + value, e);
 //			urlEncodedValue = value;
 //		}
 //

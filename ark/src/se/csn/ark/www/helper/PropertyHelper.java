@@ -3,8 +3,8 @@ package se.csn.ark.www.helper;
 
 
 /**
- * TillhandahÂller propertie, produkttyper och navigering till 
- * hj‰lpklasser till jsp-sidorna. 
+ * Tillhandah√•ller propertie, produkttyper och navigering till 
+ * hj√§lpklasser till jsp-sidorna. 
  *
  * @author Joakim Olsson
  * @since 20050103

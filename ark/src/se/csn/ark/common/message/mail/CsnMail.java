@@ -11,12 +11,12 @@ import javax.mail.Session;
 import javax.mail.Transport;
 
 /**
- * @author Magnus Storsjö
+ * @author Magnus StorsjÃ¶
  * @since 20050223
  * @version 1 skapad
  *
- * Denna klass innehåller
- * Hämtar upp properties för att skicka mail och skapar och returnerar ett mimemessage.
+ * Denna klass innehÃ¥ller
+ * HÃ¤mtar upp properties fÃ¶r att skicka mail och skapar och returnerar ett mimemessage.
  *
  */
 public final class CsnMail {
@@ -64,7 +64,7 @@ public final class CsnMail {
     /**
      * Skapar ett initierat MailMessage, som saknar epost adress, rubrik och text. 
     * @return MailMessage
-    * @throws MailException Om något gick fel vid itoeringen 
+    * @throws MailException Om nÃ¥got gick fel vid itoeringen 
     */
    public static synchronized MailMessage getMessage() throws MailException {
 
@@ -94,7 +94,7 @@ public final class CsnMail {
     /**
      * Skicka epostmeddelande till mail servern.
     * @param mailMessage Det initierade meddelande som skall skickas.
-    * @throws MailException Om det av mågon anledning inte gick att skicka via transportlagret
+    * @throws MailException Om det av mÃ¥gon anledning inte gick att skicka via transportlagret
     */
    public static synchronized void sendMessage(MailMessage mailMessage)
                             throws MailException {

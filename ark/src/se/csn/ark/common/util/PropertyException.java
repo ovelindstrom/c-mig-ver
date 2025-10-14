@@ -7,7 +7,7 @@ package se.csn.ark.common.util;
 import se.csn.ark.common.CsnApplicationException;
 
 /**
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20050121
  * @version 1 skapad
  *
@@ -23,7 +23,7 @@ public class PropertyException extends CsnApplicationException {
 
     /**
      * @param message felmeddelande
-     * @param errorId id på felet
+     * @param errorId id pÃ¥ felet
      */
 	public PropertyException(String message, Integer errorId) {
 		super(message, errorId);
@@ -46,7 +46,7 @@ public class PropertyException extends CsnApplicationException {
 
     /**
      * @param message felmeddelande
-     * @param errorId id på felet
+     * @param errorId id pÃ¥ felet
      * @param cause exception som orsakade felet
      */
 	public PropertyException(

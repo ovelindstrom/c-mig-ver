@@ -11,7 +11,7 @@ import java.util.TimeZone;
  * @since 20041204
  * @version 1 skapad
  * 
- * Custom klass för att sätta svenska inställningar för GregorianCalendar
+ * Custom klass fÃ¶r att sÃ¤tta svenska instÃ¤llningar fÃ¶r GregorianCalendar
  */
 public class CustomGregorianCalendar extends GregorianCalendar {
 	public static final TimeZone ZONE_SWE = TimeZone.getTimeZone("Europe/Stockholm");
@@ -20,7 +20,7 @@ public class CustomGregorianCalendar extends GregorianCalendar {
 
 	/**
 	 * Default constructor
-	 * Sätter TimeZone till Europe/Stockholm
+	 * SÃ¤tter TimeZone till Europe/Stockholm
 	 * Locale "sv", "SE"
 	 * setFirstDayOfWeek = 1
 	 * setMinimalDaysInFirstWeek = 4
@@ -39,8 +39,8 @@ public class CustomGregorianCalendar extends GregorianCalendar {
 
 	/**
 	 * Constructor
-	 * @param year skapa med år
-	 * @param month skapa med månad
+	 * @param year skapa med Ã¥r
+	 * @param month skapa med mÃ¥nad
 	 * @param day skapa med dag
 	 */
 	public CustomGregorianCalendar(int year, int month, int day) {
@@ -57,8 +57,8 @@ public class CustomGregorianCalendar extends GregorianCalendar {
 
 	/**
 	 * Constructor
-     * @param year skapa med år
-     * @param month skapa med månad
+     * @param year skapa med Ã¥r
+     * @param month skapa med mÃ¥nad
      * @param day skapa med dag
 	 * @param hour skapa med timme
 	 * @param minute skapa med minut

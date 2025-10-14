@@ -5,7 +5,7 @@
 //
 //
 ///**
-// * Testklass för EformsHelper.
+// * Testklass fÃ¶r EformsHelper.
 // *
 // * @author Joakim Olsson
 // * @since 20041202
@@ -16,7 +16,7 @@
 //
 //	/**
 //	 * Constructor for EformsHelperTest.
-//	 * @param arg0 namn på testfall
+//	 * @param arg0 namn pÃ¥ testfall
 //	 */
 //	public EformsHelperTest(String arg0) {
 //		super(arg0);
@@ -78,7 +78,7 @@
 //
 //		assertNotNull(tree.getNode("testnod.msg", false, null));
 //		assertEquals(
-//		             "testvärde",
+//		             "testvÃ¤rde",
 //		             tree.getNode("testnod.msg", false, null).getValue());
 //	}
 //
@@ -86,7 +86,7 @@
 //
 //
 //	/**
-//	 * Test för properties
+//	 * Test fÃ¶r properties
 //	 */
 //	/*public void testProperties() {
 //		assertEquals(

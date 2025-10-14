@@ -14,7 +14,7 @@ public final class UniqueId {
 	private static long current = System.currentTimeMillis();
 	
     /**
-     * Privat konstruktor, endast statisk åtkomst
+     * Privat konstruktor, endast statisk Ã¥tkomst
      */
     private UniqueId() {
     }

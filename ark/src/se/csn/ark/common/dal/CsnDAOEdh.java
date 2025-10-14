@@ -1,7 +1,7 @@
 package se.csn.ark.common.dal;
 
 /**
- * Interface för edh-koppling
+ * Interface fÃ¶r edh-koppling
  * 
  * @author Daniel Nordkvist
  * @since 20041127

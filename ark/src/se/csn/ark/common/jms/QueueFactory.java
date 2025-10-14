@@ -20,7 +20,7 @@ import javax.naming.NamingException;
  *  Namn : QueueFactory <br>
  * 
  *  Beskrivning:
- *      Hämtar en Köanslutning och kö enligt det som angivets i 
+ *      HÃ¤mtar en KÃ¶anslutning och kÃ¶ enligt det som angivets i 
  *  properties filen "ark.properties"
  * 
  * @author csnnlm
@@ -36,7 +36,7 @@ public final class QueueFactory implements Queues {
     private static Log log = Log.getInstance(QueueFactory.class);
 
     /**
-     * Privat konstruktor, endast statisk åtkomst
+     * Privat konstruktor, endast statisk Ã¥tkomst
      */
     private QueueFactory() {
     }
@@ -45,11 +45,11 @@ public final class QueueFactory implements Queues {
 
 
     /**
-     * Ger en kökoppling enligt angiven typ.
+     * Ger en kÃ¶koppling enligt angiven typ.
      *
      * @param queueType Typ enligt Queues.
-     * @return En köförbindelse enligt angiven typ.
-     * @throws QueueException Om förbindelse ej kan skapas.
+     * @return En kÃ¶fÃ¶rbindelse enligt angiven typ.
+     * @throws QueueException Om fÃ¶rbindelse ej kan skapas.
      * @see Queues
      */
     public static synchronized Queue getQueue(int queueType)
@@ -71,10 +71,10 @@ public final class QueueFactory implements Queues {
                 initialContext = new javax.naming.InitialContext();
             }
 
-            // Hämta koppling till JMS från fabriken.
+            // HÃ¤mta koppling till JMS frÃ¥n fabriken.
             queueConnection = getConnection();
 
-            // Hämta kön.
+            // HÃ¤mta kÃ¶n.
             switch (queueType) {
             case QUEUE1:
                 jmsQueue = getQueue(QUEUE1_KEY);
@@ -87,24 +87,24 @@ public final class QueueFactory implements Queues {
                 break;
 
             default:
-                throw new QueueException("Okänd typ för kö, queueType="
+                throw new QueueException("OkÃ¤nd typ fÃ¶r kÃ¶, queueType="
                                          + queueType);
             }
 
-            // Plocka ihop eget köobjekt.
+            // Plocka ihop eget kÃ¶objekt.
             queue = new Queue(queueConnection, jmsQueue);
 
             if (log.isDebugEnabled()) {
                 log.debug("getQueue, queue=" + queue);
             }
         } catch (QueueException je) {
-            // Om det är ett JmsException så kommer det från getConnection(String queueKey)
-            // och är redan loggat så släng bara vidare.
+            // Om det Ã¤r ett JmsException sÃ¥ kommer det frÃ¥n getConnection(String queueKey)
+            // och Ã¤r redan loggat sÃ¥ slÃ¤ng bara vidare.
             throw je;
         } catch (Exception e) {
-            // Här fångar vi bara Exception eftersom om det går snett här så är
-            // det kört, dvs ingen idé att särskilja vad som inte funkar.
-            String errMsg = "Kan ej skapa köförbindelse";
+            // HÃ¤r fÃ¥ngar vi bara Exception eftersom om det gÃ¥r snett hÃ¤r sÃ¥ Ã¤r
+            // det kÃ¶rt, dvs ingen idÃ© att sÃ¤rskilja vad som inte funkar.
+            String errMsg = "Kan ej skapa kÃ¶fÃ¶rbindelse";
 
             log.fatal(errMsg, e);
             throw new QueueException(errMsg, e);
@@ -117,9 +117,9 @@ public final class QueueFactory implements Queues {
 
 
     /**
-    * @param queueKey Namn på önskad kö
-    * @return jmsQueue - sökt kö
-    * @throws QueueException Misslyckas att hämta önskad köanslutning
+    * @param queueKey Namn pÃ¥ Ã¶nskad kÃ¶
+    * @return jmsQueue - sÃ¶kt kÃ¶
+    * @throws QueueException Misslyckas att hÃ¤mta Ã¶nskad kÃ¶anslutning
     */
    private static javax.jms.Queue getQueue(String queueKey)
                                      throws QueueException {
@@ -134,7 +134,7 @@ public final class QueueFactory implements Queues {
                 log.debug("jmsQueue=" + jmsQueue);
             }
         } catch (NamingException ne) {
-            String errMsg = "Kan ej hämta kö.";
+            String errMsg = "Kan ej hÃ¤mta kÃ¶.";
 
             if (queueValue != null) {
                 errMsg += (" Key=" + queueKey + ", property value="
@@ -152,9 +152,9 @@ public final class QueueFactory implements Queues {
 
 
     /**
-     * Kämtar kö angiven i properiesfilen. 
-    * @return QueConnetion - kö anslutning
-    * @throws QueueException Något går fel, och kö anslutning kan ej erhållas
+     * KÃ¤mtar kÃ¶ angiven i properiesfilen. 
+    * @return QueConnetion - kÃ¶ anslutning
+    * @throws QueueException NÃ¥got gÃ¥r fel, och kÃ¶ anslutning kan ej erhÃ¥llas
     */
    private static QueueConnection getConnection() throws QueueException {
         QueueConnection queueConnection = null;
@@ -170,7 +170,7 @@ public final class QueueFactory implements Queues {
                 log.debug("QueueConnectionFactory=" + qFac);
             }
         } catch (NamingException ne) {
-            String errMsg = "Kan ej skapa köfabrik.";
+            String errMsg = "Kan ej skapa kÃ¶fabrik.";
 
             if (factoryValue != null) {
                 errMsg += (" Key=" + QUEUE_FACTORY_KEY + ", property value="
@@ -180,10 +180,10 @@ public final class QueueFactory implements Queues {
             log.fatal(errMsg, ne);
             throw new QueueException(errMsg, ne);
         } catch (JMSException je) {
-            String errMsg = "Kan ej skapa köförbindelse";
+            String errMsg = "Kan ej skapa kÃ¶fÃ¶rbindelse";
 
             if (factoryValue != null) {
-                errMsg += (" för " + factoryValue + ". Key="
+                errMsg += (" fÃ¶r " + factoryValue + ". Key="
                 + QUEUE_FACTORY_KEY + ", property value=" + factoryValue);
             }
 
@@ -198,10 +198,10 @@ public final class QueueFactory implements Queues {
 
 
     /**
-     * Skapar en fristående koppling utan inblandning av WAS för att kunna
-     * köra JUnit testfall.
+     * Skapar en fristÃ¥ende koppling utan inblandning av WAS fÃ¶r att kunna
+     * kÃ¶ra JUnit testfall.
      *
-     * @throws Exception Om kö ansltning inte kan erhållas
+     * @throws Exception Om kÃ¶ ansltning inte kan erhÃ¥llas
      */
     public static void createStandAloneConnection() throws Exception {
         try {
@@ -231,7 +231,7 @@ public final class QueueFactory implements Queues {
 
             standAloneCon = new Queue(queueConnection, q);
         } catch (Exception e) {
-            throw new Exception("Kan ej skapa fristående kö", e);
+            throw new Exception("Kan ej skapa fristÃ¥ende kÃ¶", e);
         }
     }
 }

@@ -1,10 +1,10 @@
 package se.csn.ark.common.manage;
 
 /**
- * Gränssnitt för att hantera en eller flera hanterbara funktioner
- * som en sammanhållen tjänst. Används för callback från funktionerna.
+ * GrÃ¤nssnitt fÃ¶r att hantera en eller flera hanterbara funktioner
+ * som en sammanhÃ¥llen tjÃ¤nst. AnvÃ¤nds fÃ¶r callback frÃ¥n funktionerna.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20050413
  * @version 1 skapad
  *
@@ -12,39 +12,39 @@ package se.csn.ark.common.manage;
 public interface CsnManager {
 
 	/**
-	 * Funktionen/tjänsten initierad.
+	 * Funktionen/tjÃ¤nsten initierad.
 	 * 
-	 * @param managable Den aktuella funktionen/tjänsten.
+	 * @param managable Den aktuella funktionen/tjÃ¤nsten.
 	 */
 	public void initiated(CsnManagable managable);
 
 	/**
-	 * Funktionen/tjänsten startad.
+	 * Funktionen/tjÃ¤nsten startad.
 	 * 
-	 * @param managable Den aktuella funktionen/tjänsten.
+	 * @param managable Den aktuella funktionen/tjÃ¤nsten.
 	 */
 	public void started(CsnManagable managable);
 	
 	/**
-	 * Funktionen/tjänsten stoppad.
+	 * Funktionen/tjÃ¤nsten stoppad.
 	 * 
-	 * @param managable Den aktuella funktionen/tjänsten.
+	 * @param managable Den aktuella funktionen/tjÃ¤nsten.
 	 */
 	public void stopped(CsnManagable managable);
 	
 	/**
-	 * Funktionen/tjänsten stängd.
+	 * Funktionen/tjÃ¤nsten stÃ¤ngd.
 	 * 
-	 * @param managable Den aktuella funktionen/tjänsten.
+	 * @param managable Den aktuella funktionen/tjÃ¤nsten.
 	 */
 	public void closed(CsnManagable managable);
 
 	/**
-	 * Funktionen/tjänsten går inte att hantera.
+	 * Funktionen/tjÃ¤nsten gÃ¥r inte att hantera.
 	 * 
-	 * @param managable Den aktuella funktionen/tjänsten.
+	 * @param managable Den aktuella funktionen/tjÃ¤nsten.
 	 * 
-	 * @param ume Anledningen till att det har spårat ut.
+	 * @param ume Anledningen till att det har spÃ¥rat ut.
 	 */
 	public void unManagable(CsnManagable managable, UnManagableException ume);
 	

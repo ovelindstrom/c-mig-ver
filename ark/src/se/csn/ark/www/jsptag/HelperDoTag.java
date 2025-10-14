@@ -13,7 +13,7 @@ import javax.servlet.jsp.JspException;
  * @author Joakim Olsson
  * @since 20050103
  * @version 0.1 skapad
- * @version 1.0 Förändringar av Jacob Nordin 2005-09-21. Se kommentarer i basklassen HelperTag.
+ * @version 1.0 FÃ¶rÃ¤ndringar av Jacob Nordin 2005-09-21. Se kommentarer i basklassen HelperTag.
  */
 public class HelperDoTag extends HelperTag {
    private String helperCommandName = null;
@@ -24,7 +24,7 @@ public class HelperDoTag extends HelperTag {
 	private final Log log = Log.getInstance(HelperDoTag.class);
 
    /**
-    * Sätter det kommando som ska exekveras
+    * SÃ¤tter det kommando som ska exekveras
     *
     * @param  name kommandonamn
     */
@@ -33,7 +33,7 @@ public class HelperDoTag extends HelperTag {
    }
 
    /**
-    * Sätter argument till kommando
+    * SÃ¤tter argument till kommando
     *
     * @param  commandArgument argument
     */
@@ -45,7 +45,7 @@ public class HelperDoTag extends HelperTag {
     * Anropar kommando.
     *
     * @return id som definierar hur app-servern ska hantera sidan.
-    * @throws JspException om kommando ej går att exekvera
+    * @throws JspException om kommando ej gÃ¥r att exekvera
     */
    public int doStartTag() throws JspException {
       log.debug("==> tag " + this.getClass().getName() + "[command=" + helperCommandName + ", arg=" + helperCommandArgument + "]");
@@ -70,9 +70,9 @@ public class HelperDoTag extends HelperTag {
    }
 
    /**
-     * Kör kommando på helper-objektet
+     * KÃ¶r kommando pÃ¥ helper-objektet
     * @param helper helper som exekverar kommandot
-     * @throws JspException om kommando ej går att exekvera
+     * @throws JspException om kommando ej gÃ¥r att exekvera
     */
    private void doCommand(Object helper) throws JspException {
       String methodName = "do" + helperCommandName.substring(0, 1).toUpperCase() + helperCommandName.substring(1);
@@ -101,7 +101,7 @@ public class HelperDoTag extends HelperTag {
          throw new CsnJspException(msg, CsnJspException.HELPER_EXCEPTION, e);
       }
 
-      // Titta på ev returvärde
+      // Titta pÃ¥ ev returvÃ¤rde
       if ((obj != null) && obj instanceof Integer) {
          int val = ((Integer) obj).intValue();
 

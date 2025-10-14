@@ -2,14 +2,14 @@ package se.csn.ark.common.util.logging.trace;
 
 /**
  *
- * Gränssnitt för det som skall kunna loggas av spårbarhetsloggningen 
- * som används för att kunna logga alla tjänster för att kunna plocka
- * ut statistik/spårbarhet för en person.
+ * GrÃ¤nssnitt fÃ¶r det som skall kunna loggas av spÃ¥rbarhetsloggningen 
+ * som anvÃ¤nds fÃ¶r att kunna logga alla tjÃ¤nster fÃ¶r att kunna plocka
+ * ut statistik/spÃ¥rbarhet fÃ¶r en person.
  *   
  * @author Hasse Zetterberg
  * @since 2005-02-04
- * @version 2 Förbättringar - K-G Sjöström AcandoFrontec
- *          Utökat gränssnitt. 
+ * @version 2 FÃ¶rbÃ¤ttringar - K-G SjÃ¶strÃ¶m AcandoFrontec
+ *          UtÃ¶kat grÃ¤nssnitt. 
  * @version 1 Skapad - Hasse Zetterberg
  */
 public interface Traceable {
@@ -36,9 +36,9 @@ public interface Traceable {
 	public String getTransactionId();
 
 	/**
-	 * Ger händelsen som skall loggas.
+	 * Ger hÃ¤ndelsen som skall loggas.
 	 * 
-	 * @return Händelsen.
+	 * @return HÃ¤ndelsen.
 	 */
 	public String getHandelse();
 

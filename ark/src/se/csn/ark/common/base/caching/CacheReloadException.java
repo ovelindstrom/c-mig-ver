@@ -7,9 +7,9 @@ import se.csn.ark.common.CsnApplicationException;
  * @version 1.0
  * @since 2002-02-28, v1.0
  * 
- * Denna exception kan användas då en egenskriven cache (som då bör implementera 
+ * Denna exception kan anvÃ¤ndas dÃ¥ en egenskriven cache (som dÃ¥ bÃ¶r implementera 
  * IReloadableCache och som vid instansiering kan registrera sig i en SingletonKeeper) 
- * av någon anledning misslyckas.
+ * av nÃ¥gon anledning misslyckas.
  * 
  * @see se.csn.caching.IReloadableCache and se.csn.caching.SingletonKeeper.
  */

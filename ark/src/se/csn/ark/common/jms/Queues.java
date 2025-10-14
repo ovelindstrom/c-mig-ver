@@ -5,8 +5,8 @@
 package se.csn.ark.common.jms;
 
 /**
- * Klass för att skapa konstanter.
- * @author K-G Sjöström - AcandoFrontec
+ * Klass fÃ¶r att skapa konstanter.
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @version 1.01
  *
  */
@@ -22,14 +22,14 @@ public interface Queues {
 	static final String QUEUE2_KEY = "jms.queue2"; 
 
 	/**
-	 * JMS kö nr 1.
+	 * JMS kÃ¶ nr 1.
 	 * 
 	 * Konfigureras med property <b>jms.queue1</b>.
 	 */
 	public static final int QUEUE1 = 0;
 
 	/**
-	 * JMS kö nr 2.
+	 * JMS kÃ¶ nr 2.
 	 * 
 	 * Konfigureras med property <b>jms.queue2</b>.
 	 */

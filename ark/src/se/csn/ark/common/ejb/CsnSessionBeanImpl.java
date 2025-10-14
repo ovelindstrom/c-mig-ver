@@ -8,9 +8,9 @@ import javax.ejb.SessionContext;
 import se.csn.ark.common.CsnArkBaseObjectImpl;
 
 /**
- * Basklass för sessions bönor.
+ * Basklass fÃ¶r sessions bÃ¶nor.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041201
  * @version 1 skapad
  *
@@ -27,7 +27,7 @@ public class CsnSessionBeanImpl extends CsnArkBaseObjectImpl implements CsnSessi
 	}
 
 	/**
-	 * @return context för denna session-bean
+	 * @return context fÃ¶r denna session-bean
 	 */
 	public SessionContext getSessionContext() {
 		

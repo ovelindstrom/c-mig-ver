@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 
 /**
- * Med denna servlet testas grundläggande konfiguration i WAS som
- * t.ex. att databasen är rätt konfigurerad.
+ * Med denna servlet testas grundlÃ¤ggande konfiguration i WAS som
+ * t.ex. att databasen Ã¤r rÃ¤tt konfigurerad.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041212
  * @version 1 skapad
  *
@@ -39,7 +39,7 @@ public class TestServlet extends HttpServlet {
 
 	/**
 	 * Implementation av HttpServlet.
-	 * Gör anrop mot databasen med testfråga.
+	 * GÃ¶r anrop mot databasen med testfrÃ¥ga.
 	 *
 	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, 
      *          javax.servlet.http.HttpServletResponse)
@@ -57,7 +57,7 @@ public class TestServlet extends HttpServlet {
 
 			out.println("<font color=#1E861D>");
 			out.println("<h1>TestServlet</h1>");
-			out.println("<h2>Testar grundläggande konfiguration i WAS</h2>");
+			out.println("<h2>Testar grundlÃ¤ggande konfiguration i WAS</h2>");
 			//out.println("Tid : " + FormatDate.getCurrentTimeString());
 			out.println("<h3>JDBC</h3>");
 

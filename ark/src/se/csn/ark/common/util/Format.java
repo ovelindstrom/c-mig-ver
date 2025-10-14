@@ -11,10 +11,10 @@ import se.csn.ark.common.DTOException;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * Klass med hj‰lpmetoder fˆr generell formatering.
+ * Klass med hj√§lpmetoder f√∂r generell formatering.
  * Inga datum klasser skall finnas i denna fil, dessa har blivit flyttade till FormatDate.	(Tobias)
- * @author K-G Sjˆstrˆm - AcandoFrontec
- * @deprecated  anv‰nd metoder i FormatDate, FormatNumber, FormatException.
+ * @author K-G Sj√∂str√∂m - AcandoFrontec
+ * @deprecated  anv√§nd metoder i FormatDate, FormatNumber, FormatException.
  * @since 20041020
  * @version 1 skapad
  * @version 2 skapad Tobias Larsson 2005-09-19
@@ -29,7 +29,7 @@ public final class Format {
 	}
 
 	/**
-	 * Privat konstruktor, endast statisk Âtkomst
+	 * Privat konstruktor, endast statisk √•tkomst
 	 */
 	private Format() {
     }
@@ -37,10 +37,10 @@ public final class Format {
 
 
 	/**
-	 * Generell metod fˆr formatering av datum.
+	 * Generell metod f√∂r formatering av datum.
 	 *
 	 * @param date Datumet som skall formateras.
-	 * @return Str‰ng med korrekt datumformat eller "null" om datum var null.
+	 * @return Str√§ng med korrekt datumformat eller "null" om datum var null.
 	 * @throws FormatException Om datumet inte kunde formateras pga felaktigt format.
 	 */
 	public static String toDateFormatStringYYMMDD(Date date) throws FormatException {
@@ -50,10 +50,10 @@ public final class Format {
 	}
 
 	/**
-	 * Generell metod fˆr formatering av datum.
+	 * Generell metod f√∂r formatering av datum.
 	 *
 	 * @param gregCal Kalendern som skall formateras.
-	 * @return Str‰ng med korrekt datumformat.
+	 * @return Str√§ng med korrekt datumformat.
 	 * @throws FormatException Om kalendern inte kunde formateras pga felaktigt format.
 	 */
 	public static String toDateFormatString(GregorianCalendar gregCal) throws FormatException {
@@ -62,10 +62,10 @@ public final class Format {
 	}
 
 	/**
-	 * Generell metod fˆr formatering av datum.
+	 * Generell metod f√∂r formatering av datum.
 	 *
 	 * @param date Datumet som skall formateras.
-	 * @return Str‰ng med korrekt datumformat eller "null" om datum var null.
+	 * @return Str√§ng med korrekt datumformat eller "null" om datum var null.
 	 * @throws FormatException Om datumet inte kunde formateras pga felaktigt format.
 	 */
 	public static String toDateFormatString(Date date) throws FormatException {
@@ -74,10 +74,10 @@ public final class Format {
 	}
 
 	/**
-	 * Forrmaterar tid till ett en str‰ng med avskiljare
+	 * Forrmaterar tid till ett en str√§ng med avskiljare
 	 *
 	 * @param date Datumet som skall formateras.
-	 * @return Str‰ng med korrekt datumformat eller "null" om datum var null.
+	 * @return Str√§ng med korrekt datumformat eller "null" om datum var null.
 	 * @throws FormatException Om datumet inte kunde formateras pga felaktigt format.
 	 */
 	public static String toTimeSeparatedFormatString(Date date) throws FormatException {
@@ -85,10 +85,10 @@ public final class Format {
 	}
 
 	/**
-	 * Generell metod fˆr formatering av personnummer.
+	 * Generell metod f√∂r formatering av personnummer.
 	 *
 	 * @param d personnummer
-	 * @return Str‰ng med korrekt personnummerformat.
+	 * @return Str√§ng med korrekt personnummerformat.
 	 * @throws FormatException Om formateringen misslyckades.
 	 */
 	public static String toPnrString(Double d) throws FormatException {
@@ -96,22 +96,22 @@ public final class Format {
 	}
 
 	/**
-	 * Tolkar datumstr‰ng till ett kalenderobjekt.
+	 * Tolkar datumstr√§ng till ett kalenderobjekt.
 	 *
-	 * @param gregStr Datumstr‰ng
-	 * @return En kalender som motsvarar datumstr‰ngen.
-	 * @throws ParseException Datumstr‰ngen kunde ej tolkas.
+	 * @param gregStr Datumstr√§ng
+	 * @return En kalender som motsvarar datumstr√§ngen.
+	 * @throws ParseException Datumstr√§ngen kunde ej tolkas.
 	 */
 	public static GregorianCalendar parseGregorianString(String gregStr) throws ParseException {
 		return FormatDate.parseGregorianString(gregStr);
 	}
 
 	/**
-	 * Tolkar datumstr‰ng till ett datumobjekt.
+	 * Tolkar datumstr√§ng till ett datumobjekt.
 	 *
-	 * @param dateStr Datumstr‰ng
-	 * @return Ett datum som motsvarar datumstr‰ngen.
-	 * @throws ParseException Datumstr‰ngen kunde ej tolkas.
+	 * @param dateStr Datumstr√§ng
+	 * @return Ett datum som motsvarar datumstr√§ngen.
+	 * @throws ParseException Datumstr√§ngen kunde ej tolkas.
 	 */
 	public static Date parseDateString(String dateStr) throws ParseException {
 
@@ -119,20 +119,20 @@ public final class Format {
 	}
 
 	/**
-	 * Tolkar datumstr‰ng till ett datumobjekt.
+	 * Tolkar datumstr√§ng till ett datumobjekt.
 	 *
-	 * @param dateStr Datumstr‰ng
-	 * @return Ett datum som motsvarar datumstr‰ngen.
-	 * @throws ParseException Datumstr‰ngen kunde ej tolkas.
+	 * @param dateStr Datumstr√§ng
+	 * @return Ett datum som motsvarar datumstr√§ngen.
+	 * @throws ParseException Datumstr√§ngen kunde ej tolkas.
 	 */
 	public static Date parseDateString2(String dateStr) throws ParseException {
 		return FormatDate.parseDateString2(dateStr);
 	}
 
 	/**
-	 * Ger str‰ng med datum & tid fˆr detta ˆgonblick.
+	 * Ger str√§ng med datum & tid f√∂r detta √∂gonblick.
 	 *
-	 * @return Str‰ng med format yyMMdd-HHmmss
+	 * @return Str√§ng med format yyMMdd-HHmmss
 	 */
 	public static String getCurrentTimeString() {
 		return FormatDate.getCurrentTimeStamp();
@@ -140,18 +140,18 @@ public final class Format {
 	}
 
 	/**
-	 * Ger str‰ng med datum & tid fˆr detta ˆgonblick.
+	 * Ger str√§ng med datum & tid f√∂r detta √∂gonblick.
 	 *
-	 * @return Str‰ng med format yyyy-MM-dd HH:mm:ss:SSS
+	 * @return Str√§ng med format yyyy-MM-dd HH:mm:ss:SSS
 	 */
 	public static String getCurrentTimeSeparatedString() {
 		return FormatDate.getCurrentTimeSeparatedString();
 	}
 
 	/**
-	 * Ger str‰ng med datum & tid fˆr detta ˆgonblick.
+	 * Ger str√§ng med datum & tid f√∂r detta √∂gonblick.
 	 *
-	 * @return Str‰ng med format yyyyMMddHHmmssSSS
+	 * @return Str√§ng med format yyyyMMddHHmmssSSS
 	 */
 	public static String getCurrentTimeStamp() {
 		return FormatDate.getCurrentTimeStamp();
@@ -160,7 +160,7 @@ public final class Format {
 
 	/**
 	 * @param iToParse int att parsa
-	 * @return str‰ng-representation av int
+	 * @return str√§ng-representation av int
 	 * @throws NullPointerException gick ej att formatera
 	 */
 	public static String parseFromIntToString(int iToParse) throws NullPointerException {
@@ -168,7 +168,7 @@ public final class Format {
 	}
 
 	/**
-	 * konvertera frÂn exception till dto
+	 * konvertera fr√•n exception till dto
 	 * @param csnException exception att konvertera
 	 * @return dto-representation av exception
 	 */
@@ -192,7 +192,7 @@ public final class Format {
 	}
 
 	/**
-	 * konvertera frÂn dto till exception
+	 * konvertera fr√•n dto till exception
 	 * @param dtoException dto att konvertera
 	 * @return exception-representation av dto
 	 */
@@ -212,13 +212,13 @@ public final class Format {
 	}
 
 	/**
-	 * Gˆr replace pÂ en str‰ng.
-	 * @deprecated  anv‰nd metod i FormatDate
-	 * @param source original-str‰ng
-	 * @param replace substr‰ng skall ers‰ttas
-	 * @param with ny substr‰ng
-	 * @return den nya str‰ngen
-	 * @throws FormatException gick ej att utfˆra
+	 * G√∂r replace p√• en str√§ng.
+	 * @deprecated  anv√§nd metod i FormatDate
+	 * @param source original-str√§ng
+	 * @param replace substr√§ng skall ers√§ttas
+	 * @param with ny substr√§ng
+	 * @return den nya str√§ngen
+	 * @throws FormatException gick ej att utf√∂ra
 	 */
 	public static String replace(String source, String replace, String with) throws FormatException {
 
@@ -227,7 +227,7 @@ public final class Format {
 	}
 
 	/**
-	 * Tar ut vilken vecka det ‰r pÂ Âret
+	 * Tar ut vilken vecka det √§r p√• √•ret
 	 * @param date datum
 	 * @param cal kalender
 	 * @return int veckonummer som datumet infaller i
@@ -237,8 +237,8 @@ public final class Format {
 	}
 
 	/**
-	 * Tar ut vilken vecka det ‰r pÂ Âret
-	 * Fˆrenklad.
+	 * Tar ut vilken vecka det √§r p√• √•ret
+	 * F√∂renklad.
 	 * @param date datum
 	 * @return int veckonummer som datumet infaller i
 	 */
@@ -248,14 +248,14 @@ public final class Format {
 	}
 
 	/**
-	 * Funktion som kollar hur mÂnga halvÂr det ‰r mellan 2 datum.
-	 * @param iStartYear datum 1, Âr
-	 * @param iStartMonth datum 1, mÂnad
+	 * Funktion som kollar hur m√•nga halv√•r det √§r mellan 2 datum.
+	 * @param iStartYear datum 1, √•r
+	 * @param iStartMonth datum 1, m√•nad
 	 * @param iStartDay datum 1, dag
-	 * @param iStopYear datum 2, Âr
-	 * @param iStopMonth datum 2, mÂnad
+	 * @param iStopYear datum 2, √•r
+	 * @param iStopMonth datum 2, m√•nad
 	 * @param iStopDay datum 2, dag
-	 * @return int antal halvÂr mellan datum 1 och datum 2
+	 * @return int antal halv√•r mellan datum 1 och datum 2
 	 */
 	public static int calculateIfFourHalfYearIsBetweenDates(int iStartYear, 
                                                             int iStartMonth, 
@@ -269,9 +269,9 @@ public final class Format {
 	}
 
 	/**
-	 * Formaterar datum str‰ng till yyyy-mm-dd
+	 * Formaterar datum str√§ng till yyyy-mm-dd
 	 * @param dtDate datum
-	 * @return str‰n-representation av datum
+	 * @return str√§n-representation av datum
 	 */
 	public static String formatDateToString(Date dtDate) {
 		return FormatDate.formatDateToString(dtDate);
@@ -280,7 +280,7 @@ public final class Format {
 	/**
 	 * Formaterar till formatet yyyymmdd
 	 * @param dtDate datum
-	 * @return str‰ng-representation av datum
+	 * @return str√§ng-representation av datum
 	 */
 	public static String formatDateToString2(Date dtDate) {
 
@@ -288,12 +288,12 @@ public final class Format {
 	}
 
 	/**
-	 * R‰knar ut veckor mellan datum
-	 * @param iStartYear datum 1, Âr
-	 * @param iStartMonth datum 1, mÂnad
+	 * R√§knar ut veckor mellan datum
+	 * @param iStartYear datum 1, √•r
+	 * @param iStartMonth datum 1, m√•nad
 	 * @param iStartDay datum 1, dag
-	 * @param iStopYear datum 2, Âr
-	 * @param iStopMonth datum 2, mÂnad
+	 * @param iStopYear datum 2, √•r
+	 * @param iStopMonth datum 2, m√•nad
 	 * @param iStopDay datum 2, dag
 	 * @return int antal veckor mellan datum 1 och datum 2
 	 */
@@ -309,12 +309,12 @@ public final class Format {
 	}
 
 	/**
-	 * R‰knar ut dagar mellan datum
-	 * @param iStartYear datum 1, Âr
-	 * @param iStartMonth datum 1, mÂnad
+	 * R√§knar ut dagar mellan datum
+	 * @param iStartYear datum 1, √•r
+	 * @param iStartMonth datum 1, m√•nad
 	 * @param iStartDay datum 1, dag
-	 * @param iStopYear datum 2, Âr
-	 * @param iStopMonth datum 2, mÂnad
+	 * @param iStopYear datum 2, √•r
+	 * @param iStopMonth datum 2, m√•nad
 	 * @param iStopDay datum 2, dag
 	 * @return int antal dagar mellan datum 1 och datum 2
 	 */
@@ -330,19 +330,19 @@ public final class Format {
 	}
 
 	/**
-	 * H‰mtar ut studieperiod.
-	 * Om det ‰r vecka 1-26 returneras 0 annars 1
+	 * H√§mtar ut studieperiod.
+	 * Om det √§r vecka 1-26 returneras 0 annars 1
 	 * @param iWeek vecka
-	 * @return int 0 fˆr vecka 1-26, annar 1
+	 * @return int 0 f√∂r vecka 1-26, annar 1
 	 */
 	public static int getStudyPeriod(int iWeek) {
 		return FormatDate.getStudyPeriod(iWeek);
 	}
 
 	/**
-	 * @param dtStart frÂn datum
+	 * @param dtStart fr√•n datum
 	 * @param dtEnd till datum
-	 * @return true om det ‰r mer ‰n 3 veckor mellan frÂn och till-datum
+	 * @return true om det √§r mer √§n 3 veckor mellan fr√•n och till-datum
 	 */
 	public static boolean isMoreThanThreeWeeks(GregorianCalendar dtStart, GregorianCalendar dtEnd) {
 
@@ -351,9 +351,9 @@ public final class Format {
 	}
 
 	/**
-	 * @param dtStart frÂn datum
+	 * @param dtStart fr√•n datum
 	 * @param dtEnd till datum
-	 * @return true om det ‰r mer ‰n 53 veckor mellan frÂn och till-datum
+	 * @return true om det √§r mer √§n 53 veckor mellan fr√•n och till-datum
 	 */
 	public static boolean isMoreThanFiftyThreeWeeks(GregorianCalendar dtStart, GregorianCalendar dtEnd) {
 		return FormatDate.isMoreThanFiftyThreeWeeks(dtStart, dtEnd);

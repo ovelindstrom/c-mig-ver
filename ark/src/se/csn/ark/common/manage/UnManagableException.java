@@ -3,13 +3,13 @@ package se.csn.ark.common.manage;
 import se.csn.ark.common.CsnApplicationException;
 
 /**
- * Undantag som signalerar att nÂgot ‰r fel med det som hanteras.<br>
+ * Undantag som signalerar att n√•got √§r fel med det som hanteras.<br>
  * 
- * <b>OBS!!! Skall endast kastas om det inte gÂr att hantera tj‰nsten/funktionen l‰ngre.</b><br>
+ * <b>OBS!!! Skall endast kastas om det inte g√•r att hantera tj√§nsten/funktionen l√§ngre.</b><br>
  * 
- * Ett enstaka fel som inte hindrar exekveringen att forts‰tta skall inte kasta detta.
+ * Ett enstaka fel som inte hindrar exekveringen att forts√§tta skall inte kasta detta.
  * 
- * @author K-G Sjˆstrˆm - AcandoFrontec
+ * @author K-G Sj√∂str√∂m - AcandoFrontec
  * @since 20041130
  * @version 1 skapad
  *
@@ -25,7 +25,7 @@ public class UnManagableException extends CsnApplicationException {
 
     /**
      * @param message felmeddelande
-     * @param errorId id pÂ felet
+     * @param errorId id p√• felet
      */
 	public UnManagableException(String message, Integer errorId) {
 		super(message, errorId);
@@ -48,7 +48,7 @@ public class UnManagableException extends CsnApplicationException {
 
     /**
      * @param message felmeddelande
-     * @param errorId id pÂ felet
+     * @param errorId id p√• felet
      * @param cause exception som orsakade felet
      */
 	public UnManagableException(

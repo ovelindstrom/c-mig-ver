@@ -16,9 +16,9 @@ import se.csn.ark.common.util.logging.Log;
 
 
 /**
- * Levererar databasförbindelser.
+ * Levererar databasfÃ¶rbindelser.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041227
  * @version 1 skapad
  *
@@ -38,7 +38,7 @@ public final class DbConnectionFactory implements DataSources {
 	private static Log log = Log.getInstance(DbConnectionFactory.class);
 
 	/**
-	 * Privat konstruktor, endast statisk åtkomst
+	 * Privat konstruktor, endast statisk Ã¥tkomst
 	 */
 	private DbConnectionFactory() {
 	}
@@ -47,26 +47,26 @@ public final class DbConnectionFactory implements DataSources {
 
 
 	/**
-	 * Ger en databaskoppling för åtkomst från Webb enligt angiven typ.
+	 * Ger en databaskoppling fÃ¶r Ã¥tkomst frÃ¥n Webb enligt angiven typ.
 	 *
 	 * @param dsType Typ enligt DataSources.
-	 * @return En databasförbindelse enligt angiven typ.
-	 * @throws DatabaseException Om förbindelse ej kan skapas.
+	 * @return En databasfÃ¶rbindelse enligt angiven typ.
+	 * @throws DatabaseException Om fÃ¶rbindelse ej kan skapas.
 	 * @see DataSources
 	 */
 	public static synchronized Connection getConnection(int dsType)
 	                                             throws DatabaseException {
 		Connection con = null;
 
-		// Körs det en testklass dvs har det skapats en standalone connection
-		// så ska den användas och då behöver inte fråga WAS om en datakälla.
+		// KÃ¶rs det en testklass dvs har det skapats en standalone connection
+		// sÃ¥ ska den anvÃ¤ndas och dÃ¥ behÃ¶ver inte frÃ¥ga WAS om en datakÃ¤lla.
 		if (standAloneCon != null) {
 			try {
 				if (standAloneCon.isClosed()) {
 					createStandAloneConnection();
 				}
 			} catch (SQLException se) {
-				throw new DatabaseException("Kan ej använda standAloneCon", se);
+				throw new DatabaseException("Kan ej anvÃ¤nda standAloneCon", se);
 			}
 
 			return standAloneCon;
@@ -104,19 +104,19 @@ public final class DbConnectionFactory implements DataSources {
 				break;
 
 			default:
-				throw new DatabaseException("Okänd typ för datakälla, dsType="
+				throw new DatabaseException("OkÃ¤nd typ fÃ¶r datakÃ¤lla, dsType="
 				                            + dsType);
 			}
 
-        // Om det är ett DatabaseException så kommer det från getConnection(String dsKey)
-        // och är redan loggat så släng bara vidare.
+        // Om det Ã¤r ett DatabaseException sÃ¥ kommer det frÃ¥n getConnection(String dsKey)
+        // och Ã¤r redan loggat sÃ¥ slÃ¤ng bara vidare.
 		} catch (DatabaseException de) {
 			throw de;
 
-        // Här fångar vi bara Exception eftersom om det går snett här så är
-        // det kört, dvs ingen idé att särskilja vad som inte funkar.
+        // HÃ¤r fÃ¥ngar vi bara Exception eftersom om det gÃ¥r snett hÃ¤r sÃ¥ Ã¤r
+        // det kÃ¶rt, dvs ingen idÃ© att sÃ¤rskilja vad som inte funkar.
 		} catch (Exception e) {
-			String errMsg = "Kan ej skapa databasförbindelse";
+			String errMsg = "Kan ej skapa databasfÃ¶rbindelse";
 
 			log.fatal(errMsg, e);
 			throw new DatabaseException(errMsg, e);
@@ -129,7 +129,7 @@ public final class DbConnectionFactory implements DataSources {
 
 
 	/**
-	 * @param dsKey nyckel för att välja datakälla
+	 * @param dsKey nyckel fÃ¶r att vÃ¤lja datakÃ¤lla
 	 * @return koppling till databas
 	 * @throws DatabaseException gick ej att skapa koppling
 	 */
@@ -149,7 +149,7 @@ public final class DbConnectionFactory implements DataSources {
 			System.err.println(con.getMetaData().getUserName());
 			ResultSet resultSet = con.getMetaData().getProcedures(null, null, "%");
 			if(con.getMetaData().getUserName().equalsIgnoreCase("vmtesrv01\\alfa")) {
-			    //Kör proceduren
+			    //KÃ¶r proceduren
 			    //OA040SP
 			    //System.err
 			    
@@ -181,13 +181,13 @@ public final class DbConnectionFactory implements DataSources {
 			
 			
 
-        // Här fångar vi bara Exception eftersom om det går snett här så är
-        // det kört, dvs ingen idé att särskilja vad som inte funkar.
+        // HÃ¤r fÃ¥ngar vi bara Exception eftersom om det gÃ¥r snett hÃ¤r sÃ¥ Ã¤r
+        // det kÃ¶rt, dvs ingen idÃ© att sÃ¤rskilja vad som inte funkar.
 		} catch (Exception e) {
-			String errMsg = "Kan ej skapa databasförbindelse";
+			String errMsg = "Kan ej skapa databasfÃ¶rbindelse";
 
 			if (dsAlias != null) {
-				errMsg += (" för datakälla " + dsAlias + ". Key=" + dsKey
+				errMsg += (" fÃ¶r datakÃ¤lla " + dsAlias + ". Key=" + dsKey
 				+ ", property value=" + dsValue);
 			}
 
@@ -202,19 +202,19 @@ public final class DbConnectionFactory implements DataSources {
 
 
 	/**
-	 * Ger en databaskoppling för åtkomst från EJB enligt angiven typ.
+	 * Ger en databaskoppling fÃ¶r Ã¥tkomst frÃ¥n EJB enligt angiven typ.
 	 *
 	 * @param dsType Typ enligt DataSources.
-	 * @return En databasförbindelse enligt angiven typ.
-	 * @throws DatabaseException Om förbindelse ej kan skapas.
+	 * @return En databasfÃ¶rbindelse enligt angiven typ.
+	 * @throws DatabaseException Om fÃ¶rbindelse ej kan skapas.
 	 * @see DataSources
 	 */
 	public static synchronized Connection getConnectionForEjb(int dsType)
 		throws DatabaseException {
 		Connection con = null;
 
-		// Körs det en testklass dvs har det skapats en standalone connection
-		// så ska den användas och då behöver inte fråga WAS om en datakälla.
+		// KÃ¶rs det en testklass dvs har det skapats en standalone connection
+		// sÃ¥ ska den anvÃ¤ndas och dÃ¥ behÃ¶ver inte frÃ¥ga WAS om en datakÃ¤lla.
 		if (standAloneCon != null) {
 			return standAloneCon;
 		}
@@ -251,19 +251,19 @@ public final class DbConnectionFactory implements DataSources {
 				break;
 
 			default:
-				throw new DatabaseException("Okänd typ för datakälla, dsType="
+				throw new DatabaseException("OkÃ¤nd typ fÃ¶r datakÃ¤lla, dsType="
 				                            + dsType);
 			}
 
-        // Om det är ett DatabaseException så kommer det från getConnection(String dsKey)
-        // och är redan loggat så släng bara vidare.
+        // Om det Ã¤r ett DatabaseException sÃ¥ kommer det frÃ¥n getConnection(String dsKey)
+        // och Ã¤r redan loggat sÃ¥ slÃ¤ng bara vidare.
 		} catch (DatabaseException de) {
 			throw de;
 
-        // Här fångar vi bara Exception eftersom om det går snett här så är
-        // det kört, dvs ingen idé att särskilja vad som inte funkar.
+        // HÃ¤r fÃ¥ngar vi bara Exception eftersom om det gÃ¥r snett hÃ¤r sÃ¥ Ã¤r
+        // det kÃ¶rt, dvs ingen idÃ© att sÃ¤rskilja vad som inte funkar.
 		} catch (Exception e) {
-			String errMsg = "Kan ej skapa databasförbindelse";
+			String errMsg = "Kan ej skapa databasfÃ¶rbindelse";
 
 			log.fatal(errMsg, e);
 			throw new DatabaseException(errMsg, e);
@@ -276,8 +276,8 @@ public final class DbConnectionFactory implements DataSources {
 
 
 	/**
-	 * @param dsKey nyckel som identifierar datakällan
-	 * @return koppling till datakällan
+	 * @param dsKey nyckel som identifierar datakÃ¤llan
+	 * @return koppling till datakÃ¤llan
 	 * @throws DatabaseException om koppling ej gick att skapa
 	 */
 	private static Connection getConnectionForEjb(String dsKey)
@@ -291,13 +291,13 @@ public final class DbConnectionFactory implements DataSources {
 			dataSource = (DataSource)initialContext.lookup(dsValue);
 			con = dataSource.getConnection();
 
-        // Här fångar vi bara Exception eftersom om det går snett här så är
-        // det kört, dvs ingen idé att särskilja vad som inte funkar.
+        // HÃ¤r fÃ¥ngar vi bara Exception eftersom om det gÃ¥r snett hÃ¤r sÃ¥ Ã¤r
+        // det kÃ¶rt, dvs ingen idÃ© att sÃ¤rskilja vad som inte funkar.
 		} catch (Exception e) {
-			String errMsg = "Kan ej skapa databasförbindelse";
+			String errMsg = "Kan ej skapa databasfÃ¶rbindelse";
 
 			if (dsValue != null) {
-				errMsg += (" för datakälla. Key=" + dsKey + ", property value="
+				errMsg += (" fÃ¶r datakÃ¤lla. Key=" + dsKey + ", property value="
 				+ dsValue);
 			}
 
@@ -312,8 +312,8 @@ public final class DbConnectionFactory implements DataSources {
 
 
 	/**
-	 * Skapar en fristående koppling utan inblandning av WAS för att kunna
-	 * köra JUnit testfall.
+	 * Skapar en fristÃ¥ende koppling utan inblandning av WAS fÃ¶r att kunna
+	 * kÃ¶ra JUnit testfall.
 	 *
 	 * @throws DatabaseException koppling gick ej att skapa
 	 */
@@ -349,11 +349,11 @@ public final class DbConnectionFactory implements DataSources {
 			
 		} catch (SQLException se) {
 			throw new DatabaseException(
-			                            "Kan ej skapa fristående databaskoppling",
+			                            "Kan ej skapa fristÃ¥ende databaskoppling",
 			                            se);
 		} catch (ClassNotFoundException cnfe) {
 			throw new DatabaseException(
-			                            "Kan ej skapa fristående databaskoppling",
+			                            "Kan ej skapa fristÃ¥ende databaskoppling",
 			                            cnfe);
 		}
 	}

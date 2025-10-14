@@ -23,7 +23,7 @@ import javax.mail.internet.MimeMessage;
 /**
  * Namn : MailMessage <br>
  *
- * Beskrivning: Wrapper för MimeMessage för att förenkla skickande
+ * Beskrivning: Wrapper fÃ¶r MimeMessage fÃ¶r att fÃ¶renkla skickande
  * av epostmeddelanden.
  * @author CSN7504
  * @version 1.01
@@ -105,9 +105,9 @@ public class MailMessage extends MimeMessage implements CsnMessage {
     }
 
     /**
-    * @param rubrik Rubrik på epostmeddelande
-    * @param meddelande Brödtexten i meddelandet
-    * @throws MailException Mailinnehåll gick inte att sätta av nogon orsak
+    * @param rubrik Rubrik pÃ¥ epostmeddelande
+    * @param meddelande BrÃ¶dtexten i meddelandet
+    * @throws MailException MailinnehÃ¥ll gick inte att sÃ¤tta av nogon orsak
     */
    public void setMailContent(String rubrik, String meddelande)
                         throws MailException {
@@ -123,7 +123,7 @@ public class MailMessage extends MimeMessage implements CsnMessage {
             setText(meddelande, "ISO-8859-4");
         } catch (Exception e) {
             throw new MailException(
-                                    "Mailinnehåll gick inte att sätta. Följande fel fångades : " 
+                                    "MailinnehÃ¥ll gick inte att sÃ¤tta. FÃ¶ljande fel fÃ¥ngades : " 
                                     + e.getMessage(),
                                     errorCode,
                                     e);
@@ -134,9 +134,9 @@ public class MailMessage extends MimeMessage implements CsnMessage {
 
 
     /**
-     * Sätter epostadress
+     * SÃ¤tter epostadress
     * @param mailadress Epostadress som meddelandet skall skickas till. 
-    * @throws MailException misslyckades med att sätta epost adress
+    * @throws MailException misslyckades med att sÃ¤tta epost adress
     */
    public void setMailAdress(String mailadress) throws MailException {
         try {
@@ -146,7 +146,7 @@ public class MailMessage extends MimeMessage implements CsnMessage {
         } catch (Exception e) {
             throw new MailException(
                         "Mailadress (" + mailadress 
-                        + ") gick inte att sätta. Följande fel fångades : "
+                        + ") gick inte att sÃ¤tta. FÃ¶ljande fel fÃ¥ngades : "
                         + e.getMessage(),
                         MailException.FELAKTIGT_ADRESSFORMAT,
                         e);
@@ -154,9 +154,9 @@ public class MailMessage extends MimeMessage implements CsnMessage {
     }
 
     /**
-     * Sätter Avsändarens epostadress (from)
-     * @param mailadress Epostadress som meddelandet skall ha som avsändare. 
-     * @throws MailException misslyckades med att sätta epost fromadress
+     * SÃ¤tter AvsÃ¤ndarens epostadress (from)
+     * @param mailadress Epostadress som meddelandet skall ha som avsÃ¤ndare. 
+     * @throws MailException misslyckades med att sÃ¤tta epost fromadress
      */
     public void setMailFromAdress(String mailadress) throws MailException {
         try {
@@ -165,7 +165,7 @@ public class MailMessage extends MimeMessage implements CsnMessage {
             
         } catch (Exception e) {
             throw new MailException(
-                        "MailFromAdress gick inte att sätta. Följande fel fångades : "
+                        "MailFromAdress gick inte att sÃ¤tta. FÃ¶ljande fel fÃ¥ngades : "
                         + e.getMessage(),
                         MailException.FELAKTIGT_ADRESSFORMAT,
                         e);
@@ -174,7 +174,7 @@ public class MailMessage extends MimeMessage implements CsnMessage {
 
 
     /**
-     * Sträng representation av objektet.
+     * StrÃ¤ng representation av objektet.
     * @see java.lang.Object#toString()
     */
    public String toString() {

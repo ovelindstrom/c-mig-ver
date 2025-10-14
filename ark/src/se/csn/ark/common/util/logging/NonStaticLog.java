@@ -1,12 +1,12 @@
 package se.csn.ark.common.util.logging;
 
 /**
- * Det fungerar inte att använda Log klassen i alla lägen.
- * T.ex. i SQLJ-klasser som innehåller en del statiska saker så
- * går det inte. Använd då denna Wrapper klass som kapslar in 
+ * Det fungerar inte att anvÃ¤nda Log klassen i alla lÃ¤gen.
+ * T.ex. i SQLJ-klasser som innehÃ¥ller en del statiska saker sÃ¥
+ * gÃ¥r det inte. AnvÃ¤nd dÃ¥ denna Wrapper klass som kapslar in 
  * Log klassen.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20050214
  * @version 1 skapad
  *
@@ -87,21 +87,21 @@ public class NonStaticLog {
 	}
 
 	/**
-	 * @return true om debug-loggning är påslagen
+	 * @return true om debug-loggning Ã¤r pÃ¥slagen
 	 */
 	public boolean isDebugEnabled() {
 		return log.isDebugEnabled();
 	}
 
 	/**
-	 * @return true om info-loggning är påslagen
+	 * @return true om info-loggning Ã¤r pÃ¥slagen
 	 */
 	public boolean isInfoEnabled() {
 		return log.isInfoEnabled();
 	}
 
 	/**
-	 * @param loggNiva nivå att logga på
+	 * @param loggNiva nivÃ¥ att logga pÃ¥
 	 * @param message meddelande att logga
 	 */
 	public void log(LogLevel loggNiva, Object message) {
@@ -109,7 +109,7 @@ public class NonStaticLog {
 	}
 
 	/**
-	 * @param loggNiva nivå att logga på
+	 * @param loggNiva nivÃ¥ att logga pÃ¥
 	 * @param message meddelande att logga
 	 * @param throwable exception att logga
 	 */

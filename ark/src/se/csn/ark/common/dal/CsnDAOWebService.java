@@ -11,9 +11,9 @@ import se.csn.ark.common.CsnApplicationException;
 import se.csn.ark.common.CsnSystemException;
 
 /**
- * Gränssnitt för web service access.
+ * GrÃ¤nssnitt fÃ¶r web service access.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040907
  * @version 1 skapad
  *
@@ -21,7 +21,7 @@ import se.csn.ark.common.CsnSystemException;
 public interface CsnDAOWebService extends CsnDataAccessObject {
 
     /**
-     * @param url url för webservice endpoint
+     * @param url url fÃ¶r webservice endpoint
      */
     public abstract void setEndPoint(URL url);
 
@@ -29,8 +29,8 @@ public interface CsnDAOWebService extends CsnDataAccessObject {
 
 
     /**
-     * @return url för webservice endpoint
-     * @throws MalformedURLException om url-sträng är felaktig
+     * @return url fÃ¶r webservice endpoint
+     * @throws MalformedURLException om url-strÃ¤ng Ã¤r felaktig
      */
     public abstract URL getEndPoint() throws MalformedURLException;
 
@@ -38,7 +38,7 @@ public interface CsnDAOWebService extends CsnDataAccessObject {
 
 
     /**
-     * @return svar från webservice
+     * @return svar frÃ¥n webservice
      * @throws CsnApplicationException webservice-metoden felar
      * @throws CsnSystemException webservice-anropet felar
      */
@@ -49,7 +49,7 @@ public interface CsnDAOWebService extends CsnDataAccessObject {
 
     /**
      * @param parameters parametrar till webservice-metoden
-     * @return svar från webservice
+     * @return svar frÃ¥n webservice
      * @throws CsnApplicationException webservice-metoden felar
      * @throws CsnSystemException webservice-anropet felar
      */
@@ -60,7 +60,7 @@ public interface CsnDAOWebService extends CsnDataAccessObject {
 
 
     /**
-     * Lägger till mappning för en viss klass
+     * LÃ¤gger till mappning fÃ¶r en viss klass
      * Exempel
      * addMapType("http://common.ark.csn.se/", "DTOException",
      *      se.csn.ark.common.DTOException.class);
@@ -75,15 +75,15 @@ public interface CsnDAOWebService extends CsnDataAccessObject {
 
 
     /**
-     * Lägger till mappning för en viss klass
+     * LÃ¤gger till mappning fÃ¶r en viss klass
      * 
      * @param nameSpaceURI uri
      * @param nameSpaceLocalPart namespace
      * @param theClass klassen som mappas
-     * @param useSerializer true om XSDAnyTypeSerializer ska användas vid
+     * @param useSerializer true om XSDAnyTypeSerializer ska anvÃ¤ndas vid
      * serialisering av klassen
-     * @param useDeserializer true om XSDAnyTypeSerializer ska användas vid
-     * återskapande av klassen
+     * @param useDeserializer true om XSDAnyTypeSerializer ska anvÃ¤ndas vid
+     * Ã¥terskapande av klassen
      */
     public abstract void addMapType(
         String nameSpaceURI,
@@ -96,13 +96,13 @@ public interface CsnDAOWebService extends CsnDataAccessObject {
 
 
     /**
-     * Lägger till mappning för en viss klass
+     * LÃ¤gger till mappning fÃ¶r en viss klass
      * 
      * @param nameSpaceURI uri
      * @param nameSpaceLocalPart namespace
      * @param theClass klassen som mappas
-     * @param ser används för att serialisera klassen
-     * @param deSer används för att återskapa klassen
+     * @param ser anvÃ¤nds fÃ¶r att serialisera klassen
+     * @param deSer anvÃ¤nds fÃ¶r att Ã¥terskapa klassen
      */
 
 

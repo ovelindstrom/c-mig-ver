@@ -12,9 +12,9 @@ import javax.ejb.EJBException;
 
 
 /**
- * Basklass för bönor som skall starta upp och hantera tjänster.
+ * Basklass fÃ¶r bÃ¶nor som skall starta upp och hantera tjÃ¤nster.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041201
  * @version 1 skapad
  *

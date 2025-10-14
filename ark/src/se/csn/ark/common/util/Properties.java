@@ -10,17 +10,17 @@ import se.csn.ark.common.util.logging.Log;
 
 
 /**
- * Läser in inställningar/egenskaper från filer med nyckel=värde format.
+ * LÃ¤ser in instÃ¤llningar/egenskaper frÃ¥n filer med nyckel=vÃ¤rde format.
  * Filerna skall ha extension <i>.properties</i>
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040916
  * @version 1 skapad
  *
  */
 public final class Properties {
 	/**
-	 * Grundinställningar för CSN:s arkitektur ramverk.
+	 * GrundinstÃ¤llningar fÃ¶r CSN:s arkitektur ramverk.
 	 */
 	public static final String ARK = "ark";
 	private static java.util.Properties properties =
@@ -28,7 +28,7 @@ public final class Properties {
     private static Vector<String> propertyFiles = new Vector<String>();
 	private static Log log = Log.getInstance(Properties.class);
 
-	// Vi initierar alltid grundinställningarna.
+	// Vi initierar alltid grundinstÃ¤llningarna.
 	static {
 		init(ARK);
 	}
@@ -36,7 +36,7 @@ public final class Properties {
 
 
     /**
-     * Privat konstruktor, endast statisk åtkomst.
+     * Privat konstruktor, endast statisk Ã¥tkomst.
      */
     private Properties() {
     }
@@ -45,10 +45,10 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från arkitektur grundinställningarna.
+	 * HÃ¤mtar en egenskap frÃ¥n arkitektur grundinstÃ¤llningarna.
 	 *
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En sträng med värdet om det fanns annars null.
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En strÃ¤ng med vÃ¤rdet om det fanns annars null.
 	 */
 	public static String getProperty(String key) {
 	    String var = getProperty(ARK, key);
@@ -58,11 +58,11 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från arkitektur grundinställningarna utan att skriva till errorlog
+	 * HÃ¤mtar en egenskap frÃ¥n arkitektur grundinstÃ¤llningarna utan att skriva till errorlog
 	 * om propertyn inte finns.
 	 *
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En sträng med värdet om det fanns annars null.
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En strÃ¤ng med vÃ¤rdet om det fanns annars null.
 	 */
 	public static String getPropertyNoError(String key) {
 	    String var = getPropertyNoError(ARK, key);
@@ -72,11 +72,11 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från arkitektur grundinställningarna.
+	 * HÃ¤mtar en egenskap frÃ¥n arkitektur grundinstÃ¤llningarna.
 	 *
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @param defaultValue Standardvärde som returneras om nyckel inte finns eller inte kan tolkas.
-	 * @return En int med värdet om det fanns i filen annrs redturneras <b>default</b>.
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @param defaultValue StandardvÃ¤rde som returneras om nyckel inte finns eller inte kan tolkas.
+	 * @return En int med vÃ¤rdet om det fanns i filen annrs redturneras <b>default</b>.
 	 */
 	public static int getIntProperty(String key, int defaultValue) {
 		return getIntProperty(ARK, key, defaultValue);
@@ -86,11 +86,11 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från arkitektur grundinställningarna.
+	 * HÃ¤mtar en egenskap frÃ¥n arkitektur grundinstÃ¤llningarna.
 	 *
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En int med värdet om det fanns i filen annrs redturneras <b>default</b>.
-	 * @throws PropertyException Om värdet ej finns eller om det inte kan tolkas till <b>int</b>
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En int med vÃ¤rdet om det fanns i filen annrs redturneras <b>default</b>.
+	 * @throws PropertyException Om vÃ¤rdet ej finns eller om det inte kan tolkas till <b>int</b>
 	 */
 	public static int getIntProperty(String key) throws PropertyException {
 		return getIntProperty(ARK, key);
@@ -100,11 +100,11 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från arkitektur grundinställningarna.
+	 * HÃ¤mtar en egenskap frÃ¥n arkitektur grundinstÃ¤llningarna.
 	 *
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @param defaultValue Standardvärde som returneras om nyckel inte finns eller inte kan tolkas.
-	 * @return En boolean med värdet om det fanns i filen annrs returneras <b>default</b>.
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @param defaultValue StandardvÃ¤rde som returneras om nyckel inte finns eller inte kan tolkas.
+	 * @return En boolean med vÃ¤rdet om det fanns i filen annrs returneras <b>default</b>.
 	 */
 	public static boolean getBooleanProperty(String key, boolean defaultValue) {
 		return getBooleanProperty(ARK, key, defaultValue);
@@ -114,11 +114,11 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från arkitektur grundinställningarna.
+	 * HÃ¤mtar en egenskap frÃ¥n arkitektur grundinstÃ¤llningarna.
 	 *
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En int med värdet om det fanns i filen annars returneras <b>default</b>.
-	 * @throws PropertyException Om värdet ej finns eller om det inte kan tolkas till <b>int</b>
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En int med vÃ¤rdet om det fanns i filen annars returneras <b>default</b>.
+	 * @throws PropertyException Om vÃ¤rdet ej finns eller om det inte kan tolkas till <b>int</b>
 	 */
 	public static boolean getBooleanProperty(String key)
 	                                  throws PropertyException {
@@ -129,12 +129,12 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från den aktuella egenskapsfilen.
+	 * HÃ¤mtar en egenskap frÃ¥n den aktuella egenskapsfilen.
 	 *
 	 * @param propertyFile Fil med egenskaper man namn enligt <i>propertyFile</i>.properties
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @param defaultValue Standardvärde som returneras om nyckel inte finns eller inte kan tolkas.
-	 * @return En int med värdet om det fanns i filen annars returneras <b>default</b>.
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @param defaultValue StandardvÃ¤rde som returneras om nyckel inte finns eller inte kan tolkas.
+	 * @return En int med vÃ¤rdet om det fanns i filen annars returneras <b>default</b>.
 	 */
 	public static int getIntProperty(
 	                                 String propertyFile,
@@ -145,19 +145,19 @@ public final class Properties {
 		try {
 			intValue = getIntProperty(propertyFile, key);
 		} catch (PropertyException pe) {
-			// Vi har ju ett standardvärde att returnera så vi sväljer bara det här undantaget.
+			// Vi har ju ett standardvÃ¤rde att returnera sÃ¥ vi svÃ¤ljer bara det hÃ¤r undantaget.
 		}
 
 		return intValue;
 	}
 
 	/**
-	 * Hämtar en egenskap från den aktuella egenskapsfilen.
+	 * HÃ¤mtar en egenskap frÃ¥n den aktuella egenskapsfilen.
 	 *
 	 * @param propertyFile Fil med egenskaper man namn enligt <i>propertyFile</i>.properties
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En int med värdet om det fanns i filen.
-	 * @throws PropertyException Om värdet ej finns eller om det inte kan tolkas till <b>int</b>
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En int med vÃ¤rdet om det fanns i filen.
+	 * @throws PropertyException Om vÃ¤rdet ej finns eller om det inte kan tolkas till <b>int</b>
 	 */
 	public static int getIntProperty(String propertyFile, String key)
 	                          throws PropertyException {
@@ -175,23 +175,23 @@ public final class Properties {
 	}
 
 	/**
-	 * Hämtar en egenskap från arkitektur grundinställningarna.
+	 * HÃ¤mtar en egenskap frÃ¥n arkitektur grundinstÃ¤llningarna.
 	 *
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En long med värdet om det fanns i filen annars returneras <b>default</b>.
-	 * @throws PropertyException Om värdet ej finns eller om det inte kan tolkas till <b>long</b>
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En long med vÃ¤rdet om det fanns i filen annars returneras <b>default</b>.
+	 * @throws PropertyException Om vÃ¤rdet ej finns eller om det inte kan tolkas till <b>long</b>
 	 */
 	public static long getLongProperty(String key) throws PropertyException {
 		return getLongProperty(ARK, key);
 	}
 
 	/**
-	 * Hämtar en egenskap från den aktuella egenskapsfilen.
+	 * HÃ¤mtar en egenskap frÃ¥n den aktuella egenskapsfilen.
 	 *
 	 * @param propertyFile Fil med egenskaper man namn enligt <i>propertyFile</i>.properties
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En long med värdet om det fanns i filen.
-	 * @throws PropertyException Om värdet ej finns eller om det inte kan tolkas till <b>long</b>
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En long med vÃ¤rdet om det fanns i filen.
+	 * @throws PropertyException Om vÃ¤rdet ej finns eller om det inte kan tolkas till <b>long</b>
 	 */
 	public static long getLongProperty(String propertyFile, String key)
 							  throws PropertyException {
@@ -208,12 +208,12 @@ public final class Properties {
 	}
 
 	/**
-	 * Hämtar en egenskap från den aktuella egenskapsfilen.
+	 * HÃ¤mtar en egenskap frÃ¥n den aktuella egenskapsfilen.
 	 *
 	 * @param propertyFile Fil med egenskaper man namn enligt <i>propertyFile</i>.properties
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @param defaultValue Standardvärde som returneras om nyckel inte finns eller inte kan tolkas.
-	 * @return En long med värdet om det fanns i filen annars returneras <b>default</b>.
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @param defaultValue StandardvÃ¤rde som returneras om nyckel inte finns eller inte kan tolkas.
+	 * @return En long med vÃ¤rdet om det fanns i filen annars returneras <b>default</b>.
 	 */
 	public static long getLongProperty(
 									 String propertyFile,
@@ -224,18 +224,18 @@ public final class Properties {
 		try {
 			longValue = getIntProperty(propertyFile, key);
 		} catch (PropertyException pe) {
-			// Vi har ju ett standardvärde att returnera så vi sväljer bara det här undantaget.
+			// Vi har ju ett standardvÃ¤rde att returnera sÃ¥ vi svÃ¤ljer bara det hÃ¤r undantaget.
 		}
 		return longValue;
 	}
 
 	/**
-	 * Hämtar en egenskap från den aktuella egenskapsfilen.
+	 * HÃ¤mtar en egenskap frÃ¥n den aktuella egenskapsfilen.
 	 *
 	 * @param propertyFile Fil med egenskaper man namn enligt <i>propertyFile</i>.properties
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @param defaultValue Standardvärde som returneras om nyckel inte finns eller inte kan tolkas.
-	 * @return En boolean med värdet om det fanns i filen annars returneras <b>default</b>.
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @param defaultValue StandardvÃ¤rde som returneras om nyckel inte finns eller inte kan tolkas.
+	 * @return En boolean med vÃ¤rdet om det fanns i filen annars returneras <b>default</b>.
 	 */
 	public static boolean getBooleanProperty(
 	                                         String propertyFile,
@@ -246,7 +246,7 @@ public final class Properties {
 		try {
 			boolValue = getBooleanProperty(propertyFile, key);
 		} catch (PropertyException pe) {
-			// Vi har ju ett standardvärde att returnera så vi sväljer bara det här undantaget.
+			// Vi har ju ett standardvÃ¤rde att returnera sÃ¥ vi svÃ¤ljer bara det hÃ¤r undantaget.
 		}
 
 		return boolValue;
@@ -256,12 +256,12 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från den aktuella egenskapsfilen.
+	 * HÃ¤mtar en egenskap frÃ¥n den aktuella egenskapsfilen.
 	 *
 	 * @param propertyFile Fil med egenskaper man namn enligt <i>propertyFile</i>.properties
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En boolean med värdet om det fanns i filen.
-	 * @throws PropertyException Om värdet ej finns eller om det inte kan tolkas till <b>int</b>
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En boolean med vÃ¤rdet om det fanns i filen.
+	 * @throws PropertyException Om vÃ¤rdet ej finns eller om det inte kan tolkas till <b>int</b>
 	 */
 	public static boolean getBooleanProperty(String propertyFile, String key)
 	                                  throws PropertyException {
@@ -271,14 +271,14 @@ public final class Properties {
 		try {
 			strValue = getProperty(propertyFile, key);
 
-			// Om det inte är null och det innehåller true eller false så är det OK ...
+			// Om det inte Ã¤r null och det innehÃ¥ller true eller false sÃ¥ Ã¤r det OK ...
 			if (
 			    (strValue != null)
 			    && ((strValue.toLowerCase().equals("true"))
 			    || (strValue.toLowerCase().equals("false")))) {
 				booleanValue = (Boolean.valueOf(strValue)).booleanValue();
 
-            // ... annars är det inte OK.
+            // ... annars Ã¤r det inte OK.
 			} else {
 				throw new PropertyException("getBooleanProperty Invalid boolean property="
 				                            + strValue);
@@ -294,16 +294,16 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från den aktuella egenskapsfilen.
+	 * HÃ¤mtar en egenskap frÃ¥n den aktuella egenskapsfilen.
 	 *
 	 * @param propertyFile Fil med egenskaper man namn enligt <i>propertyFile</i>.properties
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En sträng med värdet om det fanns i filen annars null.
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En strÃ¤ng med vÃ¤rdet om det fanns i filen annars null.
 	 */
 	public static String getProperty(String propertyFile, String key) {
-		// Har vi läst in den här property filen?
+		// Har vi lÃ¤st in den hÃ¤r property filen?
 		if (!propertyFiles.contains(propertyFile)) {
-			// Om inte så läser vi in den först innan vi försöker hämta property.
+			// Om inte sÃ¥ lÃ¤ser vi in den fÃ¶rst innan vi fÃ¶rsÃ¶ker hÃ¤mta property.
 			init(propertyFile);
 		}
 		String value = properties.getProperty(key);
@@ -316,17 +316,17 @@ public final class Properties {
 
 
 	/**
-	 * Hämtar en egenskap från den aktuella egenskapsfilen utan att skiva till errorlog
+	 * HÃ¤mtar en egenskap frÃ¥n den aktuella egenskapsfilen utan att skiva till errorlog
 	 * om propertyn inte finns.
 	 *
 	 * @param propertyFile Fil med egenskaper man namn enligt <i>propertyFile</i>.properties
-	 * @param key Nyckel för det värde som efterfrågas.
-	 * @return En sträng med värdet om det fanns i filen annars null.
+	 * @param key Nyckel fÃ¶r det vÃ¤rde som efterfrÃ¥gas.
+	 * @return En strÃ¤ng med vÃ¤rdet om det fanns i filen annars null.
 	 */
 	public static String getPropertyNoError(String propertyFile, String key) {
-		// Har vi läst in den här property filen?
+		// Har vi lÃ¤st in den hÃ¤r property filen?
 		if (!propertyFiles.contains(propertyFile)) {
-			// Om inte så läser vi in den först innan vi försöker hämta property.
+			// Om inte sÃ¥ lÃ¤ser vi in den fÃ¶rst innan vi fÃ¶rsÃ¶ker hÃ¤mta property.
 			init(propertyFile);
 		}
 		String value = properties.getProperty(key);
@@ -336,8 +336,8 @@ public final class Properties {
 
 
 	/**
-     * Hämtar alla properties som har ett givet prefix
-	 * @param prefix ska matcha de properties som hämtas
+     * HÃ¤mtar alla properties som har ett givet prefix
+	 * @param prefix ska matcha de properties som hÃ¤mtas
 	 * @return properties
 	 */
 	public static java.util.Properties getProperties(String prefix) {
@@ -361,9 +361,9 @@ public final class Properties {
 
 
 	/**
-	 * Laddar in konfigurationen från den angivna propertyfilen.
+	 * Laddar in konfigurationen frÃ¥n den angivna propertyfilen.
 	 *
-	 * @param propertyFile Namn på filen med inställningar enligt <i>propertyFile</i>.properties
+	 * @param propertyFile Namn pÃ¥ filen med instÃ¤llningar enligt <i>propertyFile</i>.properties
 	 */
 	public static void init(String propertyFile) {
 		try {
@@ -375,10 +375,10 @@ public final class Properties {
 
 			
 
-			// Läs alla nycklar
+			// LÃ¤s alla nycklar
 			Enumeration keys = bundle.getKeys();
 			
-			// Lagra alla nycklar och värden.
+			// Lagra alla nycklar och vÃ¤rden.
 			while (keys.hasMoreElements()) {
 				String key = (String) keys.nextElement();
 				String value = bundle.getString(key);
@@ -397,7 +397,7 @@ public final class Properties {
 															  + ".properties");
 			log.debug("Laddar ResourceBundle '" + u + "'  [ " + properties + " ]");
 
-			// Lagra propertyfilens namn så vi vet om vi laddat den eller ej.
+			// Lagra propertyfilens namn sÃ¥ vi vet om vi laddat den eller ej.
 			propertyFiles.add(propertyFile);
 		} catch (Exception e) {
 			System.err.println("se.csn.ark.common.util.Properties.init()"
@@ -411,13 +411,13 @@ public final class Properties {
 
 
 	/**
-	 * Laddar om konfigurationen för den angivna propertyfilen.
+	 * Laddar om konfigurationen fÃ¶r den angivna propertyfilen.
 	 *
-	 *	2005-10-05 Reload var tidigare ej möjligt att göra eftersom filen cachades.
-	 *	Har lagt in kod som låser upp och nollar filcachen så det blir möjligt att läsa in
-	 *	nya värden. 
+	 *	2005-10-05 Reload var tidigare ej mÃ¶jligt att gÃ¶ra eftersom filen cachades.
+	 *	Har lagt in kod som lÃ¥ser upp och nollar filcachen sÃ¥ det blir mÃ¶jligt att lÃ¤sa in
+	 *	nya vÃ¤rden. 
 	 *
-	 * @param propertyFile Namn på filen med inställningar enligt <i>propertyFile</i>.properties
+	 * @param propertyFile Namn pÃ¥ filen med instÃ¤llningar enligt <i>propertyFile</i>.properties
 	 */
 	
 	public static void reload(String propertyFile) {
@@ -425,7 +425,7 @@ public final class Properties {
 		log.debug("\n reload propertiefil : " + propertyFile);
 		
 		/*
-		 * Hämtar bundle klassen
+		 * HÃ¤mtar bundle klassen
 		 */  
 		 
 		Class klass = null;
@@ -441,12 +441,12 @@ public final class Properties {
 		} catch (Exception e) {
 			System.err.println("se.csn.ark.common.util.Properties.reload()"
 					+ ", fel vid reload av filen " + propertyFile
-					+ ".properties" + "I första steget där bundle klassen hämtas.");
+					+ ".properties" + "I fÃ¶rsta steget dÃ¤r bundle klassen hÃ¤mtas.");
 			e.printStackTrace();
 		}
 		
 		/*
-		 * Hämtar cache fältet
+		 * HÃ¤mtar cache fÃ¤ltet
 		 */
 		 
 		 Field field = null;
@@ -456,7 +456,7 @@ public final class Properties {
 		 } catch (Exception e) {
 			System.err.println("se.csn.ark.common.util.Properties.reload()"
 				+ ", fel vid reload av filen " + propertyFile
-				+ ".properties" + "I andra steget där cache fältet hämtas.");
+				+ ".properties" + "I andra steget dÃ¤r cache fÃ¤ltet hÃ¤mtas.");
 				e.printStackTrace();
 		 }
 		 
@@ -471,14 +471,14 @@ public final class Properties {
 		} catch (Exception e) {
 			System.err.println("se.csn.ark.common.util.Properties.reload()"
 				+ ", fel vid reload av filen " + propertyFile
-				+ ".properties" + "I tredje steget där cachen rensas.");
+				+ ".properties" + "I tredje steget dÃ¤r cachen rensas.");
 				e.printStackTrace();
 		}
 		
 		field.setAccessible(false);
 		
 		/*
-		 * Initierar filen på nytt och läser in aktuella värden.
+		 * Initierar filen pÃ¥ nytt och lÃ¤ser in aktuella vÃ¤rden.
 		 */
 		init(propertyFile);
 	
@@ -486,17 +486,17 @@ public final class Properties {
 	
 
 	/**
-	 * Skapar en sträng med alla properties.
+	 * Skapar en strÃ¤ng med alla properties.
 	 *
-	 * @return En sträng formaterar enligt nyckel=värde och radbrytning efter varje värde.
+	 * @return En strÃ¤ng formaterar enligt nyckel=vÃ¤rde och radbrytning efter varje vÃ¤rde.
 	 */
 	public static String propertiesToString() {
 		StringBuffer strBuf = new StringBuffer();
 
-		// Läs alla nycklar
+		// LÃ¤s alla nycklar
 		Enumeration keys = properties.keys();
 
-		// Bygger en sträng alla nycklar och värden.
+		// Bygger en strÃ¤ng alla nycklar och vÃ¤rden.
 		while (keys.hasMoreElements()) {
 			String key = (String)keys.nextElement();
 			String value = properties.getProperty(key);
@@ -509,19 +509,19 @@ public final class Properties {
 	
 	
 	/**
-	 * Skapar en sträng med alla properties som är avsedd att användas för html-presentation.
+	 * Skapar en strÃ¤ng med alla properties som Ã¤r avsedd att anvÃ¤ndas fÃ¶r html-presentation.
 	 * @author CSN7504
-	 * @return En sträng formaterad som html med alla nycklar och värden.
+	 * @return En strÃ¤ng formaterad som html med alla nycklar och vÃ¤rden.
 	 * 
 	 */
 	public static String propertiesToHtmlString() {
 			StringBuffer strBuf = new StringBuffer();
-			strBuf.append("<h2>Följande värden finns inlästa från propertiesfilerna :</h2><br><br>");
+			strBuf.append("<h2>FÃ¶ljande vÃ¤rden finns inlÃ¤sta frÃ¥n propertiesfilerna :</h2><br><br>");
 
-			// Läs alla nycklar
+			// LÃ¤s alla nycklar
 			Enumeration keys = properties.keys();
 
-			// Bygger en sträng alla nycklar och värden.
+			// Bygger en strÃ¤ng alla nycklar och vÃ¤rden.
 			while (keys.hasMoreElements()) {
 				String key = (String) keys.nextElement();
 				String value = properties.getProperty(key);

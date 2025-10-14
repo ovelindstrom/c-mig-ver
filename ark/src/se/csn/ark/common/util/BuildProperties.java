@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 
 /**
- * Properties för ett bygge.
+ * Properties fÃ¶r ett bygge.
  *
  * @author Joakim Olsson
  * @since 20050203
@@ -16,7 +16,7 @@ public class BuildProperties extends java.util.Properties {
 	private static final String POSTFIX = ".properties";
 
 	/**
-	 * @param name namn på property-filen
+	 * @param name namn pÃ¥ property-filen
 	 */
 	public BuildProperties(String name) {
 		init(name);
@@ -33,8 +33,8 @@ public class BuildProperties extends java.util.Properties {
 	}
 
 	/**
-	 * Läser in alla properties
-	 * @param name namn på property-filen
+	 * LÃ¤ser in alla properties
+	 * @param name namn pÃ¥ property-filen
 	 */
 	private void init(String name) {
 		try {
@@ -59,7 +59,7 @@ public class BuildProperties extends java.util.Properties {
 
 
 	/**
-	 * Läser in alla properties
+	 * LÃ¤ser in alla properties
 	 * @param stream property-filen
 	 */
 	private void init(InputStream stream) {
@@ -67,7 +67,7 @@ public class BuildProperties extends java.util.Properties {
 			load(stream);
 		} catch (IOException e) {
 			System.err.println("se.csn.ark.common.util.BuildProperties.init()"
-			                   + ", kan ej läsa strömmen");
+			                   + ", kan ej lÃ¤sa strÃ¶mmen");
 			e.printStackTrace();
 		}
 	}
@@ -116,7 +116,7 @@ public class BuildProperties extends java.util.Properties {
 
 
 	/**
-	 * @param nl radbryt som ska användas
+	 * @param nl radbryt som ska anvÃ¤ndas
 	 * @return alla build-properties
 	 */
 	public String getLogString(String nl) {
@@ -124,7 +124,7 @@ public class BuildProperties extends java.util.Properties {
 
 		str.append("  namn vid bygge: " + getBuildName() + nl);
 		str.append("  version: " + getVersion() + nl);
-		str.append("  tidpunkt för bygge: " + getTime() + nl);
+		str.append("  tidpunkt fÃ¶r bygge: " + getTime() + nl);
 
 		return str.toString();
 	}

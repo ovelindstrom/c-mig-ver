@@ -8,17 +8,17 @@ import se.csn.ark.common.util.logging.trace.TraceRecord;
 import se.csn.ark.common.util.logging.activity.ActivityLog;
 import se.csn.ark.common.util.logging.activity.ActivityRecord;
 /**
- * Grundklassernas grundklass för CSN:s arkitekturramverk.
+ * Grundklassernas grundklass fÃ¶r CSN:s arkitekturramverk.
  * <br>
- * Basklasser i arkitekturen kan ärva av denna klass för att
- * därmed enkelt kunna använda grundläggande funktionalitet.
+ * Basklasser i arkitekturen kan Ã¤rva av denna klass fÃ¶r att
+ * dÃ¤rmed enkelt kunna anvÃ¤nda grundlÃ¤ggande funktionalitet.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 2005-01-22
- * @version 1 Skapad K-G Sjöström
- * @version 2 Förändringar K-G Sjöström
- * 			Ändringar i trace gränssnittet.
- * @version 3 2007-04-27 Uppdaterad av csn7571 E-tjänster, activitylogg
+ * @version 1 Skapad K-G SjÃ¶strÃ¶m
+ * @version 2 FÃ¶rÃ¤ndringar K-G SjÃ¶strÃ¶m
+ * 			Ã„ndringar i trace grÃ¤nssnittet.
+ * @version 3 2007-04-27 Uppdaterad av csn7571 E-tjÃ¤nster, activitylogg
  *
  */
 public class CsnArkBaseObjectImpl implements CsnArkBaseObject {
@@ -30,9 +30,9 @@ public class CsnArkBaseObjectImpl implements CsnArkBaseObject {
 	private Object loggingObject;
 
 	/**
-	 * Indikerar om traceloggning är aktiverad.
+	 * Indikerar om traceloggning Ã¤r aktiverad.
 	 *
-	 * @return true om Traceloggen är påslagen.
+	 * @return true om Traceloggen Ã¤r pÃ¥slagen.
 	 */
 	public boolean isTraceing() {
 
@@ -40,9 +40,9 @@ public class CsnArkBaseObjectImpl implements CsnArkBaseObject {
 	}
 
 	/**
-	 * Skriver spårbarhetsinformation till loggen.
+	 * Skriver spÃ¥rbarhetsinformation till loggen.
 	 * 
-	 * @param traceRecord Innehåller allt som skall loggas.
+	 * @param traceRecord InnehÃ¥ller allt som skall loggas.
 	 */
 	public void trace(TraceRecord traceRecord) {
 
@@ -50,9 +50,9 @@ public class CsnArkBaseObjectImpl implements CsnArkBaseObject {
 	}
 
 	/**
-	 * Indikerar om activityloggning är aktiverad.
+	 * Indikerar om activityloggning Ã¤r aktiverad.
 	 *
-	 * @return true om Aktivitetsloggen är påslagen.
+	 * @return true om Aktivitetsloggen Ã¤r pÃ¥slagen.
 	 */
 	public boolean isTraceingActivities() {
 
@@ -60,9 +60,9 @@ public class CsnArkBaseObjectImpl implements CsnArkBaseObject {
 	}
 
 	/**
-	 * Skriver spårbarhetsinformation till aktivitetsloggen.
+	 * Skriver spÃ¥rbarhetsinformation till aktivitetsloggen.
 	 * 
-	 * @param traceRecord Innehåller allt som skall loggas.
+	 * @param traceRecord InnehÃ¥ller allt som skall loggas.
 	 */
 	public void activity(ActivityRecord activityRecord) {
 
@@ -70,9 +70,9 @@ public class CsnArkBaseObjectImpl implements CsnArkBaseObject {
 	}
 
 	/**
-	 * Indikerar om prestandaloggning är aktiverad.
+	 * Indikerar om prestandaloggning Ã¤r aktiverad.
 	 *
-	 * @return true om Prestandaloggen är påslagen.
+	 * @return true om Prestandaloggen Ã¤r pÃ¥slagen.
 	 */
 	public boolean isTiming() {
 		
@@ -80,10 +80,10 @@ public class CsnArkBaseObjectImpl implements CsnArkBaseObject {
 	}
 
 	/**
-	 * Startar klockan för prestandaloggningen. Tick, tack, ...
+	 * Startar klockan fÃ¶r prestandaloggningen. Tick, tack, ...
 	 *
 	 * @param object Det objekt som loggar.
-	 * @param methodName Namnet på metoden som loggar.
+	 * @param methodName Namnet pÃ¥ metoden som loggar.
 	 */
 	public void startClock(CsnArkBaseObjectImpl object, String methodName) {
 		
@@ -93,7 +93,7 @@ public class CsnArkBaseObjectImpl implements CsnArkBaseObject {
 	}
 
 	/**
-	 * Stoppar klockan för prestandaloggningen.
+	 * Stoppar klockan fÃ¶r prestandaloggningen.
 	 *
 	 */
 	public void stopClock() {

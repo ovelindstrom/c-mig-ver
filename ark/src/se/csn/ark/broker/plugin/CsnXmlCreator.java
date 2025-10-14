@@ -8,8 +8,8 @@ import se.csn.ark.common.CsnArkBaseObjectImpl;
 
 
 /**
- * CsnXmlCreator ‰r en abstrakt hj‰lpklass som anv‰nds fˆr att
- * bygga upp ett XML-svar. ƒrv ifrÂn denna klass och implementera
+ * CsnXmlCreator √§r en abstrakt hj√§lpklass som anv√§nds f√∂r att
+ * bygga upp ett XML-svar. √Ñrv ifr√•n denna klass och implementera
  * createXml(root).
  *
  *
@@ -21,10 +21,10 @@ public abstract class CsnXmlCreator extends CsnArkBaseObjectImpl {
 	private Document xmlDocument = null;
 
 	/**
-	 * Ska implementeras av subklass. H‰r l‰gger man in XML-data
+	 * Ska implementeras av subklass. H√§r l√§gger man in XML-data
 	 * under root-noden.
 	 *
-	 * @param root den nod som man bygger pÂ under
+	 * @param root den nod som man bygger p√• under
 	 */
 	public abstract void createXml(Element root);
 
@@ -32,7 +32,7 @@ public abstract class CsnXmlCreator extends CsnArkBaseObjectImpl {
 
 
 	/**
-	 * S‰tter ett XML-dokumen som man kan skapa noder frÂn.
+	 * S√§tter ett XML-dokumen som man kan skapa noder fr√•n.
 	 *
 	 * @param doc XML-dokument
 	 */
@@ -44,7 +44,7 @@ public abstract class CsnXmlCreator extends CsnArkBaseObjectImpl {
 
 
 	/**
-	 * Skapar en child-nod utan nÂgot v‰rde.
+	 * Skapar en child-nod utan n√•got v√§rde.
 	 *
 	 * @param parent under denna skapas en ny nod
 	 * @param name den nya nodens namn
@@ -61,12 +61,12 @@ public abstract class CsnXmlCreator extends CsnArkBaseObjectImpl {
 
 
 	/**
-	 * Skapar en child-nod med ett v‰rde. Om value==null sÂ s‰tts
-     * nodens v‰rde till "".
+	 * Skapar en child-nod med ett v√§rde. Om value==null s√• s√§tts
+     * nodens v√§rde till "".
 	 *
 	 * @param parent under denna skapas en ny nod
 	 * @param name den nya nodens namn
-	 * @param value den nya nodens v‰rde
+	 * @param value den nya nodens v√§rde
 	 * @return den nya child-noden
 	 */
 	protected Element createChild(Element parent, String name, String value) {

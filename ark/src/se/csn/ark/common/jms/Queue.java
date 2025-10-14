@@ -7,9 +7,9 @@ package se.csn.ark.common.jms;
 import javax.jms.QueueConnection;
 
 /**
- * Denna klass innehåller grundläggande funktionalitet för kö hantering.
+ * Denna klass innehÃ¥ller grundlÃ¤ggande funktionalitet fÃ¶r kÃ¶ hantering.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @version 1.0
  *
  */
@@ -19,9 +19,9 @@ public class Queue {
 	private javax.jms.Queue queue;
 
 	/**
-	 * Konstruktor för kontainer objektet
+	 * Konstruktor fÃ¶r kontainer objektet
 	 * @param con Anslutning
-	 * @param queue kö
+	 * @param queue kÃ¶
 	 */
 	Queue(QueueConnection con, javax.jms.Queue queue) {
 		
@@ -30,21 +30,21 @@ public class Queue {
 	}
 	
 	/**
-	 * @return queueConnection - köanslutning
+	 * @return queueConnection - kÃ¶anslutning
 	 */
 	public QueueConnection getConnection() {
 		return queueConnection;
 	}
 
 	/**
-	 * @return queue - kö
+	 * @return queue - kÃ¶
 	 */
 	public javax.jms.Queue getQueue() {
 		return queue;
 	}
 
 	/**
-	 * Sträng representation av klassen
+	 * StrÃ¤ng representation av klassen
     * @see java.lang.Object#toString()
     */
    public String toString() {

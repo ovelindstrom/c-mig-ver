@@ -17,9 +17,9 @@ import se.csn.ark.common.util.logging.trace.TraceRecord;
 
 /**
  *
- * Testklass för sådant som ligger i util eller underliggande package.
+ * Testklass fÃ¶r sÃ¥dant som ligger i util eller underliggande package.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041129
  * @version 1 skapad
  *
@@ -37,7 +37,7 @@ public class UtilTest extends TestCase {
 
 	/**
      * Skapa test med namn
-	 * @param arg0 namn på testet
+	 * @param arg0 namn pÃ¥ testet
 	 */
 	public UtilTest(String arg0) {
 		super(arg0);
@@ -57,15 +57,15 @@ public class UtilTest extends TestCase {
 		TimeLog timeLog = TimeLog.getLogger(this);
 		Integer logId = timeLog.startClock("testLogAndTimeLog");
         
-		log.debug("Start 40 testtrådar");
-		// Vi startar ett antal trådar som gör anrop till fasaden.
+		log.debug("Start 40 testtrÃ¥dar");
+		// Vi startar ett antal trÃ¥dar som gÃ¶r anrop till fasaden.
 		for (int i = 0; i < nThreads; i++) {
 			Thread t = new Thread(new FakeFacadeCall());
 			t.start();
 		}
 		timeLog.stopClock(logId);
-		// Kör vi trådat måste huvudprogrammet vänta in alla trådar ...
-        log.debug("Väntar in trådarna ...");
+		// KÃ¶r vi trÃ¥dat mÃ¥ste huvudprogrammet vÃ¤nta in alla trÃ¥dar ...
+        log.debug("VÃ¤ntar in trÃ¥darna ...");
 		try {
 			Thread.sleep(sleepTime);
             
@@ -79,8 +79,8 @@ public class UtilTest extends TestCase {
 
 		
 	/**
-	 * Testar log-nivåer
-     * Sätt nivå i ark_log4j.properties och se att det kommer ut meddelanden på rätt nivå.
+	 * Testar log-nivÃ¥er
+     * SÃ¤tt nivÃ¥ i ark_log4j.properties och se att det kommer ut meddelanden pÃ¥ rÃ¤tt nivÃ¥.
      * FATAL skall komma i vanliga loggen och i en egen fil.
      * 
 	 */
@@ -89,10 +89,10 @@ public class UtilTest extends TestCase {
 	}
 
 	/**
-	 * Skriver till alla lognivåer
+	 * Skriver till alla lognivÃ¥er
 	 */
 	private void writeSimpleMessageToAllLogLevels() {
-		String logMsg = "Detta är ett meddelande för logtest.";
+		String logMsg = "Detta Ã¤r ett meddelande fÃ¶r logtest.";
 
 		log.debug(logMsg);
 		log.info(logMsg);
@@ -104,7 +104,7 @@ public class UtilTest extends TestCase {
 	}
 
 	/**********************************
-	 ***** Intern klasser för test *****
+	 ***** Intern klasser fÃ¶r test *****
 	 ***********************************/
 	
 	
@@ -128,7 +128,7 @@ public class UtilTest extends TestCase {
 	private static int csnNr = CSN_NR_START;
 
 	/**
-     * Facade för test
+     * Facade fÃ¶r test
 	 */
 	class FakeFacade extends CsnFacadeObjectImpl implements Serializable{
 		private Log log = Log.getInstance(FakeFacade.class);
@@ -147,14 +147,14 @@ public class UtilTest extends TestCase {
 			}
 			FakeDAO fakeDAO = new FakeDAO();
 			fakeDTO = fakeDAO.getDto();
-			// detta är förvisso bara en läsning och kanske
-			// därmed inte en riktig transaktion men detta
-			// är bara ett enkelt test så ...
+			// detta Ã¤r fÃ¶rvisso bara en lÃ¤sning och kanske
+			// dÃ¤rmed inte en riktig transaktion men detta
+			// Ã¤r bara ett enkelt test sÃ¥ ...
 			if (isTraceing()) {
 				TraceRecord rec = 
 					new TraceRecord(new Integer(csnNr), fakeDTO);
 				trace(rec);
-				// Se till att det är ny kund nästa gång ... ;-)
+				// Se till att det Ã¤r ny kund nÃ¤sta gÃ¥ng ... ;-)
 				csnNr++;
 			}
 			if (log.isDebugEnabled()) {
@@ -167,7 +167,7 @@ public class UtilTest extends TestCase {
 	}
 
     /**
-     * DAO för test
+     * DAO fÃ¶r test
      */
 	class FakeDAO extends CsnDataAccessObjectImpl {
 		private Log log = Log.getInstance(FakeDAO.class);
@@ -175,7 +175,7 @@ public class UtilTest extends TestCase {
 				
         /**
          * testar time-log i objectet
-         * @return låtsas-hämtat dto
+         * @return lÃ¥tsas-hÃ¤mtat dto
          */
 		FakeDTO getDto() {
 			FakeDTO fakeDTO;
@@ -191,7 +191,7 @@ public class UtilTest extends TestCase {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			// Nu fejkar vi att vi faktiskt har hämtat data.
+			// Nu fejkar vi att vi faktiskt har hÃ¤mtat data.
 			fakeDTO = new FakeDTO();
 			if (log.isDebugEnabled()) {
 				log.debug("getDto <==");
@@ -211,7 +211,7 @@ public class UtilTest extends TestCase {
 	public static int transactionId = TXID_START;
 
     /**
-     * DTO för test
+     * DTO fÃ¶r test
      */
 	class FakeDTO extends CsnDataTransferObjectImpl {
 		
@@ -220,7 +220,7 @@ public class UtilTest extends TestCase {
 		 */
 		FakeDTO() {
 		
-			setEvent("Händelse nr " + handelseNr);	
+			setEvent("HÃ¤ndelse nr " + handelseNr);	
 			handelseNr++;
 			setTransactionId(String.valueOf(transactionId));
 			transactionId++;

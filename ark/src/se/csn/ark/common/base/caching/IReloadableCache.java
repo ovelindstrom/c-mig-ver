@@ -8,10 +8,10 @@ package se.csn.ark.common.base.caching;
 	public interface IReloadableCache {
 	
 	/** 
-	 * Denna metod tvingar en cache att ladda om sig. Det är tillåtet för implementationer
-	 * att endast tömma sig i detta läge (dvs inte ladda in ny information omgående), 
-	 * under förutsättning att de vid användning omärkligt för konsumenten
-	 * successivt laddar om sig - cachen får inte uppträda som om den var tömd efter detta anrop.
+	 * Denna metod tvingar en cache att ladda om sig. Det Ã¤r tillÃ¥tet fÃ¶r implementationer
+	 * att endast tÃ¶mma sig i detta lÃ¤ge (dvs inte ladda in ny information omgÃ¥ende), 
+	 * under fÃ¶rutsÃ¤ttning att de vid anvÃ¤ndning omÃ¤rkligt fÃ¶r konsumenten
+	 * successivt laddar om sig - cachen fÃ¥r inte upptrÃ¤da som om den var tÃ¶md efter detta anrop.
      * @throws CacheReloadException gick ej att ladda om
 	 */
 	public void reload() throws CacheReloadException;

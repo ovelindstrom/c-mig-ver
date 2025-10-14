@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 
 /**
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041228
  * @version 1 skapad
  *
@@ -26,7 +26,7 @@ public class DAOSimpleQueryTest extends TestCase {
 	/**
      * skapa testfall
      * 
-	 * @param arg0 namn på testfall
+	 * @param arg0 namn pÃ¥ testfall
 	 */
 	public DAOSimpleQueryTest(String arg0) {
 		super(arg0);

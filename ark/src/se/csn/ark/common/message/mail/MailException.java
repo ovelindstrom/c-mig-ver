@@ -31,7 +31,7 @@ public class MailException extends CsnApplicationException {
 
 	/**
 	 * @param message Felmeddelande.
-	 * @param errorId Identitet för att kunna hämta feltext.
+	 * @param errorId Identitet fÃ¶r att kunna hÃ¤mta feltext.
 	 */
 	public MailException(String message, Integer errorId) {
 		super(message, errorId);
@@ -55,7 +55,7 @@ public class MailException extends CsnApplicationException {
 
 	/**
 	 * @param message Felmeddelande.
-	 * @param errorId Identitet för att kunna hämta feltext.
+	 * @param errorId Identitet fÃ¶r att kunna hÃ¤mta feltext.
 	 * @param cause Orsak
 	 */
 	public MailException(String message, Integer errorId, Throwable cause) {

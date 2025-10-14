@@ -2,18 +2,18 @@ package se.csn.ark.common;
 
 /**
  *
- * Basklass för system fel. Skall användas för att indikera oväntade fel som
- * är utanför applikationens kontroll som gör att det inte går att komma åt
- * databas server eller annan resurs som är nödvändig för att applikationen
+ * Basklass fÃ¶r system fel. Skall anvÃ¤ndas fÃ¶r att indikera ovÃ¤ntade fel som
+ * Ã¤r utanfÃ¶r applikationens kontroll som gÃ¶r att det inte gÃ¥r att komma Ã¥t
+ * databas server eller annan resurs som Ã¤r nÃ¶dvÃ¤ndig fÃ¶r att applikationen
  * skall kunna fungera.
  *
- * Den klass skall aldrig själv användas för att påvisa fel.
- * Ärv av denna klass och skapa ett specifikt fel.
+ * Den klass skall aldrig sjÃ¤lv anvÃ¤ndas fÃ¶r att pÃ¥visa fel.
+ * Ã„rv av denna klass och skapa ett specifikt fel.
  *
- * @author K-G Sjöström
+ * @author K-G SjÃ¶strÃ¶m
  * @since 040809
  * @version 1 skapad
- * @version 1.1 Förändringar av Jacob Nordin 2005-09-23. Lagt till LOGICAL_ERROR som feltyp.
+ * @version 1.1 FÃ¶rÃ¤ndringar av Jacob Nordin 2005-09-23. Lagt till LOGICAL_ERROR som feltyp.
  * @see se.csn.ark.common.CsnApplikationException
  *
  */
@@ -24,11 +24,11 @@ public class CsnSystemException extends RuntimeException implements CsnException
    public static final Integer EDH_ERROR = new Integer(1003);
    public static final Integer DB_ERROR = new Integer(1004);
 
-   // CsnLogicalException ska egentligen inte ärva från CsnSystemException utan utan vara en egen
-   // undantagstyp på rotnivån tillsammans med CsnSystemException och CsnApplicationException. Av
-   // praktiska skäl ärver den från CsnSystemException nu för att vi inte ska behöva ändra i
+   // CsnLogicalException ska egentligen inte Ã¤rva frÃ¥n CsnSystemException utan utan vara en egen
+   // undantagstyp pÃ¥ rotnivÃ¥n tillsammans med CsnSystemException och CsnApplicationException. Av
+   // praktiska skÃ¤l Ã¤rver den frÃ¥n CsnSystemException nu fÃ¶r att vi inte ska behÃ¶va Ã¤ndra i
    // webservice-hanteringen.
-   // TODO Ta bort den här konstanten när CsnLogicalException inte längre ärver från
+   // TODO Ta bort den hÃ¤r konstanten nÃ¤r CsnLogicalException inte lÃ¤ngre Ã¤rver frÃ¥n
    // CsnSystemException.
    public static final Integer LOGICAL_ERROR = new Integer(1005);
 
@@ -57,7 +57,7 @@ public class CsnSystemException extends RuntimeException implements CsnException
     * Skapar ett system fel.
     *
     * @param message Felmeddelande
-    * @param errorId Identitiet för att kunna hämta feltext.
+    * @param errorId Identitiet fÃ¶r att kunna hÃ¤mta feltext.
     */
    protected CsnSystemException(String message, Integer errorId) {
       super(message);
@@ -68,7 +68,7 @@ public class CsnSystemException extends RuntimeException implements CsnException
     * Skapar ett system fel.
     *
     * @param message Felmeddelande
-    * @param errorId Identitiet för att kunna hämta feltext
+    * @param errorId Identitiet fÃ¶r att kunna hÃ¤mta feltext
     * @param cause Orsak
     */
    protected CsnSystemException(String message, Integer errorId, Throwable cause) {
@@ -84,8 +84,8 @@ public class CsnSystemException extends RuntimeException implements CsnException
    }
 
    /**
-    * Fel id för detta system fel som kan användas för att hämta motsvarande
-    * felmeddelande från fil eller databas.
+    * Fel id fÃ¶r detta system fel som kan anvÃ¤ndas fÃ¶r att hÃ¤mta motsvarande
+    * felmeddelande frÃ¥n fil eller databas.
     *
     * @see se.csn.ipl.webbansokan.arkitektur.CsnException#getFelId()
     * @return Returnerar <code>null</code> om id ej definierat
@@ -95,10 +95,10 @@ public class CsnSystemException extends RuntimeException implements CsnException
    }
 
    /**
-    * Returnerar en sträng representation av detta objekt innehållande
-    * alla eventuellt nästade <code>Exception</code>
+    * Returnerar en strÃ¤ng representation av detta objekt innehÃ¥llande
+    * alla eventuellt nÃ¤stade <code>Exception</code>
     *
-    * @return En sträng med all felbeskrivning
+    * @return En strÃ¤ng med all felbeskrivning
     */
    public String toString() {
       String msg = this.getClass().getName() + " (Typ= " + getType() + ", Id=" + getErrorId() + "): " + getMessage();
@@ -111,11 +111,11 @@ public class CsnSystemException extends RuntimeException implements CsnException
    }
 
    /**
-    * Återskapar CsnException utifrån indata
+    * Ã…terskapar CsnException utifrÃ¥n indata
     *
     * @param message exception-meddelande
-    * @param errorId id på CsnException
-    * @return återskapt exception
+    * @param errorId id pÃ¥ CsnException
+    * @return Ã¥terskapt exception
     */
    public static CsnException reCreateCsnException(String message, Integer errorId) {
       CsnException csnException;

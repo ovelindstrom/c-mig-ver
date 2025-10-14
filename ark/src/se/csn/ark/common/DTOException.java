@@ -7,9 +7,9 @@ package se.csn.ark.common;
 import java.io.Serializable;
 
 /**
- * Datatransport objekt för klasser som ärver av CsnException.
+ * Datatransport objekt fÃ¶r klasser som Ã¤rver av CsnException.
  * 
- * @author K-G Sjöström - AcandoFrontec.
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec.
  * @since 041118
  * @version 1
  *

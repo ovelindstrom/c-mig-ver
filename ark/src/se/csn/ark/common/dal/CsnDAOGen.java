@@ -5,9 +5,9 @@
 package se.csn.ark.common.dal;
 
 /**
- * Gränssnitt för access mot COOL tjänster.
+ * GrÃ¤nssnitt fÃ¶r access mot COOL tjÃ¤nster.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040914
  * @version 1 skapad
  *

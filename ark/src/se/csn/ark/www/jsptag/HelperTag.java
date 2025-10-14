@@ -7,17 +7,17 @@ import se.csn.ark.www.helper.CsnHelperController;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * Basklass fˆr helper-taggar.
+ * Basklass f√∂r helper-taggar.
  *
  * @author Joakim Olsson
  * @since 20050103
  * @version 0.1 skapad
- * @version 1.0 Fˆr‰ndringar av Jacob Nordin 2005-09-21. Skrivit om klassen sÂ att den
- *              stˆdjer lagring av hj‰lpklassen i olika scope (application, session,
- *              request och page). Fˆr att vara bakÂtkompatibel sÂ ‰r fortfarande
- *              default-beteendet att om inget scope anges sÂ sparas hj‰lpklassen i sessionen
- *              pÂ en gemensam nyckel ("helper"), vilket inneb‰r att hj‰lpklassen Âteranv‰nds
- *              om samma sida anropas tvÂ gÂnger efter varandra, tex i en wizard.
+ * @version 1.0 F√∂r√§ndringar av Jacob Nordin 2005-09-21. Skrivit om klassen s√• att den
+ *              st√∂djer lagring av hj√§lpklassen i olika scope (application, session,
+ *              request och page). F√∂r att vara bak√•tkompatibel s√• √§r fortfarande
+ *              default-beteendet att om inget scope anges s√• sparas hj√§lpklassen i sessionen
+ *              p√• en gemensam nyckel ("helper"), vilket inneb√§r att hj√§lpklassen √•teranv√§nds
+ *              om samma sida anropas tv√• g√•nger efter varandra, tex i en wizard.
  */
 public abstract class HelperTag extends CsnTagSupport {
 
@@ -35,34 +35,34 @@ public abstract class HelperTag extends CsnTagSupport {
    private final Log log = Log.getInstance(HelperTag.class);
 
    /**
-   	 * @return Unikt id fˆr sidan
+   	 * @return Unikt id f√∂r sidan
    	 */
    protected String getPageid() {
       return (String) pageContext.getAttribute(PAGE_ID);
    }
 
    /**
-     * @return Scope fˆr hj‰lpklassen
+     * @return Scope f√∂r hj√§lpklassen
    	 */
    protected Integer getScope() {
       return (Integer) pageContext.getAttribute(SCOPE);
    }
 
    /**
-    * H‰mta hj‰lpklass
+    * H√§mta hj√§lpklass
     *
-    * @return hj‰lpklass
-    * @throws CsnJspException om ingen hj‰lpklass finns
+    * @return hj√§lpklass
+    * @throws CsnJspException om ingen hj√§lpklass finns
     */
    protected CsnHelperController getHelper() throws CsnJspException {
 
       CsnHelperController helper = null;
 
-      // Bˆrjar med fˆrsˆka h‰mta hj‰lpklassen i PAGE_SCOPE
+      // B√∂rjar med f√∂rs√∂ka h√§mta hj√§lpklassen i PAGE_SCOPE
       helper = (CsnHelperController) pageContext.getAttribute(HELPER);
 
       if (helper == null) {
-         // Fˆrsˆk att h‰mta hj‰lpklassen i ett stˆrre scope
+         // F√∂rs√∂k att h√§mta hj√§lpklassen i ett st√∂rre scope
          Integer scope = getScope();
          if (scope == null) {
             helper = (CsnHelperController) pageContext.getAttribute(HELPER, PageContext.SESSION_SCOPE);
@@ -70,24 +70,24 @@ public abstract class HelperTag extends CsnTagSupport {
             helper = (CsnHelperController) pageContext.getAttribute(HELPER + "_" + getPageid(), scope.intValue());
          }
          if (helper != null) {
-            log.debug("H‰mtar helper i scope " + scope + ".");
+            log.debug("H√§mtar helper i scope " + scope + ".");
          }
       } else {
-         log.debug("H‰mtar helper i PAGE_SCOPE.");
+         log.debug("H√§mtar helper i PAGE_SCOPE.");
       }
 
       return helper;
    }
 
    /**
-    * @param  pageid Unikt id fˆr sidan
+    * @param  pageid Unikt id f√∂r sidan
     */
    public void setPageid(String pageid) {
       pageContext.setAttribute(PAGE_ID, pageid);
    }
 
    /**
-   	 * @param scopeStr Scope fˆr hj‰lpklassen
+   	 * @param scopeStr Scope f√∂r hj√§lpklassen
    	 */
    public void setScope(String scopeStr) {
       Integer scope = null;
@@ -107,18 +107,18 @@ public abstract class HelperTag extends CsnTagSupport {
    }
 
    /**
-    * Sparar hj‰lpklass till det scope som ‰r valt
+    * Sparar hj√§lpklass till det scope som √§r valt
     *
-    * @param helper hj‰lpklass
+    * @param helper hj√§lpklass
     */
    protected void setHelper(CsnHelperController helper) {
 
-      // Sparar alltid hj‰lpklassen i PAGE_SCOPE med generell nyckel ("helper") sÂ den blir
-      // tillg‰nglig pÂ JSP-sidan med EL enligt ${helper}
+      // Sparar alltid hj√§lpklassen i PAGE_SCOPE med generell nyckel ("helper") s√• den blir
+      // tillg√§nglig p√• JSP-sidan med EL enligt ${helper}
       pageContext.setAttribute(HELPER, helper, PageContext.PAGE_SCOPE);
       log.debug("Spara helper i PAGE_SCOPE.");
 
-      // Om scope ‰r stˆrre ‰n PAGE_SCOPE sÂ lagras hj‰lpklassen ‰ven i det scopet
+      // Om scope √§r st√∂rre √§n PAGE_SCOPE s√• lagras hj√§lpklassen √§ven i det scopet
       // med pageid som nyckel
       Integer scope = getScope();
       if (scope == null) {

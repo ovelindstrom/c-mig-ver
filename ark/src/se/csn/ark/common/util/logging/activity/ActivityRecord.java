@@ -25,7 +25,7 @@ public class ActivityRecord implements Activities {
 
     // Nya tabellen
     private String lastAccessedTime;
-    // private Date dbtidpunkt; //Hämtas som current_timestamp vid INSERT
+    // private Date dbtidpunkt; //HÃ¤mtas som current_timestamp vid INSERT
     private String system;
 
     private String server;
@@ -140,7 +140,7 @@ public class ActivityRecord implements Activities {
         this.strutsError = strutsError;
 
         //QC 609 @TIMESTAMP@ i ark_log4j som apptidpunkt blir
-        // tidpunkten då loggern flushar buffern till DB
+        // tidpunkten dÃ¥ loggern flushar buffern till DB
         // Ta egen timestamp
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         lastAccessedTime = f.format(new GregorianCalendar().getTime());

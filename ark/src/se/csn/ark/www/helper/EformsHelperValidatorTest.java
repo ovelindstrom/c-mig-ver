@@ -5,7 +5,7 @@
 //
 //
 ///**
-// * För att fixa tester av EformsHelper.
+// * FÃ¶r att fixa tester av EformsHelper.
 // *
 // * @author Joakim Olsson
 // * @since 20041202
@@ -32,7 +32,7 @@
 //	public DTOValidateResult update(ParameterTree tree) {
 //		Node n = tree.getNode("testnod.msg", true, null);
 //
-//		n.setValue("testvärde");
+//		n.setValue("testvÃ¤rde");
 //
 //		return new DTOValidateResult();
 //	}

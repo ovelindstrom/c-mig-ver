@@ -10,12 +10,12 @@ import se.csn.ark.common.util.logging.trace.TraceRecord;
 import se.csn.ark.common.util.logging.activity.ActivityRecord;
 
 /**
- * Basklass för taggar. Är av denna för att skape en ny Tag.
+ * Basklass fÃ¶r taggar. Ã„r av denna fÃ¶r att skape en ny Tag.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20050225
  * @version 1 skapad
- * @version 2 2007-04-27 Uppdaterad av csn7571 E-tjänster, activitylogg
+ * @version 2 2007-04-27 Uppdaterad av csn7571 E-tjÃ¤nster, activitylogg
  *
  */
 public class CsnTagSupport extends TagSupport implements CsnArkBaseObject {
@@ -33,7 +33,7 @@ public class CsnTagSupport extends TagSupport implements CsnArkBaseObject {
 			new  CsnArkBaseObjectImpl();
 
 	/**
-	 * @return true om trace-loggning är påslagen
+	 * @return true om trace-loggning Ã¤r pÃ¥slagen
 	 */
 	public boolean isTraceing() {
 		
@@ -48,7 +48,7 @@ public class CsnTagSupport extends TagSupport implements CsnArkBaseObject {
 		arkBaseObjectImpl.trace(traceRecord);
 	}
 	/**
-	 * @return true om trace-loggning är påslagen
+	 * @return true om trace-loggning Ã¤r pÃ¥slagen
 	 */
 	public boolean isTraceingActivities() {
 		
@@ -64,7 +64,7 @@ public class CsnTagSupport extends TagSupport implements CsnArkBaseObject {
 	}
 
 	/**
-	 * @return true om time-loggning är påslagen
+	 * @return true om time-loggning Ã¤r pÃ¥slagen
 	 */
 	public boolean isTiming() {
 		

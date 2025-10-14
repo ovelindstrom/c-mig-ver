@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 
 /**
- * Testar att databasåtkomst fungerar.
+ * Testar att databasÃ¥tkomst fungerar.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041212
  * @version 1 skapad
  *
@@ -20,7 +20,7 @@ public class DAOSimpleQuery extends CsnDAODatabaseImpl {
 	private static final String TEST_QUERY = "select count(*) from e569dbt.tpostort";
 
 	/**
-	 * @return teststräng från db
+	 * @return teststrÃ¤ng frÃ¥n db
 	 * @throws DatabaseException misslyckat skapande av db-koppling
 	 * @throws SQLException misslyckat db-anrop
 	 */

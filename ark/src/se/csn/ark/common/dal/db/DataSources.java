@@ -5,10 +5,10 @@
 package se.csn.ark.common.dal.db;
 
 /**
- * Konstanter för databaskopplingar.
+ * Konstanter fÃ¶r databaskopplingar.
  * Det verkliga namnen finns i ark.properties
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041227
  * @version 1 skapad
  *
@@ -40,43 +40,43 @@ public interface DataSources {
 	static final String EJB_DATA_SOURCE5_KEY = "dao.db.ejb.ds5"; 
 
 	/**
-	 * Datakälla 1 för databas.
+	 * DatakÃ¤lla 1 fÃ¶r databas.
 	 * 
-	 * Konfigureras med property <b>dao.db.ds1</b> för webb
-	 * och med <b>dao.db.ejb.ds1</b> för ejb.
+	 * Konfigureras med property <b>dao.db.ds1</b> fÃ¶r webb
+	 * och med <b>dao.db.ejb.ds1</b> fÃ¶r ejb.
 	 */
 	public static final int DATA_SOURCE1 = 0;
 
 	/**
-	 * Datakälla 2 för databas.
+	 * DatakÃ¤lla 2 fÃ¶r databas.
 	 * 
-	 * Konfigureras med property <b>dao.db.ds2</b>. för webb
-	 * och med <b>dao.db.ejb.ds2</b> för ejb.
+	 * Konfigureras med property <b>dao.db.ds2</b>. fÃ¶r webb
+	 * och med <b>dao.db.ejb.ds2</b> fÃ¶r ejb.
 	 */
 	public static final int DATA_SOURCE2 = 1;
 
 	/**
-	 * Datakälla 3 för databas.
+	 * DatakÃ¤lla 3 fÃ¶r databas.
 	 * 
-	 * Konfigureras med property <b>dao.db.ds3</b> för webb
-	 * och med <b>dao.db.ejb.ds3</b> för ejb.
+	 * Konfigureras med property <b>dao.db.ds3</b> fÃ¶r webb
+	 * och med <b>dao.db.ejb.ds3</b> fÃ¶r ejb.
 	 */
 	public static final int DATA_SOURCE3 = 2;
 
 	/**
-	 * Datakälla 4 för databas.
+	 * DatakÃ¤lla 4 fÃ¶r databas.
 	 * 
-	 * Konfigureras med property <b>dao.db.ds4</b> för webb
-	 * och med <b>dao.db.ejb.ds4</b> för ejb.
+	 * Konfigureras med property <b>dao.db.ds4</b> fÃ¶r webb
+	 * och med <b>dao.db.ejb.ds4</b> fÃ¶r ejb.
 	 */
 
 	public static final int DATA_SOURCE4 = 3;
 
 	/**
-	 * Datakälla 5 för databas.
+	 * DatakÃ¤lla 5 fÃ¶r databas.
 	 * 
-	 * Konfigureras med property <b>dao.db.ds5</b> för webb
-	 * och med <b>dao.db.ejb.ds5</b> för ejb.
+	 * Konfigureras med property <b>dao.db.ds5</b> fÃ¶r webb
+	 * och med <b>dao.db.ejb.ds5</b> fÃ¶r ejb.
 	 */
 	public static final int DATA_SOURCE5 = 4;
 

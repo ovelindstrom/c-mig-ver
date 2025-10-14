@@ -7,9 +7,9 @@ package se.csn.ark.common.dal;
 import se.csn.ark.common.CsnApplicationException;
 
 /**
- * Basklass för fel vid filhantering.
+ * Basklass fÃ¶r fel vid filhantering.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041103
  * @version 1 skapad
  *
@@ -26,7 +26,7 @@ public class FileException extends CsnApplicationException {
 
     /**
      * @param message felmeddelande
-     * @param errorId id på felet
+     * @param errorId id pÃ¥ felet
      */
 	public FileException(String message, Integer errorId) {
 
@@ -44,7 +44,7 @@ public class FileException extends CsnApplicationException {
 
     /**
      * @param message felmeddelande
-     * @param errorId id på felet
+     * @param errorId id pÃ¥ felet
      * @param cause exception som orsakade felet
      */
 	public FileException(

@@ -1,9 +1,9 @@
 package se.csn.ark.common.dal;
 
 /**
- * Gränssnitt för access mot fil.
+ * GrÃ¤nssnitt fÃ¶r access mot fil.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041103
  * @version 1 skapad
  *

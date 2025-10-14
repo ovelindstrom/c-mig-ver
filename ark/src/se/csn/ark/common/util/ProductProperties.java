@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
  * @since 20041018
  * @version 1 skapad
  *
- * Klass fˆr att l‰sa in properties frÂn iipax_products.properties och sedan mappa
+ * Klass f√∂r att l√§sa in properties fr√•n iipax_products.properties och sedan mappa
  * mot product idn
  * 
  */
@@ -24,7 +24,7 @@ public final class ProductProperties {
 
 
     /**
-     * Privat konstruktor, endast statisk Âtkomst
+     * Privat konstruktor, endast statisk √•tkomst
      */
     private ProductProperties() {
     }
@@ -33,8 +33,8 @@ public final class ProductProperties {
 
 
 	/**
-	 * @param key namn pÂ property
-	 * @return v‰rde
+	 * @param key namn p√• property
+	 * @return v√§rde
 	 */
 	public static String getProperty(String key) {
 
@@ -43,17 +43,17 @@ public final class ProductProperties {
 
 
 	/**
-	 * L‰s in properties
+	 * L√§s in properties
 	 */
 	private static void init() {
 
 		try {
 			ResourceBundle bundle = ResourceBundle.getBundle(IIPAX_PRODUCTS_CONFIG);
 
-			// L‰s alla nycklar
+			// L√§s alla nycklar
 			Enumeration keys = bundle.getKeys();
 
-			// Lagra alla nycklar och v‰rden.
+			// Lagra alla nycklar och v√§rden.
 			while (keys.hasMoreElements()) {
 				String key = (String) keys.nextElement();
 				String value = bundle.getString(key);

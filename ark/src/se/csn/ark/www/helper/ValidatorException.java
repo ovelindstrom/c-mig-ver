@@ -4,7 +4,7 @@ import se.csn.ark.common.CsnApplicationException;
 
 
 /**
- * ValidatorException används för validering.
+ * ValidatorException anvÃ¤nds fÃ¶r validering.
  *
  * @author Joakim Olsson
  * @since 20041026

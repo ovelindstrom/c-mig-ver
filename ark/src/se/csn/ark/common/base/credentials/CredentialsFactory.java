@@ -4,11 +4,11 @@ import se.csn.ark.common.base.caching.CacheReloadException;
 
 /**
  * Denna factory-klass tillverkar instanser av olika klasser som implementerar ICredentials.
- * get*Credentials()-metoderna skall användas för att erhålla dylika instanser, snarare än
- * att själv instansiera dessa.
+ * get*Credentials()-metoderna skall anvÃ¤ndas fÃ¶r att erhÃ¥lla dylika instanser, snarare Ã¤n
+ * att sjÃ¤lv instansiera dessa.
  * 
- * Av denna anledning bör klasser som implementerar ICredentials definiera sin 
- * default-constructor som protected (alternativt någon getInstance()-metod) och 
+ * Av denna anledning bÃ¶r klasser som implementerar ICredentials definiera sin 
+ * default-constructor som protected (alternativt nÃ¥gon getInstance()-metod) och 
  * skall definieras i samma paket som denna klass.
  *
  * @author Vincent Wong, Iocore
@@ -18,12 +18,12 @@ import se.csn.ark.common.base.caching.CacheReloadException;
 public final class CredentialsFactory {
 
 	/**
-	 * Konstant som anger att önskad typ av ICredentials är för RACF-autentisering.
+	 * Konstant som anger att Ã¶nskad typ av ICredentials Ã¤r fÃ¶r RACF-autentisering.
 	 */
 	public static final int RACF = 1;
 
     /**
-     * Ska inte gå att skapa, endast statiska metoder 
+     * Ska inte gÃ¥ att skapa, endast statiska metoder 
      */
     private CredentialsFactory() {
     }
@@ -54,9 +54,9 @@ public final class CredentialsFactory {
 	}
 
 /**
- * @param type anger typ av önskad returnerad ICredentials. Ett anrop med type=CredentialsFactory.
- * RACF är likvärdigt med ett anrop av getRACFCredentials().
- * @return Beroende på type returneras olika klasser implementerande ICredentials.
+ * @param type anger typ av Ã¶nskad returnerad ICredentials. Ett anrop med type=CredentialsFactory.
+ * RACF Ã¤r likvÃ¤rdigt med ett anrop av getRACFCredentials().
+ * @return Beroende pÃ¥ type returneras olika klasser implementerande ICredentials.
  * @throws CredentialsException gick ej att skapa 
  * @see se.csn.caching.CacheReloadException.RACF
  */
@@ -67,9 +67,9 @@ public final class CredentialsFactory {
 				return getRACFCredentials();
 //				break;
 			default :
-			throw new CredentialsException(null, "Otillåtet värde (" + type 
-                + ") på CredentialsFactory type.");
+			throw new CredentialsException(null, "OtillÃ¥tet vÃ¤rde (" + type 
+                + ") pÃ¥ CredentialsFactory type.");
 				}
 	}
-	// Addera fler get*Credentials()-metoder här då det dyker upp fler typer av autentiseringar!
+	// Addera fler get*Credentials()-metoder hÃ¤r dÃ¥ det dyker upp fler typer av autentiseringar!
 }

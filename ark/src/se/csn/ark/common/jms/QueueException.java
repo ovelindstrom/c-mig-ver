@@ -7,8 +7,8 @@ package se.csn.ark.common.jms;
 import se.csn.ark.common.CsnSystemException;
 
 /**
- * Felmeddelande som uppkommer vid JMS/köanslutning
- * @author K-G Sjöström - AcandoFrontec
+ * Felmeddelande som uppkommer vid JMS/kÃ¶anslutning
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @version 1.01
  *
  */
@@ -36,7 +36,7 @@ public class QueueException extends CsnSystemException {
 	/**
 	 * Konstruktor
 	 * @param message Felmeddelande
-	 * @param errorId Identitet för att kunna hämta feltext
+	 * @param errorId Identitet fÃ¶r att kunna hÃ¤mta feltext
 	 */
 	public QueueException(String message, Integer errorId) {
 
@@ -46,7 +46,7 @@ public class QueueException extends CsnSystemException {
 	/**
 	 * Konstruktor
 	 * @param message Felmeddelande
-	 * @param errorId Identitet för att kunna hämta feltext
+	 * @param errorId Identitet fÃ¶r att kunna hÃ¤mta feltext
 	 * @param cause Orsak
 	 */
 	public QueueException(String message, Integer errorId, Throwable cause) {

@@ -6,9 +6,9 @@ import se.csn.ark.common.util.logging.Log;
 
 /**
  * Grupperar ihop en eller flera hanterbara funktioner
- * till en sammanhållen tjänst.
+ * till en sammanhÃ¥llen tjÃ¤nst.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20050404
  * @version 1 skapad
  *
@@ -20,7 +20,7 @@ public class CsnManagables implements CsnManagable {
 	private int state = STATE_NOT_INITIATED;
 
 	/**
-	 * Sätter de Managables som skall hanteras.
+	 * SÃ¤tter de Managables som skall hanteras.
 	 *
 	 * @param theManagables Array med det som skall hanteras.
 	 */
@@ -32,7 +32,7 @@ public class CsnManagables implements CsnManagable {
 
 
 	/**
-	 * Anropar doInit för alla CsnManagables i den här tjänsten.
+	 * Anropar doInit fÃ¶r alla CsnManagables i den hÃ¤r tjÃ¤nsten.
 	 *
 	 * @see se.csn.ark.common.manage.CsnManagable#doInit()
 	 */
@@ -61,7 +61,7 @@ public class CsnManagables implements CsnManagable {
 
 
 	/**
-	 * Anropar doStart för alla CsnManagables i den här tjänsten.
+	 * Anropar doStart fÃ¶r alla CsnManagables i den hÃ¤r tjÃ¤nsten.
 	 *
 	 * @see se.csn.ark.common.manage.CsnManagable#doStart()
 	 */
@@ -90,7 +90,7 @@ public class CsnManagables implements CsnManagable {
 
 
 	/**
-	 * Anropar doStop för alla CsnManagables i den här tjänsten.
+	 * Anropar doStop fÃ¶r alla CsnManagables i den hÃ¤r tjÃ¤nsten.
 	 *
 	 * @see se.csn.ark.common.manage.CsnManagable#doStop()
 	 */
@@ -119,7 +119,7 @@ public class CsnManagables implements CsnManagable {
 
 
 	/**
-	 * Anropar doClose för alla CsnManagables i den här tjänsten.
+	 * Anropar doClose fÃ¶r alla CsnManagables i den hÃ¤r tjÃ¤nsten.
 	 *
 	 * @see se.csn.ark.common.manage.CsnManagable#doClose()
 	 */
@@ -148,7 +148,7 @@ public class CsnManagables implements CsnManagable {
 
 
 	/**
-	 * Anropar doGetStatus för alla CsnManagables i den här tjänsten.
+	 * Anropar doGetStatus fÃ¶r alla CsnManagables i den hÃ¤r tjÃ¤nsten.
 	 *
 	 * @see se.csn.ark.common.manage.CsnManagable#doGetStatus()
 	 */
@@ -187,8 +187,8 @@ public class CsnManagables implements CsnManagable {
 
 
 	/**
-	 * Denna metod är inte relevant för denna i klass som innehåller
-	 * innehåller en eller flera Managables.
+	 * Denna metod Ã¤r inte relevant fÃ¶r denna i klass som innehÃ¥ller
+	 * innehÃ¥ller en eller flera Managables.
 	 *
 	 * @return null
 	 *
@@ -202,7 +202,7 @@ public class CsnManagables implements CsnManagable {
 
 
 	/**
-	 * Returnerar tillståndet för tjänsten.
+	 * Returnerar tillstÃ¥ndet fÃ¶r tjÃ¤nsten.
 	 *
 	 * @see se.csn.ark.common.manage.CsnManagable#getState()
 	 */

@@ -5,7 +5,7 @@
 //
 //
 ///**
-// * För att fixa tester av EformsHelper.
+// * FÃ¶r att fixa tester av EformsHelper.
 // *
 // * @author Joakim Olsson
 // * @since 20041202
@@ -15,7 +15,7 @@
 //	/**
 //	 * Validerar mobil-nummer och epost-adress.
 //	 *
-//	 * @param  tree eforms-trädet
+//	 * @param  tree eforms-trÃ¤det
 //	 * @return resultatet av valideringen
 //	 */
 //	public DTOValidateResult validate(ParameterTree tree) {
@@ -33,7 +33,7 @@
 //	/**
 //	 * Validerar epost-adress.
 //	 *
-//	 * @param  tree eforms-trädet
+//	 * @param  tree eforms-trÃ¤det
 //	 * @param  result resultat-objektet
 //	 * @return resultatet av valideringen
 //	 */
@@ -67,7 +67,7 @@
 //	/**
 //	 * Validerar mobilnummer.
 //	 *
-//	 * @param  tree eforms-trädet
+//	 * @param  tree eforms-trÃ¤det
 //	 * @param  result resultat-objektet
 //	 * @return resultatet av valideringen
 //	 */

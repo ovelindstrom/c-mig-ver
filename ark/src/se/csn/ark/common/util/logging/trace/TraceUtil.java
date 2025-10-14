@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
  * <P>Namn: TraceUtil </P><br>
  *
  * <P>Beskrivning: <br>
- * Gemensam funktion för att TransactionID.
+ * Gemensam funktion fÃ¶r att TransactionID.
  *
  * @author Joakim Olsson
  * @since 20050223
@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 public final class TraceUtil {
 
     /**
-     * Privat konstruktor, endast statisk åtkomst
+     * Privat konstruktor, endast statisk Ã¥tkomst
      */
     private TraceUtil() {
     }
@@ -25,7 +25,7 @@ public final class TraceUtil {
 
 
 	/**
-	 * @param session för att skapa unikt transaktionsid
+	 * @param session fÃ¶r att skapa unikt transaktionsid
 	 * @return unikt transkationsid
 	 */
 	public static String createCsnTxId(HttpSession session) {
@@ -33,8 +33,8 @@ public final class TraceUtil {
 	}
 
 	/**
-	 * @param csnTxId transaktionsid byggt från sessionen
-	 * @param iipaxTxId transaktionsid från iipax-broker
+	 * @param csnTxId transaktionsid byggt frÃ¥n sessionen
+	 * @param iipaxTxId transaktionsid frÃ¥n iipax-broker
 	 * @return 'csnTxId'/'iipaxTxId'
 	 */
 	public static String combineTxId(String csnTxId, String iipaxTxId) {
@@ -42,8 +42,8 @@ public final class TraceUtil {
 	}
 
     /**
-     * @param csnEvent händelse byggt från jsp-sidan
-     * @param xmlEvent transaktionsid från xml-transaktionen
+     * @param csnEvent hÃ¤ndelse byggt frÃ¥n jsp-sidan
+     * @param xmlEvent transaktionsid frÃ¥n xml-transaktionen
      * @return 'csnEvent'/'xmlEvent'
      */
 	public static String combineEvent(String csnEvent, String xmlEvent) {

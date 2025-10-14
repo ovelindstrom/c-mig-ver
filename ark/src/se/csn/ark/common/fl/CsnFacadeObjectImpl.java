@@ -3,9 +3,9 @@ package se.csn.ark.common.fl;
 import se.csn.ark.common.CsnArkBaseObjectImpl;
 
 /**
- * Basklass för fasad objekt.
+ * Basklass fÃ¶r fasad objekt.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040907
  * @version 1 skapad
  *

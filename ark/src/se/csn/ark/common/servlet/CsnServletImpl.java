@@ -8,12 +8,12 @@ import se.csn.ark.common.CsnArkBaseObjectImpl;
 import se.csn.ark.common.util.logging.activity.ActivityRecord;
 import se.csn.ark.common.util.logging.trace.TraceRecord;
 /**
- * Basklass för Servlets.
+ * Basklass fÃ¶r Servlets.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041212
  * @version 1 skapad
- * @version 2 2007-04-27 Uppdaterad av csn7571 E-tjänster, activitylogg
+ * @version 2 2007-04-27 Uppdaterad av csn7571 E-tjÃ¤nster, activitylogg
  *
  */
 public class CsnServletImpl extends HttpServlet implements CsnServlet {
@@ -37,7 +37,7 @@ public class CsnServletImpl extends HttpServlet implements CsnServlet {
 			new  CsnArkBaseObjectImpl();
 
 	/**
-	 * @return true om time-loggning är påslagen
+	 * @return true om time-loggning Ã¤r pÃ¥slagen
 	 */
 	public boolean isTiming() {
 		
@@ -45,14 +45,14 @@ public class CsnServletImpl extends HttpServlet implements CsnServlet {
 	}
 
 	/**
-	 * @return true om trace-loggning är påslagen
+	 * @return true om trace-loggning Ã¤r pÃ¥slagen
 	 */
 	public boolean isTraceing() {
 		
 		return arkBaseObjectImpl.isTraceing();
 	}
 	/**
-	 * @return true om trace-loggning är påslagen
+	 * @return true om trace-loggning Ã¤r pÃ¥slagen
 	 */
 	public boolean isTraceingActivities() {
 		

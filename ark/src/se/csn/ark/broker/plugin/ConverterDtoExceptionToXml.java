@@ -8,7 +8,7 @@ import se.csn.ark.common.util.logging.Log;
 
 /**
  * Konverterare fel.
- * Konverterar från DTO (DataTransferObjekt) till XML.
+ * Konverterar frÃ¥n DTO (DataTransferObjekt) till XML.
  *
  * @author Joakim Olsson
  * @since 20041122
@@ -20,7 +20,7 @@ public class ConverterDtoExceptionToXml extends CsnXmlCreator {
 	private CsnException csnExc = null;
 
 	/**
-	 * Omvandlar innehållet i DTO objektet till XML.
+	 * Omvandlar innehÃ¥llet i DTO objektet till XML.
 	 *
 	 * @param data Exception objekt som skall omvandlas.
 	 */

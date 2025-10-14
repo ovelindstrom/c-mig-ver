@@ -3,9 +3,9 @@ package se.csn.ark.common.util.logging.trace;
 import se.csn.ark.common.dt.CsnDataTransferObject;
 
 /**
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 2005-04-27
- * @version 1 Skapad - K-G Sjöström, AcandoFrontec
+ * @version 1 Skapad - K-G SjÃ¶strÃ¶m, AcandoFrontec
  */
 public class TraceRecord implements Traceable {
 
@@ -43,7 +43,7 @@ public class TraceRecord implements Traceable {
      * Skapa record
      * 
      * @param csnNummer som ska loggas
-     * @param dto innehåller transaktionsid och händelse som ska loggas
+     * @param dto innehÃ¥ller transaktionsid och hÃ¤ndelse som ska loggas
      */
     public TraceRecord(Integer csnNummer, 
             CsnDataTransferObject dto) {
@@ -53,7 +53,7 @@ public class TraceRecord implements Traceable {
                     
 	/**
      * @param csnNummer som ska loggas
-     * @param dto innehåller transaktionsid och händelse som ska loggas
+     * @param dto innehÃ¥ller transaktionsid och hÃ¤ndelse som ska loggas
      * @param felMeddelande felmeddelande som ska loggas
 	 */
 	public TraceRecord(Integer csnNummer, 
@@ -65,7 +65,7 @@ public class TraceRecord implements Traceable {
 	/**
      * @param csnNummer som ska loggas
 	 * @param personNummer som ska loggas
-     * @param dto innehåller transaktionsid och händelse som ska loggas
+     * @param dto innehÃ¥ller transaktionsid och hÃ¤ndelse som ska loggas
 	 */
 	public TraceRecord(Integer csnNummer, Double personNummer, 
 			CsnDataTransferObject dto) {
@@ -76,7 +76,7 @@ public class TraceRecord implements Traceable {
 	/**
      * @param csnNummer som ska loggas
      * @param personNummer som ska loggas
-     * @param dto innehåller transaktionsid och händelse som ska loggas
+     * @param dto innehÃ¥ller transaktionsid och hÃ¤ndelse som ska loggas
      * @param authType identifieringsmetod som ska loggas
 	 */
 	public TraceRecord(Integer csnNummer, Double personNummer, 
@@ -86,7 +86,7 @@ public class TraceRecord implements Traceable {
 	}
 	
 	/**
-     * @param dto innehåller transaktionsid och händelse som ska loggas
+     * @param dto innehÃ¥ller transaktionsid och hÃ¤ndelse som ska loggas
      * @param csnNummer som ska loggas
      * @param personNummer som ska loggas
      * @param authType identifieringsmetod som ska loggas
@@ -155,7 +155,7 @@ public class TraceRecord implements Traceable {
 	}
 
 	/**
-	 * @return händelse
+	 * @return hÃ¤ndelse
 	 */
 	public String getHandelse() {
 		
@@ -203,7 +203,7 @@ public class TraceRecord implements Traceable {
 	}
 
 	/**
-	 * @param h händelse
+	 * @param h hÃ¤ndelse
 	 */
 	public void setHandelse(String h) {
 		

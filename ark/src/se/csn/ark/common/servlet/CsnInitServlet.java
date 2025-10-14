@@ -8,12 +8,12 @@ import javax.servlet.ServletException;
  * @since 2005-02-01
  * @version 1 skapad
  *
- * För initiering av applikation
+ * FÃ¶r initiering av applikation
  */
 public abstract class CsnInitServlet extends CsnServletImpl {
 
 	/**
-	 * Körs när applikationen startas. 
+	 * KÃ¶rs nÃ¤r applikationen startas. 
 	 */
 	protected abstract void onStartUp();
 
@@ -21,7 +21,7 @@ public abstract class CsnInitServlet extends CsnServletImpl {
 
 
     /**
-     * Körs när applikationen avslutas. 
+     * KÃ¶rs nÃ¤r applikationen avslutas. 
      */
 	protected abstract void onShutDown();
 

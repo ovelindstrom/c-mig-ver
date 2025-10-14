@@ -6,16 +6,16 @@ import java.io.Serializable;
 /**
  *
  * <p><b>ALLA</b> <code>Exception</code> i CSN:s java ramverk <u>skall</u>
- * implementera detta gränssnitt !</p>
+ * implementera detta grÃ¤nssnitt !</p>
  *
- * <p>Detta gränsnsitt är designat för att vara kompatibelt med stödet för
+ * <p>Detta grÃ¤nsnsitt Ã¤r designat fÃ¶r att vara kompatibelt med stÃ¶det fÃ¶r
  * <a href=
  * "http://java.sun.com/j2se/1.4.2/docs/guide/lang/chained-exceptions.html">"
- * chained exceptions"</a> i JDK 1.4. om än i en försvenskad variant
+ * chained exceptions"</a> i JDK 1.4. om Ã¤n i en fÃ¶rsvenskad variant
  * (Cause => Orsak).</p>
  *
- * @author K-G Sjöström
- * @since 040809 K-G Sjöström
+ * @author K-G SjÃ¶strÃ¶m
+ * @since 040809 K-G SjÃ¶strÃ¶m
  * @version 1 skapad
  *
  */
@@ -38,10 +38,10 @@ public interface CsnException extends Serializable {
 
 	/**
 	 *
-	 * Fel id kan användas för att hämta motsvarande felmeddelande från fil
+	 * Fel id kan anvÃ¤ndas fÃ¶r att hÃ¤mta motsvarande felmeddelande frÃ¥n fil
 	 * eller databas.
 	 *
-	 * @return Fel identiteten för den situationen som detta fel uppstod i.
+	 * @return Fel identiteten fÃ¶r den situationen som detta fel uppstod i.
 	 * Returnerar <code>null</code> om id ej definierat
 	 */
 	public Integer getErrorId();
@@ -53,8 +53,8 @@ public interface CsnException extends Serializable {
 	 *
 	 * Ger orsaken till detta fel dvs ursprungliga felet som eventuellt
 	 * kan ha gett en kedja av fel.
-	 * Detta är en försvenskad variant av av metodsignaturen <code>getCause</code> som
-	 * infördes för <code>Throwable</code> i JDK 1.4 för att hantera "nested exceptions".
+	 * Detta Ã¤r en fÃ¶rsvenskad variant av av metodsignaturen <code>getCause</code> som
+	 * infÃ¶rdes fÃ¶r <code>Throwable</code> i JDK 1.4 fÃ¶r att hantera "nested exceptions".
 	 *
 	 * @return Ursprungsfelet
 	 */
@@ -65,9 +65,9 @@ public interface CsnException extends Serializable {
 
 
 	/**
-	 * Returnerar felmeddelandet för detta objekt.
+	 * Returnerar felmeddelandet fÃ¶r detta objekt.
 	 *
-	 * @return Felmeddelandet för detta objekt om det blev skapat med ett
+	 * @return Felmeddelandet fÃ¶r detta objekt om det blev skapat med ett
 	 * message annars resturneras <code>null</code>
 	 */
 	public String getMessage();

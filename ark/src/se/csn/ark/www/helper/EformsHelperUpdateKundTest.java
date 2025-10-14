@@ -5,7 +5,7 @@
 //
 //
 ///**
-// * För att fixa tester av EformsHelper.
+// * FÃ¶r att fixa tester av EformsHelper.
 // *
 // * @author Joakim Olsson
 // * @since 20041202
@@ -13,7 +13,7 @@
 // */
 //public class EformsHelperUpdateKundTest extends EformsHelper {
 //	/**
-//     * Updaterar mobil-nummer med 'q' först och sist
+//     * Updaterar mobil-nummer med 'q' fÃ¶rst och sist
 //	 * @see se.csn.ark.www.helper.EformsHelper#update(iipax.business.shseforms.ParameterTree)
 //	 */
 //	public DTOValidateResult update(ParameterTree tree) {

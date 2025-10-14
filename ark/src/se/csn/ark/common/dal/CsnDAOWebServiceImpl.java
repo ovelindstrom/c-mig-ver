@@ -14,14 +14,14 @@ import se.csn.ark.common.util.Properties;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * Basklass för Web Service klient.
+ * Basklass fÃ¶r Web Service klient.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040907
  * @version 1 skapad
- * @version 1.1 2008-02-22 borttag av logik för att skicka över web service.
- * 			Ska ligga i koden för respektive projekt.
- * 			Ny funktionalitet för att returnera endpoint för ipl.
+ * @version 1.1 2008-02-22 borttag av logik fÃ¶r att skicka Ã¶ver web service.
+ * 			Ska ligga i koden fÃ¶r respektive projekt.
+ * 			Ny funktionalitet fÃ¶r att returnera endpoint fÃ¶r ipl.
  * 			/Anders Berglund, csn7823 
  *
  */
@@ -38,10 +38,10 @@ public class CsnDAOWebServiceImpl extends CsnDataAccessObjectImpl {
 
 
 	/**
-	 * Hämtar endpoint.
+	 * HÃ¤mtar endpoint.
 	 * @return end-point url'en
 	 * @param aPorts Iterator
-	 * @throws MalformedURLException om url-sträng felaktig
+	 * @throws MalformedURLException om url-strÃ¤ng felaktig
 	 */
 	public URL getURL(Iterator aPorts) throws MalformedURLException {
 		String aUrl = null;

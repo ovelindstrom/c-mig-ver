@@ -14,9 +14,9 @@ import java.sql.Statement;
 
 
 /**
- * Basklass för databasåtkomst.
+ * Basklass fÃ¶r databasÃ¥tkomst.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041212
  * @version 1 skapad
  *
@@ -29,9 +29,9 @@ public class CsnDAODatabaseImpl extends CsnDataAccessObjectImpl
 	private ResultSet resultSet;
 
 	/**
-	 * Hämtar databasanslutning till standard datakällan via JNDI .
+	 * HÃ¤mtar databasanslutning till standard datakÃ¤llan via JNDI .
      * @param dsType Typ enligt DataSources.
-     * @return koppling till datakällan
+     * @return koppling till datakÃ¤llan
      * @throws DatabaseException gick ej att skapa koppling
 	 */
 	protected Connection getConnection(int dsType) throws DatabaseException {
@@ -44,12 +44,12 @@ public class CsnDAODatabaseImpl extends CsnDataAccessObjectImpl
 
 
 	/**
-	 * Kör en SQL fråga och levererar ett resultset.
+	 * KÃ¶r en SQL frÃ¥ga och levererar ett resultset.
 	 *
 	 * @param dsType Typ enligt DataSources.
-	 * @param sqlQuery SQL sträng.
+	 * @param sqlQuery SQL strÃ¤ng.
 	 * @return Ett resultset om allt gick bra.
-	 * @throws DatabaseException Om det inte gick vägen.
+	 * @throws DatabaseException Om det inte gick vÃ¤gen.
 	 * @see DataSources
 	 */
 	public ResultSet executeQuery(int dsType, String sqlQuery)
@@ -71,7 +71,7 @@ public class CsnDAODatabaseImpl extends CsnDataAccessObjectImpl
 
 
 	/**
-	 * Stänger statement, resultset och connection.
+	 * StÃ¤nger statement, resultset och connection.
 	 */
 	public void close() {
 		try {

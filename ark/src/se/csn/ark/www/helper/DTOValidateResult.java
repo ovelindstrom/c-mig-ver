@@ -23,7 +23,7 @@ public class DTOValidateResult extends CsnDataTransferObjectImpl {
 	private String sAlternativeUrlProperty;
 
 	/**
-	 * Sätter status på valideringen.
+	 * SÃ¤tter status pÃ¥ valideringen.
 	 *
 	 * @param  theStatus valideringsstatus
 	 */
@@ -35,9 +35,9 @@ public class DTOValidateResult extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * Hämtar en alternativ url property.
-	 * Om man behöver en alternativ url än default..
-	 * @return nya url property, om inte default skall användas
+	 * HÃ¤mtar en alternativ url property.
+	 * Om man behÃ¶ver en alternativ url Ã¤n default..
+	 * @return nya url property, om inte default skall anvÃ¤ndas
 	 */
 	public String getSAlternativeUrlProperty() {
 		return sAlternativeUrlProperty;
@@ -47,8 +47,8 @@ public class DTOValidateResult extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * Sätter en alternativ url property.
-	 * Om man behöver en alternativ url än default..
+	 * SÃ¤tter en alternativ url property.
+	 * Om man behÃ¶ver en alternativ url Ã¤n default..
 	 * @param string den nya url'en
 	 */
 	public void setSAlternativeUrlProperty(String string) {
@@ -59,14 +59,14 @@ public class DTOValidateResult extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * Lägger till ett nytt felmeddelande.
+	 * LÃ¤gger till ett nytt felmeddelande.
 	 *
 	 * @param errorMessage felmeddelande
 	 */
 	public void addErrorMessage(String errorMessage) {
 		status = NOT_VALID;
 
-		//Om error meddelande finns läggs inte detta in. /Tobias 
+		//Om error meddelande finns lÃ¤ggs inte detta in. /Tobias 
 		if (!errorMessages.contains(errorMessage)) {
 			errorMessages.add(errorMessage);
 		}
@@ -76,7 +76,7 @@ public class DTOValidateResult extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * Resultat som visar att det inte gick inte att köra valideringen.
+	 * Resultat som visar att det inte gick inte att kÃ¶ra valideringen.
 	 *
 	 * @param message felmeddelande
 	 */
@@ -90,7 +90,7 @@ public class DTOValidateResult extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * Hämta alla felmeddelanden från valideringen.
+	 * HÃ¤mta alla felmeddelanden frÃ¥n valideringen.
 	 *
 	 * @return  alla felmeddelanden
 	 */
@@ -102,7 +102,7 @@ public class DTOValidateResult extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * Returnerar true om validering har utförts och den gick bra.
+	 * Returnerar true om validering har utfÃ¶rts och den gick bra.
 	 *
 	 * @return  validering OK
 	 */
@@ -114,7 +114,7 @@ public class DTOValidateResult extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * Returnerar true om validering har utförts och den INTE gick bra.
+	 * Returnerar true om validering har utfÃ¶rts och den INTE gick bra.
 	 *
 	 * @return  validering NOK
 	 */
@@ -126,7 +126,7 @@ public class DTOValidateResult extends CsnDataTransferObjectImpl {
 
 
 	/**
-	 * Returnerar true om validering har utförts.
+	 * Returnerar true om validering har utfÃ¶rts.
 	 *
 	 * @return  validering NOK
 	 */

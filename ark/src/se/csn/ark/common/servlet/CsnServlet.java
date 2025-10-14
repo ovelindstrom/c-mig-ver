@@ -3,9 +3,9 @@ package se.csn.ark.common.servlet;
 import se.csn.ark.common.CsnArkBaseObject;
 
 /**
- * Basgränssnitt för Servlets.
+ * BasgrÃ¤nssnitt fÃ¶r Servlets.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041212
  * @version 1 skapad
  *

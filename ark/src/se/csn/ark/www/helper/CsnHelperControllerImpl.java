@@ -12,13 +12,13 @@ import se.csn.ark.www.jsptag.CsnJspException;
 
 
 /**
- * Tillhandahåller propertie, produkttyper och navigering till
- * hjälpklasser till jsp-sidorna.
+ * TillhandahÃ¥ller propertie, produkttyper och navigering till
+ * hjÃ¤lpklasser till jsp-sidorna.
  *
  * @author Joakim Olsson
  * @since 20050103
  * @version 0.1 skapad
- * @version 0.2	Kompletterad med ArrayList för fel-, varnings- och informationsmeddelanden, Fredrik Stenlund
+ * @version 0.2	Kompletterad med ArrayList fÃ¶r fel-, varnings- och informationsmeddelanden, Fredrik Stenlund
  */
 public class CsnHelperControllerImpl extends CsnArkBaseObjectImpl 
 		implements CsnHelperController {
@@ -98,7 +98,7 @@ public class CsnHelperControllerImpl extends CsnArkBaseObjectImpl
 
 
     /**
-     * @param id id för innevarande sida
+     * @param id id fÃ¶r innevarande sida
      */
     public void setPageid(String id) {
         pageid = id;
@@ -108,7 +108,7 @@ public class CsnHelperControllerImpl extends CsnArkBaseObjectImpl
 
 
 	/**
-	 * @return properties för den här helpern
+	 * @return properties fÃ¶r den hÃ¤r helpern
 	 */
 	public Map getProperties() {
 		return properties.getProperties();
@@ -118,7 +118,7 @@ public class CsnHelperControllerImpl extends CsnArkBaseObjectImpl
 
 
     /**
-     * @return alla properties för den här helpern (properties, products, navigate)
+     * @return alla properties fÃ¶r den hÃ¤r helpern (properties, products, navigate)
      */
     public PageProperties getPageProperties() {
         return properties;
@@ -148,7 +148,7 @@ public class CsnHelperControllerImpl extends CsnArkBaseObjectImpl
 
 
 	/**
-	 * @return pageContext för initierad sida
+	 * @return pageContext fÃ¶r initierad sida
 	 */
 	protected PageContext getPageContext() {
 		return pageContext;
@@ -158,7 +158,7 @@ public class CsnHelperControllerImpl extends CsnArkBaseObjectImpl
 
 
     /**
-     * @param context pageContext för initierad sida
+     * @param context pageContext fÃ¶r initierad sida
      */
     protected void setPageContext(PageContext context) {
         pageContext = context;
@@ -168,7 +168,7 @@ public class CsnHelperControllerImpl extends CsnArkBaseObjectImpl
 
 
     /**
-     * @return namn på servlet context
+     * @return namn pÃ¥ servlet context
      */
 	public String getContextName() {
 		String contextName = "";

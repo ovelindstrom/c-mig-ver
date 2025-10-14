@@ -32,7 +32,7 @@ public class GenProxyActionListener implements ActionListener {
 	}
 	
     /**
-     * @return den h‰ndelse som har rapporterats
+     * @return den h√§ndelse som har rapporterats
      */
 	public ActionEvent getActionEvent() {
 		return event;

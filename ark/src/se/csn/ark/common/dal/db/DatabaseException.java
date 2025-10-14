@@ -7,9 +7,9 @@ package se.csn.ark.common.dal.db;
 import se.csn.ark.common.CsnSystemException;
 
 /**
- * Basklass för databas fel.
+ * Basklass fÃ¶r databas fel.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040916
  * @version 1 skapad
  *
@@ -35,7 +35,7 @@ public class DatabaseException extends CsnSystemException {
 
     /**
      * @param message felmeddelande
-     * @param errorId id på felet
+     * @param errorId id pÃ¥ felet
      * @param cause exception som orsakade felet
      */
 	public DatabaseException(

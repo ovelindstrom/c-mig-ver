@@ -1,11 +1,11 @@
 package se.csn.ark.common.manage;
 
 /**
- * Gränssnitt för något som skall kunna vara hanterbart.
- * Innehåller det som en hanterare skall kunna anropa mot
+ * GrÃ¤nssnitt fÃ¶r nÃ¥got som skall kunna vara hanterbart.
+ * InnehÃ¥ller det som en hanterare skall kunna anropa mot
  * den resurs som skall hanteras.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041111
  * @version 1 skapad
  *
@@ -14,17 +14,17 @@ public interface CsnManagable {
 
 	
 	/**
-	 * Ej initierad - Har inte använts eller har blivit nerstängd (close).
+	 * Ej initierad - Har inte anvÃ¤nts eller har blivit nerstÃ¤ngd (close).
 	 */
 	public int STATE_NOT_INITIATED = 0;
 
 	/**
-	 * Initierad - Redo för start.
+	 * Initierad - Redo fÃ¶r start.
 	 */
 	public int STATE_INITIATED = 1;
 
 	/**
-	 * Kör - Anrop till start har gjorts.
+	 * KÃ¶r - Anrop till start har gjorts.
 	 */
 	public int STATE_RUNNING = 2;
 
@@ -34,12 +34,12 @@ public interface CsnManagable {
 	public int STATE_STOPPED = 3;
 
 	/**
-	 * Stängd - Måste initieras igen för att kunna användas igen.
+	 * StÃ¤ngd - MÃ¥ste initieras igen fÃ¶r att kunna anvÃ¤ndas igen.
 	 */
 	public int STATE_CLOSED = 4;
 
 	/**
-	 * Texter som beskriver tillstånden. Hämtas ur arrayen med motsvarande 
+	 * Texter som beskriver tillstÃ¥nden. HÃ¤mtas ur arrayen med motsvarande 
 	 * STATE_ konstant.
 	 */
 	public String[] STATES_TEXTS = {"NOT INITIATED", "INITIATED", "RUNNING", 
@@ -48,8 +48,8 @@ public interface CsnManagable {
 	/**
 	 * Initierar det som skall hanteras.
 	 * 
-	 * @throws UnManagableException Indikerar att något gått så pass fel att tjänsten 
-     * inte kan initieras. Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel att tjÃ¤nsten 
+     * inte kan initieras. Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 * 
 	 */
 	public void init() throws UnManagableException;
@@ -57,60 +57,60 @@ public interface CsnManagable {
 	/**
 	 * Startar exekveringen.
 	 * 
-	 * @throws UnManagableException Indikerar att något gått så pass fel att tjänsten 
-     * inte kan startas. Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel att tjÃ¤nsten 
+     * inte kan startas. Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 * 
 	 */
 	public void start() throws UnManagableException;
 	
 	/**
-	 * Stoppar exekveringen utan att stänga ner resurser.
+	 * Stoppar exekveringen utan att stÃ¤nga ner resurser.
 	 * 
-	 * @throws UnManagableException Indikerar att något gått så pass fel att tjänsten 
-     * inte kan stoppas. Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel att tjÃ¤nsten 
+     * inte kan stoppas. Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 * 
 	 */
 	public void stop() throws UnManagableException;
 	
 	/**
-	 * Stänger ner alla resurser för det som hanteras.
+	 * StÃ¤nger ner alla resurser fÃ¶r det som hanteras.
 	 * 
-	 * @throws UnManagableException Indikerar att något gått så pass fel att tjänsten 
-     * inte kan stängas. Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel att tjÃ¤nsten 
+     * inte kan stÃ¤ngas. Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 * 
 	 */
 	public void close() throws UnManagableException;
 	
 	/**
-	 * Ger tillståndet för denna tjänst enligt de metoder som kan anropas 
-	 * i detta gränssnitt - init, start, stop och close. 
+	 * Ger tillstÃ¥ndet fÃ¶r denna tjÃ¤nst enligt de metoder som kan anropas 
+	 * i detta grÃ¤nssnitt - init, start, stop och close. 
 	 * 
-	 * @return Returnerar värden enligt någon av de "konstanter" som finns
-	 * i detta gränssnitt och börjar på STATE_ .
+	 * @return Returnerar vÃ¤rden enligt nÃ¥gon av de "konstanter" som finns
+	 * i detta grÃ¤nssnitt och bÃ¶rjar pÃ¥ STATE_ .
 	 * 
-	 * @throws UnManagableException Indikerar att något gått så pass fel att det inte går att
-	 * fråga efter tillståndet för tjänsten.
-	 * Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel att det inte gÃ¥r att
+	 * frÃ¥ga efter tillstÃ¥ndet fÃ¶r tjÃ¤nsten.
+	 * Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 * 
 	 */
 	public int getState() throws UnManagableException;
 
 	/**
-	 * Strängrepresentation av status för det som hanteras.
+	 * StrÃ¤ngrepresentation av status fÃ¶r det som hanteras.
 	 * 
-	 * @return Information som talar status för denna tjänst.
+	 * @return Information som talar status fÃ¶r denna tjÃ¤nst.
 	 * 
-	 * @throws UnManagableException Indikerar att något gått så pass fel att det inte går att
-	 * fråga efter status för tjänsten.
-	 * Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel att det inte gÃ¥r att
+	 * frÃ¥ga efter status fÃ¶r tjÃ¤nsten.
+	 * Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 * 
 	 */
 	public String getStatus() throws UnManagableException;
 
 	/**
-	 * Ger klassreferens för loggning m.m.
+	 * Ger klassreferens fÃ¶r loggning m.m.
 	 * 
-	 * @return Klassen som implementerar detta gränssnitt.
+	 * @return Klassen som implementerar detta grÃ¤nssnitt.
 	 */
 	public Class getManagableClass();
 	

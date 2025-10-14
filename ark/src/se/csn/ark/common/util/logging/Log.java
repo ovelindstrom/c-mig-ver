@@ -16,30 +16,30 @@ import se.csn.ark.common.util.logging.critical.CriticalLog;
  * <P>Namn: Logg </P><br>
  *
  * <P>Beskrivning: <br>
- * Tillhandahåller loggnings funktionalitet för CSN:s java ramverk.
+ * TillhandahÃ¥ller loggnings funktionalitet fÃ¶r CSN:s java ramverk.
  *
- * @author K-G Sjöström
+ * @author K-G SjÃ¶strÃ¶m
  * @since 20040805  
  * @version 1 skapad
- * @version 2 Ändrad av csn7571 för E-tjänster
+ * @version 2 Ã„ndrad av csn7571 fÃ¶r E-tjÃ¤nster
  */
 public class Log extends LogBase {
 	/** Collection av singleton Log objects, en per klass. */
 	private static HashMap logInstances = new HashMap();
 
-	/** Singleton instans av logger för kritiska systemfel. */
+	/** Singleton instans av logger fÃ¶r kritiska systemfel. */
 	private static CriticalLog criticalLog = CriticalLog.getLoggerInstance();
 
 	/**
-	 * Category är log4j klassen som används för loggningen av denna log wrapper.
+	 * Category Ã¤r log4j klassen som anvÃ¤nds fÃ¶r loggningen av denna log wrapper.
 	 */
 	private Category log;
 
-	/** Namnet som log instansen är kopplad till. */
+	/** Namnet som log instansen Ã¤r kopplad till. */
 	private String instanceName;
-	/** Servern som log instansen är kopplad till. */
+	/** Servern som log instansen Ã¤r kopplad till. */
 	private String server;
-	/** Systemet, tex E-BSM, som log instansen är kopplad till. */
+	/** Systemet, tex E-BSM, som log instansen Ã¤r kopplad till. */
 	private String system;
 
 	/**
@@ -59,9 +59,9 @@ public class Log extends LogBase {
 			  this.server ="unknown";
 			} 	
 		
-		 this.system=APP_NAMN; //från LogBase
+		 this.system=APP_NAMN; //frÃ¥n LogBase
 		 //Dessa kan loggas i log4j i ConversionPattern/sql
-         //%X{server} för FileAppender / @MDC:server@ för JDBCAppender
+         //%X{server} fÃ¶r FileAppender / @MDC:server@ fÃ¶r JDBCAppender
 		 MDC.put("server", this.server);
 		 MDC.put("system", this.system);
 
@@ -69,7 +69,7 @@ public class Log extends LogBase {
 	}
 
 	/**
-	 * Returnerar en log instans för den log som idenifieras av det givna namnet..
+	 * Returnerar en log instans fÃ¶r den log som idenifieras av det givna namnet..
 	 *
 	 * @param instanceName Instansnamnet
 	 *
@@ -93,9 +93,9 @@ public class Log extends LogBase {
 
 
 	/**
-	 * Returnerar en Logg instans för det Logg objekt som identifieras av den givna klassen
+	 * Returnerar en Logg instans fÃ¶r det Logg objekt som identifieras av den givna klassen
 	 *
-	 * @param instanceClass Klass som identifierar vilken log som skall användas.
+	 * @param instanceClass Klass som identifierar vilken log som skall anvÃ¤ndas.
 	 *
 	 * @return En log instans
 	 */
@@ -116,11 +116,11 @@ public class Log extends LogBase {
 	public void fatal(Object message) {
 		log.fatal(message);
 
-		// Logga även till den egna loggfilen för kritiska systemfel.
+		// Logga Ã¤ven till den egna loggfilen fÃ¶r kritiska systemfel.
 		criticalLog.critical(instanceName + " " + message);
 
 		if (isNtEventLoggingEnabled()) {
-			// NT Event Log har ERROR som högsta nivå
+			// NT Event Log har ERROR som hÃ¶gsta nivÃ¥
 			LoggingEvent e =
 				new LoggingEvent(APP_NAMN, log, Priority.ERROR, message, null);
 
@@ -145,11 +145,11 @@ public class Log extends LogBase {
 	public void fatal(Object message, Throwable throwable) {
 		log.fatal(message, throwable);
 
-		// Logga även till den egna loggfilen för kritiska systemfel.
+		// Logga Ã¤ven till den egna loggfilen fÃ¶r kritiska systemfel.
 		criticalLog.critical(instanceName + " " + message, throwable);
 
 		if (isNtEventLoggingEnabled()) {
-			// NT Event Log har ERROR som högsta nivå
+			// NT Event Log har ERROR som hÃ¶gsta nivÃ¥
 			LoggingEvent e =
 				new LoggingEvent(
 				                 APP_NAMN,
@@ -275,9 +275,9 @@ public class Log extends LogBase {
 
 
 	/**
-	 * Loggar ett meddelande med angiven loggnivå.
+	 * Loggar ett meddelande med angiven loggnivÃ¥.
 	 *
-	 * @param loggNiva Aktuell loggnivå för detta message.
+	 * @param loggNiva Aktuell loggnivÃ¥ fÃ¶r detta message.
 	 * @param message Meddelande som skall loggas.
 	 */
 	public void log(LogLevel loggNiva, Object message) {
@@ -289,9 +289,9 @@ public class Log extends LogBase {
 
 
 	/**
-	 * Loggar ett meddelande med angiven loggnivå.
+	 * Loggar ett meddelande med angiven loggnivÃ¥.
 	 *
-	 * @param loggNiva Aktuell loggnivå för detta message.
+	 * @param loggNiva Aktuell loggnivÃ¥ fÃ¶r detta message.
 	 * @param message Meddelande som skall loggas.
 	 * @param throwable Fel som skall loggas.
 	 */
@@ -319,36 +319,36 @@ public class Log extends LogBase {
 
 
 	/**
-	 * Kollar om debug loggning är påslaget.
+	 * Kollar om debug loggning Ã¤r pÃ¥slaget.
 	 *
-	 * <p>Med denna metod kan man minska den mängd datorkraft som går åt
+	 * <p>Med denna metod kan man minska den mÃ¤ngd datorkraft som gÃ¥r Ã¥t
 	 * till debug loggning.</p>
 	 *
 	 * <p>Om man skriver koden som ...</p>
 	 *
 	 * <pre>
-	 *   log.debug("Detta är nummer: " + i );
+	 *   log.debug("Detta Ã¤r nummer: " + i );
 	 * </pre>
 	 *
-	 * <p>... så kommer strängen för debug meddelandet att byggas ihop
+	 * <p>... sÃ¥ kommer strÃ¤ngen fÃ¶r debug meddelandet att byggas ihop
 	 * oavsett om meddelandet kommer att log eller ej. </p>
 	 *
-	 * <p>Skriv istället</p>
+	 * <p>Skriv istÃ¤llet</p>
 	 *
 	 * <pre>
 	 *   if(log.isDebugEnabled() {
-	 *     log.debug("Detta är nummer: " + i );
+	 *     log.debug("Detta Ã¤r nummer: " + i );
 	 *   }
 	 * </pre>
 	 *
-	 * <p>På detta sätt kommer det inte finnas någon onödig parameter
-	 * konstruktion för meddelanden. Å andra sidan kommer kontrollen om
-	 * debug är påslaget att utföras 2 gånger. En gång i
-	 * <code>isDebugEnabled</code> och en gång till i <code>debug</code>.
-	 * Detta är dock försumbart då det tar 1% av tiden att kontrollera
-	 * om det skall loggas jämfört med tiden att skriva till loggen.
+	 * <p>PÃ¥ detta sÃ¤tt kommer det inte finnas nÃ¥gon onÃ¶dig parameter
+	 * konstruktion fÃ¶r meddelanden. Ã… andra sidan kommer kontrollen om
+	 * debug Ã¤r pÃ¥slaget att utfÃ¶ras 2 gÃ¥nger. En gÃ¥ng i
+	 * <code>isDebugEnabled</code> och en gÃ¥ng till i <code>debug</code>.
+	 * Detta Ã¤r dock fÃ¶rsumbart dÃ¥ det tar 1% av tiden att kontrollera
+	 * om det skall loggas jÃ¤mfÃ¶rt med tiden att skriva till loggen.
 	 *
-	 * @return <code>true</code> om debug loggning är påslaget,
+	 * @return <code>true</code> om debug loggning Ã¤r pÃ¥slaget,
 	 *    <code>false</code> annars.
 	 */
 	public boolean isDebugEnabled() {
@@ -359,36 +359,36 @@ public class Log extends LogBase {
 
 
 	/**
-	 * Kollar om info loggning är påslaget.
+	 * Kollar om info loggning Ã¤r pÃ¥slaget.
 	 *
-	 * <p>Med denna metod kan man minska den mängd datorkraft som går åt
+	 * <p>Med denna metod kan man minska den mÃ¤ngd datorkraft som gÃ¥r Ã¥t
 	 * till info loggning.</p>
 	 *
 	 * <p>Om man skriver koden som ...</p>
 	 *
 	 * <pre>
-	 *   log.info("Detta är nummer: " + i );
+	 *   log.info("Detta Ã¤r nummer: " + i );
 	 * </pre>
 	 *
-	 * <p>... så kommer strängen för debug meddelandet att byggas ihop
+	 * <p>... sÃ¥ kommer strÃ¤ngen fÃ¶r debug meddelandet att byggas ihop
 	 * oavsett om meddelandet kommer att log eller ej. </p>
 	 *
-	 * <p>Skriv istället</p>
+	 * <p>Skriv istÃ¤llet</p>
 	 *
 	 * <pre>
 	 *   if(log.isInfoEnabled() {
-	 *     log.info("Detta är nummer: " + i );
+	 *     log.info("Detta Ã¤r nummer: " + i );
 	 *   }
 	 * </pre>
 	 *
-	 * <p>På detta sätt kommer det inte finnas någon onödig parameter
-	 * konstruktion för meddelanden. Å andra sidan kommer kontrollen om
-	 * debug är påslaget att utföras 2 gånger. En gång i
-	 * <code>isDebugEnabled</code> och en gång till i <code>debug</code>.
-	 * Detta är dock försumbart då det tar 1% av tiden att kontrollera
-	 * om det skall loggas jämfört med tiden att skriva till loggen.
+	 * <p>PÃ¥ detta sÃ¤tt kommer det inte finnas nÃ¥gon onÃ¶dig parameter
+	 * konstruktion fÃ¶r meddelanden. Ã… andra sidan kommer kontrollen om
+	 * debug Ã¤r pÃ¥slaget att utfÃ¶ras 2 gÃ¥nger. En gÃ¥ng i
+	 * <code>isDebugEnabled</code> och en gÃ¥ng till i <code>debug</code>.
+	 * Detta Ã¤r dock fÃ¶rsumbart dÃ¥ det tar 1% av tiden att kontrollera
+	 * om det skall loggas jÃ¤mfÃ¶rt med tiden att skriva till loggen.
 	 *
-	 * @return <code>true</code> om debug loggning är påslaget,
+	 * @return <code>true</code> om debug loggning Ã¤r pÃ¥slaget,
 	 *    <code>false</code> annars.
 	 */
 	public boolean isInfoEnabled() {
@@ -399,7 +399,7 @@ public class Log extends LogBase {
 
 
 	/**
-	 * @return strängrepresentation av klassen
+	 * @return strÃ¤ngrepresentation av klassen
 	 */
 	public String toString() {
 		return super.toString();

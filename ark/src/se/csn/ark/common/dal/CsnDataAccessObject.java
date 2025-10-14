@@ -5,9 +5,9 @@ import java.io.Serializable;
 import se.csn.ark.common.CsnArkBaseObject;
 
 /**
- * Basgränssnitt för alla dataåtkomst objekt.
+ * BasgrÃ¤nssnitt fÃ¶r alla dataÃ¥tkomst objekt.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20040907
  * @version 1 skapad
  *

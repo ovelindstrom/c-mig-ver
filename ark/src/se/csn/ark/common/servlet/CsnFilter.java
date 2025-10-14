@@ -10,9 +10,9 @@ import javax.servlet.Filter;
 import se.csn.ark.common.CsnArkBaseObject;
 
 /**
- * Basgränssnitt för Filter.
+ * BasgrÃ¤nssnitt fÃ¶r Filter.
  * 
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20050324
  * @version 1 skapad
  *

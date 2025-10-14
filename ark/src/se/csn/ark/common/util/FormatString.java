@@ -31,7 +31,7 @@ public class FormatString {
 					avslutsTecken[3] = new Character('\'');
 					avslutsTecken[3] = new Character('-');
 
-					//Första bokstaven i namnet ska alltid börja med stor bokstav (om det inte är ett undantagsord)
+					//FÃ¶rsta bokstaven i namnet ska alltid bÃ¶rja med stor bokstav (om det inte Ã¤r ett undantagsord)
 					foregaendeTecken = new Character(' ');
 
 					adress = adress.toUpperCase();
@@ -40,15 +40,15 @@ public class FormatString {
 						tecken = new Character(adress.charAt(i));
 
 						if ((finnsCharacterIArray(foregaendeTecken, avslutsTecken)) && (!finnsCharacterIArray(tecken, avslutsTecken))) {
-							//Föregående tecken var ett avslutstecken och nuvarande är inte det
+							//FÃ¶regÃ¥ende tecken var ett avslutstecken och nuvarande Ã¤r inte det
 							formateradAdress += tecken.toString().toUpperCase();
 
 						} else if ((finnsCharacterIArray(foregaendeTecken, avslutsTecken)) && (finnsCharacterIArray(tecken, avslutsTecken))) {
-							//Föregående och nuvarande tecken är avslutstecken 
+							//FÃ¶regÃ¥ende och nuvarande tecken Ã¤r avslutstecken 
 							formateradAdress += tecken.toString();
 
 						} else if (!finnsCharacterIArray(foregaendeTecken, avslutsTecken)) {
-							//Föregående tecken var inte ett avslutstecken
+							//FÃ¶regÃ¥ende tecken var inte ett avslutstecken
 							formateradAdress += tecken.toString().toLowerCase();
 						}
 
@@ -81,11 +81,11 @@ public class FormatString {
 					avslutsTecken[2] = new Character(',');
 					avslutsTecken[3] = new Character('\'');
 
-					//Undantagsord kan aldrig börja med ett avslutstecken
+					//Undantagsord kan aldrig bÃ¶rja med ett avslutstecken
 					undantagsOrd[0] = "VON";
 					undantagsOrd[1] = "AF";
 
-					//Första bokstaven i namnet ska alltid börja med stor bokstav (om det inte är ett undantagsord)
+					//FÃ¶rsta bokstaven i namnet ska alltid bÃ¶rja med stor bokstav (om det inte Ã¤r ett undantagsord)
 					foregaendeTecken = new Character(' ');
 
 					namn = namn.toUpperCase();
@@ -95,12 +95,12 @@ public class FormatString {
 						undantagsOrdFunnet = false;
 
 						if ((finnsCharacterIArray(foregaendeTecken, avslutsTecken)) && (!finnsCharacterIArray(tecken, avslutsTecken))) {
-							//Föregående tecken var ett avslutstecken och nuvarande är inte det
+							//FÃ¶regÃ¥ende tecken var ett avslutstecken och nuvarande Ã¤r inte det
 
-							//Kolla om det är början på ett ord som aldrig ska skrivas med stora bokstäver. 
-							//Ett sånt ord efterföljs alltid med ett avslutstecken (vanligtvis mellanslag).
+							//Kolla om det Ã¤r bÃ¶rjan pÃ¥ ett ord som aldrig ska skrivas med stora bokstÃ¤ver. 
+							//Ett sÃ¥nt ord efterfÃ¶ljs alltid med ett avslutstecken (vanligtvis mellanslag).
 							for (int x = 0; x < undantagsOrd.length; x++) {
-								//Kontrollera att resterande del av namnet är tillräckligt många tecken för 
+								//Kontrollera att resterande del av namnet Ã¤r tillrÃ¤ckligt mÃ¥nga tecken fÃ¶r 
 								//att kunna vara ett undantagsord inkl. avslutstecken
 								if ((namn.length() - i) >= (undantagsOrd[x].length() + 1)) {
 									for (int z = 0; z < avslutsTecken.length; z++) {
@@ -115,19 +115,19 @@ public class FormatString {
 							}
 
 							if (undantagsOrdFunnet) {
-								//Undantagsord ska alltid bestå av små bokstäver
+								//Undantagsord ska alltid bestÃ¥ av smÃ¥ bokstÃ¤ver
 								formateratNamn += tecken.toString().toLowerCase();
 							} else {
-								//Första bokstaven efter ett avslutstecken ska vara med stor bokstav
+								//FÃ¶rsta bokstaven efter ett avslutstecken ska vara med stor bokstav
 								formateratNamn += tecken.toString().toUpperCase();
 							}
 
 						} else if ((finnsCharacterIArray(foregaendeTecken, avslutsTecken)) && (finnsCharacterIArray(tecken, avslutsTecken))) {
-							//Föregående och nuvarande tecken är avslutstecken 
+							//FÃ¶regÃ¥ende och nuvarande tecken Ã¤r avslutstecken 
 							formateratNamn += tecken.toString();
 
 						} else if (!finnsCharacterIArray(foregaendeTecken, avslutsTecken)) {
-							//Föregående tecken var inte ett avslutstecken
+							//FÃ¶regÃ¥ende tecken var inte ett avslutstecken
 							formateratNamn += tecken.toString().toLowerCase();
 						}
 

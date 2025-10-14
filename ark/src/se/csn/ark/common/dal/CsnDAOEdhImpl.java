@@ -11,14 +11,14 @@
 //
 //
 ///**
-// * Generell bas fˆr edh/fam-koppling
+// * Generell bas f√∂r edh/fam-koppling
 // * 
-// * @author Magnus Storsjˆ
+// * @author Magnus Storsj√∂
 // * @since 20041028
 // * @version 1 skapad
 // */
 //public class CsnDAOEdhImpl extends CsnDataAccessObjectImpl implements CsnDAOEdh {
-//	// H‰mta loggern fˆr klassen
+//	// H√§mta loggern f√∂r klassen
 //	private static Log log = Log.getInstance(CsnDAOEdhImpl.class);
 //
 //	//static Logger logger = Logger.getLogger(EDHKoppling.class);
@@ -34,7 +34,7 @@
 //
 //	/**
 //     * Skapa instans
-//	 * @throws EdhException gick ej att l‰sa inst‰llningar
+//	 * @throws EdhException gick ej att l√§sa inst√§llningar
 //	 */
 //	public CsnDAOEdhImpl() throws EdhException {
 //		try {
@@ -49,25 +49,25 @@
 //			this.pwd = installningar.getPwd();
 //			this.configfil = installningar.getConfigfil();
 //		} catch (Exception e) {
-//			log.error("Det gick inte att h‰mta Faminst‰llningarna. Fˆljande fel mottogs : "
+//			log.error("Det gick inte att h√§mta Faminst√§llningarna. F√∂ljande fel mottogs : "
 //			          + e);
-//			throw new EdhException("Fel frÂn EDHKoppling.skapaKoppling -- Faminst‰llningarna "//                                   + "gick inte att skapa. Fˆljande meddelande mottogs : "
+//			throw new EdhException("Fel fr√•n EDHKoppling.skapaKoppling -- Faminst√§llningarna "//                                   + "gick inte att skapa. F√∂ljande meddelande mottogs : "
 //			                       + e);
 //		}
 //	}
 //
 //	/**
-//	 * @param sCache != -> l‰s frÂn cache-arkiv
+//	 * @param sCache != -> l√§s fr√•n cache-arkiv
 //	 * @return en koppling mot Fam
 //	 * @throws EdhException gick ej att skapa fam-koppling
 //	 */
 //	public FamConnection skapaKoppling(String sCache) throws EdhException {
-//		//H‰r skapas en Famkoppling utifrÂn de inl‰sta v‰rden som finns pÂ JFam.properties
+//		//H√§r skapas en Famkoppling utifr√•n de inl√§sta v√§rden som finns p√• JFam.properties
 //		FamConnection famConn = null;
 //
 //		try {
 //			if (log.isDebugEnabled()) {
-//				log.debug("Debugl‰ge - Nu instansieras Fammiljˆn. Configfil =  "
+//				log.debug("Debugl√§ge - Nu instansieras Fammilj√∂n. Configfil =  "
 //				          + this.configfil);
 //			}
 //
@@ -78,11 +78,11 @@
 //			String debugconfig = config.toString();
 //
 //			if (log.isDebugEnabled()) {
-//				log.debug("Debugl‰ge - v‰rden frÂn config :" + debugconfig);
+//				log.debug("Debugl√§ge - v√§rden fr√•n config :" + debugconfig);
 //			}
 //
 //			/**
-//			 * V‰ljer om vi ska l‰sa frÂn cache arkivet eller inte
+//			 * V√§ljer om vi ska l√§sa fr√•n cache arkivet eller inte
 //			 *
 //			 */
 //			String sFamArchive = null;
@@ -98,21 +98,21 @@
 //				+ ":" + this.famPort + "/" + sFamArchive;
 //
 //			if (log.isDebugEnabled()) {
-//				log.debug("Debugl‰ge - famuri = " + famURI);
-//				log.debug("Debugl‰ge - getConnection - pool");
+//				log.debug("Debugl√§ge - famuri = " + famURI);
+//				log.debug("Debugl√§ge - getConnection - pool");
 //			}
 //
 //			famConn = FamConnectionPool.getConnection(famURI);
 //
 //			if (log.isDebugEnabled()) {
-//				log.debug("Debugl‰ge - getConnection genomfˆrd");
+//				log.debug("Debugl√§ge - getConnection genomf√∂rd");
 //			}
 //
 //			return famConn;
 //		} catch (Exception e) {
-//			log.error("FamKoppling gick inte att skapa. Fˆljande fel mottogs : "
+//			log.error("FamKoppling gick inte att skapa. F√∂ljande fel mottogs : "
 //			          + e);
-//			throw new EdhException("Fel frÂn EDHKoppling.skapaKoppling -- FamKoppling gick "//                                   + "inte att skapa. Meddelande frÂn Fam : "
+//			throw new EdhException("Fel fr√•n EDHKoppling.skapaKoppling -- FamKoppling gick "//                                   + "inte att skapa. Meddelande fr√•n Fam : "
 //			                       + e);
 //		}
 //	}

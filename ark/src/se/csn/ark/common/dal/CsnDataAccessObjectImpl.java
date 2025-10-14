@@ -4,9 +4,9 @@ import se.csn.ark.common.CsnArkBaseObjectImpl;
 
 
 /**
- * Grundklass för alla typer av dataåtkomstobjekt.
+ * Grundklass fÃ¶r alla typer av dataÃ¥tkomstobjekt.
  * 
- * @author K-G Sjöström
+ * @author K-G SjÃ¶strÃ¶m
  * @since 20040907
  * @version 1 skapad
  *

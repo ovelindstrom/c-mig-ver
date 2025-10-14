@@ -9,12 +9,12 @@ package se.csn.ark.common.util;
 /**
  * @author csk4135
  *
- * Returnera ett sekel utifrån ett personnummer
+ * Returnera ett sekel utifrÃ¥n ett personnummer
  */
 public class Sekel {
 
     /**
-     * @return Retrunerar sekel utifrån ett personnummer.
+     * @return Retrunerar sekel utifrÃ¥n ett personnummer.
      */
     public static String getSekel(String personnummer) {
         if(personnummer != null && personnummer.length() > 1 && Character.isDigit(personnummer.charAt(0)) && Character.isDigit(personnummer.charAt(1))) {

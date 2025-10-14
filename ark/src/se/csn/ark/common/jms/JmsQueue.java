@@ -17,7 +17,7 @@ import javax.jms.Session;
  *    Namn :    JmsQue
  *
  *    Beskrivning:
- *  klass för att skapa kö anslutning och tillhandahålla grund objekten
+ *  klass fÃ¶r att skapa kÃ¶ anslutning och tillhandahÃ¥lla grund objekten
  *    QueueConnection, QueueSession och Queue. 
  *
  *
@@ -36,9 +36,9 @@ public class JmsQueue {
     private se.csn.ark.common.jms.Queue queueConnection = null;
 
     /**
-     * Hämtar angiven jndi kö via QueueFactory
+     * HÃ¤mtar angiven jndi kÃ¶ via QueueFactory
      * @param jmsSource Queues.QUEUE1 eller Queues.QUEUE2
-     * @throws QueueException Vid misslyckande att få connectiom eller kö
+     * @throws QueueException Vid misslyckande att fÃ¥ connectiom eller kÃ¶
      */
     public void getQueueConnetion(int jmsSource) throws QueueException {
         try {
@@ -46,27 +46,27 @@ public class JmsQueue {
             qConnection = queueConnection.getConnection();
             que = queueConnection.getQueue();
         } catch (QueueException e) {
-            log.fatal("Misslyckades med att skapa Kö Koppling", e);
+            log.fatal("Misslyckades med att skapa KÃ¶ Koppling", e);
             throw e;
         }
     }
     
     /**
-     * Stänger anslutningen.
-     * @throws JMSException fel vid stängning av anslutning
+     * StÃ¤nger anslutningen.
+     * @throws JMSException fel vid stÃ¤ngning av anslutning
     */
    public void close() throws JMSException {
         qConnection.close();
     }
     /**
-     * @return koppling till kön
+     * @return koppling till kÃ¶n
      */
     protected QueueConnection getQConnection() {
         return qConnection;
     }
 
     /**
-     * @return kö
+     * @return kÃ¶
      */
     protected Queue getQue() {
         return que;
@@ -80,21 +80,21 @@ public class JmsQueue {
     }
 
     /**
-     * @param connection sätt koppling
+     * @param connection sÃ¤tt koppling
      */
     protected void setQConnection(QueueConnection connection) {
         qConnection = connection;
     }
 
     /**
-     * @param q sätt kö
+     * @param q sÃ¤tt kÃ¶
      */
     protected void setQue(Queue q) {
         que = q;
     }
 
     /**
-     * @param qs sätt session
+     * @param qs sÃ¤tt session
      */
     protected void setSession(QueueSession qs) {
         this.session = qs;

@@ -3,9 +3,9 @@ package se.csn.ark.common.util;
 import se.csn.ark.common.CsnApplicationException;
 
 /**
- * Denna klass indikerar att fel uppstått vid tolkning.
+ * Denna klass indikerar att fel uppstÃ¥tt vid tolkning.
  * 
- * @author K-G Sjöström
+ * @author K-G SjÃ¶strÃ¶m
  * @since 20041020
  * @version 1 skapad
  *

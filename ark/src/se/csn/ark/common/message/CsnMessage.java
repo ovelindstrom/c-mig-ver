@@ -8,7 +8,7 @@ package se.csn.ark.common.message;
 /**
  *  Namn : CsnMessage <br>
  *
- * Beskrivning: Interface som alla typer av meddelande skall ärva av
+ * Beskrivning: Interface som alla typer av meddelande skall Ã¤rva av
  * @author CSN7504
  * @version 1.0
  *

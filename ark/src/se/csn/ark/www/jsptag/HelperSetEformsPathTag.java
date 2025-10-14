@@ -7,12 +7,12 @@
 //import javax.servlet.jsp.JspException;
 //
 ///**
-// * Tag som h‰mtar data ur eforms-tr‰det.
+// * Tag som h√§mtar data ur eforms-tr√§det.
 // *
 // * @author Joakim Olsson
 // * @since 20050221
 // * @version 0.1 skapad
-// * @version 1.0 Fˆr‰ndringar av Jacob Nordin 2005-09-21. Se kommentarer i basklassen HelperTag.
+// * @version 1.0 F√∂r√§ndringar av Jacob Nordin 2005-09-21. Se kommentarer i basklassen HelperTag.
 // */
 //public class HelperSetEformsPathTag extends HelperTag {
 //   private static final Log log = Log.getInstance(HelperSetEformsPathTag.class);
@@ -20,16 +20,16 @@
 //   private boolean isAbsolute = false;
 //
 //   /**
-//    * S‰tter eforms-pathen
+//    * S√§tter eforms-pathen
 //    *
-//    * @param  nodePath den nod som man ska h‰mta v‰rdet frÂn
+//    * @param  nodePath den nod som man ska h√§mta v√§rdet fr√•n
 //    */
 //   public void setPath(String nodePath) {
 //      this.path = nodePath;
 //   }
 //
 //   /**
-//    * S‰tter om den givna eforms-pathen ‰r absolut
+//    * S√§tter om den givna eforms-pathen √§r absolut
 //    *
 //    * @param  absolute true=absolut, false=relativ
 //    */
@@ -59,8 +59,8 @@
 //   }
 //
 //   /**
-//     * S‰tter path i eforms-tr‰det
-//    * @param helper den helper som anv‰nds
+//     * S√§tter path i eforms-tr√§det
+//    * @param helper den helper som anv√§nds
 //     * @throws JspException om ingen riktig helper finns
 //    */
 //   private void setEformsPath(Object helper) throws JspException {
@@ -68,8 +68,8 @@
 //      if (helper == null) {
 //         throw new CsnJspException("Helper == null", CsnJspException.HELPER_EXCEPTION);
 //      } else if (!(helper instanceof EformsHelper)) {
-//         throw new CsnJspException("GetFromTree mÂste utfˆras pÂ helper " + EformsHelper.class.getName() 
-//                                   + " ej pÂ " + helper.getClass().getName(), 
+//         throw new CsnJspException("GetFromTree m√•ste utf√∂ras p√• helper " + EformsHelper.class.getName() 
+//                                   + " ej p√• " + helper.getClass().getName(), 
 //                                   CsnJspException.HELPER_EXCEPTION);
 //      }
 //

@@ -10,16 +10,16 @@ import se.csn.ark.common.util.FormatException;
 
 
 /**
- * Grundklass för alla typer av datatransportobjekt.
+ * Grundklass fÃ¶r alla typer av datatransportobjekt.
  *
- * @author K-G Sjöström
+ * @author K-G SjÃ¶strÃ¶m
  * @since 20040914
  * @version 1 skapad
  *
  */
 public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 	/**
-	 * Konstant för newline tecken lämpligt för användande i
+	 * Konstant fÃ¶r newline tecken lÃ¤mpligt fÃ¶r anvÃ¤ndande i
 	 * exempelvis toString metod.
 	 */
 	protected static final String NL = "\n";
@@ -28,7 +28,7 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 	private String event;
 
 	/**
-	 * Konstruktor som används om man inte vill använda transaktions id
+	 * Konstruktor som anvÃ¤nds om man inte vill anvÃ¤nda transaktions id
 	 */
 	public CsnDataTransferObjectImpl() {
 		this(false);
@@ -38,8 +38,8 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * Konstruktor som används om man vill använda transaktions id
-	 * @param useTransactionID id för trasaktion med denna dto
+	 * Konstruktor som anvÃ¤nds om man vill anvÃ¤nda transaktions id
+	 * @param useTransactionID id fÃ¶r trasaktion med denna dto
 	 */
 	public CsnDataTransferObjectImpl(boolean useTransactionID) {
 		if (useTransactionID) {
@@ -53,7 +53,7 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * @return true om dto'n innehåller exception
+	 * @return true om dto'n innehÃ¥ller exception
 	 */
 	public boolean isException() {
 		if (dtoException != null) {
@@ -67,13 +67,13 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * Bekvämlighetsmetod för att formatera datum i toString
-	 * metoder. Eventuella Exceptions "sväljs" då detta är till
-	 * för att skapa en sträng som skall användas för debug och
+	 * BekvÃ¤mlighetsmetod fÃ¶r att formatera datum i toString
+	 * metoder. Eventuella Exceptions "svÃ¤ljs" dÃ¥ detta Ã¤r till
+	 * fÃ¶r att skapa en strÃ¤ng som skall anvÃ¤ndas fÃ¶r debug och
 	 * loggning.
 	 *
 	 * @param gregCal Kalender som ska formateras.
-	 * @return String sträng för användande i toString metod.
+	 * @return String strÃ¤ng fÃ¶r anvÃ¤ndande i toString metod.
 	 */
 	protected String toStringDateFormat(GregorianCalendar gregCal) {
 		String dateStr = null;
@@ -81,7 +81,7 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 		try {
 			dateStr = FormatDate.toDateFormatString(gregCal);
 		} catch (FormatException fe) {
-			// Gör ingenting alls.
+			// GÃ¶r ingenting alls.
 		}
 
 		return dateStr;
@@ -91,7 +91,7 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * Ger datatransport objekt för exception.
+	 * Ger datatransport objekt fÃ¶r exception.
 	 *
 	 * @return Transporterat exception.
 	 */
@@ -103,9 +103,9 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * Sätter datatransport objekt för exception.
+	 * SÃ¤tter datatransport objekt fÃ¶r exception.
 	 *
-	 * @param de Exception för transport.
+	 * @param de Exception fÃ¶r transport.
 	 */
 	public void setDTOException(DTOException de) {
 		this.dtoException = de;
@@ -115,7 +115,7 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * @param ce exception för transport
+	 * @param ce exception fÃ¶r transport
 	 */
 	public void setCsnException(DTOException ce) {
 		this.dtoException = ce;
@@ -125,10 +125,10 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * Ger transaktions id för pågående trsaktion.
-	 * Används i första hand för loggning.
+	 * Ger transaktions id fÃ¶r pÃ¥gÃ¥ende trsaktion.
+	 * AnvÃ¤nds i fÃ¶rsta hand fÃ¶r loggning.
 	 *
-	 * @return Id för aktuell transaktion.
+	 * @return Id fÃ¶r aktuell transaktion.
 	 */
 	public String getTransactionId() {
 		return transactionId;
@@ -138,10 +138,10 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * Sätter transactionsid.
-	 * Används i första hand för loggning.
+	 * SÃ¤tter transactionsid.
+	 * AnvÃ¤nds i fÃ¶rsta hand fÃ¶r loggning.
 	 *
-	 * @param string Id för aktuell transaktion.
+	 * @param string Id fÃ¶r aktuell transaktion.
 	 */
 	public void setTransactionId(String string) {
 		transactionId = string;
@@ -151,10 +151,10 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * Ger händelse.
-	 * Används i första hand för loggning.
+	 * Ger hÃ¤ndelse.
+	 * AnvÃ¤nds i fÃ¶rsta hand fÃ¶r loggning.
 	 *
-	 * @return  Beskrivning av den händelse som skall loggas.
+	 * @return  Beskrivning av den hÃ¤ndelse som skall loggas.
 	 */
 	public String getEvent() {
 		return event;
@@ -164,10 +164,10 @@ public class CsnDataTransferObjectImpl implements CsnDataTransferObject {
 
 
 	/**
-	 * Sätter händelse.
-	 * Används i första hand för loggning.
+	 * SÃ¤tter hÃ¤ndelse.
+	 * AnvÃ¤nds i fÃ¶rsta hand fÃ¶r loggning.
 	 *
-	 * @param ev Beskrivning av den händelse som skall loggas.
+	 * @param ev Beskrivning av den hÃ¤ndelse som skall loggas.
 	 */
 	public void setEvent(String ev) {
 		this.event = ev;

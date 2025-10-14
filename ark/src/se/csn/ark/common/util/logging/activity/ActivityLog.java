@@ -14,14 +14,14 @@ import se.csn.ark.common.util.logging.LogLevel;
 
 /**
  * 
- * Aktivitetsloggning som används för att kunna logga alla tjänster för att
- * kunna plocka ut statistik/spårbarhet för en person. Aktivitetsloggningen
- * sköts av log4j och skickas till fil eller DB beroende på val av appender.
- * Tabellen AKTIVITETSLOGG_ET är skapad i db. Överföring av data sker med MDCer i log4j,
+ * Aktivitetsloggning som anvÃ¤nds fÃ¶r att kunna logga alla tjÃ¤nster fÃ¶r att
+ * kunna plocka ut statistik/spÃ¥rbarhet fÃ¶r en person. Aktivitetsloggningen
+ * skÃ¶ts av log4j och skickas till fil eller DB beroende pÃ¥ val av appender.
+ * Tabellen AKTIVITETSLOGG_ET Ã¤r skapad i db. Ã–verfÃ¶ring av data sker med MDCer i log4j,
  * se kommentar i LogWriter klassen nedan.
  * 
- * Används också för att logga inloggningen. Både om det går bra vilken typ av
- * e-legitimation som används och vid fel, vad felet beror på. 
+ * AnvÃ¤nds ocksÃ¥ fÃ¶r att logga inloggningen. BÃ¥de om det gÃ¥r bra vilken typ av
+ * e-legitimation som anvÃ¤nds och vid fel, vad felet beror pÃ¥. 
  * 
  * @author csn7571
  * @since 2007-04-13
@@ -46,7 +46,7 @@ public final class ActivityLog {
     }
 
     /**
-     * Laddar in egenskaper för denna loggklass på nytt.
+     * Laddar in egenskaper fÃ¶r denna loggklass pÃ¥ nytt.
      */
     public static void reloadProperties() {
 
@@ -54,7 +54,7 @@ public final class ActivityLog {
     }
 
     /**
-     * Category är log4j klassen som används för loggningen av denna log
+     * Category Ã¤r log4j klassen som anvÃ¤nds fÃ¶r loggningen av denna log
      * wrapper.
      */
     private static Category log;
@@ -70,9 +70,9 @@ public final class ActivityLog {
     }
 
     /**
-     * Indikerar om spårbarhetsloggning är aktiverad.
+     * Indikerar om spÃ¥rbarhetsloggning Ã¤r aktiverad.
      * 
-     * @return true om Spårbarhetsloggen är påslagen.
+     * @return true om SpÃ¥rbarhetsloggen Ã¤r pÃ¥slagen.
      */
     public static boolean isTraceingActivities() {
 
@@ -93,15 +93,15 @@ public final class ActivityLog {
     }
 
     /**
-     * Skriver spårbarhetsinformation till loggen.
+     * Skriver spÃ¥rbarhetsinformation till loggen.
      * 
      * @param actRecord
-     *            Innehåller allt som skall loggas.
+     *            InnehÃ¥ller allt som skall loggas.
      */
     public synchronized void activity(ActivityRecord actRecord) {
 
         if (isTraceingActivities()) {
-            // Tråda av en loggskrivare så kan exekveringen fortsätta.
+            // TrÃ¥da av en loggskrivare sÃ¥ kan exekveringen fortsÃ¤tta.
             new LogWriter(actRecord);
         }
     }
@@ -135,13 +135,13 @@ public final class ActivityLog {
     }
 
     /**
-     * Tråd som sköter skrivandet till fil.
+     * TrÃ¥d som skÃ¶ter skrivandet till fil.
      */
     class LogWriter implements Runnable {
         private ActivityRecord activityObjekt;
 
         /**
-         * Skapa tråd.
+         * Skapa trÃ¥d.
          * 
          * @param activityObjekt
          *            det som ska loggas
@@ -150,21 +150,21 @@ public final class ActivityLog {
 
             // Spara data.
             this.activityObjekt = activityObjekt;
-            // Skapa en tråd med detta objekt.
+            // Skapa en trÃ¥d med detta objekt.
             Thread t = new Thread(this);
-            // Kör
+            // KÃ¶r
             t.start();
         }
 
         /**
-         * Sköter loggandet.
+         * SkÃ¶ter loggandet.
          */
         public void run() {
 
             /**
              * 
-             * Kontrollera att det som MDCparametern ska sättas till inte är
-             * null Detta för att det i vissa lägen inte är relevant att sätta
+             * Kontrollera att det som MDCparametern ska sÃ¤ttas till inte Ã¤r
+             * null Detta fÃ¶r att det i vissa lÃ¤gen inte Ã¤r relevant att sÃ¤tta
              * alla parametrar MDC parametrarna mappas i INSERT-statementet i
              * ark_log4j.properties exempel: MDC.put("sys", ) mappas mot
              * 

@@ -10,7 +10,7 @@ import junit.framework.TestCase;
 
 
 /**
- * CsnPluginTestBase innehÂller hj‰lpfunktioner fˆr att kˆr
+ * CsnPluginTestBase inneh√•ller hj√§lpfunktioner f√∂r att k√∂r
  * junit-tester mot iipax-plugginer.
  *
  * @author Joakim Olsson
@@ -32,7 +32,7 @@ public class CsnPluginTestBase extends TestCase {
 
 
     /**
-     * @return mapp d‰r filer sparas ner
+     * @return mapp d√§r filer sparas ner
      */
     public String getDir() {
         return dir;
@@ -42,7 +42,7 @@ public class CsnPluginTestBase extends TestCase {
 
 
     /**
-     * @param directory mapp d‰r filer sparas ner
+     * @param directory mapp d√§r filer sparas ner
      */
     public void setDir(String directory) {
         dir = directory;
@@ -52,12 +52,12 @@ public class CsnPluginTestBase extends TestCase {
 
 
 	/**
-     * Bygger ett soap-svar frÂn xml pÂ fil.
+     * Bygger ett soap-svar fr√•n xml p√• fil.
      * 
 	 * @param method skapar svar till denna metod
-	 * @param fileName d‰r svarsdatat ligger
+	 * @param fileName d√§r svarsdatat ligger
 	 * @return komplett soap-svar
-	 * @throws IOException vid l‰sfel frÂn filen
+	 * @throws IOException vid l√§sfel fr√•n filen
 	 */
 	protected InputStream createCorrectResponse(String method, String fileName)
 	                                     throws IOException {
@@ -76,11 +76,11 @@ public class CsnPluginTestBase extends TestCase {
 
 
 	/**
-	 * Bygger en xml-push frÂn xml pÂ fil.
+	 * Bygger en xml-push fr√•n xml p√• fil.
      * 
-     * @param fileName d‰r xml-datat ligger
+     * @param fileName d√§r xml-datat ligger
      * @return komplett xml-push-dokument
-     * @throws IOException vid l‰sfel frÂn filen
+     * @throws IOException vid l√§sfel fr√•n filen
 	 */
 	protected InputStream createCorrectRequest(String fileName)
 	                                    throws IOException {
@@ -96,12 +96,12 @@ public class CsnPluginTestBase extends TestCase {
 
 
 	/**
-	 * Bygger en soap-frÂga frÂn xml pÂ fil.
+	 * Bygger en soap-fr√•ga fr√•n xml p√• fil.
      * 
-     * @param method skapar frÂga till denna metod
-     * @param fileName d‰r frÂge-datat ligger
+     * @param method skapar fr√•ga till denna metod
+     * @param fileName d√§r fr√•ge-datat ligger
      * @return komplett soap-request
-     * @throws IOException vid l‰sfel frÂn filen
+     * @throws IOException vid l√§sfel fr√•n filen
 	 */
 	protected InputStream createInputRequest(String method, String fileName)
 	                                  throws IOException {
@@ -118,13 +118,13 @@ public class CsnPluginTestBase extends TestCase {
 
 
 	/**
-     * Bygger strˆm head + fildata + foot.
+     * Bygger str√∂m head + fildata + foot.
      * 
-	 * @param file namn pÂ fil
-	 * @param head str‰ng fˆre fildatat
-	 * @param foot str‰ng efter fildatat
+	 * @param file namn p√• fil
+	 * @param head str√§ng f√∂re fildatat
+	 * @param foot str√§ng efter fildatat
 	 * @return head + fildata + foot
-	 * @throws IOException misslyckad fill‰sning
+	 * @throws IOException misslyckad fill√§sning
 	 */
 	protected InputStream addHeadFoot(String file, String head, String foot)
 	                           throws IOException {

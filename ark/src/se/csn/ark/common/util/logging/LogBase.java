@@ -15,9 +15,9 @@ import se.csn.ark.common.CsnException;
  * <P>Namn: Logg </P><br>
  *
  * <P>Beskrivning: <br>
- * Tillhandahåller loggnings basfunktionalitet för CSN:s java ramverk.
+ * TillhandahÃ¥ller loggnings basfunktionalitet fÃ¶r CSN:s java ramverk.
  *
- * @author K-G Sjöström
+ * @author K-G SjÃ¶strÃ¶m
  * @since 20040805 
  * @version 1 skapad
  */
@@ -32,22 +32,22 @@ public class LogBase {
 	private static Properties logProperties;
 
 	/**
-	 * Sätts till true om Windows NT system log skall användas för loggning.
+	 * SÃ¤tts till true om Windows NT system log skall anvÃ¤ndas fÃ¶r loggning.
 	 */
 	private static boolean eventLoggingNTEnabled = false;
 
 	/**
-	 * Log appender för Windows NT system log.
+	 * Log appender fÃ¶r Windows NT system log.
 	 */
     private static NTEventLogAppender logNT;
 
 	/**
-	 * Sätts till <code>true</code> om loggning med Unix event log skall användas.
+	 * SÃ¤tts till <code>true</code> om loggning med Unix event log skall anvÃ¤ndas.
 	 */
     private static boolean eventLoggingUnixEnabled = false;
 
 	/**
-	 * Log appendeder för Unix event log(remote UNIX Syslog daemon).
+	 * Log appendeder fÃ¶r Unix event log(remote UNIX Syslog daemon).
 	 */
     private static SyslogAppender logUnix;
 
@@ -65,32 +65,32 @@ public class LogBase {
 	}
 
 	/**
-	 * Indikerar om loggning till Windows NT event Log är påslagen.
+	 * Indikerar om loggning till Windows NT event Log Ã¤r pÃ¥slagen.
 	 *
-	 * @return <code>true</code> om Windows NT event loggning är påslagen.
+	 * @return <code>true</code> om Windows NT event loggning Ã¤r pÃ¥slagen.
 	 */
 	public static boolean isNtEventLoggingEnabled() {
 		return eventLoggingNTEnabled;
 	}
 
 	/**
-	 * Indikerar om logging till Unix system Logg är påslagen.
+	 * Indikerar om logging till Unix system Logg Ã¤r pÃ¥slagen.
 	 *
-	 * @return <code>true</code> om Unix system logging är påslagen.
+	 * @return <code>true</code> om Unix system logging Ã¤r pÃ¥slagen.
 	 */
 	public static boolean isUnixEventLoggingEnabled() {
 		return eventLoggingUnixEnabled;
 	}
 
     /**
-     * @return log-appender för unix event-logg
+     * @return log-appender fÃ¶r unix event-logg
      */
     protected static NTEventLogAppender getLogNT() {
         return logNT;
     }
 
     /**
-     * @return log-appender för NT system-logg
+     * @return log-appender fÃ¶r NT system-logg
      */
     protected static SyslogAppender getLogUnix() {
         return logUnix;
@@ -121,11 +121,11 @@ public class LogBase {
 		try {
 			ResourceBundle bundle = ResourceBundle.getBundle(LOG_CONFIG);
 
-			// Läs alla nycklar
+			// LÃ¤s alla nycklar
 			Enumeration nycklar = bundle.getKeys();
 			logProperties = new Properties();
 
-			// Lagra alla nycklar och värden.
+			// Lagra alla nycklar och vÃ¤rden.
 			while (nycklar.hasMoreElements()) {
 				String key = (String) nycklar.nextElement();
 				String value = bundle.getString(key);
@@ -135,8 +135,8 @@ public class LogBase {
 			//Initiera Log4J
 			PropertyConfigurator.configure(logProperties);
 
-			// Kolla om några specialla Logg egenskaper har satts.
-			// Den här delen skulle kunna använda boolean grejor i Properties.
+			// Kolla om nÃ¥gra specialla Logg egenskaper har satts.
+			// Den hÃ¤r delen skulle kunna anvÃ¤nda boolean grejor i Properties.
 			String ntEventLoggingEnabledStr =
 				logProperties.getProperty(NT_LOG);
 			if (ntEventLoggingEnabledStr != null) {
@@ -162,22 +162,22 @@ public class LogBase {
 			if (null != u) url = u.toString();
 			skrivParametrarTillSystemOut(url);
 		} catch (Exception e) {
-			// Om det blir fel i log initieringen så skickar vi det till System.out ...
+			// Om det blir fel i log initieringen sÃ¥ skickar vi det till System.out ...
             java.io.PrintStream out = System.out; 
 			out.println(
-				"[LogBase init] kunde inte öppna log4j inställnings filen, "
-					+ "återgår till standardinställningen. "
+				"[LogBase init] kunde inte Ã¶ppna log4j instÃ¤llnings filen, "
+					+ "Ã¥tergÃ¥r till standardinstÃ¤llningen. "
 					+ e);
 			out.println(
-				"[LogBase init] system inställningar = "
+				"[LogBase init] system instÃ¤llningar = "
 					+ System.getProperties());
 			//...och till System.err
 			System.err.println(
-				"[LogBase init] kunde inte öppna log4j inställnings filen, "
-					+ "återgår till standardinställningen. "
+				"[LogBase init] kunde inte Ã¶ppna log4j instÃ¤llnings filen, "
+					+ "Ã¥tergÃ¥r till standardinstÃ¤llningen. "
 					+ e);
 			System.err.println(
-				"[LogBase init] system inställningar = "
+				"[LogBase init] system instÃ¤llningar = "
 					+ System.getProperties());
 		}
 	}
@@ -186,7 +186,7 @@ public class LogBase {
 
 		StringBuffer loggMsg = new StringBuffer();
 		Enumeration props = logProperties.propertyNames();
-		loggMsg.append("se.csn.ark.common.util.logging.Log initierad från '" + url + "' [");
+		loggMsg.append("se.csn.ark.common.util.logging.Log initierad frÃ¥n '" + url + "' [");
 		while (props.hasMoreElements()) {
 			String key = (String)props.nextElement();
 			if (null != key  &&  key.indexOf(".File") > 0) {
@@ -199,12 +199,12 @@ public class LogBase {
 
 	/**
 	 *
-	 * Skapar ett message från det givna meddelandet och fel objektet.
-	 * Meddelandet innehåller meddelanden från alla "nested exceptions", och
-	 * den ursprungliga "stacktracen" (från det djupaste felet).
+	 * Skapar ett message frÃ¥n det givna meddelandet och fel objektet.
+	 * Meddelandet innehÃ¥ller meddelanden frÃ¥n alla "nested exceptions", och
+	 * den ursprungliga "stacktracen" (frÃ¥n det djupaste felet).
 	 *
-	 * @param message Top nivå message
-	 * @param fel Ett fel som kan innehålla andra fel
+	 * @param message Top nivÃ¥ message
+	 * @param fel Ett fel som kan innehÃ¥lla andra fel
 	 *
 	 * @return Alla meddelanden och huvudorsaken.
 	 */
@@ -249,22 +249,22 @@ public class LogBase {
 	}
 
 	/**
-	 * Försöker att hitta nästade exceptions.
+	 * FÃ¶rsÃ¶ker att hitta nÃ¤stade exceptions.
 	 *
 	 *
 	 * @param exception An exception that may or may not include a
 	 *    nested exception
 	 *
-	 * @return det nästade felet, eller <code>null</code> om inget hittades.
+	 * @return det nÃ¤stade felet, eller <code>null</code> om inget hittades.
 	 */
 	protected Throwable findNestedException(Throwable exception) {
 
-		// Kolla först om det är ett CsnException - i så fall behöver
-		// vi inte göra något mer än returnera.
+		// Kolla fÃ¶rst om det Ã¤r ett CsnException - i sÃ¥ fall behÃ¶ver
+		// vi inte gÃ¶ra nÃ¥got mer Ã¤n returnera.
 		if (exception instanceof CsnException) {
 			return ((CsnException) exception).getCause();
 		}
-		// Annars måste vi titta lite närmare.
+		// Annars mÃ¥ste vi titta lite nÃ¤rmare.
 		final String[] getterNames =
 			{
 				"getCause",
@@ -283,7 +283,7 @@ public class LogBase {
 					return (Throwable) nestedObject;
 				}
 			} catch (Throwable e) {
-				// Helt OK, vi prövar nästa metod ...
+				// Helt OK, vi prÃ¶var nÃ¤sta metod ...
 			}
 		}
 
@@ -297,7 +297,7 @@ public class LogBase {
 	 * Denna klass representerar ett message, med eller utan fel och dess cause,
 	 * som skall skrivas till loggen.
 	 *
-	 * @since 040805 K-G Sjöström Version 1
+	 * @since 040805 K-G SjÃ¶strÃ¶m Version 1
 	 *
 	 */
 	class LogMessage {
@@ -327,7 +327,7 @@ public class LogBase {
 		}
 
 		/**
-		 * Sätter log meddelandet.
+		 * SÃ¤tter log meddelandet.
          * @param msg meddelande att logga
 		 */
 		public void setMeddelande(String msg) {
@@ -343,7 +343,7 @@ public class LogBase {
 		}
 
 		/**
-		 * Sätter felet som skall loggas med meddelandet.
+		 * SÃ¤tter felet som skall loggas med meddelandet.
          * @param theCause exception att logga
 		 */
 		public void setOrsak(Throwable theCause) {

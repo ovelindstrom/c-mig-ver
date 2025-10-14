@@ -9,9 +9,9 @@ import java.util.GregorianCalendar;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * Klass med hj‰lpmetoder fˆr generell formatering.
+ * Klass med hj√§lpmetoder f√∂r generell formatering.
  *
- * @author K-G Sjˆstrˆm - AcandoFrontec
+ * @author K-G Sj√∂str√∂m - AcandoFrontec
  * @since 20041020
  * @version 1 skapad
  *
@@ -28,8 +28,8 @@ public final class FormatDate {
 	private static final String CURRENT_TIMESTAMP = "yyyyMMddHHmmssSSS";
 	private static final String PNR_FORMAT = "0000000000";
 
-	// Vi anv‰nder DecimalFormat ‰ven om vi inte vill ha 
-	// decimaler fˆr den ger mˆjlighet att speca formatet.
+	// Vi anv√§nder DecimalFormat √§ven om vi inte vill ha 
+	// decimaler f√∂r den ger m√∂jlighet att speca formatet.
 	private static DecimalFormat pnrFormatter;
 	private static SimpleDateFormat normalDateFormatter;
 	private static SimpleDateFormat normalDateFormatter2;
@@ -44,7 +44,7 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Privat konstruktor, endast statisk Âtkomst
+	 * Privat konstruktor, endast statisk √•tkomst
 	 */
 	private FormatDate() {
     }
@@ -64,10 +64,10 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Generell metod fˆr formatering av datum.
+	 * Generell metod f√∂r formatering av datum.
 	 *
 	 * @param date Datumet som skall formateras.
-	 * @return Str‰ng med korrekt datumformat eller "null" om datum var null.
+	 * @return Str√§ng med korrekt datumformat eller "null" om datum var null.
 	 * @throws FormatException Om datumet inte kunde formateras pga felaktigt format.
 	 */
 	public static String toDateFormatStringYYMMDD(Date date) throws FormatException {
@@ -89,10 +89,10 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Generell metod fˆr formatering av datum.
+	 * Generell metod f√∂r formatering av datum.
 	 *
 	 * @param gregCal Kalendern som skall formateras.
-	 * @return Str‰ng med korrekt datumformat.
+	 * @return Str√§ng med korrekt datumformat.
 	 * @throws FormatException Om kalendern inte kunde formateras pga felaktigt format.
 	 */
 	public static String toDateFormatString(Calendar gregCal) throws FormatException {
@@ -112,10 +112,10 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Generell metod fˆr formatering av datum.
+	 * Generell metod f√∂r formatering av datum.
 	 *
 	 * @param date Datumet som skall formateras.
-	 * @return Str‰ng med korrekt datumformat eller "null" om datum var null.
+	 * @return Str√§ng med korrekt datumformat eller "null" om datum var null.
 	 * @throws FormatException Om datumet inte kunde formateras pga felaktigt format.
 	 */
 	public static String toDateFormatString(Date date) throws FormatException {
@@ -135,10 +135,10 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Forrmaterar tid till ett en str‰ng med avskiljare
+	 * Forrmaterar tid till ett en str√§ng med avskiljare
 	 *
 	 * @param date Datumet som skall formateras.
-	 * @return Str‰ng med korrekt datumformat eller "null" om datum var null.
+	 * @return Str√§ng med korrekt datumformat eller "null" om datum var null.
 	 * @throws FormatException Om datumet inte kunde formateras pga felaktigt format.
 	 */
 	public static String toTimeSeparatedFormatString(Date date) throws FormatException {
@@ -158,10 +158,10 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Generell metod fˆr formatering av personnummer.
+	 * Generell metod f√∂r formatering av personnummer.
 	 *
 	 * @param d personnummer
-	 * @return Str‰ng med korrekt personnummerformat.
+	 * @return Str√§ng med korrekt personnummerformat.
 	 * @throws FormatException Om formateringen misslyckades.
 	 */
 	public static String toPnrString(Double d) throws FormatException {
@@ -169,8 +169,8 @@ public final class FormatDate {
 
 		if (d != null) {
 			try {
-				// Vi anv‰nder DecimalFormat ‰ven om vi inte vill ha 
-				// decimaler fˆr den ger mˆjlighet att speca formatet.
+				// Vi anv√§nder DecimalFormat √§ven om vi inte vill ha 
+				// decimaler f√∂r den ger m√∂jlighet att speca formatet.
 				pnrFormatter = new DecimalFormat(PNR_FORMAT);
 				str = pnrFormatter.format(d.doubleValue());
 			} catch (Exception e) {
@@ -182,11 +182,11 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Tolkar datumstr‰ng till ett kalenderobjekt.
+	 * Tolkar datumstr√§ng till ett kalenderobjekt.
 	 *
-	 * @param gregStr Datumstr‰ng
-	 * @return En kalender som motsvarar datumstr‰ngen.
-	 * @throws ParseException Datumstr‰ngen kunde ej tolkas.
+	 * @param gregStr Datumstr√§ng
+	 * @return En kalender som motsvarar datumstr√§ngen.
+	 * @throws ParseException Datumstr√§ngen kunde ej tolkas.
 	 */
 	public static GregorianCalendar parseGregorianString(String gregStr) throws ParseException {
 		CustomGregorianCalendar cal = null;
@@ -198,11 +198,11 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Tolkar datumstr‰ng till ett datumobjekt.
+	 * Tolkar datumstr√§ng till ett datumobjekt.
 	 *
-	 * @param dateStr Datumstr‰ng
-	 * @return Ett datum som motsvarar datumstr‰ngen.
-	 * @throws ParseException Datumstr‰ngen kunde ej tolkas.
+	 * @param dateStr Datumstr√§ng
+	 * @return Ett datum som motsvarar datumstr√§ngen.
+	 * @throws ParseException Datumstr√§ngen kunde ej tolkas.
 	 */
 	public static Date parseDateString(String dateStr) throws ParseException {
 		Date date = null;
@@ -217,11 +217,11 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Tolkar datumstr‰ng till ett datumobjekt.
+	 * Tolkar datumstr√§ng till ett datumobjekt.
 	 *
-	 * @param dateStr Datumstr‰ng
-	 * @return Ett datum som motsvarar datumstr‰ngen.
-	 * @throws ParseException Datumstr‰ngen kunde ej tolkas.
+	 * @param dateStr Datumstr√§ng
+	 * @return Ett datum som motsvarar datumstr√§ngen.
+	 * @throws ParseException Datumstr√§ngen kunde ej tolkas.
 	 */
 	public static Date parseDateString2(String dateStr) throws ParseException {
 		Date date = null;
@@ -236,36 +236,36 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Ger str‰ng med datum & tid fˆr detta ˆgonblick.
+	 * Ger str√§ng med datum & tid f√∂r detta √∂gonblick.
 	 *
-	 * @return Str‰ng med format yyMMdd-HHmmss
+	 * @return Str√§ng med format yyMMdd-HHmmss
 	 */
 	public static String getCurrentTimeString() {
 		return currentTimeFormatter.format(new Date());
 	}
 
 	/**
-	 * Ger str‰ng med datum & tid fˆr detta ˆgonblick.
+	 * Ger str√§ng med datum & tid f√∂r detta √∂gonblick.
 	 *
-	 * @return Str‰ng med format yyyy-MM-dd HH:mm:ss:SSS
+	 * @return Str√§ng med format yyyy-MM-dd HH:mm:ss:SSS
 	 */
 	public static String getCurrentTimeSeparatedString() {
 		return normalTimeSepFormatter.format(new Date());
 	}
 	
 	/**
-	 * Ger str‰ng med datum & tid fˆr detta ˆgonblick.
+	 * Ger str√§ng med datum & tid f√∂r detta √∂gonblick.
 	 *
-	 * @return Str‰ng med format yyyy-MM-dd HH:mm:ss
+	 * @return Str√§ng med format yyyy-MM-dd HH:mm:ss
 	 */
 	public static String getCurrentTimeSeparatedString2() {
 		return normalTimeSepFormatter2.format(new Date());
 	}
 
 	/**
-	 * Ger str‰ng med datum & tid fˆr detta ˆgonblick.
+	 * Ger str√§ng med datum & tid f√∂r detta √∂gonblick.
 	 *
-	 * @return Str‰ng med format yyyyMMddHHmmssSSS
+	 * @return Str√§ng med format yyyyMMddHHmmssSSS
 	 */
 	public static String getCurrentTimeStamp() {
 		return currentTimeStampFormatter.format(new Date());
@@ -273,25 +273,25 @@ public final class FormatDate {
 
 	/**
 	 * @param iToParse int att parsa
-	 * @return str‰ng-representation av int
+	 * @return str√§ng-representation av int
 	 * @throws NullPointerException gick ej att formatera
 	 */
 	public static String parseFromIntToString(int iToParse) throws NullPointerException {
 		try {
 			return String.valueOf(iToParse);
 		} catch (NullPointerException ne) {
-			throw new NullPointerException("Kunde inte formater om frÂn tal till integer");
+			throw new NullPointerException("Kunde inte formater om fr√•n tal till integer");
 		}
 	}
 
 	/**
-	 * Gˆr replace pÂ en str‰ng.
+	 * G√∂r replace p√• en str√§ng.
 	 * 
-	 * @param source original-str‰ng
-	 * @param replace substr‰ng skall ers‰ttas
-	 * @param with ny substr‰ng
-	 * @return den nya str‰ngen
-	 * @throws FormatException gick ej att utfˆra
+	 * @param source original-str√§ng
+	 * @param replace substr√§ng skall ers√§ttas
+	 * @param with ny substr√§ng
+	 * @return den nya str√§ngen
+	 * @throws FormatException gick ej att utf√∂ra
 	 * @author Tobias Larsson
 	 * @since 20055027
 	 * @version 1 skapad
@@ -327,7 +327,7 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Tar ut vilken vecka det ‰r pÂ Âret
+	 * Tar ut vilken vecka det √§r p√• √•ret
 	 * @param date datum
 	 * @param cal kalender
 	 * @return int veckonummer som datumet infaller i
@@ -340,8 +340,8 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Tar ut vilken vecka det ‰r pÂ Âret
-	 * Fˆrenklad.
+	 * Tar ut vilken vecka det √§r p√• √•ret
+	 * F√∂renklad.
 	 * @param date datum
 	 * @return int veckonummer som datumet infaller i
 	 * @author Tobias Larsson
@@ -359,14 +359,14 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Funktion som kollar hur mÂnga halvÂr det ‰r mellan 2 datum.
-	 * @param iStartYear datum 1, Âr
-	 * @param iStartMonth datum 1, mÂnad
+	 * Funktion som kollar hur m√•nga halv√•r det √§r mellan 2 datum.
+	 * @param iStartYear datum 1, √•r
+	 * @param iStartMonth datum 1, m√•nad
 	 * @param iStartDay datum 1, dag
-	 * @param iStopYear datum 2, Âr
-	 * @param iStopMonth datum 2, mÂnad
+	 * @param iStopYear datum 2, √•r
+	 * @param iStopMonth datum 2, m√•nad
 	 * @param iStopDay datum 2, dag
-	 * @return int antal halvÂr mellan datum 1 och datum 2
+	 * @return int antal halv√•r mellan datum 1 och datum 2
 	 * @author Tobias Larsson
 	 * @since 20055027
 	 * @version 1 skapad
@@ -392,14 +392,14 @@ public final class FormatDate {
 				start.add(Calendar.DAY_OF_WEEK, 1);
 
 				/**
-				 * H‰mtar upp halvÂr, 0 eller 1
+				 * H√§mtar upp halv√•r, 0 eller 1
 				 */
 				iHalfYear = getStudyPeriod(getWeekOfYear2(start));
 
 				//System.out.println(getWeekOfYear2(start));
 
 				/**
-				 * Om iHalfYear skiljer sig frÂn iTemp sÂ ‰r det ett nytt halvÂr.
+				 * Om iHalfYear skiljer sig fr√•n iTemp s√• √§r det ett nytt halv√•r.
 				 */
 				if (iHalfYear != iTemp) {
 					iTemp = iHalfYear;
@@ -416,9 +416,9 @@ public final class FormatDate {
 	}
 
 	/**
-	 * Formaterar datum str‰ng till yyyy-mm-dd
+	 * Formaterar datum str√§ng till yyyy-mm-dd
 	 * @param dtDate datum
-	 * @return str‰n-representation av datum
+	 * @return str√§n-representation av datum
 	 */
 	public static String formatDateToString(Date dtDate) {
 		CustomGregorianCalendar greg = new CustomGregorianCalendar();
@@ -448,7 +448,7 @@ public final class FormatDate {
 	/**
 	 * Formaterar till formatet yyyymmdd
 	 * @param dtDate datum
-	 * @return str‰ng-representation av datum
+	 * @return str√§ng-representation av datum
 	 * @author Tobias Larsson
 	 * @since 20055027
 	 * @version 1 skapad
@@ -477,12 +477,12 @@ public final class FormatDate {
 	}
 
 	/**
-	 * R‰knar ut veckor mellan datum
-	 * @param iStartYear datum 1, Âr
-	 * @param iStartMonth datum 1, mÂnad
+	 * R√§knar ut veckor mellan datum
+	 * @param iStartYear datum 1, √•r
+	 * @param iStartMonth datum 1, m√•nad
 	 * @param iStartDay datum 1, dag
-	 * @param iStopYear datum 2, Âr
-	 * @param iStopMonth datum 2, mÂnad
+	 * @param iStopYear datum 2, √•r
+	 * @param iStopMonth datum 2, m√•nad
 	 * @param iStopDay datum 2, dag
 	 * @return int antal veckor mellan datum 1 och datum 2
 	 * @author Tobias Larsson
@@ -525,12 +525,12 @@ public final class FormatDate {
 	}
 
 	/**
-	 * R‰knar ut dagar mellan datum
-	 * @param iStartYear datum 1, Âr
-	 * @param iStartMonth datum 1, mÂnad
+	 * R√§knar ut dagar mellan datum
+	 * @param iStartYear datum 1, √•r
+	 * @param iStartMonth datum 1, m√•nad
 	 * @param iStartDay datum 1, dag
-	 * @param iStopYear datum 2, Âr
-	 * @param iStopMonth datum 2, mÂnad
+	 * @param iStopYear datum 2, √•r
+	 * @param iStopMonth datum 2, m√•nad
 	 * @param iStopDay datum 2, dag
 	 * @return int antal dagar mellan datum 1 och datum 2
 	 * @author Tobias Larsson
@@ -565,10 +565,10 @@ public final class FormatDate {
 	}
 
 	/**
-	 * H‰mtar ut studieperiod.
-	 * Om det ‰r vecka 1-26 returneras 0 annars 1
+	 * H√§mtar ut studieperiod.
+	 * Om det √§r vecka 1-26 returneras 0 annars 1
 	 * @param iWeek vecka
-	 * @return int 0 fˆr vecka 1-26, annar 1
+	 * @return int 0 f√∂r vecka 1-26, annar 1
 	 * @author Tobias Larsson
 	 * @since 20055027
 	 * @version 1 skapad
@@ -583,9 +583,9 @@ public final class FormatDate {
 	}
 
 	/**
-	 * @param dtStart frÂn datum
+	 * @param dtStart fr√•n datum
 	 * @param dtEnd till datum
-	 * @return true om det ‰r mer ‰n 3 veckor mellan frÂn och till-datum
+	 * @return true om det √§r mer √§n 3 veckor mellan fr√•n och till-datum
 	 * @author Tobias Larsson
 	 * @since 20055027
 	 * @version 1 skapad
@@ -611,7 +611,7 @@ public final class FormatDate {
 		int x = 0;
 
 		/**
-		 * Denna addar 1 annars sÂ blir det 1 dag fˆr lite i loopen...kan missa en vecka annars.
+		 * Denna addar 1 annars s√• blir det 1 dag f√∂r lite i loopen...kan missa en vecka annars.
 		 */
 		end.add(Calendar.DAY_OF_WEEK, 1);
 
@@ -639,9 +639,9 @@ public final class FormatDate {
 	}
 
 	/**
-	 * @param dtStart frÂn datum
+	 * @param dtStart fr√•n datum
 	 * @param dtEnd till datum
-	 * @return true om det ‰r mer ‰n 53 veckor mellan frÂn och till-datum
+	 * @return true om det √§r mer √§n 53 veckor mellan fr√•n och till-datum
 	 * @author Tobias Larsson
 	 * @since 20055027
 	 * @version 1 skapad
@@ -667,7 +667,7 @@ public final class FormatDate {
 		int x = 0;
 
 		/**
-		 * Denna addar 1 annars sÂ blir det 1 dag fˆr lite i loopen...kan missa en vecka annars.
+		 * Denna addar 1 annars s√• blir det 1 dag f√∂r lite i loopen...kan missa en vecka annars.
 		 */
 		end.add(Calendar.DAY_OF_WEEK, 1);
 
@@ -695,12 +695,12 @@ public final class FormatDate {
 	}
 	
 	/**
-	 * Konverterar datum frÂn java.sql.Date till GregorianCalendar
+	 * Konverterar datum fr√•n java.sql.Date till GregorianCalendar
 	 * 
 	 * @param java.sql.Date - datum som ska konverteras
 	 * @return GregorianCalendar - konverterat datum 
 	 * @throws ParseException om konverteringen inte gick bra 
-	 * @author Andreas Hellstrˆm
+	 * @author Andreas Hellstr√∂m
 	 * @since 20051027
 	 * @version 1 skapad
 	 */
