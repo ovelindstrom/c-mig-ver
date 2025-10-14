@@ -1,28 +1,28 @@
 /**
  * Skapad 2007-feb-09
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
 
 /**
- * Kasta detta fel om det ‰r nÂgot fel pÂ den externa 
- * konfigurationen: saknad DB-koppling, kˆ etc.
+ * Kasta detta fel om det √§r n√•got fel p√• den externa 
+ * konfigurationen: saknad DB-koppling, k√∂ etc.
  * Skapad 2007-feb-09
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  */
 public class ConfigException extends RuntimeException {
     
     private String problem, fix;
     
     public ConfigException(String problem, String fix) {
-        super("Problem: " + problem + " ≈tg‰rd: " + fix);
+        super("Problem: " + problem + " √Ötg√§rd: " + fix);
         this.problem = problem;
         this.fix = fix;
     }
     
     public String toString() {
-        return "Problem: " + problem + " ≈tg‰rd: " + fix;
+        return "Problem: " + problem + " √Ötg√§rd: " + fix;
     }
     
     public String getFix() {

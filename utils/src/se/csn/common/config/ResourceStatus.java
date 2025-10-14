@@ -8,7 +8,7 @@ import java.util.Date;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class ResourceStatus {
 
@@ -24,7 +24,7 @@ public class ResourceStatus {
      * Skapar ny ResourceStatus med status OK och standardtexter. 
      */
     public ResourceStatus() {
-        this("Inga problem.", "Behövs inte.", OK);
+        this("Inga problem.", "BehÃ¶vs inte.", OK);
     }
     
     public ResourceStatus(String problem, String fix, int status) {
@@ -36,7 +36,7 @@ public class ResourceStatus {
     
     /**
      * @return En beskrivning av problemet med denna resurs. Ska vidarebefordra den 
-     *         information som användes för att testa resursen.
+     *         information som anvÃ¤ndes fÃ¶r att testa resursen.
      * 		   Om resursen fungerar returneras null.
      */
     public String getProblem() {
@@ -44,7 +44,7 @@ public class ResourceStatus {
     }
     
     /**
-     * @return En beskrivning av eventuell åtgärd för att få denna resurs att fungera. 
+     * @return En beskrivning av eventuell Ã¥tgÃ¤rd fÃ¶r att fÃ¥ denna resurs att fungera. 
      *         Om resursen fungerar returneras null.
      */
     public String getFix() {
@@ -60,7 +60,7 @@ public class ResourceStatus {
     }
     
     /**
-     * @return Returnerar det allvarligaste resultatet av de två.
+     * @return Returnerar det allvarligaste resultatet av de tvÃ¥.
      */
     public static ResourceStatus mostSevere(ResourceStatus rs1, ResourceStatus rs2) {
         int[] order = new int[]{ResourceStatus.ERROR, ResourceStatus.WARNING, ResourceStatus.OK};
@@ -68,7 +68,7 @@ public class ResourceStatus {
             if(rs1.status == order[i]) return rs1;
             if(rs2.status == order[i]) return rs2;
         }
-        throw new IllegalArgumentException("Okända resultatkoder: " + rs1.status + "," + rs2.status);
+        throw new IllegalArgumentException("OkÃ¤nda resultatkoder: " + rs1.status + "," + rs2.status);
     }
     
     public boolean equals(Object o) {

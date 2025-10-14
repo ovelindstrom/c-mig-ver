@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-18
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin.listeners;
@@ -23,13 +23,13 @@ public class TilesIntegrationContextListener implements ServletContextListener {
     }
     
     /**
-     * Denna kod nödvändig för att kunna sätta en ny ViewHandler i 
+     * Denna kod nÃ¶dvÃ¤ndig fÃ¶r att kunna sÃ¤tta en ny ViewHandler i 
      * Faces-systemet. 
-     * Vi vill göra det för att komma runt en begränsning i Tiles-
-     * maskineriet; Tiles kontrollerar att svaret inte är committat. 
+     * Vi vill gÃ¶ra det fÃ¶r att komma runt en begrÃ¤nsning i Tiles-
+     * maskineriet; Tiles kontrollerar att svaret inte Ã¤r committat. 
      * Default-implementationen av JSF:s ViewHandler committar svaret, 
-     * den utgår från att den är ensam renderare. 
-     * Vi ersätter med en "custom-implementation" som fixar featuren:
+     * den utgÃ¥r frÃ¥n att den Ã¤r ensam renderare. 
+     * Vi ersÃ¤tter med en "custom-implementation" som fixar featuren:
      *  
      */
     public void contextInitialized(ServletContextEvent arg0) {

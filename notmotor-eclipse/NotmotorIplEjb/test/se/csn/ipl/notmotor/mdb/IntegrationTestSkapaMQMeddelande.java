@@ -43,7 +43,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 
 	@Override
 	protected void tearDown() throws Exception {
-		System.out.println("St‰nger MQProducer");
+		System.out.println("St√§nger MQProducer");
 		super.tearDown();
 		mqproducer.close();
 	}
@@ -101,8 +101,8 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 		msg.append("<MOBILNR></MOBILNR>");
 		msg.append("<RUBRIK>Testmeddelande # " + (++msgcounter) + "/" + antal + "</RUBRIK>");
 		msg.append("<MOTIV>Hej!\n"
-				+ "Detta ‰r testmeddelande nummer " + msgcounter + " av " + antal + ".\n"
-				+ "Â ‰ ˆ ≈ ƒ ÷ snabel-@"
+				+ "Detta √§r testmeddelande nummer " + msgcounter + " av " + antal + ".\n"
+				+ "√• √§ √∂ √Ö √Ñ √• snabel-@"
 				+ "\n"
 				+ "Genererat av " + this.getClass().getCanonicalName() + "\n"
 				+ "Correlation ID: " + correlationId + "\n"
@@ -139,8 +139,8 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 			env.put(Context.PROVIDER_URL, JNDI_PROVIDER_URL);
 			try {
 				ctx = new InitialContext(env);
-				// Om du fÂr: "java.net.ConnectException: connect: Address is invalid on local machine, or port is not valid on remote machine"
-				// pÂ raden: "ctx.lookup(JNDI_JMS_FACTORY);" och WAS security ‰r pÂslaget sÂ mÂste en property ‰ndras pÂ WAS'en,
+				// Om du f√•r: "java.net.ConnectException: connect: Address is invalid on local machine, or port is not valid on remote machine"
+				// p√• raden: "ctx.lookup(JNDI_JMS_FACTORY);" och WAS security √§r p√•slaget s√• m√•ste en property √§ndras p√• WAS'en,
 				// Global Security->RMI/IIOP security->CSIv2 inbound communications->Transport = SSL-supported
 				qcfactory = (QueueConnectionFactory) ctx.lookup(JNDI_JMS_FACTORY);
 //				qcfactory = (QueueConnectionFactory) PortableRemoteObject.narrow(obj, QueueConnectionFactory.class);
@@ -210,7 +210,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
 					qcon.close();
 				}
 			} catch (JMSException e) {
-				throw new IllegalStateException("Kunde inte st‰nga QueueSender, QueueSession och QueueConnection", e);
+				throw new IllegalStateException("Kunde inte st√§nga QueueSender, QueueSession och QueueConnection", e);
 			}
 		}
 		

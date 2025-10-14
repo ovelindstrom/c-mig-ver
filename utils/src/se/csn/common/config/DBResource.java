@@ -6,9 +6,9 @@ package se.csn.common.config;
 import se.csn.common.jndi.ServiceLocator;
 
 /**
- * @author Jonas ÷hrnell - csn7821
- * Klassen testar databaskoppling genom att slÂ pÂ metadata. 
- * Kommer att l‰gga till kontroll av tabeller. 
+ * @author Jonas √•hrnell - csn7821
+ * Klassen testar databaskoppling genom att sl√• p√• metadata. 
+ * Kommer att l√§gga till kontroll av tabeller. 
  */
 public class DBResource extends ResourceBase {
 
@@ -31,10 +31,10 @@ public class DBResource extends ResourceBase {
             serviceLocator.getDatasource(jndiname);
         } catch(IllegalArgumentException iae) {
             problem = "Kunde inte hitta " + jndiname;
-            fix = "Kontrollera datasourcens JNDI-namn och hur det ‰r uppsatt i WAS:en";
+            fix = "Kontrollera datasourcens JNDI-namn och hur det √§r uppsatt i WAS:en";
         } catch(IllegalStateException ise) {
-            problem = "Kunde inte slÂ upp " + jndiname;
-            fix = "Kontrollera datasourcens JNDI-namn och hur det ‰r uppsatt i WAS:en";
+            problem = "Kunde inte sl√• upp " + jndiname;
+            fix = "Kontrollera datasourcens JNDI-namn och hur det √§r uppsatt i WAS:en";
         }
         if(problem != null) {
             return new ResourceStatus(problem, fix, ResourceStatus.ERROR);

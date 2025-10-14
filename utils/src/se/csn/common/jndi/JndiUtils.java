@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-11
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.jndi;
@@ -12,19 +12,19 @@ import javax.naming.NamingException;
 public class JndiUtils {
 
     /**
-     * @param factoryClass Klass som ska användas för att skapa InitialContext
-     * @param url Sökväg till serverinstans 
-     * @param user Den security principal som ska användas
-     * @param credentials Lösenord eller motsvarande
-     * @return Ett InitialContext för att hämta resurser från en appserver
+     * @param factoryClass Klass som ska anvÃ¤ndas fÃ¶r att skapa InitialContext
+     * @param url SÃ¶kvÃ¤g till serverinstans 
+     * @param user Den security principal som ska anvÃ¤ndas
+     * @param credentials LÃ¶senord eller motsvarande
+     * @return Ett InitialContext fÃ¶r att hÃ¤mta resurser frÃ¥n en appserver
      */
   	public static Context getContextFromAppserver(String factoryClass, String url, String user, String credentials) {
-  	    // testa att URL:en kan nås
+  	    // testa att URL:en kan nÃ¥s
   	    if((url == null) || (url.length() == 0)) {
-  	        throw new IllegalArgumentException("URL måste anges");
+  	        throw new IllegalArgumentException("URL mÃ¥ste anges");
   	    }
   	    if(factoryClass == null) {
-  	        throw new IllegalArgumentException("factoryClass måste anges");
+  	        throw new IllegalArgumentException("factoryClass mÃ¥ste anges");
   	    }
   	    //CommunicationTester.isPortOpen(url);
   	    

@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-02
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.ft;
@@ -21,45 +21,45 @@ public interface NotifieringProxy {
     /**
      * @param meddelande Det meddelande som ska skickas. 
      * @param callbackEndpoint URL till den webservice som ska
-     *        anropas när meddelandet behandlas i en händelse som 
+     *        anropas nÃ¤r meddelandet behandlas i en hÃ¤ndelse som 
      * 		  definierats i callbackHandelser. Kan vara null.
-     * 		  Den utpekade URL:en ska peka på en webservice som 
+     * 		  Den utpekade URL:en ska peka pÃ¥ en webservice som 
      * 		  implementerar interfacet NotifieringCallback.
-     * @param callbackHandelser En mask/flagga som pekar ut för vilka
-     *        händelser som callbackanrop ska göras till den utpekade
+     * @param callbackHandelser En mask/flagga som pekar ut fÃ¶r vilka
+     *        hÃ¤ndelser som callbackanrop ska gÃ¶ras till den utpekade
      * 		  webservicen.
-     * @throws IllegalArgumentException om någon av inparametrarna
-     *        i meddelandet är ogiltig.
-     * @throws RuntimeException om tjänsten har någon form av internt fel. 		   
+     * @throws IllegalArgumentException om nÃ¥gon av inparametrarna
+     *        i meddelandet Ã¤r ogiltig.
+     * @throws RuntimeException om tjÃ¤nsten har nÃ¥gon form av internt fel. 		   
      */
     NotifieringResultat skickaMeddelande(Meddelande meddelande);
     
     /**
-     * @param meddelandeId Id för det meddelande som ska hämtas.
+     * @param meddelandeId Id fÃ¶r det meddelande som ska hÃ¤mtas.
      * @return Ett meddelande om det fanns ett meddelande med det angivna 
      * 	       id:t, annars null. 
-     * @throws IllegalArgumentException om någon av inparametrarna
-     *        i meddelandet är ogiltig.
-     * @throws RuntimeException om tjänsten har någon form av internt fel. 		   
+     * @throws IllegalArgumentException om nÃ¥gon av inparametrarna
+     *        i meddelandet Ã¤r ogiltig.
+     * @throws RuntimeException om tjÃ¤nsten har nÃ¥gon form av internt fel. 		   
      */
     Meddelande hamtaMeddelande(Long meddelandeId);
 
     /**
-     * Sätter om status för meddelandet till BORTTAGET. Meddelandet
-     * ligger alltså kvar i databasen men kommer inte att sändas. 
+     * SÃ¤tter om status fÃ¶r meddelandet till BORTTAGET. Meddelandet
+     * ligger alltsÃ¥ kvar i databasen men kommer inte att sÃ¤ndas. 
      * @param meddelandeId Meddelande-id
      */
     NotifieringResultat taBortMeddelande(Long meddelandeId);
     
     /**
-     * Den huvudsakliga söktjänsten för meddelanden. 
+     * Den huvudsakliga sÃ¶ktjÃ¤nsten fÃ¶r meddelanden. 
      * 
      * 
-     * @return En lista av meddelanden som matchar sökningen. Om 
+     * @return En lista av meddelanden som matchar sÃ¶kningen. Om 
      * 		   inga meddelanden hittas returneras en tom lista. 
-     * @throws IllegalArgumentException om någon av inparametrarna
-     *        i meddelandet är ogiltig.
-     * @throws RuntimeException om tjänsten har någon form av internt fel. 		   
+     * @throws IllegalArgumentException om nÃ¥gon av inparametrarna
+     *        i meddelandet Ã¤r ogiltig.
+     * @throws RuntimeException om tjÃ¤nsten har nÃ¥gon form av internt fel. 		   
      */
     Meddelande[] sokMeddelanden(
             Date from, 

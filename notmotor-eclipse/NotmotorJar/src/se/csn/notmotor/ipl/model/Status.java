@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.model;
@@ -82,7 +82,7 @@ public class Status {
         this.typ = typ;
     }
     /**
-     * @return true om denna instans fortfarande är aktiv, false annars.
+     * @return true om denna instans fortfarande Ã¤r aktiv, false annars.
      */
     public boolean isAktiv() {
         if(stoppad != null) {

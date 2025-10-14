@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Jonas Öhrnell - csn7821
- * Klass från Domain Driven Design: skilj Factory från Repository. 
- * Repositoryt innehåller alla Resource-objekt. Kan användas för att kontrollera
- * alla dependencies, för att bara instantiera just precis de Resources som behövs 
+ * @author Jonas Ã¥hrnell - csn7821
+ * Klass frÃ¥n Domain Driven Design: skilj Factory frÃ¥n Repository. 
+ * Repositoryt innehÃ¥ller alla Resource-objekt. Kan anvÃ¤ndas fÃ¶r att kontrollera
+ * alla dependencies, fÃ¶r att bara instantiera just precis de Resources som behÃ¶vs 
  * (undvika dubbelkontroller) mm.
- * Det är även ResourceRepository som är ansvarigt för att göra trådade kontroller etc.
+ * Det Ã¤r Ã¤ven ResourceRepository som Ã¤r ansvarigt fÃ¶r att gÃ¶ra trÃ¥dade kontroller etc.
  */
 public class ResourceRepository {
     
@@ -23,9 +23,9 @@ public class ResourceRepository {
     }
     
     /**
-     * Används för att inte hålla flera referenser till identiska objekt.
+     * AnvÃ¤nds fÃ¶r att inte hÃ¥lla flera referenser till identiska objekt.
      * @param r
-     * @return Det objekt som fanns i repositoryt om det fanns ett sådant, 
+     * @return Det objekt som fanns i repositoryt om det fanns ett sÃ¥dant, 
      * 		   annars det objekt som lades till repositoryt 
      */
     public Resource addResourceIfMissing(Resource r) {

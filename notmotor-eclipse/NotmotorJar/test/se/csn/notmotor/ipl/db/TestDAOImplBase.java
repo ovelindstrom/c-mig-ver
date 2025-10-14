@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-21
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -53,7 +53,7 @@ public class TestDAOImplBase extends TestCase {
         // Testa med NULL
         res = DAOImplBase.addLike("ORIG", "COL", null, false);
         assertEquals(res, "ORIG");
-        // Testa med tom str‰ng
+        // Testa med tom str√§ng
         res = DAOImplBase.addLike("ORIG", "COL", "", false);
         assertEquals(res, "ORIG");
         res = DAOImplBase.addLike("ORIG", "COL", "", true);
@@ -68,7 +68,7 @@ public class TestDAOImplBase extends TestCase {
         // Testa med bara '%'
         res = DAOImplBase.addLike(null, "COL", "%", true);
         assertEquals(res, "(COL LIKE '%')");
-        // Testa med % mitt i str‰ngen
+        // Testa med % mitt i str√§ngen
         res = DAOImplBase.addLike(null, "COL", "I %MITTEN", true);
         assertEquals(res, "(COL LIKE '%I %MITTEN%')");
     }

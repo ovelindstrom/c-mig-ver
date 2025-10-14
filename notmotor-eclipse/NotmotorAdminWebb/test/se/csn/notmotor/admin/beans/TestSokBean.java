@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 import se.csn.notmotor.admin.beans.SokBean;
 
 /**
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class TestSokBean extends TestCase {
 

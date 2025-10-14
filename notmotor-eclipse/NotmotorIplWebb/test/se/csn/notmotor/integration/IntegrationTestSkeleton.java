@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-18
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.integration;
@@ -34,7 +34,7 @@ public class IntegrationTestSkeleton extends TestCase {
     		log.error(e.getMessage());
     	}
         
-        // Byt ut mot r‰tt mailadress(er):
+        // Byt ut mot r√§tt mailadress(er):
         mottagaradress = "test.ekund@csn.se";
         mottagarsms = "0701234";
         avsandaradress = "noreply.test@csn.se";
@@ -46,16 +46,16 @@ public class IntegrationTestSkeleton extends TestCase {
     }
 
     public DTOMeddelande skapaTestMeddelande(String metod) {
-        return skapaTestMeddelande("Testmeddelande frÂn " + metod, "Metod: " + metod + "\n Skapat " + (new Date()).toString());
+        return skapaTestMeddelande("Testmeddelande fr√•n " + metod, "Metod: " + metod + "\n Skapat " + (new Date()).toString());
     }
     
     
     public DTOMeddelande skapaTestMeddelande(String metod, int nummer) {
-        return skapaTestMeddelande("Testmeddelande nr " + nummer + " frÂn " + metod, "Metod: " + metod + "\nNr: " + nummer + "\nSkapat " + (new Date()).toString());
+        return skapaTestMeddelande("Testmeddelande nr " + nummer + " fr√•n " + metod, "Metod: " + metod + "\nNr: " + nummer + "\nSkapat " + (new Date()).toString());
     }
     
     public DTOMeddelande skapaTestMeddelande(String metod, int nummer, String typ) {
-        return skapaTestMeddelande("Testmeddelande nr " + nummer + " frÂn " + metod, "Metod: " + metod + "\nNr: " + nummer + "\nMeddelandes‰tt: " + typ + "\nSkapat " + (new Date()).toString(), typ);
+        return skapaTestMeddelande("Testmeddelande nr " + nummer + " fr√•n " + metod, "Metod: " + metod + "\nNr: " + nummer + "\nMeddelandes√§tt: " + typ + "\nSkapat " + (new Date()).toString(), typ);
     }
     
     public DTOMeddelande skapaTestMeddelande(String rubrik, String text) {

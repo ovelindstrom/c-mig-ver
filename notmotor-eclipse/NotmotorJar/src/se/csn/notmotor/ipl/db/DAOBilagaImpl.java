@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-20
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -16,7 +16,7 @@ import se.csn.ark.common.util.logging.Log;
 import se.csn.notmotor.ipl.model.Bilaga;
 
 /**
- * CRUD för bilagor
+ * CRUD fÃ¶r bilagor
  */
 public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
 
@@ -29,11 +29,11 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
     
     /**
      * Skapar bilaga i databasen
-     * @return nyckeln för bilagan
+     * @return nyckeln fÃ¶r bilagan
      */
     public long createBilaga(Bilaga b, long meddelandeid) {
         if(b.getData() == null) {
-            throw new IllegalArgumentException("Bilagan måste ha data.");
+            throw new IllegalArgumentException("Bilagan mÃ¥ste ha data.");
         }
         
         Connection conn = null;
@@ -66,7 +66,7 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
             try {
 	            if(ps != null) { ps.close(); }
             } catch(SQLException sqle) {
-                throw new IllegalStateException("Kunde inte stänga resurser", sqle);
+                throw new IllegalStateException("Kunde inte stÃ¤nga resurser", sqle);
             }
         }
     }

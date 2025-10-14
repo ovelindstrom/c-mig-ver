@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-26
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.mail;
@@ -11,7 +11,7 @@ import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 
 /**
- * Wrapper runt MimeMessage; implementerar servicemetoder för 
+ * Wrapper runt MimeMessage; implementerar servicemetoder fÃ¶r 
  * Mime-meddelandet 
  */
 public class MailMessage {
@@ -57,7 +57,7 @@ public class MailMessage {
     
     public MailMessage(Session session) {
         if(session == null) {
-            throw new IllegalArgumentException("Session måste vara satt");
+            throw new IllegalArgumentException("Session mÃ¥ste vara satt");
         }
         this.session = session;
     }

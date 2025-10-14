@@ -9,7 +9,7 @@ import java.util.Date;
 import junit.framework.TestCase;
 
 /**
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class TestMeddelande extends TestCase {
     
@@ -116,12 +116,12 @@ public class TestMeddelande extends TestCase {
     }
     
     public void testToString() {
-        Meddelande meddelande = new Meddelande("SMS", "Detta är ett test-SMS");
-        Mottagare mott = new Mottagare("0705976212","Jonas Ö");
+        Meddelande meddelande = new Meddelande("SMS", "Detta Ã¤r ett test-SMS");
+        Mottagare mott = new Mottagare("0705976212","Jonas Ã¥");
         mott.setTyp("SMS");
         meddelande.addMottagare(mott);
 
-        mott = new Mottagare("jonas.ohrnell@csn.se","Jonas Ö");
+        mott = new Mottagare("jonas.ohrnell@csn.se","Jonas Ã¥");
         mott.setTyp("EPOST,EPOSTCC");
         meddelande.addMottagare(mott);
         

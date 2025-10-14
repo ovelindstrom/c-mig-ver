@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-13
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -12,7 +12,7 @@ import java.util.List;
 import se.csn.notmotor.ipl.model.Avsandare;
 
 /**
- * CRUD-metoder fˆr avs‰ndare
+ * CRUD-metoder f√∂r avs√§ndare
  */
 public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, DAOAvsandare {
     
@@ -22,9 +22,9 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
     
     public int createAvsandare(Avsandare avs) {
         if (avs == null) {
-            throw new IllegalArgumentException("Avs‰ndare fÂr inte vara null");
+            throw new IllegalArgumentException("Avs√§ndare f√•r inte vara null");
         }
-        // H‰mta ny nyckel:
+        // H√§mta ny nyckel:
         int id = (int) qp.getCounter("SEKVENS", "AVSANDAREID"); 
         String namn = (avs.getNamn() == null) ? null : "'" + avs.getNamn() + "'";
         String epost = (avs.getEpostadress() == null) ? null : "'" + avs.getEpostadress() + "'";
@@ -59,7 +59,7 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
     }
     
     /**
-    * Om nÂgon inparameter ‰r null sÂ anv‰nds den inte i frÂgan.
+    * Om n√•gon inparameter √§r null s√• anv√§nds den inte i fr√•gan.
     */
     public List getAvsandare(String namn, String programnamn, String kategori, String epost, String replyto) {
         // Bygg SQL-satsen. 
@@ -97,9 +97,9 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
     
     
     /**
-     * Sˆker i databasen efter anv‰ndare som matchar kriterierna
-     * @return id fˆr den matchande avs‰ndaren; -1 
-     * om det inte fanns nÂgon matchande avs‰ndare, -2 om det fanns mer ‰n en 
+     * S√∂ker i databasen efter anv√§ndare som matchar kriterierna
+     * @return id f√∂r den matchande avs√§ndaren; -1 
+     * om det inte fanns n√•gon matchande avs√§ndare, -2 om det fanns mer √§n en 
      */
     public int getId(Avsandare avsandare) {
         Avsandare avs = sokEnAvsandare(avsandare);
@@ -113,7 +113,7 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
     
     public void updateAvsandare(Avsandare avs) {
         if (avs == null) {
-            throw new IllegalArgumentException("Avs‰ndare fÂr inte vara null");
+            throw new IllegalArgumentException("Avs√§ndare f√•r inte vara null");
         }
         qp.executeThrowException("UPDATE AVSANDARE SET NAMN='" + avs.getNamn() + "', EPOST='" + avs.getEpostadress() 
                 + "', REPLYTO='" + avs.getReplyTo() + "', PROGRAMNAMN='" + avs.getApplikation() 
@@ -122,15 +122,15 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
     }
     
     /**
-     * @throws IllegalStateException om det fanns mer ‰n en anv‰ndare som matchade
+     * @throws IllegalStateException om det fanns mer √§n en anv√§ndare som matchade
      *         kriteriet.
      */
     public void deleteAvsandare(Avsandare avs) {
         if (avs == null) {
-            throw new IllegalArgumentException("Avs‰ndare fÂr inte vara null");
+            throw new IllegalArgumentException("Avs√§ndare f√•r inte vara null");
         }
         if(avs.getId() == null) {
-            throw new IllegalArgumentException("Avs‰ndare mÂste ha id satt");
+            throw new IllegalArgumentException("Avs√§ndare m√•ste ha id satt");
         }
         int id = avs.getId().intValue();
         deleteAvsandare(id);

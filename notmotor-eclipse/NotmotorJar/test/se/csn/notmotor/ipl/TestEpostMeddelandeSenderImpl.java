@@ -8,7 +8,7 @@ import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.notmotor.ipl.model.Mottagare;
 
 /**
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class TestEpostMeddelandeSenderImpl extends TestCase {
 

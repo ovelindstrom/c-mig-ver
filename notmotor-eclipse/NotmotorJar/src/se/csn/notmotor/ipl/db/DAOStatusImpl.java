@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -34,7 +34,7 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
     
     public int skapa(Status status) {
         if(status == null) {
-            throw new IllegalArgumentException("Status måste vara satt");
+            throw new IllegalArgumentException("Status mÃ¥ste vara satt");
         }
         int id = (int)qp.getCounter("SEKVENS", "STATUSID");
         String sql = "INSERT INTO STATUS (INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP) VALUES " +
@@ -50,7 +50,7 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
      */
     public void uppdatera(Status status) {
         if(status == null) {
-            throw new IllegalArgumentException("Status måste vara satt");
+            throw new IllegalArgumentException("Status mÃ¥ste vara satt");
         }
         qp.executeThrowException("UPDATE STATUS SET STATUS=" + status.getStatus() + ", STOPPAD=" + quoteValue(status.getStoppad()) + ", " +
         		"WATCHDOGTSTAMP=" + quoteValue(status.getWatchdog()) + " WHERE INSTANS=" + status.getInstans());

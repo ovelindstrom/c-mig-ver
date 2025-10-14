@@ -6,8 +6,8 @@ package se.csn.common.config;
 import org.xml.sax.Attributes;
 
 /**
- * @author Jonas Öhrnell - csn7821
- * Interface för objekt som lyssnar till parsning av config.xml-filer.
+ * @author Jonas Ã¥hrnell - csn7821
+ * Interface fÃ¶r objekt som lyssnar till parsning av config.xml-filer.
  */
 public interface ConfigXmlParseListener {
     

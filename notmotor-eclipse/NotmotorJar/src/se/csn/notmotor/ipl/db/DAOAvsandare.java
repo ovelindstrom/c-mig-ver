@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-10
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -18,7 +18,7 @@ public interface DAOAvsandare {
     
     Avsandare sokEnAvsandare(Avsandare avs);
     /**
-     * Om nÂgon inparameter ‰r null sÂ anv‰nds den inte i frÂgan
+     * Om n√•gon inparameter √§r null s√• anv√§nds den inte i fr√•gan
      */
     List getAvsandare(String namn, String programnamn,
             String kategori, String epost, String replyto);

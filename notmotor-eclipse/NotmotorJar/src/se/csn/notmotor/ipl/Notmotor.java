@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-23
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl;
@@ -42,7 +42,7 @@ import se.csn.notmotor.ipl.model.Status;
 import se.csn.notmotor.ipl.sms.SMSTjaenst;
 
 /**
- * Huvudklassen, ingÂngsklassen fˆr notifieringsmotorn. Denna klass
+ * Huvudklassen, ing√•ngsklassen f√∂r notifieringsmotorn. Denna klass
  * instantierar och kopplar ihop alla andra klasser. 
  */
 public class Notmotor extends NotmotorBase implements Job {
@@ -77,13 +77,13 @@ public class Notmotor extends NotmotorBase implements Job {
     /**
      * Skapar ny instans av Notmotorn. 
      * Detta konstruktoranrop kommer inte att terminera i vanlig ordning. 
-     * TrÂden kommer att gÂ in i en loop som bara kan brytas om databasen s‰tter 
-     * status till STOPPING eller STOPPED eller om det booleska v‰rdet i runControl 
-     * s‰tts till false
+     * Tr√•den kommer att g√• in i en loop som bara kan brytas om databasen s√§tter 
+     * status till STOPPING eller STOPPED eller om det booleska v√§rdet i runControl 
+     * s√§tts till false
      * 
-     * anropadURL - Den URL som anropades fˆr att starta anropande servlet. 
-     *     Denna parameter anv‰nds fˆr att koppla notmotorn till en Server.
-     * runControl - Handle som anropande kod kan anv‰nda fˆr att stoppa denna
+     * anropadURL - Den URL som anropades f√∂r att starta anropande servlet. 
+     *     Denna parameter anv√§nds f√∂r att koppla notmotorn till en Server.
+     * runControl - Handle som anropande kod kan anv√§nda f√∂r att stoppa denna
      *     notmotor.
      * @param context JobExecutionContext
      * @throws JobExecutionException e
@@ -96,15 +96,15 @@ public class Notmotor extends NotmotorBase implements Job {
     
     
     /**
-     * S‰tter upp ny notmotorinstans.
+     * S√§tter upp ny notmotorinstans.
      * @param anropadURL anropande process
      * @param runControl RunControl
      */
     public void init(String anropadURL, RunControl runControl) {
         engineCount++;
-        log.info("S‰tter upp ny instans, nr " + engineCount);
+        log.info("S√§tter upp ny instans, nr " + engineCount);
         
-		// H‰mta och kontrollera kopplingar till databas
+		// H√§mta och kontrollera kopplingar till databas
         ServiceLocator sl = new ServiceLocator();
         String datasourceJndi = Properties.getProperty(NOTMOTOR_DS_JNDI_PROP);
         DataSource ds = sl.getDatasource(datasourceJndi);
@@ -113,9 +113,9 @@ public class Notmotor extends NotmotorBase implements Job {
         try {
             refreshtid = Properties.getLongProperty(REFRESHTID_PROP);
         } catch (PropertyException e1) {
-            throw new IllegalStateException("Kunde inte l‰sa property 'param.refreshtid', var inte ett giltigt tal");
+            throw new IllegalStateException("Kunde inte l√§sa property 'param.refreshtid', var inte ett giltigt tal");
         }
-        log.debug("L‰st refreshtid: " + refreshtid);
+        log.debug("L√§st refreshtid: " + refreshtid);
         
         // Skapa DAO-objekt
         ParameterKalla paramkalla = new ParameterCache(getQP(ds, INSTANSNAMN + engineCount), refreshtid);
@@ -129,7 +129,7 @@ public class Notmotor extends NotmotorBase implements Job {
         
         log.debug("Skapat dao-objekt");
 
-        // Skapa kopplingar till mailtj‰nst
+        // Skapa kopplingar till mailtj√§nst
         String user = Properties.getProperty(PROPERTYFIL, MAIL_USER_PROP);
         String password = Properties.getProperty(PROPERTYFIL, MAIL_PASSWORD_PROP);
         String server = Properties.getProperty(PROPERTYFIL, MAIL_HOST_PROP);
@@ -137,20 +137,20 @@ public class Notmotor extends NotmotorBase implements Job {
         try {
             port = Properties.getIntProperty(PROPERTYFIL, MAIL_PORT_PROP);
         } catch (PropertyException e) {
-            throw new IllegalStateException("Kunde inte l‰sa property '" + MAIL_PORT_PROP 
+            throw new IllegalStateException("Kunde inte l√§sa property '" + MAIL_PORT_PROP 
                     + "', var inte ett giltigt tal");
         }
         int timeout;
         try {
             timeout = Properties.getIntProperty(PROPERTYFIL, MAIL_TIMEOUT_PROP);
         } catch (PropertyException e) {
-            throw new IllegalStateException("Kunde inte l‰sa property '" + MAIL_TIMEOUT_PROP 
+            throw new IllegalStateException("Kunde inte l√§sa property '" + MAIL_TIMEOUT_PROP 
                     + "', var inte ett giltigt tal");
         }
         MeddelandeSender epostSender = new EpostMeddelandeSenderImpl(user, password, server, port, timeout);
         log.debug("Skapat epost-sender");
         
-        // Skapa kopplingar till sms-tj‰nst
+        // Skapa kopplingar till sms-tj√§nst
         String smsuser = Properties.getProperty(PROPERTYFIL, SMS_USER_PROP);
         String smspassword = Properties.getProperty(PROPERTYFIL, SMS_PASSWORD_PROP);
         String smsEndpoint = Properties.getProperty(PROPERTYFIL, SMS_ENDPOINT_PROP);
@@ -163,7 +163,7 @@ public class Notmotor extends NotmotorBase implements Job {
         //sender.addSender(epostSender);
         //sender.addSender(smsSender);
         
-        //L‰gg till kopplingar som behˆvs fˆr anrop mot MINAMEDDELANDEN +++
+        //L√§gg till kopplingar som beh√∂vs f√∂r anrop mot MINAMEDDELANDEN +++
         
         //String mmmEndpoint = Properties.getProperty(PROPERTYFIL, MMM_ENDPOINT_PROP);
         /* Disable code for MMM sender as these type of messages is no longer handled by Notmotor
@@ -172,7 +172,7 @@ public class Notmotor extends NotmotorBase implements Job {
 		try {
 			certifikatPEM = new URI(Properties.getProperty(PROPERTYFIL, MMM_CERTIFIKAT_PEM));
 		} catch (URISyntaxException e1) {
-			throw new IllegalStateException("Kunde inte l‰sa property '" + MMM_CERTIFIKAT_PEM 
+			throw new IllegalStateException("Kunde inte l√§sa property '" + MMM_CERTIFIKAT_PEM 
                     + "', var inte en giltig adress");
 		}
         URI nyckelPKCS8;
@@ -180,7 +180,7 @@ public class Notmotor extends NotmotorBase implements Job {
 		try {
 			nyckelPKCS8 = new URI(Properties.getProperty(PROPERTYFIL, MMM_NYCKEL_PKCS8));
 		} catch (URISyntaxException e1) {
-			throw new IllegalStateException("Kunde inte l‰sa property '" + MMM_NYCKEL_PKCS8 
+			throw new IllegalStateException("Kunde inte l√§sa property '" + MMM_NYCKEL_PKCS8 
                     + "', var inte en giltig adress");
 		}
         
@@ -193,7 +193,7 @@ public class Notmotor extends NotmotorBase implements Job {
         log.debug("Skapat mmm-sender");
         */
 
-        // St‰ng ˆppna instanser om fˆrsta anropet:
+        // St√§ng √∂ppna instanser om f√∂rsta anropet:
         QueryProcessor qp = getQP(ds, INSTANSNAMN + engineCount);
         if (firstCall) {
             stangOppnaInstanser(anropadURL, qp);
@@ -201,12 +201,12 @@ public class Notmotor extends NotmotorBase implements Job {
             firstCall = false;
         }
         
-        // S‰tt statusrad i databas
-        // MÂste sˆka ut servernummer:
+        // S√§tt statusrad i databas
+        // M√•ste s√∂ka ut servernummer:
         //qp.addQueryListener(new QueryListenerImpl("NOTMOTOR:"));
         int servernr = qp.getInt("SELECT ID FROM SERVER WHERE NOTMOTORSERVLETURL='" + anropadURL + "'", -1);
         if (servernr == -1) {
-            log.error("Kunde inte hitta server med URL " + anropadURL + " - s‰tter servernr till -1");
+            log.error("Kunde inte hitta server med URL " + anropadURL + " - s√§tter servernr till -1");
         }
         Status status = new Status(-1, SkickaMeddelandeStateMachine.INIT, servernr, 
                 					new Date(), null, new Date(), TYP);
@@ -217,7 +217,7 @@ public class Notmotor extends NotmotorBase implements Job {
         SkickaMeddelandeServicesImpl services = new SkickaMeddelandeServicesImpl(
                 new SingleThreadConnectionQueryProcessor(ds), 
                 paramkalla, daomeddelande, daohandelse, daomottagare, status.getInstans());
-        // L‰gg till senders:
+        // L√§gg till senders:
         services.addMeddelandeSender(epostSender);
         services.addMeddelandeSender(smsSender);
         //services.addMeddelandeSender(mmmSender);

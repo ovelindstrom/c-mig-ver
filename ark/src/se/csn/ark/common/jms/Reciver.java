@@ -15,7 +15,7 @@ import javax.jms.Session;
 /**
  *     Namn :    Reciver
  *
- *     Beskrivning: Klass för att kunna ta emot meddelande som skickas via jms kö
+ *     Beskrivning: Klass fÃ¶r att kunna ta emot meddelande som skickas via jms kÃ¶
  *
  *
  * @author csnnlm
@@ -27,11 +27,11 @@ public class Reciver extends JmsQueue {
     private QueueReceiver receiver = null;
 
     /**
-     * Öppnar en mottagarekö med som inte transaktionshanteras och med angivet
+     * Ã¥ppnar en mottagarekÃ¶ med som inte transaktionshanteras och med angivet
      * AcknowledgeMode
      *
      * @param acknowledgeMode AUTO_ACKNOWLEDGE,CLIENT_ACKNOWLEDGE,DUPS_OK_ACKNOWLEDGE
-     * @throws JMSException Öppnandet av mottagarkö misslyckdes.
+     * @throws JMSException Ã¥ppnandet av mottagarkÃ¶ misslyckdes.
      */
     public void openReciver(int acknowledgeMode) throws JMSException {
         // Create a new queue receiver using the queue session. 
@@ -53,8 +53,8 @@ public class Reciver extends JmsQueue {
 
 
     /**
-     *  Öppnar en mottagarekö med som inte transaktionshanteras och med AUTO_ACKNOWLEDGE
-     * @throws JMSException Öppnandet av mottagarkö misslyckdes.
+     *  Ã¥ppnar en mottagarekÃ¶ med som inte transaktionshanteras och med AUTO_ACKNOWLEDGE
+     * @throws JMSException Ã¥ppnandet av mottagarkÃ¶ misslyckdes.
      */
     public void openReciver() throws JMSException {
         try {
@@ -73,10 +73,10 @@ public class Reciver extends JmsQueue {
 
 
     /**
-     * Kollar om det finns ett meddelande att hämta från angiven kö, i så fall
-     * returneras objektet annars null. Väntar inte på att ett meddelande skall komma.
+     * Kollar om det finns ett meddelande att hÃ¤mta frÃ¥n angiven kÃ¶, i sÃ¥ fall
+     * returneras objektet annars null. VÃ¤ntar inte pÃ¥ att ett meddelande skall komma.
      * @return object - Object.
-     * @throws JMSException Hämtande av meddelande från kö misslyckades.
+     * @throws JMSException HÃ¤mtande av meddelande frÃ¥n kÃ¶ misslyckades.
      */
     public Object receive() throws JMSException {
         Object object = null;
@@ -89,7 +89,7 @@ public class Reciver extends JmsQueue {
             }
         } catch (JMSException e) {
             log.error(
-                      "Fel vid hämtande av meddelande i Reciver::receive(): ",
+                      "Fel vid hÃ¤mtande av meddelande i Reciver::receive(): ",
                       e);
             throw e;
         }
@@ -101,8 +101,8 @@ public class Reciver extends JmsQueue {
 
 
     /**
-     * Stänger kopplingen mot recivern, queueconnection och sessionen
-     * @throws JMSException Fel Vid stänging av mottagren eller sessionen.
+     * StÃ¤nger kopplingen mot recivern, queueconnection och sessionen
+     * @throws JMSException Fel Vid stÃ¤nging av mottagren eller sessionen.
      *
      */
     
@@ -112,7 +112,7 @@ public class Reciver extends JmsQueue {
             super.close();
             getSession().close();
         } catch (JMSException e) {
-            log.error("Misslycakdes att stänga reciver eller session", e);
+            log.error("Misslycakdes att stÃ¤nga reciver eller session", e);
             throw e;
         }
     }

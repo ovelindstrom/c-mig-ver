@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-07
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin.beans;
@@ -22,27 +22,27 @@ public class ParamBean {
 	
     private static final String[][] params = {
             {"WATCHDOGTID", "Sekunder mellan uppdatering av processernas watchdogflagga"},
-            {"TICKTID", "Väntetid i sekunder efter varje arbetsmoment"},
-            {"SOVTID", "Den tid i sekunder som processerna ska vänta på arbete"},
-            {"BATCHSTORLEK", "Max antal meddelanden att sända åt gången"},
-            {"CALLBACKS", "Styr om notmotorn ska göra callbacks för att meddela statusändringar på meddelanden"},
-            {"MINTIDTILLSENASTEFEL", "Tid i sekunder mellan omsändningsförsök av misslyckade meddelanden"},
-            {"MAXSANDFORSOK", "Max antal omsändningsförsök per meddelande"},
-            {"KANALER_MED_BEGRANSNINGAR", "Nedprioriterade inkanaler med begränsningar. Kommaseparerad lista."},
+            {"TICKTID", "VÃ¤ntetid i sekunder efter varje arbetsmoment"},
+            {"SOVTID", "Den tid i sekunder som processerna ska vÃ¤nta pÃ¥ arbete"},
+            {"BATCHSTORLEK", "Max antal meddelanden att sÃ¤nda Ã¥t gÃ¥ngen"},
+            {"CALLBACKS", "Styr om notmotorn ska gÃ¶ra callbacks fÃ¶r att meddela statusÃ¤ndringar pÃ¥ meddelanden"},
+            {"MINTIDTILLSENASTEFEL", "Tid i sekunder mellan omsÃ¤ndningsfÃ¶rsÃ¶k av misslyckade meddelanden"},
+            {"MAXSANDFORSOK", "Max antal omsÃ¤ndningsfÃ¶rsÃ¶k per meddelande"},
+            {"KANALER_MED_BEGRANSNINGAR", "Nedprioriterade inkanaler med begrÃ¤nsningar. Kommaseparerad lista."},
     };
     
     /**
-     * Lista med de parametrar som finns tillgängliga för nedprioriterade kanaler.
-     * Varje element i listan består i sin tur av en lista som innehåller två element;
-     * namn och beskrivning. Om parameterns namn innehåller "{{KANAL}}" så kommer detta
+     * Lista med de parametrar som finns tillgÃ¤ngliga fÃ¶r nedprioriterade kanaler.
+     * Varje element i listan bestÃ¥r i sin tur av en lista som innehÃ¥ller tvÃ¥ element;
+     * namn och beskrivning. Om parameterns namn innehÃ¥ller "{{KANAL}}" sÃ¥ kommer detta
      * att bytas ut mot kanalens namn.
      */
     private static final String[][] paramsKanaler = {
-        {"KANAL_{{KANAL}}_PERTIMME", "Max antal meddelanden att sända per timme."},
-        {"KANAL_{{KANAL}}_BATCHSTORLEK", "Max antal meddelanden att sända i följd."},
+        {"KANAL_{{KANAL}}_PERTIMME", "Max antal meddelanden att sÃ¤nda per timme."},
+        {"KANAL_{{KANAL}}_BATCHSTORLEK", "Max antal meddelanden att sÃ¤nda i fÃ¶ljd."},
         {"KANAL_{{KANAL}}_SOVTID", "Sovtid i sekunder mellan varje batch."},
-        {"KANAL_{{KANAL}}_OPPNINGSTID", "Öppningstid för aktuell kanal. (HH:mm:ss)"},
-        {"KANAL_{{KANAL}}_STANGNINGSTID", "Stängningstid för aktuell kanal. (HH:mm:ss)"},
+        {"KANAL_{{KANAL}}_OPPNINGSTID", "Ã¥ppningstid fÃ¶r aktuell kanal. (HH:mm:ss)"},
+        {"KANAL_{{KANAL}}_STANGNINGSTID", "StÃ¤ngningstid fÃ¶r aktuell kanal. (HH:mm:ss)"},
     };
     
     private ListDataModel parametrar;
@@ -86,7 +86,7 @@ public class ParamBean {
     
     public void uppdateraKanaler(ActionEvent e) {
         ParameterKalla paramKalla = ActionHelper.getResourceFactory().getParameterKalla();
-        // Nollställ temporära parametrar
+        // NollstÃ¤ll temporÃ¤ra parametrar
         for (String kanal : paramKalla.getStringParam("KANALER_MED_BEGRANSNINGAR", "").split("[, ]+")) {
         	if (kanal.trim().length() > 0) {
         		paramKalla.setStringParam(new Kanal(kanal).getBatchKvarKey(), null);

@@ -3,10 +3,10 @@ package se.csn.notmotor.ipl;
 import se.csn.common.servlet.RunControl;
 
 /**
- * Klass som realiserar tillståndshanteringen för att skicka meddelanden.
- * Allt "arbete" utförs i andra klasser; det gör det möjligt att testa 
- * tillståndshanteringen för sig. 
- * @author Jonas Öhrnell (csn7821)
+ * Klass som realiserar tillstÃ¥ndshanteringen fÃ¶r att skicka meddelanden.
+ * Allt "arbete" utfÃ¶rs i andra klasser; det gÃ¶r det mÃ¶jligt att testa 
+ * tillstÃ¥ndshanteringen fÃ¶r sig. 
+ * @author Jonas Ã¥hrnell (csn7821)
  *
  */
 public class SkickaMeddelandeStateMachine extends MeddelandeStateMachineBase {
@@ -21,61 +21,61 @@ public class SkickaMeddelandeStateMachine extends MeddelandeStateMachineBase {
 	public void run() {
 		mainLoop: while (runControl.isRunning()) {
 		
-			// Sätt watchdog timer (oavsett status):
+			// SÃ¤tt watchdog timer (oavsett status):
 			services.updateWatchdogFlag();
 		
-			// Läs parametrar (görs 1 gång per tick). 
-			// Man skulle kunna sätta ett annat intervall för
+			// LÃ¤s parametrar (gÃ¶rs 1 gÃ¥ng per tick). 
+			// Man skulle kunna sÃ¤tta ett annat intervall fÃ¶r
 			// parameteruppdatering, men det skulle bara komplicera
-			// koden utan att tillföra nödvändig funktionalitet
+			// koden utan att tillfÃ¶ra nÃ¶dvÃ¤ndig funktionalitet
 			services.updateParameters();
 			
-			// Läs den status som är satt i databasen. 
+			// LÃ¤s den status som Ã¤r satt i databasen. 
 			int status = services.getStatus();
 			
 			switch(status) {
 			case INIT: 
-			    // Markörtillstånd för första varvet. Gå till RUNNING:
+			    // MarkÃ¶rtillstÃ¥nd fÃ¶r fÃ¶rsta varvet. GÃ¥ till RUNNING:
 			    services.makeTransition(INIT, RUNNING);
 			    // faller igenom
 			case RUNNING:
-				// Kolla först om vi befinner oss i en schemalagd pause:
+				// Kolla fÃ¶rst om vi befinner oss i en schemalagd pause:
 				if (services.inScheduledPause()) {
 					services.makeTransition(RUNNING, SCHEDULED_PAUSE);
 					break;
 				}
-				// Om inte, utför själva jobbet:
+				// Om inte, utfÃ¶r sjÃ¤lva jobbet:
 				boolean sentMail = services.skickaMeddelande();
 				if (!sentMail) {
 				    services.makeTransition(RUNNING, WAITING);
 				}
 				break;
-			case WAITING: // Vänta angivet antal millisekunder, gå därefter till RUNNING:
+			case WAITING: // VÃ¤nta angivet antal millisekunder, gÃ¥ dÃ¤refter till RUNNING:
 				services.sleepWaittime();
 				services.makeTransition(WAITING, RUNNING);
 				break;
-			case PAUSING: // Gå till paused
+			case PAUSING: // GÃ¥ till paused
 			    services.makeTransition(PAUSING, PAUSED);
 				break;
-			case PAUSED: // Gör inget, kommer bara härifrån om status ändras i databasen
+			case PAUSED: // GÃ¶r inget, kommer bara hÃ¤rifrÃ¥n om status Ã¤ndras i databasen
 				break; // NOSONAR
-			case SCHEDULED_PAUSE: // Kolla om inte längre i schemafönstret
+			case SCHEDULED_PAUSE: // Kolla om inte lÃ¤ngre i schemafÃ¶nstret
 				if (!services.inScheduledPause()) {
 				    services.makeTransition(SCHEDULED_PAUSE, RUNNING);
 				}
 				break;
-			case STOPPING: // Gå till STOPPED
+			case STOPPING: // GÃ¥ till STOPPED
 			    services.makeTransition(STOPPING, STOPPED);
 				break;
-			case STOPPED: // bryt ur loopen och anropa sedan avstängningsmetod
+			case STOPPED: // bryt ur loopen och anropa sedan avstÃ¤ngningsmetod
 				break mainLoop; // NOSONAR
-			case UNKNOWN: // Fortsätt som i PAUSED: kommer bara härifrån om status
-			    		  // ändras i databasen
+			case UNKNOWN: // FortsÃ¤tt som i PAUSED: kommer bara hÃ¤rifrÃ¥n om status
+			    		  // Ã¤ndras i databasen
 			    break; // NOSONAR
-			default: throw new IllegalStateException("Okänt tillstånd: " + status); 
+			default: throw new IllegalStateException("OkÃ¤nt tillstÃ¥nd: " + status); 
 			}
 			
-			// Sov en ticktid, för att inte lasta i onödan
+			// Sov en ticktid, fÃ¶r att inte lasta i onÃ¶dan
 			services.sleepTick();
 		}
 		services.shutdown();

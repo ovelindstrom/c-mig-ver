@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-02
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.model;
@@ -17,13 +17,13 @@ public class Bilaga  extends CsnDataTransferObjectImpl {
 	private static final long serialVersionUID = 1L;
 	// Nyckel
     private Long id;
-    // Mimetyp. Kan vara null, i sådana fall används application/octetstream
+    // Mimetyp. Kan vara null, i sÃ¥dana fall anvÃ¤nds application/octetstream
     private String mimetyp;
-    // Beskrivning av bilagan, får vara null
+    // Beskrivning av bilagan, fÃ¥r vara null
     private String filnamn;
-    // Encoding för bilagan; måste inte anges
+    // Encoding fÃ¶r bilagan; mÃ¥ste inte anges
     private String encoding;
-    // Data för bilagan, måste sättas
+    // Data fÃ¶r bilagan, mÃ¥ste sÃ¤ttas
     private byte[] data;
     
     public Bilaga() {

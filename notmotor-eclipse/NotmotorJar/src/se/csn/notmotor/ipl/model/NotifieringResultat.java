@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-02
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.model;
@@ -21,9 +21,9 @@ public class NotifieringResultat  extends CsnDataTransferObjectImpl {
     						VARNING = 2,
     						FEL = 3;
 
-    // Databas-id för det meddelande som skapades vid anropet
+    // Databas-id fÃ¶r det meddelande som skapades vid anropet
     private Long meddelandeId;
-    // Resultatkod som matchar en av de ovanstående
+    // Resultatkod som matchar en av de ovanstÃ¥ende
     private Integer resultat;
     // Information om resultatet. Null om resultatet var OK, annars en beskrivande text
     private String info;
@@ -39,7 +39,7 @@ public class NotifieringResultat  extends CsnDataTransferObjectImpl {
     
     public NotifieringResultat(long meddelandeid, int resultat, String text) {
         if(!((resultat == OK) || (resultat == NOT) || (resultat == VARNING) || (resultat == FEL))) {
-            throw new IllegalArgumentException("Okänd resultatkod: " + resultat);
+            throw new IllegalArgumentException("OkÃ¤nd resultatkod: " + resultat);
         }
         this.resultat = new Integer(resultat);
         this.meddelandeId = new Long(meddelandeid);

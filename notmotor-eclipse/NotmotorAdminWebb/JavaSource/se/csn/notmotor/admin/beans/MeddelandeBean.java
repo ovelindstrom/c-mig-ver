@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-18
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin.beans;
@@ -121,7 +121,7 @@ public class MeddelandeBean {
             try {
                 id = Integer.parseInt((String) params.get("id"));
             } catch (NumberFormatException nfe) {
-                log.error("Tog emot id=" + idString + ", bugg eller hackingförsök?");
+                log.error("Tog emot id=" + idString + ", bugg eller hackingfÃ¶rsÃ¶k?");
                 id = qp.getLong("SELECT MAX(ID) FROM MEDDELANDE", -1);
             }
         } else {
@@ -148,21 +148,21 @@ public class MeddelandeBean {
     }
     
     public void visaForegaende(ActionEvent e) {
-    	log.debug("ID före: " + id);
+    	log.debug("ID fÃ¶re: " + id);
     	id = getForegaendeMeddelande(id);
         log.debug("ID efter: " + id);
         uppdatera();
     }
 
     public void visaNasta(ActionEvent e) {
-    	log.debug("ID före: " + id);
+    	log.debug("ID fÃ¶re: " + id);
     	id = getNastaMeddelande(id);
         log.debug("ID efter: " + id);
         uppdatera();
     }
     
     public void testAction(ActionEvent e) {
-        log.debug("TA: ID före: " + id);
+        log.debug("TA: ID fÃ¶re: " + id);
         id = getNastaMeddelande(id);
         log.debug("TA: ID efter: " + id);
         uppdatera();
@@ -175,7 +175,7 @@ public class MeddelandeBean {
     public void skickaOm(ActionEvent e) {
     	log.debug("skickaom, id:" + id);
     	try {
-    	MeddelandeHandelse handelse = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET, MeddelandeHandelse.OK, "Omsändning");
+    	MeddelandeHandelse handelse = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET, MeddelandeHandelse.OK, "OmsÃ¤ndning");
     	daoHandelse.createHandelse(handelse, id);
     	
     	MeddelandeHandelse[] h = meddelande.getHandelser();
@@ -194,19 +194,19 @@ public class MeddelandeBean {
     			qp.executeThrowException("DELETE FROM HANDELSE WHERE ID=" + h[i].getId());
     			log.debug("delete handelse med id=" + h[i].getId());
     		} else {
-    			// Om tidpunkt är satt har vi tagit bort ett meddelande tidigare.
-    			// Vi har hittat minst en likadan händelse och grupperar ihop dessa
+    			// Om tidpunkt Ã¤r satt har vi tagit bort ett meddelande tidigare.
+    			// Vi har hittat minst en likadan hÃ¤ndelse och grupperar ihop dessa
     			if (tidpunkt != null) {
     				log.debug("TIDPUNKT=" + tidpunkt);
     				qp.executeThrowException("UPDATE HANDELSE SET TEXT='" 
     						+ h[forstaLikaMedd].getFeltext() 
-    						+ ", Antal likadana händelser: " + antalLikaHandelser 
-    						+ ", Första tidpunkt: " + tidpunkt
+    						+ ", Antal likadana hÃ¤ndelser: " + antalLikaHandelser 
+    						+ ", FÃ¶rsta tidpunkt: " + tidpunkt
     						+ "' WHERE ID=" + h[forstaLikaMedd].getId());
     				log.debug("UPDATE HANDELSE SET TEXT=" 
     						+ h[forstaLikaMedd].getFeltext() 
-    						+ "\nAntal likadana händelser: " + antalLikaHandelser 
-    						+ "\nFörsta tidpunkt: " + tidpunkt
+    						+ "\nAntal likadana hÃ¤ndelser: " + antalLikaHandelser 
+    						+ "\nFÃ¶rsta tidpunkt: " + tidpunkt
     						+ " WHERE ID=" + h[forstaLikaMedd].getId());
     				tidpunkt = null;
     				antalLikaHandelser = 1;
@@ -303,7 +303,7 @@ public class MeddelandeBean {
             try {
                 id = Integer.parseInt(idString);
             } catch (NumberFormatException nfe) {
-                log.error("Tog emot id=" + idString + ", bugg eller hackingförsök?");
+                log.error("Tog emot id=" + idString + ", bugg eller hackingfÃ¶rsÃ¶k?");
                 id = qp.getLong("SELECT MAX(ID) FROM MEDDELANDE", -1);
             }
         }
@@ -326,8 +326,8 @@ public class MeddelandeBean {
     }
     
     /**
-     * Specialare för att formatera ut mottagarna som en sträng.
-     * @return String med alla mottagare för meddelandet.
+     * Specialare fÃ¶r att formatera ut mottagarna som en strÃ¤ng.
+     * @return String med alla mottagare fÃ¶r meddelandet.
      */
     public String getMottagarstrang() {
         lasMeddelandeFranDB();
@@ -377,7 +377,7 @@ public class MeddelandeBean {
         List<Handelserad> list = new ArrayList<Handelserad>();
         long tick = System.currentTimeMillis();
         MeddelandeHandelse[] h = meddelande.getHandelser();
-        log.debug("Det tog " + (System.currentTimeMillis() - tick) + " ms att hämta händelser");
+        log.debug("Det tog " + (System.currentTimeMillis() - tick) + " ms att hÃ¤mta hÃ¤ndelser");
         if (h == null) {
             return null;
         }

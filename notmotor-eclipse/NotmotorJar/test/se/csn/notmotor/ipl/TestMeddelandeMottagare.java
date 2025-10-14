@@ -13,7 +13,7 @@ import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 import se.csn.notmotor.ipl.model.NotifieringResultat;
 
 /**
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class TestMeddelandeMottagare extends TestCase {
 
@@ -22,14 +22,14 @@ public class TestMeddelandeMottagare extends TestCase {
         MockControl daoControl = MockControl.createControl(DAOMeddelande.class);
         DAOMeddelande dao = (DAOMeddelande)daoControl.getMock();
         
-        // Kolla att validering görs
+        // Kolla att validering gÃ¶rs
 	    // Validering fel
     	Meddelande m = new Meddelande();
     	MeddelandeMottagare mm = new MeddelandeMottagare();
     	NotifieringResultat res = mm.skickaMeddelande(m, dao);
     	assertEquals(res.getMeddelandeId().intValue(), -1);
     	daoControl.reset();
-    	// Validering rätt
+    	// Validering rÃ¤tt
     	m = new Meddelande("Rubrik", "Text", "mottagare@csn.se", "avs@csn.se", "Avsandare");
     	long id = 12345;
     	m.setId(new Long(id));
@@ -45,8 +45,8 @@ public class TestMeddelandeMottagare extends TestCase {
     	daoControl.verify();
     	daoControl.reset();	
         		
-        // Kolla att det läggs till händelse
-    	// Inga händelser innan
+        // Kolla att det lÃ¤ggs till hÃ¤ndelse
+    	// Inga hÃ¤ndelser innan
     	m.setHandelser(new MeddelandeHandelse[0]);
     	dao.createMeddelande(m);
     	daoControl.setReturnValue(id);
@@ -56,7 +56,7 @@ public class TestMeddelandeMottagare extends TestCase {
     	daoControl.verify();
     	daoControl.reset();	
     	
-    	// Händelser innan
+    	// HÃ¤ndelser innan
     	m.setHandelser(new MeddelandeHandelse[3]);
     	dao.createMeddelande(m);
     	daoControl.setReturnValue(id);
@@ -66,7 +66,7 @@ public class TestMeddelandeMottagare extends TestCase {
     	daoControl.verify();
     	daoControl.reset();	
         
-        // Kolla att det görs lagring
+        // Kolla att det gÃ¶rs lagring
     	// -> gjort ovan
     }
     
@@ -74,10 +74,10 @@ public class TestMeddelandeMottagare extends TestCase {
         MockControl daoControl = MockControl.createControl(DAOMeddelande.class);
         DAOMeddelande dao = (DAOMeddelande)daoControl.getMock();
         
-        // Kolla att validering görs
+        // Kolla att validering gÃ¶rs
 	    // Validering fel
     	Meddelande m = new Meddelande("Rubrik", "Text", "mottagare@csn.se", "avs@csn.se", "Avsandare");
-    	// Sätter status till nåt annat än MOTTAGET:
+    	// SÃ¤tter status till nÃ¥t annat Ã¤n MOTTAGET:
     	m.getMottagare()[0].setStatus(new Integer(MeddelandeHandelse.ALLA_HANDELSER));
     	long id = 12345;
     	m.setId(new Long(id));

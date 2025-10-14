@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-12
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -25,7 +25,7 @@ public class DBTestDAOBilagaImpl extends TestCase {
         
         try {
             dao.createBilaga(b, 1);
-            fail("Ska inte gå, data saknas");
+            fail("Ska inte gÃ¥, data saknas");
         } catch(IllegalArgumentException iae) {
             //OK
         }
@@ -33,7 +33,7 @@ public class DBTestDAOBilagaImpl extends TestCase {
         b.setData(new byte[]{1,2,3,4,5,6,7,8,9,0});
         long id = dao.createBilaga(b, 1);
         
-        // Hämta:
+        // HÃ¤mta:
         Bilaga b2 = dao.getBilaga(id);
         assertEquals(b2, b);
     }
@@ -53,7 +53,7 @@ public class DBTestDAOBilagaImpl extends TestCase {
         dao.createBilaga(b, meddelandebas + 2);
 
 
-        // Hämta:
+        // HÃ¤mta:
         List list = dao.getBilagorForMeddelande(meddelandebas + 2);
         assertEquals(list.size(), 1);
         Bilaga b2 = (Bilaga)list.get(0);

@@ -6,7 +6,7 @@ import org.easymock.MockControl;
 
 /**
  * Skapad 2007-mar-12
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 
@@ -43,11 +43,11 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
     }
     
     public void testLifecycleRunning() {
-        // Kolla att watchdog flag sätts
+        // Kolla att watchdog flag sÃ¤tts
         mock.updateWatchdogFlag();
         // Kolla att parametrarna uppdateras
         mock.updateParameters();
-        // Kolla att status läses
+        // Kolla att status lÃ¤ses
         mock.getStatus();
         control.setReturnValue(SkickaMeddelandeStateMachine.RUNNING);
         // STATUS = RUNNING:
@@ -58,7 +58,7 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
         	control.setReturnValue(true);
         // Tomt varv
         doSleepWDFLagParamsOnMock(mock);
-        // Gå till status STOPPED
+        // GÃ¥ till status STOPPED
         mock.getStatus();
         control.setReturnValue(SkickaMeddelandeStateMachine.STOPPED);
         mock.shutdown();
@@ -71,7 +71,7 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
     public void testStoppingStopped() {
         mock.updateWatchdogFlag();
         mock.updateParameters();
-        // Kolla att status läses
+        // Kolla att status lÃ¤ses
         mock.getStatus();
         control.setReturnValue(SkickaMeddelandeStateMachine.STOPPING);
         // STATUS = STOPPING:
@@ -89,7 +89,7 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
     }
     
     public void testScheduledPause() {
-        // Första stegen:
+        // FÃ¶rsta stegen:
         mock.updateWatchdogFlag();
         mock.updateParameters();
 
@@ -98,18 +98,18 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
         // STATUS = RUNNING:
         	mock.inScheduledPause();
         	control.setReturnValue(true);
-        	// Kolla att status SCHEDULED_PAUSE sätts
+        	// Kolla att status SCHEDULED_PAUSE sÃ¤tts
         	mock.makeTransition(SkickaMeddelandeStateMachine.RUNNING, SkickaMeddelandeStateMachine.SCHEDULED_PAUSE);
 	        control.setReturnValue(true);
 
-        	// Håll status:
+        	// HÃ¥ll status:
 	        doSleepWDFLagParamsOnMock(mock);
 	        mock.getStatus();
 	        control.setReturnValue(SkickaMeddelandeStateMachine.SCHEDULED_PAUSE);
 	        mock.inScheduledPause();
 	        control.setReturnValue(true);
 	        
-	        // Gå ur scheduled pause:
+	        // GÃ¥ ur scheduled pause:
 	        doSleepWDFLagParamsOnMock(mock);
 	        mock.getStatus();
 	        control.setReturnValue(SkickaMeddelandeStateMachine.SCHEDULED_PAUSE);
@@ -118,7 +118,7 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
 	        mock.makeTransition(SkickaMeddelandeStateMachine.SCHEDULED_PAUSE, SkickaMeddelandeStateMachine.RUNNING);
 	        control.setReturnValue(true);
 	        
-	    // Gå till status STOPPED
+	    // GÃ¥ till status STOPPED
         goToStopped(mock);
         
         verify();
@@ -130,7 +130,7 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
     
     public void testRunningToPausedScheduledPause() {
         // Kontrollera att RUNNING -> PAUSED -> RUNNING funkar.
-        // Första stegen:
+        // FÃ¶rsta stegen:
         mock.updateWatchdogFlag();
         mock.updateParameters();
 
@@ -142,7 +142,7 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
         	mock.skickaMeddelande();
         	control.setReturnValue(true);
 
-        	// gå till PAUSED
+        	// gÃ¥ till PAUSED
 	        doSleepWDFLagParamsOnMock(mock);
 	        mock.getStatus();
 	        control.setReturnValue(SkickaMeddelandeStateMachine.PAUSING);
@@ -153,7 +153,7 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
 	        mock.getStatus();
 	        control.setReturnValue(SkickaMeddelandeStateMachine.PAUSED);
 
-	        // gå ur PAUSED till RUNNING, men i SCHEDULED_PAUSE
+	        // gÃ¥ ur PAUSED till RUNNING, men i SCHEDULED_PAUSE
 	        doSleepWDFLagParamsOnMock(mock);
 	        mock.getStatus();
 	        control.setReturnValue(SkickaMeddelandeStateMachine.RUNNING);
@@ -162,14 +162,14 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
 	        mock.makeTransition(SkickaMeddelandeStateMachine.RUNNING, SkickaMeddelandeStateMachine.SCHEDULED_PAUSE);
 	        control.setReturnValue(true);
 	        
-	    // Gå till status STOPPED
+	    // GÃ¥ till status STOPPED
         goToStopped(mock);
         
         verify();
     }
     
     public void testWaiting() {
-        // Första stegen:
+        // FÃ¶rsta stegen:
         mock.updateWatchdogFlag();
         mock.updateParameters();
 
@@ -181,7 +181,7 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
         	mock.skickaMeddelande();
         	control.setReturnValue(false);
 
-        	// gå till WAITING
+        	// gÃ¥ till WAITING
         	mock.makeTransition(SkickaMeddelandeStateMachine.RUNNING, SkickaMeddelandeStateMachine.WAITING);
 	        control.setReturnValue(true);
 	        
@@ -192,7 +192,7 @@ public class TestSkickaMeddelandeStateMachine extends TestCase {
 	        mock.makeTransition(SkickaMeddelandeStateMachine.WAITING, SkickaMeddelandeStateMachine.RUNNING);
 	        control.setReturnValue(true);
 
-	    // Gå till status STOPPED
+	    // GÃ¥ till status STOPPED
         goToStopped(mock);
         verify();
     }

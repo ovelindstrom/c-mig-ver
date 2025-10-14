@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * @author Petrus Bergman (csn7820)
  */
 package se.csn.common.mail;
@@ -11,10 +11,10 @@ import se.csn.ark.common.util.logging.Log;
 /**
  * Validerar en e-postadress.
  * <p>
- * En e-postadress får inte vara tom och måste ha formen av en korrekt e-postadress.
+ * En e-postadress fÃ¥r inte vara tom och mÃ¥ste ha formen av en korrekt e-postadress.
  * <p>
- * &quot;local-part&quot; har en maxlängd på 64 tecken.<br>
- * &quot;domain name&quot; har en maxlängd på 255 tecken.
+ * &quot;local-part&quot; har en maxlÃ¤ngd pÃ¥ 64 tecken.<br>
+ * &quot;domain name&quot; har en maxlÃ¤ngd pÃ¥ 255 tecken.
  * <p>
  * <i>&quot;According to RFC 2822, the local-part of the address may use any of these ASCII characters:
  * <ul>
@@ -26,18 +26,18 @@ import se.csn.ark.common.util.logging.Log;
  * The dot separated domain labels are limited to letters, digits, and hyphens drawn from the
  * ASCII character set.&quot;</i>
  * <p>
- * Källa: http://en.wikipedia.org/wiki/E-mail_address  (2006-12-28)
+ * KÃ¤lla: http://en.wikipedia.org/wiki/E-mail_address  (2006-12-28)
  */
 public final class EmailAdressValidator {
 	
 	/**
-	 * Hämta logg.
+	 * HÃ¤mta logg.
 	 */
 	private static Log log = Log.getInstance(EmailAdressValidator.class);
 	
 	
 	/**
-	 * <code>EmailAdressValidator</code> är en utility-klass
+	 * <code>EmailAdressValidator</code> Ã¤r en utility-klass
 	 * och ska inte instansieras.
 	 */
 	private EmailAdressValidator() {
@@ -47,12 +47,12 @@ public final class EmailAdressValidator {
 	/**
 	 * 
 	 * @param adress den e-postadress som ska valideras
-	 * @return <code>true</code> om e-postadressen är korrekt formaterad, annars <code>false</code>
+	 * @return <code>true</code> om e-postadressen Ã¤r korrekt formaterad, annars <code>false</code>
 	 */
 	public static boolean isValid(String adress) {
 		if (log.isDebugEnabled()) { log.debug("Verifierar adress: " + adress); }
 		if (adress != null) {
-			// Kontrollera att e-postadressen följer mönstret för
+			// Kontrollera att e-postadressen fÃ¶ljer mÃ¶nstret fÃ¶r
 			// e-postadresser enligt RFC 2821 och RFC 2822
 			String e = adress.trim().toLowerCase();
 			String atext = "[a-z0-9!#$%&'*+\\-/=?^_`{|}~]";
@@ -61,7 +61,7 @@ public final class EmailAdressValidator {
 			String domain = dtext + "+(\\." + dtext + "+)+";
 			String epostReg = "^" + local + "@" + domain + "$";
 			
-			// Enligt RFC 2821 (4.5.3.1) http://www.ietf.org/rfc/rfc2821.txt gäller:
+			// Enligt RFC 2821 (4.5.3.1) http://www.ietf.org/rfc/rfc2821.txt gÃ¤ller:
 			// "The maximum total length of a user name or other local-part is 64 characters."
 			// "The maximum total length of a domain name or number is 255 characters."
 			String lengthReg = "^[^@]{1,64}@[^@]{4,255}$";

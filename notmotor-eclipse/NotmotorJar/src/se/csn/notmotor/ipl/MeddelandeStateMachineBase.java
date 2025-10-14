@@ -1,52 +1,52 @@
 package se.csn.notmotor.ipl;
 /**
- * Klass som realiserar tillståndshanteringen för att skicka meddelanden.
- * Allt "arbete" utförs i andra klasser; det gör det möjligt att testa 
- * tillståndshanteringen för sig. 
- * @author Jonas Öhrnell
+ * Klass som realiserar tillstÃ¥ndshanteringen fÃ¶r att skicka meddelanden.
+ * Allt "arbete" utfÃ¶rs i andra klasser; det gÃ¶r det mÃ¶jligt att testa 
+ * tillstÃ¥ndshanteringen fÃ¶r sig. 
+ * @author Jonas Ã¥hrnell
  *
  */
 
 import se.csn.common.servlet.RunControl;
 
 public class MeddelandeStateMachineBase {
-	// Statuskoder för skickamotorns tillstånd. 
-	// Dessa koder används även i databasen.
+	// Statuskoder fÃ¶r skickamotorns tillstÃ¥nd. 
+	// Dessa koder anvÃ¤nds Ã¤ven i databasen.
 	public static final int 
-							// Det tillstånd som används innan motorn gått in i sin 
-							// arbetsloop, när inställningar läses mm
+							// Det tillstÃ¥nd som anvÃ¤nds innan motorn gÃ¥tt in i sin 
+							// arbetsloop, nÃ¤r instÃ¤llningar lÃ¤ses mm
 							INIT = 0, 
 							
-							// Status när skickamotorn läser/skriver databas och skickar meddelanden
+							// Status nÃ¤r skickamotorn lÃ¤ser/skriver databas och skickar meddelanden
 							RUNNING = 1,
 							
-							// Sätts av tråd när tråden sover och inte läser/skickar meddelanden.
-							// Ska hamna i detta tillstånd om det för tillfället inte finns några mail
+							// SÃ¤tts av trÃ¥d nÃ¤r trÃ¥den sover och inte lÃ¤ser/skickar meddelanden.
+							// Ska hamna i detta tillstÃ¥nd om det fÃ¶r tillfÃ¤llet inte finns nÃ¥gra mail
 							// att skicka
 							WAITING = 2,
 							
-							// Sätts i databas för att signalera att skickamotorn ska gå till PAUSED
+							// SÃ¤tts i databas fÃ¶r att signalera att skickamotorn ska gÃ¥ till PAUSED
 							PAUSING = 3,
 							
-							// Tillstånd då skickamotorn sover och inte gör någonting. 
-							// Det enda som görs här är att kontrollera om det är dags att gå till
-							// tillstånd RUNNING (
+							// TillstÃ¥nd dÃ¥ skickamotorn sover och inte gÃ¶r nÃ¥gonting. 
+							// Det enda som gÃ¶rs hÃ¤r Ã¤r att kontrollera om det Ã¤r dags att gÃ¥ till
+							// tillstÃ¥nd RUNNING (
 							PAUSED = 4,
 							
-							// Sätts i datanas för att signalera att skickamotorn ska gå till RUNNING
+							// SÃ¤tts i datanas fÃ¶r att signalera att skickamotorn ska gÃ¥ till RUNNING
 							STOPPING = 5,
 							
-							// Tillstånd då skickamotorn är avstängd, kan inte startas igen.
+							// TillstÃ¥nd dÃ¥ skickamotorn Ã¤r avstÃ¤ngd, kan inte startas igen.
 							STOPPED = 6,
 							
-							// Tillstånd som anges för en schemalagd paus. Enda sättet att komma ur den är att 
-							// tidpunkten inte längre befinner sig i en schemalagd paus
+							// TillstÃ¥nd som anges fÃ¶r en schemalagd paus. Enda sÃ¤ttet att komma ur den Ã¤r att 
+							// tidpunkten inte lÃ¤ngre befinner sig i en schemalagd paus
 							SCHEDULED_PAUSE = 7,
 							
-							// Tillstånd som returneras av tjänsten om databasen inte kan nås.
-							// Här kan inget arbete utföras överhuvudtaget, men tjänsten ska
-							// ändå inte stängas ner utan fortsätta läsa status och hoppas att
-							// databasen går upp igen
+							// TillstÃ¥nd som returneras av tjÃ¤nsten om databasen inte kan nÃ¥s.
+							// HÃ¤r kan inget arbete utfÃ¶ras Ã¶verhuvudtaget, men tjÃ¤nsten ska
+							// Ã¤ndÃ¥ inte stÃ¤ngas ner utan fortsÃ¤tta lÃ¤sa status och hoppas att
+							// databasen gÃ¥r upp igen
 							// Denna status ska aldrir representeras i databasen
 							UNKNOWN = -1;
 							

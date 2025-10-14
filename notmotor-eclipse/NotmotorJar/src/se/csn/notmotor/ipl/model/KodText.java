@@ -4,8 +4,8 @@
 package se.csn.notmotor.ipl.model;
 
 /**
- * Enkel klass som håller ett par av kod och text
- * @author Jonas Öhrnell - csn7821
+ * Enkel klass som hÃ¥ller ett par av kod och text
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class KodText {
 

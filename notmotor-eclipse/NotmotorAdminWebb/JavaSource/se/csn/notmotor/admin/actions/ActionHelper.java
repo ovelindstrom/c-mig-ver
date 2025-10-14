@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-16
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin.actions;
@@ -20,7 +20,7 @@ public class ActionHelper {
     
     public static ResourceFactory getResourceFactory() {
         if(ds == null) {
-            throw new IllegalStateException("DataSourcen har inte satts än!");
+            throw new IllegalStateException("DataSourcen har inte satts Ã¤n!");
         }
         return new ResourceFactoryImpl(ds, isolationLevel);
     }

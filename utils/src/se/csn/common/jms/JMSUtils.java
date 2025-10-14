@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-feb-02
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.common.jms;
@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * Skapad 2007-feb-02
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  */
 public class JMSUtils {
 
@@ -19,18 +19,18 @@ public class JMSUtils {
     private static String NULLCORRID = "000000000000000000000000";
     
     /**
-     * CorrID, Correlation ID, anv‰nds fˆr att koppla ihop olika JMS-meddelanden. 
-     * Vi anv‰nder MQ och dÂ ‰r Correlation ID 24 tecken lÂngt.
-     * @return En str‰ng som ‰r 24 tecken lÂng. De fˆrsta 15 tecken ‰r en tidsst‰mpel: 
-     * YYMMDD hhmmss + millisekunder. De n‰sta 9 tecknen ‰r ett slumptal.
-     * OBS! Den h‰r algoritmen kan inte garantera att tvÂ pÂ varandra fˆljande corr-id:n ‰r 
+     * CorrID, Correlation ID, anv√§nds f√∂r att koppla ihop olika JMS-meddelanden. 
+     * Vi anv√§nder MQ och d√• √§r Correlation ID 24 tecken l√•ngt.
+     * @return En str√§ng som √§r 24 tecken l√•ng. De f√∂rsta 15 tecken √§r en tidsst√§mpel: 
+     * YYMMDD hhmmss + millisekunder. De n√§sta 9 tecknen √§r ett slumptal.
+     * OBS! Den h√§r algoritmen kan inte garantera att tv√• p√• varandra f√∂ljande corr-id:n √§r 
      * unika. 
-     * 1) Det finns en risk fˆr kollision efter 100 Âr :=)
-     * 2) Om flera corrID:n efterfrÂgas samma millisekund sÂ kan det h‰nda 
-     *    att de kolliderar. Eftersom det bara ‰r 10^9 slumptalsdelar sÂ finns det
-     *    en icke fˆrsumbar sannolikhet att det intr‰ffar en kollision. 
-     *    Om GARANTERAT unika corrID:n efterstr‰vas sÂ kan man antingen gÂ till 
-     *    en helt annan algoritm eller infˆra en fˆrdrˆjning pÂ en millisekund.  
+     * 1) Det finns en risk f√∂r kollision efter 100 √•r :=)
+     * 2) Om flera corrID:n efterfr√•gas samma millisekund s√• kan det h√§nda 
+     *    att de kolliderar. Eftersom det bara √§r 10^9 slumptalsdelar s√• finns det
+     *    en icke f√∂rsumbar sannolikhet att det intr√§ffar en kollision. 
+     *    Om GARANTERAT unika corrID:n efterstr√§vas s√• kan man antingen g√• till 
+     *    en helt annan algoritm eller inf√∂ra en f√∂rdr√∂jning p√• en millisekund.  
      */
     public synchronized static String generateRandomCorrID() {
         // 15 siffror tidsangivelse (YYMMDDHHMMSSmmm) + 9 siffror slump:
@@ -41,7 +41,7 @@ public class JMSUtils {
     }
     
     public synchronized static String getSelectorForCorrid(String corrID, String encoding) {
-        if((corrID == null) || (corrID.length() != 24) || (encoding == null)) throw new IllegalArgumentException("CorrID mÂste vara exakt 24 tecken");
+        if((corrID == null) || (corrID.length() != 24) || (encoding == null)) throw new IllegalArgumentException("CorrID m√•ste vara exakt 24 tecken");
         byte[] correlBytes = null;
         try {
             correlBytes = corrID.getBytes(encoding);

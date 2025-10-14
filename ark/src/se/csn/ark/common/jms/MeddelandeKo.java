@@ -21,8 +21,8 @@ import se.csn.ark.common.util.logging.Log;
  * 	Namn:    MeddelandeKo
  *
  * 	Beskrivning:
- *		Klass för att kolla/prenumerera på meddelande som skall skickas iväg av meddelande
- * 	och kö hantering.
+ *		Klass fÃ¶r att kolla/prenumerera pÃ¥ meddelande som skall skickas ivÃ¤g av meddelande
+ * 	och kÃ¶ hantering.
  *
  * @author csnnlm
  * @version 1.0
@@ -47,16 +47,16 @@ public class MeddelandeKo {
 	/**
 	 * Konstruktor - se init
     * @param contextConectionFactory skapare av kopplings omgivning
-    * @param que namn på sökt kö
+    * @param que namn pÃ¥ sÃ¶kt kÃ¶
     */
    public MeddelandeKo(String contextConectionFactory, String que) {
 		init(contextConectionFactory, que);
 	}
 
 	/**
-	 * Initiering, hämtar anslutning aoch startar connection.
+	 * Initiering, hÃ¤mtar anslutning aoch startar connection.
 	 * @param contextConectionFactory skapare av kopplings omgivning
-	 * @param que namn på sökt kö
+	 * @param que namn pÃ¥ sÃ¶kt kÃ¶
 	 */
 	public void init(String contextConectionFactory, String que) {
 		/*
@@ -84,7 +84,7 @@ public class MeddelandeKo {
 			                   + e.getMessage());
 			System.exit(1);
 		} catch (JMSException e) {
-			log.debug("Kan inte skapa anslutning till avgiven kö : "
+			log.debug("Kan inte skapa anslutning till avgiven kÃ¶ : "
 			                   + e.getMessage());
 			System.exit(1);
 		}
@@ -94,8 +94,8 @@ public class MeddelandeKo {
 
 
 	/**
-	 * Hämtar nästa meddelande från en kö om sådant finns
-	 * @return Objekt från kön.
+	 * HÃ¤mtar nÃ¤sta meddelande frÃ¥n en kÃ¶ om sÃ¥dant finns
+	 * @return Objekt frÃ¥n kÃ¶n.
 	 */
 	public Object nasta() {
 		// Use the queue receiver to receive the message that 
@@ -116,7 +116,7 @@ public class MeddelandeKo {
 
 
 	/**
-	 * Öppnar en mottagarkö som kan ta emot meddelanden från angiven kö
+	 * Ã¥ppnar en mottagarkÃ¶ som kan ta emot meddelanden frÃ¥n angiven kÃ¶
 	 */
 	public void openReciver() {
 		// Create a new queue receiver using the queue session. 
@@ -138,8 +138,8 @@ public class MeddelandeKo {
 
 
 	/**
-    * Öppnar en anslutning för att sända ett meddelande på angiven kö 
-    * måste göras efter init.
+    * Ã¥ppnar en anslutning fÃ¶r att sÃ¤nda ett meddelande pÃ¥ angiven kÃ¶ 
+    * mÃ¥ste gÃ¶ras efter init.
     */
    public void openSender() {
 		// Create a new queue sender using the queue session. 
@@ -160,7 +160,7 @@ public class MeddelandeKo {
 
 
 	/**
-	 * Postar meddelande på en kö.
+	 * Postar meddelande pÃ¥ en kÃ¶.
 	 * @param s serialeserbart objekt som skall skickas.
 	 * @return 1 alltid
 	 */

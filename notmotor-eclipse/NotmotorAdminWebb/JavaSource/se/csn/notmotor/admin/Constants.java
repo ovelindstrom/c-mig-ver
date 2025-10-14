@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin;
@@ -10,8 +10,8 @@ import se.csn.notmotor.ipl.SkickaMeddelandeStateMachine;
 
 
 public class Constants extends SkickaMeddelandeStateMachine {
-    // TODO: Fundera över ett bättre sätt att kommunicera konstanter.
-    // Denna koppling blir för osynlig
+    // TODO: Fundera Ã¶ver ett bÃ¤ttre sÃ¤tt att kommunicera konstanter.
+    // Denna koppling blir fÃ¶r osynlig
     public Constants(){
         super(null, new RunControl());
     }

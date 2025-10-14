@@ -1,17 +1,17 @@
 /**
  * Skapad 2007-feb-20
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
 
 /**
- * Utilitymetoder för att kontrollera att alla klasser/jarfiler finns på plats.
+ * Utilitymetoder fÃ¶r att kontrollera att alla klasser/jarfiler finns pÃ¥ plats.
  */
 public class ClassDependencyTester {
 
     /**
-     * Några vanliga klassbibliotek:
+     * NÃ¥gra vanliga klassbibliotek:
      */
     public static final String[] LOG4J = new String[] {"org.apache.log4j.Appender", "log4j.jar"};
     public static final String[] ARKALL = new String[] {"se.csn.ark.common.DTOException", "ark-all.jar"};
@@ -28,7 +28,7 @@ public class ClassDependencyTester {
     public static final String[] COMMONS_LANG = new String[] {"org.apache.commons.lang.builder.ToStringBuilder", "commons-lang.jar"};
     
     /**
-     * @param classname Namn på den sökta klassen; ska vara fully qualified.
+     * @param classname Namn pÃ¥ den sÃ¶kta klassen; ska vara fully qualified.
      * @return true om klassen hittades, false annars
      */
     public static boolean classFound(String classname) {
@@ -42,57 +42,57 @@ public class ClassDependencyTester {
     }
     
     /**
-     * @param classname Namn på den sökta klassen; ska vara fully qualified.  
-     * @param jarfile Namn på den jarfil som innehåller klassen; bara filnamnet, men MED
-     *        filändelse (kan ju vara .zip också)
+     * @param classname Namn pÃ¥ den sÃ¶kta klassen; ska vara fully qualified.  
+     * @param jarfile Namn pÃ¥ den jarfil som innehÃ¥ller klassen; bara filnamnet, men MED
+     *        filÃ¤ndelse (kan ju vara .zip ocksÃ¥)
      * @return null om klassen finns, annars en feltext.
      */
     public static String findClassReturnErrorMessage(String classname, String jarfile) {
         if(classFound(classname)) return null;
-        return "Kunde inte hitta " + classname + " som hör till filen " + jarfile;
+        return "Kunde inte hitta " + classname + " som hÃ¶r till filen " + jarfile;
     }
     
     /**
-     * @param classname Namn på den saknade klassen; ska vara fully qualified.  
-     * @param jarfile Namn på den jarfil som innehåller klassen; bara filnamnet, men MED
-     *        filändelse (kan ju vara .zip också)
-     * @param usedBy Används om jarfilen ifråga är en dependency av en annan jarfil. Bra att
-     *        använda för att tydliggöra var en klass används om den inte används i 
+     * @param classname Namn pÃ¥ den saknade klassen; ska vara fully qualified.  
+     * @param jarfile Namn pÃ¥ den jarfil som innehÃ¥ller klassen; bara filnamnet, men MED
+     *        filÃ¤ndelse (kan ju vara .zip ocksÃ¥)
+     * @param usedBy AnvÃ¤nds om jarfilen ifrÃ¥ga Ã¤r en dependency av en annan jarfil. Bra att
+     *        anvÃ¤nda fÃ¶r att tydliggÃ¶ra var en klass anvÃ¤nds om den inte anvÃ¤nds i 
      *        applikationskod. 
      * @return null om klassen finns, annars en feltext.
      */
     public static String findClassReturnErrorMessage(String classname, String jarfile, String usedBy) {
         if(classFound(classname)) return null;
-        return findClassReturnErrorMessage(classname, jarfile) + ". Denna klass används i " + usedBy;
+        return findClassReturnErrorMessage(classname, jarfile) + ". Denna klass anvÃ¤nds i " + usedBy;
     }
 
     /**
-    * @param classAndJarfile Första stärngen ska innehålla namn på den saknade klassen; 
+    * @param classAndJarfile FÃ¶rsta stÃ¤rngen ska innehÃ¥lla namn pÃ¥ den saknade klassen; 
     * 		 ska vara fully qualified.  
-    * 		 Andra parametern ska innehålla namn på den jarfil som innehåller klassen; 
-    * 		 bara filnamnet, men MED filändelse (kan ju vara .zip också)
-    * 		 Tredje parametern används om jarfilen ifråga är en dependency av en 
+    * 		 Andra parametern ska innehÃ¥lla namn pÃ¥ den jarfil som innehÃ¥ller klassen; 
+    * 		 bara filnamnet, men MED filÃ¤ndelse (kan ju vara .zip ocksÃ¥)
+    * 		 Tredje parametern anvÃ¤nds om jarfilen ifrÃ¥ga Ã¤r en dependency av en 
     * 		 annan jarfil. 
     * @return null om klassen finns, annars en feltext.
     */
     public static String findClassReturnErrorMessage(String[] classAndJarfile) {
         if((classAndJarfile == null) || (classAndJarfile.length < 1)) {
-            throw new IllegalArgumentException("Listan måste innehålla minst ett element");
+            throw new IllegalArgumentException("Listan mÃ¥ste innehÃ¥lla minst ett element");
         }
-        if(classAndJarfile.length == 1) return findClassReturnErrorMessage(classAndJarfile[0], "okänd jarfil");
+        if(classAndJarfile.length == 1) return findClassReturnErrorMessage(classAndJarfile[0], "okÃ¤nd jarfil");
         if(classAndJarfile.length == 2) return findClassReturnErrorMessage(classAndJarfile[0], classAndJarfile[1]);
         if(classAndJarfile.length == 3) return findClassReturnErrorMessage(classAndJarfile[0], classAndJarfile[1], classAndJarfile[2]);
         if(classAndJarfile.length > 3) {
-            throw new IllegalArgumentException("Listan ska innehålla som mest 3 argument.");
+            throw new IllegalArgumentException("Listan ska innehÃ¥lla som mest 3 argument.");
         }
         return null;
     }
 
     
     /**
-     * @param classname Namn på den saknade klassen; ska vara fully qualified.  
-     * @param jarfile Namn på den jarfil som innehåller klassen; bara filnamnet, men MED
-     *        filändelse (kan ju vara .zip också)
+     * @param classname Namn pÃ¥ den saknade klassen; ska vara fully qualified.  
+     * @param jarfile Namn pÃ¥ den jarfil som innehÃ¥ller klassen; bara filnamnet, men MED
+     *        filÃ¤ndelse (kan ju vara .zip ocksÃ¥)
      * @throws MissingClassException om klassen inte finns
      */
     public static void findClassThrowException(String classname, String jarfile) {
@@ -102,11 +102,11 @@ public class ClassDependencyTester {
     }
     
     /**
-     * @param classname Namn på den saknade klassen; ska vara fully qualified.  
-     * @param jarfile Namn på den jarfil som innehåller klassen; bara filnamnet, men MED
-     *        filändelse (kan ju vara .zip också)
-     * @param usedBy Används om jarfilen ifråga är en dependency av en annan jarfil. Bra att
-     *        använda för att tydliggöra var en klass används om den inte används i 
+     * @param classname Namn pÃ¥ den saknade klassen; ska vara fully qualified.  
+     * @param jarfile Namn pÃ¥ den jarfil som innehÃ¥ller klassen; bara filnamnet, men MED
+     *        filÃ¤ndelse (kan ju vara .zip ocksÃ¥)
+     * @param usedBy AnvÃ¤nds om jarfilen ifrÃ¥ga Ã¤r en dependency av en annan jarfil. Bra att
+     *        anvÃ¤nda fÃ¶r att tydliggÃ¶ra var en klass anvÃ¤nds om den inte anvÃ¤nds i 
      *        applikationskod. 
      * @throws MissingClassException om klassen inte finns
      */
@@ -118,20 +118,20 @@ public class ClassDependencyTester {
     
     public static void findClassThrowException(String[] classAndJarfile) {
         if((classAndJarfile == null) || (classAndJarfile.length < 1)) {
-            throw new IllegalArgumentException("Listan måste innehålla minst ett element");
+            throw new IllegalArgumentException("Listan mÃ¥ste innehÃ¥lla minst ett element");
         }
-        if(classAndJarfile.length == 1) findClassThrowException(classAndJarfile[0], "okänd jarfil");
+        if(classAndJarfile.length == 1) findClassThrowException(classAndJarfile[0], "okÃ¤nd jarfil");
         if(classAndJarfile.length == 2) findClassThrowException(classAndJarfile[0], classAndJarfile[1]);
         if(classAndJarfile.length == 3) findClassThrowException(classAndJarfile[0], classAndJarfile[1], classAndJarfile[2]);
         if(classAndJarfile.length > 3) {
-            throw new IllegalArgumentException("Listan ska innehålla som mest 3 argument.");
+            throw new IllegalArgumentException("Listan ska innehÃ¥lla som mest 3 argument.");
         }
     }
 
     
     /**
-     * @param classesAndJarfiles Varje rad ska innehålla klassnamn och jarfil (samt användande 
-     *        jarfil i förekommande fall). 
+     * @param classesAndJarfiles Varje rad ska innehÃ¥lla klassnamn och jarfil (samt anvÃ¤ndande 
+     *        jarfil i fÃ¶rekommande fall). 
      * @return null om alla klasser/jarfiler hittades, annars en feltext med en rad per saknad
      *        klass/jarfil; raderna separeras av \n
      */

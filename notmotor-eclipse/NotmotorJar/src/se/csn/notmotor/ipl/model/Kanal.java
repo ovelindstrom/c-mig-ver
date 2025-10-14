@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * Representerar en inkanal där det finns begränsningar i
+ * Representerar en inkanal dÃ¤r det finns begrÃ¤nsningar i
  * hur meddelanden ska bearbetas.
  * 
  * @author Petrus Bergman, csn7820
@@ -22,25 +22,25 @@ public class Kanal {
 	/** Kanalens namn. */
 	private String namn;
 	
-	/** Kanalens öppningstid (endast klockslag). */
+	/** Kanalens Ã¶ppningstid (endast klockslag). */
 	private Calendar oppningstid;
 	
-	/** Kanalens stängningstid (endast klockslag). */
+	/** Kanalens stÃ¤ngningstid (endast klockslag). */
 	private Calendar stangningstid;
 	
-	/** Det maximala antalet meddelanden som får bearbetas per timme. */
+	/** Det maximala antalet meddelanden som fÃ¥r bearbetas per timme. */
 	private int maxAntalPerTimme;
 	
-	/** Antal meddelanden som ska bearbetas i en följd. */
+	/** Antal meddelanden som ska bearbetas i en fÃ¶ljd. */
 	private int batchStorlek;
 	
-	/** Antal meddelanden som återstår i aktuell batch. */
+	/** Antal meddelanden som Ã¥terstÃ¥r i aktuell batch. */
 	private int batchKvar;
 	
 	/** Tid i sekunder mellan varje batch. */
 	private int sovtid;
 	
-	/** Tidsstämpel då kanalen senast somnat, eller null om vaken. */
+	/** TidsstÃ¤mpel dÃ¥ kanalen senast somnat, eller null om vaken. */
 	private Date soverTimestamp;
 	
 	/** Antal meddelanden som senast markerats. */
@@ -55,10 +55,10 @@ public class Kanal {
 	 */
 	public Kanal(String namn) {
 		if (namn == null) {
-			throw new IllegalArgumentException("Kanalens namn får inte vara null");
+			throw new IllegalArgumentException("Kanalens namn fÃ¥r inte vara null");
 		}
 		this.namn = namn;
-		// Initiera öppnings- och stängningstid
+		// Initiera Ã¶ppnings- och stÃ¤ngningstid
 		setOppningstid(0, 0, 0);
 		setStangningstid(23, 59, 59);
 	}
@@ -73,20 +73,20 @@ public class Kanal {
 			if (isSovande()) {
 				status += "Sover";
 			} else {
-				status += "Öppen";
+				status += "Ã¥ppen";
 			}
 		} else {
-			status += "Stängd";
+			status += "StÃ¤ngd";
 		}
 		return status;
 	}
 	
 	/**
-	 * Returnerar huruvida kanalen är öppen eller stängd.
-	 * Kanalen anses vara öppen om nuvarande tidpunkt är inom aktuell öppet-
-	 * och stängningstid.
+	 * Returnerar huruvida kanalen Ã¤r Ã¶ppen eller stÃ¤ngd.
+	 * Kanalen anses vara Ã¶ppen om nuvarande tidpunkt Ã¤r inom aktuell Ã¶ppet-
+	 * och stÃ¤ngningstid.
 	 * 
-	 * @return <code>true</code> om kanalen är öppen, annars <code>false</code>
+	 * @return <code>true</code> om kanalen Ã¤r Ã¶ppen, annars <code>false</code>
 	 */
 	public boolean isOppen() {
 		Calendar nu = new GregorianCalendar();
@@ -108,9 +108,9 @@ public class Kanal {
 	}
 	
 	/**
-	 * Sätt klockslag då kanalen ska öppnas.
+	 * SÃ¤tt klockslag dÃ¥ kanalen ska Ã¶ppnas.
 	 * 
-	 * @param klockslag anges på formen HH:mm:ss
+	 * @param klockslag anges pÃ¥ formen HH:mm:ss
 	 */
 	public void setOppningstid(String klockslag) {
 		if (klockslag == null || klockslag.trim().length() == 0) {
@@ -126,12 +126,12 @@ public class Kanal {
 			// CHECKSTYLE/ON:MagicNumber
 			setOppningstid(hh, mm, ss);
 		} else {
-			throw new IllegalArgumentException("Ogiltigt format på klockslag: " + klockslag);
+			throw new IllegalArgumentException("Ogiltigt format pÃ¥ klockslag: " + klockslag);
 		}
 	}
 	
 	/**
-	 * Sätt klockslag då kanalen ska öppnas.
+	 * SÃ¤tt klockslag dÃ¥ kanalen ska Ã¶ppnas.
 	 * 
 	 * @param hh timme (0-23)
 	 * @param mm minut (0-59)
@@ -150,9 +150,9 @@ public class Kanal {
 	}
 	
 	/**
-	 * Sätt klockslag då kanalen ska stängas.
+	 * SÃ¤tt klockslag dÃ¥ kanalen ska stÃ¤ngas.
 	 * 
-	 * @param klockslag anges på formen HH:mm:ss
+	 * @param klockslag anges pÃ¥ formen HH:mm:ss
 	 */
 	public void setStangningstid(String klockslag) {
 		if (klockslag == null || klockslag.trim().length() == 0) {
@@ -168,12 +168,12 @@ public class Kanal {
 			// CHECKSTYLE/ON:MagicNumber
 			setStangningstid(hh, mm, ss);
 		} else {
-			throw new IllegalArgumentException("Ogiltigt format på klockslag: " + klockslag);
+			throw new IllegalArgumentException("Ogiltigt format pÃ¥ klockslag: " + klockslag);
 		}
 	}
 	
 	/**
-	 * Sätt klockslag då kanalen ska stängas.
+	 * SÃ¤tt klockslag dÃ¥ kanalen ska stÃ¤ngas.
 	 * 
 	 * @param hh timme (0-23)
 	 * @param mm minut (0-59)
@@ -192,9 +192,9 @@ public class Kanal {
 	}
 	
 	/**
-	 * Sätter maximala antalet meddelanden som får bearbetas per timme.
+	 * SÃ¤tter maximala antalet meddelanden som fÃ¥r bearbetas per timme.
 	 * 
-	 * @param antal max antal meddelanden. -1 innebär ingen begränsning.
+	 * @param antal max antal meddelanden. -1 innebÃ¤r ingen begrÃ¤nsning.
 	 */
 	public void setMaxAntalPerTimme(int antal) {
 		this.maxAntalPerTimme = antal;
@@ -213,8 +213,8 @@ public class Kanal {
 	}
 	
 	public String getBatchKvarKey() {
-		// Denna parameter är ej statisk utan uppdateras regelbundet,
-		// därför är nyckeln skriven med gemener.
+		// Denna parameter Ã¤r ej statisk utan uppdateras regelbundet,
+		// dÃ¤rfÃ¶r Ã¤r nyckeln skriven med gemener.
 		return "kanal_" + namn.toLowerCase() + "_batchkvar";
 	}
 	
@@ -261,8 +261,8 @@ public class Kanal {
 	}
 	
 	public String getSoverTimestampKey() {
-		// Denna parameter är ej statisk utan uppdateras regelbundet,
-		// därför är nyckeln skriven med gemener.
+		// Denna parameter Ã¤r ej statisk utan uppdateras regelbundet,
+		// dÃ¤rfÃ¶r Ã¤r nyckeln skriven med gemener.
 		return "kanal_" + namn.toLowerCase() + "_sover";
 	}
 	
@@ -283,11 +283,11 @@ public class Kanal {
 	}
 	
 	public String toString() {
-		return "Kanal(namn = " + namn + ", öppettider = "
+		return "Kanal(namn = " + namn + ", Ã¶ppettider = "
 				+ new SimpleDateFormat("HH:mm:ss").format(oppningstid.getTime())
 				+ " - "
 				+ new SimpleDateFormat("HH:mm:ss").format(stangningstid.getTime())
-				+ ", status = " + (isOppen() ? "öppen" : "stängd")
+				+ ", status = " + (isOppen() ? "Ã¶ppen" : "stÃ¤ngd")
 				+ ", max per timme = " + maxAntalPerTimme
 				+ ", batch storlek = " + batchStorlek
 				+ ", batch kvar = " + batchKvar

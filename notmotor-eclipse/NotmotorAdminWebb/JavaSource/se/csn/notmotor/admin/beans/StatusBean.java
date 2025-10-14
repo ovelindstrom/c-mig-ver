@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin.beans;
@@ -231,8 +231,8 @@ public class StatusBean {
     }
     
     /**
-     * Kontrollerar att processernas watchdogflaggor ‰r tillr‰ckligt f‰rska. 
-     * Tillr‰ckligt f‰rsk anses vara inom 60 sekunder frÂn den satta parametern
+     * Kontrollerar att processernas watchdogflaggor √§r tillr√§ckligt f√§rska. 
+     * Tillr√§ckligt f√§rsk anses vara inom 60 sekunder fr√•n den satta parametern
      */
     public String getWatchdogVarning() {
         Date jamforelsetid = getJamforelsetid();
@@ -247,9 +247,9 @@ public class StatusBean {
             if (s.getStatus() == SkickaMeddelandeStateMachine.STOPPED) { continue; }
             
             if (s.getWatchdog() == null) {
-                varning += "Process " + s.getInstans() + " har ingen tidsst‰mpel alls<br/>";
+                varning += "Process " + s.getInstans() + " har ingen tidsst√§mpel alls<br/>";
             } else if (s.getWatchdog().before(jamforelsetid)) {
-                varning += "Process " + s.getInstans() + " har en tidsst‰mpel som ‰r ‰ldre ‰n " + maxalder + " sekunder<br/>";
+                varning += "Process " + s.getInstans() + " har en tidsst√§mpel som √§r √§ldre √§n " + maxalder + " sekunder<br/>";
             } else {
                 log.debug("Watchdog: " + s.getWatchdog().getTime());
             }
@@ -263,12 +263,12 @@ public class StatusBean {
     }
     
     public void uppdatera(ActionEvent e) {
-        //uppdatera(); Kommentar: Konstruktorn kˆrs sÂ ett anrop till uppdatera ‰r onˆdigt eftersom inget annat gˆrs i denna metod.
+        //uppdatera(); Kommentar: Konstruktorn k√∂rs s√• ett anrop till uppdatera √§r on√∂digt eftersom inget annat g√∂rs i denna metod.
     }
     
     /**
-     * Kan bara ta bort en statusrad om status ‰r stoppad eller watchdogtidpunkten har passerats sÂ
-     * att varningstexten ‰r utlagd samtidigt som status ‰r stoppar.
+     * Kan bara ta bort en statusrad om status √§r stoppad eller watchdogtidpunkten har passerats s√•
+     * att varningstexten √§r utlagd samtidigt som status √§r stoppar.
      * @param rad Statusrad
      * @return true om villkoren uppfylls
      */
@@ -366,7 +366,7 @@ public class StatusBean {
 
 //        DAOStatus daostatus = ActionHelper.getResourceFactory().getDAOStatus();
 //        List statuses = daostatus.getStatus(null, new Integer(rad.getId()));
-//        // Kontrollera att det inte blir fˆr mÂnga motorer i samma maskin:
+//        // Kontrollera att det inte blir f√∂r m√•nga motorer i samma maskin:
 //        int count = 0;
 //        for (Iterator it = statuses.iterator(); it.hasNext();) {
 //            Status status = (Status) it.next();
@@ -380,7 +380,7 @@ public class StatusBean {
         
         
         if (server != null) {
-            log.info("Startar ny instans pÂ URL " + server.getServleturl());
+            log.info("Startar ny instans p√• URL " + server.getServleturl());
             ServletUtils.anropaServletAsynkront(server.getServleturl() + "?start=true");
         } else {
             log.error("Felaktigt serverid: " + rad.getId());
@@ -428,7 +428,7 @@ public class StatusBean {
             //DAOMeddelande daomeddelande = ActionHelper.getResourceFactory().getDAOMeddelande();
             String sql = "UPDATE MEDDELANDE SET STATUS = " + MeddelandeHandelse.MOTTAGET
         	+ " WHERE STATUS = -" + s.getInstans();
-	        log.info("≈terst‰ller meddelandestatus fˆr avbrutna s‰ndningar fˆr instans: " + s.getInstans());
+	        log.info("√Öterst√§ller meddelandestatus f√∂r avbrutna s√§ndningar f√∂r instans: " + s.getInstans());
 	        ActionHelper.getResourceFactory().getQueryProcessor().executeThrowException(sql);
 	        s.setStatus(SkickaMeddelandeStateMachine.STOPPED);
         }
@@ -478,7 +478,7 @@ public class StatusBean {
     
     
     public ListDataModel getKanaler() {
-    	// Initiera nedprioriterade inkanaler med begr‰nsningar
+    	// Initiera nedprioriterade inkanaler med begr√§nsningar
 	    List<Kanal> kanalerMedBegransningar = new ArrayList<Kanal>();
 	    ParameterKalla paramSource = ActionHelper.getResourceFactory().getParameterKalla();
 	    for (String namn : paramSource.getStringParam("KANALER_MED_BEGRANSNINGAR", "").split("[, ]+")) {
@@ -486,7 +486,7 @@ public class StatusBean {
 	    		break;
 	    	}
 	    	Kanal kanal = new Kanal(namn);
-	    	// H‰mta parametrar
+	    	// H√§mta parametrar
 	    	int pt = paramSource.getIntParam(kanal.getMaxAntalPerTimmeKey(), -1);
 	    	int bs = paramSource.getIntParam(kanal.getBatchStorlekKey(), -1);
 	    	int bk = paramSource.getIntParam(kanal.getBatchKvarKey(), bs);
@@ -505,12 +505,12 @@ public class StatusBean {
 	    	try {
 	    		kanal.setOppningstid(otid);
 	    	} catch (IllegalArgumentException e) {
-	    		log.error("Kunde inte s‰tta ˆppningstid pÂ kanalen " + namn, e);
+	    		log.error("Kunde inte s√§tta √∂ppningstid p√• kanalen " + namn, e);
 	    	}
 	    	try {
 	    		kanal.setStangningstid(stid);
 	    	} catch (IllegalArgumentException e) {
-	    		log.error("Kunde inte s‰tta st‰ngningstid pÂ kanalen " + namn, e);
+	    		log.error("Kunde inte s√§tta st√§ngningstid p√• kanalen " + namn, e);
 	    	}
 	    	kanalerMedBegransningar.add(kanal);
 	    }

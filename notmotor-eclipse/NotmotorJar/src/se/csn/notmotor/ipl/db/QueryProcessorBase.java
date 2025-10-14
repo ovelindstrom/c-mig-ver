@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-28
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -170,9 +170,9 @@ public abstract class QueryProcessorBase implements QueryProcessor {
 	}
 	
 	/**
-	 * Skapar java-objekt frÂn en databasfrÂga. 
-	 * @param SQL sql-frÂga
-	 * @param mapper Ett objekt som kan ˆvers‰tta en rad i svaret till 
+	 * Skapar java-objekt fr√•n en databasfr√•ga. 
+	 * @param SQL sql-fr√•ga
+	 * @param mapper Ett objekt som kan √∂vers√§tta en rad i svaret till 
 	 * 		  ett Java-objekt
 	 *
 	 */
@@ -204,7 +204,7 @@ public abstract class QueryProcessorBase implements QueryProcessor {
         if(list.size() == 0) {
             return null;
         } else if(list.size() > 1) {
-            throw new IllegalArgumentException("FrÂgan " + SQL + " returnerade mer ‰n en rad");
+            throw new IllegalArgumentException("Fr√•gan " + SQL + " returnerade mer √§n en rad");
         } else {
             return list.get(0);
         }
@@ -273,9 +273,9 @@ public abstract class QueryProcessorBase implements QueryProcessor {
     public abstract Connection getConnection();
     
     /**
-     * Implementera denna metod fˆr att fullborda resurshanteringen.
+     * Implementera denna metod f√∂r att fullborda resurshanteringen.
      * Den anropas efter varje sql-anrop.
-     * @param conn Anv‰nd connection. Kan vara null.
+     * @param conn Anv√§nd connection. Kan vara null.
      */
     protected abstract void handleConnection(Connection conn) throws SQLException;
     
@@ -293,7 +293,7 @@ public abstract class QueryProcessorBase implements QueryProcessor {
             }
         } catch (SQLException sqle) {
             reportError("handleResources: " + sqle);
-            throw new IllegalStateException("Kunde inte st‰nga resurser: " + sqle);
+            throw new IllegalStateException("Kunde inte st√§nga resurser: " + sqle);
         }
     }
     

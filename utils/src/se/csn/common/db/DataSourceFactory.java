@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.db;
@@ -30,7 +30,7 @@ public class DataSourceFactory implements DataSources {
 	private static Context initialContext = null;
 
 	/**
-	 * Privat konstruktor, endast statisk åtkomst
+	 * Privat konstruktor, endast statisk Ã¥tkomst
 	 */
 	private DataSourceFactory() {
 	}
@@ -39,11 +39,11 @@ public class DataSourceFactory implements DataSources {
 
 
 	/**
-	 * Ger en databaskoppling för åtkomst från Webb enligt angiven typ.
+	 * Ger en databaskoppling fÃ¶r Ã¥tkomst frÃ¥n Webb enligt angiven typ.
 	 *
 	 * @param dsType Typ enligt DataSources.
-	 * @return En databasförbindelse enligt angiven typ.
-	 * @throws DatabaseException Om förbindelse ej kan skapas.
+	 * @return En databasfÃ¶rbindelse enligt angiven typ.
+	 * @throws DatabaseException Om fÃ¶rbindelse ej kan skapas.
 	 * @see DataSources
 	 */
 	public static synchronized DataSource getDataSource(int dsType) throws DatabaseException {
@@ -59,7 +59,7 @@ public class DataSourceFactory implements DataSources {
 		case DATA_SOURCE5:
 		    return getDataSource(DATA_SOURCE5_KEY);
 		default:
-			throw new DatabaseException("Okänd typ för datakälla, dsType=" + dsType);
+			throw new DatabaseException("OkÃ¤nd typ fÃ¶r datakÃ¤lla, dsType=" + dsType);
 		}
 	}
 
@@ -67,7 +67,7 @@ public class DataSourceFactory implements DataSources {
 
 
 	/**
-	 * @param dsKey nyckel för att välja datakälla
+	 * @param dsKey nyckel fÃ¶r att vÃ¤lja datakÃ¤lla
 	 * @return koppling till databas
 	 * @throws DatabaseException gick ej att skapa koppling
 	 */
@@ -81,8 +81,8 @@ public class DataSourceFactory implements DataSources {
 			try {
                 initialContext = new javax.naming.InitialContext();
             } catch (NamingException e) {
-                log.fatal("Kunde inte skapa InitialContext, körs koden i appservern?", e);
-                throw new IllegalStateException("Kunde inte skapa InitialContext, körs koden i appservern?" + e);
+                log.fatal("Kunde inte skapa InitialContext, kÃ¶rs koden i appservern?", e);
+                throw new IllegalStateException("Kunde inte skapa InitialContext, kÃ¶rs koden i appservern?" + e);
             }
 		}
 
@@ -91,13 +91,13 @@ public class DataSourceFactory implements DataSources {
 			dsAlias = DATA_SOURCE_BASE + dsValue;
 			return (DataSource)initialContext.lookup(dsAlias);
 
-        // Här fångar vi bara Exception eftersom om det går snett här så är
-        // det kört, dvs ingen idé att särskilja vad som inte funkar.
+        // HÃ¤r fÃ¥ngar vi bara Exception eftersom om det gÃ¥r snett hÃ¤r sÃ¥ Ã¤r
+        // det kÃ¶rt, dvs ingen idÃ© att sÃ¤rskilja vad som inte funkar.
 		} catch (Exception e) {
-			String errMsg = "Kan ej skapa databasförbindelse";
+			String errMsg = "Kan ej skapa databasfÃ¶rbindelse";
 
 			if (dsAlias != null) {
-				errMsg += (" för datakälla " + dsAlias + ". Key=" + dsKey
+				errMsg += (" fÃ¶r datakÃ¤lla " + dsAlias + ". Key=" + dsKey
 				+ ", property value=" + dsValue);
 			}
 

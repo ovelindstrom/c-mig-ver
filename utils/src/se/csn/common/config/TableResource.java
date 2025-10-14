@@ -13,7 +13,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 /**
- * @author Jonas ÷hrnell - csn7821
+ * @author Jonas √•hrnell - csn7821
  */
 public class TableResource extends ResourceBase {
 
@@ -49,22 +49,22 @@ public class TableResource extends ResourceBase {
             // Kolla att schemat finns:
             if(!getSchemas(md).contains(schemaname.toUpperCase())) {
                 return new ResourceStatus("Hittade inte schemanamnet " + schemaname, 
-                        "Kontrollera DataSource: pekar den pÂ r‰tt databas?\n" +
+                        "Kontrollera DataSource: pekar den p√• r√§tt databas?\n" +
                         "Kontrollera databasen, saknas schemat?", ResourceStatus.ERROR);
             }
             
             // Kolla att tabellen finns:
             if(!getTables(md).contains(schemaname.toUpperCase())) {
                 return new ResourceStatus("Hittade inte tabellen " + name + " i schemat " + schemaname, 
-                        "Kontrollera DataSource: pekar den pÂ r‰tt databas?\n" +
+                        "Kontrollera DataSource: pekar den p√• r√§tt databas?\n" +
                         "Kontrollera databasen, saknas tabellen?", ResourceStatus.ERROR);
             }
             
             // Kolla tt
             
         } catch (SQLException e) {
-            return new ResourceStatus("Kunde inte h‰mta metadata fˆr " + name, 
-                    "Kontrollera DataSource-inst‰llningar", ResourceStatus.ERROR);
+            return new ResourceStatus("Kunde inte h√§mta metadata f√∂r " + name, 
+                    "Kontrollera DataSource-inst√§llningar", ResourceStatus.ERROR);
         }
         return null;
         
@@ -72,9 +72,9 @@ public class TableResource extends ResourceBase {
     }
     
     /**
-     * H‰mtar alla scheman frÂn den connection som md tagits frÂn
+     * H√§mtar alla scheman fr√•n den connection som md tagits fr√•n
      * @param md 
-     * @return En lista ˆver alla scheman i databasen, i UPPERCASE
+     * @return En lista √∂ver alla scheman i databasen, i UPPERCASE
      * @throws SQLException
      */
     public List getSchemas(DatabaseMetaData md) throws SQLException {

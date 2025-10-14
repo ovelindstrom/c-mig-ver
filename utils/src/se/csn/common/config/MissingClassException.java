@@ -1,33 +1,33 @@
 /**
  * Skapad 2007-feb-20
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
 
 /**
- * Kasta detta exception när en klass saknas (inte hittas av klassladdaren) 
+ * Kasta detta exception nÃ¤r en klass saknas (inte hittas av klassladdaren) 
  */
 public class MissingClassException extends ConfigException {
     
     /**
-     * @param classname Namn på den saknade klassen; ska vara fully qualified.  
-     * @param jarfile Namn på den jarfil som innehåller klassen; bara filnamnet, men MED
-     *        filändelse (kan ju vara .zip också)
+     * @param classname Namn pÃ¥ den saknade klassen; ska vara fully qualified.  
+     * @param jarfile Namn pÃ¥ den jarfil som innehÃ¥ller klassen; bara filnamnet, men MED
+     *        filÃ¤ndelse (kan ju vara .zip ocksÃ¥)
      */
     public MissingClassException(String classname, String jarfile) {
-        super("Hittade inte " + classname + ", som hör till " + jarfile, "Kontrollera att " + jarfile + " finns på classpath");
+        super("Hittade inte " + classname + ", som hÃ¶r till " + jarfile, "Kontrollera att " + jarfile + " finns pÃ¥ classpath");
     }
     
     /**
-     * @param classname Namn på den saknade klassen; ska vara fully qualified.  
-     * @param jarfile Namn på den jarfil som innehåller klassen; bara filnamnet, men MED
-     *        filändelse (kan ju vara .zip också)
-     * @param usedBy Används om jarfilen ifråga är en dependency av en annan jarfil. Bra att
-     *        använda för att tydliggöra var en klass används om den inte används i 
+     * @param classname Namn pÃ¥ den saknade klassen; ska vara fully qualified.  
+     * @param jarfile Namn pÃ¥ den jarfil som innehÃ¥ller klassen; bara filnamnet, men MED
+     *        filÃ¤ndelse (kan ju vara .zip ocksÃ¥)
+     * @param usedBy AnvÃ¤nds om jarfilen ifrÃ¥ga Ã¤r en dependency av en annan jarfil. Bra att
+     *        anvÃ¤nda fÃ¶r att tydliggÃ¶ra var en klass anvÃ¤nds om den inte anvÃ¤nds i 
      *        applikationskod. 
      */
     public MissingClassException(String classname, String jarfile, String usedBy) {
-        super("Hittade inte " + classname + ", som hör till " + jarfile + ". Den används av " + usedBy, "Kontrollera att " + jarfile + " finns på classpath");
+        super("Hittade inte " + classname + ", som hÃ¶r till " + jarfile + ". Den anvÃ¤nds av " + usedBy, "Kontrollera att " + jarfile + " finns pÃ¥ classpath");
     }
 }

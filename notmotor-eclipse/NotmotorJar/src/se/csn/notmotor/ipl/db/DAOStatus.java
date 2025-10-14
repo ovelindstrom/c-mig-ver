@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -23,22 +23,22 @@ public interface DAOStatus {
     public void uppdatera(Status status);
     
     /**
-     * Söker ut de statusar som matchar sökkriterierna
-     * @param status Begränsa sökningen till de rader som har denna status. 
-     *        Om null så begränsas inte sökningen på status.
-     * @param server Begränsa sökningen till de rader som har denna server. 
-     *        Om null så begränsas inte sökningen på server.
+     * SÃ¶ker ut de statusar som matchar sÃ¶kkriterierna
+     * @param status BegrÃ¤nsa sÃ¶kningen till de rader som har denna status. 
+     *        Om null sÃ¥ begrÃ¤nsas inte sÃ¶kningen pÃ¥ status.
+     * @param server BegrÃ¤nsa sÃ¶kningen till de rader som har denna server. 
+     *        Om null sÃ¥ begrÃ¤nsas inte sÃ¶kningen pÃ¥ server.
      */
     public List getStatus(Integer status, Integer server);
     
     /**
-     * Läser upp ett statusonbjekt från databas.
+     * LÃ¤ser upp ett statusonbjekt frÃ¥n databas.
      */
     public Status getStatus(int instans);
     
     /**
      * Tar bort motsvarande rad ur databasen. 
-     * OBS! Kan ge märkliga problem om raden används av en aktiv instans. 
+     * OBS! Kan ge mÃ¤rkliga problem om raden anvÃ¤nds av en aktiv instans. 
      */
     public void delete(int instans);
 }

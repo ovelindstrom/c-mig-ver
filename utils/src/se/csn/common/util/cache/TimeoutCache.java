@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-feb-05
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.util.cache;
@@ -12,11 +12,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Cache som tar bort objekt som är för gamla. 
- * Livslängden bestäms
+ * Cache som tar bort objekt som Ã¤r fÃ¶r gamla. 
+ * LivslÃ¤ngden bestÃ¤ms
  * 
  * Skapad 2007-feb-05
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  */
 public class TimeoutCache implements Cache {
     
@@ -30,8 +30,8 @@ public class TimeoutCache implements Cache {
         }
         
         /**
-         * @param livstid i millisekunder. Om lifetime = -1 så antas objektet aldrig dö.
-         * @return true om objektet är för gammalt, false annars.
+         * @param livstid i millisekunder. Om lifetime = -1 sÃ¥ antas objektet aldrig dÃ¶.
+         * @return true om objektet Ã¤r fÃ¶r gammalt, false annars.
          */
         boolean isTooOld(long lifetime) {
             if(lifetime == -1) {
@@ -58,7 +58,7 @@ public class TimeoutCache implements Cache {
     
     /**
      * @see Cache.get
-     * @return null om objektet är för gammalt
+     * @return null om objektet Ã¤r fÃ¶r gammalt
      */
     public Object get(Object key) {
         if(key == null) return null;
@@ -77,7 +77,7 @@ public class TimeoutCache implements Cache {
      * @see Cache.put
      */
     public void put(Object key, Object value) {
-        // Kolla om det finns någon referens:
+        // Kolla om det finns nÃ¥gon referens:
         Object val = objects.get(key);
         if(val == null) {
             TimestampReference tr = new TimestampReference(value);
@@ -89,8 +89,8 @@ public class TimeoutCache implements Cache {
     }
     
     /**
-     * Rensar bort alla objekt som är för gamla ur mappen. 
-     * Kan vara ett sätt att hålla ner minnesförbrukning.  
+     * Rensar bort alla objekt som Ã¤r fÃ¶r gamla ur mappen. 
+     * Kan vara ett sÃ¤tt att hÃ¥lla ner minnesfÃ¶rbrukning.  
      */
     public void purgeTimedoutObjects() {
         List toRemove = new ArrayList();

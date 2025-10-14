@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author Jonas Öhrnell - csn7821
- * Hjälpklass för variabler i config.xml.
+ * @author Jonas Ã¥hrnell - csn7821
+ * HjÃ¤lpklass fÃ¶r variabler i config.xml.
  * 
  */
 public class ConfigVariable {

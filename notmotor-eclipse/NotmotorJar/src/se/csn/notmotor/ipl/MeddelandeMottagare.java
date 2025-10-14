@@ -20,8 +20,8 @@ import se.csn.notmotor.ipl.validators.MeddelandeValidator;
 import se.csn.notmotor.ipl.validators.SMSValidator;
 
 /**
- * @author Jonas Öhrnell - csn7821
- * Klass som validerar meddelandet, lägger till händelsen MOTTAGET
+ * @author Jonas Ã¥hrnell - csn7821
+ * Klass som validerar meddelandet, lÃ¤gger till hÃ¤ndelsen MOTTAGET
  * och lagrar meddelandet till databas
  */
 public class MeddelandeMottagare {
@@ -60,35 +60,35 @@ public class MeddelandeMottagare {
         MeddelandeHandelse mh = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET);
         meddelande.addHandelse(mh);
         
-        // 2007-10-25: inför separat status för varje mottagare
+        // 2007-10-25: infÃ¶r separat status fÃ¶r varje mottagare
         for (int i = 0; i < meddelande.getMottagare().length; i++) {
             Mottagare mott = meddelande.getMottagare()[i];
             mott.setStatus(new Integer(MeddelandeHandelse.MOTTAGET));
             
-            // 2008-04-15 Formatera smsnr så att det är på formatet 46701234567
+            // 2008-04-15 Formatera smsnr sÃ¥ att det Ã¤r pÃ¥ formatet 46701234567
             if ("SMS".equalsIgnoreCase(mott.getTyp())) {
             	// Formatera smsnr
             	String mobilnr = mott.getAdress();
             	
-            	// Telia vill ha mobilnr på formatet 46701234567
+            	// Telia vill ha mobilnr pÃ¥ formatet 46701234567
             	try {
-            		// Om mobilnr börjar med 00 (ex 004670...), ta bort 00
+            		// Om mobilnr bÃ¶rjar med 00 (ex 004670...), ta bort 00
 	            	if (mobilnr.startsWith("00")) {
 	            		String nyttMobilnr = mobilnr.substring(2, mobilnr.length());
 	            		mott.setAdress(nyttMobilnr);
-	            	// Om mobilnr börjar med 0 (ex 070...), byt ut 0 mot 46
+	            	// Om mobilnr bÃ¶rjar med 0 (ex 070...), byt ut 0 mot 46
 	            	} else if (mobilnr.startsWith("0")) {
 	            		String nyttMobilnr = mobilnr.substring(1, mobilnr.length());
 	            		mott.setAdress(LANDSNR + nyttMobilnr);
-	            	// Om mobilnr börjar med + (ex. +4670...), ta bort +
+	            	// Om mobilnr bÃ¶rjar med + (ex. +4670...), ta bort +
 	            	} else if (mobilnr.startsWith("+")) {
 	            		String nyttMobilnr = mobilnr.substring(1, mobilnr.length());
 	            		mott.setAdress(nyttMobilnr);
 	            	}
             	} catch (IndexOutOfBoundsException be) {
-        			LOG.error("Kunde inte formatera mobilnr på korrekt format.");
+        			LOG.error("Kunde inte formatera mobilnr pÃ¥ korrekt format.");
         			return new NotifieringResultat(-1, NotifieringResultat.FEL, 
-        					"Mobilnr är på fel format.");
+        					"Mobilnr Ã¤r pÃ¥ fel format.");
         		}
             }
             

@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-23
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.validators;
@@ -13,7 +13,7 @@ import se.csn.notmotor.ipl.model.Mottagare;
 import se.csn.notmotor.ipl.model.KodText;
 
 /**
- * Klass som kontrollerar att ett meddelande ‰r riktigt formaterat.
+ * Klass som kontrollerar att ett meddelande √§r riktigt formaterat.
  */
 public class BasicMeddelandeValidator implements MeddelandeValidator {
 
@@ -28,10 +28,10 @@ public class BasicMeddelandeValidator implements MeddelandeValidator {
         
         Avsandare avs = meddelande.getAvsandare(); 
         if(avs == null) {
-           return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Avs‰ndare saknas");
+           return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Avs√§ndare saknas");
         } else {
             if(!EmailAdressValidator.isValid(avs.getEpostadress())) {
-                return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Felaktig avs‰ndaradress");
+                return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Felaktig avs√§ndaradress");
             }
             //if(avs.getReplyTo() == null) return skapaHandelse(DTOMeddelandeHandelse.FELAKTIG_AVSANDARE, "Returadress saknas");
         }

@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
@@ -116,8 +116,8 @@ public abstract class ResourceBase implements Resource {
     public abstract ResourceStatus doCheck();
     
     /**
-     * Gör rekursivt trädanrop på metoden check() och returnerar det allvarligaste 
-     * utfallet. Detta anrop kommer alltså att uppdatera status för alla dependencies.
+     * GÃ¶r rekursivt trÃ¤danrop pÃ¥ metoden check() och returnerar det allvarligaste 
+     * utfallet. Detta anrop kommer alltsÃ¥ att uppdatera status fÃ¶r alla dependencies.
      * @return
      */
     public ResourceStatus checkDependencies() {

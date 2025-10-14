@@ -7,8 +7,8 @@ import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.notmotor.ipl.model.KodText;
 
 /**
- * Märklig namngivning pga Harvest:
- * @author Jonas Öhrnell - csn7821
+ * MÃ¤rklig namngivning pga Harvest:
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public interface MeddelandeValidator {
     boolean isValid(Meddelande meddelande);

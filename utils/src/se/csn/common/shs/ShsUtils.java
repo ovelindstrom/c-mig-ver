@@ -1,6 +1,6 @@
 ///**
 // * Skapad 2007-feb-02
-// * @author Jonas ÷hrnell (csn7821)
+// * @author Jonas √•hrnell (csn7821)
 // * 
 // */
 //package se.csn.common.shs;
@@ -13,15 +13,15 @@
 //
 ///**
 // * Skapad 2007-feb-02
-// * @author Jonas ÷hrnell (csn7821)
+// * @author Jonas √•hrnell (csn7821)
 // */
 //public abstract class ShsUtils {
 //
 //    /**
 //     * Skapar en SHS-Label. 
-//     * @param from FrÂn-adress
+//     * @param from Fr√•n-adress
 //     * @param to Till-adress
-//     * @param commonName Namn i frÂn-begreppet
+//     * @param commonName Namn i fr√•n-begreppet
 //     * @param productType Produkttyp
 //     * @param corrID Korrelationsid
 //     * @param subject Meddelande-subject
@@ -43,8 +43,8 @@
 //	}
 //    
 //    /**
-//     * @param status Antingen TEST eller PRODUCTION. Om v‰rdet ‰r PROD, PRODUCTION eller PRODUKTION
-//     *        (case insensitive) sÂ s‰tts status till PRODUCTION, annars s‰tts det till TEST. 
+//     * @param status Antingen TEST eller PRODUCTION. Om v√§rdet √§r PROD, PRODUCTION eller PRODUKTION
+//     *        (case insensitive) s√• s√§tts status till PRODUCTION, annars s√§tts det till TEST. 
 //     */
 //    public static Label createShsLabel(String from, String to, String commonName, String productType, String corrID, String subject, String status) {
 //		Label label = createShsLabel(from, to, commonName, productType, corrID, subject);

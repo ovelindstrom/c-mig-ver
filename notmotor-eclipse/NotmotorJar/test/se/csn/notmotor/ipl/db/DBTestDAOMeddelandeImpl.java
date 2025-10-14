@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-11
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -27,14 +27,14 @@ public class DBTestDAOMeddelandeImpl extends TestCase {
         Meddelande m = new Meddelande("Rubrik","Meddelandetext!", "mottagare@anyhoo.com", "avsandare@csn.se", "Noreply");
         long id = dao.createMeddelande(m);
         
-        // Hämta
+        // HÃ¤mta
         Meddelande m2 = dao.getMeddelande(id);
         assertEquals(m2, m);
         
-        // Ändra
-        // Hämta
+        // Ã„ndra
+        // HÃ¤mta
         // Ta bort
-        // Försök hämta
+        // FÃ¶rsÃ¶k hÃ¤mta
     }
     
 }

@@ -9,8 +9,8 @@ import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.webservice.bas.notmotor.callback.CallbackProxy;
 
 /**
- * Klient som anv‰nds fˆr att skicka ett callbackanrop till webbservice.
- * @author Jonas ÷hrnell - csn7821
+ * Klient som anv√§nds f√∂r att skicka ett callbackanrop till webbservice.
+ * @author Jonas √•hrnell - csn7821
  */
 public class CallbackClient {
     
@@ -23,7 +23,7 @@ public class CallbackClient {
     public void rapporteraHandelseWS(Meddelande meddelande) {
         String url = meddelande.getCallbackURL();
         if (url == null) {
-        	// Ska inte intr‰ffa dÂ detta kontrolleras tidigare
+        	// Ska inte intr√§ffa d√• detta kontrolleras tidigare
         	log.error("Ingen callback-url i meddelandet.");
         	return;
         }
@@ -32,7 +32,7 @@ public class CallbackClient {
         try {
         	callback.nyHandelse(ConvertCallbackDTO.getMeddelande2(meddelande));
 	    } catch (Exception e) {
-			log.error("Kunde inte anropa url: " + url + " fˆr att meddela ny h‰ndelse.");
+			log.error("Kunde inte anropa url: " + url + " f√∂r att meddela ny h√§ndelse.");
 		}
     }
     

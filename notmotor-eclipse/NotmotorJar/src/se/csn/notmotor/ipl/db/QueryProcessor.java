@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-13
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -12,9 +12,9 @@ import java.util.List;
 
 public interface QueryProcessor {
     /**
-     * @return Antalet rader i databasen som pÂverkades, -1 om 
+     * @return Antalet rader i databasen som p√•verkades, -1 om 
      * anropet misslyckades utan exception
-     * @throws RuntimeException om nÂgot gick fel
+     * @throws RuntimeException om n√•got gick fel
      */
     public int executeThrowException(String SQL);
 
@@ -31,9 +31,9 @@ public interface QueryProcessor {
     public String[] getStringArray(String SQL, String[] returnIfNoResult);
 
     /**
-     * Skapar java-objekt frÂn en databasfrÂga. 
-     * @param SQL sql-frÂga
-     * @param mapper Ett objekt som kan ˆvers‰tta en rad i svaret till 
+     * Skapar java-objekt fr√•n en databasfr√•ga. 
+     * @param SQL sql-fr√•ga
+     * @param mapper Ett objekt som kan √∂vers√§tta en rad i svaret till 
      * 		  ett Java-objekt
      *
      */
@@ -53,12 +53,12 @@ public interface QueryProcessor {
     public byte[] getBlob(ResultSet rs, String colName) throws SQLException;
     
     /**
-     * @throws RuntimeException om det inte gick att fÂ en ny connection. 
+     * @throws RuntimeException om det inte gick att f√• en ny connection. 
      */
     public Connection getConnection();
 
     /**
-     * S‰tter den connection som ska anv‰ndas. QueryProcessorn kommer att anv‰nda 
+     * S√§tter den connection som ska anv√§ndas. QueryProcessorn kommer att anv√§nda 
      * denna connection tills en annan connection satts.  
      * @param handleConnection true om det nya Connection-objektet ska hanteras som 
      *        vanligt, false annars

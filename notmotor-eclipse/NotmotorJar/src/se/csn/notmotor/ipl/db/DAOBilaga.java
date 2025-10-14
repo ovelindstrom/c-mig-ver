@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-10
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -12,7 +12,7 @@ import se.csn.notmotor.ipl.model.Bilaga;
 public interface DAOBilaga {
     /**
      * Skapar bilaga i databasen
-     * @return nyckeln för bilagan
+     * @return nyckeln fÃ¶r bilagan
      */
     public long createBilaga(Bilaga b, long meddelandeid);
 

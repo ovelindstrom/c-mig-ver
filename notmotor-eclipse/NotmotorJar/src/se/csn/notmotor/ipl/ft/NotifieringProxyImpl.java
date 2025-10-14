@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-03
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.ft;
@@ -38,13 +38,13 @@ public class NotifieringProxyImpl implements NotifieringProxy {
     }
 
     /**
-     * Validerar, l‰gger till h‰ndelsen MOTTAGET och skriver till databas.
+     * Validerar, l√§gger till h√§ndelsen MOTTAGET och skriver till databas.
      */
     public NotifieringResultat skickaMeddelande(Meddelande meddelande) {
         try {
             return meddelandeMottagare.skickaMeddelande(meddelande, meddelandeHandler);
         } catch (Exception e) {
-            log.error("Fel vid s‰ndning av meddelande", e);
+            log.error("Fel vid s√§ndning av meddelande", e);
             return new NotifieringResultat(-1, NotifieringResultat.FEL, "Tekniskt fel.");
         }
     }

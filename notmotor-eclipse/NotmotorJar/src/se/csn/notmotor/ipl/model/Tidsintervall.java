@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-16
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.model;
@@ -9,9 +9,9 @@ import java.util.Date;
 
 /***
  * Klass som representerar ett tidsintervall. 
- * Gränserna kan sättas till null, de tolkas då som öppna. 
- * Ett intervall med både start och slut satta till null omfattar
- * alltså all tid.
+ * GrÃ¤nserna kan sÃ¤ttas till null, de tolkas dÃ¥ som Ã¶ppna. 
+ * Ett intervall med bÃ¥de start och slut satta till null omfattar
+ * alltsÃ¥ all tid.
  */
 public class Tidsintervall {
 

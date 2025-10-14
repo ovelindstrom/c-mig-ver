@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-30
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.ft;
@@ -18,8 +18,8 @@ import se.csn.notmotor.ipl.model.NotifieringResultat;
 import se.csn.notmotor.ipl.model.SandResultat;
 
 /**
- * Enkel meddelandesändningsstubbe. Tänkt för utvecklingsfasen innan notmotorn är helt på 
- * plats. Kan användas i samma process som klientkoden; konfa då upp med properties.
+ * Enkel meddelandesÃ¤ndningsstubbe. TÃ¤nkt fÃ¶r utvecklingsfasen innan notmotorn Ã¤r helt pÃ¥ 
+ * plats. Kan anvÃ¤ndas i samma process som klientkoden; konfa dÃ¥ upp med properties.
  * Implementerar bara skicka-metoden.  
  */
 public class SimpleNotifieringProxyImpl implements NotifieringProxy {
@@ -29,13 +29,13 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
     
     public SimpleNotifieringProxyImpl(MeddelandeSender sender) {
         if(sender == null) {
-            throw new IllegalArgumentException("sender får inte vara null");
+            throw new IllegalArgumentException("sender fÃ¥r inte vara null");
         }
         this.sender = sender;
     }
     
     /**
-     * Enklast möjliga implementation. Skickar meddelandet men returnerar
+     * Enklast mÃ¶jliga implementation. Skickar meddelandet men returnerar
      * inget meddelande-id
      */
     public NotifieringResultat skickaMeddelande(Meddelande meddelande) {

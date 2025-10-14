@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-11
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin.faces;
@@ -14,7 +14,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 /**
- * Taget från Core JavaServer Faces, Geary och Horstmann, s. 232  
+ * Taget frÃ¥n Core JavaServer Faces, Geary och Horstmann, s. 232  
  */
 public class Messages {
     

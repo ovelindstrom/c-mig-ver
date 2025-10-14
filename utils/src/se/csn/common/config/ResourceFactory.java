@@ -20,21 +20,21 @@ import se.csn.ark.common.util.logging.Log;
 import se.csn.common.jndi.ServiceLocator;
 
 /**
- * @author Jonas Öhrnell - csn7821
- * Använder SAX för att läsa upp en config.xml-fil och skapa configobjekt.
- * Varför SAX?
+ * @author Jonas Ã¥hrnell - csn7821
+ * AnvÃ¤nder SAX fÃ¶r att lÃ¤sa upp en config.xml-fil och skapa configobjekt.
+ * VarfÃ¶r SAX?
  * 1. finns i Java 1.4 och senare. 
  * 2. Snabbt.
  * 
- * Varför en (krånglig) eventhantering?
- * För att få ordning på koden. 
+ * VarfÃ¶r en (krÃ¥nglig) eventhantering?
+ * FÃ¶r att fÃ¥ ordning pÃ¥ koden. 
  * 
- * Varför inte commons-digester?
- * 1. För att dessa Resources inte är bönor. 
- * 2. För att mappningen inte är helt enkel att göra. 
+ * VarfÃ¶r inte commons-digester?
+ * 1. FÃ¶r att dessa Resources inte Ã¤r bÃ¶nor. 
+ * 2. FÃ¶r att mappningen inte Ã¤r helt enkel att gÃ¶ra. 
  * 
- * Varför inte xmlbeans? 
- * Av samma skäl. 
+ * VarfÃ¶r inte xmlbeans? 
+ * Av samma skÃ¤l. 
  */
 public class ResourceFactory extends DefaultHandler {
     
@@ -62,7 +62,7 @@ public class ResourceFactory extends DefaultHandler {
     }
     
     /**
-     * Ska funka oavsett case på namn. Ersätter variabler
+     * Ska funka oavsett case pÃ¥ namn. ErsÃ¤tter variabler
      * @param attr
      * @param name
      * @return
@@ -83,18 +83,18 @@ public class ResourceFactory extends DefaultHandler {
     }
     
     public String replaceVar(String value) {
-        // 2. Ersätt variabelvärde (om det finns ett sådant):
-        // OBS! Antar nu att det första tecknet är $. Om ingen matchande 
-        // variabel finns så görs ingen ersättning. 
-        // Om variabeln fanns så ersätts den med värdet om environment fanns, 
-        // annars med VÄRDE SAKNAS FÖR ENVIRONMENT [environment]
+        // 2. ErsÃ¤tt variabelvÃ¤rde (om det finns ett sÃ¥dant):
+        // OBS! Antar nu att det fÃ¶rsta tecknet Ã¤r $. Om ingen matchande 
+        // variabel finns sÃ¥ gÃ¶rs ingen ersÃ¤ttning. 
+        // Om variabeln fanns sÃ¥ ersÃ¤tts den med vÃ¤rdet om environment fanns, 
+        // annars med VÃ„RDE SAKNAS FÃ–R ENVIRONMENT [environment]
         if((value.charAt(0) == '$') && (value.charAt(1) != '{')) {
             ConfigVariable var = (ConfigVariable)variables.get(value.substring(1).toUpperCase());
             String rep = var.getVariableForEnvironment(currentEnvironment.toUpperCase());
             if(rep != null) {
                 return rep;
             } else {
-                return "VÄRDE SAKNAS FÖR ENVIRONMENT " + currentEnvironment;
+                return "VÃ„RDE SAKNAS FÃ–R ENVIRONMENT " + currentEnvironment;
             }
         } else {
             return value;
@@ -111,7 +111,7 @@ public class ResourceFactory extends DefaultHandler {
         } catch (SAXException e) {
             throw new IllegalArgumentException("Fel vid parsning: " + e);
         } catch (IOException e) {
-            throw new IllegalArgumentException("Kunde inte läsa fil: " + FileResource.getAbsolutSokvag(configfil) + ":" + e);
+            throw new IllegalArgumentException("Kunde inte lÃ¤sa fil: " + FileResource.getAbsolutSokvag(configfil) + ":" + e);
         }
     }
     
@@ -153,7 +153,7 @@ public class ResourceFactory extends DefaultHandler {
     
     /*
 	<database name="$DBNAMN" environment="WebbDB" server="$DBSERVER">
-	<task>Använd aktuella tabeller i WDBGRON som mall</task>
+	<task>AnvÃ¤nd aktuella tabeller i WDBGRON som mall</task>
 	<tables schema="BREVAS">
 		<table name="ARENDEN" privileges="SELECT,INSERT,UPDATE,DELETE" data="tom">
 			<column name="NYCKEL" type="VARCHAR" length="32" null="no"/>
@@ -166,27 +166,27 @@ public class ResourceFactory extends DefaultHandler {
 			<column name="REGISTRERINGSTID" type="TIMESTAMP" null="yes" comment="AE_BREV_HAENDELSE.registreringstid"/>
 			<column name="EPOST" type="VARCHAR" length="254" null="yes" comment="AE_BREV_AERENDE.epostadress_ut"/>
 		</table>
-		<table name="INKOMMANDE" privileges="SELECT,  INSERT, UPDATE" data="tom" comment="För uppföljning av inkommande ärenden">
+		<table name="INKOMMANDE" privileges="SELECT,  INSERT, UPDATE" data="tom" comment="FÃ¶r uppfÃ¶ljning av inkommande Ã¤renden">
 			<column name="TIDLEVERERAD" type="TIMESTAMP" null="no" comment="Tid levererad"/>
-			<column name="AVSANDARE" type="VARCHAR" length="254" null="no" comment="Avsändarens e-postadress eller hash-nyckel"/>
+			<column name="AVSANDARE" type="VARCHAR" length="254" null="no" comment="AvsÃ¤ndarens e-postadress eller hash-nyckel"/>
 			<column name="SYSTEM" type="VARCHAR" length="6" null="no" comment="Levererande system"/>
-			<column name="MOTTAGEN" type="TIMESTAMP" null="yes" comment="Tid för mottagning på IPL"/>
-			<column name="MOTTAGARE" type="VARCHAR" length="254" null="yes" comment="Mottagare av ärendet"/>
+			<column name="MOTTAGEN" type="TIMESTAMP" null="yes" comment="Tid fÃ¶r mottagning pÃ¥ IPL"/>
+			<column name="MOTTAGARE" type="VARCHAR" length="254" null="yes" comment="Mottagare av Ã¤rendet"/>
 		</table>
-		<table name="MEDDELANDETEXTER" privileges="SELECT" data="Data från WDBGRON" comment="Texter till svarsmeddelanden som skickas till kunden via e-post">
+		<table name="MEDDELANDETEXTER" privileges="SELECT" data="Data frÃ¥n WDBGRON" comment="Texter till svarsmeddelanden som skickas till kunden via e-post">
 			<column name="ID" type="SMALLINT" null="no" key="primary"/>
 			<column name="TYP" type="VARCHAR" length="40" null="no" key="unique"/>
 			<column name="AMNE" type="VARCHAR" length="100" null="no"/>
 			<column name="TEXT" type="VARCHAR" length="3800" null="no"/>
 		</table>
-		<table name="ARENDETYPER" privileges="SELECT" data="Data från WDBGRON" comment="Tillgängliga ärendetyper (ämnesval) som skall visas i ämneslistan i webbformuläret.">
+		<table name="ARENDETYPER" privileges="SELECT" data="Data frÃ¥n WDBGRON" comment="TillgÃ¤ngliga Ã¤rendetyper (Ã¤mnesval) som skall visas i Ã¤mneslistan i webbformulÃ¤ret.">
 			<column name="ID" type="INTEGER" null="no" key="primary"/>
 			<column name="GRUPP" type="VARCHAR" length="40" null="yes"/>
 			<column name="NAMN" type="VARCHAR" length="40" null="no"/>
 			<column name="NYCKEL" type="VARCHAR" length="40" null="no"/>
 			<column name="EPOST" type="VARCHAR" length="254" null="yes"/>
 		</table>
-		<table name="TEXTER" privileges="SELECT" data="Data från WDBGRON" comment="Texter till de olika webbsidorna.">
+		<table name="TEXTER" privileges="SELECT" data="Data frÃ¥n WDBGRON" comment="Texter till de olika webbsidorna.">
 			<column name="ID" type="SMALLINT" null="no" key="primary"/>
 			<column name="SIDA" type="VARCHAR" length="32" null="no"/>
 			<column name="TITEL" type="VARCHAR" length="32" null="yes"/>
@@ -206,14 +206,14 @@ public class ResourceFactory extends DefaultHandler {
 			<column name="KNAPP_NASTA" type="VARCHAR" length="32" null="yes"/>
 			<column name="KNAPP_TILLBAKA" type="VARCHAR" length="32" null="yes"/>
 		</table>
-		<table name="VALIDERINGSFEL" privileges="SELECT" data="Data från WDBGRON" comment="Texter som visas vid olika typer av valideringsfel.">
+		<table name="VALIDERINGSFEL" privileges="SELECT" data="Data frÃ¥n WDBGRON" comment="Texter som visas vid olika typer av valideringsfel.">
 			<column name="ID" type="INTEGER" null="no" key="primary"/>
 			<column name="NYCKEL" type="VARCHAR" length="32" null="no"/>
 			<column name="TEXT" type="VARCHAR" length="2048" null="yes"/>
 		</table>
 	</tables>
 	<tables schema="WEBBSVAR">
-		<table name="TJANST" privileges="SELECT" data="Lägg till:\n\nID = 42\nNAMN = E-posta oss\nOPPEN = 1\nSENAST_ANDRAD = &lt;aktuell tid&gt;\nSKAPAD = &lt;aktuell tid&gt;\nOMRADE = E-posta oss" comment="Aktuell driftstatus (tjänst öppen/stängd)">
+		<table name="TJANST" privileges="SELECT" data="LÃ¤gg till:\n\nID = 42\nNAMN = E-posta oss\nOPPEN = 1\nSENAST_ANDRAD = &lt;aktuell tid&gt;\nSKAPAD = &lt;aktuell tid&gt;\nOMRADE = E-posta oss" comment="Aktuell driftstatus (tjÃ¤nst Ã¶ppen/stÃ¤ngd)">
 			<column name="ID" type="INTEGER" null="no" key="primary"/>
 			<column name="NAMN" type="VARCHAR" length="128" null="no"/>
 			<column name="OPPEN" type="SMALLINT" null="no"/>
@@ -221,7 +221,7 @@ public class ResourceFactory extends DefaultHandler {
 			<column name="SKAPAD" type="TIMESTAMP" null="yes"/>
 			<column name="OMRADE" type="CHAR" length="20" null="no"/>
 		</table>
-		<table name="WEBBSERVER" privileges="SELECT,INSERT" data="Lägg till:\n\nCONTEXT_URL = http://csnwasp01.csnnet.ext:8082/epostaoss\nOPPEN = 1\nSENAST_ANDRAD = &lt;aktuell tid&gt;\nSKAPAD = &lt;aktuell tid&gt;\nAPPLIKATION = E-posta oss (Brevärendesystemet)\n\nCONTEXT_URL = http://csnwasp02.csnnet.ext:8082/epostaoss\nOPPEN = 1\nSENAST_ANDRAD = &lt;aktuell tid&gt;\nSKAPAD = &lt;aktuell tid&gt;\nAPPLIKATION = E-posta oss (Brevärendesystemet)" comment="Innehåller URL:en till context-root för EW-applikationen och aktuell driftstatus för denna (öppen/stängd)">
+		<table name="WEBBSERVER" privileges="SELECT,INSERT" data="LÃ¤gg till:\n\nCONTEXT_URL = http://csnwasp01.csnnet.ext:8082/epostaoss\nOPPEN = 1\nSENAST_ANDRAD = &lt;aktuell tid&gt;\nSKAPAD = &lt;aktuell tid&gt;\nAPPLIKATION = E-posta oss (BrevÃ¤rendesystemet)\n\nCONTEXT_URL = http://csnwasp02.csnnet.ext:8082/epostaoss\nOPPEN = 1\nSENAST_ANDRAD = &lt;aktuell tid&gt;\nSKAPAD = &lt;aktuell tid&gt;\nAPPLIKATION = E-posta oss (BrevÃ¤rendesystemet)" comment="InnehÃ¥ller URL:en till context-root fÃ¶r EW-applikationen och aktuell driftstatus fÃ¶r denna (Ã¶ppen/stÃ¤ngd)">
 			<column name="CONTEXT_URL" type="CHAR" length="64" null="no" key="primary"/>
 			<column name="OPPEN" type="SMALLINT" null="no"/>
 			<column name="SENAST_ANDRAD" type="TIMESTAMP" null="no"/>
@@ -238,7 +238,7 @@ public class ResourceFactory extends DefaultHandler {
             Attributes attrs) throws SAXException {
         log.debug("StartElement: " + uri + "," + localname +"," + qName);
         dumpAttrs(attrs);
-        // Kolla om det finns någon listener som ska aktiveras:
+        // Kolla om det finns nÃ¥gon listener som ska aktiveras:
         ConfigXmlParseListener listener = (ConfigXmlParseListener)configListeners.get(localname.toUpperCase());
         if(listener != null) {
             log.debug("Adding listener for " + localname + ": " + listener.getClass().getName());

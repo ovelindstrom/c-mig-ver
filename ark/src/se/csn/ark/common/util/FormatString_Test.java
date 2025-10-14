@@ -40,7 +40,7 @@ public class FormatString_Test extends TestCase {
 				System.out.println(FormatString.formateraNamn(oformateradeNamn[i]));
 			}
 		} catch (FormatException formEx) {
-			fail("FormatException fångades!: " + formEx.getMessage());
+			fail("FormatException fÃ¥ngades!: " + formEx.getMessage());
 		}
 
 	}
@@ -48,9 +48,9 @@ public class FormatString_Test extends TestCase {
 	public void testFormateraAdress() {
 		String[] oformateradeAdresser = new String[5];
 		oformateradeAdresser[0] = "DALGATAN 40 85239 SUNDSVALL";
-		oformateradeAdresser[1] = "STORA BERGSG. 30 88888 NÅGONSTANS";
-		oformateradeAdresser[2] = "FREDRIK-ÅKARES VÄG 20 84440 INGEMANSLAND";
-		oformateradeAdresser[3] = "Ö. LÅNGGATAN 20, 21110 SOMEWARE";
+		oformateradeAdresser[1] = "STORA BERGSG. 30 88888 NÃ…GONSTANS";
+		oformateradeAdresser[2] = "FREDRIK-Ã…KARES VÃ„G 20 84440 INGEMANSLAND";
+		oformateradeAdresser[3] = "Ã¥. LÃ…NGGATAN 20, 21110 SOMEWARE";
 		oformateradeAdresser[4] = " ";
 		
 		try {
@@ -59,7 +59,7 @@ public class FormatString_Test extends TestCase {
 			}
 		} 
 		catch (FormatException formEx) {
-			fail("FormatException fångades!: " + formEx.getMessage());
+			fail("FormatException fÃ¥ngades!: " + formEx.getMessage());
 		}
 	}
 }

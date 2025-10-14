@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-02
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.webservice;
@@ -31,7 +31,7 @@ public class SkickaService implements NotifieringProxy {
     public NotifieringResultat skickaMeddelande(Meddelande meddelande) {
         try {
 	        if (meddelande == null) {
-	            throw new IllegalArgumentException("Meddelande måste vara satt"); 
+	            throw new IllegalArgumentException("Meddelande mÃ¥ste vara satt"); 
 	        }
 	        log.debug("skickaMeddelande: " + meddelande.toString());
 	        return getProxy().skickaMeddelande(meddelande);
@@ -63,7 +63,7 @@ public class SkickaService implements NotifieringProxy {
     
     private NotifieringProxy getProxy() {
         if (factory == null) {
-            throw new IllegalStateException("Proxy måste vara satt");
+            throw new IllegalStateException("Proxy mÃ¥ste vara satt");
         }
         return factory.getNotifieringProxy();
     }

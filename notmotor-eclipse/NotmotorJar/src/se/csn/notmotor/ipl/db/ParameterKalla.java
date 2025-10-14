@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-13
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -25,7 +25,7 @@ public interface ParameterKalla {
     void reload();
     
     /**
-     * Returnerar en map av namn-v‰rdepar.
+     * Returnerar en map av namn-v√§rdepar.
      */
     Map getStringParamMap();
     Setting[] getSettings();

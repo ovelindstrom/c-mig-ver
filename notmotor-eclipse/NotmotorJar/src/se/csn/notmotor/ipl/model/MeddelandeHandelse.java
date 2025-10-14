@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-02
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.model;
@@ -16,29 +16,29 @@ import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
 public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
     
     private static final long serialVersionUID = 1L;
-	// H‰ndelsetyp
+	// H√§ndelsetyp
     public static final int 
     	// Notmotorn har tagit emot meddelandet och lagt det i databasen
 		MOTTAGET = 1,
 		
-		// Meddelandet skickat till mailserver el dyl fˆr vidare befordran
+		// Meddelandet skickat till mailserver el dyl f√∂r vidare befordran
 		SKICKAT_SERVER = 2,
 		
-		// Meddelandet kom i retur; detta ska normalt inte h‰nda. Kan bero pÂ att
-		// mottagarens mailbox ‰r full, att meddelandet fastnat i spamfilter, 
-		// att anv‰ndaren inte finns, autoreply etc etc
+		// Meddelandet kom i retur; detta ska normalt inte h√§nda. Kan bero p√• att
+		// mottagarens mailbox √§r full, att meddelandet fastnat i spamfilter, 
+		// att anv√§ndaren inte finns, autoreply etc etc
 		BESVARAT = 4,
 		
-		// Meddelandet togs bort av anv‰ndande applikation
+		// Meddelandet togs bort av anv√§ndande applikation
 		BORTTAGET = 8,
 		
-		// Kunde inte s‰nda meddelandet till mailservern pga fel i meddelandet
+		// Kunde inte s√§nda meddelandet till mailservern pga fel i meddelandet
 		MEDDELANDEFEL = 16,
 		
-		// Kunde inte s‰nda meddelandet till mailservern pga bruten koppling
+		// Kunde inte s√§nda meddelandet till mailservern pga bruten koppling
 		TEKNISKT_FEL = 32,
 		
-    	// V‰rde som kan anv‰ndas om man ‰r intresserad av alla h‰ndelser
+    	// V√§rde som kan anv√§ndas om man √§r intresserad av alla h√§ndelser
     	ALLA_HANDELSER = Integer.MAX_VALUE;
     
     
@@ -46,14 +46,14 @@ public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
         switch(typ) {
         	case MeddelandeHandelse.BESVARAT : return "Besvarat";
         	case MeddelandeHandelse.MOTTAGET : return "Mottaget";
-        	case MeddelandeHandelse.SKICKAT_SERVER : return "S‰nt";
+        	case MeddelandeHandelse.SKICKAT_SERVER : return "S√§nt";
         	case MeddelandeHandelse.BORTTAGET : return "Borttaget";
         	case MeddelandeHandelse.MEDDELANDEFEL : return "Fel i meddelande";
         	case MeddelandeHandelse.TEKNISKT_FEL : return "Tekniskt fel";
         	default : if(typ < 0) {
-        	    return "Under s‰ndning (instans " + (-typ) + ")";
+        	    return "Under s√§ndning (instans " + (-typ) + ")";
         	} else {
-        	    return "Ok‰nd (" + typ + ")";
+        	    return "Ok√§nd (" + typ + ")";
         	}
         }
     }
@@ -77,30 +77,30 @@ public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
         switch(kod) {
         	case MeddelandeHandelse.OK : return "";
         	case MeddelandeHandelse.FELAKTIG_MOTTAGARE : return "Felaktig mottagare";
-        	case MeddelandeHandelse.FELAKTIG_DOMAN : return "Felaktig dom‰n";
-        	case MeddelandeHandelse.FELAKTIG_SUBJECT : return "Felaktigt ‰mne";
+        	case MeddelandeHandelse.FELAKTIG_DOMAN : return "Felaktig dom√§n";
+        	case MeddelandeHandelse.FELAKTIG_SUBJECT : return "Felaktigt √§mne";
         	case MeddelandeHandelse.FELAKTIG_TEXTENCODING : return "Felaktig textencoding";
         	case MeddelandeHandelse.FELAKTIG_RUBRIKENCODING : return "Felaktig rubrikencoding";
         	case MeddelandeHandelse.FELAKTIG_BILAGEMIMETYP : return "Felaktig bilagemimetyp";
-        	case MeddelandeHandelse.FELAKTIG_AVSANDARE : return "Felaktig avs‰ndare";
-        	case MeddelandeHandelse.ALLMANT_FEL : return "Allm‰nt fel";
+        	case MeddelandeHandelse.FELAKTIG_AVSANDARE : return "Felaktig avs√§ndare";
+        	case MeddelandeHandelse.ALLMANT_FEL : return "Allm√§nt fel";
         	case MeddelandeHandelse.STOPPANDE_FEL : return "Stoppande fel";
-        	case MeddelandeHandelse.OKANT_FEL : return "Ok‰nt fel";
-        	default : return "Ok‰nd (" + kod + ")";
+        	case MeddelandeHandelse.OKANT_FEL : return "Ok√§nt fel";
+        	default : return "Ok√§nd (" + kod + ")";
         }
     }
     
-    // Databasnyckel fˆr spÂrbarhet
+    // Databasnyckel f√∂r sp√•rbarhet
     private Long id;
-    // Flagga som beskriver vad som skedde, exempelvis SƒND, ADRESSAT OKƒND, OMSƒND, EJ KONTAKT
+    // Flagga som beskriver vad som skedde, exempelvis S√ÑND, ADRESSAT OK√ÑND, OMS√ÑND, EJ KONTAKT
     private Integer handelsetyp;
-    // N‰r h‰ndelsen ‰gde rum
+    // N√§r h√§ndelsen √§gde rum
     private Date tidpunkt; 
-	// En av ovanstÂende felkoder. 
+	// En av ovanst√•ende felkoder. 
 	private Integer felkod;
-	// Detaljerad feltext som pekar ut vilket data som var felaktigt (om nÂgot).
+	// Detaljerad feltext som pekar ut vilket data som var felaktigt (om n√•got).
 	private String feltext;
-	// Nyckel till den programinstans som genererade h‰ndelsen
+	// Nyckel till den programinstans som genererade h√§ndelsen
 	private Integer instans;    
     
 	public MeddelandeHandelse() {

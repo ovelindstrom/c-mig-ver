@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-18
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.integration;
@@ -36,13 +36,13 @@ public class IntegrationTestCRUD extends IntegrationTestSkeleton {
     
     public void testSkickaSandSenare() {
         // Skapa meddelande som ska skickas om 1 minut
-        // (fÂr inte vara fˆr kort tid, mÂste hinna refresha i notmotorn etc)
+        // (f√•r inte vara f√∂r kort tid, m√•ste hinna refresha i notmotorn etc)
         DTOMeddelande m = skapaTestMeddelande("testSkickaSandSenare");
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MINUTE, 1);
         m.setSkickaTidigast(cal);
         
-        // Skicka. H‰mta efter 40 sek. Kolla att inte s‰nt.
+        // Skicka. H√§mta efter 40 sek. Kolla att inte s√§nt.
         try {
 	        DTONotifieringResultat res = client.skickaMeddelande(m);
 	        vantaOchSkriv(5, 8);
@@ -50,7 +50,7 @@ public class IntegrationTestCRUD extends IntegrationTestSkeleton {
 	        assertNull(hamta.getSkickat());
 	        assertNotNull(hamta.getSkickaTidigast());
 	        
-	        // V‰nta ytterligare 40 sekunder. Nu ska meddelandet vara skickat.
+	        // V√§nta ytterligare 40 sekunder. Nu ska meddelandet vara skickat.
 	        vantaOchSkriv(5, 8);
 	        hamta = client.hamtaMeddelande(res.getMeddelandeId());
 	        assertNotNull(hamta.getSkickat());
@@ -66,7 +66,7 @@ public class IntegrationTestCRUD extends IntegrationTestSkeleton {
         cal.add(Calendar.SECOND, 10);
         m.setSkickaTidigast(cal);
         
-        // Skicka. Ta bort. H‰mta efter 40 sek. Kolla att inte s‰nt.
+        // Skicka. Ta bort. H√§mta efter 40 sek. Kolla att inte s√§nt.
         try {
 	        DTONotifieringResultat res = client.skickaMeddelande(m);
 	        Long id = res.getMeddelandeId();

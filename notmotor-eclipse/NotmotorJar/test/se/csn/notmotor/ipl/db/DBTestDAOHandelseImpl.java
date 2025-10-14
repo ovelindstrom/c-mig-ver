@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-12
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -25,7 +25,7 @@ public class DBTestDAOHandelseImpl extends TestCase {
         String[][] testdata = new String[][] {
                 // typ, kod, text, tidpunkt, instans
                 {"1", "2", "Text", "20070420123456", "1"},
-                {"1", "2", "Textåäö ÅÄÖ ", null, "1"},
+                {"1", "2", "TextÃ¥Ã¤Ã¶ Ã…Ã„Ã– ", null, "1"},
         };
         
         for(int i = 0; i < testdata.length; i++) {
@@ -38,12 +38,12 @@ public class DBTestDAOHandelseImpl extends TestCase {
 		    h.setInstans(toInteger(testdata[i][4]));
 		    long id = dao.createHandelse(h, 1);
 		    
-		    // Hämta
+		    // HÃ¤mta
 		    MeddelandeHandelse h2 = dao.getHandelse(id);
 		    assertTrue(h.equals(h2));
         }
         
-        // Ändra ej intressant
+        // Ã„ndra ej intressant
         // Ta bort ej intressant
 
     }
@@ -58,7 +58,7 @@ public class DBTestDAOHandelseImpl extends TestCase {
         try {
             return new SimpleDateFormat("yyyyMMddHHmmss").parse(s);
         } catch (ParseException e) {
-            throw new IllegalArgumentException(s + " måste ha format yyyyMMddHHmmss");
+            throw new IllegalArgumentException(s + " mÃ¥ste ha format yyyyMMddHHmmss");
         }
     }
 

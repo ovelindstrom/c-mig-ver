@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-12
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin.beans;
@@ -37,7 +37,7 @@ public class SokBean {
         new SelectItem(new Integer(MeddelandeHandelse.TEKNISKT_FEL), "Tekniskt fel"),
         new SelectItem(new Integer(MeddelandeHandelse.BORTTAGET), "Borttaget"),
         new SelectItem(new Integer(MeddelandeHandelse.BESVARAT), "Besvarat"),
-        new SelectItem(new Integer(-1), "Under sändning"),
+        new SelectItem(new Integer(-1), "Under sÃ¤ndning"),
     };
 
     private String fromSkapat, tomSkapat, fromSkickat, tomSkickat, fromSkickaTidigast, tomSkickaTidigast;
@@ -74,9 +74,9 @@ public class SokBean {
         }
         
         /**
-         * Returnerar true om meddelandet ska vara möjligt att sända om. Omsändningen är möjligt i de fall
+         * Returnerar true om meddelandet ska vara mÃ¶jligt att sÃ¤nda om. OmsÃ¤ndningen Ã¤r mÃ¶jligt i de fall
          * ett meddelande har statuskod 32(Meddelandefel) eller 16(Tekniskt fel).
-         * @return true om meddelandet kan sändas om, annars false.
+         * @return true om meddelandet kan sÃ¤ndas om, annars false.
          */
         public boolean isOmsandningMojlig() {
         	if (status != null) {
@@ -171,7 +171,7 @@ public class SokBean {
             	return (String)allaStatusar[i].getLabel();
             }
         }    	
-        return "Okänt";
+        return "OkÃ¤nt";
     }
     
     public void setValdaStatusar(int[] statusar) {
@@ -218,7 +218,7 @@ public class SokBean {
     }
 
     /**
-     * Utför en sökning efter meddelanden enligt de villkor som fyllts på webbsidan.
+     * UtfÃ¶r en sÃ¶kning efter meddelanden enligt de villkor som fyllts pÃ¥ webbsidan.
      */
 	private void sok() {
 		log.debug("sok");
@@ -239,7 +239,7 @@ public class SokBean {
         sql = sql + orderBy;
 
         log.debug("SQL: " + sql);
-        // Slå upp meddelanden:
+        // SlÃ¥ upp meddelanden:
         QueryProcessor qp = ActionHelper.getResourceFactory().getQueryProcessor();
         List meddelanderader = qp.processQuery(sql, new MeddelandeRowMapper());
         antalMeddelanden = meddelanderader.size();
@@ -247,7 +247,7 @@ public class SokBean {
 	}
     
     /**
-     * @return en giltig SQL-sträng med de villkor som är angivna i bönan 
+     * @return en giltig SQL-strÃ¤ng med de villkor som Ã¤r angivna i bÃ¶nan 
      */
     String skapaSokWherevillkor() {
         Date skapatFrom = DateUtils.strToDate(fromSkapat, true);
@@ -258,11 +258,11 @@ public class SokBean {
         Date skickaTidigastTom = DateUtils.strToDate(tomSkickaTidigast, false);
         
         String where = "";
-        // Lägg till datumvillkor
+        // LÃ¤gg till datumvillkor
         if (skapatFrom != null) {
         	where = DAOImplBase.addRestriction(where, "MEDD.SKAPADTIDPUNKT", ">=", skapatFrom);
         } else {
-        	// Om man inte har angivit ett from-datum begränsar vi frågan. Vi hämtar ju ändå bara 1000 senaste medd.
+        	// Om man inte har angivit ett from-datum begrÃ¤nsar vi frÃ¥gan. Vi hÃ¤mtar ju Ã¤ndÃ¥ bara 1000 senaste medd.
         	where += "MEDD.SKAPADTIDPUNKT > ((CURRENT TIMESTAMP)-7 DAYS)";
         }
         where = DAOImplBase.addRestriction(where, "MEDD.SKAPADTIDPUNKT", "<=", skapatTom);
@@ -271,13 +271,13 @@ public class SokBean {
         where = DAOImplBase.addRestriction(where, "MEDD.SKICKATIDIGAST", ">=", skickaTidigastFrom);
         where = DAOImplBase.addRestriction(where, "MEDD.SKICKATIDIGAST", "<=", skickaTidigastTom);
 
-        // Lägg till adressvillkor:
+        // LÃ¤gg till adressvillkor:
         where = DAOImplBase.addLike(where, "AVS.NAMN", avsandarnamn, true);
         where = DAOImplBase.addLike(where, "AVS.EPOST", avsandaradress, true);
         where = DAOImplBase.addLike(where, "MOTT.NAMN", mottagarnamn, true);
         where = DAOImplBase.addLike(where, "MOTT.ADRESS", mottagaradress, true);
         
-        // Lägg till kanal, programnamn, csnnummer etc.
+        // LÃ¤gg till kanal, programnamn, csnnummer etc.
         where = DAOImplBase.addLike(where, "MEDD.KANAL", kanal, true);
         where = DAOImplBase.addLike(where, "AVS.PROGRAMNAMN", applikation, true);
         where = DAOImplBase.addLike(where, "AVS.KATEGORI", kategori, true);
@@ -285,7 +285,7 @@ public class SokBean {
         	where = DAOImplBase.addRestriction(where, "MEDD.CSNNUMMER", "=",  new Integer(csnnummer));
         }
         
-        // Lägg till tillståndsvillkor:
+        // LÃ¤gg till tillstÃ¥ndsvillkor:
         if(valdaStatusar != null && valdaStatusar.length > 0) {
 	        boolean underSandning = false;
 	        String inlist = "";
@@ -299,7 +299,7 @@ public class SokBean {
 	            }
 	            inlist = inlist + valdaStatusar[i];
 	        }
-	        // Här finns 4 möjligheter:
+	        // HÃ¤r finns 4 mÃ¶jligheter:
 	        String statusrestriction = "";
 	        if(inlist.length() > 0) {
 	            statusrestriction = "MEDD.STATUS IN (" + inlist + ")";
@@ -334,8 +334,8 @@ public class SokBean {
     }
     
     /**
-     * Skickar om ett flera meddelanden som valts på webbsidan.
-     * @param e action event från webbsidan
+     * Skickar om ett flera meddelanden som valts pÃ¥ webbsidan.
+     * @param e action event frÃ¥n webbsidan
      */
     public void skickaOm(ActionEvent e) {
     	try {
@@ -344,9 +344,9 @@ public class SokBean {
     		for (Meddelanderad rad : getMeddelandenAsList()) {
     			if (rad.markeradForOmsandning) {
     				log.debug("skickaom, id:" + rad.getId());
-			    	MeddelandeHandelse handelse = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET, MeddelandeHandelse.OK, "Omsändning");
+			    	MeddelandeHandelse handelse = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET, MeddelandeHandelse.OK, "OmsÃ¤ndning");
 			    	daoHandelse.createHandelse(handelse, rad.getId());
-			    	//Läs alla händelser för aktuellt meddelande
+			    	//LÃ¤s alla hÃ¤ndelser fÃ¶r aktuellt meddelande
 			    	MeddelandeHandelse[] h = daoHandelse.getHandelserForMeddelande(rad.getId()).toArray(new MeddelandeHandelse[0]); 
 			    	int forstaLikaMedd = 0;
 			    	Integer typ = -1;
@@ -363,19 +363,19 @@ public class SokBean {
 			    			qp.executeThrowException("DELETE FROM HANDELSE WHERE ID=" + h[i].getId());
 			    			log.debug("delete handelse med id=" + h[i].getId());
 			    		} else {
-			    			// Om tidpunkt är satt har vi tagit bort ett meddelande tidigare.
-			    			// Vi har hittat minst en likadan händelse och grupperar ihop dessa
+			    			// Om tidpunkt Ã¤r satt har vi tagit bort ett meddelande tidigare.
+			    			// Vi har hittat minst en likadan hÃ¤ndelse och grupperar ihop dessa
 			    			if (tidpunkt != null) {
 			    				log.debug("TIDPUNKT=" + tidpunkt);
 			    				qp.executeThrowException("UPDATE HANDELSE SET TEXT='" 
 			    						+ h[forstaLikaMedd].getFeltext() 
-			    						+ ", Antal likadana händelser: " + antalLikaHandelser 
-			    						+ ", Första tidpunkt: " + tidpunkt
+			    						+ ", Antal likadana hÃ¤ndelser: " + antalLikaHandelser 
+			    						+ ", FÃ¶rsta tidpunkt: " + tidpunkt
 			    						+ "' WHERE ID=" + h[forstaLikaMedd].getId());
 			    				log.debug("UPDATE HANDELSE SET TEXT=" 
 			    						+ h[forstaLikaMedd].getFeltext() 
-			    						+ "\nAntal likadana händelser: " + antalLikaHandelser 
-			    						+ "\nFörsta tidpunkt: " + tidpunkt
+			    						+ "\nAntal likadana hÃ¤ndelser: " + antalLikaHandelser 
+			    						+ "\nFÃ¶rsta tidpunkt: " + tidpunkt
 			    						+ " WHERE ID=" + h[forstaLikaMedd].getId());
 			    				tidpunkt = null;
 			    				antalLikaHandelser = 1;
@@ -398,8 +398,8 @@ public class SokBean {
     }
     
     /**
-     * Kontrollerar om några meddelanden som hittades i sökningen är möjliga att skicka om.
-     * @return true om något meddelande kan skickas om, annars false.
+     * Kontrollerar om nÃ¥gra meddelanden som hittades i sÃ¶kningen Ã¤r mÃ¶jliga att skicka om.
+     * @return true om nÃ¥got meddelande kan skickas om, annars false.
      */
     public boolean getFinnsMeddelandenMojligaForOmsandning() {
     	if (meddelanden != null && meddelanden.getWrappedData() != null) { 
@@ -448,7 +448,7 @@ public class SokBean {
     	sorteringsordningForSkickat = inSorteringsordningForSkickat;
     }
 
-    /* Jämförelse för sortering av listan med Id */
+    /* JÃ¤mfÃ¶relse fÃ¶r sortering av listan med Id */
     public static Comparator<Meddelanderad> MeddelandeId_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
 		public int compare(Meddelanderad m1, Meddelanderad m2) {
 		   return m1.getId() > m2.getId() ? 1 : -1; 
@@ -460,7 +460,7 @@ public class SokBean {
 	    }
 	};
 	
-	/* Jämförelse för sortering av listan med Skapat */
+	/* JÃ¤mfÃ¶relse fÃ¶r sortering av listan med Skapat */
     public static Comparator<Meddelanderad> MeddelandeSkapat_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
 		public int compare(Meddelanderad m1, Meddelanderad m2) {
 		   String SkapatName1 = m1.getSkapat();
@@ -479,7 +479,7 @@ public class SokBean {
 	};
     
 	
-	/* Jämförelse för sortering av listan med Skickat */
+	/* JÃ¤mfÃ¶relse fÃ¶r sortering av listan med Skickat */
 	public static Comparator<Meddelanderad> MeddelandeSkickat_ascendingOrder = new Comparator<SokBean.Meddelanderad>() {
 		public int compare(Meddelanderad m1, Meddelanderad m2) {
 			String SkickatName1 = m1.getSkickat() != null ? m1.getSkickat() : "";
@@ -539,7 +539,7 @@ public class SokBean {
     }
             
     /**
-     * Returnerar sökta meddelanden i en lista.
+     * Returnerar sÃ¶kta meddelanden i en lista.
      * @return akteulla meddelanden i form av en lista.
      */
     public List<Meddelanderad> getMeddelandenAsList() {

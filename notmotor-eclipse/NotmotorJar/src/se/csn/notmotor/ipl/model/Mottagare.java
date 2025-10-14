@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.model;
@@ -16,18 +16,18 @@ public class Mottagare extends CsnDataTransferObjectImpl {
 
 	private static final long serialVersionUID = 1L;
 	private Long id;
-    // Namn på mottagare, kan var null
+    // Namn pÃ¥ mottagare, kan var null
     private String namn;
-    // Mailadress, måste vara angiven och enligt format
+    // Mailadress, mÃ¥ste vara angiven och enligt format
     private String adress;
 
-    // CSN-nummer, måste inte anges
+    // CSN-nummer, mÃ¥ste inte anges
     private Integer csnnummer;
     
     // Kan vara EPOST,EPOSTCC,EPOSTBCC och/eller SMS (kommaseparerat)
-    // Måste inte anges. Tomt fält ger EPOST
+    // MÃ¥ste inte anges. Tomt fÃ¤lt ger EPOST
     private String typ;
-    // Status för denna meddelandedel.
+    // Status fÃ¶r denna meddelandedel.
     private Integer status;
 
     public Mottagare() {

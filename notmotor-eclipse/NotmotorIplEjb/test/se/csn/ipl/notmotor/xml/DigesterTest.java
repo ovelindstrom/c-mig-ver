@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-sep-18
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.ipl.notmotor.xml;
@@ -30,12 +30,12 @@ public class DigesterTest extends TestCase {
         assertEquals(m.getCsnnummer().intValue(), 12345678);
         assertEquals(m.getRubrik(), "Testmail");
         assertEquals(m.getRubrikEncoding(), "123");
-        assertEquals(m.getMeddelandetext(), "Detta \nÄr \nEtt \nTestmail!!! åäö ÅÄÖ");
+        assertEquals(m.getMeddelandetext(), "Detta \nÃ„r \nEtt \nTestmail!!! Ã¥Ã¤Ã¶ Ã…Ã„Ã–");
         assertEquals(m.getMeddelandeEncoding(), "456");
         
         DTOAvsandare avs = m.getAvsandare(); 
         assertNotNull(avs);
-        assertEquals(avs.getNamn(), "Jonas Ö");
+        assertEquals(avs.getNamn(), "Jonas Ã¥");
         assertEquals(avs.getEpostadress(), "noreply@csn.se");
         assertEquals(avs.getReplyTo(), "jonas.ohrnell@csn.se");
         assertEquals(avs.getApplikation(), "App1");
@@ -44,7 +44,7 @@ public class DigesterTest extends TestCase {
         DTOMottagare[] mott = m.getMottagare();
         assertNotNull(mott);
         assertEquals(mott.length, 2);
-        assertEquals(mott[0].getNamn(), "Jonas Ö");
+        assertEquals(mott[0].getNamn(), "Jonas Ã¥");
         assertEquals(mott[0].getAdress(), "jonas.ohrnell@csn.se");
         assertEquals(mott[0].getCsnnummer().intValue(), 12345678);
         

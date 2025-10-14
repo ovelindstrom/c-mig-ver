@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -31,7 +31,7 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
     
     public int skapa(Server server) {
         if(server == null) {
-            throw new IllegalArgumentException("Server måste anges");
+            throw new IllegalArgumentException("Server mÃ¥ste anges");
         }
         int id = (int)qp.getCounter("SEKVENS", "SERVERID");
         String aktiv = "J";

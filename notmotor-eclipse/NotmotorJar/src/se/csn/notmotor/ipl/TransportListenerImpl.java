@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-03
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl;
@@ -12,8 +12,8 @@ import javax.mail.event.TransportListener;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * Klass som fångar upp events från mail-transporttjänsten. 
- * Lagrar status på meddelandet. 
+ * Klass som fÃ¥ngar upp events frÃ¥n mail-transporttjÃ¤nsten. 
+ * Lagrar status pÃ¥ meddelandet. 
  */
 public class TransportListenerImpl implements TransportListener {
 
@@ -38,7 +38,7 @@ public class TransportListenerImpl implements TransportListener {
             id = msg.getHeader("csnid");
             return new Long(id[0]);
         } catch(Exception e) {
-            log.error("Kunde inte hitta csnid för meddelande!");
+            log.error("Kunde inte hitta csnid fÃ¶r meddelande!");
             return new Long(-1);
         }
     }

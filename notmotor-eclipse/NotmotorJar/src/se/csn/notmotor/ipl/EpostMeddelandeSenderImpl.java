@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl;
@@ -44,9 +44,9 @@ import se.csn.notmotor.ipl.model.SandResultat;
 import se.csn.notmotor.ipl.validators.EpostValidator;
 
 /**
- * Mailsändare.
- * TODO: problematisk klass, för mycket kod, för lite abstraktion.
- * @author Jonas Öhrnell - csn7821
+ * MailsÃ¤ndare.
+ * TODO: problematisk klass, fÃ¶r mycket kod, fÃ¶r lite abstraktion.
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class EpostMeddelandeSenderImpl implements MeddelandeSender {
 
@@ -62,16 +62,16 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
     public EpostMeddelandeSenderImpl(String user, String password, String mailserver, int mailserverport, int mailserverTimeout) {
         //csnmail1.csnnet.int
         if (user == null) {
-            throw new IllegalArgumentException("user måste anges");
+            throw new IllegalArgumentException("user mÃ¥ste anges");
         }
         if (password == null) {
-            throw new IllegalArgumentException("password måste anges");
+            throw new IllegalArgumentException("password mÃ¥ste anges");
         }
         if (mailserver == null) {
-            throw new IllegalArgumentException("mailserver måste anges");
+            throw new IllegalArgumentException("mailserver mÃ¥ste anges");
         }
         if ((mailserverport < 1) || (mailserverport > 65535)) {
-            throw new IllegalArgumentException("port måsta ha ett värde mellan 1 och 65535");
+            throw new IllegalArgumentException("port mÃ¥sta ha ett vÃ¤rde mellan 1 och 65535");
         }
     	this.mailserver = mailserver;
     	this.mailserverport = mailserverport;
@@ -90,7 +90,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
         Properties props = new Properties();
         props.put("mail.smtp.host", mailserver);
         props.put("mail.smtp.port", "" + mailserverport);
-        // Nedanstående är saxat ur CsnMail-klassen, finns ingen stöd för dessa 
+        // NedanstÃ¥ende Ã¤r saxat ur CsnMail-klassen, finns ingen stÃ¶d fÃ¶r dessa 
         // properties i JavaMail
         props.put("user", user);
         props.put("pwd", password);
@@ -109,8 +109,8 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
     /**
      * Skickar meddelande. 
      * @param meddelande Meddelandet. 
-     * @return Ett sändresultat. Om meddelandet gick iväg till mailservern är 
-     * 		koden i resultatet SKICKAT_SERVER; annars någon typ av fel.
+     * @return Ett sÃ¤ndresultat. Om meddelandet gick ivÃ¤g till mailservern Ã¤r 
+     * 		koden i resultatet SKICKAT_SERVER; annars nÃ¥gon typ av fel.
      */
     public SandResultat skickaMeddelande(Meddelande meddelande) {
         // Arbeta med en lokal kopia, vi kommer att stycka upp meddelandet
@@ -122,9 +122,9 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
         }
 
         //log.debug("Validerat");
-        // Transformera: ta bort mottagare som inte är av typ EPOST,EPOSTCC eller EPOSTBCC:
+        // Transformera: ta bort mottagare som inte Ã¤r av typ EPOST,EPOSTCC eller EPOSTBCC:
         meddelande = taBortOkandaOchSandaMottagartyper(meddelande);
-        // Om det inte finns några mottagare kvar så ska inte meddelandet hanteras ->
+        // Om det inte finns nÃ¥gra mottagare kvar sÃ¥ ska inte meddelandet hanteras ->
         // returnera null
         if (meddelande.getMottagare().length == 0) {
             return null;
@@ -133,7 +133,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
         // Skapa MimeMessage
         MimeMessage msg = null;
         try {	
-	        // Felen upptäcks normalt inte här; bara om de är gravt felformaterade
+	        // Felen upptÃ¤cks normalt inte hÃ¤r; bara om de Ã¤r gravt felformaterade
 	        try {
 		        // Kolla om det finns bilagor. Om ja -> multipart
 		        if (!meddelande.hasBilagor()) {
@@ -142,7 +142,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
 		            msg = createMultipartMessage(meddelande);
 		        }
 		        msg.addHeader("csnid", "" + meddelande.getId());
-		        // Sätt text, rubrik
+		        // SÃ¤tt text, rubrik
 		        if (meddelande.getRubrikEncoding() == null) {
 		            msg.setSubject(meddelande.getRubrik());
 		        } else {
@@ -153,17 +153,17 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
 	            return skapaSandResultat(meddelande, MeddelandeHandelse.TEKNISKT_FEL, MeddelandeHandelse.OKANT_FEL, me.toString());
 	        }
 	        
-	        // Skapa avsändare:
+	        // Skapa avsÃ¤ndare:
 	        if (meddelande.getAvsandare() == null) {
-	            throw new IllegalArgumentException("Avsändare saknas");
+	            throw new IllegalArgumentException("AvsÃ¤ndare saknas");
 	        }
 	        try {
 	            msg.setFrom(new InternetAddress(meddelande.getAvsandare().getEpostadress(), meddelande.getAvsandare().getNamn()));
 	        } catch (UnsupportedEncodingException e) {
-	            log.error("Kunde inte skapa avsändare för " + meddelande, e);
+	            log.error("Kunde inte skapa avsÃ¤ndare fÃ¶r " + meddelande, e);
 	            return skapaSandResultat(meddelande, MeddelandeHandelse.MEDDELANDEFEL, MeddelandeHandelse.FELAKTIG_AVSANDARE, e.toString());
 	        } catch (MessagingException e) {
-	            log.error("Kunde inte skapa avsändare för " + meddelande, e);
+	            log.error("Kunde inte skapa avsÃ¤ndare fÃ¶r " + meddelande, e);
 	            return skapaSandResultat(meddelande, MeddelandeHandelse.MEDDELANDEFEL, MeddelandeHandelse.FELAKTIG_AVSANDARE, e.toString());
 	        }
 	        
@@ -172,10 +172,10 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
 	            // Skapa addressater:
 	            adresser = laggTillMottagare(msg, meddelande.getMottagare());
 	        } catch (UnsupportedEncodingException e) {
-	            log.error("Kunde inte skapa mottagare för " + meddelande, e);
+	            log.error("Kunde inte skapa mottagare fÃ¶r " + meddelande, e);
 	            return skapaSandResultat(meddelande, MeddelandeHandelse.MEDDELANDEFEL, MeddelandeHandelse.FELAKTIG_MOTTAGARE, e.toString());
 	        } catch (MessagingException e) {
-	            log.error("Kunde inte skapa mottagare för " + meddelande, e);
+	            log.error("Kunde inte skapa mottagare fÃ¶r " + meddelande, e);
 	            return skapaSandResultat(meddelande, MeddelandeHandelse.MEDDELANDEFEL, MeddelandeHandelse.FELAKTIG_MOTTAGARE, e.toString());
 	        }
 	        
@@ -188,7 +188,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
     
     SandResultat skapaSandResultat(Meddelande m, int handelsetyp, int kod, String text) {
         SandResultat sr = new SandResultat(handelsetyp, kod, text, this, null);
-        // Sätt mottagare
+        // SÃ¤tt mottagare
         if (m.getMottagare() != null) {
             for (int i = 0; i < m.getMottagare().length; i++) {
                 sr.addMottagare(m.getMottagare()[i]);
@@ -203,7 +203,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
      */
     
     boolean matchandeTyp(String typ) {
-        // EpostMeddelandeSendern är defaultsändare -> accepterar NULL
+        // EpostMeddelandeSendern Ã¤r defaultsÃ¤ndare -> accepterar NULL
         if (typ == null) {
             return true;
         }
@@ -246,8 +246,8 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
 	            msg.setText(meddelande.getMeddelandetext(), meddelande.getMeddelandeEncoding());
 	        }
     	} else {
-        	// Mimetyp är inte null, t.ex. "text/html;charset=iso-8859-1"
-        	// Observera att man sätter encoding (charset) i samma sträng.
+        	// Mimetyp Ã¤r inte null, t.ex. "text/html;charset=iso-8859-1"
+        	// Observera att man sÃ¤tter encoding (charset) i samma strÃ¤ng.
     		msg.setContent((Object) meddelande.getMeddelandetext(), meddelande.getMimetyp());
         }
         return msg;
@@ -267,8 +267,8 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
 	            bp.setText(meddelande.getMeddelandetext(), meddelande.getMeddelandeEncoding());
 	        }
         } else {
-        	// Mimetyp är inte null, t.ex. "text/html;charset=iso-8859-1"
-        	// Observera att man sätter encoding (charset) i samma sträng.
+        	// Mimetyp Ã¤r inte null, t.ex. "text/html;charset=iso-8859-1"
+        	// Observera att man sÃ¤tter encoding (charset) i samma strÃ¤ng.
 	        bp.setContent((Object) meddelande.getMeddelandetext(), meddelande.getMimetyp());
         }
         multipart.addBodyPart(bp);
@@ -292,11 +292,11 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
     }
     
     /**
-     * Går igenom alla mottagare och plockar bort okända 
+     * GÃ¥r igenom alla mottagare och plockar bort okÃ¤nda 
      * mottagartyper och mottagare med status SKICKAT_SERVER. 
-     * Om en mottagare bara har okända typer så plockas den bort.
+     * Om en mottagare bara har okÃ¤nda typer sÃ¥ plockas den bort.
      * @param meddelande
-     * @return Samma meddelande som skickades in, förändrat. 
+     * @return Samma meddelande som skickades in, fÃ¶rÃ¤ndrat. 
      */
     static Meddelande taBortOkandaOchSandaMottagartyper(Meddelande meddelande) {
         final String kandaTyper = "EPOST EPOSTCC EPOSTBCC";
@@ -333,10 +333,10 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
         if (pos >= 0) {
             if (s.length() == part.length()) {
                 return "";
-            } else if (pos + part.length() == s.length()) { // Kolla om i början eller i slutet:
+            } else if (pos + part.length() == s.length()) { // Kolla om i bÃ¶rjan eller i slutet:
                 return s.replaceAll(sep + part, "");
             } else {
-                // Minst två termer, och inte den sista: 
+                // Minst tvÃ¥ termer, och inte den sista: 
                 return s.replaceAll(part + sep, "");
             } 
         }
@@ -345,7 +345,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
     
     Address[] laggTillMottagare(Message message, Mottagare[] mottagarlista) throws UnsupportedEncodingException, MessagingException {
         if ((mottagarlista == null) || (mottagarlista.length == 0)) {
-            throw new IllegalArgumentException("Måste finnas minst en mottagare");
+            throw new IllegalArgumentException("MÃ¥ste finnas minst en mottagare");
         }
         
         List<Address> adresser = new ArrayList<Address>();
@@ -356,7 +356,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
 	            throw new IllegalArgumentException("Mottagare saknade adress: " + mott.toString());
 	        }
 	        
-	        // Loopa över alla adresstyper. Om ingen satt, använd TO
+	        // Loopa Ã¶ver alla adresstyper. Om ingen satt, anvÃ¤nd TO
 	        Address a = new InternetAddress(mott.getAdress(), mott.getNamn());
 	        adresser.add(a);
 	        if (mott.getTyp() == null) {
@@ -371,7 +371,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
 	                } else if ("EPOSTBCC".equalsIgnoreCase(typer[typnummer])) {
 	                    message.addRecipient(Message.RecipientType.BCC, a);
 	                } else {
-	                    throw new IllegalArgumentException("Okänd mottagartyp: " + typer[typnummer]);
+	                    throw new IllegalArgumentException("OkÃ¤nd mottagartyp: " + typer[typnummer]);
 	                }
 	            }
 	        }
@@ -381,15 +381,15 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
     
     /**
      * Skickar meddelande. 
-     * @param antalForsok Flagga som används för att undvika oändliga loopar vid omedelbart
-     * 		omsändningsförsök mm  
+     * @param antalForsok Flagga som anvÃ¤nds fÃ¶r att undvika oÃ¤ndliga loopar vid omedelbart
+     * 		omsÃ¤ndningsfÃ¶rsÃ¶k mm  
      */
     
     private SandResultat skicka(Meddelande m, MimeMessage msg, Address[] adresser, int antalForsok) {
         int maxAntalLokalaOmsandningsforsok = ANTAL_OMSANDNINGSFORSOK;
         try {
         	long startTid = System.currentTimeMillis();
-            // Försök ansluta:
+            // FÃ¶rsÃ¶k ansluta:
             if (!transport.isConnected()) {
                 log.debug("Connecting.");
                 transport.connect();
@@ -400,7 +400,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
             if (log.isInfoEnabled()) {
                 double tid = ((double) stoppTid - startTid) / 1000;
                 if (tid > 0.5) {
-                    log.info("Tid för att skicka meddelande till " + mailserver + ":" + mailserverport
+                    log.info("Tid fÃ¶r att skicka meddelande till " + mailserver + ":" + mailserverport
                             + ": " + tid + " sekunder (visar tider > 0.5 sek)");
                 }
             }

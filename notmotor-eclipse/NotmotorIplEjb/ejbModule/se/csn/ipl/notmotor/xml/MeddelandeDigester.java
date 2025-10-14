@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-sep-18
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.ipl.notmotor.xml;
@@ -52,12 +52,12 @@ public class MeddelandeDigester {
     
     public DTOMeddelande xmlToDTOMeddelande(InputStream input) {
         if(input == null) {
-            throw new IllegalArgumentException("input mÂste vara satt");
+            throw new IllegalArgumentException("input m√•ste vara satt");
         }
 	    try {
             return (DTOMeddelande) digester.parse(input);
         } catch (IOException e) {
-            throw new IllegalArgumentException("Kunde inte l‰sta InputStream: " + e);
+            throw new IllegalArgumentException("Kunde inte l√§sta InputStream: " + e);
         } catch (SAXException e) {
             throw new IllegalArgumentException("Kunde inte parsa indata: " + e);
         }

@@ -15,7 +15,7 @@ import javax.jms.QueueSender;
 /**
  *     Namn :    Sender
  *
- *     Beskrivning:Klass för att kunna skicka meddelande via jms kö
+ *     Beskrivning:Klass fÃ¶r att kunna skicka meddelande via jms kÃ¶
  *
  * @author csnnlm
  * @version 1.01
@@ -27,7 +27,7 @@ public class Sender extends JmsQueue {
     private ObjectMessage sendMessage = null;
 
     /**
-     * Öppnar en sändar kö (QueueSender)som inte transaktionshanteras och med AUTO_ACKNOWLEDGE
+     * Ã¥ppnar en sÃ¤ndar kÃ¶ (QueueSender)som inte transaktionshanteras och med AUTO_ACKNOWLEDGE
      * @throws JMSException Kastas om ett meddelandeobjekt inte kunde skapas. 
      */
     public void openSender() throws JMSException {
@@ -52,9 +52,9 @@ public class Sender extends JmsQueue {
 
 
     /**
-     * Skickar ett meddelande via den öppnade kön, objektet måste ärva av Serializable
+     * Skickar ett meddelande via den Ã¶ppnade kÃ¶n, objektet mÃ¥ste Ã¤rva av Serializable
      * @param  s - Serializable, Det serialiserbara objektet som skall skickas.
-     * @throws JMSException Om meddelandet inte kunde sändas.
+     * @throws JMSException Om meddelandet inte kunde sÃ¤ndas.
      */
     public void sendMessage(Serializable s) throws JMSException {
         // Send the sendMessage object using the queue sender.
@@ -71,8 +71,8 @@ public class Sender extends JmsQueue {
     }
     
     /**
-     * Stänger sender, queueconnection samt sessionen
-     * @throws JMSException vid fel på sender.close eller session.close
+     * StÃ¤nger sender, queueconnection samt sessionen
+     * @throws JMSException vid fel pÃ¥ sender.close eller session.close
      */
     public void close() throws JMSException {
 		try {
@@ -80,7 +80,7 @@ public class Sender extends JmsQueue {
 			super.close();
 			getSession().close();
 		} catch (JMSException e) {
-			log.error("Misslycakdes att stänga sender eller session", e);
+			log.error("Misslycakdes att stÃ¤nga sender eller session", e);
 			throw e;
 		}
     }

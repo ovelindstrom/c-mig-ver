@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-02
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl;
@@ -42,21 +42,21 @@ public class TestSkickaMeddelandeServiceImpl extends TestCase {
         return new SkickaMeddelandeServicesImpl(qp, pk, mh, hh, motth, 1);
     }
     
-    /* TODO: Hitta ett annat sätt att testa kod som inkluderar sleepcykler. 
-     * Timingen är inte tillräckligt exakt.
+    /* TODO: Hitta ett annat sÃ¤tt att testa kod som inkluderar sleepcykler. 
+     * Timingen Ã¤r inte tillrÃ¤ckligt exakt.
     public void testWatchdogTimer() {
         // Mocka:
         SkickaMeddelandeServicesImpl impl = skapaImplOchMocks();
         impl.setInstansnummer(0);
         
-        // Kontrollera att den inte sover längre än watchdogtiden:
+        // Kontrollera att den inte sover lÃ¤ngre Ã¤n watchdogtiden:
         pk.getIntParam("WATCHDOGTID", SkickaMeddelandeServicesImpl.DEFAULT_WATCHDOGTID);
         pkControl.setReturnValue(3);
         
         pk.getIntParam("SOVTID", SkickaMeddelandeServicesImpl.DEFAULT_SOVTID);
         pkControl.setReturnValue(8);
         
-        // Kommer att fråga 3 gånger: 
+        // Kommer att frÃ¥ga 3 gÃ¥nger: 
         pk.getIntParam("WATCHDOGTID", SkickaMeddelandeServicesImpl.DEFAULT_WATCHDOGTID);
         pkControl.setReturnValue(3);
         qp.executeThrowException("UPDATE STATUS SET WATCHDOGTSTAMP = CURRENT TIMESTAMP WHERE INSTANS = 0");
@@ -99,7 +99,7 @@ public class TestSkickaMeddelandeServiceImpl extends TestCase {
         qpControl.replay();
         long tick = System.currentTimeMillis();
         impl.sleepWaittime();
-        // OBS! Maven-testet gick på 999 ms...
+        // OBS! Maven-testet gick pÃ¥ 999 ms...
         assertTrue(System.currentTimeMillis()-tick >= 990);
         pkControl.verify();
         qpControl.verify();

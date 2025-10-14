@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-12
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -18,7 +18,7 @@ public class DBTestDAOMottagareImpl extends TestCase {
     
     public void testCRUD() {
         DAOMottagareImpl dao = new DAOMottagareImpl(getQueryProcessor());
-        Mottagare mott = new Mottagare("jonas.ohrnell@csn.se", "Jonas Ö", 12345678);
+        Mottagare mott = new Mottagare("jonas.ohrnell@csn.se", "Jonas Ã¥", 12345678);
         
         long id = dao.createMottagare(mott, 1);
         

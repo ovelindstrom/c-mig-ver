@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-20
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -12,7 +12,7 @@ import java.util.List;
 import se.csn.notmotor.ipl.model.Mottagare;
 
 /**
- * CRUD för mottagare
+ * CRUD fÃ¶r mottagare
  */
 public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
 
@@ -22,7 +22,7 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
     
     public int createMottagare(Mottagare mott, long meddelandeId) {
         if(mott == null) {
-            throw new IllegalArgumentException("Mottagare måste vara satt");
+            throw new IllegalArgumentException("Mottagare mÃ¥ste vara satt");
         }
         int id = (int)qp.getCounter("SEKVENS", "MOTTAGARE");
         qp.executeThrowException("INSERT INTO MOTTAGARE(ID,TYP,MEDDELANDEID,NAMN,ADRESS,CSNNUMMER,STATUS) "

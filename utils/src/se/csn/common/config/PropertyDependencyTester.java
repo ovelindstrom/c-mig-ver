@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-feb-26
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
@@ -13,7 +13,7 @@ import se.csn.ark.common.util.Properties;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * Kontrollerar att properties är satta. 
+ * Kontrollerar att properties Ã¤r satta. 
  */
 public class PropertyDependencyTester {
     
@@ -27,11 +27,11 @@ public class PropertyDependencyTester {
     }
     
     /**
-     * Söker propertyn i propertiesfilen.
-     * @param namn på propertyn 
-     * @param propertyfile Namn på prpertyfilen.Om namnet på propertiesfilen 
-     * inte innehåller någon punkt så appendas .properties till namnet. 
-     * Propertiesfilerna söks på classpath. 
+     * SÃ¶ker propertyn i propertiesfilen.
+     * @param namn pÃ¥ propertyn 
+     * @param propertyfile Namn pÃ¥ prpertyfilen.Om namnet pÃ¥ propertiesfilen 
+     * inte innehÃ¥ller nÃ¥gon punkt sÃ¥ appendas .properties till namnet. 
+     * Propertiesfilerna sÃ¶ks pÃ¥ classpath. 
      * 
      * @return true om propertyn hittades, false annars.  
      */

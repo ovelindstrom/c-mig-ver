@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-15
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.util.file;
@@ -15,12 +15,12 @@ import java.io.FileOutputStream;
 
 public class FileUtils {
 
-    // Vik 24 bytes för klassoverhead för att komma under den magiska 1k-gränsen
+    // Vik 24 bytes fÃ¶r klassoverhead fÃ¶r att komma under den magiska 1k-grÃ¤nsen
     
     
     public static String readStringFromFile(File file) {
         if(file == null) {
-            throw new IllegalArgumentException("file måste vara satt");
+            throw new IllegalArgumentException("file mÃ¥ste vara satt");
         }
         try {
             FileReader reader = new FileReader(file);
@@ -30,23 +30,23 @@ public class FileUtils {
         } catch (FileNotFoundException e) {
             throw new IllegalArgumentException("Kunde inte hitta fil " + file.getAbsolutePath());
         } catch (IOException e) {
-            throw new IllegalStateException("Fick(kunde inte läsa fil " + file.getAbsolutePath() + ": " + e);
+            throw new IllegalStateException("Fick(kunde inte lÃ¤sa fil " + file.getAbsolutePath() + ": " + e);
         } 
     }
     
     public static String readStringFromFile(String filename) {
         if(filename == null) {
-            throw new IllegalArgumentException("filename måste vara satt");
+            throw new IllegalArgumentException("filename mÃ¥ste vara satt");
         }
         return readStringFromFile(new File(filename));
     }
     
     public static void writeBytesToFile(byte[] data, File file) {
         if(data == null) {
-            throw new IllegalArgumentException("data måste vara satt");
+            throw new IllegalArgumentException("data mÃ¥ste vara satt");
         }
         if(file == null) {
-            throw new IllegalArgumentException("file måste vara satt");
+            throw new IllegalArgumentException("file mÃ¥ste vara satt");
         }
         try {
             FileOutputStream writer = new FileOutputStream(file);
@@ -62,7 +62,7 @@ public class FileUtils {
     
     public static void writeBytesToFile(byte[] data, String filename) {
         if(filename == null) {
-            throw new IllegalArgumentException("filename måste vara satt");
+            throw new IllegalArgumentException("filename mÃ¥ste vara satt");
         }
         writeBytesToFile(data, new File(filename));        
     }

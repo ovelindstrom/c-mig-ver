@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-13
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -17,8 +17,8 @@ import se.csn.common.util.cache.TimeoutCache;
 import se.csn.notmotor.ipl.model.Setting;
 
 /**
- * Denna klass fungerar som en proxy fˆr alla parametrar som 
- * anv‰nds av notmotorn
+ * Denna klass fungerar som en proxy f√∂r alla parametrar som 
+ * anv√§nds av notmotorn
  */
 public class ParameterCache implements ParameterKalla {
 
@@ -38,13 +38,13 @@ public class ParameterCache implements ParameterKalla {
     
     public ParameterCache(QueryProcessor qp, String namnkolumn, String vardekolumn) {
         if (qp == null) {
-            throw new IllegalArgumentException("QueryProcessor mÂste anges");
+            throw new IllegalArgumentException("QueryProcessor m√•ste anges");
         }
         if (namnkolumn == null) {
-            throw new IllegalArgumentException("Namnkolumn mÂste anges");
+            throw new IllegalArgumentException("Namnkolumn m√•ste anges");
         }
         if (vardekolumn == null) {
-            throw new IllegalArgumentException("Vardekolumn mÂste anges");
+            throw new IllegalArgumentException("Vardekolumn m√•ste anges");
         }
         
         namnCol = namnkolumn;
@@ -67,7 +67,7 @@ public class ParameterCache implements ParameterKalla {
     public String getStringParam(String namn, String defaultVarde) {
         String val = (String)cache.get(namn);
         if(val == null) {
-            // Cachemiss: slÂ mot databas
+            // Cachemiss: sl√• mot databas
             val = qp.getString("SELECT VARDE FROM PARAMETER WHERE NAMN='" + namn + "'", defaultVarde);
             if(val != null) {
                 cache.put(namn, val);
@@ -122,7 +122,7 @@ public class ParameterCache implements ParameterKalla {
         try {
             return strToBool(val);
         } catch (IllegalArgumentException iae) {
-            log.error("Felaktigt boolean-v‰rde", iae);
+            log.error("Felaktigt boolean-v√§rde", iae);
             return defaultVarde;
         }
     }

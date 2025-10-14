@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-30
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.common.util.file;
@@ -18,21 +18,21 @@ public class StreamUtils {
     
     public static String getStringFromInputStream(InputStream is) {
         if(is == null) {
-            throw new IllegalArgumentException("InputStream mÂste vara satt");
+            throw new IllegalArgumentException("InputStream m√•ste vara satt");
         }
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String s = getStringFromReader(br);
         try {
             br.close();
         } catch (IOException e) {
-            throw new RuntimeException("Kunde inte st‰nga BufferedReader: " + e);
+            throw new RuntimeException("Kunde inte st√§nga BufferedReader: " + e);
         }
         return s;
     }
     
     public static String getStringFromReader(Reader reader) {
         if(reader == null) {
-            throw new IllegalArgumentException("Reader mÂste vara satt");
+            throw new IllegalArgumentException("Reader m√•ste vara satt");
         }
         char[] buffer = new char[BUFFERSIZE];
         int available;
@@ -45,7 +45,7 @@ public class StreamUtils {
 	        }
 	        reader.close();
         } catch (IOException e) {
-            throw new RuntimeException("Kunde inte l‰sa Reader: " + e);
+            throw new RuntimeException("Kunde inte l√§sa Reader: " + e);
         }
         return sb.toString();
     }

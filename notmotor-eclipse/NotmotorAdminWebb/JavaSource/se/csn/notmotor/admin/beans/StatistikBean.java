@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-08
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin.beans;
@@ -193,7 +193,7 @@ public class StatistikBean {
 				this.angivenDag = value;
 				break;
 			default :
-				throw new IllegalArgumentException("Kunde inte s‰tta statistik, ogiltigt f‰lt: " + field);
+				throw new IllegalArgumentException("Kunde inte s√§tta statistik, ogiltigt f√§lt: " + field);
 			}
         }
 
@@ -214,7 +214,7 @@ public class StatistikBean {
 		ResourceFactory factory = ActionHelper.getResourceFactory();
 	    factory.setTransactionIsolationLevel(Connection.TRANSACTION_READ_UNCOMMITTED);
 	    qp = ActionHelper.getResourceFactory().getQueryProcessor();
-	    // S‰tt TransactionLevel till READ_UNCOMMITTED, vi behˆver ingen 
+	    // S√§tt TransactionLevel till READ_UNCOMMITTED, vi beh√∂ver ingen 
 	    // vidare precision i dessa slagningar
 	    datumrader = new ListDataModel();
 	    this.mottagna = null;
@@ -231,8 +231,8 @@ public class StatistikBean {
 	}
 	
 	/**
-	 * H‰mtar all tillg‰nglig statistik om mottagna, s‰nda och borttagna meddelanden.
-	 * All statistik lagras i bˆnan och finns tillg‰ngliga via get-metoderna.
+	 * H√§mtar all tillg√§nglig statistik om mottagna, s√§nda och borttagna meddelanden.
+	 * All statistik lagras i b√∂nan och finns tillg√§ngliga via get-metoderna.
 	 */
 	private void hamtaStatistik() {
 		long start = System.currentTimeMillis();
@@ -248,7 +248,7 @@ public class StatistikBean {
 	    //    mottagna
 	    statistikrader = getMottagnaSedan(cal.getTime());
 	    setStatistik(statistikMottagna, statistikrader, Statistik.SENASTE_TIMMEN);
-	    //    s‰nt
+	    //    s√§nt
 	    statistikrader = getSantSedan(cal.getTime());
 	    setStatistik(statistikSant, statistikrader, Statistik.SENASTE_TIMMEN);
 	    
@@ -260,7 +260,7 @@ public class StatistikBean {
 	    //    mottagna
 	    statistikrader = getMottagnaSedan(cal.getTime());
 	    setStatistik(statistikMottagna, statistikrader, Statistik.SEDAN_MIDNATT);
-	    //    s‰nt
+	    //    s√§nt
 	    statistikrader = getSantSedan(cal.getTime());
 	    setStatistik(statistikSant, statistikrader, Statistik.SEDAN_MIDNATT);
 	    
@@ -270,12 +270,12 @@ public class StatistikBean {
 	    //    mottagna
 	    statistikrader = getMottagnaSedan(cal.getTime());
 	    setStatistik(statistikMottagna, statistikrader, Statistik.SENASTE_24);
-	    //    s‰nt
+	    //    s√§nt
 	    statistikrader = getSantSedan(cal.getTime());
 	    setStatistik(statistikSant, statistikrader, Statistik.SENASTE_24);
 	    
 	    /* Angiven dag(default dagens datum) */
-	    //s‰nt
+	    //s√§nt
 	    statistikrader = getSantUnderEnDag(getDatumSomDate(valdDag));
 	    setStatistik(statistikSant, statistikrader, Statistik.ANGIVEN_DAG);
 	    //mottagna
@@ -286,7 +286,7 @@ public class StatistikBean {
 	    //    mottagna
 	    statistikrader = getMottagnaSedan(null);
 	    setStatistik(statistikMottagna, statistikrader, Statistik.TOTALT);
-	    //    s‰nt
+	    //    s√§nt
 	    statistikrader = getSantSedan(null);
 	    setStatistik(statistikSant, statistikrader, Statistik.TOTALT);
 	    //    borttagna
@@ -294,7 +294,7 @@ public class StatistikBean {
 	    setStatistik(statistikBorttagna, statistikrader, Statistik.TOTALT);
 	    
 	    
-	    // Spara statistiken i bˆnan fˆr enkel Âtkomst frÂn webbsidan
+	    // Spara statistiken i b√∂nan f√∂r enkel √•tkomst fr√•n webbsidan
 	    this.mottagna = null;
 	    this.kanalerMottagna = new ArrayList<Statistik>();
 	    for (Statistik s : statistikMottagna.values()) {
@@ -324,19 +324,19 @@ public class StatistikBean {
 	    }
 	    	    
 	    long stop = System.currentTimeMillis();
-	    log.info("Tid fˆr att h‰mta statistik: " + (stop - start) + " ms");
+	    log.info("Tid f√∂r att h√§mta statistik: " + (stop - start) + " ms");
 	}
 	
 	/**
 	 * Uppdaterar befintlig statistik med ny statistik.
-	 * @param statistik befintlig statistik, d‰r varje kanal mappas mot ett Statistik-objekt.
+	 * @param statistik befintlig statistik, d√§r varje kanal mappas mot ett Statistik-objekt.
 	 * 			Kanalen null motsvarar den totala summan av statistiken.
-	 * 			Denna Map M≈STE tillÂta null-keys!!!
+	 * 			Denna Map M√ÖSTE till√•ta null-keys!!!
 	 * @param statistikrader en lista med nya statistikrader. Varje Statistikrad-objekt representerar en kanal.
-	 * @param field det statistikf‰lt som ska s‰ttas/uppdateras
+	 * @param field det statistikf√§lt som ska s√§ttas/uppdateras
 	 */
 	private void setStatistik(Map<String, Statistik> statistik, List<Statistikrad> statistikrader, int field) {
-		// S‰tt statistik fˆr varje kanal. Skapa statistikobjekt om nˆdv‰ndigt.
+		// S√§tt statistik f√∂r varje kanal. Skapa statistikobjekt om n√∂dv√§ndigt.
 		for (Statistikrad srad : statistikrader) {
 			String kanal = srad.getKanal();
 			if (kanal != null) {
@@ -345,18 +345,18 @@ public class StatistikBean {
 				statistik.put(kanal, s);
 			}
 		}
-		// S‰tt statistik fˆr totalen. Skapa statistikobjekt om nˆdv‰ndigt.
+		// S√§tt statistik f√∂r totalen. Skapa statistikobjekt om n√∂dv√§ndigt.
 		Statistik s = statistik.get(null) != null ? statistik.get(null) : new Statistik(null);
 		s.set(field, getAntal(statistikrader, null));
 		statistik.put(null, s);
 	}
 	
 	/**
-	 * Returnerar aktuellt v‰rde fˆr given kanal utifrÂn lista med statistikradobjekt.
-	 * Om kanal ‰r null sÂ returneras summan av alla statistikradobjekt.
+	 * Returnerar aktuellt v√§rde f√∂r given kanal utifr√•n lista med statistikradobjekt.
+	 * Om kanal √§r null s√• returneras summan av alla statistikradobjekt.
 	 * @param statistikrader lista med statistikradobjekt
-	 * @param kanal den kanal som sˆks. Null ger totala summan.
-	 * @return v‰rdet (eller summan) frÂn givna statistikradobjekt, beroende pÂ kanal
+	 * @param kanal den kanal som s√∂ks. Null ger totala summan.
+	 * @return v√§rdet (eller summan) fr√•n givna statistikradobjekt, beroende p√• kanal
 	 */
 	private int getAntal(List<Statistikrad> statistikrader, String kanal) {
 		int antal = 0;
@@ -379,10 +379,10 @@ public class StatistikBean {
 	}
 	
 	/**
-	 * H‰mtar alla s‰nda meddelanden grupperade per kanal fˆr angivet datum, dsv under aktuell dag.
-	 * Skulle dag vara null kommer dagens datum att anv‰ndas. 
-	 * @param dag den dag som statistik ska h‰mas fˆr
-	 * @return alla meddelanden som s‰nts under angiven dag.
+	 * H√§mtar alla s√§nda meddelanden grupperade per kanal f√∂r angivet datum, dsv under aktuell dag.
+	 * Skulle dag vara null kommer dagens datum att anv√§ndas. 
+	 * @param dag den dag som statistik ska h√§mas f√∂r
+	 * @return alla meddelanden som s√§nts under angiven dag.
 	 */
 	@SuppressWarnings("unchecked")
 	private List<Statistikrad> getSantUnderEnDag(Date dag) {
@@ -390,7 +390,7 @@ public class StatistikBean {
 	        dag = getDagensDatum();
 	    }
 	    
-	    //S‰tt starttid till vald dag med start 00:00:00:00
+	    //S√§tt starttid till vald dag med start 00:00:00:00
 	    Calendar startTid = Calendar.getInstance();
 	    startTid.setTime(dag);
 	    startTid.set(Calendar.HOUR_OF_DAY, 0);
@@ -398,7 +398,7 @@ public class StatistikBean {
 	    startTid.set(Calendar.SECOND, 0);
 	    startTid.set(Calendar.MILLISECOND, 0);
 	    
-	    //S‰tt sluttid till dagen efter vald dag med start 00:00:00:00
+	    //S√§tt sluttid till dagen efter vald dag med start 00:00:00:00
 	    Calendar slutTid = Calendar.getInstance();
 	    slutTid.setTime(dag);
 	    slutTid.set(Calendar.DAY_OF_YEAR, slutTid.get(Calendar.DAY_OF_YEAR) + 1);
@@ -407,7 +407,7 @@ public class StatistikBean {
 	    slutTid.set(Calendar.SECOND, 0);
 	    slutTid.set(Calendar.MILLISECOND, 0);
 	    
-	    //Sˆk all s‰nt data under en dag
+	    //S√∂k all s√§nt data under en dag
 	    return qp.processQuery("SELECT KANAL, COUNT(*) as ANTAL FROM MEDDELANDE "
 	    		+ "WHERE SANTTIDPUNKT >= " + DAOImplBase.quoteValue(startTid.getTime()) 
 	    		+ " AND SANTTIDPUNKT < " + DAOImplBase.quoteValue(slutTid.getTime()) 
@@ -425,9 +425,9 @@ public class StatistikBean {
 	}
 	
 	/**
-	 * H‰mtar alla mottagna meddelanden grupperade per kanal fˆr angivet datum, dsv under aktuell dag.
-	 * Skulle dag vara null kommer dagens datum att anv‰ndas. 
-	 * @param dag den dag som statistik ska h‰mas fˆr
+	 * H√§mtar alla mottagna meddelanden grupperade per kanal f√∂r angivet datum, dsv under aktuell dag.
+	 * Skulle dag vara null kommer dagens datum att anv√§ndas. 
+	 * @param dag den dag som statistik ska h√§mas f√∂r
 	 * @return alla meddelanden som mottagits under angiven dag.
 	 */
 	@SuppressWarnings("unchecked")
@@ -436,7 +436,7 @@ public class StatistikBean {
 	        dag = getDagensDatum();
 	    }
 	    
-	  //S‰tt starttid till vald dag med start 00:00:00:00
+	  //S√§tt starttid till vald dag med start 00:00:00:00
 	    Calendar startTid = Calendar.getInstance();
 	    startTid.setTime(dag);
 	    startTid.set(Calendar.HOUR_OF_DAY, 0);
@@ -444,7 +444,7 @@ public class StatistikBean {
 	    startTid.set(Calendar.SECOND, 0);
 	    startTid.set(Calendar.MILLISECOND, 0);
 	    
-	    //S‰tt sluttid till dagen efter vald dag med start 00:00:00:00
+	    //S√§tt sluttid till dagen efter vald dag med start 00:00:00:00
 	    Calendar slutTid = Calendar.getInstance();
 	    slutTid.setTime(dag);
 	    slutTid.set(Calendar.DAY_OF_YEAR, slutTid.get(Calendar.DAY_OF_YEAR) + 1);
@@ -469,11 +469,11 @@ public class StatistikBean {
 	
 		
 	public void sok(ActionEvent e) {
-	    // Sˆk ut datum etc
+	    // S√∂k ut datum etc
 	    Date from = DateUtils.strToDate(startdatum, true);
 	    Date tom = DateUtils.strToDate(slutdatum, false);
         String where = "";
-        // L‰gg till datumvillkor
+        // L√§gg till datumvillkor
         where = DAOImplBase.addRestriction(where, "M.SKAPADTIDPUNKT", ">=", from);
         where = DAOImplBase.addRestriction(where, "M.SKAPADTIDPUNKT", "<=", tom);
 
@@ -528,7 +528,7 @@ public class StatistikBean {
 	    }
 	    int sekunder = (int) ((summaMillis / 1000) / starttider.size());
 	    
-	    // Formatera sekunderna till en tilltalande str‰ng:
+	    // Formatera sekunderna till en tilltalande str√§ng:
 	    return DateUtils.sekunderTillTidStrang(sekunder);
 	}
 	
@@ -628,8 +628,8 @@ public class StatistikBean {
 	}
       
     /**
-     * Returnerar fˆregÂende dag i kalendern baserat pÂ attributet valdDag.
-     * @return fˆregÂende dag i kalendern fˆr attributet valdDag.
+     * Returnerar f√∂reg√•ende dag i kalendern baserat p√• attributet valdDag.
+     * @return f√∂reg√•ende dag i kalendern f√∂r attributet valdDag.
      */
     public String getForegaendeDag() {
     	Calendar cal = Calendar.getInstance();
@@ -639,8 +639,8 @@ public class StatistikBean {
     }
     
     /**
-     * Returnerar n‰sta dag i kalendern baserat pÂ attributet valdDag.
-     * @return n‰sta dag i kalenderna fˆr attributet valdDag.
+     * Returnerar n√§sta dag i kalendern baserat p√• attributet valdDag.
+     * @return n√§sta dag i kalenderna f√∂r attributet valdDag.
      */
     public String getNastaDag() {
     	Calendar cal = Calendar.getInstance();
@@ -650,8 +650,8 @@ public class StatistikBean {
     }
     
     /**
-     * Returnerar inskickat datum som en formaterad datumstr‰ng pÂ formen yyyy-MM-dd. Skulle 
-     * datum vara null kommer dagens datum att anv‰ndas.
+     * Returnerar inskickat datum som en formaterad datumstr√§ng p√• formen yyyy-MM-dd. Skulle 
+     * datum vara null kommer dagens datum att anv√§ndas.
      * @param datum det datum som ska formteras. Felaktigt datum eller null ger dagens datum.
      * @return datum formaterat enligt yyyy-MM-dd.
      */
@@ -664,9 +664,9 @@ public class StatistikBean {
     }
     
     /**
-     * Returnerar inskickad datumstr‰ng som en Date. Skulle datumst‰ngen vara felaktigt eller 
+     * Returnerar inskickad datumstr√§ng som en Date. Skulle datumst√§ngen vara felaktigt eller 
      * null kommer dagens datum att returneras. 
-     * @param datum datum pÂ formen yyyy-MM-dd. Felaktigt format eller null ger dagens datum.
+     * @param datum datum p√• formen yyyy-MM-dd. Felaktigt format eller null ger dagens datum.
      * @return inskickat datum som en Date.
      */
     private Date getDatumSomDate(final String datum) {

@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-16
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
@@ -11,7 +11,7 @@ import se.csn.ark.common.dal.db.DatabaseException;
  * Kontrollerar att angivna tabeller och kolumner finns; kan kontrollera att visst data finns. 
  * Kan kontrollera dataformat. 
  * 
- * TODO: Ovanstående samt metod som validerar mot en ddl-fil
+ * TODO: OvanstÃ¥ende samt metod som validerar mot en ddl-fil
  */
 public class DatabaseTester {
 

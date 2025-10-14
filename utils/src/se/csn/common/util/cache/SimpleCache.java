@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-feb-05
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.util.cache;
@@ -9,10 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Enklast möjliga cache: en minimal wrapper runt en HashMap.
+ * Enklast mÃ¶jliga cache: en minimal wrapper runt en HashMap.
  * 
  * Skapad 2007-feb-05
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  */
 public class SimpleCache implements Cache {
     

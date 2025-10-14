@@ -14,7 +14,7 @@ import se.csn.notmotor.ipl.sms.DTOSMSUt;
 import se.csn.notmotor.ipl.sms.SMSTjaenst;
 
 /**
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  * Klassen skickar meddelande via SMS.
  */
 public class SMSMeddelandeSenderImpl implements MeddelandeSender {
@@ -33,7 +33,7 @@ public class SMSMeddelandeSenderImpl implements MeddelandeSender {
         SandResultat handelse = null;
         for (int i = 0; i < mott.length; i++) {
             if ((mott[i].getTyp() != null) && (mott[i].getTyp().equalsIgnoreCase("SMS"))) {
-                // Kontrollera om meddelandet redan är skickat till denna mottagare. Om ja, fortsätt:
+                // Kontrollera om meddelandet redan Ã¤r skickat till denna mottagare. Om ja, fortsÃ¤tt:
                 if ((mott[i].getStatus() != null) && (mott[i].getStatus().intValue() == MeddelandeHandelse.SKICKAT_SERVER)) {
                     continue;
                 }
@@ -66,7 +66,7 @@ public class SMSMeddelandeSenderImpl implements MeddelandeSender {
     
     SandResultat skapaSandResultat(Meddelande m, int handelsetyp, int kod, String text) {
         SandResultat sr = new SandResultat(handelsetyp, kod, text, this, null);
-        // Sätt mottagare
+        // SÃ¤tt mottagare
         if (m.getMottagare() != null) {
             for (int i = 0; i < m.getMottagare().length; i++) {
                 sr.addMottagare(m.getMottagare()[i]);
@@ -89,18 +89,18 @@ public class SMSMeddelandeSenderImpl implements MeddelandeSender {
 		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "SMS-nummer saknas"); 
 		        } else if (!nummer.matches(NUMMERFORMAT)) {
 		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, 
-		            		"SMS-numret måste vara mellan 10 och 18 tecken"
-		            		+ " och får bara innehålla inledande + och/eller siffror");
+		            		"SMS-numret mÃ¥ste vara mellan 10 och 18 tecken"
+		            		+ " och fÃ¥r bara innehÃ¥lla inledande + och/eller siffror");
 		        }
 		    }
         }
 
-        // 2. Meddelandets längd
+        // 2. Meddelandets lÃ¤ngd
         if ((meddelande.getMeddelandetext() != null) && (meddelande.getMeddelandetext().length() > 160)) {
-            return new KodText(MeddelandeHandelse.FELAKTIG_SUBJECT, "Meddelandet hade mer än 160 tecken");
+            return new KodText(MeddelandeHandelse.FELAKTIG_SUBJECT, "Meddelandet hade mer Ã¤n 160 tecken");
         }
 
-        // Allt är OK, returnera null
+        // Allt Ã¤r OK, returnera null
         return null;
     }
     

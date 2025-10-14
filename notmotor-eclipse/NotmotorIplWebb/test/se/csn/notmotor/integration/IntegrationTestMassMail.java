@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-16
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.integration;
@@ -12,7 +12,7 @@ import se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat;
 
 
 /**
- * Klass för att skicka många testmail via web service.
+ * Klass fÃ¶r att skicka mÃ¥nga testmail via web service.
  * @author csn7821
  *
  */
@@ -32,8 +32,8 @@ public class IntegrationTestMassMail extends IntegrationTestSkeleton {
             try {
 	            DTOMeddelande meddelande = skapaTestMeddelande("skickaTestManga", i);
 	            
-	            // För test av mimetyp på meddelande:
-	            // Observera att man sätter encoding (charset) i samma sträng.
+	            // FÃ¶r test av mimetyp pÃ¥ meddelande:
+	            // Observera att man sÃ¤tter encoding (charset) i samma strÃ¤ng.
 	            //meddelande.setMimetyp("text/html;charset=iso-8859-1");
 	            DTONotifieringResultat resultat = client.skickaMeddelande(meddelande);
 	            if (resultat.getResultat().intValue() != 0) {
@@ -43,11 +43,11 @@ public class IntegrationTestMassMail extends IntegrationTestSkeleton {
 	                ok++;
 	            }
             } catch (Exception e) {
-                System.out.println("Exception för meddelande " + i + ": " + e);
+                System.out.println("Exception fÃ¶r meddelande " + i + ": " + e);
                 error++;
             }
         }
-        System.out.println("Sänt " + antal + " meddelanden på " + (System.currentTimeMillis() - cnt) + " millis");
+        System.out.println("SÃ¤nt " + antal + " meddelanden pÃ¥ " + (System.currentTimeMillis() - cnt) + " millis");
         System.out.println("OK: " + ok + "  Fel: " + fel + "  Error: " + error);
         if (fel > 0) {
         	fail();
@@ -60,7 +60,7 @@ public class IntegrationTestMassMail extends IntegrationTestSkeleton {
         int fordrojningIMinuter = 5;
         
         
-        // Sänd om 5 mi
+        // SÃ¤nd om 5 mi
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.MINUTE, fordrojningIMinuter);
         long cnt = System.currentTimeMillis();
@@ -79,11 +79,11 @@ public class IntegrationTestMassMail extends IntegrationTestSkeleton {
 	                ok++;
 	            }
             } catch (Exception e) {
-                System.out.println("Exception för meddelande " + i + ": " + e);
+                System.out.println("Exception fÃ¶r meddelande " + i + ": " + e);
                 error++;
             }
         }
-        System.out.println("Sänt " + antal + " meddelanden på " + (System.currentTimeMillis() - cnt) + " millis");
+        System.out.println("SÃ¤nt " + antal + " meddelanden pÃ¥ " + (System.currentTimeMillis() - cnt) + " millis");
         System.out.println("OK: " + ok + "  Fel: " + fel + "  Error: " + error);
     }
     

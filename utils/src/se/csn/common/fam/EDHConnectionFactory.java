@@ -1,6 +1,6 @@
 ///**
 // * Skapad 2007-feb-28
-// * @author Jonas Öhrnell (csn7821)
+// * @author Jonas Ã¥hrnell (csn7821)
 // * 
 // */
 //package se.csn.common.fam;
@@ -8,7 +8,7 @@
 //import com.frontec.fam.FamConnection;
 //
 ///**
-// * Interface för att kunna testa EDH-anrop hela vägen ner till connection 
+// * Interface fÃ¶r att kunna testa EDH-anrop hela vÃ¤gen ner till connection 
 // */
 //public interface EDHConnectionFactory {
 //    FamConnection getFamConnection(String configFile, String user, String password, String host, String port, String archive);

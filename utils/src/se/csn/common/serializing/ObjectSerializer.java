@@ -11,7 +11,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
- * @author Jonas ÷hrnell - csn7821
+ * @author Jonas √•hrnell - csn7821
  */
 public class ObjectSerializer {
 
@@ -19,8 +19,8 @@ public class ObjectSerializer {
      * Kopierar alla attribut, rekursivt, mha ObjectOutputStream 
      * och ObjectInputStream.
      * @param orig Det objekt som ska klonas.
-     * @return Ett objekt som ‰r djup-kopierat, dvs. alla ingÂende
-     * 	attribut har ocksÂ kopierats. Det nya objektet delar inga referenser
+     * @return Ett objekt som √§r djup-kopierat, dvs. alla ing√•ende
+     * 	attribut har ocks√• kopierats. Det nya objektet delar inga referenser
      * 	med originalet.
      */
     public static Object deepClone(Serializable orig) {
@@ -95,7 +95,7 @@ public class ObjectSerializer {
     }
     
     /**
-     * Konverterar ett objekt till en <b>URL-s‰ker, icke radbruten</b> Base64-str‰ng. 
+     * Konverterar ett objekt till en <b>URL-s√§ker, icke radbruten</b> Base64-str√§ng. 
      * @param obj
      * @return
      */

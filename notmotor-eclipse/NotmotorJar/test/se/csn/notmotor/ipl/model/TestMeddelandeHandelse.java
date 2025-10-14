@@ -8,7 +8,7 @@ import java.util.Date;
 import junit.framework.TestCase;
 
 /**
- * @author Jonas ÷hrnell - csn7821
+ * @author Jonas √•hrnell - csn7821
  */
 public class TestMeddelandeHandelse extends TestCase {
     public void testGetterSetters() {
@@ -54,11 +54,11 @@ public class TestMeddelandeHandelse extends TestCase {
     public void testHandelsetexter() {
         assertEquals(MeddelandeHandelse.getTyptext(MeddelandeHandelse.BESVARAT), "Besvarat");
         assertEquals(MeddelandeHandelse.getTyptext(MeddelandeHandelse.MOTTAGET), "Mottaget");
-        assertEquals(MeddelandeHandelse.getTyptext(MeddelandeHandelse.SKICKAT_SERVER), "S‰nt");
+        assertEquals(MeddelandeHandelse.getTyptext(MeddelandeHandelse.SKICKAT_SERVER), "S√§nt");
         assertEquals(MeddelandeHandelse.getTyptext(MeddelandeHandelse.MEDDELANDEFEL), "Fel i meddelande");
         assertEquals(MeddelandeHandelse.getTyptext(MeddelandeHandelse.TEKNISKT_FEL), "Tekniskt fel");
-        assertEquals(MeddelandeHandelse.getTyptext(-1), "Under s‰ndning (instans 1)");
-        assertEquals(MeddelandeHandelse.getTyptext(1000000), "Ok‰nd (1000000)");
+        assertEquals(MeddelandeHandelse.getTyptext(-1), "Under s√§ndning (instans 1)");
+        assertEquals(MeddelandeHandelse.getTyptext(1000000), "Ok√§nd (1000000)");
     }
 
 }

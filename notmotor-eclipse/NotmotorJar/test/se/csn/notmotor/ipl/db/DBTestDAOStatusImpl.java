@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -32,7 +32,7 @@ public class DBTestDAOStatusImpl extends TestCase {
         int id = dao.skapa(s);
         assertEquals(id, s.getInstans());
 
-        // Hämta
+        // HÃ¤mta
         Status s2 = dao.getStatus(id);
         assertEquals(s, s2);
         
@@ -41,14 +41,14 @@ public class DBTestDAOStatusImpl extends TestCase {
         s.setStoppad(stoppaddat);
         s.setWatchdog(stoppaddat);
         dao.uppdatera(s);
-        // Hämta
+        // HÃ¤mta
         s2 = dao.getStatus(id);
         assertEquals(s, s2);
     }
     
     public void testGet() {
         DAOStatusImpl dao = new DAOStatusImpl(getQueryProcessor());
-        // Skapa tre, två med samma server, en med annan
+        // Skapa tre, tvÃ¥ med samma server, en med annan
         Status s = new Status();
         int serverid = (int)(System.currentTimeMillis() % Integer.MAX_VALUE);
         int status = serverid - 10000000;

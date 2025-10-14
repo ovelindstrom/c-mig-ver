@@ -1,9 +1,9 @@
 /**
  * Skapad 2007-feb-05
- * Bas frÂn http://java.sun.com/blueprints/corej2eepatterns/Patterns/ServiceLocator.html
+ * Bas fr√•n http://java.sun.com/blueprints/corej2eepatterns/Patterns/ServiceLocator.html
  * 
- * Ska l‰gga till pluggbar cachestrategi
- * @author Jonas ÷hrnell (csn7821)
+ * Ska l√§gga till pluggbar cachestrategi
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.common.jndi;
@@ -35,7 +35,7 @@ import se.csn.common.config.PropertyDependencyTester;
 
 /**
  * Skapad 2007-feb-05
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  */
 public class ServiceLocator {
     private Context context = null;
@@ -45,7 +45,7 @@ public class ServiceLocator {
     }
     
     /**
-	 * Skapar en ServiceLocator med default Context; anv‰nds i appserverkod
+	 * Skapar en ServiceLocator med default Context; anv√§nds i appserverkod
 	 */
     public ServiceLocator() {
         try {
@@ -60,7 +60,7 @@ public class ServiceLocator {
 	// then to EJBObject.
 	public EJBObject getService(String id) {
 	  if (id == null) {
-	      throw new IllegalArgumentException("Id fÂr inte vara null");
+	      throw new IllegalArgumentException("Id f√•r inte vara null");
 	  }
 	  try {
 	      byte[] bytes = new String(id).getBytes();
@@ -69,7 +69,7 @@ public class ServiceLocator {
 	      javax.ejb.Handle handle = (javax.ejb.Handle)os.readObject();
 	      return handle.getEJBObject();
 	  } catch(Exception ex) {
-	      throw new IllegalStateException("Kunde inte skapa EJBObject frÂn id: " + ex);
+	      throw new IllegalStateException("Kunde inte skapa EJBObject fr√•n id: " + ex);
 	  }
 	}
   
@@ -119,7 +119,7 @@ public class ServiceLocator {
     
     public Object getJndiObject(String jndiName) {
         if(jndiName == null) {
-            throw new IllegalArgumentException("Jndi-namnet fÂr inte vara null");
+            throw new IllegalArgumentException("Jndi-namnet f√•r inte vara null");
         }
         try {
             return context.lookup(jndiName);
@@ -132,16 +132,16 @@ public class ServiceLocator {
 //                String factoryname = ref.getFactoryClassName();
 //                String felmeddelande = "Hittade " + jndiName + ", men kunde inte dereferera objektet.\n";
 //                if(!ClassDependencyTester.classFound(factoryname)) {
-//                    felmeddelande += "Klassen " + factoryname + " mÂste ligga pÂ classpath fˆr att derefereringen ska fungera.\n";
+//                    felmeddelande += "Klassen " + factoryname + " m√•ste ligga p√• classpath f√∂r att derefereringen ska fungera.\n";
 //                }
 //                if(!PropertyDependencyTester.isPropertySetInFile("com.ibm.websphere.csi.J2EENameFactory", "implfactory.properties")) {
-//                    felmeddelande += "Filen implfactory.properties finns inte pÂ classpath. Den anv‰nds vid dereferering.\n";
+//                    felmeddelande += "Filen implfactory.properties finns inte p√• classpath. Den anv√§nds vid dereferering.\n";
 //                }
 //                throw new IllegalStateException(felmeddelande + e);                
 //            }
 //            if(root instanceof IllegalAccessError) {
 //                throw new IllegalStateException("Hittade " + jndiName + ", men kunde inte skapa en koppling till det.\n" +
-//                		"Mest troligt fel pÂ user eller credentials: " + e);
+//                		"Mest troligt fel p√• user eller credentials: " + e);
 //            }
 //	        throw new IllegalStateException("Hittade " + jndiName + ", men kunde inte skapa en koppling till det: " + e);
         }catch (NamingException e) {

@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-08
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.servlet;
@@ -16,18 +16,18 @@ import java.net.URL;
 public class ServletUtils {
     
     /**
-     * Utilitymetod för att anropa en servlet inifrån en annan servlet, 
-     * "asynkront", dvs. utan att vänta in svaret. 
-     * Metoden kan användas för att starta worker-servlets som inte terminerar. 
-     * OBS! Dessa servlets måste då returnera OK och anropa response.flushBuffer()
-     * så att response-koden går iväg till denna connection.
+     * Utilitymetod fÃ¶r att anropa en servlet inifrÃ¥n en annan servlet, 
+     * "asynkront", dvs. utan att vÃ¤nta in svaret. 
+     * Metoden kan anvÃ¤ndas fÃ¶r att starta worker-servlets som inte terminerar. 
+     * OBS! Dessa servlets mÃ¥ste dÃ¥ returnera OK och anropa response.flushBuffer()
+     * sÃ¥ att response-koden gÃ¥r ivÃ¤g till denna connection.
      */
     public static boolean anropaServletAsynkront(String url) {
         URL u = null;
         try {
             u = new URL(url);
         } catch (MalformedURLException e) {
-            throw new IllegalArgumentException(url + " är en felaktig url: " + e);
+            throw new IllegalArgumentException(url + " Ã¤r en felaktig url: " + e);
         }
         HttpURLConnection conn = null;
         try {
@@ -35,7 +35,7 @@ public class ServletUtils {
             conn.connect();
             return (conn.getResponseCode() == 200);
         } catch (IOException e1) {
-            throw new IllegalStateException("Kunde inte öppna url " + url + ", " + e1);
+            throw new IllegalStateException("Kunde inte Ã¶ppna url " + url + ", " + e1);
         }
     }
     
@@ -44,7 +44,7 @@ public class ServletUtils {
         try {
             u = new URL(url);
         } catch (MalformedURLException e) {
-            throw new IllegalArgumentException(url + " är en felaktig url: " + e);
+            throw new IllegalArgumentException(url + " Ã¤r en felaktig url: " + e);
         }
         HttpURLConnection conn = null;
         try {
@@ -61,7 +61,7 @@ public class ServletUtils {
             rd.close();
             return sb.toString();
         } catch (IOException e1) {
-            throw new IllegalStateException("Kunde inte öppna url " + url + ", " + e1);
+            throw new IllegalStateException("Kunde inte Ã¶ppna url " + url + ", " + e1);
         }
    	}
 }

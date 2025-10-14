@@ -1,14 +1,14 @@
 /**
  * Skapad 2007-maj-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.servlet;
 
 /**
- * Liten utilityklass som används för att styra termineringen av servlettrådar. 
- * Kontrollera metoden isRunning() med jämna mellanrum i servlettråden, 
- * terminera om isRunning() är false. 
+ * Liten utilityklass som anvÃ¤nds fÃ¶r att styra termineringen av servlettrÃ¥dar. 
+ * Kontrollera metoden isRunning() med jÃ¤mna mellanrum i servlettrÃ¥den, 
+ * terminera om isRunning() Ã¤r false. 
  * 
  */
 public class RunControl {

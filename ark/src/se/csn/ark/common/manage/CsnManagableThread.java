@@ -3,9 +3,9 @@ package se.csn.ark.common.manage;
 import se.csn.ark.common.util.logging.Log;
 
 /**
- * Grundklass för att köra hanterbara (CsnManagable) klasser i en tråd.
+ * Grundklass fÃ¶r att kÃ¶ra hanterbara (CsnManagable) klasser i en trÃ¥d.
  *
- * @author K-G Sjöström - AcandoFrontec
+ * @author K-G SjÃ¶strÃ¶m - AcandoFrontec
  * @since 20041130
  * @version 1 skapad
  *
@@ -16,49 +16,49 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 	private Thread managableThread;
 	private long tradId;
 
-	// Är tråden startad?
+	// Ã„r trÃ¥den startad?
 	private boolean threadStarted = false;
 
-	// Flagga som visar om tråden körs.
+	// Flagga som visar om trÃ¥den kÃ¶rs.
 	private boolean running = false;
 
-	// Grundstillståndet.
+	// GrundstillstÃ¥ndet.
 	private int state = STATE_NOT_INITIATED;
 
-	// Sätter sovtiden till 30 sekunder så att vi har ett grundvärde
-	// för säkerhets skull. Detta värde ska dock sättas via konstruktorn.
+	// SÃ¤tter sovtiden till 30 sekunder sÃ¥ att vi har ett grundvÃ¤rde
+	// fÃ¶r sÃ¤kerhets skull. Detta vÃ¤rde ska dock sÃ¤ttas via konstruktorn.
 	private static final long DEFAULT_SLEEP = 30000;
 	private long sleepTime = DEFAULT_SLEEP;
 
-	// Sätter antalet tillåtna exceptions till ett startvärde. 
-	// Detta värde ska dock sättas via konstruktorn.
+	// SÃ¤tter antalet tillÃ¥tna exceptions till ett startvÃ¤rde. 
+	// Detta vÃ¤rde ska dock sÃ¤ttas via konstruktorn.
 	private static final int DEFAULT_NO_EXCEPTIONS = 20;
 	private int allowedNumberOfExceptions = DEFAULT_NO_EXCEPTIONS;
 
-	// Räknare för antalet exceptions
+	// RÃ¤knare fÃ¶r antalet exceptions
 	private int exceptionCounter = 0;
 
-	//Flagga för run loop
+	//Flagga fÃ¶r run loop
 	private boolean runForever = true;
 
-	// Hanterare/övervakare för callback.
+	// Hanterare/Ã¶vervakare fÃ¶r callback.
 	private CsnManager manager;
 
 	/**
-	 * Skapar en ny hanterbar tråd.
+	 * Skapar en ny hanterbar trÃ¥d.
 	 *
-	 * @param sleepTime Antalet millisekunder som tråden skall sova när det
-	 * inte finns något att göra.
+	 * @param sleepTime Antalet millisekunder som trÃ¥den skall sova nÃ¤r det
+	 * inte finns nÃ¥got att gÃ¶ra.
 	 *
-	 * @param allowedNumberOfExceptions Antalet tillåtna exceptions innan tråden
-	 * inte kan räknas som hanterbar.
+	 * @param allowedNumberOfExceptions Antalet tillÃ¥tna exceptions innan trÃ¥den
+	 * inte kan rÃ¤knas som hanterbar.
 	 *
-	 * @param manager En referens till det som hanterar/övervakar denna tråd.
-	 * För enkelhets skull så skickas en referens med istället för att registrera
+	 * @param manager En referens till det som hanterar/Ã¶vervakar denna trÃ¥d.
+	 * FÃ¶r enkelhets skull sÃ¥ skickas en referens med istÃ¤llet fÃ¶r att registrera
 	 * CsnManager som lyssnare enligt, addManagableListener(CsnManager manager) och
-	 * removeManagableListener(CsnManager manager), vilket skulle innebära att flera
-	 * kan hantera/övervaka.
-	 * Det får dock bli en senare implementation om behov finns.
+	 * removeManagableListener(CsnManager manager), vilket skulle innebÃ¤ra att flera
+	 * kan hantera/Ã¶vervaka.
+	 * Det fÃ¥r dock bli en senare implementation om behov finns.
 	 *
 	 */
 	protected CsnManagableThread(
@@ -70,7 +70,7 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 		this.manager = manager;
 	}
 	/**
-	 * Lägger till id på denna tråd för kunna identifiera tråd
+	 * LÃ¤gger till id pÃ¥ denna trÃ¥d fÃ¶r kunna identifiera trÃ¥d
 	 * @see se.csn.ark.common.manage.CsnManagableThread#CsnManagableThread(long, int, CsnManager)
 	 */
 	protected CsnManagableThread(
@@ -85,76 +85,76 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 			
 	}
 	/**
-	 * Kör tråden?
+	 * KÃ¶r trÃ¥den?
 	 *
-	 * SKALL användas i doMore metoden för att kontrollera att tråden körs.
-	 * Bör användas mellan varje tabellrad i databasen, varje köpost i JMS osv ...
-	 * Körs det inte så avsluta doMore metoden.
+	 * SKALL anvÃ¤ndas i doMore metoden fÃ¶r att kontrollera att trÃ¥den kÃ¶rs.
+	 * BÃ¶r anvÃ¤ndas mellan varje tabellrad i databasen, varje kÃ¶post i JMS osv ...
+	 * KÃ¶rs det inte sÃ¥ avsluta doMore metoden.
 	 *
-	 * @return true om tråden körs.
+	 * @return true om trÃ¥den kÃ¶rs.
 	 */
 	public boolean isRunning() {
 		return running;
 	}
 
 	/**
-	 * Läs in konfiguration och sätt upp alla resurser så att allt är
-	 * klart att köra.
+	 * LÃ¤s in konfiguration och sÃ¤tt upp alla resurser sÃ¥ att allt Ã¤r
+	 * klart att kÃ¶ra.
 	 *
-	 * @throws UnManagableException Indikerar att något gått så pass fel
-	 * att tjänsten inte längre kan hanteras.
-	 * Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel
+	 * att tjÃ¤nsten inte lÃ¤ngre kan hanteras.
+	 * Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 *
 	 */
 	public abstract void doInit() throws UnManagableException;
 
 	/**
-	 * Stäng ner alla resurser.
+	 * StÃ¤ng ner alla resurser.
 	 *
-	 * @throws UnManagableException Indikerar att något gått så pass fel
-	 * att tjänsten inte längre kan hanteras.
-	 * Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel
+	 * att tjÃ¤nsten inte lÃ¤ngre kan hanteras.
+	 * Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 *
 	 */
 	public abstract void doClose() throws UnManagableException;
 
 	/**
-	 * Frågar om det finns mer att göra.
-	 * Om det inte finns mer för tillfället kommer tråden att sova en
-	 * stund innan den frågar på nytt.
+	 * FrÃ¥gar om det finns mer att gÃ¶ra.
+	 * Om det inte finns mer fÃ¶r tillfÃ¤llet kommer trÃ¥den att sova en
+	 * stund innan den frÃ¥gar pÃ¥ nytt.
 	 *
-	 * @return true om det finns mer att göra.
+	 * @return true om det finns mer att gÃ¶ra.
 	 *
-	 * @throws UnManagableException Indikerar att något gått så pass fel
-	 * att tjänsten inte längre kan hanteras.
-	 * Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel
+	 * att tjÃ¤nsten inte lÃ¤ngre kan hanteras.
+	 * Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 *
 	 */
 	public abstract boolean hasMoreToDo() throws UnManagableException;
 
 	/**
-	 * Om det fanns mer att göra så skall det göra i denna metod.
+	 * Om det fanns mer att gÃ¶ra sÃ¥ skall det gÃ¶ra i denna metod.
 	 *
 	 *
-	 * @throws UnManagableException Indikerar att något gått så pass fel
-	 * att tjänsten inte längre kan hanteras.
-	 * Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel
+	 * att tjÃ¤nsten inte lÃ¤ngre kan hanteras.
+	 * Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 *
 	 */
 	public abstract void doMore() throws UnManagableException;
 
 	/**
-	 * Strängrepresentation av status för det som hanteras.
+	 * StrÃ¤ngrepresentation av status fÃ¶r det som hanteras.
 	 *
-	 * @return Information som talar status för denna tjänst.
+	 * @return Information som talar status fÃ¶r denna tjÃ¤nst.
 	 */
 	public abstract String doGetStatus();
 
 	/**
 	 * Initierar det som skall hanteras.
 	 *
-	 * @throws UnManagableException Indikerar att något gått så pass fel att tjänsten 
-	 * inte kan initieras. Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel att tjÃ¤nsten 
+	 * inte kan initieras. Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 *
 	 */
 	public void init() throws UnManagableException {
@@ -169,11 +169,11 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 			log.error("doInit", e);
 			throw new UnManagableException(e);
 		}
-		// Nollställare Räknare för antalet exceptions.
+		// NollstÃ¤llare RÃ¤knare fÃ¶r antalet exceptions.
 		exceptionCounter = 0;
 		state = STATE_INITIATED;
 
-		// Meddela tillståndet.
+		// Meddela tillstÃ¥ndet.
 		if (manager != null) {
 			manager.initiated(this);
 		}
@@ -182,8 +182,8 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 	/**
 	 * Startar exekveringen.
 	 *
-	 * @throws UnManagableException Indikerar att något gått så pass fel 
-	 * att tjänsten inte kan startas.Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel 
+	 * att tjÃ¤nsten inte kan startas.Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 *
 	 */
 	public void start() throws UnManagableException {
@@ -199,9 +199,9 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 						notify();
 					}
 				} catch (IllegalMonitorStateException imse) {
-					// Vi loggar inget här då tråden i alla fall startar.
+					// Vi loggar inget hÃ¤r dÃ¥ trÃ¥den i alla fall startar.
 				} catch (Exception e) {
-					// Vi loggar inget här då tråden i alla fall startar.
+					// Vi loggar inget hÃ¤r dÃ¥ trÃ¥den i alla fall startar.
 				}
 			}
 		} catch (Exception e) {
@@ -211,34 +211,34 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 
 		state = STATE_RUNNING;
 
-		// Meddela tillståndet.
+		// Meddela tillstÃ¥ndet.
 		if (manager != null) {
 			manager.started(this);
 		}
 	}
 
 	/**
-	 * Stoppar exekveringen utan att stänga ner resurser.
+	 * Stoppar exekveringen utan att stÃ¤nga ner resurser.
 	 *
-	 * @throws UnManagableException Indikerar att något gått så pass fel att tjänsten 
-	 * inte kan stoppas. Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel att tjÃ¤nsten 
+	 * inte kan stoppas. Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 *
 	 */
 	public void stop() throws UnManagableException {
 		running = false;
 		state = STATE_STOPPED;
 
-		// Meddela tillståndet.
+		// Meddela tillstÃ¥ndet.
 		if (manager != null) {
 			manager.stopped(this);
 		}
 	}
 
 	/**
-	 * Stänger ner alla resurser för det som hanteras.
+	 * StÃ¤nger ner alla resurser fÃ¶r det som hanteras.
 	 *
-	 * @throws UnManagableException Indikerar att något gått så pass fel att tjänsten 
-	 * inte kan stängas. Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel att tjÃ¤nsten 
+	 * inte kan stÃ¤ngas. Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 *
 	 */
 	public void close() throws UnManagableException {
@@ -252,29 +252,29 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 			throw new UnManagableException(e);
 		}
 
-		// Nollställ till utgångsläge.
+		// NollstÃ¤ll till utgÃ¥ngslÃ¤ge.
 		threadStarted = false;
 		running = false;
 
-		//Stäng run loop
+		//StÃ¤ng run loop
 		runForever = false;
-		//Se till att tråden vaknar ifrån ev wait läge 
+		//Se till att trÃ¥den vaknar ifrÃ¥n ev wait lÃ¤ge 
 		synchronized (this) {
 			notify();
 		}
 
-		//Lämna ingen referens till trådobjektet, låt sopbilen städa upp det.
+		//LÃ¤mna ingen referens till trÃ¥dobjektet, lÃ¥t sopbilen stÃ¤da upp det.
 		managableThread = null;
 		state = STATE_CLOSED;
 
-		// Meddela tillståndet.
+		// Meddela tillstÃ¥ndet.
 		if (manager != null) {
 			manager.closed(this);
 		}
 	}
 
 	/**
-	 * Kör doMore och sover
+	 * KÃ¶r doMore och sover
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
@@ -306,16 +306,16 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 			} catch (UnManagableException ume) {
 				log.error("run", ume);
 
-				// Kan vi inte hantera längre så slutar vi köra.
-				// Meddela att det är kört!
+				// Kan vi inte hantera lÃ¤ngre sÃ¥ slutar vi kÃ¶ra.
+				// Meddela att det Ã¤r kÃ¶rt!
 				if (manager != null) {
 					manager.unManagable(this, ume);
 				}
 			} catch (Exception e) {
 				log.error("run", e);
 
-				// Om vi får ett oväntat fel så slutar vi köra.
-				// Meddela att det är kört!
+				// Om vi fÃ¥r ett ovÃ¤ntat fel sÃ¥ slutar vi kÃ¶ra.
+				// Meddela att det Ã¤r kÃ¶rt!
 				if (manager != null) {
 					manager.unManagable(this, new UnManagableException(e));
 				}
@@ -344,12 +344,12 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 		String status = "--------------------------------------------------------\n";
 
 		status += (getManagableClass().getName() + "\n");
-		status += ("Tillstånd : " + STATES_TEXTS[state] + "\n");
+		status += ("TillstÃ¥nd : " + STATES_TEXTS[state] + "\n");
 
 		try {
 			status += ("Status : " + doGetStatus() + "\n");
 
-			// Något kan gå fel även då status skall hämtas så vi fångar för säkerhets skull.
+			// NÃ¥got kan gÃ¥ fel Ã¤ven dÃ¥ status skall hÃ¤mtas sÃ¥ vi fÃ¥ngar fÃ¶r sÃ¤kerhets skull.
 		} catch (Exception e) {
 			log.error("getStatus", e);
 		}
@@ -360,14 +360,14 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 	}
 
 	/**
-	 * Get tillståndet för denna tjänst.
+	 * Get tillstÃ¥ndet fÃ¶r denna tjÃ¤nst.
 	 *
 	 * @see se.csn.ark.common.manage.CsnManagable#getState()
 	 *
-	 * @return tillstånd
-	 * @throws UnManagableException Indikerar att något gått så pass fel
-	 * att tjänsten inte längre kan hanteras.
-	 * Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @return tillstÃ¥nd
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel
+	 * att tjÃ¤nsten inte lÃ¤ngre kan hanteras.
+	 * Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 *
 	 */
 	public int getState() throws UnManagableException {
@@ -375,11 +375,11 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 	}
 
 	/**
-	 * Ökar på antalet fel och kastar exception när fler fel än tillåtet 
+	 * Ã¥kar pÃ¥ antalet fel och kastar exception nÃ¤r fler fel Ã¤n tillÃ¥tet 
 	 * har raporterats.
-	 * @throws UnManagableException Indikerar att något gått så pass fel
-	 * att tjänsten inte längre kan hanteras.
-	 * Detta skall alltså INTE kastas om tjänsten kan hanteras.
+	 * @throws UnManagableException Indikerar att nÃ¥got gÃ¥tt sÃ¥ pass fel
+	 * att tjÃ¤nsten inte lÃ¤ngre kan hanteras.
+	 * Detta skall alltsÃ¥ INTE kastas om tjÃ¤nsten kan hanteras.
 	 */
 	protected void incExceptionCounter() throws UnManagableException {
 		exceptionCounter++;
@@ -389,10 +389,10 @@ public abstract class CsnManagableThread implements CsnManagable, Runnable {
 			String excMesStr =
 				"Exception nr "
 					+ exceptionCounter
-					+ " Antalet tillåtna exceptions ("
+					+ " Antalet tillÃ¥tna exceptions ("
 					+ allowedNumberOfExceptions
-					+ ") överskridet!";
-			// Nollställare Räknare för antalet exceptions, för ev återstart.
+					+ ") Ã¶verskridet!";
+			// NollstÃ¤llare RÃ¤knare fÃ¶r antalet exceptions, fÃ¶r ev Ã¥terstart.
 			exceptionCounter = 0;
 
 			throw new UnManagableException(excMesStr);

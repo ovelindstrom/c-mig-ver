@@ -10,13 +10,13 @@ import se.csn.notmotor.ipl.model.Mottagare;
 import se.csn.notmotor.ipl.model.KodText;
 
 /**
- * @author Jonas ÷hrnell - csn7821
+ * @author Jonas √•hrnell - csn7821
  */
 public class EpostValidator implements MeddelandeValidator {
 
     public KodText getFelkodForMeddelande(Meddelande meddelande) {
         if(!EmailAdressValidator.isValid(meddelande.getAvsandare().getEpostadress())) {
-            return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Felaktig avs‰ndaradress");
+            return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Felaktig avs√§ndaradress");
         }
         Mottagare[] mott = meddelande.getMottagare();
         for(int i = 0; i < mott.length; i++) {
@@ -30,7 +30,7 @@ public class EpostValidator implements MeddelandeValidator {
     }
     
     boolean matchandeTyp(String typ) {
-        // EpostMeddelandeSendern ‰r defaults‰ndare -> accepterar NULL
+        // EpostMeddelandeSendern √§r defaults√§ndare -> accepterar NULL
         if((typ == null) || (typ.length() == 0)) {
             return true;
         }

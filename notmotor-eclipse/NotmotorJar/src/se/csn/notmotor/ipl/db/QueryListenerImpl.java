@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-28
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -14,10 +14,10 @@ public class QueryListenerImpl implements QueryListener {
     private String logPrefix;
     
     /**
-     * @param logPrefix En sträng som kommer att skrivas ut före varje 
-     *   sql- eller error-sträng.
+     * @param logPrefix En strÃ¤ng som kommer att skrivas ut fÃ¶re varje 
+     *   sql- eller error-strÃ¤ng.
      * Exempel: Om du anger prefixet "NOTMOTOR #1" och sql-satsen 
-     * SELECT ID FROM MEDDELANDE körs, så loggas följande:
+     * SELECT ID FROM MEDDELANDE kÃ¶rs, sÃ¥ loggas fÃ¶ljande:
      * NOTMOTOR #1: SELECT ID FROM MEDDELANDE
      */
     public QueryListenerImpl(String logPrefix) {

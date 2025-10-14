@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
@@ -18,46 +18,46 @@ public interface Resource {
     String getName();
     
     /**
-     * @return En beskrivning av resursens typ, ex.vis "MQ-kö", "Fil" eller "Databaskoppling".
+     * @return En beskrivning av resursens typ, ex.vis "MQ-kÃ¶", "Fil" eller "Databaskoppling".
      */
     String getType();
     
     /**
-     * @return Det fullt kvalificerade klassnamnet på Resource-implementationen
+     * @return Det fullt kvalificerade klassnamnet pÃ¥ Resource-implementationen
      */
     String getClassName();
     
     /**
-     * Testar om denna resurs finns och är rätt konfigurerad. Testar alla 
-     * dependencies rekursivt. Ska även lagra resultatet för framtida bruk.
-     * @return status för resursen. 
+     * Testar om denna resurs finns och Ã¤r rÃ¤tt konfigurerad. Testar alla 
+     * dependencies rekursivt. Ska Ã¤ven lagra resultatet fÃ¶r framtida bruk.
+     * @return status fÃ¶r resursen. 
      */
     ResourceStatus check();
     
     /**
-     * @return Det kända tillståndet för resursen. Kör INTE en ny test.  
+     * @return Det kÃ¤nda tillstÃ¥ndet fÃ¶r resursen. KÃ¶r INTE en ny test.  
      */
     ResourceStatus getStatus();
     
     /**
-     * Dependencies är resurser som måste fungera för att denna resurs ska fungera. 
-     * @return En lista av alla resurser som måste fungera för att denna resurs ska fungera.
+     * Dependencies Ã¤r resurser som mÃ¥ste fungera fÃ¶r att denna resurs ska fungera. 
+     * @return En lista av alla resurser som mÃ¥ste fungera fÃ¶r att denna resurs ska fungera.
      */
     List getDependencies();
     boolean hasDependencies();
     /**
-     * Skall även lägga upp this som dependant i dependencyn, dvs. skapa tvåvägskopplingen  
+     * Skall Ã¤ven lÃ¤gga upp this som dependant i dependencyn, dvs. skapa tvÃ¥vÃ¤gskopplingen  
      * @param dependency
      */
     void addDependency(Resource dependency);
     /**
-     * Skall även ta bort upp this som dependant i dependencyn, dvs. ta bort tvåvägskopplingen  
+     * Skall Ã¤ven ta bort upp this som dependant i dependencyn, dvs. ta bort tvÃ¥vÃ¤gskopplingen  
      * @param dependency
      */
     void removeDependency(Resource dependency);
 
     /** 
-     * Dependants är resurser som är beroende av denna resurs för att fungera.
+     * Dependants Ã¤r resurser som Ã¤r beroende av denna resurs fÃ¶r att fungera.
      * @return En lista av alla dependants
      */
     List getDependants();
@@ -75,7 +75,7 @@ public interface Resource {
      * 		</resource>
      * </resource>
      * Returnerar en xml-beskrivning av detta element och dess underelement.
-     * @param indentation Indenteringssträng. För varje nivå läggs en extra indentering till. 
+     * @param indentation IndenteringsstrÃ¤ng. FÃ¶r varje nivÃ¥ lÃ¤ggs en extra indentering till. 
      */
     String getXML(String indentation);
 

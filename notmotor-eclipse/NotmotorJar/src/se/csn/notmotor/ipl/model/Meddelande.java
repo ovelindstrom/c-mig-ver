@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-02
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.model;
@@ -15,41 +15,41 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
 
 /**
- * Modellklass för Meddelande.
+ * Modellklass fÃ¶r Meddelande.
  *
  */
 public class Meddelande extends CsnDataTransferObjectImpl {
 	private static final long serialVersionUID = 1L;
 	
-    // Databasnyckel för spårbarhet och omsändning
+    // Databasnyckel fÃ¶r spÃ¥rbarhet och omsÃ¤ndning
     private Long id;
-    // Självförklarande
+    // SjÃ¤lvfÃ¶rklarande
     private Integer csnnummer;
-    // Det som anges i Subject-raden, måste sättas
+    // Det som anges i Subject-raden, mÃ¥ste sÃ¤ttas
     private String rubrik;
-    // Meddelandetext, måste sättas
+    // Meddelandetext, mÃ¥ste sÃ¤ttas
     private String meddelandetext;
-    // Encoding för rubrik; om inget anges används samma som i meddelandet
+    // Encoding fÃ¶r rubrik; om inget anges anvÃ¤nds samma som i meddelandet
     private String rubrikEncoding;
-    // Encoding för meddelande; om inget anges används iso-8859-1
+    // Encoding fÃ¶r meddelande; om inget anges anvÃ¤nds iso-8859-1
     private String meddelandeEncoding;
     
     // X antal bilagor
     private Bilaga[] bilagor;
-    // Datum. Om null så sätts det vid sändningstillfället, annars är det ok att sätta ett eget
+    // Datum. Om null sÃ¥ sÃ¤tts det vid sÃ¤ndningstillfÃ¤llet, annars Ã¤r det ok att sÃ¤tta ett eget
     private Date skapad;
-    // Datum då meddelandet skickades
+    // Datum dÃ¥ meddelandet skickades
     private Date skickat;
-    // Tidpunkt då meddelandet SOM TIDIGAST får sändas. För att batcha mailutskick.
+    // Tidpunkt dÃ¥ meddelandet SOM TIDIGAST fÃ¥r sÃ¤ndas. FÃ¶r att batcha mailutskick.
     private Date skickaTidigast;
     
-    // Avsändare, måste vara satt
+    // AvsÃ¤ndare, mÃ¥ste vara satt
     private Avsandare avsandare;
     
-    // Måste sätta minst en mottagare
+    // MÃ¥ste sÃ¤tta minst en mottagare
     private Mottagare[] mottagare;
     
-    // Händelser för meddelandet
+    // HÃ¤ndelser fÃ¶r meddelandet
     private MeddelandeHandelse[] handelser;
     
     // Callbackparametrar:

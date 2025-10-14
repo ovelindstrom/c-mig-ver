@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-21
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -23,7 +23,7 @@ public abstract class DAOImplBase implements RowToObjectMapper {
     
     /**
      * Skapar ett kolumn-nyckelpar typen COLNAMN='VARDE'
-     * @return null om v‰rdet ‰r null, annars
+     * @return null om v√§rdet √§r null, annars
      */
     String makeColumnValuePair(String columnname, Object value) {
         if(value == null) {
@@ -36,10 +36,10 @@ public abstract class DAOImplBase implements RowToObjectMapper {
     
     String makeUpdateQuery(String tablename, Object[] columnValuePairs, Object[] whereColumnValuePair) {
         if((columnValuePairs == null) || (columnValuePairs.length < 2)){
-            throw new IllegalArgumentException("MÂste ange kolumner som ska uppdateras");
+            throw new IllegalArgumentException("M√•ste ange kolumner som ska uppdateras");
         }
         if((tablename == null) || (tablename.length() == 0)) {
-            throw new IllegalArgumentException("MÂste ange tabellnamn");
+            throw new IllegalArgumentException("M√•ste ange tabellnamn");
         }
         
         String query = "UPDATE " + tablename + " SET ";
@@ -57,7 +57,7 @@ public abstract class DAOImplBase implements RowToObjectMapper {
         String where = "";
         if(whereColumnValuePair != null) {
             if(whereColumnValuePair.length != 2) {
-                throw new IllegalArgumentException("whereColumnValuePair ska innehÂlla kolumnnamn och v‰rde");
+                throw new IllegalArgumentException("whereColumnValuePair ska inneh√•lla kolumnnamn och v√§rde");
             }
             where = " WHERE " + makeColumnValuePair((String)whereColumnValuePair[0], whereColumnValuePair[1]);
         }
@@ -65,8 +65,8 @@ public abstract class DAOImplBase implements RowToObjectMapper {
         return query + cols + where; 
     }
     /**
-     * @param Det v‰rde som ska formateras fˆr SQL
-     * @return en SQL-formaterad str‰ng, t.ex. omgiven med '' om str‰ng. null returneras som "NULL". 
+     * @param Det v√§rde som ska formateras f√∂r SQL
+     * @return en SQL-formaterad str√§ng, t.ex. omgiven med '' om str√§ng. null returneras som "NULL". 
      */
     public static String quoteValue(Object value) {
         if (value == null) {
@@ -86,7 +86,7 @@ public abstract class DAOImplBase implements RowToObjectMapper {
     	    }
     	} 
     	else if(value instanceof Date) {
-    	    // Formatera fˆr timestamp:
+    	    // Formatera f√∂r timestamp:
     	    SimpleDateFormat sdf = new SimpleDateFormat(DB2_TIMESTAMP_FORMAT);
     	    return "TIMESTAMP('"+sdf.format((Date)value)+"')";
     	} else {
@@ -117,7 +117,7 @@ public abstract class DAOImplBase implements RowToObjectMapper {
 	    	return where + "(" + colname + " " + operator + " " + quoteValue(value)  + ")";
 	    }
 	    if(ignoreNull) {
-	        // L‰gg inte till nÂgot villkor:
+	        // L√§gg inte till n√•got villkor:
 	        return where;
 	    } else {
 		    if(where.length() > 0) {
@@ -129,12 +129,12 @@ public abstract class DAOImplBase implements RowToObjectMapper {
 	
 	/**
 	 * 
-	 * @param where Den villkorsstr‰ng till vilken det nya LIKE-villkort ska
+	 * @param where Den villkorsstr√§ng till vilken det nya LIKE-villkort ska
 	 *              adderas (med AND om det redan finns ett villkor)  
 	 * @param colname Kolumnnamn i villkoret
-	 * @param value Villkorsstr‰ngen. Om den ‰r null sÂ skapas inget LIKE-villkor. 
-	 * @param surroundWithWildcards Om true sÂ ska villkoret omges med wildcard (%)
-	 * 				sÂvida det inte redan fanns wildcard i bˆrjan eller slut. 
+	 * @param value Villkorsstr√§ngen. Om den √§r null s√• skapas inget LIKE-villkor. 
+	 * @param surroundWithWildcards Om true s√• ska villkoret omges med wildcard (%)
+	 * 				s√•vida det inte redan fanns wildcard i b√∂rjan eller slut. 
 	 * @return
 	 */
 	public static String addLike(String where, String colname, String value, boolean surroundWithWildcards) {
@@ -158,7 +158,7 @@ public abstract class DAOImplBase implements RowToObjectMapper {
 	
 	public static String addRestriction(String where, String restriction) {
 	    if(restriction == null) {
-	        // L‰gg inte till nÂgot villkor:
+	        // L√§gg inte till n√•got villkor:
 	        return where;
 	    }
 	    if(where.length() > 0) {

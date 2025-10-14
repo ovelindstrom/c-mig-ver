@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-02
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.model;
@@ -14,17 +14,17 @@ import se.csn.ark.common.dt.CsnDataTransferObjectImpl;
 
 public class Avsandare extends CsnDataTransferObjectImpl {
 	private static final long serialVersionUID = 1L;
-	// ID för avsändare, används för spårbarhet mm
+	// ID fÃ¶r avsÃ¤ndare, anvÃ¤nds fÃ¶r spÃ¥rbarhet mm
     private Long id;
-    // Sändande applikation för spårbarhet, kan vara null
+    // SÃ¤ndande applikation fÃ¶r spÃ¥rbarhet, kan vara null
     private String applikation;
-    // Kategori för spårbarhet, kan vara null
+    // Kategori fÃ¶r spÃ¥rbarhet, kan vara null
     private String kategori;
-    // Namn på avsändare, kan vara null
+    // Namn pÃ¥ avsÃ¤ndare, kan vara null
     private String namn;
-    // Mailadress för avsändare, måste vara satt och måste vara riktig adress
+    // Mailadress fÃ¶r avsÃ¤ndare, mÃ¥ste vara satt och mÃ¥ste vara riktig adress
     private String epostadress;
-    // Mailsvarsadress. Får vara null, måste vara riktig om satt
+    // Mailsvarsadress. FÃ¥r vara null, mÃ¥ste vara riktig om satt
     private String replyTo;
     
     public Avsandare() {

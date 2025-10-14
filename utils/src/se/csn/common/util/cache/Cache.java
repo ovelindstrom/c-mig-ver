@@ -1,34 +1,34 @@
 /**
  * Skapad 2007-feb-05
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  *
  */
 package se.csn.common.util.cache;
 
 /**
- * Interface för Cacheobjekt.
- * Nödvändigt med särskilt interface för att vi ska kunna styra cachebeteende.
- * Detta interface fyller en annan funktion än IReloadableCache. IReloadableCache-cachar
- * är wrappers runt en speciell sorts data. Denna typ av cache är bara en vanlig Map.
+ * Interface fÃ¶r Cacheobjekt.
+ * NÃ¶dvÃ¤ndigt med sÃ¤rskilt interface fÃ¶r att vi ska kunna styra cachebeteende.
+ * Detta interface fyller en annan funktion Ã¤n IReloadableCache. IReloadableCache-cachar
+ * Ã¤r wrappers runt en speciell sorts data. Denna typ av cache Ã¤r bara en vanlig Map.
  * Skapad 2007-feb-05
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  */
 public interface Cache {
     /**
-     * Hämtar ett objekt i cachen
+     * HÃ¤mtar ett objekt i cachen
      * @param key Nyckel till objektet
-     * @return ett cachat objekt om ett sådant fanns i cachen, annars null
+     * @return ett cachat objekt om ett sÃ¥dant fanns i cachen, annars null
      */
     Object get(Object key);
     /**
-     * Lägger till ett objekt i cachen. Skriver över befintligt objekt om 
+     * LÃ¤gger till ett objekt i cachen. Skriver Ã¶ver befintligt objekt om 
      * det redan fanns ett.
      * @param key Nyckel till objektet
      * @param value Det objekt som ska sparas i cachen.
      */
     void put(Object key, Object value);
     /**
-     * Tömmer cachen på objekt.
+     * TÃ¶mmer cachen pÃ¥ objekt.
      */
     void clear();
 }

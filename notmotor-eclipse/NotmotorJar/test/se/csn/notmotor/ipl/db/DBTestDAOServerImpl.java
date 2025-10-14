@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-24
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -19,9 +19,9 @@ public class DBTestDAOServerImpl extends TestCase {
         DAOServerImpl dao = new DAOServerImpl(getQueryProcessor());
 
         // Skapa
-        // Hämta
+        // HÃ¤mta
         // Uppdatera
-        // Hämta
+        // HÃ¤mta
     }
     
     public void testGet() {

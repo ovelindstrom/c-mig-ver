@@ -12,7 +12,7 @@ import se.csn.notmotor.ipl.validators.BasicMeddelandeValidator;
 import se.csn.notmotor.ipl.validators.SMSValidator;
 
 /**
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class TestSMSValidator extends TestCase {
     
@@ -21,10 +21,10 @@ public class TestSMSValidator extends TestCase {
     private static final String FELAKTIG_MOTTAGARE = "" + MeddelandeHandelse.FELAKTIG_MOTTAGARE;
     
     public void testGetFelkodForMeddelande() {
-        // Testa meddelande med för lång text
+        // Testa meddelande med fÃ¶r lÃ¥ng text
         // Med mottagare med: 
         // null-adress
-        // för kort SMS-adress
+        // fÃ¶r kort SMS-adress
         Meddelande m = new Meddelande("Rubrik", TEXT_200);
         Mottagare mott = new Mottagare("0705976212");
         mott.setTyp("SMS");

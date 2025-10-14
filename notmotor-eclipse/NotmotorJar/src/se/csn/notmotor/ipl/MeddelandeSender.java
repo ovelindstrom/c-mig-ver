@@ -5,25 +5,25 @@ import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.notmotor.ipl.model.SandResultat;
 
 /**
- * Interface som markerar alla sändartjänster.  
+ * Interface som markerar alla sÃ¤ndartjÃ¤nster.  
  * 
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public interface MeddelandeSender {
 	
     /**
-     * @param meddelande Det meddelande som ska sändas
-     * @return En meddelandehändelse som markerar hur sändningen gick, eller 
-     * 		null om denna sändare inte befattar sig med meddelanden som har det här
-     * 		innehållet.
+     * @param meddelande Det meddelande som ska sÃ¤ndas
+     * @return En meddelandehÃ¤ndelse som markerar hur sÃ¤ndningen gick, eller 
+     * 		null om denna sÃ¤ndare inte befattar sig med meddelanden som har det hÃ¤r
+     * 		innehÃ¥llet.
      */
 	public SandResultat skickaMeddelande(Meddelande meddelande);
 	
 	/**
-	 * Kontrollerar om detta meddelande kan skickas av denna sändare. 
+	 * Kontrollerar om detta meddelande kan skickas av denna sÃ¤ndare. 
 	 * @param meddelande
-	 * @return true om denna sändare KAN skicka meddelandet, dvs om meddelandet har 
-	 * 		rätt adresstyp etc. Annars returneras false. 
+	 * @return true om denna sÃ¤ndare KAN skicka meddelandet, dvs om meddelandet har 
+	 * 		rÃ¤tt adresstyp etc. Annars returneras false. 
 	 */
 	public boolean kanSkickaMeddelande(Meddelande meddelande);
 }

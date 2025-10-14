@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-12
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -31,26 +31,26 @@ public class DBTestDAOAvsandareImpl extends TestCase {
         avs.setReplyTo("noreply@csn.se");
         int id = dao.createAvsandare(avs);
         
-        // Hämta
+        // HÃ¤mta
         Avsandare avs2 = dao.getAvsandare(id);
         assertEquals(avs, avs2);
         
-        // Ändra 
+        // Ã„ndra 
         avs.setApplikation("Annan app");
         avs.setEpostadress("annan@adress.se");
-        avs.setKategori("Annan kategori åäö");
+        avs.setKategori("Annan kategori Ã¥Ã¤Ã¶");
         avs.setNamn("Annat namn");
         avs.setReplyTo("annan.reply@csn.se");
         dao.updateAvsandare(avs);
         
-        // Hämta
+        // HÃ¤mta
         avs2 = dao.getAvsandare(id);
         assertEquals(avs, avs2);
         
         // Ta bort
         dao.deleteAvsandare(avs);
         
-        // Försök hämta
+        // FÃ¶rsÃ¶k hÃ¤mta
         int id2 = dao.getId(avs);
         assertEquals(id2, -1);
     }
@@ -72,7 +72,7 @@ public class DBTestDAOAvsandareImpl extends TestCase {
     public void testGetAvsandareList() {
         DAOAvsandareImpl dao = new DAOAvsandareImpl(getQueryProcessor());
         
-        // Hämta alla
+        // HÃ¤mta alla
         Avsandare avs = new Avsandare();
         avs.setReplyTo("%@csn.se");
         avs.setEpostadress("%nas%");
@@ -88,7 +88,7 @@ public class DBTestDAOAvsandareImpl extends TestCase {
         List list = dao.getAvsandare(avs);
         for(Iterator it = list.iterator(); it.hasNext();) {
             dao.deleteAvsandare((Avsandare)it.next());
-            System.out.println("Tog bort avsändare.");
+            System.out.println("Tog bort avsÃ¤ndare.");
         }
         
         // Kontrollera:

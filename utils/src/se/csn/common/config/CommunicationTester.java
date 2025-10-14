@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-26
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
@@ -13,7 +13,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 
 /**
- * Diverse tester av kommunikation: finns server, är port öppen etc
+ * Diverse tester av kommunikation: finns server, Ã¤r port Ã¶ppen etc
  */
 public class CommunicationTester {
 	
@@ -25,22 +25,22 @@ public class CommunicationTester {
     
 
     /**
-     * Testar förbindelsen till en server:port genom att skapa en socket och 
-     * öppna en tcp-ip-förbindelse.
-     * @return true om förbindelsen kunde öppnas, false annars. 
+     * Testar fÃ¶rbindelsen till en server:port genom att skapa en socket och 
+     * Ã¶ppna en tcp-ip-fÃ¶rbindelse.
+     * @return true om fÃ¶rbindelsen kunde Ã¶ppnas, false annars. 
      */
     public static boolean isPortOpen(String host, int port, int connectTimeout) {
         if((host == null) || (host.length() == 0)) {
-            throw new IllegalArgumentException("Host måste anges");
+            throw new IllegalArgumentException("Host mÃ¥ste anges");
         }
         if((port < 1) || (port > 65535)) {
-            throw new IllegalArgumentException("port måsta ha ett värde mellan 1 och 65535");
+            throw new IllegalArgumentException("port mÃ¥sta ha ett vÃ¤rde mellan 1 och 65535");
         }
         if(connectTimeout <= 0) {
-            throw new IllegalArgumentException("Timeout måste vara större än 0");
+            throw new IllegalArgumentException("Timeout mÃ¥ste vara stÃ¶rre Ã¤n 0");
         }
         if(connectTimeout > 60000) {
-            throw new IllegalArgumentException("Det kan inte ska ta mer än en minut att koppla mot servern. ");
+            throw new IllegalArgumentException("Det kan inte ska ta mer Ã¤n en minut att koppla mot servern. ");
         }
         Socket t;
         try {
@@ -70,7 +70,7 @@ public class CommunicationTester {
     
     public static boolean isPortOpen(URL url) {
         if(url == null) {
-            throw new IllegalArgumentException("Url får inte vara null");
+            throw new IllegalArgumentException("Url fÃ¥r inte vara null");
         }
         return isPortOpen(url.getHost(), url.getPort(), DEFAULT_SOCKET_CONNECT_TIMEOUT);
     }

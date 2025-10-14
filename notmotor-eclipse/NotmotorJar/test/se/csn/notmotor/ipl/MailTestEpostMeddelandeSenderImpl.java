@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-04
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl;
@@ -26,7 +26,7 @@ public class MailTestEpostMeddelandeSenderImpl extends TestCase {
         
         int antal = 100;
         for(int i = 1; i <= antal; i++) {
-            Meddelande meddelande = new Meddelande("Testmeddelande numro " + i, "Detta är meddelande nummer " + i + " från testSkickaManga", "jonas.ohrnell@csn.se", "noreply@csn.se", "Noreply");        
+            Meddelande meddelande = new Meddelande("Testmeddelande numro " + i, "Detta Ã¤r meddelande nummer " + i + " frÃ¥n testSkickaManga", "jonas.ohrnell@csn.se", "noreply@csn.se", "Noreply");        
             SandResultat resultat = impl.skickaMeddelande(meddelande);
             if(resultat.getKod() != MeddelandeHandelse.SKICKAT_SERVER) {
                 System.out.println("Fel i meddelande " + i + ": " + resultat.getText());
@@ -36,11 +36,11 @@ public class MailTestEpostMeddelandeSenderImpl extends TestCase {
     
     public void testSkickaFelAdress() throws Exception {
         EpostMeddelandeSenderImpl impl = getImpl(); 
-        Meddelande meddelande = new Meddelande("Testmeddelande", "Detta är från ett JUnit-test", "jonas.ohrnell@csn.se.nisse", "noreply@csn.se", "Noreply");        
+        Meddelande meddelande = new Meddelande("Testmeddelande", "Detta Ã¤r frÃ¥n ett JUnit-test", "jonas.ohrnell@csn.se.nisse", "noreply@csn.se", "Noreply");        
         SandResultat resultat = impl.skickaMeddelande(meddelande);
         assertFalse(resultat.getKod() == MeddelandeHandelse.SKICKAT_SERVER);
         
-        meddelande = new Meddelande("Testmeddelande", "Detta är från ett JUnit-test", "faertwcae45.fgds", "Noreply", "noreply@csn.se", "Noreply");        
+        meddelande = new Meddelande("Testmeddelande", "Detta Ã¤r frÃ¥n ett JUnit-test", "faertwcae45.fgds", "Noreply", "noreply@csn.se", "Noreply");        
         resultat = impl.skickaMeddelande(meddelande);
         assertFalse(resultat.getKod() == MeddelandeHandelse.SKICKAT_SERVER);
         log.debug(resultat.getText());
@@ -48,12 +48,12 @@ public class MailTestEpostMeddelandeSenderImpl extends TestCase {
     
     public void testSkickaSMS() throws Exception {
         EpostMeddelandeSenderImpl impl = getImpl(); 
-        Meddelande meddelande = new Meddelande("Testmeddelande", "Detta är från ett JUnit-test", "jonas.ohrnell@csn.se.nisse", "noreply@csn.se", "Noreply");
+        Meddelande meddelande = new Meddelande("Testmeddelande", "Detta Ã¤r frÃ¥n ett JUnit-test", "jonas.ohrnell@csn.se.nisse", "noreply@csn.se", "Noreply");
         meddelande.getMottagare()[0].setTyp("SMS");
         SandResultat resultat = impl.skickaMeddelande(meddelande);
         assertNull(resultat);
         
-        meddelande = new Meddelande("Testmeddelande", "Detta är från ett JUnit-test", "faertwcae45.fgds", "Noreply", "noreply@csn.se", "Noreply");        
+        meddelande = new Meddelande("Testmeddelande", "Detta Ã¤r frÃ¥n ett JUnit-test", "faertwcae45.fgds", "Noreply", "noreply@csn.se", "Noreply");        
         resultat = impl.skickaMeddelande(meddelande);
         assertFalse(resultat.getKod() == MeddelandeHandelse.SKICKAT_SERVER);
         log.debug(resultat.getText());
@@ -61,10 +61,10 @@ public class MailTestEpostMeddelandeSenderImpl extends TestCase {
     
     public void testSkickaEpostOchSMS() throws Exception {
         EpostMeddelandeSenderImpl impl = getImpl(); 
-        Meddelande meddelande = new Meddelande("Testmeddelande", "Detta är från ett JUnit-test", "jonas.ohrnell@csn.se.nisse", "noreply@csn.se", "Noreply");
+        Meddelande meddelande = new Meddelande("Testmeddelande", "Detta Ã¤r frÃ¥n ett JUnit-test", "jonas.ohrnell@csn.se.nisse", "noreply@csn.se", "Noreply");
         meddelande.getMottagare()[0].setTyp("SMS");
         
-        Mottagare mott = new Mottagare("jonas.ohrnell@csn.se","Jonas Ö");
+        Mottagare mott = new Mottagare("jonas.ohrnell@csn.se","Jonas Ã¥");
         mott.setTyp("EPOST,EPOSTCC");
         meddelande.addMottagare(mott);
         

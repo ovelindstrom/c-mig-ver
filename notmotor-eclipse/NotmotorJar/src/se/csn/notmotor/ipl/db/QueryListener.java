@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-28
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;

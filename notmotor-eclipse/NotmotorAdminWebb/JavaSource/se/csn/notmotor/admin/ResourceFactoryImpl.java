@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-16
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin;
@@ -54,7 +54,7 @@ public class ResourceFactoryImpl implements ResourceFactory {
     }
 
     /**
-     * @return En query processor med tillhörande QueryListener. 
+     * @return En query processor med tillhÃ¶rande QueryListener. 
      * QueryListenern kommer att skriva all SQL och alla fel till 
      * loggen.
      */

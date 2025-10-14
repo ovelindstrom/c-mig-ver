@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -62,7 +62,7 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
 	    	return null;
 	    }
 	    if(list.size() > 1) {
-	        throw new IllegalStateException("Hittade mer än ett meddelande med id " + id);
+	        throw new IllegalStateException("Hittade mer Ã¤n ett meddelande med id " + id);
 	    }
 	    return (MeddelandeHandelse)list.get(0);
     }

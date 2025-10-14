@@ -12,7 +12,7 @@ import se.csn.common.servlet.ServletUtils;
 import se.csn.notmotor.ipl.model.Meddelande;
 
 /**
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class WebserviceTestCallback extends TestCase {
 

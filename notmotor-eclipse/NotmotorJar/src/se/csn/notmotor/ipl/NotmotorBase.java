@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-mar-23
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl;
@@ -14,7 +14,7 @@ import se.csn.notmotor.ipl.db.SingleThreadConnectionQueryProcessor;
 import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 
 /**
- * Huvudklassen, ingångsklassen för notifieringsmotorn. Denna klass
+ * Huvudklassen, ingÃ¥ngsklassen fÃ¶r notifieringsmotorn. Denna klass
  * instantierar och kopplar ihop alla andra klasser. 
  */
 public class NotmotorBase {
@@ -42,9 +42,9 @@ public class NotmotorBase {
     }
     
     /**
-     * Metoden sätter alla statusrader som matchar URL:en till STOPPED.
-     * Nödvändigt ifall någon process dör okontrollerat.
-     * Ska alltså bara anropas en gång per webbapplikationsinstans.
+     * Metoden sÃ¤tter alla statusrader som matchar URL:en till STOPPED.
+     * NÃ¶dvÃ¤ndigt ifall nÃ¥gon process dÃ¶r okontrollerat.
+     * Ska alltsÃ¥ bara anropas en gÃ¥ng per webbapplikationsinstans.
      * @param anropadURL anropande process
      * @param qp QueryProcessor
      */
@@ -54,28 +54,28 @@ public class NotmotorBase {
             + " WHERE SERVER="
             + "(SELECT ID FROM SERVER WHERE NOTMOTORSERVLETURL='" + anropadURL + "')"
             + " AND STATUS <>" + MeddelandeStateMachineBase.STOPPED;
-        log.info("Stänger ej stangda instanser, sql: " + sql);
+        log.info("StÃ¤nger ej stangda instanser, sql: " + sql);
             
         int result = qp.executeThrowException(sql);
         
-        log.debug("Stängde " + result + " instanser.");
+        log.debug("StÃ¤ngde " + result + " instanser.");
     }
     
     /**
-    * Söker ut alla meddelanden med negativ status (dvs. meddelanden
-    * som är markerade för pågående sändning) och sätter om dem till 
+    * SÃ¶ker ut alla meddelanden med negativ status (dvs. meddelanden
+    * som Ã¤r markerade fÃ¶r pÃ¥gÃ¥ende sÃ¤ndning) och sÃ¤tter om dem till 
     * status MOTTAGET.
-    * Ska alltså bara anropas en gång per webbapplikationsinstans.
+    * Ska alltsÃ¥ bara anropas en gÃ¥ng per webbapplikationsinstans.
     * @param qp QueryProcessor
     */
     protected void aterstallAvbrutnaSandningar(QueryProcessor qp) {
         String sql = "UPDATE MEDDELANDE SET STATUS = " + MeddelandeHandelse.MOTTAGET
         	+ " WHERE STATUS < 0";
-        log.info("Återställer meddelandestatus för avbrutna sändningar, sql: " + sql);
+        log.info("Ã…terstÃ¤ller meddelandestatus fÃ¶r avbrutna sÃ¤ndningar, sql: " + sql);
 
         int result = qp.executeThrowException(sql);
         
-        log.debug("Återställde " + result + " meddelanden.");
+        log.debug("Ã…terstÃ¤llde " + result + " meddelanden.");
     }
     
 }

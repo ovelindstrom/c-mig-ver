@@ -9,7 +9,7 @@ import java.util.List;
 import se.csn.notmotor.ipl.MeddelandeSender;
 
 /**
- * @author Jonas Öhrnell - csn7821
+ * @author Jonas Ã¥hrnell - csn7821
  */
 public class SandResultat extends KodText {
 

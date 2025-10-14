@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-11
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.db;
@@ -18,10 +18,10 @@ public class TestUtils {
 	private static final String DB_BASE_URL = "jdbc:db2://";
 
 	/**
-	 * @return En BasicDataSource, dvs. en wrapper runt en JDBC-driver. ENDAST AVSEDD FÖR TESTBRUK! 
+	 * @return En BasicDataSource, dvs. en wrapper runt en JDBC-driver. ENDAST AVSEDD FÃ–R TESTBRUK! 
 	 */
     public static DataSource getTestDB2DataSource(String host, int port, String database, String user, String password) {
-        // Commons-dbcp kräver commons-pool:
+        // Commons-dbcp krÃ¤ver commons-pool:
         ClassDependencyTester.findClassesThrowException(new String[][]{ClassDependencyTester.COMMONS_POOL});
         
         if(!CommunicationTester.isPortOpen(host, port)) {

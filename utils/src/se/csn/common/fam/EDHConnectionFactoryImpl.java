@@ -1,6 +1,6 @@
 ///**
 // * Skapad 2007-feb-28
-// * @author Jonas ÷hrnell (csn7821)
+// * @author Jonas √•hrnell (csn7821)
 // * 
 // */
 //package se.csn.common.fam;
@@ -25,23 +25,23 @@
 //    
 //    public FamConnection getFamConnection(String configFile, String user,
 //            String password, String host, String port, String archive) {
-//    	// Kontrollera n‰rvaron av JFAM och COOR:
+//    	// Kontrollera n√§rvaron av JFAM och COOR:
 //        ClassDependencyTester.findClassThrowException(ClassDependencyTester.JFAM);
 //        ClassDependencyTester.findClassThrowException(ClassDependencyTester.COOR);
 //        
 //    	FileResource.findReadableFileThrowException(configFile);
 //        // Testa alla inparametrar:
-//    	if(user == null) throw new IllegalArgumentException("User mÂste anges");
-//    	if(password == null) throw new IllegalArgumentException("password mÂste anges");
-//    	if(host == null) throw new IllegalArgumentException("host mÂste anges");
+//    	if(user == null) throw new IllegalArgumentException("User m√•ste anges");
+//    	if(password == null) throw new IllegalArgumentException("password m√•ste anges");
+//    	if(host == null) throw new IllegalArgumentException("host m√•ste anges");
 //    	int p = -1;
 //    	try {
 //    	    p = Integer.parseInt(port);
 //    	} catch(NumberFormatException nfe) {
-//    	    throw new IllegalArgumentException("Port var inte ett numeriskt v‰rde");
+//    	    throw new IllegalArgumentException("Port var inte ett numeriskt v√§rde");
 //    	}
-//    	if(port == null) throw new IllegalArgumentException("port mÂste anges");
-//    	if(archive == null) throw new IllegalArgumentException("archive mÂste anges");
+//    	if(port == null) throw new IllegalArgumentException("port m√•ste anges");
+//    	if(archive == null) throw new IllegalArgumentException("archive m√•ste anges");
 //
 //    	// Testa connection mot server:
 //    	if(!CommunicationTester.isPortOpen(host, p)) {
@@ -67,7 +67,7 @@
 //        try {
 //            config = FamEnvironment.getConfig();
 //        } catch (FamPackageException e) {
-//            throw new EdhException("Kunde inte h‰mta FamConfig", e);
+//            throw new EdhException("Kunde inte h√§mta FamConfig", e);
 //        }
 //        if (log.isDebugEnabled()) {
 //	    	String debugconfig = config.toString();

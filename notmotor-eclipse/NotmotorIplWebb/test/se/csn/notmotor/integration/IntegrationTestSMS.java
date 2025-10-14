@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-16
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.integration;
@@ -9,7 +9,7 @@ import se.csn.webservice.bas.notmotor.skicka.DTOMeddelande;
 import se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat;
 
 /**
- * Klass för att skicka många testmail via web service.
+ * Klass fÃ¶r att skicka mÃ¥nga testmail via web service.
  * @author csn7821
  *
  */
@@ -19,17 +19,17 @@ public class IntegrationTestSMS extends IntegrationTestSkeleton {
         long cnt = System.currentTimeMillis();
 
         try {
-            DTOMeddelande meddelande = skapaTestMeddelande("Meddelande", "Test av sändning.", "SMS");
+            DTOMeddelande meddelande = skapaTestMeddelande("Meddelande", "Test av sÃ¤ndning.", "SMS");
             DTONotifieringResultat resultat = client.skickaMeddelande(meddelande);
             if (resultat.getResultat().intValue() != 0) {
                 System.out.println("Fel i meddelande: " + resultat.getInfo());
                 fail();
             }
         } catch (Exception e) {
-            System.out.println("Exception för meddelande: " + e);
+            System.out.println("Exception fÃ¶r meddelande: " + e);
             fail();
         }
-        System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
+        System.out.println("SÃ¤nt meddelande pÃ¥ " + (System.currentTimeMillis() - cnt) + " millis");
     }
     
     
@@ -37,17 +37,17 @@ public class IntegrationTestSMS extends IntegrationTestSkeleton {
         long cnt = System.currentTimeMillis();
 
         try {
-            DTOMeddelande meddelande = skapaTestMeddelandeMedTvaMottagare("Meddelande", "Test av sändning.");
+            DTOMeddelande meddelande = skapaTestMeddelandeMedTvaMottagare("Meddelande", "Test av sÃ¤ndning.");
             DTONotifieringResultat resultat = client.skickaMeddelande(meddelande);
             if (resultat.getResultat().intValue() != 0) {
                 System.out.println("Fel i meddelande: " + resultat.getInfo());
                 fail();
             }
         } catch (Exception e) {
-            System.out.println("Exception för meddelande: " + e);
+            System.out.println("Exception fÃ¶r meddelande: " + e);
             fail();
         }
-        System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
+        System.out.println("SÃ¤nt meddelande pÃ¥ " + (System.currentTimeMillis() - cnt) + " millis");
     }
     
     public void testSkickaSMSLangreAn160Tecken() {
@@ -64,27 +64,27 @@ public class IntegrationTestSMS extends IntegrationTestSkeleton {
                 fail();
             }
     	} catch (Exception e) {
-    		System.out.println("Exception för meddelande: " + e);
+    		System.out.println("Exception fÃ¶r meddelande: " + e);
     		fail();
     	}
-    	System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
+    	System.out.println("SÃ¤nt meddelande pÃ¥ " + (System.currentTimeMillis() - cnt) + " millis");
     }
     
     public void testSkickaEpost() {
         long cnt = System.currentTimeMillis();
 
         try {
-            DTOMeddelande meddelande = skapaTestMeddelande("Meddelande", "Test av sändning.", "EPOST");
+            DTOMeddelande meddelande = skapaTestMeddelande("Meddelande", "Test av sÃ¤ndning.", "EPOST");
             DTONotifieringResultat resultat = client.skickaMeddelande(meddelande);
             if (resultat.getResultat().intValue() != 0) {
                 System.out.println("Fel i meddelande: " + resultat.getInfo());
                 fail();
             }
         } catch (Exception e) {
-            System.out.println("Exception för meddelande: " + e);
+            System.out.println("Exception fÃ¶r meddelande: " + e);
             fail();
         }
-        System.out.println("Sänt meddelande på " + (System.currentTimeMillis() - cnt) + " millis");
+        System.out.println("SÃ¤nt meddelande pÃ¥ " + (System.currentTimeMillis() - cnt) + " millis");
     }
     
 }

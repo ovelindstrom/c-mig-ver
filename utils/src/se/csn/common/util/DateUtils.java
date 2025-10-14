@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-11
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.util;
@@ -62,7 +62,7 @@ public class DateUtils {
 	        }
 	    }
 	    
-	    // Hantera om det inte fanns någon tid:
+	    // Hantera om det inte fanns nÃ¥gon tid:
 	    if(result.equals("")) {
 	        result = "0 sekunder";
 	    }
@@ -74,9 +74,9 @@ public class DateUtils {
     }
     
     /**
-     * @param dygnetsBorjan Har bara betydelse om tidsdelen utelämnas. 
-     *        Om true så sätts tiden till 00.00.00.000, dvs. den första millisekunden 
-     *        på det angivna dygnet. Om false sätts tiden till 23.59.59.999, alltså 
+     * @param dygnetsBorjan Har bara betydelse om tidsdelen utelÃ¤mnas. 
+     *        Om true sÃ¥ sÃ¤tts tiden till 00.00.00.000, dvs. den fÃ¶rsta millisekunden 
+     *        pÃ¥ det angivna dygnet. Om false sÃ¤tts tiden till 23.59.59.999, alltsÃ¥ 
      * 		  dygnets sista millisekund.
      */
     public static Date strToDate(String s, boolean dygnetsBorjan) {
@@ -88,7 +88,7 @@ public class DateUtils {
             return null;
         }
         // Loopa igenom tidsformaten och testa. 
-        // först tillsammans, sedan var för sig
+        // fÃ¶rst tillsammans, sedan var fÃ¶r sig
         Date d = null;
         for(int df = 0; df < DATUMFORMAT.length; df++) {
             for(int tf = 0; tf < TIDFORMAT.length; tf++) {
@@ -104,7 +104,7 @@ public class DateUtils {
             SimpleDateFormat fmt = new SimpleDateFormat(DATUMFORMAT[df]);
             try {
                 d = fmt.parse(s);
-                // Här sätts tiden beroende på om det är dygnets början:
+                // HÃ¤r sÃ¤tts tiden beroende pÃ¥ om det Ã¤r dygnets bÃ¶rjan:
                 if(dygnetsBorjan) {
                     return setTidsdel(d, 0, 0, 0, 0);
                 } else {

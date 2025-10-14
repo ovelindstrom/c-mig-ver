@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-jun-11
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.admin.beans;
@@ -66,7 +66,7 @@ public class SchemaBean {
         }
         model = new ListDataModel(schemarader);
         
-        // Sätt defaultvärden för datumraderna:
+        // SÃ¤tt defaultvÃ¤rden fÃ¶r datumraderna:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         startdatum = sdf.format(new Date());
         slutdatum = sdf.format(new Date());

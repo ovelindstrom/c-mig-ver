@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-maj-29
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.xsl;
@@ -34,10 +34,10 @@ public class XmlTransformer {
 
     public static String transformXml(String xsl, String xml) {
         if(xsl == null) {
-            throw new IllegalArgumentException("xsl måste vara satt");
+            throw new IllegalArgumentException("xsl mÃ¥ste vara satt");
         }
         if(xml == null) {
-            throw new IllegalArgumentException("xml måste vara satt");
+            throw new IllegalArgumentException("xml mÃ¥ste vara satt");
         }
         
         InputStream xslStream = new ByteArrayInputStream(xsl.getBytes());
@@ -68,10 +68,10 @@ public class XmlTransformer {
     
     public static byte[] xmlToPdf(String xsl, String xml) {
         if(xsl == null) {
-            throw new IllegalArgumentException("xsl måste vara satt");
+            throw new IllegalArgumentException("xsl mÃ¥ste vara satt");
         }
         if(xml == null) {
-            throw new IllegalArgumentException("xml måste vara satt");
+            throw new IllegalArgumentException("xml mÃ¥ste vara satt");
         }
         
         InputStream xslStream = new ByteArrayInputStream(xsl.getBytes());

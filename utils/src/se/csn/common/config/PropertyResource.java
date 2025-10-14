@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-24
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
@@ -21,7 +21,7 @@ public class PropertyResource extends ResourceBase {
     public ResourceStatus doCheck() {
         if(!isPropertySetInFile(name, propfil)) {
             return new ResourceStatus("Kunde inte hitta property " + name + " i fil " + propfil,
-                    "Kontrollera att propertyn är satt, antingen via environment, " +
+                    "Kontrollera att propertyn Ã¤r satt, antingen via environment, " +
                     "kommandorad (-D-flaggan) eller via propertiesfil.", 
                     ResourceStatus.ERROR);
         }
@@ -29,11 +29,11 @@ public class PropertyResource extends ResourceBase {
     }
     
     /**
-     * Söker propertyn i propertiesfilen.
-     * @param namn på propertyn 
-     * @param propertyfile Namn på prpertyfilen.Om namnet på propertiesfilen 
-     * inte innehåller någon punkt så appendas .properties till namnet. 
-     * Propertiesfilerna söks på classpath. 
+     * SÃ¶ker propertyn i propertiesfilen.
+     * @param namn pÃ¥ propertyn 
+     * @param propertyfile Namn pÃ¥ prpertyfilen.Om namnet pÃ¥ propertiesfilen 
+     * inte innehÃ¥ller nÃ¥gon punkt sÃ¥ appendas .properties till namnet. 
+     * Propertiesfilerna sÃ¶ks pÃ¥ classpath. 
      * 
      * @return true om propertyn hittades, false annars.  
      */

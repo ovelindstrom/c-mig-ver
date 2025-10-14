@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-23
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * @author Petrus Bergman (csn7820)
  */
 package se.csn.common.config;
@@ -26,17 +26,17 @@ public class FileResource extends ResourceBase {
     }
     
     public ResourceStatus doCheck() {
-        // Om skrivbar: kolla att det gÂr att skriva till filen
+        // Om skrivbar: kolla att det g√•r att skriva till filen
         if(writeable) {
             if(!fileWriteable(name)) {
                 return new ResourceStatus("Kunde inte skriva till fil " + getAbsolutSokvag(name), 
-                        "Kontrollera att katalogen finns och att den ‰r skrivbar fˆr JVM:en", 
+                        "Kontrollera att katalogen finns och att den √§r skrivbar f√∂r JVM:en", 
                         ResourceStatus.ERROR);
             }
         } else {
             if(!fileReadable(name)) {
-                return new ResourceStatus("Kunde inte l‰sa fil " + getAbsolutSokvag(name), 
-                        "Kontrollera att filen finns och att den ‰r l‰sbar fˆr JVM:en", 
+                return new ResourceStatus("Kunde inte l√§sa fil " + getAbsolutSokvag(name), 
+                        "Kontrollera att filen finns och att den √§r l√§sbar f√∂r JVM:en", 
                         ResourceStatus.ERROR);
             }
         }
@@ -45,15 +45,15 @@ public class FileResource extends ResourceBase {
     
 
     /**
-     * Kontrollerar om en fil ‰r l‰sbar.
+     * Kontrollerar om en fil √§r l√§sbar.
      * 
      * @param filename den fil som ska kontrolleras
-     * @throws IllegalArgumentException om filnamnet ‰r <code>null</code>
-     * @return <code>true</code> om filen ‰r l‰sbar, annars <code>false</code> 
+     * @throws IllegalArgumentException om filnamnet √§r <code>null</code>
+     * @return <code>true</code> om filen √§r l√§sbar, annars <code>false</code> 
      */
     public static boolean fileReadable(String filename) {
     	if (filename == null) {
-    		throw new IllegalArgumentException("Filnamnet fÂr inte vara null");
+    		throw new IllegalArgumentException("Filnamnet f√•r inte vara null");
     	}
         File f = new File(filename);
         return f.exists() && f.canRead(); 
@@ -62,34 +62,34 @@ public class FileResource extends ResourceBase {
     
     public static String getAbsolutSokvag(String filename) {
     	if (filename == null) {
-    		throw new IllegalArgumentException("Filnamnet fÂr inte vara null");
+    		throw new IllegalArgumentException("Filnamnet f√•r inte vara null");
     	}
         File f = new File(filename);
         return f.getAbsolutePath();
     }
     
     /**
-     * Kontrollerar om en fil ‰r skrivbar.
+     * Kontrollerar om en fil √§r skrivbar.
      * 
      * @param filename den fil som ska kontrolleras
-     * @throws IllegalArgumentException om filnamnet ‰r <code>null</code>
-     * @return <code>true</code> om filen ‰r skrivbar, annars <code>false</code> 
+     * @throws IllegalArgumentException om filnamnet √§r <code>null</code>
+     * @return <code>true</code> om filen √§r skrivbar, annars <code>false</code> 
      */
     public static boolean fileWriteable(String filename) {
     	if (filename == null) {
-    		throw new IllegalArgumentException("Filnamnet fÂr inte vara null");
+    		throw new IllegalArgumentException("Filnamnet f√•r inte vara null");
     	}
         File f = new File(filename);
         return f.exists() && f.canWrite(); 
     }
     
     /**
-     * Kontrollerar om en fil ‰r l‰sbar och kastar ett fel om
-     * den inte ‰r det.
+     * Kontrollerar om en fil √§r l√§sbar och kastar ett fel om
+     * den inte √§r det.
      * 
      * @param filename den fil som ska kontrolleras
-     * @throws IllegalArgumentException om filnamnet ‰r <code>null</code>
-     * @throws MissingFileException om filen inte kan l‰sas
+     * @throws IllegalArgumentException om filnamnet √§r <code>null</code>
+     * @throws MissingFileException om filen inte kan l√§sas
      */
     public static void findReadableFileThrowException(String filename) {
         if (!fileReadable(filename)) {
@@ -98,12 +98,12 @@ public class FileResource extends ResourceBase {
     }
 
     /**
-     * Kontrollerar om en fil ‰r skrivbar och kastar ett fel om
-     * den inte ‰r det.
+     * Kontrollerar om en fil √§r skrivbar och kastar ett fel om
+     * den inte √§r det.
      * 
      * @param filename den fil som ska kontrolleras
-     * @throws IllegalArgumentException om filnamnet ‰r <code>null</code>
-     * @throws MissingFileException om filen inte ‰r skrivbar
+     * @throws IllegalArgumentException om filnamnet √§r <code>null</code>
+     * @throws MissingFileException om filen inte √§r skrivbar
      */
     public static void findWriteableFileThrowException(String filename) {
         if (!fileWriteable(filename)) {

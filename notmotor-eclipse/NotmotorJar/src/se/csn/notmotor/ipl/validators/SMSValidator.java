@@ -9,10 +9,10 @@ import se.csn.notmotor.ipl.model.Mottagare;
 import se.csn.notmotor.ipl.model.KodText;
 
 /**
- * @author Jonas ÷hrnell - csn7821
+ * @author Jonas √•hrnell - csn7821
  * Kontrollerar: 
  * -mobilnummer
- * -att texten inte ‰r l‰ngre ‰n 160 tecken
+ * -att texten inte √§r l√§ngre √§n 160 tecken
  */
 public class SMSValidator implements MeddelandeValidator {
     
@@ -30,7 +30,7 @@ public class SMSValidator implements MeddelandeValidator {
 		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, "SMS-nummer saknas"); 
 		        } else if (!nummer.matches(NUMMERFORMAT)) {
 		            return new KodText(MeddelandeHandelse.FELAKTIG_MOTTAGARE, 
-		            		"SMS-numret mÂste vara mellan 10 och 18 tecken och fÂr bara innehÂlla inledande + och/eller siffror");
+		            		"SMS-numret m√•ste vara mellan 10 och 18 tecken och f√•r bara inneh√•lla inledande + och/eller siffror");
 		        }
 		    }
         }

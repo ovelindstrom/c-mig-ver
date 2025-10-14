@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-apr-12
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.notmotor.ipl.db;
@@ -15,13 +15,13 @@ public class DBTestQueryProcessor extends TestCase {
         SingleConnectionQueryProcessor qp = new SingleConnectionQueryProcessor(TestUtils.getTestDB2DataSource("csn24utv",50000, "WDBUTV", "notmotor", "notmotor"));
         
         String countername = "Test" + System.currentTimeMillis();
-        // H‰mta testv‰rde
+        // H√§mta testv√§rde
         long cnt = qp.getCounter("SEKVENS", countername);
-        // Kolla att v‰rdet ‰r 1
+        // Kolla att v√§rdet √§r 1
         assertEquals(cnt, 1L);
-        // H‰mta igen
+        // H√§mta igen
         cnt = qp.getCounter("SEKVENS", countername);
-        // Kolla att v‰rdet ‰r 2
+        // Kolla att v√§rdet √§r 2
         assertEquals(cnt, 2L);
         
         // Loopa 1000 st, kolla lite prestanda

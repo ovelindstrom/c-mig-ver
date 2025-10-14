@@ -1,12 +1,12 @@
 /**
  * Skapad 2007-mar-26
- * @author Jonas Öhrnell (csn7821)
+ * @author Jonas Ã¥hrnell (csn7821)
  * 
  */
 package se.csn.common.mail;
 
 /**
- * Interface för mailservice.  
+ * Interface fÃ¶r mailservice.  
  */
 public interface MailService {
     

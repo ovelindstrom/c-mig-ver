@@ -1,6 +1,6 @@
 /**
  * Skapad 2007-feb-26
- * @author Jonas ÷hrnell (csn7821)
+ * @author Jonas √•hrnell (csn7821)
  * 
  */
 package se.csn.common.config;
@@ -8,7 +8,7 @@ package se.csn.common.config;
 
 public class MissingFileException extends ConfigException {
 
-    private static String INSTRUCTION = " 1. Kontrollera att filen finns pÂ angiven sˆkv‰g. 2. Kontrollera att den fÂr l‰sas av JVM:en. 3. (Om den ska kunna skrivas): kolla att angiven katalog ‰r skrivbar."; 
+    private static String INSTRUCTION = " 1. Kontrollera att filen finns p√• angiven s√∂kv√§g. 2. Kontrollera att den f√•r l√§sas av JVM:en. 3. (Om den ska kunna skrivas): kolla att angiven katalog √§r skrivbar."; 
     
     public MissingFileException(String filename) {
         super(filename, INSTRUCTION);
