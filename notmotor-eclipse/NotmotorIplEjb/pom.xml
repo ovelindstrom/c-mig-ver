@@ -14,7 +14,7 @@
 	<url>notmotor-ejb/</url>
 	<inceptionYear>2008</inceptionYear>
 	<organization>
-		<name>Centrala studiestödsnämnden</name>
+		<name>Centrala studiestï¿½dsnï¿½mnden</name>
 		<url>http://www.csn.se/</url>
 	</organization>
 	<parent>
@@ -23,7 +23,7 @@
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../NotmotorBuild</relativePath>
 	</parent>
-	<!--  Lägg till dependencies 
+	<!--  Lï¿½gg till dependencies 
 	-->
 	<dependencies>
 <!-- 		<dependency> -->
@@ -86,38 +86,6 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			<!-- 
-				Denna plugin behövs pga en bugg i ejb-pluginen. Det går
-				inte att ändra sökväg till META-INF-katalogen, så vi får
-				kopiera den till src/main/resources inför varje bygge. 
-				
-			-->
-			<!-- <plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<configuration>
-							<tasks>
-								<delete dir="${basedir}/src" />
-								<copy
-									todir="${basedir}/src/main/resources/META-INF">
-									<fileset
-										dir="${basedir}/ejbModule/META-INF" />
-								</copy>
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin> -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ejb-plugin</artifactId>
 				<version>2.5</version>
 				<configuration>
@@ -125,7 +93,7 @@
 					<archive>
 						<!-- 
 							Se till att tillfoga alla dependencies i classpath.
-							Default är false för denna property. 
+							Default ï¿½r false fï¿½r denna property. 
 						-->
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>

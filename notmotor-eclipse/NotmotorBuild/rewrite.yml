@@ -5,9 +5,11 @@ displayName: All Modernization Recipes
 description: Applies all modernization recipes including changing to the new superpom, removing developers section, adding JUnit 3 dependency, and ordering imports.
 recipeList:
   - se.csn.recipes.modernize.NewSuperPomParent
-  - se.csn.recepes.modernize.NewNotmotorParent
+  - se.csn.recipes.modernize.NewNotmotorParent
   - se.csn.recipes.modernize.DropDevelopers
   - se.csn.recipes.modernize.AddJunit3TestDependency
+  - se.csn.recipes.modernize.FixByteArrayDataSourceImport
+  - se.csn.recipes.modernize.UpdateNotmotorJarVersion
   - org.openrewrite.staticanalysis.maven.MavenJavadocNonAsciiRecipe
   - org.openrewrite.staticanalysis.RemoveEmptyJavaDocParameters
   - org.openrewrite.java.cleanup.RemoveUnusedImports
@@ -23,7 +25,7 @@ recipeList:
       newVersion: 3.0-SNAPSHOT
 ---
 type: specs.openrewrite.org/v1beta/recipe
-name: se.csn.recipes.modernize.NewNotmotorParent
+name: se.csn.recepes.modernize.NewNotmotorParent
 displayName: Make sure that all projects use the new Notmotor parent
 recipeList:
   - org.openrewrite.maven.ChangeParentPom:
@@ -56,3 +58,22 @@ recipeList:
       scope: test
       # We only want to add JUnit 3 if the project is using it
       onlyIfUsing: junit.framework.*
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.FixByteArrayDataSourceImport
+displayName: Change ByteArrayDataSource import from apache.soap to javax.mail
+description: Changes import from org.apache.soap.util.mime.ByteArrayDataSource to javax.mail.util.ByteArrayDataSource
+recipeList:
+  - org.openrewrite.java.ChangeType:
+      oldFullyQualifiedTypeName: org.apache.soap.util.mime.ByteArrayDataSource
+      newFullyQualifiedTypeName: javax.mail.util.ByteArrayDataSource
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.UpdateNotmotorJarVersion
+displayName: Update notmotorjar dependency version to 2.1-SNAPSHOT
+description: Updates the version of se.csn.notmotor:notmotorjar dependency to 2.1-SNAPSHOT
+recipeList:
+  - org.openrewrite.maven.ChangeDependencyVersion:
+      groupId: se.csn.notmotor
+      artifactId: notmotorjar
+      newVersion: 2.1-SNAPSHOT

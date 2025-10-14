@@ -14,7 +14,7 @@
    <url>../../../NotmotorAdminWebb/target/site</url>
   <inceptionYear>2007</inceptionYear>
   <organization>
-    <name>Centrala studiestödsnämnden</name>
+    <name>Centrala studiestï¿½dsnï¿½mnden</name>
     <url>http://www.csn.se/</url>
   </organization>
   <parent>
@@ -38,7 +38,7 @@
     <dependency>
 	  	<groupId>se.csn.notmotor</groupId>
 		<artifactId>notmotorjar</artifactId>
-  		<version>2.0-SNAPSHOT</version>
+  		<version>2.1-SNAPSHOT</version>
   		<optional>true</optional>
   	</dependency>
   	<dependency>

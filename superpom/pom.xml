@@ -43,6 +43,13 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  <!-- This forces all projects to have the same JUnit dependency-->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
   <build>
     <defaultGoal>compile</defaultGoal>
     <pluginManagement>
