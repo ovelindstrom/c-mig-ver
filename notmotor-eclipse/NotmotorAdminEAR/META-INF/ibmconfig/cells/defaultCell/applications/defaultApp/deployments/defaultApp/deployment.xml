@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<appdeployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:appdeployment="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi" xmi:id="Deployment_1206609035978">
-  <deployedObject xmi:type="appdeployment:ApplicationDeployment" xmi:id="ApplicationDeployment_1206609035978" startingWeight="10">
-    <modules xmi:type="appdeployment:WebModuleDeployment" xmi:id="WebModuleDeployment_1206609048400" startingWeight="10000" uri="NotmotorAdminWebb.war"/>
-    <classloader xmi:id="Classloader_1206609035978" mode="PARENT_FIRST">
-      <libraries xmi:id="LibraryRef_1339060294720" libraryName="App_Notmotor_IW_test"/>
-    </classloader>
-  </deployedObject>
-</appdeployment:Deployment>

@@ -1,58 +1,55 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <?xml-stylesheet type="text/xsl" href="http://csn24int/maven/installstyle/installstyle-1_1.xsl"?>
 
-<!-- Användning:
-
- -->
 <config name="config">
 	
 	<variables>
-		<variable name="MAILUSER" description="Mailanvändare/kontohavare för det SMTP-konto som ska skicka mail">
+		<variable name="MAILUSER" description="Mailanvï¿½ndare/kontohavare fï¿½r det SMTP-konto som ska skicka mail">
 			<environment name="utv,test" value="emaal-skv"/>
 		</variable>
-		<variable name="MAILPASSWORD" description="Lösen för det SMTP-konto som ska skicka mail">
+		<variable name="MAILPASSWORD" description="Lï¿½sen fï¿½r det SMTP-konto som ska skicka mail">
 			<environment name="utv,test" value="emaal-skv"/>
 		</variable>
 		<variable name="MAILHOST" description="Hostname eller ip-adress till den SMTP-server som ska skicka mail">
 			<environment name="utv,test" value="relay.wm.net"/>
 		</variable>
-		<variable name="MAILPORT" description="Port på den SMTP-server som ska skicka mail">
+		<variable name="MAILPORT" description="Port pï¿½ den SMTP-server som ska skicka mail">
 			<environment name="utv,test" value="25"/>
 		</variable>
-		<variable name="MAILTIMEOUT" description="Antal millisekunder som notmotorn väntar på uppkoppling mot mailservern">
+		<variable name="MAILTIMEOUT" description="Antal millisekunder som notmotorn vï¿½ntar pï¿½ uppkoppling mot mailservern">
 			<environment name="utv,test" value="30000"/>
 		</variable>
-		<variable name="SMSUSER" description="Mailanvändare/kontohavare för SMS-kontot">
+		<variable name="SMSUSER" description="Mailanvï¿½ndare/kontohavare fï¿½r SMS-kontot">
 			<environment name="utv,test,prod" value="CSN-user"/>
 		</variable>
-		<variable name="SMSPASSWORD" description="Lösen för SMS-kontot">
+		<variable name="SMSPASSWORD" description="Lï¿½sen fï¿½r SMS-kontot">
 			<environment name="utv,test" value=""/>
 		</variable>
 		<variable name="SMSENDPOINT" description="Endpoint till den server som ska skicka SMS">
 			<environment name="utv,test,prod" value="https://ssc.telia.se/smsplus/sendsms"/>
 		</variable>
-		<variable name="HOSTADRESS" description="Fullt kvalificerat DNS-namn + port till den server som kör applikationen">
+		<variable name="HOSTADRESS" description="Fullt kvalificerat DNS-namn + port till den server som kï¿½r applikationen">
 			<environment name="Lokal utvecklare" value="localhost:16080"/>
 			<environment name="inte1" value="csnipli01.csnnet.int:22200"/> 
-			<environment name="Grön test" value="csnlini02.csnnet.int:22000"/>
+			<environment name="Grï¿½n test" value="csnlini02.csnnet.int:22000"/>
 		</variable>
 		<variable name="DBNAMN" description="Databasnamn">
 			<environment name="Lokal utvecklare,utv" value="WDBUTV"/>
-			<environment name="Grön test" value="WDBGRON"/>
+			<environment name="Grï¿½n test" value="WDBGRON"/>
 		</variable>
 		<variable name="DBSERVER" description="Databasserver">
 			<environment name="Lokal utvecklare,utv,test" value="csndbu01"/>
 		</variable>
-		<variable name="DBPORT" description="Serverport för databasen">
+		<variable name="DBPORT" description="Serverport fï¿½r databasen">
 			<environment name="Lokal utvecklare,utv,test" value="50000"/>
 		</variable>
-		<variable name="NOTMOTOR_DBUSER" description="DB-användare för Notmotor">
+		<variable name="NOTMOTOR_DBUSER" description="DB-anvï¿½ndare fï¿½r Notmotor">
 			<environment name="Lokal utvecklare,utv,test" value="notmotor"/>
 		</variable>
-		<variable name="NOTMOTOR_DBPASSWORD" description="DB-lösenord för Notmotor">
+		<variable name="NOTMOTOR_DBPASSWORD" description="DB-lï¿½senord fï¿½r Notmotor">
 			<environment name="Lokal utvecklare,utv,test" value="notmotor"/>
 		</variable>
-		<variable name="NOTMOTOR_DS_JNDINAMN" description="JNDI-namn för notmotorns datasource">
+		<variable name="NOTMOTOR_DS_JNDINAMN" description="JNDI-namn fï¿½r notmotorns datasource">
 			<environment name="utv,test,prod" value="jdbc/NotmotorDS"/>
 		</variable>
 		<variable name="MQ_FROM" description="Avsandaradress for meddelanden via MQ">
@@ -72,12 +69,12 @@
 	<!-- IPL -->
 		<application name="NotmotorIplWebb.ear" environment="IPL">
 			<description>
-				Skickar mail, SMS mm. Mellanlagrar i databas, tillhandahåller schemaläggning, failover etc.
+				Skickar mail, SMS mm. Mellanlagrar i databas, tillhandahï¿½ller schemalï¿½ggning, failover etc.
 			</description>
 			
-			<task>Använder SMTP -> måste ha öppnad brandvägg för SMTP</task>
+			<task>Anvï¿½nder SMTP -> mï¿½ste ha ï¿½ppnad brandvï¿½gg fï¿½r SMTP</task>
 			<propertyfile name="notmotor-ipl.properties">
-				<property name="mail.user" value="$MAILUSER" description="Mailserverinställningar"/>
+				<property name="mail.user" value="$MAILUSER" description="Mailserverinstï¿½llningar"/>
 				<property name="mail.password" value="$MAILPASSWORD"/>
 				<property name="mail.host" value="$MAILHOST"/>
 				<property name="mail.port" value="$MAILPORT"/>
@@ -85,8 +82,8 @@
         		<property name="sms.user" value="$SMSUSER" description="SMS-tjansteinstallningar"/>
 				<property name="sms.password" value="$SMSPASSWORD"/>
 				<property name="sms.endpoint" value="$SMSENDPOINT"/>
-				<property name="param.refreshtid" value="120000" description="Hur många millisekunder det ska äntas mellan varje uppdatering av parametrar"/>
-				<property name="notmotor.ds.jndinamn" value="$NOTMOTOR_DS_JNDINAMN" description="JNDI-namn för notmotorns datasource"/>
+				<property name="param.refreshtid" value="120000" description="Hur mï¿½nga millisekunder det ska ï¿½ntas mellan varje uppdatering av parametrar"/>
+				<property name="notmotor.ds.jndinamn" value="$NOTMOTOR_DS_JNDINAMN" description="JNDI-namn fï¿½r notmotorns datasource"/>
 				<property name="notmotor.url" value="http://$HOSTADRESS/NotmotorIPL/SkickaMotorServlet" description="URL till notmotorinstansen"/>
 				<property name="notmotor.mq.mail.from" value="$MQ_FROM" description="Avsnitt for lasning av MQ"/>
 				<property name="notmotor.mq.mail.namn" value="$MQ_NAMN" />
@@ -97,7 +94,7 @@
 			</propertyfile>
 	
 			<logging commentHeader="Notmotor">
-				<task>Lägg upp appender i ark_log4j.properties</task>
+				<task>Lï¿½gg upp appender i ark_log4j.properties</task>
 				<logger name="notmotor" level="WARN" classroot="se.csn.notmotor" additivity="false"/>
 				<logger name="sqllog" level="WARN" classroot="se.csn.notmotor.ipl.db.QueryListenerImpl" additivity="false"/>
 				<appender name="notmotor" class="org.apache.log4j.RollingFileAppender" layoutPattern="%d %c %-5p - %m%n">
@@ -119,7 +116,7 @@
 			
 			<database>
 				<task>Installera DB2-tabeller enligt specifikation i scriptet tables.ddl vid ren installation.</task>
-				<task>Kör tablediff.ddl vid uppdatering av notmotorn.</task>
+				<task>Kï¿½r tablediff.ddl vid uppdatering av notmotorn.</task>
 				<tables schema="NOTMOTOR">
 					<table name="MEDDELANDE"/>
 					<table name="AVSANDARE"/>
@@ -142,14 +139,14 @@
 <!--  IW  -->	
 	<application name="NotmotorAdmin.ear" environment="InternWebb">
 		<description>
-			Användar- och administrationsgränssnitt för Notmotorn.
+			Anvï¿½ndar- och administrationsgrï¿½nssnitt fï¿½r Notmotorn.
 		</description>
 	
 		<propertyfile name="notmotor-iw.properties">
-			<property name="notmotor.ds.jndinamn" value="$NOTMOTOR_DS_JNDINAMN" description="JNDI-namn för datasourcen"/>							
+			<property name="notmotor.ds.jndinamn" value="$NOTMOTOR_DS_JNDINAMN" description="JNDI-namn fï¿½r datasourcen"/>							
 		</propertyfile>
 		<logging commentHeader="Notmotor">
-			<task>Lägg upp appender i ark_log4j.properties</task>
+			<task>Lï¿½gg upp appender i ark_log4j.properties</task>
 			<logger name="notmotor" level="WARN" classroot="se.csn.notmotor" additivity="false"/>
 			<logger name="sqllog" level="WARN" classroot="se.csn.notmotor.ipl.db.QueryListenerImpl" additivity="false"/>
 			<appender name="notmotor" class="org.apache.log4j.RollingFileAppender" layoutPattern="%d %c %-5p - %m%n">
