@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>se.csn</groupId>
 		<artifactId>superpom</artifactId>
 		<version>3.0-SNAPSHOT</version>
 	</parent>
+
 	<groupId>se.csn</groupId>
 	<artifactId>notmotor</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Notmotor Build - Parent</name>
+
+	<name>Notmotor Build</name>
+	<description>Notmotor Build - Parent: SuperPom</description>
+
 	<url>http://www.csn.se/</url>
 	<inceptionYear>2007</inceptionYear>
+
 	<organization>
-		<name>Centrala studiest�dsn�mnden</name>
+		<name>Centrala studiestödsnämnden</name>
 		<url>http://www.csn.se/</url>
 	</organization>
-	
+
 	<modules>
 		<module>../NotmotorJar</module>
 		<module>../NotmotorIplWebb</module>
@@ -39,20 +43,31 @@
 		<url>http://tdsrv2003/tdbin/start_a.htm</url>
 	</issueManagement>
 
+	<!-- This is where most of the Dependency Management should go now -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.12.0</version>
+				<scope>compile</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.12.0</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 	</build>
-	
+
 	<reporting>
 	</reporting>
-	
+
 	<profiles>
 	</profiles>
 </project>

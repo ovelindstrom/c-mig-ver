@@ -20,32 +20,9 @@
 		<url>http://tdsrv2003/tdbin/start_a.htm</url>
 	</issueManagement>
 	<inceptionYear>2008</inceptionYear>
-	<developers>
-		<developer>
-			<name>Jonas Öhrnell</name>
-			<id>csn7821</id>
-			<email>jonas.ohrnell@csn.se</email>
-			<organization>CSN</organization>
-			<organizationUrl>http://www.csn.se/</organizationUrl>
-			<roles>
-				<role>System Engineer</role>
-				<role>Developer</role>
-			</roles>
-		</developer>
-		<developer>
-			<name>Anders Berglund</name>
-			<id>csn7823</id>
-			<email>anders.berglund@csn.se</email>
-			<organization>CSN</organization>
-			<organizationUrl>http://www.csn.se/</organizationUrl>
-			<roles>
-				<role>Developer</role>
-			</roles>
-		</developer>
-	</developers>
 	<scm></scm>
 	<organization>
-		<name>Centrala studiestödsnämnden</name>
+		<name>Centrala studiestï¿½dsnï¿½mnden</name>
 		<url>http://www.csn.se/</url>
 	</organization>
 

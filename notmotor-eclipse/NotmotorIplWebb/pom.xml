@@ -20,7 +20,7 @@
  <url>notmotor-ipl/</url>
  <inceptionYear>2007</inceptionYear>
  <organization>
-  <name>Centrala studiestödsnämnden</name>
+  <name>Centrala studiestï¿½dsnï¿½mnden</name>
   <url>http://www.csn.se/</url>
  </organization>  
 
@@ -131,6 +131,7 @@
  </dependencies>
   
  <build>
+  <!--
   <sourceDirectory>${project.basedir}/JavaSource</sourceDirectory>
   <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
   <outputDirectory>${project.basedir}/target/classes</outputDirectory>
@@ -143,12 +144,7 @@
      <include>**/*.java</include>
     </includes>
    </resource>
-  </resources>
-  <!--
-    <filters>
-		<filter>${basedir}/project.properties</filter>
-    </filters>
-    -->
+  </resources>-->
   <plugins>
    <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -161,8 +157,10 @@
        <addClasspath>true</addClasspath>
       </manifest>
      </archive>
+     <!--
      <webXml>${project.basedir}/WebContent/WEB-INF/web.xml</webXml>
      <warSourceDirectory>${project.basedir}/WebContent</warSourceDirectory>
+    -->
      <addMavenDescriptor>false</addMavenDescriptor>
     </configuration>
    </plugin>
