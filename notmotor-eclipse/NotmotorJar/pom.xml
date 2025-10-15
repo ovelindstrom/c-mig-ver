@@ -9,13 +9,19 @@
     <version>1.0-SNAPSHOT</version>
     <relativePath>../NotmotorBuild</relativePath>
   </parent>
+
   <groupId>se.csn.notmotor</groupId>
   <artifactId>notmotorjar</artifactId>
   <version>2.1-SNAPSHOT</version>
+  
   <packaging>jar</packaging>
+  
   <name>NotmotorJar</name>
+  
   <url>notmotor-jar/</url>
+  <description>Notmotorn Jar - Model classes an other shared resources - Parent: NotmotorBuild</description>
   <inceptionYear>2007</inceptionYear>
+  
   <organization>
     <name>Centrala studiest�dsn�mnden</name>
     <url>http://www.csn.se/</url>
@@ -240,10 +246,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>11</source>
-          <target>11</target>
-        </configuration>
       </plugin>
 
     </plugins>
