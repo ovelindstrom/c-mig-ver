@@ -1,44 +1,44 @@
 Notifieringsmotorn
 OM PROJEKTET
-Läs Driftdok och systembeskrivning, finns på G:. Notifieringsmotorn levererades
-som en del av brevärendesystemet, men konstruerades av arkitektenheten.
+LÃ¤s Driftdok och systembeskrivning, finns pÃ¥ G:. Notifieringsmotorn levererades
+som en del av brevÃ¤rende-systemet, men konstruerades av arkitektenheten.
 
 BYGGE
-Notifieringsmotorn består av två ear-filer: notmotor-ipl och notmotor-iw. Dessa byggs med Maven.
+Notifieringsmotorn bestÃ¥r av tvÃ¥ ear-filer: notmotor-ipl och notmotor-iw. Dessa byggs med Maven.
 
 
 1. Installera Maven.
-Det finns en installer på http://csn24int/maven/NSIS/maven_2.0.8_csn_mod.exe, ladda hem och kör.
+Det finns en installer pÃ¥ http://csn24int/maven/NSIS/maven_2.0.8_csn_mod.exe, ladda hem och kÃ¶r.
 
-Maven är ett open source-verktyg som kan kompilera och paketera kod, skapa
-rapporter mm. Lite dokumentation finns på Wikin, här:
+Maven Ã¤r ett open source-verktyg som kan kompilera och paketera kod, skapa
+rapporter mm. Lite dokumentation finns pÃ¥ Wikin, hÃ¤r:
 http://wiki.csnnet.int/Wiki-sidor/mavenhandbok.aspx
-Maven-projektets hemsida är: http://maven.apache.org/
+Maven-projektets hemsida Ã¤r: http://maven.apache.org/
 
-När Maven är installerat bör du testa installationen genom att starta en
-kommandotolk (cmd) och köra kommandot
+NÃ¤r Maven Ã¤r installerat bÃ¶r du testa installationen genom att starta en
+kommandotolk (cmd) och kÃ¶ra kommandot
 
 mvn -v
 
-Du bör få svaret
+Du bÃ¶r fÃ¥ svaret
 Maven version: 2.0.8 eller senare
 Java version: 1.5.0_14
 
-Observera att JAVA_HOME måste vara satt till t.ex. C:\Utvpgm\jdk1.5.0_14
-Lägg även till %JAVA_HOME%\bin till path-variabeln.
+Observera att JAVA_HOME mÃ¥ste vara satt till t.ex. C:\Utvpgm\jdk1.5.0_14
+LÃ¤gg Ã¤ven till %JAVA_HOME%\bin till path-variabeln.
 
 
 2. Checka ut koden.
-Välj ut eller skapa en katalog som koden ska checkas ut till, exempelvis
+VÃ¤lj ut eller skapa en katalog som koden ska checkas ut till, exempelvis
 C:\java\build\notmotor. Denna katalog blir din byggkatalog.
 
-Kör scriptet "getFromHarvest.bat" (följer med maven-installationen).
-Detta batscript samlar in nödvändiga användaruppgifter och anropar
-programmet hco, Harvest CheckOut, som i sin tur plockar ut en läskopia
-av all kod i det angivna projektet till den sökväg du angav.
-Välj att checka ut projektet: Notmotor
+KÃ¶r scriptet "getFromHarvest.bat" (fÃ¶ljer med maven-installationen).
+Detta batscript samlar in nÃ¶dvÃ¤ndiga anvÃ¤ndaruppgifter och anropar
+programmet hco, Harvest CheckOut, som i sin tur plockar ut en lÃ¤skopia
+av all kod i det angivna projektet till den sÃ¶kvÃ¤g du angav.
+VÃ¤lj att checka ut projektet: Notmotor
 
-När scriptet är klart bör du ha följande kataloger i din byggkatalog:
+NÃ¤r scriptet Ã¤r klart bÃ¶r du ha fÃ¶ljande kataloger i din byggkatalog:
 NotmotorAdminEAR
 NotmotorAdminWebb
 NotmotorBuild
@@ -49,24 +49,24 @@ NotmotorIplEAR
 NotmotorJar
 
 
-3. Kör Maven.
-Gå in i den nyss uthämtade katalogen NotmotorBuild i din byggkatalog
-och kör kommandot
+3. KÃ¶r Maven.
+GÃ¥ in i den nyss uthÃ¤mtade katalogen NotmotorBuild i din byggkatalog
+och kÃ¶r kommandot
 
 mvn package
 
-Nu kommer Maven att kompilera all kod, köra enhetstester och bygga de
-två EAR-filerna. Första gången du kör scriptet måste Maven hämta hem
-ett antal dependencies så det kommer att ta en stund (några minuter).
-Därefter bör ett bygge ta runt en minut.
+Nu kommer Maven att kompilera all kod, kÃ¶ra enhetstester och bygga de
+tvÃ¥ EAR-filerna. FÃ¶rsta gÃ¥ngen du kÃ¶r scriptet mÃ¥ste Maven hÃ¤mta hem
+ett antal dependencies sÃ¥ det kommer att ta en stund (nÃ¥gra minuter).
+DÃ¤refter bÃ¶r ett bygge ta runt en minut.
 
-När bygget är klart har maven skapat två EAR-filer:
+NÃ¤r bygget Ã¤r klart har maven skapat tvÃ¥ EAR-filer:
 <byggkatalog>/NotmotorAdminEAR/target/notmotor-admin-ear-SNAPSHOT.ear
 <byggkatalog>/NotmotorIplEAR/target/notmotor-ipl-ear-SNAPSHOT.ear
 
 
 4. Distribuera ear-filer och installationsanvisning till filservern
-Kör scriptet dist.bat (följer med maven-installationen).
+KÃ¶r scriptet dist.bat (fÃ¶ljer med maven-installationen).
 
 Scriptet kommer att
 -skapa en ny katalog under \\csnutv\pubopen\Wint\dist\notmotor
