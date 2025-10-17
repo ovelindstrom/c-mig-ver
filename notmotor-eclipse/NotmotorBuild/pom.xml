@@ -33,9 +33,9 @@
 		<module>../NotmotorAdminEAR</module>
 		<module>../NotmotorAdminWebb</module>
 		<module>../NotmotorIplClient</module>
-		<!-- Och NotmotorIplClient? Den modulen �r frikopplad fr�n den �vriga notmotorn.
-  	     Grundprincipen �r att om det �r olika releasecykler (och det kommer det 
-  	     troligtvis att vara) s� ska projekten ligga i olika projekt. -->
+		<!-- Och NotmotorIplClient? Den modulen är frikopplad från den övriga notmotorn.
+  	     Grundprincipen är att om det är olika releasecykler (och det kommer det 
+  	     troligtvis att vara) så ska projekten ligga i olika projekt. -->
 	</modules>
 
 	<issueManagement>
@@ -124,7 +124,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.5</version>
+					<version>3.3.0</version>
 					<configuration>
 						<archive>
 							<manifest>
@@ -214,8 +214,71 @@
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.4.5</version>
 				</plugin>
+
+				<!-- Dependency plugin for copying artifacts -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>3.6.0</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
+
+		<!-- Configure artifact copying for the parent project -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<!-- Copy NotmotorIplEAR -->
+								<artifactItem>
+									<groupId>se.csn.notmotor</groupId>
+									<artifactId>notmotoriplear</artifactId>
+									<version>2.0-SNAPSHOT</version>
+									<type>ear</type>
+									<destFileName>notmotor-ipl-ear-${project.version}.ear</destFileName>
+								</artifactItem>
+								<!-- Copy NotmotorAdminEAR -->
+								<artifactItem>
+									<groupId>se.csn.notmotor</groupId>
+									<artifactId>notmotoradminear</artifactId>
+									<version>2.0-SNAPSHOT</version>
+									<type>ear</type>
+									<destFileName>notmotor-admin-ear-${project.version}.ear</destFileName>
+								</artifactItem>
+								<!-- Copy NotmotorIplWebb WAR -->
+								<artifactItem>
+									<groupId>se.csn.notmotor</groupId>
+									<artifactId>notmotoriplwebb</artifactId>
+									<version>2.0-SNAPSHOT</version>
+									<type>war</type>
+									<destFileName>notmotor-ipl-webb-${project.version}.war</destFileName>
+								</artifactItem>
+								<!-- Copy NotmotorAdminWebb WAR -->
+								<artifactItem>
+									<groupId>se.csn.notmotor</groupId>
+									<artifactId>notmotoradminwebb</artifactId>
+									<version>2.0-SNAPSHOT</version>
+									<type>war</type>
+									<destFileName>notmotor-admin-webb-${project.version}.war</destFileName>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${project.basedir}/bin</outputDirectory>
+							<overWriteReleases>true</overWriteReleases>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 	<reporting>
