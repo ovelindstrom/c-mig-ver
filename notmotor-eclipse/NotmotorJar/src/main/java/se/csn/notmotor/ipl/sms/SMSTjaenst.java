@@ -33,10 +33,9 @@ public class SMSTjaenst {
     }
 
     /**
-     * Skapar en ny instans av SMSTjaenst OCH TESTAR ANSLUTNINGEN
-     * TILL DEN ENDPOINT SOM ANGAVS. Om endpointen har en port
+     * Skapar en ny instans av SMSTjaenst med angiven endpoint.
      * 
-     * @throws IllegalArgumentException om endpointen inte kunde nås
+     * @throws IllegalArgumentException om det inte går att skapa en URL av endpoint
      */
     public SMSTjaenst(String endpoint) throws IllegalArgumentException {
         this();
@@ -50,18 +49,14 @@ public class SMSTjaenst {
                     port = 443;
                 }
             }
-            /*
-             * if(!CommunicationTester.isPortOpen(host, port, CONNECT_TIMEOUT)) {
-             * throw new IllegalStateException("Kunde inte nå endpoint: " + endpoint);
-             * }
-             */
+            
             this.endpoint = endpoint;
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("Felaktig endpoint-URL " + endpoint, e);
         }
     }
 
-    public SMSTjaenst(String endpoint, String userid, String password) {
+    public SMSTjaenst(String endpoint, String userid, String password) throws IllegalArgumentException {
         this(endpoint);
         this.userid = userid;
         this.password = password;
@@ -103,10 +98,12 @@ public class SMSTjaenst {
             log.warn("Har testat anslutning till " + endpoint + " men det misslyckades: ", io);
             return false;
         } finally {
-            try {
-                in.close();
-            } catch (IOException e) {
-                log.error("Kunde inte stänga BufferedReader...");
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    log.error("Kunde inte stänga BufferedReader...");
+                }
             }
         }
     }
@@ -116,8 +113,9 @@ public class SMSTjaenst {
      * 
      * @param in DTOSMSIn
      * @return DTOSMSUt
+     * @throws IllegalArgumentException om indata är null
      */
-    public DTOSMSUt execute(DTOSMSIn in) {
+    public DTOSMSUt execute(DTOSMSIn in) throws IllegalArgumentException {
         // Dumpa SSL-properties:
         String[] props = { "javax.net.ssl.trustStore", "javax.net.ssl.trustStorePassword",
                 "javax.net.ssl.keyStore", "javax.net.ssl.keyStorePassword" };

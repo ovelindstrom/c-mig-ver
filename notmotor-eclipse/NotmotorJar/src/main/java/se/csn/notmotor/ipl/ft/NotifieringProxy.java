@@ -20,16 +20,7 @@ public interface NotifieringProxy {
     
     /**
      * @param meddelande Det meddelande som ska skickas. 
-     * @param callbackEndpoint URL till den webservice som ska
-     *        anropas när meddelandet behandlas i en händelse som 
-     * 		  definierats i callbackHandelser. Kan vara null.
-     * 		  Den utpekade URL:en ska peka på en webservice som 
-     * 		  implementerar interfacet NotifieringCallback.
-     * @param callbackHandelser En mask/flagga som pekar ut för vilka
-     *        händelser som callbackanrop ska göras till den utpekade
-     * 		  webservicen.
-     * @throws IllegalArgumentException om någon av inparametrarna
-     *        i meddelandet är ogiltig.
+     * @throws IllegalArgumentException om någon av inparametrarna i meddelandet är ogiltig.
      * @throws RuntimeException om tjänsten har någon form av internt fel. 		   
      */
     NotifieringResultat skickaMeddelande(Meddelande meddelande);
@@ -54,11 +45,19 @@ public interface NotifieringProxy {
     /**
      * Den huvudsakliga söktjänsten för meddelanden. 
      * 
-     * 
+     * @param from Från-datum för sökningen
+     * @param tom Till-datum för sökningen
+     * @param avsandare Array med avsändare att söka efter
+     * @param mottagare Array med mottagare att söka efter
+     * @param textinnehall Textinnehåll att söka efter
+     * @param minstorlek Minsta storlek på meddelanden
+     * @param maxstorlek Största storlek på meddelanden
+     * @param handelseMask Händelsemask för filtrering
+     * @param felmask Felmask för filtrering
+     * @param bilagor Array med bilagor att söka efter
      * @return En lista av meddelanden som matchar sökningen. Om 
      * 		   inga meddelanden hittas returneras en tom lista. 
-     * @throws IllegalArgumentException om någon av inparametrarna
-     *        i meddelandet är ogiltig.
+     * @throws IllegalArgumentException om någon av inparametrarna i meddelandet är ogiltig.
      * @throws RuntimeException om tjänsten har någon form av internt fel. 		   
      */
     Meddelande[] sokMeddelanden(

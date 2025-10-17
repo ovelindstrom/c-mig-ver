@@ -5,10 +5,6 @@
  */
 package se.csn.notmotor.ipl;
 
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Date;
 
 import javax.sql.DataSource;
@@ -56,10 +52,7 @@ public class Notmotor extends NotmotorBase implements Job {
 								MAIL_TIMEOUT_PROP = "mail.timeout",
 								SMS_USER_PROP = "sms.user",
 								SMS_PASSWORD_PROP = "sms.password", 
-								SMS_ENDPOINT_PROP = "sms.endpoint",
-    							MMM_ENDPOINT_PROP = "tieto.endpoint",
-    							MMM_CERTIFIKAT_PEM = "tieto.certifikat",
-    							MMM_NYCKEL_PKCS8 = "tieto.nyckel";
+								SMS_ENDPOINT_PROP = "sms.endpoint";
     
     private static final String INSTANSNAMN = "NOTMOTOR #";
     private static final String TYP = "NOTMOTOR";
@@ -79,14 +72,14 @@ public class Notmotor extends NotmotorBase implements Job {
      * Detta konstruktoranrop kommer inte att terminera i vanlig ordning. 
      * Tråden kommer att gå in i en loop som bara kan brytas om databasen sätter 
      * status till STOPPING eller STOPPED eller om det booleska värdet i runControl 
-     * sätts till false
+     * sätts till false.
      * 
-     * anropadURL - Den URL som anropades för att starta anropande servlet. 
-     *     Denna parameter används för att koppla notmotorn till en Server.
-     * runControl - Handle som anropande kod kan använda för att stoppa denna
-     *     notmotor.
+     * Den URL som anropades för att starta anropande servlet används för att koppla 
+     * notmotorn till en Server. RunControl är en handle som anropande kod kan 
+     * använda för att stoppa denna notmotor.
+     * 
      * @param context JobExecutionContext
-     * @throws JobExecutionException e
+     * @throws JobExecutionException om det uppstår ett fel under körningen
      */
     public void execute(JobExecutionContext context) throws JobExecutionException {
     	String anropadURL = context.getJobDetail().getJobDataMap().getString("url");
@@ -99,8 +92,9 @@ public class Notmotor extends NotmotorBase implements Job {
      * Sätter upp ny notmotorinstans.
      * @param anropadURL anropande process
      * @param runControl RunControl
+     * @throws IllegalStateException om nödvändiga parametrar saknas
      */
-    public void init(String anropadURL, RunControl runControl) {
+    public void init(String anropadURL, RunControl runControl) throws IllegalStateException {
         engineCount++;
         log.info("Sätter upp ny instans, nr " + engineCount);
         
@@ -158,40 +152,6 @@ public class Notmotor extends NotmotorBase implements Job {
         SMSTjaenst smstjaenst = new SMSTjaenst(smsEndpoint, smsuser, smspassword);
         MeddelandeSender smsSender = new SMSMeddelandeSenderImpl(smstjaenst);
         log.debug("Skapat sms-sender");
-        
-        //CombinedMeddelandeSenderImpl sender = new CombinedMeddelandeSenderImpl();
-        //sender.addSender(epostSender);
-        //sender.addSender(smsSender);
-        
-        //Lägg till kopplingar som behövs för anrop mot MINAMEDDELANDEN +++
-        
-        //String mmmEndpoint = Properties.getProperty(PROPERTYFIL, MMM_ENDPOINT_PROP);
-        /* Disable code for MMM sender as these type of messages is no longer handled by Notmotor
-         * Petrus Bergman 2022-08-17
-        URI certifikatPEM;
-		try {
-			certifikatPEM = new URI(Properties.getProperty(PROPERTYFIL, MMM_CERTIFIKAT_PEM));
-		} catch (URISyntaxException e1) {
-			throw new IllegalStateException("Kunde inte läsa property '" + MMM_CERTIFIKAT_PEM 
-                    + "', var inte en giltig adress");
-		}
-        URI nyckelPKCS8;
-        
-		try {
-			nyckelPKCS8 = new URI(Properties.getProperty(PROPERTYFIL, MMM_NYCKEL_PKCS8));
-		} catch (URISyntaxException e1) {
-			throw new IllegalStateException("Kunde inte läsa property '" + MMM_NYCKEL_PKCS8 
-                    + "', var inte en giltig adress");
-		}
-        
-        String mmmEndpoint = Properties.getProperty(PROPERTYFIL, MMM_ENDPOINT_PROP);
-        log.debug("mmmEndpoint " + mmmEndpoint);
-        
-        String dataServiceEndpoint = Properties.getProperty(PROPERTYFIL, "dataservice.hamtapersonnummer");
-        
-        MeddelandeSender mmmSender = new MMMeddelandeSenderImpl(mmmEndpoint, dataServiceEndpoint, certifikatPEM, nyckelPKCS8);
-        log.debug("Skapat mmm-sender");
-        */
 
         // Stäng öppna instanser om första anropet:
         QueryProcessor qp = getQP(ds, INSTANSNAMN + engineCount);

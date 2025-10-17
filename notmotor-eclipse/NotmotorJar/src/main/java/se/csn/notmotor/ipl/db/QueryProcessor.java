@@ -12,6 +12,7 @@ import java.util.List;
 
 public interface QueryProcessor {
     /**
+     * @param SQL SQL-kommando som ska köras
      * @return Antalet rader i databasen som påverkades, -1 om 
      * anropet misslyckades utan exception
      * @throws RuntimeException om något gick fel
@@ -60,6 +61,7 @@ public interface QueryProcessor {
     /**
      * Sätter den connection som ska användas. QueryProcessorn kommer att använda 
      * denna connection tills en annan connection satts.  
+     * @param conn Connection-objektet som ska användas
      * @param handleConnection true om det nya Connection-objektet ska hanteras som 
      *        vanligt, false annars
      */
