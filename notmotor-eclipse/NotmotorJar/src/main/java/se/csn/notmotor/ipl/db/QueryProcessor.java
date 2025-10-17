@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-13
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.db;
 
 import java.sql.Connection;

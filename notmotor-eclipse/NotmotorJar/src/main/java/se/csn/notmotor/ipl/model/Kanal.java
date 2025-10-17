@@ -1,6 +1,3 @@
-/*
- * @since 2010-09-01
- */
 package se.csn.notmotor.ipl.model;
 
 import java.text.SimpleDateFormat;

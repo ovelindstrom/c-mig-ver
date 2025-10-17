@@ -7,7 +7,6 @@ import se.csn.ark.common.util.logging.Log;
 
 /**
  * @since 2007-jun-01
- * @author Jonas \u00e5hrnell (csn7821)
  * 
  */
 public class ContainerListener implements ServletContextListener {

@@ -1,10 +1,3 @@
-/**
- * SkickaSOAPStub.java
- *
- * This file was auto-generated from WSDL
- * by the Apache Axis 1.3 Oct 05, 2005 (05:23:37 EDT) WSDL2Java emitter.
- */
-
 package se.csn.webservice.bas.notmotor.skicka;
 
 import java.net.URL;
@@ -280,7 +273,7 @@ public class SkickaSOAPStub extends Stub implements Skicka_PortType {
         setRequestHeaders(_call);
         setAttachments(_call);
         try {
-            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Long(parameters)});
+            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{Long.valueOf(parameters)});
 
             if (_resp instanceof RemoteException) {
                 throw (RemoteException) _resp;
@@ -315,7 +308,7 @@ public class SkickaSOAPStub extends Stub implements Skicka_PortType {
         setRequestHeaders(_call);
         setAttachments(_call);
         try {
-            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Long(parameters)});
+            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{Long.valueOf(parameters)});
 
             if (_resp instanceof RemoteException) {
                 throw (RemoteException) _resp;

@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-02
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.model;
 
 import org.apache.commons.lang.builder.EqualsBuilder;

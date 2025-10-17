@@ -1,6 +1,3 @@
-/*
- * @since 2007-sep-24
- */
 package se.csn.notmotor.ipl;
 
 import junit.framework.TestCase;
@@ -29,7 +26,7 @@ public class TestMeddelandeMottagare extends TestCase {
         // Validering rätt
         m = new Meddelande("Rubrik", "Text", "mottagare@csn.se", "avs@csn.se", "Avsandare");
         long id = 12345;
-        m.setId(new Long(id));
+        m.setId(Long.valueOf(id));
         // Rigga mocken: 
         dao.createMeddelande(m);
         daoControl.setReturnValue(id);
@@ -75,9 +72,9 @@ public class TestMeddelandeMottagare extends TestCase {
         // Validering fel
         Meddelande m = new Meddelande("Rubrik", "Text", "mottagare@csn.se", "avs@csn.se", "Avsandare");
         // Sätter status till nåt annat än MOTTAGET:
-        m.getMottagare()[0].setStatus(new Integer(MeddelandeHandelse.ALLA_HANDELSER));
+        m.getMottagare()[0].setStatus(Integer.valueOf(MeddelandeHandelse.ALLA_HANDELSER));
         long id = 12345;
-        m.setId(new Long(id));
+        m.setId(Long.valueOf(id));
         // Rigga mocken: 
         dao.createMeddelande(m);
         daoControl.setReturnValue(id);
@@ -87,7 +84,7 @@ public class TestMeddelandeMottagare extends TestCase {
         NotifieringResultat res = mm.skickaMeddelande(m, dao);
         daoControl.verify();
 
-        assertEquals(m.getMottagare()[0].getStatus(), new Integer(MeddelandeHandelse.MOTTAGET));
+        assertEquals(m.getMottagare()[0].getStatus(), Integer.valueOf(MeddelandeHandelse.MOTTAGET));
     }
 
 }

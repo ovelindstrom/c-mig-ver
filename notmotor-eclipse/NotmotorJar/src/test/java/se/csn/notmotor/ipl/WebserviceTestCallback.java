@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-08
- */
 package se.csn.notmotor.ipl;
 
 import java.io.IOException;

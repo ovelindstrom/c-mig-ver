@@ -1,8 +1,3 @@
-/**
- * @since 2007-maj-28
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.db;
 
 import se.csn.ark.common.util.logging.Log;

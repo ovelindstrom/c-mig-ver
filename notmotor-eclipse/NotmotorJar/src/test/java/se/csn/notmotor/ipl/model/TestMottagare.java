@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-04
- */
 package se.csn.notmotor.ipl.model;
 
 import junit.framework.TestCase;
@@ -10,16 +7,16 @@ public class TestMottagare extends TestCase {
         Mottagare m = new Mottagare();
         m.setAdress("adr");
         assertEquals(m.getAdress(), "adr");
-        m.setCsnnummer(new Integer(1));
-        assertEquals(m.getCsnnummer(), new Integer(1));
-        m.setId(new Long(2));
-        assertEquals(m.getId(), new Long(2));
+        m.setCsnnummer(Integer.valueOf(1));
+        assertEquals(m.getCsnnummer(), Integer.valueOf(1));
+        m.setId(Long.valueOf(2));
+        assertEquals(m.getId(), Long.valueOf(2));
         m.setNamn("namn");
         assertEquals(m.getNamn(), "namn");
         m.setTyp("typ");
         assertEquals(m.getTyp(), "typ");
-        m.setStatus(new Integer(3));
-        assertEquals(m.getStatus(), new Integer(3));
+        m.setStatus(Integer.valueOf(3));
+        assertEquals(m.getStatus(), Integer.valueOf(3));
     }
 
     public void testConstructors() {
@@ -33,7 +30,7 @@ public class TestMottagare extends TestCase {
         m = new Mottagare("adr3", "namn3", 123);
         assertEquals(m.getAdress(), "adr3");
         assertEquals(m.getNamn(), "namn3");
-        assertEquals(m.getCsnnummer(), new Integer(123));
+        assertEquals(m.getCsnnummer(), Integer.valueOf(123));
 
     }
 

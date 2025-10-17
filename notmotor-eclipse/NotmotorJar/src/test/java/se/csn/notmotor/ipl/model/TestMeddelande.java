@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-04
- */
 package se.csn.notmotor.ipl.model;
 
 import java.util.Calendar;
@@ -12,14 +9,14 @@ public class TestMeddelande extends TestCase {
 
     public void testGettersSetters() {
         Meddelande m = new Meddelande();
-        m.setCallbackMask(new Integer(5));
-        assertEquals(m.getCallbackMask(), new Integer(5));
+        m.setCallbackMask(Integer.valueOf(5));
+        assertEquals(m.getCallbackMask(), Integer.valueOf(5));
         m.setCallbackURL("url");
         assertEquals(m.getCallbackURL(), "url");
-        m.setCsnnummer(new Integer(12345678));
-        assertEquals(m.getCsnnummer(), new Integer(12345678));
-        m.setId(new Long(1234567890));
-        assertEquals(m.getId(), new Long(1234567890));
+        m.setCsnnummer(Integer.valueOf(12345678));
+        assertEquals(m.getCsnnummer(), Integer.valueOf(12345678));
+        m.setId(Long.valueOf(1234567890));
+        assertEquals(m.getId(), Long.valueOf(1234567890));
         m.setMeddelandeEncoding("enc");
         assertEquals(m.getMeddelandeEncoding(), "enc");
         m.setMeddelandetext("text");
@@ -123,7 +120,7 @@ public class TestMeddelande extends TestCase {
         Avsandare avs = new Avsandare("JUnit-test", "jonas.ohrnell@csn.se", "Notmotor", "Apptest");
         meddelande.setAvsandare(avs);
 
-        meddelande.setCallbackMask(new Integer(MeddelandeHandelse.ALLA_HANDELSER));
+        meddelande.setCallbackMask(Integer.valueOf(MeddelandeHandelse.ALLA_HANDELSER));
         meddelande.setCallbackURL("http://localhost:16080/NotmotorIPL/CallbackTestServlet");
         String s = meddelande.toString();
         System.out.println("Meddelande: " + s);

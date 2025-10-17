@@ -5,6 +5,7 @@ import java.net.URL;
 import java.rmi.Remote;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import javax.xml.namespace.QName;
 import javax.xml.rpc.ServiceException;
@@ -120,7 +121,7 @@ public class HanteraEDH_ServiceLocator extends Service implements HanteraEDH_Ser
         return new QName("http://webservice.csn.se/bas/hanteraEDH/", "hanteraEDH");
     }
 
-    private HashSet ports;
+    private Set ports;
 
     public Iterator getPorts() {
         if (ports == null) {

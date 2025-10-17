@@ -1,8 +1,3 @@
-/**
- * @since 2007-jun-11
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.admin.faces;
 
 import java.text.MessageFormat;

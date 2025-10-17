@@ -1,8 +1,3 @@
-/**
- * @since 2007-jun-18
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.integration;
 
 import java.util.ArrayList;

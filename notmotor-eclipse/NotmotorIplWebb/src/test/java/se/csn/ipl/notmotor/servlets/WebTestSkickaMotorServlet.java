@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-08
- * @author Jonas \u00e5hrnell (csn7821)
- * 
- */
 package se.csn.ipl.notmotor.servlets;
 
 import java.io.IOException;

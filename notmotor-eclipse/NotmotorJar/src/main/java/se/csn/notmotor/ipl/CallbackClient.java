@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-12
- */
 package se.csn.notmotor.ipl;
 
 import se.csn.ark.common.util.logging.Log;

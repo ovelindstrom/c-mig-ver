@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-04
- */
 package se.csn.notmotor.ipl.model;
 
 import java.util.Date;
@@ -10,16 +7,16 @@ import junit.framework.TestCase;
 public class TestMeddelandeHandelse extends TestCase {
     public void testGetterSetters() {
         MeddelandeHandelse h = new MeddelandeHandelse();
-        h.setFelkod(new Integer(1));
-        assertEquals(h.getFelkod(), new Integer(1));
+        h.setFelkod(Integer.valueOf(1));
+        assertEquals(h.getFelkod(), Integer.valueOf(1));
         h.setFeltext("fel");
         assertEquals(h.getFeltext(), "fel");
-        h.setHandelsetyp(new Integer(2));
-        assertEquals(h.getHandelsetyp(), new Integer(2));
-        h.setId(new Long(1234567890));
-        assertEquals(h.getId(), new Long(1234567890));
-        h.setInstans(new Integer(3));
-        assertEquals(h.getInstans(), new Integer(3));
+        h.setHandelsetyp(Integer.valueOf(2));
+        assertEquals(h.getHandelsetyp(), Integer.valueOf(2));
+        h.setId(Long.valueOf(1234567890));
+        assertEquals(h.getId(), Long.valueOf(1234567890));
+        h.setInstans(Integer.valueOf(3));
+        assertEquals(h.getInstans(), Integer.valueOf(3));
         Date d = new Date();
         h.setTidpunkt(d);
         assertEquals(h.getTidpunkt(), d);
@@ -27,11 +24,11 @@ public class TestMeddelandeHandelse extends TestCase {
 
     public void testConstructors() {
         MeddelandeHandelse h = new MeddelandeHandelse(1);
-        assertEquals(h.getHandelsetyp(), new Integer(1));
+        assertEquals(h.getHandelsetyp(), Integer.valueOf(1));
 
         h = new MeddelandeHandelse(2, 3, "fel");
-        assertEquals(h.getHandelsetyp(), new Integer(2));
-        assertEquals(h.getFelkod(), new Integer(3));
+        assertEquals(h.getHandelsetyp(), Integer.valueOf(2));
+        assertEquals(h.getFelkod(), Integer.valueOf(3));
         assertEquals(h.getFeltext(), "fel");
     }
 

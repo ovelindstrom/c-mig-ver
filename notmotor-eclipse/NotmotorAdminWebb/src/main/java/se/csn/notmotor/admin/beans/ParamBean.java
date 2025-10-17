@@ -1,8 +1,3 @@
-/**
- * @since 2007-jun-07
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.admin.beans;
 
 import java.util.ArrayList;

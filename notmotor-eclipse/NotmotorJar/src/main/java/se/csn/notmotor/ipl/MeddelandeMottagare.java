@@ -1,6 +1,3 @@
-/*
- * @since 2007-sep-24
- */
 package se.csn.notmotor.ipl;
 
 import java.util.ArrayList;

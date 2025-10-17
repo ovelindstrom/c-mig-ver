@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-21
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.db;
 
 import java.sql.ResultSet;
@@ -28,15 +23,15 @@ public class TestDAOImplBase extends TestCase {
         HandlerBaseTestSub hb = new HandlerBaseTestSub();
         assertEquals(DAOImplBase.quoteValue(null), "NULL");
         assertEquals(DAOImplBase.quoteValue("String"), "'String'");
-        assertEquals(DAOImplBase.quoteValue(new Integer(123)), "123");
-        assertEquals(DAOImplBase.quoteValue(new Long(123)), "123");
+        assertEquals(DAOImplBase.quoteValue(Integer.valueOf(123)), "123");
+        assertEquals(DAOImplBase.quoteValue(Long.valueOf(123)), "123");
     }
 
     public void testMakeUpdateQuery() {
         HandlerBaseTestSub hb = new HandlerBaseTestSub();
-        String uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1", "COL2", new Integer(2)}, null);
+        String uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1", "COL2", Integer.valueOf(2)}, null);
         assertEquals(uq, "UPDATE TABNAMN SET COL1='VAL1',COL2=2");
-        uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", null, "COL2", new Integer(2)}, null);
+        uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", null, "COL2", Integer.valueOf(2)}, null);
         assertEquals(uq, "UPDATE TABNAMN SET COL1=null,COL2=2");
 
         uq = hb.makeUpdateQuery("TABNAMN", new Object[]{"COL1", "VAL1"}, new Object[]{"COL2", null});

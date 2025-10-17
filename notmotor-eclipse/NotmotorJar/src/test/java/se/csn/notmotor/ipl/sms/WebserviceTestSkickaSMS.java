@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-01
- */
 package se.csn.notmotor.ipl.sms;
 
 import java.io.BufferedReader;

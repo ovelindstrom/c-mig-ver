@@ -1,8 +1,3 @@
-/**
- * @since 2007-apr-12
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.db;
 
 import java.text.ParseException;
@@ -52,7 +47,7 @@ public class DBTestDAOHandelseImpl extends TestCase {
         if (s == null) {
             return null;
         }
-        return new Integer(s);
+        return Integer.valueOf(s);
     }
 
     private Date toDate(String s) {

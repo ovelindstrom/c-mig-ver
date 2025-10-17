@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-02
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.model;
 
 import java.util.Date;
@@ -108,15 +103,15 @@ public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
 
 
     public MeddelandeHandelse(int handelsetyp) {
-        this.handelsetyp = new Integer(handelsetyp);
+        this.handelsetyp = Integer.valueOf(handelsetyp);
         tidpunkt = new Date();
-        felkod = new Integer(OK);
+        felkod = Integer.valueOf(OK);
     }
 
     public MeddelandeHandelse(int handelsetyp, int felkod, String felmeddelande) {
-        this.handelsetyp = new Integer(handelsetyp);
+        this.handelsetyp = Integer.valueOf(handelsetyp);
         tidpunkt = new Date();
-        this.felkod = new Integer(felkod);
+        this.felkod = Integer.valueOf(felkod);
         this.feltext = felmeddelande;
     }
 

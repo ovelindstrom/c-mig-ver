@@ -1,4 +1,3 @@
-
 package se.csn.notmotor.ipl;
 public interface MeddelandeServicesBase {
 

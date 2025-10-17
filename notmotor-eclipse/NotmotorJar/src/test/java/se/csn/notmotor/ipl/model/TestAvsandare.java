@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-04
- */
 package se.csn.notmotor.ipl.model;
 
 import junit.framework.TestCase;
@@ -12,8 +9,8 @@ public class TestAvsandare extends TestCase {
         assertEquals(avs.getApplikation(), "app");
         avs.setEpostadress("epost");
         assertEquals(avs.getEpostadress(), "epost");
-        avs.setId(new Long(1));
-        assertEquals(avs.getId(), new Long(1));
+        avs.setId(Long.valueOf(1));
+        assertEquals(avs.getId(), Long.valueOf(1));
         avs.setKategori("kat");
         assertEquals(avs.getKategori(), "kat");
         avs.setNamn("namn");

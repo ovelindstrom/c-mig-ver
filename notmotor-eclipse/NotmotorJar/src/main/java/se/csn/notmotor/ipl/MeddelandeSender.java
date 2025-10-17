@@ -1,4 +1,3 @@
-
 package se.csn.notmotor.ipl;
 
 import se.csn.notmotor.ipl.model.Meddelande;

@@ -1,8 +1,3 @@
-/**
- * @since 2007-jun-18
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.admin.beans;
 
 import java.sql.ResultSet;
@@ -128,8 +123,8 @@ public class MeddelandeBean {
         dao = ActionHelper.getResourceFactory().getDAOMeddelande();
         daoHandelse = ActionHelper.getResourceFactory().getDAOHandelse();
         FacesContext context = FacesContext.getCurrentInstance();
-        Map params = context.getExternalContext().getRequestParameterMap();
-        String idString = (String) params.get("id");
+        Map<String, String> params = context.getExternalContext().getRequestParameterMap();
+        String idString = params.get("id");
         log.debug("ID: " + idString);
         if (idString != null) {
             try {

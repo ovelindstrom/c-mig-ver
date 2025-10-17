@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-20
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.db;
 
 import java.sql.ResultSet;
@@ -30,14 +25,14 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
             + "VALUES(" + id + ", " + quoteValue(mott.getTyp()) + ", " + meddelandeId + ", "
             + quoteValue(mott.getNamn()) + ", " + quoteValue(mott.getAdress()) + ", " + quoteValue(mott.getCsnnummer()) + ", "
             + quoteValue(mott.getStatus()) + ")");
-        mott.setId(new Long(id));
+        mott.setId(Long.valueOf(id));
         return id;
     }
 
     @Override
     public Object newRow(ResultSet rs) throws SQLException {
         Mottagare mott = new Mottagare();
-        mott.setId(new Long(rs.getLong("ID")));
+        mott.setId(Long.valueOf(rs.getLong("ID")));
         mott.setAdress(rs.getString("ADRESS"));
         mott.setCsnnummer((Integer) rs.getObject("CSNNUMMER"));
         mott.setNamn(rs.getString("NAMN"));

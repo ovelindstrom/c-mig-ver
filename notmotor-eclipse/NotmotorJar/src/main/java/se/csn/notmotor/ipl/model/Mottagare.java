@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-23
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.model;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -46,7 +41,7 @@ public class Mottagare extends CsnDataTransferObjectImpl {
     public Mottagare(String adress, String namn, int csnnummer) {
         this.adress = adress;
         this.namn = namn;
-        this.csnnummer = new Integer(csnnummer);
+        this.csnnummer = Integer.valueOf(csnnummer);
     }
 
 

@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-04
- */
 package se.csn.notmotor.ipl.model;
 
 import junit.framework.TestCase;
@@ -11,19 +8,19 @@ public class TestNotifieringResultat extends TestCase {
         NotifieringResultat r = new NotifieringResultat();
         r.setInfo("info");
         assertEquals(r.getInfo(), "info");
-        r.setMeddelandeId(new Long(1234567890));
-        assertEquals(r.getMeddelandeId(), new Long(1234567890));
-        r.setResultat(new Integer(123));
-        assertEquals(r.getResultat(), new Integer(123));
+        r.setMeddelandeId(Long.valueOf(1234567890));
+        assertEquals(r.getMeddelandeId(), Long.valueOf(1234567890));
+        r.setResultat(Integer.valueOf(123));
+        assertEquals(r.getResultat(), Integer.valueOf(123));
     }
 
     public void testConstructors() {
         NotifieringResultat r = new NotifieringResultat(1234567890);
-        assertEquals(r.getMeddelandeId(), new Long(1234567890));
+        assertEquals(r.getMeddelandeId(), Long.valueOf(1234567890));
 
         r = new NotifieringResultat(1234567891, 1, "res");
-        assertEquals(r.getMeddelandeId(), new Long(1234567891));
-        assertEquals(r.getResultat(), new Integer(1));
+        assertEquals(r.getMeddelandeId(), Long.valueOf(1234567891));
+        assertEquals(r.getResultat(), Integer.valueOf(1));
         assertEquals(r.getInfo(), "res");
 
         try {

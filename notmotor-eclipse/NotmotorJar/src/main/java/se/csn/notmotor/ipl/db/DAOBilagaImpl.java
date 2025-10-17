@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-20
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.db;
 
 import java.io.ByteArrayInputStream;
@@ -58,7 +53,7 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
             if (result != 1) {
                 throw new SQLException("INSERT returnerade " + result);
             }
-            b.setId(new Long(id));
+            b.setId(Long.valueOf(id));
             return id;
         } catch (SQLException e) {
             log.error("Kunde inte skapa meddelande i databasen: ", e);
@@ -77,7 +72,7 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
     @Override
     public Object newRow(ResultSet rs) throws SQLException {
         Bilaga b = new Bilaga();
-        b.setId(new Long(rs.getLong("ID")));
+        b.setId(Long.valueOf(rs.getLong("ID")));
         b.setData(qp.getBlob(rs, "DATA"));
         b.setEncoding(rs.getString("ENCODING"));
         b.setFilnamn(rs.getString("FILNAMN"));

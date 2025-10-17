@@ -1,7 +1,3 @@
-/*
- * Created on 2005-feb-10
- *
- */
 package se.csn.notmotor.ipl.sms;
 
 public class DTOSMSIn {

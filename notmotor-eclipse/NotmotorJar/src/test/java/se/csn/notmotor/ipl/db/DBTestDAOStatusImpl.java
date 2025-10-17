@@ -1,8 +1,3 @@
-/**
- * @since 2007-apr-23
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.db;
 
 import java.util.Calendar;
@@ -61,11 +56,11 @@ public class DBTestDAOStatusImpl extends TestCase {
         s.setServer(serverid - 1);
         int id3 = dao.skapa(s);
 
-        List list = dao.getStatus(null, new Integer(serverid));
+        List list = dao.getStatus(null, Integer.valueOf(serverid));
         assertEquals(list.size(), 2);
-        list = dao.getStatus(null, new Integer(serverid - 1));
+        list = dao.getStatus(null, Integer.valueOf(serverid - 1));
         assertEquals(list.size(), 1);
-        list = dao.getStatus(new Integer(status), null);
+        list = dao.getStatus(Integer.valueOf(status), null);
         assertEquals(list.size(), 3);
     }
 

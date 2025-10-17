@@ -1,8 +1,3 @@
-/**
- * @since 2007-apr-02
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.webservice;
 
 import java.util.Date;

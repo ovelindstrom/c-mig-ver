@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-03
- */
 package se.csn.notmotor.ipl.sms;
 
 import junit.framework.TestCase;

@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-23
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.db;
 
 import java.sql.Connection;
@@ -38,19 +33,19 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
         qp.executeThrowException("INSERT INTO HANDELSE (ID,MEDDELANDEID,TYP,KOD,TEXT,TIDPUNKT,INSTANS) "
             + "VALUES (" + id + ", " + meddelandeid + ", " + typ + ", " + kod
             + ", " + feltext + ", " + datum + ", " + instans + ")");
-        h.setId(new Long(id));
+        h.setId(Long.valueOf(id));
         return id;
     }
 
     @Override
     public Object newRow(ResultSet rs) throws SQLException {
         MeddelandeHandelse h = new MeddelandeHandelse();
-        h.setId(new Long(rs.getLong("ID")));
-        h.setHandelsetyp(new Integer(rs.getInt("TYP")));
-        h.setFelkod(new Integer(rs.getInt("KOD")));
+        h.setId(Long.valueOf(rs.getLong("ID")));
+        h.setHandelsetyp(Integer.valueOf(rs.getInt("TYP")));
+        h.setFelkod(Integer.valueOf(rs.getInt("KOD")));
         h.setFeltext(rs.getString("TEXT"));
         h.setTidpunkt(rs.getTimestamp("TIDPUNKT"));
-        h.setInstans(new Integer(rs.getInt("INSTANS")));
+        h.setInstans(Integer.valueOf(rs.getInt("INSTANS")));
         return h;
     }
 

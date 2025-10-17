@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-02
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.model;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -29,20 +24,20 @@ public class NotifieringResultat  extends CsnDataTransferObjectImpl {
     private String info;
 
     public NotifieringResultat() {
-        resultat = new Integer(0);
+        resultat = Integer.valueOf(0);
     }
 
     public NotifieringResultat(long meddelandeid) {
-        resultat = new Integer(0);
-        this.meddelandeId = new Long(meddelandeid);
+        resultat = Integer.valueOf(0);
+        this.meddelandeId = Long.valueOf(meddelandeid);
     }
 
     public NotifieringResultat(long meddelandeid, int resultat, String text) {
         if (!((resultat == OK) || (resultat == NOT) || (resultat == VARNING) || (resultat == FEL))) {
             throw new IllegalArgumentException("Okänd resultatkod: " + resultat);
         }
-        this.resultat = new Integer(resultat);
-        this.meddelandeId = new Long(meddelandeid);
+        this.resultat = Integer.valueOf(resultat);
+        this.meddelandeId = Long.valueOf(meddelandeid);
         this.info = text;
     }
 

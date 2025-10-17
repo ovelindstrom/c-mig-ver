@@ -1,4 +1,3 @@
-
 package se.csn.notmotor.admin.listeners;
 
 import javax.faces.FactoryFinder;

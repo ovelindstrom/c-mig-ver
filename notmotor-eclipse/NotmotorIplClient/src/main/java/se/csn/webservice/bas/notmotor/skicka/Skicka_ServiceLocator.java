@@ -1,10 +1,3 @@
-/*
- * Skicka_ServiceLocator.java
- *
- * This file was auto-generated from WSDL
- * by the Apache Axis 1.3 Oct 05, 2005 (05:23:37 EDT) WSDL2Java emitter.
- */
-
 package se.csn.webservice.bas.notmotor.skicka;
 
 import java.net.MalformedURLException;
@@ -12,6 +5,7 @@ import java.net.URL;
 import java.rmi.Remote;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 import javax.xml.namespace.QName;
 import javax.xml.rpc.ServiceException;
@@ -121,7 +115,7 @@ public class Skicka_ServiceLocator extends Service implements Skicka_Service {
         return new QName("http://webservice.csn.se/bas/notmotor/skicka", "Skicka");
     }
 
-    private HashSet ports;
+    private Set ports;
 
     public Iterator getPorts() {
         if (ports == null) {

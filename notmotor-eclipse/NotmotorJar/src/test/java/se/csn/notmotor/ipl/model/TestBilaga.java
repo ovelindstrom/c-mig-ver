@@ -1,6 +1,3 @@
-/*
- * @since 2007-okt-04
- */
 package se.csn.notmotor.ipl.model;
 
 import junit.framework.TestCase;
@@ -15,8 +12,8 @@ public class TestBilaga extends TestCase {
         assertEquals(b.getEncoding(), "enc");
         b.setFilnamn("fil");
         assertEquals(b.getFilnamn(), "fil");
-        b.setId(new Long(12345));
-        assertEquals(b.getId(), new Long(12345));
+        b.setId(Long.valueOf(12345));
+        assertEquals(b.getId(), Long.valueOf(12345));
         b.setMimetyp("mime");
         assertEquals(b.getMimetyp(), "mime");
     }

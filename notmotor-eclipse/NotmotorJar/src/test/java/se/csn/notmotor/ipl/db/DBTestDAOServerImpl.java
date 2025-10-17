@@ -1,8 +1,3 @@
-/**
- * @since 2007-apr-24
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl.db;
 
 import se.csn.common.db.TestUtils;
