@@ -7,11 +7,20 @@
 
 package se.csn.webservice.bas.notmotor.skicka;
 
+import java.io.Serializable;
+
 import javax.xml.namespace.QName;
+
+import org.apache.axis.description.ElementDesc;
+import org.apache.axis.description.TypeDesc;
+import org.apache.axis.encoding.Deserializer;
+import org.apache.axis.encoding.Serializer;
+import org.apache.axis.encoding.ser.BeanDeserializer;
+import org.apache.axis.encoding.ser.BeanSerializer;
 
 //import com.sun.org.apache.xml.internal.utils.QName;
 
-public class DTOAvsandare  implements java.io.Serializable {
+public class DTOAvsandare  implements Serializable {
     private java.lang.Long id;
 
     private java.lang.String applikation;
@@ -162,43 +171,49 @@ public class DTOAvsandare  implements java.io.Serializable {
         this.replyTo = replyTo;
     }
 
-    private java.lang.Object __equalsCalc = null;
+    private java.lang.Object __equalsCalc;
 
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof DTOAvsandare)) return false;
+        if (!(obj instanceof DTOAvsandare)) {
+            return false;
+        }
         DTOAvsandare other = (DTOAvsandare) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
         if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+            return __equalsCalc == obj;
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-            ((this.id == null && other.getId() == null) ||
-                (this.id != null &&
-                    this.id.equals(other.getId()))) &&
-            ((this.applikation == null && other.getApplikation() == null) ||
-                (this.applikation != null &&
-                    this.applikation.equals(other.getApplikation()))) &&
-            ((this.kategori == null && other.getKategori() == null) ||
-                (this.kategori != null &&
-                    this.kategori.equals(other.getKategori()))) &&
-            ((this.namn == null && other.getNamn() == null) ||
-                (this.namn != null &&
-                    this.namn.equals(other.getNamn()))) &&
-            ((this.epostadress == null && other.getEpostadress() == null) ||
-                (this.epostadress != null &&
-                    this.epostadress.equals(other.getEpostadress()))) &&
-            ((this.replyTo == null && other.getReplyTo() == null) ||
-                (this.replyTo != null &&
-                    this.replyTo.equals(other.getReplyTo())));
+        _equals = true
+            && ((this.id == null && other.getId() == null)
+                || (this.id != null
+                    && this.id.equals(other.getId())))
+            && ((this.applikation == null && other.getApplikation() == null)
+                || (this.applikation != null
+                    && this.applikation.equals(other.getApplikation())))
+            && ((this.kategori == null && other.getKategori() == null)
+                || (this.kategori != null
+                    && this.kategori.equals(other.getKategori())))
+            && ((this.namn == null && other.getNamn() == null)
+                || (this.namn != null
+                    && this.namn.equals(other.getNamn())))
+            && ((this.epostadress == null && other.getEpostadress() == null)
+                || (this.epostadress != null
+                    && this.epostadress.equals(other.getEpostadress())))
+            && ((this.replyTo == null && other.getReplyTo() == null)
+                || (this.replyTo != null
+                    && this.replyTo.equals(other.getReplyTo())));
         __equalsCalc = null;
         return _equals;
     }
 
-    private boolean __hashCodeCalc = false;
+    private boolean __hashCodeCalc;
 
     @Override
     public synchronized int hashCode() {
@@ -230,47 +245,47 @@ public class DTOAvsandare  implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(DTOAvsandare.class, true);
+    private static TypeDesc typeDesc =
+        new TypeDesc(DTOAvsandare.class, true);
 
     static {
         typeDesc.setXmlType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOAvsandare"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        ElementDesc elemField = new ElementDesc();
         elemField.setFieldName("id");
         elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "id"));
         elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "long"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("applikation");
         elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "applikation"));
         elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("kategori");
         elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "kategori"));
         elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("namn");
         elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "namn"));
         elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("epostadress");
         elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "epostadress"));
         elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("replyTo");
         elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "replyTo"));
         elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
@@ -282,31 +297,31 @@ public class DTOAvsandare  implements java.io.Serializable {
     /**
      * Return type metadata object
      */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+    public static TypeDesc getTypeDesc() {
         return typeDesc;
     }
 
     /**
      * Get Custom Serializer
      */
-    public static org.apache.axis.encoding.Serializer getSerializer(
+    public static Serializer getSerializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
            QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanSerializer(
+            new  BeanSerializer(
                 _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
+    public static Deserializer getDeserializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
            QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanDeserializer(
+            new  BeanDeserializer(
                 _javaType, _xmlType, typeDesc);
     }
 

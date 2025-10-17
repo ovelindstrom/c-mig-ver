@@ -4,6 +4,8 @@
  */
 package se.csn.ipl.notmotor.mdb;
 
+import java.util.Properties;
+
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Queue;
@@ -16,8 +18,6 @@ import javax.jms.TextMessage;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-//import javax.rmi.PortableRemoteObject;
-
 import junit.framework.TestCase;
 
 public class IntegrationTestSkapaMQMeddelande extends TestCase {
@@ -134,7 +134,7 @@ public class IntegrationTestSkapaMQMeddelande extends TestCase {
             Context ctx;
             QueueConnectionFactory qcfactory;
             Queue queue;
-            java.util.Properties env = new java.util.Properties();
+            Properties env = new Properties();
             env.put(Context.INITIAL_CONTEXT_FACTORY, JNDI_INITIAL_CONTEXT_FACTORY);
             env.put(Context.PROVIDER_URL, JNDI_PROVIDER_URL);
             try {

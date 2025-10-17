@@ -3,6 +3,11 @@
  */
 package se.csn.notmotor.admin.beans;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+
 import junit.framework.TestCase;
 import se.csn.notmotor.admin.beans.SokBean;
 
@@ -39,25 +44,25 @@ public class TestSokBean extends TestCase {
         SokBean bean = new SokBean();
         
         // Beräkna gårdagens och dagens datum
-        java.util.Calendar cal = java.util.Calendar.getInstance();
+        Calendar cal = Calendar.getInstance();
         
         // Dagens datum (tom-datum med tid 23:59:59)
-        cal.set(java.util.Calendar.HOUR_OF_DAY, 23);
-        cal.set(java.util.Calendar.MINUTE, 59);
-        cal.set(java.util.Calendar.SECOND, 59);
-        cal.set(java.util.Calendar.MILLISECOND, 0);
-        java.util.Date today = cal.getTime();
+        cal.set(Calendar.HOUR_OF_DAY, 23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, 59);
+        cal.set(Calendar.MILLISECOND, 0);
+        Date today = cal.getTime();
         
         // Gårdagens datum (from-datum med tid 00:00:00)  
-        cal.add(java.util.Calendar.DAY_OF_MONTH, -1);
-        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);
-        cal.set(java.util.Calendar.MINUTE, 0);
-        cal.set(java.util.Calendar.SECOND, 0);
-        cal.set(java.util.Calendar.MILLISECOND, 0);
-        java.util.Date yesterday = cal.getTime();
+        cal.add(Calendar.DAY_OF_MONTH, -1);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        Date yesterday = cal.getTime();
         
         // Formatera datum enligt förväntat format (yyyy-mm-dd)
-        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String yesterdayStr = dateFormat.format(yesterday);
         String todayStr = dateFormat.format(today);
         

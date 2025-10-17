@@ -14,7 +14,7 @@ import se.csn.webservice.bas.notmotor.callback.CallbackProxy;
  */
 public class CallbackClient {
 
-    private static Log log = Log.getInstance(CallbackClient.class);
+    private static final Log log = Log.getInstance(CallbackClient.class);
 
     public CallbackClient() {
 

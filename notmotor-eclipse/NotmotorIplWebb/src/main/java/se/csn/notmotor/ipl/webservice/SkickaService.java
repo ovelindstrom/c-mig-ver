@@ -20,7 +20,7 @@ import se.csn.notmotor.ipl.model.NotifieringResultat;
 public class SkickaService implements NotifieringProxy {
 
     private static NotifieringProxyFactory factory;
-    private static Log log = Log.getInstance(SkickaService.class);
+    private static final Log log = Log.getInstance(SkickaService.class);
 
     @Override
     public Meddelande hamtaMeddelande(Long meddelandeId) {

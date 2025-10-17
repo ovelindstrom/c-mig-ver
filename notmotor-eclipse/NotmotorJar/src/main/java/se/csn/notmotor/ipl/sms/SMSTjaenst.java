@@ -23,35 +23,26 @@ import org.xml.sax.SAXException;
 
 import se.csn.ark.common.util.logging.Log;
 
-/**
- * @author csn7511
- *
- * To change the template for this generated type comment go to
- * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
- */
 public class SMSTjaenst {
-
     private String userid;
     private String password;
     private String endpoint;
     private Log log = Log.getInstance(SMSTjaenst.class);
 
-
-    //private static final int CONNECT_TIMEOUT = 3000;
-
     public SMSTjaenst() {
     }
 
     /**
-     * Skapar en ny instans av SMSTjaenst OCH TESTAR ANSLUTNINGEN 
-     * TILL DEN ENDPOINT SOM ANGAVS. Om endpointen har en port 
+     * Skapar en ny instans av SMSTjaenst OCH TESTAR ANSLUTNINGEN
+     * TILL DEN ENDPOINT SOM ANGAVS. Om endpointen har en port
+     * 
      * @throws IllegalArgumentException om endpointen inte kunde nås
      */
-    public SMSTjaenst(String endpoint) {
+    public SMSTjaenst(String endpoint) throws IllegalArgumentException {
         this();
         try {
             URL url = new URL(endpoint);
-            //String host = url.getHost();
+            // String host = url.getHost();
             int port = url.getPort();
             if (port == -1) {
                 port = 80;
@@ -59,9 +50,11 @@ public class SMSTjaenst {
                     port = 443;
                 }
             }
-            /*if(!CommunicationTester.isPortOpen(host, port, CONNECT_TIMEOUT)) {
-                throw new IllegalStateException("Kunde inte nå endpoint: " + endpoint);
-            }*/
+            /*
+             * if(!CommunicationTester.isPortOpen(host, port, CONNECT_TIMEOUT)) {
+             * throw new IllegalStateException("Kunde inte nå endpoint: " + endpoint);
+             * }
+             */
             this.endpoint = endpoint;
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("Felaktig endpoint-URL " + endpoint, e);
@@ -76,10 +69,11 @@ public class SMSTjaenst {
 
     /**
      * Kontrollerar att alla nodvandiga data ar satta.
-     * @throws IllegalStateException om någon parameter saknas för 
-     * att tjänsten ska kunna användas
+     * 
+     * @throws IllegalStateException om någon parameter saknas för
+     *                               att tjänsten ska kunna användas
      */
-    public void checkParams() {
+    public void checkParams() throws IllegalStateException {
         if (userid == null) {
             throw new IllegalStateException("userid måste vara satt");
         }
@@ -119,14 +113,15 @@ public class SMSTjaenst {
 
     /**
      * Skickar SMS till Telia.
+     * 
      * @param in DTOSMSIn
      * @return DTOSMSUt
      */
     public DTOSMSUt execute(DTOSMSIn in) {
         // Dumpa SSL-properties:
-        String[] props = {"javax.net.ssl.trustStore", "javax.net.ssl.trustStorePassword",
-            "javax.net.ssl.keyStore", "javax.net.ssl.keyStorePassword"};
-        for (int i = 0;i < props.length;i++) {
+        String[] props = { "javax.net.ssl.trustStore", "javax.net.ssl.trustStorePassword",
+                "javax.net.ssl.keyStore", "javax.net.ssl.keyStorePassword" };
+        for (int i = 0; i < props.length; i++) {
             log.info("Prop: " + props[i] + ": " + System.getProperty(props[i]));
         }
         if (in == null) {
@@ -136,12 +131,12 @@ public class SMSTjaenst {
 
         if (log.isDebugEnabled()) {
             log.debug("Anropar sms-tjänsten med följande indata.\n  Telnr:" + in.getTelnummer()
-                + "\n  Meddelande:" + in.getMeddelande()
-                + "\n  Userid:" + userid
-                + "\n  Password:" + password
-                + "\n  Appname:" + in.getApplikationsnamn()
-                + "\n  Func:" + in.getFunktionsnamn()
-                + "\n  Endpoint:" + endpoint);
+                    + "\n  Meddelande:" + in.getMeddelande()
+                    + "\n  Userid:" + userid
+                    + "\n  Password:" + password
+                    + "\n  Appname:" + in.getApplikationsnamn()
+                    + "\n  Func:" + in.getFunktionsnamn()
+                    + "\n  Endpoint:" + endpoint);
         }
 
         DTOSMSUt response = new DTOSMSUt();
@@ -155,10 +150,10 @@ public class SMSTjaenst {
             HttpClient client = new HttpClient();
             post = new PostMethod(endpoint);
             NameValuePair[] data = {
-                new NameValuePair("originatingAddress", in.getRubrik()),
-                new NameValuePair("destinationAddress", in.getTelnummer()),
-                new NameValuePair("userData", in.getMeddelande()),
-			};
+                    new NameValuePair("originatingAddress", in.getRubrik()),
+                    new NameValuePair("destinationAddress", in.getTelnummer()),
+                    new NameValuePair("userData", in.getMeddelande()),
+            };
             post.setRequestBody(data);
             post.addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
             Credentials defaultcreds = new UsernamePasswordCredentials(userid, password);

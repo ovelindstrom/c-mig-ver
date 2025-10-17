@@ -55,7 +55,7 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
         where = addRestriction(where, "TYP", "LIKE", typ);
         where = addRestriction(where, "CSNNUMMER", "=", csnnummer);
         if (where.length() > 0) {
-            sql += (" WHERE " + where);
+            sql += " WHERE " + where;
         }
         return qp.processQuery(sql, this);
     }
@@ -68,15 +68,15 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
 
     @Override
     public Mottagare getMottagare(long id) {
-        return (Mottagare) qp.getObject("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE " +
-            "WHERE ID=" + id, this);
+        return (Mottagare) qp.getObject("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE "
+            + "WHERE ID=" + id, this);
     }
 
     @Override
     @SuppressWarnings("unchecked")
     public List<Mottagare> getMottagareForMeddelande(long meddelandeId) {
-        return qp.processQuery("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE " +
-            "WHERE MEDDELANDEID=" + meddelandeId, this);
+        return qp.processQuery("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE "
+            + "WHERE MEDDELANDEID=" + meddelandeId, this);
     }
 
     @Override

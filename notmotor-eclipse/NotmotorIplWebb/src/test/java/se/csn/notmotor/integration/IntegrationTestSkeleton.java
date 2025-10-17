@@ -42,20 +42,20 @@ public class IntegrationTestSkeleton extends TestCase {
     }
 
     public DTOMeddelande skapaTestMeddelande() {
-        return skapaTestMeddelande("Testmeddelande", "Skapat " + (new Date()).toString());
+        return skapaTestMeddelande("Testmeddelande", "Skapat " + new Date().toString());
     }
 
     public DTOMeddelande skapaTestMeddelande(String metod) {
-        return skapaTestMeddelande("Testmeddelande från " + metod, "Metod: " + metod + "\n Skapat " + (new Date()).toString());
+        return skapaTestMeddelande("Testmeddelande från " + metod, "Metod: " + metod + "\n Skapat " + new Date().toString());
     }
 
 
     public DTOMeddelande skapaTestMeddelande(String metod, int nummer) {
-        return skapaTestMeddelande("Testmeddelande nr " + nummer + " från " + metod, "Metod: " + metod + "\nNr: " + nummer + "\nSkapat " + (new Date()).toString());
+        return skapaTestMeddelande("Testmeddelande nr " + nummer + " från " + metod, "Metod: " + metod + "\nNr: " + nummer + "\nSkapat " + new Date().toString());
     }
 
     public DTOMeddelande skapaTestMeddelande(String metod, int nummer, String typ) {
-        return skapaTestMeddelande("Testmeddelande nr " + nummer + " från " + metod, "Metod: " + metod + "\nNr: " + nummer + "\nMeddelandesätt: " + typ + "\nSkapat " + (new Date()).toString(), typ);
+        return skapaTestMeddelande("Testmeddelande nr " + nummer + " från " + metod, "Metod: " + metod + "\nNr: " + nummer + "\nMeddelandesätt: " + typ + "\nSkapat " + new Date().toString(), typ);
     }
 
     public DTOMeddelande skapaTestMeddelande(String rubrik, String text) {

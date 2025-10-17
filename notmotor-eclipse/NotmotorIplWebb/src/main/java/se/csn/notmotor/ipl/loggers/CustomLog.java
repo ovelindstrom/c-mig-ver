@@ -10,7 +10,7 @@ import org.apache.commons.logging.Log;
 
 public class CustomLog implements Log {
 
-    private String classname;
+    private final String classname;
 
     public CustomLog(String classname) {
         this.classname = classname;

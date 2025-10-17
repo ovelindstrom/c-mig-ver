@@ -28,7 +28,7 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
         String where = addRestriction("", "STATUS", "=", status);
         where = addRestriction(where, "SERVER", "=", server);
         if (where.length() > 0) {
-            where = (" WHERE " + where);
+            where = " WHERE " + where;
         }
         where += " ORDER BY INSTANS";
         return qp.processQuery("SELECT INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP FROM STATUS " + where, this);
@@ -40,8 +40,8 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
             throw new IllegalArgumentException("Status måste vara satt");
         }
         int id = (int) qp.getCounter("SEKVENS", "STATUSID");
-        String sql = "INSERT INTO STATUS (INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP) VALUES " +
-            "(" + id + "," + quoteValue(status.getStartad()) + "," + quoteValue(status.getStoppad())
+        String sql = "INSERT INTO STATUS (INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP) VALUES "
+            + "(" + id + "," + quoteValue(status.getStartad()) + "," + quoteValue(status.getStoppad())
             + "," + status.getStatus() + "," + quoteValue(status.getWatchdog()) + "," + status.getServer() + "," + quoteValue(status.getTyp()) + ")";
         qp.executeThrowException(sql);
         status.setInstans(id);
@@ -56,8 +56,8 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
         if (status == null) {
             throw new IllegalArgumentException("Status måste vara satt");
         }
-        qp.executeThrowException("UPDATE STATUS SET STATUS=" + status.getStatus() + ", STOPPAD=" + quoteValue(status.getStoppad()) + ", " +
-            "WATCHDOGTSTAMP=" + quoteValue(status.getWatchdog()) + " WHERE INSTANS=" + status.getInstans());
+        qp.executeThrowException("UPDATE STATUS SET STATUS=" + status.getStatus() + ", STOPPAD=" + quoteValue(status.getStoppad()) + ", "
+            + "WATCHDOGTSTAMP=" + quoteValue(status.getWatchdog()) + " WHERE INSTANS=" + status.getInstans());
     }
 
     @Override

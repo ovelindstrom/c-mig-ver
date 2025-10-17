@@ -13,7 +13,7 @@ import se.csn.ark.common.util.logging.Log;
 
 public class ContainerListener implements ServletContextListener {
 
-    private Log log = Log.getInstance(ContainerListener.class);
+    private final Log log = Log.getInstance(ContainerListener.class);
 
     @Override
     public void contextDestroyed(ServletContextEvent arg0) {

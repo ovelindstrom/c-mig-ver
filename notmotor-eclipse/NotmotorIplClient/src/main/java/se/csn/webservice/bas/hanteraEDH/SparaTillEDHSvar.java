@@ -7,7 +7,18 @@
 
 package se.csn.webservice.bas.hanteraEDH;
 
-public class SparaTillEDHSvar  implements java.io.Serializable {
+import java.io.Serializable;
+
+import javax.xml.namespace.QName;
+
+import org.apache.axis.description.ElementDesc;
+import org.apache.axis.description.TypeDesc;
+import org.apache.axis.encoding.Deserializer;
+import org.apache.axis.encoding.Serializer;
+import org.apache.axis.encoding.ser.BeanDeserializer;
+import org.apache.axis.encoding.ser.BeanSerializer;
+
+public class SparaTillEDHSvar  implements Serializable {
     private java.lang.String famID;
 
     private int returkod;
@@ -62,29 +73,35 @@ public class SparaTillEDHSvar  implements java.io.Serializable {
         this.returkod = returkod;
     }
 
-    private java.lang.Object __equalsCalc = null;
+    private java.lang.Object __equalsCalc;
 
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof SparaTillEDHSvar)) return false;
+        if (!(obj instanceof SparaTillEDHSvar)) {
+            return false;
+        }
         SparaTillEDHSvar other = (SparaTillEDHSvar) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
         if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+            return __equalsCalc == obj;
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-            ((this.famID == null && other.getFamID() == null) ||
-                (this.famID != null &&
-                    this.famID.equals(other.getFamID()))) &&
-            this.returkod == other.getReturkod();
+        _equals = true
+            && ((this.famID == null && other.getFamID() == null)
+                || (this.famID != null
+                    && this.famID.equals(other.getFamID())))
+            && this.returkod == other.getReturkod();
         __equalsCalc = null;
         return _equals;
     }
 
-    private boolean __hashCodeCalc = false;
+    private boolean __hashCodeCalc;
 
     @Override
     public synchronized int hashCode() {
@@ -102,21 +119,21 @@ public class SparaTillEDHSvar  implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(SparaTillEDHSvar.class, true);
+    private static TypeDesc typeDesc =
+        new TypeDesc(SparaTillEDHSvar.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHSvar"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        typeDesc.setXmlType(new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHSvar"));
+        ElementDesc elemField = new ElementDesc();
         elemField.setFieldName("famID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "famID"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/hanteraEDH", "famID"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("returkod");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "returkod"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/hanteraEDH", "returkod"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
     }
@@ -124,31 +141,31 @@ public class SparaTillEDHSvar  implements java.io.Serializable {
     /**
      * Return type metadata object
      */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+    public static TypeDesc getTypeDesc() {
         return typeDesc;
     }
 
     /**
      * Get Custom Serializer
      */
-    public static org.apache.axis.encoding.Serializer getSerializer(
+    public static Serializer getSerializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanSerializer(
+            new  BeanSerializer(
                 _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
+    public static Deserializer getDeserializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanDeserializer(
+            new  BeanDeserializer(
                 _javaType, _xmlType, typeDesc);
     }
 

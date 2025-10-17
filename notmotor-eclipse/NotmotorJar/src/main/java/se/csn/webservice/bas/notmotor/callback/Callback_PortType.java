@@ -7,6 +7,9 @@
 
 package se.csn.webservice.bas.notmotor.callback;
 
-public interface Callback_PortType extends java.rmi.Remote {
-    public void nyHandelse(se.csn.webservice.bas.notmotor.callback.DTOMeddelande parameters) throws java.rmi.RemoteException;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface Callback_PortType extends Remote {
+    public void nyHandelse(DTOMeddelande parameters) throws RemoteException;
 }

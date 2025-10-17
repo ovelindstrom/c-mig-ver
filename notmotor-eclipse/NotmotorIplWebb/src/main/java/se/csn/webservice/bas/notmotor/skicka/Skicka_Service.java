@@ -7,10 +7,15 @@
 
 package se.csn.webservice.bas.notmotor.skicka;
 
-public interface Skicka_Service extends javax.xml.rpc.Service {
+import java.net.URL;
+
+import javax.xml.rpc.Service;
+import javax.xml.rpc.ServiceException;
+
+public interface Skicka_Service extends Service {
     public java.lang.String getSkickaSOAPAddress();
 
-    public se.csn.webservice.bas.notmotor.skicka.Skicka_PortType getSkickaSOAP() throws javax.xml.rpc.ServiceException;
+    public Skicka_PortType getSkickaSOAP() throws ServiceException;
 
-    public se.csn.webservice.bas.notmotor.skicka.Skicka_PortType getSkickaSOAP(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+    public Skicka_PortType getSkickaSOAP(URL portAddress) throws ServiceException;
 }

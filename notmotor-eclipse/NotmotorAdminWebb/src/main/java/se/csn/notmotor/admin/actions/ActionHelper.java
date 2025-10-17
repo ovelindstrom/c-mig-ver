@@ -32,4 +32,7 @@ public class ActionHelper {
     public static void setTransactionIsolationLevel(int isolationLevel) {
         ActionHelper.isolationLevel = isolationLevel;
     }
+
+    private ActionHelper() {
+    }
 }

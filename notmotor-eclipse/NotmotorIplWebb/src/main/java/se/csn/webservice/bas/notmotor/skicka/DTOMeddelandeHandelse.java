@@ -7,12 +7,24 @@
 
 package se.csn.webservice.bas.notmotor.skicka;
 
-public class DTOMeddelandeHandelse  implements java.io.Serializable {
+import java.io.Serializable;
+import java.util.Calendar;
+
+import javax.xml.namespace.QName;
+
+import org.apache.axis.description.ElementDesc;
+import org.apache.axis.description.TypeDesc;
+import org.apache.axis.encoding.Deserializer;
+import org.apache.axis.encoding.Serializer;
+import org.apache.axis.encoding.ser.BeanDeserializer;
+import org.apache.axis.encoding.ser.BeanSerializer;
+
+public class DTOMeddelandeHandelse  implements Serializable {
     private java.lang.Long id;
 
     private java.lang.Integer handelsetyp;
 
-    private java.util.Calendar tidpunkt;
+    private Calendar tidpunkt;
 
     private java.lang.Integer felkod;
 
@@ -26,7 +38,7 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
     public DTOMeddelandeHandelse(
            java.lang.Long id,
            java.lang.Integer handelsetyp,
-           java.util.Calendar tidpunkt,
+           Calendar tidpunkt,
            java.lang.Integer felkod,
            java.lang.String feltext,
            java.lang.Integer instans) {
@@ -84,7 +96,7 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
      * 
      * @return tidpunkt
      */
-    public java.util.Calendar getTidpunkt() {
+    public Calendar getTidpunkt() {
         return tidpunkt;
     }
 
@@ -94,7 +106,7 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
      * 
      * @param tidpunkt
      */
-    public void setTidpunkt(java.util.Calendar tidpunkt) {
+    public void setTidpunkt(Calendar tidpunkt) {
         this.tidpunkt = tidpunkt;
     }
 
@@ -158,43 +170,49 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
         this.instans = instans;
     }
 
-    private java.lang.Object __equalsCalc = null;
+    private java.lang.Object __equalsCalc;
 
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof DTOMeddelandeHandelse)) return false;
+        if (!(obj instanceof DTOMeddelandeHandelse)) {
+            return false;
+        }
         DTOMeddelandeHandelse other = (DTOMeddelandeHandelse) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
         if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+            return __equalsCalc == obj;
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-            ((this.id == null && other.getId() == null) ||
-                (this.id != null &&
-                    this.id.equals(other.getId()))) &&
-            ((this.handelsetyp == null && other.getHandelsetyp() == null) ||
-                (this.handelsetyp != null &&
-                    this.handelsetyp.equals(other.getHandelsetyp()))) &&
-            ((this.tidpunkt == null && other.getTidpunkt() == null) ||
-                (this.tidpunkt != null &&
-                    this.tidpunkt.equals(other.getTidpunkt()))) &&
-            ((this.felkod == null && other.getFelkod() == null) ||
-                (this.felkod != null &&
-                    this.felkod.equals(other.getFelkod()))) &&
-            ((this.feltext == null && other.getFeltext() == null) ||
-                (this.feltext != null &&
-                    this.feltext.equals(other.getFeltext()))) &&
-            ((this.instans == null && other.getInstans() == null) ||
-                (this.instans != null &&
-                    this.instans.equals(other.getInstans())));
+        _equals = true
+            && ((this.id == null && other.getId() == null)
+                || (this.id != null
+                    && this.id.equals(other.getId())))
+            && ((this.handelsetyp == null && other.getHandelsetyp() == null)
+                || (this.handelsetyp != null
+                    && this.handelsetyp.equals(other.getHandelsetyp())))
+            && ((this.tidpunkt == null && other.getTidpunkt() == null)
+                || (this.tidpunkt != null
+                    && this.tidpunkt.equals(other.getTidpunkt())))
+            && ((this.felkod == null && other.getFelkod() == null)
+                || (this.felkod != null
+                    && this.felkod.equals(other.getFelkod())))
+            && ((this.feltext == null && other.getFeltext() == null)
+                || (this.feltext != null
+                    && this.feltext.equals(other.getFeltext())))
+            && ((this.instans == null && other.getInstans() == null)
+                || (this.instans != null
+                    && this.instans.equals(other.getInstans())));
         __equalsCalc = null;
         return _equals;
     }
 
-    private boolean __hashCodeCalc = false;
+    private boolean __hashCodeCalc;
 
     @Override
     public synchronized int hashCode() {
@@ -226,50 +244,50 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(DTOMeddelandeHandelse.class, true);
+    private static TypeDesc typeDesc =
+        new TypeDesc(DTOMeddelandeHandelse.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelandeHandelse"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        typeDesc.setXmlType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelandeHandelse"));
+        ElementDesc elemField = new ElementDesc();
         elemField.setFieldName("id");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "id"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "long"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("handelsetyp");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "handelsetyp"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "handelsetyp"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("tidpunkt");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "tidpunkt"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "tidpunkt"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("felkod");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "felkod"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "felkod"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("feltext");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "feltext"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "feltext"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("instans");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "instans"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "instans"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
@@ -278,31 +296,31 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
     /**
      * Return type metadata object
      */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+    public static TypeDesc getTypeDesc() {
         return typeDesc;
     }
 
     /**
      * Get Custom Serializer
      */
-    public static org.apache.axis.encoding.Serializer getSerializer(
+    public static Serializer getSerializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanSerializer(
+            new  BeanSerializer(
                 _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
+    public static Deserializer getDeserializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanDeserializer(
+            new  BeanDeserializer(
                 _javaType, _xmlType, typeDesc);
     }
 

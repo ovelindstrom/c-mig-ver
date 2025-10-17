@@ -35,9 +35,9 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
         int instans = getInt(h.getInstans(), -1);
         String feltext = quoteValue(h.getFeltext());
         String datum = quoteValue(h.getTidpunkt());
-        qp.executeThrowException("INSERT INTO HANDELSE (ID,MEDDELANDEID,TYP,KOD,TEXT,TIDPUNKT,INSTANS) " +
-            "VALUES (" + id + ", " + meddelandeid + ", " + typ + ", " + kod +
-            ", " + feltext + ", " + datum + ", " + instans + ")");
+        qp.executeThrowException("INSERT INTO HANDELSE (ID,MEDDELANDEID,TYP,KOD,TEXT,TIDPUNKT,INSTANS) "
+            + "VALUES (" + id + ", " + meddelandeid + ", " + typ + ", " + kod
+            + ", " + feltext + ", " + datum + ", " + instans + ")");
         h.setId(new Long(id));
         return id;
     }

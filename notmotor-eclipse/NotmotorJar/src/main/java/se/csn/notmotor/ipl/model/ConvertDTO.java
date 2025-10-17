@@ -178,7 +178,7 @@ public abstract class ConvertDTO {
         if (dto.getMottagare() != null) {
             DTOMottagare[] mott = new DTOMottagare[dto.getMottagare().length];
             for (int i = 0;i < dto.getMottagare().length;i++) {
-                mott[i] = new se.csn.webservice.bas.notmotor.skicka.DTOMottagare();
+                mott[i] = new DTOMottagare();
                 mott[i].setId(dto.getMottagare(i).getId());
                 mott[i].setNamn(dto.getMottagare(i).getNamn());
                 mott[i].setAdress(dto.getMottagare(i).getAdress());

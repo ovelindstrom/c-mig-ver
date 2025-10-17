@@ -14,7 +14,7 @@ import se.csn.notmotor.ipl.model.Meddelande;
 
 public class CallbackTestServlet extends HttpServlet implements Servlet {
 
-    private static Log log = Log.getInstance(CallbackTestServlet.class);
+    private static final Log log = Log.getInstance(CallbackTestServlet.class);
 
     /* (non-Java-doc)
      * @see javax.servlet.http.HttpServlet#HttpServlet()

@@ -34,12 +34,12 @@ public class MeddelandeBean {
 
     private long id;
     private Meddelande meddelande;
-    private QueryProcessor qp;
-    private DAOMeddelande dao;
-    private DAOHandelse daoHandelse;
+    private final QueryProcessor qp;
+    private final DAOMeddelande dao;
+    private final DAOHandelse daoHandelse;
     private ListDataModel handelser;
 
-    private Log log = Log.getInstance(MeddelandeBean.class);
+    private final Log log = Log.getInstance(MeddelandeBean.class);
 
     public static class Handelserad {
         private int typ, kod;

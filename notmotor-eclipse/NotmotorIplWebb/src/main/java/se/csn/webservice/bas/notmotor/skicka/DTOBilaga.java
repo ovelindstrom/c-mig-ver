@@ -7,7 +7,19 @@
 
 package se.csn.webservice.bas.notmotor.skicka;
 
-public class DTOBilaga  implements java.io.Serializable {
+import java.io.Serializable;
+import java.util.Arrays;
+
+import javax.xml.namespace.QName;
+
+import org.apache.axis.description.ElementDesc;
+import org.apache.axis.description.TypeDesc;
+import org.apache.axis.encoding.Deserializer;
+import org.apache.axis.encoding.Serializer;
+import org.apache.axis.encoding.ser.BeanDeserializer;
+import org.apache.axis.encoding.ser.BeanSerializer;
+
+public class DTOBilaga  implements Serializable {
     private java.lang.Long id;
 
     private java.lang.String mimetyp;
@@ -134,40 +146,46 @@ public class DTOBilaga  implements java.io.Serializable {
         this.data = data;
     }
 
-    private java.lang.Object __equalsCalc = null;
+    private java.lang.Object __equalsCalc;
 
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof DTOBilaga)) return false;
+        if (!(obj instanceof DTOBilaga)) {
+            return false;
+        }
         DTOBilaga other = (DTOBilaga) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
         if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+            return __equalsCalc == obj;
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-            ((this.id == null && other.getId() == null) ||
-                (this.id != null &&
-                    this.id.equals(other.getId()))) &&
-            ((this.mimetyp == null && other.getMimetyp() == null) ||
-                (this.mimetyp != null &&
-                    this.mimetyp.equals(other.getMimetyp()))) &&
-            ((this.filnamn == null && other.getFilnamn() == null) ||
-                (this.filnamn != null &&
-                    this.filnamn.equals(other.getFilnamn()))) &&
-            ((this.encoding == null && other.getEncoding() == null) ||
-                (this.encoding != null &&
-                    this.encoding.equals(other.getEncoding()))) &&
-            ((this.data == null && other.getData() == null) ||
-                (this.data != null &&
-                    java.util.Arrays.equals(this.data, other.getData())));
+        _equals = true
+            && ((this.id == null && other.getId() == null)
+                || (this.id != null
+                    && this.id.equals(other.getId())))
+            && ((this.mimetyp == null && other.getMimetyp() == null)
+                || (this.mimetyp != null
+                    && this.mimetyp.equals(other.getMimetyp())))
+            && ((this.filnamn == null && other.getFilnamn() == null)
+                || (this.filnamn != null
+                    && this.filnamn.equals(other.getFilnamn())))
+            && ((this.encoding == null && other.getEncoding() == null)
+                || (this.encoding != null
+                    && this.encoding.equals(other.getEncoding())))
+            && ((this.data == null && other.getData() == null)
+                || (this.data != null
+                    && Arrays.equals(this.data, other.getData())));
         __equalsCalc = null;
         return _equals;
     }
 
-    private boolean __hashCodeCalc = false;
+    private boolean __hashCodeCalc;
 
     @Override
     public synchronized int hashCode() {
@@ -193,8 +211,8 @@ public class DTOBilaga  implements java.io.Serializable {
                  i < java.lang.reflect.Array.getLength(getData());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getData(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
+                if (obj != null
+                    && !obj.getClass().isArray()) {
                     _hashCode += obj.hashCode();
                 }
             }
@@ -204,43 +222,43 @@ public class DTOBilaga  implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(DTOBilaga.class, true);
+    private static TypeDesc typeDesc =
+        new TypeDesc(DTOBilaga.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOBilaga"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        typeDesc.setXmlType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOBilaga"));
+        ElementDesc elemField = new ElementDesc();
         elemField.setFieldName("id");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "id"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "long"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("mimetyp");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "mimetyp"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "mimetyp"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("filnamn");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "filnamn"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "filnamn"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("encoding");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "encoding"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "encoding"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("data");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "data"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "base64Binary"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "data"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "base64Binary"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
@@ -249,31 +267,31 @@ public class DTOBilaga  implements java.io.Serializable {
     /**
      * Return type metadata object
      */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+    public static TypeDesc getTypeDesc() {
         return typeDesc;
     }
 
     /**
      * Get Custom Serializer
      */
-    public static org.apache.axis.encoding.Serializer getSerializer(
+    public static Serializer getSerializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanSerializer(
+            new  BeanSerializer(
                 _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
+    public static Deserializer getDeserializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanDeserializer(
+            new  BeanDeserializer(
                 _javaType, _xmlType, typeDesc);
     }
 

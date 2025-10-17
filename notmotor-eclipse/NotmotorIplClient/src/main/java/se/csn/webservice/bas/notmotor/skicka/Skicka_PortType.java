@@ -7,10 +7,13 @@
 
 package se.csn.webservice.bas.notmotor.skicka;
 
-public interface Skicka_PortType extends java.rmi.Remote {
-    public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat skickaMeddelande(se.csn.webservice.bas.notmotor.skicka.DTOMeddelande parameters) throws java.rmi.RemoteException;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 
-    public se.csn.webservice.bas.notmotor.skicka.DTOMeddelande hamtaMeddelande(long parameters) throws java.rmi.RemoteException;
+public interface Skicka_PortType extends Remote {
+    public DTONotifieringResultat skickaMeddelande(DTOMeddelande parameters) throws RemoteException;
 
-    public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat taBortMeddelande(long parameters) throws java.rmi.RemoteException;
+    public DTOMeddelande hamtaMeddelande(long parameters) throws RemoteException;
+
+    public DTONotifieringResultat taBortMeddelande(long parameters) throws RemoteException;
 }

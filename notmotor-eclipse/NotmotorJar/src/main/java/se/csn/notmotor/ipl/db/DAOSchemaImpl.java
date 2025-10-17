@@ -21,8 +21,8 @@ public class DAOSchemaImpl extends DAOImplBase implements DAOSchema {
 
     @Override
     public void delete(Tidsintervall intervall) {
-        qp.executeThrowException("DELETE FROM KORSCHEMA WHERE STANGNINGSTID=" +
-            quoteValue(intervall.getStarttid()) + " AND OPPNINGSTID=" + quoteValue(intervall.getSluttid()));
+        qp.executeThrowException("DELETE FROM KORSCHEMA WHERE STANGNINGSTID="
+            + quoteValue(intervall.getStarttid()) + " AND OPPNINGSTID=" + quoteValue(intervall.getSluttid()));
 
     }
 
@@ -39,7 +39,7 @@ public class DAOSchemaImpl extends DAOImplBase implements DAOSchema {
 
     @Override
     public void skapaIntervall(Tidsintervall intervall) {
-        qp.executeThrowException("INSERT INTO KORSCHEMA (STANGNINGSTID, OPPNINGSTID) VALUES " +
-            "(" + quoteValue(intervall.getStarttid()) + ", " + quoteValue(intervall.getSluttid()) + ")");
+        qp.executeThrowException("INSERT INTO KORSCHEMA (STANGNINGSTID, OPPNINGSTID) VALUES "
+            + "(" + quoteValue(intervall.getStarttid()) + ", " + quoteValue(intervall.getSluttid()) + ")");
     }
 }

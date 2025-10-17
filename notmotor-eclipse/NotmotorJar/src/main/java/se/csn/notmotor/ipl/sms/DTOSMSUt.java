@@ -25,7 +25,7 @@ public class DTOSMSUt implements Serializable {
 	};
 
     private static Map<String, String> returkoder;
-    private static Object lock = new Object();
+    private static final Object lock = new Object();
 
     public DTOSMSUt() {
         synchronized (lock) {

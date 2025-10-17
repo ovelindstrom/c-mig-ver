@@ -15,7 +15,7 @@ import se.csn.notmotor.ipl.model.SandResultat;
 
 public class MailTestEpostMeddelandeSenderImpl extends TestCase {
 
-    private Log log = Log.getInstance(MailTestEpostMeddelandeSenderImpl.class);
+    private final Log log = Log.getInstance(MailTestEpostMeddelandeSenderImpl.class);
 
     private EpostMeddelandeSenderImpl getImpl() {
         return new EpostMeddelandeSenderImpl("emaal-skv", "emaal-skv", "csnmail1.csnnet.int", 25, 30000);

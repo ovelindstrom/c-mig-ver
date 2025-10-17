@@ -7,26 +7,29 @@
 
 package se.csn.webservice.bas.notmotor.skicka;
 
+import java.rmi.RemoteException;
+
+
 import se.csn.notmotor.ipl.model.ConvertDTO;
 import se.csn.notmotor.ipl.webservice.SkickaService;
 
-public class SkickaSOAPImpl implements se.csn.webservice.bas.notmotor.skicka.Skicka_PortType {
+public class SkickaSOAPImpl implements Skicka_PortType {
     @Override
-    public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat skickaMeddelande(se.csn.webservice.bas.notmotor.skicka.DTOMeddelande parameters) throws java.rmi.RemoteException {
+    public DTONotifieringResultat skickaMeddelande(DTOMeddelande parameters) throws RemoteException {
         SkickaService skicka = new SkickaService();
         return ConvertDTO.getNotifieringresultat(
             skicka.skickaMeddelande(ConvertDTO.getMeddelande(parameters)));
     }
 
     @Override
-    public se.csn.webservice.bas.notmotor.skicka.DTOMeddelande hamtaMeddelande(long parameters) throws java.rmi.RemoteException {
+    public DTOMeddelande hamtaMeddelande(long parameters) throws RemoteException {
         SkickaService skicka = new SkickaService();
         return ConvertDTO.getMeddelande2(
             skicka.hamtaMeddelande(parameters));
     }
 
     @Override
-    public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat taBortMeddelande(long parameters) throws java.rmi.RemoteException {
+    public DTONotifieringResultat taBortMeddelande(long parameters) throws RemoteException {
         SkickaService skicka = new SkickaService();
         return ConvertDTO.getNotifieringresultat(
             skicka.taBortMeddelande(parameters));

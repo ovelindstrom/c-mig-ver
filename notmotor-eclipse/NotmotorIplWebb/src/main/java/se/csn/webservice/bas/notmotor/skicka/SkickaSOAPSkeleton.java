@@ -7,93 +7,107 @@
 
 package se.csn.webservice.bas.notmotor.skicka;
 
-public class SkickaSOAPSkeleton implements se.csn.webservice.bas.notmotor.skicka.Skicka_PortType, org.apache.axis.wsdl.Skeleton {
-    private se.csn.webservice.bas.notmotor.skicka.Skicka_PortType impl;
-    private static java.util.Map _myOperations = new java.util.Hashtable();
-    private static java.util.Collection _myOperationsList = new java.util.ArrayList();
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+
+import javax.xml.namespace.QName;
+
+import org.apache.axis.description.FaultDesc;
+import org.apache.axis.description.OperationDesc;
+import org.apache.axis.description.ParameterDesc;
+import org.apache.axis.wsdl.Skeleton;
+
+public class SkickaSOAPSkeleton implements Skicka_PortType, Skeleton {
+    private Skicka_PortType impl;
+    private static Map _myOperations = new Hashtable();
+    private static Collection _myOperationsList = new ArrayList();
 
     /**
     * Returns List of OperationDesc objects with this name
     */
-    public static java.util.List getOperationDescByName(java.lang.String methodName) {
-        return (java.util.List) _myOperations.get(methodName);
+    public static List getOperationDescByName(java.lang.String methodName) {
+        return (List) _myOperations.get(methodName);
     }
 
     /**
     * Returns Collection of OperationDescs
     */
-    public static java.util.Collection getOperationDescs() {
+    public static Collection getOperationDescs() {
         return _myOperationsList;
     }
 
     static {
-        org.apache.axis.description.OperationDesc _oper;
-        org.apache.axis.description.FaultDesc _fault;
-        org.apache.axis.description.ParameterDesc [] _params;
-        _params = new org.apache.axis.description.ParameterDesc []{
-            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "skickaMeddelandeRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelande"), se.csn.webservice.bas.notmotor.skicka.DTOMeddelande.class, false, false), 
+        OperationDesc _oper;
+        FaultDesc _fault;
+        ParameterDesc[] _params;
+        _params = new ParameterDesc []{
+            new ParameterDesc(new QName("http://webservice.csn.se/bas/notmotor/skicka", "skickaMeddelandeRequest"), ParameterDesc.IN, new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelande"), DTOMeddelande.class, false, false), 
         };
-        _oper = new org.apache.axis.description.OperationDesc("skickaMeddelande", _params, new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "skickaMeddelandeResponse"));
-        _oper.setReturnType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTONotifieringResultat"));
-        _oper.setElementQName(new javax.xml.namespace.QName("", "skickaMeddelande"));
+        _oper = new OperationDesc("skickaMeddelande", _params, new QName("http://webservice.csn.se/bas/notmotor/skicka", "skickaMeddelandeResponse"));
+        _oper.setReturnType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTONotifieringResultat"));
+        _oper.setElementQName(new QName("", "skickaMeddelande"));
         _oper.setSoapAction("http://webservice.csn.se/bas/notmotor/skicka/skickaMeddelande");
         _myOperationsList.add(_oper);
         if (_myOperations.get("skickaMeddelande") == null) {
-            _myOperations.put("skickaMeddelande", new java.util.ArrayList());
+            _myOperations.put("skickaMeddelande", new ArrayList());
         }
-        ((java.util.List) _myOperations.get("skickaMeddelande")).add(_oper);
-        _params = new org.apache.axis.description.ParameterDesc []{
-            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "hamtaMeddelandeRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false), 
+        ((List) _myOperations.get("skickaMeddelande")).add(_oper);
+        _params = new ParameterDesc []{
+            new ParameterDesc(new QName("http://webservice.csn.se/bas/notmotor/skicka", "hamtaMeddelandeRequest"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false), 
         };
-        _oper = new org.apache.axis.description.OperationDesc("hamtaMeddelande", _params, new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "hamtaMeddelandeResponse"));
-        _oper.setReturnType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelande"));
-        _oper.setElementQName(new javax.xml.namespace.QName("", "hamtaMeddelande"));
+        _oper = new OperationDesc("hamtaMeddelande", _params, new QName("http://webservice.csn.se/bas/notmotor/skicka", "hamtaMeddelandeResponse"));
+        _oper.setReturnType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelande"));
+        _oper.setElementQName(new QName("", "hamtaMeddelande"));
         _oper.setSoapAction("http://webservice.csn.se/bas/notmotor/skicka/hamtaMeddelande");
         _myOperationsList.add(_oper);
         if (_myOperations.get("hamtaMeddelande") == null) {
-            _myOperations.put("hamtaMeddelande", new java.util.ArrayList());
+            _myOperations.put("hamtaMeddelande", new ArrayList());
         }
-        ((java.util.List) _myOperations.get("hamtaMeddelande")).add(_oper);
-        _params = new org.apache.axis.description.ParameterDesc []{
-            new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "taBortMeddelandeRequest"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false), 
+        ((List) _myOperations.get("hamtaMeddelande")).add(_oper);
+        _params = new ParameterDesc []{
+            new ParameterDesc(new QName("http://webservice.csn.se/bas/notmotor/skicka", "taBortMeddelandeRequest"), ParameterDesc.IN, new QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false), 
         };
-        _oper = new org.apache.axis.description.OperationDesc("taBortMeddelande", _params, new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "taBortMeddelandeResponse"));
-        _oper.setReturnType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTONotifieringResultat"));
-        _oper.setElementQName(new javax.xml.namespace.QName("", "taBortMeddelande"));
+        _oper = new OperationDesc("taBortMeddelande", _params, new QName("http://webservice.csn.se/bas/notmotor/skicka", "taBortMeddelandeResponse"));
+        _oper.setReturnType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTONotifieringResultat"));
+        _oper.setElementQName(new QName("", "taBortMeddelande"));
         _oper.setSoapAction("http://webservice.csn.se/bas/notmotor/skicka/taBortMeddelande");
         _myOperationsList.add(_oper);
         if (_myOperations.get("taBortMeddelande") == null) {
-            _myOperations.put("taBortMeddelande", new java.util.ArrayList());
+            _myOperations.put("taBortMeddelande", new ArrayList());
         }
-        ((java.util.List) _myOperations.get("taBortMeddelande")).add(_oper);
+        ((List) _myOperations.get("taBortMeddelande")).add(_oper);
     }
 
     public SkickaSOAPSkeleton() {
-        this.impl = new se.csn.webservice.bas.notmotor.skicka.SkickaSOAPImpl();
+        this.impl = new SkickaSOAPImpl();
     }
 
-    public SkickaSOAPSkeleton(se.csn.webservice.bas.notmotor.skicka.Skicka_PortType impl) {
+    public SkickaSOAPSkeleton(Skicka_PortType impl) {
         this.impl = impl;
     }
 
     @Override
-    public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat skickaMeddelande(se.csn.webservice.bas.notmotor.skicka.DTOMeddelande parameters) throws java.rmi.RemoteException
+    public DTONotifieringResultat skickaMeddelande(DTOMeddelande parameters) throws RemoteException
     {
-        se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat ret = impl.skickaMeddelande(parameters);
+        DTONotifieringResultat ret = impl.skickaMeddelande(parameters);
         return ret;
     }
 
     @Override
-    public se.csn.webservice.bas.notmotor.skicka.DTOMeddelande hamtaMeddelande(long parameters) throws java.rmi.RemoteException
+    public DTOMeddelande hamtaMeddelande(long parameters) throws RemoteException
     {
-        se.csn.webservice.bas.notmotor.skicka.DTOMeddelande ret = impl.hamtaMeddelande(parameters);
+        DTOMeddelande ret = impl.hamtaMeddelande(parameters);
         return ret;
     }
 
     @Override
-    public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat taBortMeddelande(long parameters) throws java.rmi.RemoteException
+    public DTONotifieringResultat taBortMeddelande(long parameters) throws RemoteException
     {
-        se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat ret = impl.taBortMeddelande(parameters);
+        DTONotifieringResultat ret = impl.taBortMeddelande(parameters);
         return ret;
     }
 

@@ -20,8 +20,8 @@ import se.csn.notmotor.ipl.model.Bilaga;
  */
 public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
 
-    private QueryProcessor qp;
-    private Log log = Log.getInstance(RowToObjectMapper.class);
+    private final QueryProcessor qp;
+    private final Log log = Log.getInstance(RowToObjectMapper.class);
 
     public DAOBilagaImpl(QueryProcessor qp) {
         this.qp = qp;
@@ -42,8 +42,8 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
         try {
             conn = qp.getConnection();
 
-            String query = "INSERT INTO BILAGA (ID,MEDDELANDEID,DATA,MIMETYP,ENCODING,FILNAMN) " +
-                "VALUES(?,?,?,?,?,?)";
+            String query = "INSERT INTO BILAGA (ID,MEDDELANDEID,DATA,MIMETYP,ENCODING,FILNAMN) "
+                + "VALUES(?,?,?,?,?,?)";
 
             long id = qp.getCounter("SEKVENS", "BILAGAID");
             ps = conn.prepareStatement(query);

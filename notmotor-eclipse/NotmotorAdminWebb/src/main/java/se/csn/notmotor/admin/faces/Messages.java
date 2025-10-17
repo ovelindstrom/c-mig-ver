@@ -55,4 +55,7 @@ public class Messages {
         return new MessageFormat(msg).format(params);
     }
 
+    private Messages() {
+    }
+
 }

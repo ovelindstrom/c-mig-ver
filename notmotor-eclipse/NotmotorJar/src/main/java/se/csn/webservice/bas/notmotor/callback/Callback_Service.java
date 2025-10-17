@@ -7,10 +7,15 @@
 
 package se.csn.webservice.bas.notmotor.callback;
 
-public interface Callback_Service extends javax.xml.rpc.Service {
+import java.net.URL;
+
+import javax.xml.rpc.Service;
+import javax.xml.rpc.ServiceException;
+
+public interface Callback_Service extends Service {
     public java.lang.String getCallbackSOAPAddress();
 
-    public se.csn.webservice.bas.notmotor.callback.Callback_PortType getCallbackSOAP() throws javax.xml.rpc.ServiceException;
+    public Callback_PortType getCallbackSOAP() throws ServiceException;
 
-    public se.csn.webservice.bas.notmotor.callback.Callback_PortType getCallbackSOAP(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+    public Callback_PortType getCallbackSOAP(URL portAddress) throws ServiceException;
 }

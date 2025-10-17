@@ -22,10 +22,10 @@ import se.csn.notmotor.ipl.model.NotifieringResultat;
 
 public class NotifieringProxyImpl implements NotifieringProxy {
 
-    private DAOMeddelande meddelandeHandler;
-    private MeddelandeMottagare meddelandeMottagare;
-    private QueryProcessor qp;
-    private Log log = Log.getInstance(NotifieringProxyImpl.class);
+    private final DAOMeddelande meddelandeHandler;
+    private final MeddelandeMottagare meddelandeMottagare;
+    private final QueryProcessor qp;
+    private final Log log = Log.getInstance(NotifieringProxyImpl.class);
 
     public NotifieringProxyImpl(DAOMeddelande mh, QueryProcessor qp, MeddelandeMottagare mm) {
         meddelandeHandler = mh;

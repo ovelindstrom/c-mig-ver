@@ -1,13 +1,5 @@
 package se.csn.notmotor.ipl;
 
-/**
- * Klass som realiserar tillståndshanteringen för att skicka meddelanden.
- * Allt "arbete" utförs i andra klasser; det gör det möjligt att testa 
- * tillståndshanteringen för sig. 
- * @author Jonas åhrnell
- *
- */
-
 import se.csn.common.servlet.RunControl;
 
 public class MeddelandeStateMachineBase {

@@ -14,7 +14,7 @@ import se.csn.notmotor.ipl.MeddelandeSender;
 public class SandResultat extends KodText {
 
     private int handelsetyp;
-    private List<Mottagare> mottagare;
+    private final List<Mottagare> mottagare;
     private MeddelandeSender sandare;
 
     public SandResultat(int handelsetyp, int kod, String text, MeddelandeSender sandare, Mottagare mott) {

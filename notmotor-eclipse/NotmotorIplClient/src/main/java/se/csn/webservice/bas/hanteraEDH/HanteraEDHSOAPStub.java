@@ -7,108 +7,144 @@
 
 package se.csn.webservice.bas.hanteraEDH;
 
-public class HanteraEDHSOAPStub extends org.apache.axis.client.Stub implements se.csn.webservice.bas.hanteraEDH.HanteraEDH_PortType {
-    private java.util.Vector cachedSerClasses = new java.util.Vector();
-    private java.util.Vector cachedSerQNames = new java.util.Vector();
-    private java.util.Vector cachedSerFactories = new java.util.Vector();
-    private java.util.Vector cachedDeserFactories = new java.util.Vector();
+import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.Enumeration;
+import java.util.Vector;
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+import javax.xml.rpc.encoding.SerializerFactory;
+import javax.xml.namespace.QName;
+import javax.xml.rpc.Service;
+
+import org.apache.axis.AxisEngine;
+import org.apache.axis.AxisFault;
+import org.apache.axis.NoEndPointException;
+import org.apache.axis.client.Call;
+import org.apache.axis.client.Stub;
+import org.apache.axis.constants.Style;
+import org.apache.axis.constants.Use;
+import org.apache.axis.description.OperationDesc;
+import org.apache.axis.description.ParameterDesc;
+import org.apache.axis.encoding.DeserializerFactory;
+import org.apache.axis.encoding.ser.ArrayDeserializerFactory;
+import org.apache.axis.encoding.ser.ArraySerializerFactory;
+import org.apache.axis.encoding.ser.BeanDeserializerFactory;
+import org.apache.axis.encoding.ser.BeanSerializerFactory;
+import org.apache.axis.encoding.ser.EnumDeserializerFactory;
+import org.apache.axis.encoding.ser.EnumSerializerFactory;
+import org.apache.axis.encoding.ser.SimpleDeserializerFactory;
+import org.apache.axis.encoding.ser.SimpleListDeserializerFactory;
+import org.apache.axis.encoding.ser.SimpleListSerializerFactory;
+import org.apache.axis.encoding.ser.SimpleSerializerFactory;
+import org.apache.axis.soap.SOAPConstants;
+import org.apache.axis.utils.JavaUtils;
+
+public class HanteraEDHSOAPStub extends Stub implements HanteraEDH_PortType {
+    private Vector cachedSerClasses = new Vector();
+    private Vector cachedSerQNames = new Vector();
+    private Vector cachedSerFactories = new Vector();
+    private Vector cachedDeserFactories = new Vector();
+
+    static OperationDesc[] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[2];
+        _operations = new OperationDesc[2];
         _initOperationDesc1();
     }
 
     private static void _initOperationDesc1() {
-        org.apache.axis.description.OperationDesc oper;
-        org.apache.axis.description.ParameterDesc param;
-        oper = new org.apache.axis.description.OperationDesc();
+        OperationDesc oper;
+        ParameterDesc param;
+        oper = new OperationDesc();
         oper.setName("hamtaFranEDH");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHFraga"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHFraga"), se.csn.webservice.bas.hanteraEDH.HamtaFranEDHFraga.class, false, false);
+        param = new ParameterDesc(new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHFraga"),
+                ParameterDesc.IN, new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHFraga"),
+                HamtaFranEDHFraga.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHSvar"));
-        oper.setReturnClass(se.csn.webservice.bas.hanteraEDH.HamtaFranEDHSvar.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHSvar"));
-        oper.setStyle(org.apache.axis.constants.Style.DOCUMENT);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.setReturnType(new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHSvar"));
+        oper.setReturnClass(HamtaFranEDHSvar.class);
+        oper.setReturnQName(new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHSvar"));
+        oper.setStyle(Style.DOCUMENT);
+        oper.setUse(Use.LITERAL);
         _operations[0] = oper;
 
-        oper = new org.apache.axis.description.OperationDesc();
+        oper = new OperationDesc();
         oper.setName("sparaTillEDH");
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHFraga"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHFraga"), se.csn.webservice.bas.hanteraEDH.SparaTillEDHFraga.class, false, false);
+        param = new ParameterDesc(new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHFraga"),
+                ParameterDesc.IN, new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHFraga"),
+                SparaTillEDHFraga.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHSvar"));
-        oper.setReturnClass(se.csn.webservice.bas.hanteraEDH.SparaTillEDHSvar.class);
-        oper.setReturnQName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHSvar"));
-        oper.setStyle(org.apache.axis.constants.Style.DOCUMENT);
-        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        oper.setReturnType(new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHSvar"));
+        oper.setReturnClass(SparaTillEDHSvar.class);
+        oper.setReturnQName(new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHSvar"));
+        oper.setStyle(Style.DOCUMENT);
+        oper.setUse(Use.LITERAL);
         _operations[1] = oper;
 
     }
 
-    public HanteraEDHSOAPStub() throws org.apache.axis.AxisFault {
+    public HanteraEDHSOAPStub() throws AxisFault {
         this(null);
     }
 
-    public HanteraEDHSOAPStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public HanteraEDHSOAPStub(URL endpointURL, Service service) throws AxisFault {
         this(service);
         super.cachedEndpoint = endpointURL;
     }
 
-    public HanteraEDHSOAPStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
+    public HanteraEDHSOAPStub(Service service) throws AxisFault {
         if (service == null) {
             super.service = new org.apache.axis.client.Service();
         } else {
             super.service = service;
         }
         ((org.apache.axis.client.Service) super.service).setTypeMappingVersion("1.2");
-        java.lang.Class cls;
-        javax.xml.namespace.QName qName;
-        javax.xml.namespace.QName qName2;
-        java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
-        java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-        java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-        java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-        java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-        java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-        java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-        java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-        java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-        java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHFraga");
+        Class cls;
+        QName qName;
+        QName qName2;
+        Class beansf = BeanSerializerFactory.class;
+        Class beandf = BeanDeserializerFactory.class;
+        Class enumsf = EnumSerializerFactory.class;
+        Class enumdf = EnumDeserializerFactory.class;
+        Class arraysf = ArraySerializerFactory.class;
+        Class arraydf = ArrayDeserializerFactory.class;
+        Class simplesf = SimpleSerializerFactory.class;
+        Class simpledf = SimpleDeserializerFactory.class;
+        Class simplelistsf = SimpleListSerializerFactory.class;
+        Class simplelistdf = SimpleListDeserializerFactory.class;
+        qName = new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHFraga");
         cachedSerQNames.add(qName);
-        cls = se.csn.webservice.bas.hanteraEDH.HamtaFranEDHFraga.class;
+        cls = HamtaFranEDHFraga.class;
         cachedSerClasses.add(cls);
         cachedSerFactories.add(beansf);
         cachedDeserFactories.add(beandf);
 
-        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHSvar");
+        qName = new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHSvar");
         cachedSerQNames.add(qName);
-        cls = se.csn.webservice.bas.hanteraEDH.HamtaFranEDHSvar.class;
+        cls = HamtaFranEDHSvar.class;
         cachedSerClasses.add(cls);
         cachedSerFactories.add(beansf);
         cachedDeserFactories.add(beandf);
 
-        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHFraga");
+        qName = new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHFraga");
         cachedSerQNames.add(qName);
-        cls = se.csn.webservice.bas.hanteraEDH.SparaTillEDHFraga.class;
+        cls = SparaTillEDHFraga.class;
         cachedSerClasses.add(cls);
         cachedSerFactories.add(beansf);
         cachedDeserFactories.add(beandf);
 
-        qName = new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHSvar");
+        qName = new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHSvar");
         cachedSerQNames.add(qName);
-        cls = se.csn.webservice.bas.hanteraEDH.SparaTillEDHSvar.class;
+        cls = SparaTillEDHSvar.class;
         cachedSerClasses.add(cls);
         cachedSerFactories.add(beansf);
         cachedDeserFactories.add(beandf);
 
     }
 
-    protected org.apache.axis.client.Call createCall() throws java.rmi.RemoteException {
+    protected Call createCall() throws RemoteException {
         try {
-            org.apache.axis.client.Call _call = super._createCall();
+            Call _call = super._createCall();
             if (super.maintainSessionSet) {
                 _call.setMaintainSession(super.maintainSession);
             }
@@ -127,7 +163,7 @@ public class HanteraEDHSOAPStub extends org.apache.axis.client.Stub implements s
             if (super.cachedPortName != null) {
                 _call.setPortName(super.cachedPortName);
             }
-            java.util.Enumeration keys = super.cachedProperties.keys();
+            Enumeration keys = super.cachedProperties.keys();
             while (keys.hasMoreElements()) {
                 java.lang.String key = (java.lang.String) keys.nextElement();
                 _call.setProperty(key, super.cachedProperties.get(key));
@@ -141,100 +177,95 @@ public class HanteraEDHSOAPStub extends org.apache.axis.client.Stub implements s
                 if (firstCall()) {
                     // must set encoding style before registering serializers
                     _call.setEncodingStyle(null);
-                    for (int i = 0;i < cachedSerFactories.size();++i) {
-                        java.lang.Class cls = (java.lang.Class) cachedSerClasses.get(i);
-                        javax.xml.namespace.QName qName =
-                            (javax.xml.namespace.QName) cachedSerQNames.get(i);
+                    for (int i = 0;i < cachedSerFactories.size();i++) {
+                        Class cls = (Class) cachedSerClasses.get(i);
+                        QName qName = (QName) cachedSerQNames.get(i);
                         java.lang.Object x = cachedSerFactories.get(i);
                         if (x instanceof Class) {
-                            java.lang.Class sf = (java.lang.Class)
-                                cachedSerFactories.get(i);
-                            java.lang.Class df = (java.lang.Class)
-                                cachedDeserFactories.get(i);
+                            Class sf = (Class) cachedSerFactories.get(i);
+                            Class df = (Class) cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
-                        } else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
-                            org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory)
-                                cachedSerFactories.get(i);
-                            org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory)
-                                cachedDeserFactories.get(i);
+                        } else if (x instanceof SerializerFactory) {
+                            org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory) cachedSerFactories
+                                    .get(i);
+                            DeserializerFactory df = (DeserializerFactory) cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }
                     }
                 }
             }
             return _call;
-        }
-        catch (java.lang.Throwable _t) {
-            throw new org.apache.axis.AxisFault("Failure trying to get the Call object", _t);
+        } catch (java.lang.Throwable _t) {
+            throw new AxisFault("Failure trying to get the Call object", _t);
         }
     }
 
     @Override
-    public se.csn.webservice.bas.hanteraEDH.HamtaFranEDHSvar hamtaFranEDH(se.csn.webservice.bas.hanteraEDH.HamtaFranEDHFraga fraga) throws java.rmi.RemoteException {
+    public HamtaFranEDHSvar hamtaFranEDH(HamtaFranEDHFraga fraga) throws RemoteException {
         if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
+            throw new NoEndPointException();
         }
-        org.apache.axis.client.Call _call = createCall();
+        Call _call = createCall();
         _call.setOperation(_operations[0]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("http://webservice.csn.se/bas/hanteraEDH/NewOperation");
         _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("", "hamtaFranEDH"));
+        _call.setProperty(Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new QName("", "hamtaFranEDH"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
         try {
             java.lang.Object _resp = _call.invoke(new java.lang.Object[]{fraga});
 
-            if (_resp instanceof java.rmi.RemoteException) {
-                throw (java.rmi.RemoteException) _resp;
+            if (_resp instanceof RemoteException) {
+                throw (RemoteException) _resp;
             } else {
                 extractAttachments(_call);
                 try {
-                    return (se.csn.webservice.bas.hanteraEDH.HamtaFranEDHSvar) _resp;
+                    return (HamtaFranEDHSvar) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (se.csn.webservice.bas.hanteraEDH.HamtaFranEDHSvar) org.apache.axis.utils.JavaUtils.convert(_resp, se.csn.webservice.bas.hanteraEDH.HamtaFranEDHSvar.class);
+                    return (HamtaFranEDHSvar) JavaUtils.convert(_resp, HamtaFranEDHSvar.class);
                 }
             }
-        } catch (org.apache.axis.AxisFault axisFaultException) {
+        } catch (AxisFault axisFaultException) {
             throw axisFaultException;
         }
     }
 
     @Override
-    public se.csn.webservice.bas.hanteraEDH.SparaTillEDHSvar sparaTillEDH(se.csn.webservice.bas.hanteraEDH.SparaTillEDHFraga fraga) throws java.rmi.RemoteException {
+    public SparaTillEDHSvar sparaTillEDH(SparaTillEDHFraga fraga) throws RemoteException {
         if (super.cachedEndpoint == null) {
-            throw new org.apache.axis.NoEndPointException();
+            throw new NoEndPointException();
         }
-        org.apache.axis.client.Call _call = createCall();
+        Call _call = createCall();
         _call.setOperation(_operations[1]);
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("http://webservice.csn.se/bas/hanteraEDH/sparaTillEDH");
         _call.setEncodingStyle(null);
-        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
-        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
-        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("", "sparaTillEDH"));
+        _call.setProperty(Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new QName("", "sparaTillEDH"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
         try {
             java.lang.Object _resp = _call.invoke(new java.lang.Object[]{fraga});
 
-            if (_resp instanceof java.rmi.RemoteException) {
-                throw (java.rmi.RemoteException) _resp;
+            if (_resp instanceof RemoteException) {
+                throw (RemoteException) _resp;
             } else {
                 extractAttachments(_call);
                 try {
-                    return (se.csn.webservice.bas.hanteraEDH.SparaTillEDHSvar) _resp;
+                    return (SparaTillEDHSvar) _resp;
                 } catch (java.lang.Exception _exception) {
-                    return (se.csn.webservice.bas.hanteraEDH.SparaTillEDHSvar) org.apache.axis.utils.JavaUtils.convert(_resp, se.csn.webservice.bas.hanteraEDH.SparaTillEDHSvar.class);
+                    return (SparaTillEDHSvar) JavaUtils.convert(_resp, SparaTillEDHSvar.class);
                 }
             }
-        } catch (org.apache.axis.AxisFault axisFaultException) {
+        } catch (AxisFault axisFaultException) {
             throw axisFaultException;
         }
     }

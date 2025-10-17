@@ -1,8 +1,13 @@
 package se.csn.webservice.bas.notmotor.skicka;
 
-public class SkickaProxy implements se.csn.webservice.bas.notmotor.skicka.Skicka_PortType {
-    private String _endpoint = null;
-    private se.csn.webservice.bas.notmotor.skicka.Skicka_PortType skicka_PortType = null;
+import java.rmi.RemoteException;
+
+import javax.xml.rpc.ServiceException;
+import javax.xml.rpc.Stub;
+
+public class SkickaProxy implements Skicka_PortType {
+    private String _endpoint;
+    private Skicka_PortType skicka_PortType;
 
     public SkickaProxy() {
         _initSkickaProxy();
@@ -10,16 +15,17 @@ public class SkickaProxy implements se.csn.webservice.bas.notmotor.skicka.Skicka
 
     private void _initSkickaProxy() {
         try {
-            skicka_PortType = (new se.csn.webservice.bas.notmotor.skicka.Skicka_ServiceLocator()).getSkickaSOAP();
+            skicka_PortType = new Skicka_ServiceLocator().getSkickaSOAP();
             if (skicka_PortType != null) {
-                if (_endpoint != null)
-                    ((javax.xml.rpc.Stub) skicka_PortType)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
-                else
-                    _endpoint = (String) ((javax.xml.rpc.Stub) skicka_PortType)._getProperty("javax.xml.rpc.service.endpoint.address");
+                if (_endpoint != null) {
+                    ((Stub) skicka_PortType)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
+                } else {
+                    _endpoint = (String) ((Stub) skicka_PortType)._getProperty("javax.xml.rpc.service.endpoint.address");
+                }
             }
 
         }
-        catch (javax.xml.rpc.ServiceException serviceException) {
+        catch (ServiceException serviceException) {
         }
     }
 
@@ -29,35 +35,40 @@ public class SkickaProxy implements se.csn.webservice.bas.notmotor.skicka.Skicka
 
     public void setEndpoint(String endpoint) {
         _endpoint = endpoint;
-        if (skicka_PortType != null)
-            ((javax.xml.rpc.Stub) skicka_PortType)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
+        if (skicka_PortType != null) {
+            ((Stub) skicka_PortType)._setProperty("javax.xml.rpc.service.endpoint.address", _endpoint);
+        }
 
     }
 
-    public se.csn.webservice.bas.notmotor.skicka.Skicka_PortType getSkicka_PortType() {
-        if (skicka_PortType == null)
+    public Skicka_PortType getSkicka_PortType() {
+        if (skicka_PortType == null) {
             _initSkickaProxy();
+        }
         return skicka_PortType;
     }
 
     @Override
-    public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat skickaMeddelande(se.csn.webservice.bas.notmotor.skicka.DTOMeddelande parameters) throws java.rmi.RemoteException {
-        if (skicka_PortType == null)
+    public DTONotifieringResultat skickaMeddelande(DTOMeddelande parameters) throws RemoteException {
+        if (skicka_PortType == null) {
             _initSkickaProxy();
+        }
         return skicka_PortType.skickaMeddelande(parameters);
     }
 
     @Override
-    public se.csn.webservice.bas.notmotor.skicka.DTOMeddelande hamtaMeddelande(long parameters) throws java.rmi.RemoteException {
-        if (skicka_PortType == null)
+    public DTOMeddelande hamtaMeddelande(long parameters) throws RemoteException {
+        if (skicka_PortType == null) {
             _initSkickaProxy();
+        }
         return skicka_PortType.hamtaMeddelande(parameters);
     }
 
     @Override
-    public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat taBortMeddelande(long parameters) throws java.rmi.RemoteException {
-        if (skicka_PortType == null)
+    public DTONotifieringResultat taBortMeddelande(long parameters) throws RemoteException {
+        if (skicka_PortType == null) {
             _initSkickaProxy();
+        }
         return skicka_PortType.taBortMeddelande(parameters);
     }
 

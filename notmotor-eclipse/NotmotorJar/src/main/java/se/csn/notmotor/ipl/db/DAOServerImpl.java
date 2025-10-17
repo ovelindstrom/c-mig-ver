@@ -40,8 +40,8 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
         if (!server.isAktiv()) {
             aktiv = "N";
         }
-        String sql = "INSERT INTO SERVER (ID,AKTIV,NOTMOTORSERVLETURL,PRESTANDA) VALUES " +
-            "(" + id + ",'" + aktiv + "', '" + server.getServleturl() + "'," + server.getPrestanda() + ")";
+        String sql = "INSERT INTO SERVER (ID,AKTIV,NOTMOTORSERVLETURL,PRESTANDA) VALUES "
+            + "(" + id + ",'" + aktiv + "', '" + server.getServleturl() + "'," + server.getPrestanda() + ")";
         qp.executeThrowException(sql);
         server.setId(id);
         return id;
@@ -62,7 +62,7 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
     @Override
     public Object newRow(ResultSet rs) throws SQLException {
         String aktiv = rs.getString("AKTIV");
-        return new Server(rs.getInt("ID"), aktiv.equals("J"), rs.getInt("PRESTANDA"), rs.getString("NOTMOTORSERVLETURL"));
+        return new Server(rs.getInt("ID"), "J".equals(aktiv), rs.getInt("PRESTANDA"), rs.getString("NOTMOTORSERVLETURL"));
     }
 
 

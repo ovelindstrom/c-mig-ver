@@ -49,12 +49,16 @@ public class DBTestDAOHandelseImpl extends TestCase {
     }
 
     private Integer toInteger(String s) {
-        if (s == null) return null;
+        if (s == null) {
+            return null;
+        }
         return new Integer(s);
     }
 
     private Date toDate(String s) {
-        if (s == null) return null;
+        if (s == null) {
+            return null;
+        }
         try {
             return new SimpleDateFormat("yyyyMMddHHmmss").parse(s);
         } catch (ParseException e) {

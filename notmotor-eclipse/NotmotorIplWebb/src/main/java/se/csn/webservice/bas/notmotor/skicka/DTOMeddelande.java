@@ -7,7 +7,20 @@
 
 package se.csn.webservice.bas.notmotor.skicka;
 
-public class DTOMeddelande  implements java.io.Serializable {
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Calendar;
+
+import javax.xml.namespace.QName;
+
+import org.apache.axis.description.ElementDesc;
+import org.apache.axis.description.TypeDesc;
+import org.apache.axis.encoding.Deserializer;
+import org.apache.axis.encoding.Serializer;
+import org.apache.axis.encoding.ser.BeanDeserializer;
+import org.apache.axis.encoding.ser.BeanSerializer;
+
+public class DTOMeddelande  implements Serializable {
     private java.lang.Long id;
 
     private java.lang.Integer csnnummer;
@@ -20,19 +33,19 @@ public class DTOMeddelande  implements java.io.Serializable {
 
     private java.lang.String meddelandeEncoding;
 
-    private se.csn.webservice.bas.notmotor.skicka.DTOBilaga[] bilagor;
+    private DTOBilaga[] bilagor;
 
-    private java.util.Calendar skapad;
+    private Calendar skapad;
 
-    private java.util.Calendar skickat;
+    private Calendar skickat;
 
-    private java.util.Calendar skickaTidigast;
+    private Calendar skickaTidigast;
 
-    private se.csn.webservice.bas.notmotor.skicka.DTOAvsandare avsandare;
+    private DTOAvsandare avsandare;
 
-    private se.csn.webservice.bas.notmotor.skicka.DTOMottagare[] mottagare;
+    private DTOMottagare[] mottagare;
 
-    private se.csn.webservice.bas.notmotor.skicka.DTOMeddelandeHandelse[] handelser;
+    private DTOMeddelandeHandelse[] handelser;
 
     private java.lang.String callbackURL;
 
@@ -52,13 +65,13 @@ public class DTOMeddelande  implements java.io.Serializable {
            java.lang.String meddelandetext,
            java.lang.String rubrikEncoding,
            java.lang.String meddelandeEncoding,
-           se.csn.webservice.bas.notmotor.skicka.DTOBilaga[] bilagor,
-           java.util.Calendar skapad,
-           java.util.Calendar skickat,
-           java.util.Calendar skickaTidigast,
-           se.csn.webservice.bas.notmotor.skicka.DTOAvsandare avsandare,
-           se.csn.webservice.bas.notmotor.skicka.DTOMottagare[] mottagare,
-           se.csn.webservice.bas.notmotor.skicka.DTOMeddelandeHandelse[] handelser,
+           DTOBilaga[] bilagor,
+           Calendar skapad,
+           Calendar skickat,
+           Calendar skickaTidigast,
+           DTOAvsandare avsandare,
+           DTOMottagare[] mottagare,
+           DTOMeddelandeHandelse[] handelser,
            java.lang.String callbackURL,
            java.lang.Integer callbackMask,
            java.lang.String mimetyp,
@@ -208,7 +221,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @return bilagor
      */
-    public se.csn.webservice.bas.notmotor.skicka.DTOBilaga[] getBilagor() {
+    public DTOBilaga[] getBilagor() {
         return bilagor;
     }
 
@@ -218,15 +231,15 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @param bilagor
      */
-    public void setBilagor(se.csn.webservice.bas.notmotor.skicka.DTOBilaga[] bilagor) {
+    public void setBilagor(DTOBilaga[] bilagor) {
         this.bilagor = bilagor;
     }
 
-    public se.csn.webservice.bas.notmotor.skicka.DTOBilaga getBilagor(int i) {
+    public DTOBilaga getBilagor(int i) {
         return this.bilagor[i];
     }
 
-    public void setBilagor(int i, se.csn.webservice.bas.notmotor.skicka.DTOBilaga _value) {
+    public void setBilagor(int i, DTOBilaga _value) {
         this.bilagor[i] = _value;
     }
 
@@ -236,7 +249,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @return skapad
      */
-    public java.util.Calendar getSkapad() {
+    public Calendar getSkapad() {
         return skapad;
     }
 
@@ -246,7 +259,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @param skapad
      */
-    public void setSkapad(java.util.Calendar skapad) {
+    public void setSkapad(Calendar skapad) {
         this.skapad = skapad;
     }
 
@@ -256,7 +269,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @return skickat
      */
-    public java.util.Calendar getSkickat() {
+    public Calendar getSkickat() {
         return skickat;
     }
 
@@ -266,7 +279,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @param skickat
      */
-    public void setSkickat(java.util.Calendar skickat) {
+    public void setSkickat(Calendar skickat) {
         this.skickat = skickat;
     }
 
@@ -276,7 +289,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @return skickaTidigast
      */
-    public java.util.Calendar getSkickaTidigast() {
+    public Calendar getSkickaTidigast() {
         return skickaTidigast;
     }
 
@@ -286,7 +299,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @param skickaTidigast
      */
-    public void setSkickaTidigast(java.util.Calendar skickaTidigast) {
+    public void setSkickaTidigast(Calendar skickaTidigast) {
         this.skickaTidigast = skickaTidigast;
     }
 
@@ -296,7 +309,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @return avsandare
      */
-    public se.csn.webservice.bas.notmotor.skicka.DTOAvsandare getAvsandare() {
+    public DTOAvsandare getAvsandare() {
         return avsandare;
     }
 
@@ -306,7 +319,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @param avsandare
      */
-    public void setAvsandare(se.csn.webservice.bas.notmotor.skicka.DTOAvsandare avsandare) {
+    public void setAvsandare(DTOAvsandare avsandare) {
         this.avsandare = avsandare;
     }
 
@@ -316,7 +329,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @return mottagare
      */
-    public se.csn.webservice.bas.notmotor.skicka.DTOMottagare[] getMottagare() {
+    public DTOMottagare[] getMottagare() {
         return mottagare;
     }
 
@@ -326,15 +339,15 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @param mottagare
      */
-    public void setMottagare(se.csn.webservice.bas.notmotor.skicka.DTOMottagare[] mottagare) {
+    public void setMottagare(DTOMottagare[] mottagare) {
         this.mottagare = mottagare;
     }
 
-    public se.csn.webservice.bas.notmotor.skicka.DTOMottagare getMottagare(int i) {
+    public DTOMottagare getMottagare(int i) {
         return this.mottagare[i];
     }
 
-    public void setMottagare(int i, se.csn.webservice.bas.notmotor.skicka.DTOMottagare _value) {
+    public void setMottagare(int i, DTOMottagare _value) {
         this.mottagare[i] = _value;
     }
 
@@ -344,7 +357,7 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @return handelser
      */
-    public se.csn.webservice.bas.notmotor.skicka.DTOMeddelandeHandelse[] getHandelser() {
+    public DTOMeddelandeHandelse[] getHandelser() {
         return handelser;
     }
 
@@ -354,15 +367,15 @@ public class DTOMeddelande  implements java.io.Serializable {
      * 
      * @param handelser
      */
-    public void setHandelser(se.csn.webservice.bas.notmotor.skicka.DTOMeddelandeHandelse[] handelser) {
+    public void setHandelser(DTOMeddelandeHandelse[] handelser) {
         this.handelser = handelser;
     }
 
-    public se.csn.webservice.bas.notmotor.skicka.DTOMeddelandeHandelse getHandelser(int i) {
+    public DTOMeddelandeHandelse getHandelser(int i) {
         return this.handelser[i];
     }
 
-    public void setHandelser(int i, se.csn.webservice.bas.notmotor.skicka.DTOMeddelandeHandelse _value) {
+    public void setHandelser(int i, DTOMeddelandeHandelse _value) {
         this.handelser[i] = _value;
     }
 
@@ -446,76 +459,82 @@ public class DTOMeddelande  implements java.io.Serializable {
         this.kanal = kanal;
     }
 
-    private java.lang.Object __equalsCalc = null;
+    private java.lang.Object __equalsCalc;
 
     @Override
     public synchronized boolean equals(java.lang.Object obj) {
-        if (!(obj instanceof DTOMeddelande)) return false;
+        if (!(obj instanceof DTOMeddelande)) {
+            return false;
+        }
         DTOMeddelande other = (DTOMeddelande) obj;
-        if (obj == null) return false;
-        if (this == obj) return true;
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
         if (__equalsCalc != null) {
-            return (__equalsCalc == obj);
+            return __equalsCalc == obj;
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true &&
-            ((this.id == null && other.getId() == null) ||
-                (this.id != null &&
-                    this.id.equals(other.getId()))) &&
-            ((this.csnnummer == null && other.getCsnnummer() == null) ||
-                (this.csnnummer != null &&
-                    this.csnnummer.equals(other.getCsnnummer()))) &&
-            ((this.rubrik == null && other.getRubrik() == null) ||
-                (this.rubrik != null &&
-                    this.rubrik.equals(other.getRubrik()))) &&
-            ((this.meddelandetext == null && other.getMeddelandetext() == null) ||
-                (this.meddelandetext != null &&
-                    this.meddelandetext.equals(other.getMeddelandetext()))) &&
-            ((this.rubrikEncoding == null && other.getRubrikEncoding() == null) ||
-                (this.rubrikEncoding != null &&
-                    this.rubrikEncoding.equals(other.getRubrikEncoding()))) &&
-            ((this.meddelandeEncoding == null && other.getMeddelandeEncoding() == null) ||
-                (this.meddelandeEncoding != null &&
-                    this.meddelandeEncoding.equals(other.getMeddelandeEncoding()))) &&
-            ((this.bilagor == null && other.getBilagor() == null) ||
-                (this.bilagor != null &&
-                    java.util.Arrays.equals(this.bilagor, other.getBilagor()))) &&
-            ((this.skapad == null && other.getSkapad() == null) ||
-                (this.skapad != null &&
-                    this.skapad.equals(other.getSkapad()))) &&
-            ((this.skickat == null && other.getSkickat() == null) ||
-                (this.skickat != null &&
-                    this.skickat.equals(other.getSkickat()))) &&
-            ((this.skickaTidigast == null && other.getSkickaTidigast() == null) ||
-                (this.skickaTidigast != null &&
-                    this.skickaTidigast.equals(other.getSkickaTidigast()))) &&
-            ((this.avsandare == null && other.getAvsandare() == null) ||
-                (this.avsandare != null &&
-                    this.avsandare.equals(other.getAvsandare()))) &&
-            ((this.mottagare == null && other.getMottagare() == null) ||
-                (this.mottagare != null &&
-                    java.util.Arrays.equals(this.mottagare, other.getMottagare()))) &&
-            ((this.handelser == null && other.getHandelser() == null) ||
-                (this.handelser != null &&
-                    java.util.Arrays.equals(this.handelser, other.getHandelser()))) &&
-            ((this.callbackURL == null && other.getCallbackURL() == null) ||
-                (this.callbackURL != null &&
-                    this.callbackURL.equals(other.getCallbackURL()))) &&
-            ((this.callbackMask == null && other.getCallbackMask() == null) ||
-                (this.callbackMask != null &&
-                    this.callbackMask.equals(other.getCallbackMask()))) &&
-            ((this.mimetyp == null && other.getMimetyp() == null) ||
-                (this.mimetyp != null &&
-                    this.mimetyp.equals(other.getMimetyp()))) &&
-            ((this.kanal == null && other.getKanal() == null) ||
-                (this.kanal != null &&
-                    this.kanal.equals(other.getKanal())));
+        _equals = true
+            && ((this.id == null && other.getId() == null)
+                || (this.id != null
+                    && this.id.equals(other.getId())))
+            && ((this.csnnummer == null && other.getCsnnummer() == null)
+                || (this.csnnummer != null
+                    && this.csnnummer.equals(other.getCsnnummer())))
+            && ((this.rubrik == null && other.getRubrik() == null)
+                || (this.rubrik != null
+                    && this.rubrik.equals(other.getRubrik())))
+            && ((this.meddelandetext == null && other.getMeddelandetext() == null)
+                || (this.meddelandetext != null
+                    && this.meddelandetext.equals(other.getMeddelandetext())))
+            && ((this.rubrikEncoding == null && other.getRubrikEncoding() == null)
+                || (this.rubrikEncoding != null
+                    && this.rubrikEncoding.equals(other.getRubrikEncoding())))
+            && ((this.meddelandeEncoding == null && other.getMeddelandeEncoding() == null)
+                || (this.meddelandeEncoding != null
+                    && this.meddelandeEncoding.equals(other.getMeddelandeEncoding())))
+            && ((this.bilagor == null && other.getBilagor() == null)
+                || (this.bilagor != null
+                    && Arrays.equals(this.bilagor, other.getBilagor())))
+            && ((this.skapad == null && other.getSkapad() == null)
+                || (this.skapad != null
+                    && this.skapad.equals(other.getSkapad())))
+            && ((this.skickat == null && other.getSkickat() == null)
+                || (this.skickat != null
+                    && this.skickat.equals(other.getSkickat())))
+            && ((this.skickaTidigast == null && other.getSkickaTidigast() == null)
+                || (this.skickaTidigast != null
+                    && this.skickaTidigast.equals(other.getSkickaTidigast())))
+            && ((this.avsandare == null && other.getAvsandare() == null)
+                || (this.avsandare != null
+                    && this.avsandare.equals(other.getAvsandare())))
+            && ((this.mottagare == null && other.getMottagare() == null)
+                || (this.mottagare != null
+                    && Arrays.equals(this.mottagare, other.getMottagare())))
+            && ((this.handelser == null && other.getHandelser() == null)
+                || (this.handelser != null
+                    && Arrays.equals(this.handelser, other.getHandelser())))
+            && ((this.callbackURL == null && other.getCallbackURL() == null)
+                || (this.callbackURL != null
+                    && this.callbackURL.equals(other.getCallbackURL())))
+            && ((this.callbackMask == null && other.getCallbackMask() == null)
+                || (this.callbackMask != null
+                    && this.callbackMask.equals(other.getCallbackMask())))
+            && ((this.mimetyp == null && other.getMimetyp() == null)
+                || (this.mimetyp != null
+                    && this.mimetyp.equals(other.getMimetyp())))
+            && ((this.kanal == null && other.getKanal() == null)
+                || (this.kanal != null
+                    && this.kanal.equals(other.getKanal())));
         __equalsCalc = null;
         return _equals;
     }
 
-    private boolean __hashCodeCalc = false;
+    private boolean __hashCodeCalc;
 
     @Override
     public synchronized int hashCode() {
@@ -547,8 +566,8 @@ public class DTOMeddelande  implements java.io.Serializable {
                  i < java.lang.reflect.Array.getLength(getBilagor());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getBilagor(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
+                if (obj != null
+                    && !obj.getClass().isArray()) {
                     _hashCode += obj.hashCode();
                 }
             }
@@ -570,8 +589,8 @@ public class DTOMeddelande  implements java.io.Serializable {
                  i < java.lang.reflect.Array.getLength(getMottagare());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getMottagare(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
+                if (obj != null
+                    && !obj.getClass().isArray()) {
                     _hashCode += obj.hashCode();
                 }
             }
@@ -581,8 +600,8 @@ public class DTOMeddelande  implements java.io.Serializable {
                  i < java.lang.reflect.Array.getLength(getHandelser());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getHandelser(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
+                if (obj != null
+                    && !obj.getClass().isArray()) {
                     _hashCode += obj.hashCode();
                 }
             }
@@ -604,128 +623,128 @@ public class DTOMeddelande  implements java.io.Serializable {
     }
 
     // Type metadata
-    private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(DTOMeddelande.class, true);
+    private static TypeDesc typeDesc =
+        new TypeDesc(DTOMeddelande.class, true);
 
     static {
-        typeDesc.setXmlType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelande"));
-        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        typeDesc.setXmlType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelande"));
+        ElementDesc elemField = new ElementDesc();
         elemField.setFieldName("id");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "id"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "id"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "long"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("csnnummer");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "csnnummer"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "csnnummer"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("rubrik");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "rubrik"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "rubrik"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("meddelandetext");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "meddelandetext"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "meddelandetext"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("rubrikEncoding");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "rubrikEncoding"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "rubrikEncoding"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("meddelandeEncoding");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "meddelandeEncoding"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "meddelandeEncoding"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("bilagor");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "bilagor"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOBilaga"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "bilagor"));
+        elemField.setXmlType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOBilaga"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         elemField.setMaxOccursUnbounded(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("skapad");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "skapad"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "skapad"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("skickat");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "skickat"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "skickat"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("skickaTidigast");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "skickaTidigast"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "skickaTidigast"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "dateTime"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("avsandare");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "avsandare"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOAvsandare"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "avsandare"));
+        elemField.setXmlType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOAvsandare"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("mottagare");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "mottagare"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMottagare"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "mottagare"));
+        elemField.setXmlType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMottagare"));
         elemField.setNillable(false);
         elemField.setMaxOccursUnbounded(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("handelser");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "handelser"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelandeHandelse"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "handelser"));
+        elemField.setXmlType(new QName("http://webservice.csn.se/bas/notmotor/skicka", "DTOMeddelandeHandelse"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         elemField.setMaxOccursUnbounded(true);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("callbackURL");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "callbackURL"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "callbackURL"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("callbackMask");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "callbackMask"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "callbackMask"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "int"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("mimetyp");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "mimetyp"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "mimetyp"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
+        elemField = new ElementDesc();
         elemField.setFieldName("kanal");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "kanal"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/skicka", "kanal"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
@@ -734,31 +753,31 @@ public class DTOMeddelande  implements java.io.Serializable {
     /**
      * Return type metadata object
      */
-    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+    public static TypeDesc getTypeDesc() {
         return typeDesc;
     }
 
     /**
      * Get Custom Serializer
      */
-    public static org.apache.axis.encoding.Serializer getSerializer(
+    public static Serializer getSerializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanSerializer(
+            new  BeanSerializer(
                 _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
-    public static org.apache.axis.encoding.Deserializer getDeserializer(
+    public static Deserializer getDeserializer(
            java.lang.String mechType,
            java.lang.Class _javaType,
-           javax.xml.namespace.QName _xmlType) {
+           QName _xmlType) {
         return
-            new  org.apache.axis.encoding.ser.BeanDeserializer(
+            new  BeanDeserializer(
                 _javaType, _xmlType, typeDesc);
     }
 
