@@ -194,6 +194,7 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
         }
     }
 
+    @Override
     public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat skickaMeddelande(se.csn.webservice.bas.notmotor.skicka.DTOMeddelande parameters) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
@@ -228,6 +229,7 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
         }
     }
 
+    @Override
     public se.csn.webservice.bas.notmotor.skicka.DTOMeddelande hamtaMeddelande(long parameters) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
@@ -262,6 +264,7 @@ public class SkickaSOAPStub extends org.apache.axis.client.Stub implements se.cs
         }
     }
 
+    @Override
     public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat taBortMeddelande(long parameters) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();

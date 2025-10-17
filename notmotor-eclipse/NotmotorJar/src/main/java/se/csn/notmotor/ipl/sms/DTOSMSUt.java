@@ -86,6 +86,7 @@ public class DTOSMSUt implements Serializable {
         this.temporaryError = temporaryError;
     }
 
+    @Override
     public String toString() {
         return "Status: " + returStatus + " (" + getReturStatusText() + ")";
     }

@@ -22,6 +22,7 @@ public class SkickaService implements NotifieringProxy {
     private static NotifieringProxyFactory factory;
     private static Log log = Log.getInstance(SkickaService.class);
 
+    @Override
     public Meddelande hamtaMeddelande(Long meddelandeId) {
         if (meddelandeId == null) {
             return null;
@@ -30,6 +31,7 @@ public class SkickaService implements NotifieringProxy {
         return getProxy().hamtaMeddelande(meddelandeId);
     }
 
+    @Override
     public NotifieringResultat skickaMeddelande(Meddelande meddelande) {
         try {
             if (meddelande == null) {
@@ -43,15 +45,18 @@ public class SkickaService implements NotifieringProxy {
         }
     }
 
+    @Override
     public NotifieringResultat taBortMeddelande(Long meddelandeId) {
         return getProxy().taBortMeddelande(meddelandeId);
     }
 
+    @Override
     public Avsandare[] sokAvsandare(String namndel, String applikationsdel,
                                     String kategoridel, String adressdel, String replytoDel) {
         return getProxy().sokAvsandare(namndel, applikationsdel, kategoridel, adressdel, replytoDel);
     }
 
+    @Override
     public Meddelande[] sokMeddelanden(Date from, Date tom,
                                        Avsandare[] avsandare, Mottagare[] mottagare,
                                        String textinnehall, Integer minstorlek, Integer maxstorlek,
@@ -59,6 +64,7 @@ public class SkickaService implements NotifieringProxy {
         return getProxy().sokMeddelanden(from, tom, avsandare, mottagare, textinnehall, minstorlek, maxstorlek, handelseMask, felmask, bilagor);
     }
 
+    @Override
     public Mottagare[] sokMottagare(String namndel, String adressdel,
                                     String typ, Integer csnnrFrom, Integer csnnrTom) {
         return getProxy().sokMottagare(namndel, adressdel, typ, csnnrFrom, csnnrTom);

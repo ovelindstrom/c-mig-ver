@@ -163,6 +163,7 @@ public class CallbackSOAPStub extends org.apache.axis.client.Stub implements se.
         }
     }
 
+    @Override
     public void nyHandelse(se.csn.webservice.bas.notmotor.callback.DTOMeddelande parameters) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();

@@ -15,10 +15,12 @@ public class ContainerListener implements ServletContextListener {
 
     private Log log = Log.getInstance(ContainerListener.class);
 
+    @Override
     public void contextDestroyed(ServletContextEvent arg0) {
         log.info("CONTEXT DESTROY");
     }
 
+    @Override
     public void contextInitialized(ServletContextEvent arg0) {
         log.info("CONTEXT INIT");
     }

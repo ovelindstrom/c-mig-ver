@@ -20,6 +20,7 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
         super(qp);
     }
 
+    @Override
     public int createMottagare(Mottagare mott, long meddelandeId) {
         if (mott == null) {
             throw new IllegalArgumentException("Mottagare måste vara satt");
@@ -33,6 +34,7 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
         return id;
     }
 
+    @Override
     public Object newRow(ResultSet rs) throws SQLException {
         Mottagare mott = new Mottagare();
         mott.setId(new Long(rs.getLong("ID")));
@@ -58,22 +60,26 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
         return qp.processQuery(sql, this);
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<Mottagare> getMottagare(Mottagare mott) {
         return getMottagare(mott.getNamn(), mott.getAdress(), mott.getTyp(), mott.getCsnnummer());
     }
 
+    @Override
     public Mottagare getMottagare(long id) {
         return (Mottagare) qp.getObject("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE " +
             "WHERE ID=" + id, this);
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<Mottagare> getMottagareForMeddelande(long meddelandeId) {
         return qp.processQuery("SELECT ID,TYP,NAMN,ADRESS,CSNNUMMER,STATUS FROM MOTTAGARE " +
             "WHERE MEDDELANDEID=" + meddelandeId, this);
     }
 
+    @Override
     public void updateMottagare(Mottagare mott) {
         String query = makeUpdateQuery("MOTTAGARE", new Object[]{"TYP", mott.getTyp(), "NAMN", mott.getNamn(),
                 "ADRESS", mott.getAdress(), "CSNNUMMER", mott.getCsnnummer(), "STATUS", mott.getStatus()},
@@ -81,6 +87,7 @@ public class DAOMottagareImpl extends DAOImplBase implements DAOMottagare {
         qp.executeThrowException(query);
     }
 
+    @Override
     public void deleteMottagare(Mottagare mott) {
         qp.executeThrowException("DELETE FROM MOTTAGARE WHERE ID=" + mott.getId());
     }

@@ -299,6 +299,7 @@ public class Meddelande extends CsnDataTransferObjectImpl {
         this.kanal = kanal;
     }
 
+    @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
         sb.append("Id: ");
@@ -329,10 +330,12 @@ public class Meddelande extends CsnDataTransferObjectImpl {
         return sb.toString();
     }
 
+    @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
 
+    @Override
     public boolean equals(Object o) {
         return EqualsBuilder.reflectionEquals(this, o);
     }

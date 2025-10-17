@@ -40,18 +40,21 @@ public class SkickaProxy implements se.csn.webservice.bas.notmotor.skicka.Skicka
         return skicka_PortType;
     }
 
+    @Override
     public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat skickaMeddelande(se.csn.webservice.bas.notmotor.skicka.DTOMeddelande parameters) throws java.rmi.RemoteException {
         if (skicka_PortType == null)
             _initSkickaProxy();
         return skicka_PortType.skickaMeddelande(parameters);
     }
 
+    @Override
     public se.csn.webservice.bas.notmotor.skicka.DTOMeddelande hamtaMeddelande(long parameters) throws java.rmi.RemoteException {
         if (skicka_PortType == null)
             _initSkickaProxy();
         return skicka_PortType.hamtaMeddelande(parameters);
     }
 
+    @Override
     public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat taBortMeddelande(long parameters) throws java.rmi.RemoteException {
         if (skicka_PortType == null)
             _initSkickaProxy();

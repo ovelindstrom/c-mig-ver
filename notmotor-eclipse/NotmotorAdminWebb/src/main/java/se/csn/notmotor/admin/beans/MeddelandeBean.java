@@ -116,6 +116,7 @@ public class MeddelandeBean {
 
     public static class HandelseradMapper implements RowToObjectMapper {
 
+        @Override
         public Object newRow(ResultSet rs) throws SQLException {
             return new Handelserad(rs.getLong("ID"), rs.getInt("TYP"), rs.getInt("KOD"), rs.getString("TEXT"), rs.getTimestamp("TIDPUNKT"));
         }

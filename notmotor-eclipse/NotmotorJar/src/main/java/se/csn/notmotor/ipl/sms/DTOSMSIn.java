@@ -87,6 +87,7 @@ public class DTOSMSIn {
         this.funktionsnamn = funktionsnamn;
     }
 
+    @Override
     public String toString() {
         return "Tel: " + telnummer + " App: " + applikationsnamn
             + " Funk: " + funktionsnamn + " Rubrik: " + rubrik + " Text: " + meddelande;

@@ -169,10 +169,12 @@ public class MeddelandeHandelse  extends CsnDataTransferObjectImpl {
         this.instans = instans;
     }
 
+    @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
 
+    @Override
     public boolean equals(Object other) {
         return EqualsBuilder.reflectionEquals(this, other);
     }

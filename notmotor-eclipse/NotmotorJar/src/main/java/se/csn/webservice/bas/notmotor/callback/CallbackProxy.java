@@ -40,6 +40,7 @@ public class CallbackProxy implements se.csn.webservice.bas.notmotor.callback.Ca
         return callback_PortType;
     }
 
+    @Override
     public void nyHandelse(se.csn.webservice.bas.notmotor.callback.DTOMeddelande parameters) throws java.rmi.RemoteException {
         if (callback_PortType == null)
             _initCallbackProxy();

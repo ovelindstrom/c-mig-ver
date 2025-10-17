@@ -33,6 +33,7 @@ public class NotifieringProxyImpl implements NotifieringProxy {
         this.qp = qp;
     }
 
+    @Override
     public Meddelande hamtaMeddelande(Long meddelandeId) {
         return meddelandeHandler.getMeddelande(meddelandeId.longValue());
     }
@@ -40,6 +41,7 @@ public class NotifieringProxyImpl implements NotifieringProxy {
     /**
      * Validerar, lagger till handelsen MOTTAGET och skriver till databas.
      */
+    @Override
     public NotifieringResultat skickaMeddelande(Meddelande meddelande) {
         try {
             return meddelandeMottagare.skickaMeddelande(meddelande, meddelandeHandler);
@@ -49,6 +51,7 @@ public class NotifieringProxyImpl implements NotifieringProxy {
         }
     }
 
+    @Override
     public NotifieringResultat taBortMeddelande(Long meddelandeId) {
         try {
             Connection conn = qp.getConnection();
@@ -69,11 +72,13 @@ public class NotifieringProxyImpl implements NotifieringProxy {
         }
     }
 
+    @Override
     public Avsandare[] sokAvsandare(String namndel, String applikationsdel,
                                     String kategoridel, String adressdel, String replytoDel) {
         return null;
     }
 
+    @Override
     public Meddelande[] sokMeddelanden(Date from, Date tom,
                                        Avsandare[] avsandare, Mottagare[] mottagare,
                                        String textinnehall, Integer minstorlek, Integer maxstorlek,
@@ -81,6 +86,7 @@ public class NotifieringProxyImpl implements NotifieringProxy {
         return null;
     }
 
+    @Override
     public Mottagare[] sokMottagare(String namndel, String adressdel,
                                     String typ, Integer csnnrFrom, Integer csnnrTom) {
         return null;

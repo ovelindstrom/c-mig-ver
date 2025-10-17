@@ -17,10 +17,12 @@ import se.csn.notmotor.ipl.model.KodText;
  */
 public class BasicMeddelandeValidator implements MeddelandeValidator {
 
+    @Override
     public boolean isValid(Meddelande meddelande) {
         return getFelkodForMeddelande(meddelande) == null;
     }
 
+    @Override
     public KodText getFelkodForMeddelande(Meddelande meddelande) {
         if (meddelande == null) {
             return new KodText(MeddelandeHandelse.FELAKTIG_SUBJECT, "Inget meddelande!");

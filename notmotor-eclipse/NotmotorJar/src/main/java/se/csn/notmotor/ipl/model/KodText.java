@@ -17,6 +17,7 @@ public class KodText {
         this.text = text;
     }
 
+    @Override
     public String toString() {
         return "" + kod + ": " + text;
     }

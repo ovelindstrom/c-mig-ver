@@ -80,10 +80,12 @@ public class Status {
         this.watchdog = watchdog;
     }
 
+    @Override
     public boolean equals(Object o) {
         return EqualsBuilder.reflectionEquals(this, o);
     }
 
+    @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }

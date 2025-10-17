@@ -76,18 +76,21 @@ public class SkickaSOAPSkeleton implements se.csn.webservice.bas.notmotor.skicka
         this.impl = impl;
     }
 
+    @Override
     public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat skickaMeddelande(se.csn.webservice.bas.notmotor.skicka.DTOMeddelande parameters) throws java.rmi.RemoteException
     {
         se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat ret = impl.skickaMeddelande(parameters);
         return ret;
     }
 
+    @Override
     public se.csn.webservice.bas.notmotor.skicka.DTOMeddelande hamtaMeddelande(long parameters) throws java.rmi.RemoteException
     {
         se.csn.webservice.bas.notmotor.skicka.DTOMeddelande ret = impl.hamtaMeddelande(parameters);
         return ret;
     }
 
+    @Override
     public se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat taBortMeddelande(long parameters) throws java.rmi.RemoteException
     {
         se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat ret = impl.taBortMeddelande(parameters);

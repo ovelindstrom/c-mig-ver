@@ -160,6 +160,7 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
 
     private java.lang.Object __equalsCalc = null;
 
+    @Override
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof DTOMeddelandeHandelse)) return false;
         DTOMeddelandeHandelse other = (DTOMeddelandeHandelse) obj;
@@ -195,6 +196,7 @@ public class DTOMeddelandeHandelse  implements java.io.Serializable {
 
     private boolean __hashCodeCalc = false;
 
+    @Override
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

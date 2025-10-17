@@ -14,6 +14,7 @@ import se.csn.notmotor.ipl.model.KodText;
  */
 public class EpostValidator implements MeddelandeValidator {
 
+    @Override
     public KodText getFelkodForMeddelande(Meddelande meddelande) {
         if (!EmailAdressValidator.isValid(meddelande.getAvsandare().getEpostadress())) {
             return new KodText(MeddelandeHandelse.FELAKTIG_AVSANDARE, "Felaktig avsändaradress");
@@ -48,6 +49,7 @@ public class EpostValidator implements MeddelandeValidator {
     /** 
      * @see se.csn.notmotor.ipl.validators.MeddelandeValidator#isValid(se.csn.notmotor.ipl.model.Meddelande)
      */
+    @Override
     public boolean isValid(Meddelande meddelande) {
         return getFelkodForMeddelande(meddelande) == null;
     }

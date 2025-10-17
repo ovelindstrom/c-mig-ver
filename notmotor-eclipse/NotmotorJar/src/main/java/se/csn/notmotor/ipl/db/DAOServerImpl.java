@@ -19,6 +19,7 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
         super(qp);
     }
 
+    @Override
     public List getAktiva(boolean aktiv) {
         String sql = "SELECT ID,AKTIV,NOTMOTORSERVLETURL,PRESTANDA FROM SERVER";
         if (aktiv) {
@@ -29,6 +30,7 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
         return qp.processQuery(sql, this);
     }
 
+    @Override
     public int skapa(Server server) {
         if (server == null) {
             throw new IllegalArgumentException("Server måste anges");
@@ -45,6 +47,7 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
         return id;
     }
 
+    @Override
     public void uppdatera(Server server) {
         String aktiv = "J";
         if (!server.isAktiv()) {
@@ -56,20 +59,24 @@ public class DAOServerImpl extends DAOImplBase implements DAOServer {
         qp.executeThrowException(sql);
     }
 
+    @Override
     public Object newRow(ResultSet rs) throws SQLException {
         String aktiv = rs.getString("AKTIV");
         return new Server(rs.getInt("ID"), aktiv.equals("J"), rs.getInt("PRESTANDA"), rs.getString("NOTMOTORSERVLETURL"));
     }
 
 
+    @Override
     public int getLevandeProcesser(int serverid) {
         return qp.getInt("SELECT COUNT(*) FROM STATUS WHERE SERVER=" + serverid + " AND STATUS <> " + MeddelandeStateMachineBase.STOPPED, 0);
     }
 
+    @Override
     public void delete(int serverid) {
         qp.executeThrowException("DELETE FROM SERVER WHERE ID=" + serverid);
     }
 
+    @Override
     public Server get(int serverid) {
         return (Server) qp.getObject("SELECT ID,AKTIV,NOTMOTORSERVLETURL,PRESTANDA FROM SERVER WHERE ID=" + serverid, this);
     }

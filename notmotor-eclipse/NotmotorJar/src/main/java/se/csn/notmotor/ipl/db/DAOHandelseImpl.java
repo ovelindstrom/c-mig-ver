@@ -19,6 +19,7 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
         super(qp);
     }
 
+    @Override
     public long createHandelse(MeddelandeHandelse h, long meddelandeid) {
         return createHandelse(h, meddelandeid, null);
     }
@@ -26,6 +27,7 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
     /**
      * Skapar en rad i databasen och 
      */
+    @Override
     public long createHandelse(MeddelandeHandelse h, long meddelandeid, Connection conn) {
         long id = qp.getCounter("SEKVENS", "HANDELSEID");
         int kod = getInt(h.getFelkod(), 0);
@@ -40,6 +42,7 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
         return id;
     }
 
+    @Override
     public Object newRow(ResultSet rs) throws SQLException {
         MeddelandeHandelse h = new MeddelandeHandelse();
         h.setId(new Long(rs.getLong("ID")));
@@ -51,11 +54,13 @@ public class DAOHandelseImpl extends DAOImplBase implements DAOHandelse {
         return h;
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<MeddelandeHandelse> getHandelserForMeddelande(long meddelandeid) {
         return qp.processQuery("SELECT * FROM HANDELSE WHERE MEDDELANDEID=" + meddelandeid + " ORDER BY ID", this);
     }
 
+    @Override
     public MeddelandeHandelse getHandelse(long id) {
         List list = qp.processQuery("SELECT * FROM HANDELSE WHERE ID=" + id, this);
         if (list.size() == 0) {

@@ -18,6 +18,7 @@ public class TestDAOImplBase extends TestCase {
             super(null);
         }
 
+        @Override
         public Object newRow(ResultSet rs) throws SQLException {
             return null;
         }

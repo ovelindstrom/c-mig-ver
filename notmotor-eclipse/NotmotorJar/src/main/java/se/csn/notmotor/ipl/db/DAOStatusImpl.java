@@ -18,10 +18,12 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
         super(qp);
     }
 
+    @Override
     public Status getStatus(int instans) {
         return (Status) qp.getObject("SELECT INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP FROM STATUS WHERE INSTANS=" + instans, this);
     }
 
+    @Override
     public List getStatus(Integer status, Integer server) {
         String where = addRestriction("", "STATUS", "=", status);
         where = addRestriction(where, "SERVER", "=", server);
@@ -32,6 +34,7 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
         return qp.processQuery("SELECT INSTANS,STARTAD,STOPPAD,STATUS,WATCHDOGTSTAMP,SERVER,TYP FROM STATUS " + where, this);
     }
 
+    @Override
     public int skapa(Status status) {
         if (status == null) {
             throw new IllegalArgumentException("Status måste vara satt");
@@ -48,6 +51,7 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
     /**
      * Uppdaterar endast STATUS, STOPPAD och WATCHDDOGTSTAMP
      */
+    @Override
     public void uppdatera(Status status) {
         if (status == null) {
             throw new IllegalArgumentException("Status måste vara satt");
@@ -56,6 +60,7 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
             "WATCHDOGTSTAMP=" + quoteValue(status.getWatchdog()) + " WHERE INSTANS=" + status.getInstans());
     }
 
+    @Override
     public Object newRow(ResultSet rs) throws SQLException {
         Status s = new Status();
         s.setInstans(rs.getInt("INSTANS"));
@@ -69,6 +74,7 @@ public class DAOStatusImpl extends DAOImplBase implements DAOStatus {
     }
 
 
+    @Override
     public void delete(int instans) {
         qp.executeThrowException("DELETE FROM STATUS WHERE INSTANS=" + instans);
     }

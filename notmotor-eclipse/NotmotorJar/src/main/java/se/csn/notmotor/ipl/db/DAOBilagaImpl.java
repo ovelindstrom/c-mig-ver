@@ -31,6 +31,7 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
      * Skapar bilaga i databasen
      * @return nyckeln för bilagan
      */
+    @Override
     public long createBilaga(Bilaga b, long meddelandeid) {
         if (b.getData() == null) {
             throw new IllegalArgumentException("Bilagan måste ha data.");
@@ -73,6 +74,7 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
         }
     }
 
+    @Override
     public Object newRow(ResultSet rs) throws SQLException {
         Bilaga b = new Bilaga();
         b.setId(new Long(rs.getLong("ID")));
@@ -83,11 +85,13 @@ public class DAOBilagaImpl implements RowToObjectMapper, DAOBilaga {
         return b;
     }
 
+    @Override
     @SuppressWarnings("unchecked")
     public List<Bilaga> getBilagorForMeddelande(long meddelandeid) {
         return qp.processQuery("SELECT ID,DATA,ENCODING,FILNAMN,MIMETYP FROM BILAGA WHERE MEDDELANDEID=" + meddelandeid, this);
     }
 
+    @Override
     public Bilaga getBilaga(long id) {
         return (Bilaga) qp.getObject("SELECT ID,DATA,ENCODING,FILNAMN,MIMETYP FROM BILAGA WHERE ID=" + id, this);
     }

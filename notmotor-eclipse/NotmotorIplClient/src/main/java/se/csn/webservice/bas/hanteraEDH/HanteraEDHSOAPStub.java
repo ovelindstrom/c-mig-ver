@@ -169,6 +169,7 @@ public class HanteraEDHSOAPStub extends org.apache.axis.client.Stub implements s
         }
     }
 
+    @Override
     public se.csn.webservice.bas.hanteraEDH.HamtaFranEDHSvar hamtaFranEDH(se.csn.webservice.bas.hanteraEDH.HamtaFranEDHFraga fraga) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
@@ -203,6 +204,7 @@ public class HanteraEDHSOAPStub extends org.apache.axis.client.Stub implements s
         }
     }
 
+    @Override
     public se.csn.webservice.bas.hanteraEDH.SparaTillEDHSvar sparaTillEDH(se.csn.webservice.bas.hanteraEDH.SparaTillEDHFraga fraga) throws java.rmi.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();
