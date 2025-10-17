@@ -8,9 +8,6 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class TestMeddelande extends TestCase {
 
     public void testGettersSetters() {

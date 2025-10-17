@@ -13,9 +13,6 @@ import javax.net.ssl.HttpsURLConnection;
 
 import junit.framework.TestCase;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class WebserviceTestSkickaSMS extends TestCase {
 
     public void testSkicka() {

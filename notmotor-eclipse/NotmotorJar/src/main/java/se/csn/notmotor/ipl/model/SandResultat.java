@@ -8,9 +8,6 @@ import java.util.List;
 
 import se.csn.notmotor.ipl.MeddelandeSender;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class SandResultat extends KodText {
 
     private int handelsetyp;

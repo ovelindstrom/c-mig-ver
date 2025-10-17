@@ -11,9 +11,6 @@ import java.util.Date;
 import junit.framework.TestCase;
 import se.csn.notmotor.admin.beans.SokBean;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class TestSokBean extends TestCase {
 
     public void testSkapaSokSQL() {

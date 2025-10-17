@@ -12,9 +12,6 @@ import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 import se.csn.notmotor.ipl.model.NotifieringResultat;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class TestMeddelandeMottagare extends TestCase {
 
     public void testSkickaMeddelande() {

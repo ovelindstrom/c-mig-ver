@@ -33,14 +33,14 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
 
     public static final int DEFAULT_BATCHSTORLEK = 100;
 
-    private long senastUppdateradWatchdog = 0L;
+    private long senastUppdateradWatchdog;
 
     private MeddelandeSender meddelandeSender;
 
     protected DAOMeddelande daomeddelande;
     protected DAOStatus daostatus;
 
-    private Log log = Log.getInstance(MeddelandeServicesImplBase.class);
+    private final Log log = Log.getInstance(MeddelandeServicesImplBase.class);
 
     public MeddelandeServicesImplBase(ControlledCommitQueryProcessor qp, ParameterKalla paramSource,
                                       DAOMeddelande meddelandehandler, int instansnummer) {
@@ -66,7 +66,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
     }
 
 
-    /**
+    /*
      * 
      * @return true om nuvarande tidpunkt befinner sig i ett schemalagt avbrott 
      */
@@ -81,7 +81,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
         }
     }
 
-    /**
+    /*
      * Satter faltet WATCHDOGTIMESTAMP i tabellen STATUS for denna instans till nuvarande tid. 
      * Detta falt anvands for att kontrollera att alla instanser lever och gor det de ska.
      * En servlet laser faltet for alla aktiva instanser och kollar att de lever.
@@ -100,7 +100,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
         }
     }
 
-    /**
+    /*
      * Kastar RuntimeException om sovandet misslyckades
      * @param milliseconds int
      */
@@ -161,7 +161,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
     }
 
 
-    /**
+    /*
      * Laser den rad i STATUS-tabellen som matchar denna instans
      * @return aktuell status som den är satt i databasen för den här instansen
      */
@@ -253,7 +253,7 @@ public class MeddelandeServicesImplBase implements MeddelandeServicesBase {
     }
 
 
-    /**
+    /*
      * Soker ut alla meddelanden for denna instans med negativ status 
      * (dvs. meddelanden som ar markerade for pagaende sandning) 
      * och satter om dem till status MOTTAGET.

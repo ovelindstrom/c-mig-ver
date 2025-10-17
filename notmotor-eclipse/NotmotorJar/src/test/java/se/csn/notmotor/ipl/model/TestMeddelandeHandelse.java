@@ -7,9 +7,6 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class TestMeddelandeHandelse extends TestCase {
     public void testGetterSetters() {
         MeddelandeHandelse h = new MeddelandeHandelse();

@@ -6,7 +6,6 @@ import org.easymock.MockControl;
 
 /**
  * @since 2007-mar-12
- * @author Jonas åhrnell (csn7821)
  * 
  */
 

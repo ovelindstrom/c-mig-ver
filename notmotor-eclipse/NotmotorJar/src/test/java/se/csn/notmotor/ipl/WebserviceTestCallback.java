@@ -11,9 +11,6 @@ import se.csn.common.serializing.ObjectSerializer;
 import se.csn.common.servlet.ServletUtils;
 import se.csn.notmotor.ipl.model.Meddelande;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class WebserviceTestCallback extends TestCase {
 
     public void testNyHandelse() {

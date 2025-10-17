@@ -1,4 +1,4 @@
-/**
+/*
  * Skicka_ServiceLocator.java
  *
  * This file was auto-generated from WSDL
@@ -7,17 +7,31 @@
 
 package se.csn.webservice.bas.notmotor.skicka;
 
-public class Skicka_ServiceLocator extends org.apache.axis.client.Service implements se.csn.webservice.bas.notmotor.skicka.Skicka_Service {
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.rmi.Remote;
+import java.util.HashSet;
+import java.util.Iterator;
+
+import javax.xml.namespace.QName;
+import javax.xml.rpc.ServiceException;
+
+import org.apache.axis.AxisFault;
+import org.apache.axis.EngineConfiguration;
+import org.apache.axis.client.Service;
+import org.apache.axis.client.Stub;
+
+public class Skicka_ServiceLocator extends Service implements Skicka_Service {
 
     public Skicka_ServiceLocator() {
     }
 
 
-    public Skicka_ServiceLocator(org.apache.axis.EngineConfiguration config) {
+    public Skicka_ServiceLocator(EngineConfiguration config) {
         super(config);
     }
 
-    public Skicka_ServiceLocator(java.lang.String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
+    public Skicka_ServiceLocator(java.lang.String wsdlLoc, QName sName) throws ServiceException {
         super(wsdlLoc, sName);
     }
 
@@ -39,24 +53,24 @@ public class Skicka_ServiceLocator extends org.apache.axis.client.Service implem
         SkickaSOAPWSDDServiceName = name;
     }
 
-    public se.csn.webservice.bas.notmotor.skicka.Skicka_PortType getSkickaSOAP() throws javax.xml.rpc.ServiceException {
-        java.net.URL endpoint;
+    public Skicka_PortType getSkickaSOAP() throws ServiceException {
+        URL endpoint;
         try {
-            endpoint = new java.net.URL(SkickaSOAP_address);
+            endpoint = new URL(SkickaSOAP_address);
         }
-        catch (java.net.MalformedURLException e) {
-            throw new javax.xml.rpc.ServiceException(e);
+        catch (MalformedURLException e) {
+            throw new ServiceException(e);
         }
         return getSkickaSOAP(endpoint);
     }
 
-    public se.csn.webservice.bas.notmotor.skicka.Skicka_PortType getSkickaSOAP(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public Skicka_PortType getSkickaSOAP(URL portAddress) throws ServiceException {
         try {
-            se.csn.webservice.bas.notmotor.skicka.SkickaSOAPStub _stub = new se.csn.webservice.bas.notmotor.skicka.SkickaSOAPStub(portAddress, this);
+            SkickaSOAPStub _stub = new SkickaSOAPStub(portAddress, this);
             _stub.setPortName(getSkickaSOAPWSDDServiceName());
             return _stub;
         }
-        catch (org.apache.axis.AxisFault e) {
+        catch (AxisFault e) {
             return null;
         }
     }
@@ -65,31 +79,31 @@ public class Skicka_ServiceLocator extends org.apache.axis.client.Service implem
         SkickaSOAP_address = address;
     }
 
-    /**
+    /*
      * For the given interface, get the stub implementation.
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    public Remote getPort(Class serviceEndpointInterface) throws ServiceException {
         try {
-            if (se.csn.webservice.bas.notmotor.skicka.Skicka_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
-                se.csn.webservice.bas.notmotor.skicka.SkickaSOAPStub _stub = new se.csn.webservice.bas.notmotor.skicka.SkickaSOAPStub(new java.net.URL(SkickaSOAP_address), this);
+            if (Skicka_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
+                SkickaSOAPStub _stub = new SkickaSOAPStub(new URL(SkickaSOAP_address), this);
                 _stub.setPortName(getSkickaSOAPWSDDServiceName());
                 return _stub;
             }
         }
         catch (java.lang.Throwable t) {
-            throw new javax.xml.rpc.ServiceException(t);
+            throw new ServiceException(t);
         }
-        throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
+        throw new ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
     }
 
-    /**
+    /*
      * For the given interface, get the stub implementation.
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    public Remote getPort(QName portName, Class serviceEndpointInterface) throws ServiceException {
         if (portName == null) {
             return getPort(serviceEndpointInterface);
         }
@@ -97,43 +111,43 @@ public class Skicka_ServiceLocator extends org.apache.axis.client.Service implem
         if ("SkickaSOAP".equals(inputPortName)) {
             return getSkickaSOAP();
         } else {
-            java.rmi.Remote _stub = getPort(serviceEndpointInterface);
-            ((org.apache.axis.client.Stub) _stub).setPortName(portName);
+            Remote _stub = getPort(serviceEndpointInterface);
+            ((Stub) _stub).setPortName(portName);
             return _stub;
         }
     }
 
-    public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "Skicka");
+    public QName getServiceName() {
+        return new QName("http://webservice.csn.se/bas/notmotor/skicka", "Skicka");
     }
 
-    private java.util.HashSet ports = null;
+    private HashSet ports;
 
-    public java.util.Iterator getPorts() {
+    public Iterator getPorts() {
         if (ports == null) {
-            ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://webservice.csn.se/bas/notmotor/skicka", "SkickaSOAP"));
+            ports = new HashSet();
+            ports.add(new QName("http://webservice.csn.se/bas/notmotor/skicka", "SkickaSOAP"));
         }
         return ports.iterator();
     }
 
-    /**
+    /*
     * Set the endpoint address for the specified port name.
     */
-    public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
+    public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws ServiceException {
 
         if ("SkickaSOAP".equals(portName)) {
             setSkickaSOAPEndpointAddress(address);
         } else
         { // Unknown Port Name
-            throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
+            throw new ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
-    /**
+    /*
     * Set the endpoint address for the specified port name.
     */
-    public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
+    public void setEndpointAddress(QName portName, java.lang.String address) throws ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }
 

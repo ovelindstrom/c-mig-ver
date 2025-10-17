@@ -1,8 +1,3 @@
-/**
- * @since 2007-sep-18
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.ipl.notmotor.xml;
 
 import junit.framework.TestCase;

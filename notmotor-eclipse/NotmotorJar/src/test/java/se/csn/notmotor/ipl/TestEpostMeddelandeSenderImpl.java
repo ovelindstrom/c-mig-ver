@@ -7,9 +7,6 @@ import junit.framework.TestCase;
 import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.notmotor.ipl.model.Mottagare;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class TestEpostMeddelandeSenderImpl extends TestCase {
 
     public void testRemovePart() {

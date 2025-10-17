@@ -11,9 +11,6 @@ import se.csn.notmotor.ipl.model.KodText;
 import se.csn.notmotor.ipl.validators.BasicMeddelandeValidator;
 import se.csn.notmotor.ipl.validators.SMSValidator;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class TestSMSValidator extends TestCase {
 
     private final String TEXT_200 = "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890";

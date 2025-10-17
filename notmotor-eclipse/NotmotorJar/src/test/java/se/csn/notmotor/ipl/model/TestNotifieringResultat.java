@@ -5,9 +5,6 @@ package se.csn.notmotor.ipl.model;
 
 import junit.framework.TestCase;
 
-/**
- * @author Jonas åhrnell - csn7821
- */
 public class TestNotifieringResultat extends TestCase {
 
     public void testGettersSetters() {

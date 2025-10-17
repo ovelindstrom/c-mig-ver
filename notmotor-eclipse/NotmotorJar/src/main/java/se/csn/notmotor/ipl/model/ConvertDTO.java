@@ -12,7 +12,6 @@ import se.csn.webservice.bas.notmotor.skicka.DTONotifieringResultat;
 
 /**
  * Utilityklass for att konvertera notmotorns interna modelklasser till webbservice-dtoer och vice versa.
- * @author csn7823
  *
  */
 public abstract class ConvertDTO {

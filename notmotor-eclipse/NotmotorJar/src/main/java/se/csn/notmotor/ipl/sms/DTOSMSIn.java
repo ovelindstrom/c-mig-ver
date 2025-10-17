@@ -4,10 +4,6 @@
  */
 package se.csn.notmotor.ipl.sms;
 
-/**
- * @author csn7511
- *
- */
 public class DTOSMSIn {
 
     private String telnummer;

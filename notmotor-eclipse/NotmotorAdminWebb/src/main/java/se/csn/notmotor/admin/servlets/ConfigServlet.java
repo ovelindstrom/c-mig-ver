@@ -2,7 +2,6 @@ package se.csn.notmotor.admin.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,12 +16,14 @@ import se.csn.common.config.PropertyDependencyTester;
 import se.csn.common.jndi.ServiceLocator;
 import se.csn.notmotor.admin.actions.ActionHelper;
 
-public class ConfigServlet extends HttpServlet implements Servlet {
+public class ConfigServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static final String PROPERTIESFIL = "notmotor-iw";
 
-    /* (non-Java-doc)
+    /*
+     * (non-Java-doc)
+     * 
      * @see javax.servlet.http.HttpServlet#HttpServlet()
      */
     public ConfigServlet() {
@@ -35,7 +36,9 @@ public class ConfigServlet extends HttpServlet implements Servlet {
     protected void doPost(HttpServletRequest arg0, HttpServletResponse arg1) throws ServletException, IOException {
     }
 
-    /* (non-Java-doc)
+    /*
+     * (non-Java-doc)
+     * 
      * @see javax.servlet.Servlet#init(ServletConfig arg0)
      */
     public void init(ServletConfig arg0) throws ServletException {
@@ -44,11 +47,10 @@ public class ConfigServlet extends HttpServlet implements Servlet {
         setupDependencies();
     }
 
-
     /**
      * Kontrollerar att alla externa beroenden ar uppsatta enligt krav.
-     * @return true om alla dependencies fanns och var rätt uppsatta,
-     * false annars
+     * 
+     * @return true om alla dependencies fanns och var rätt uppsatta
      */
     public boolean checkExternalDependencies() {
         // Kolla properties:
@@ -56,22 +58,24 @@ public class ConfigServlet extends HttpServlet implements Servlet {
             // 0. Kolla att utils finns:
             Class.forName("se.csn.common.config.ConfigException");
         } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("Kunde inte ens hitta utils, klassen se.csn.common.config.ConfigException finns inte...", e);
+            throw new IllegalStateException(
+                    "Kunde inte ens hitta utils, klassen se.csn.common.config.ConfigException finns inte...", e);
         }
         // Kolla klasser:
         String[][] CLASSTEST = new String[][]{
-            ClassDependencyTester.LOG4J,
-            ClassDependencyTester.ARKALL,
+                ClassDependencyTester.LOG4J,
+                ClassDependencyTester.ARKALL,
         };
         ClassDependencyTester.findClassesThrowException(CLASSTEST);
 
         ClassDependencyTester.findClassThrowException("se.csn.common.util.cache.TimeoutCache", "Utils");
 
         String[] properties = new String[]{
-            "notmotor.ds.jndinamn",
+                "notmotor.ds.jndinamn",
         };
 
-        // Anropa med propertiesfilen som argument för att sätta upp Log-klassens interna cache:
+        // Anropa med propertiesfilen som argument för att sätta upp Log-klassens
+        // interna cache:
         Properties.init(PROPERTIESFIL);
         PropertyDependencyTester.dumpPropertiesThrowIfMissing(properties);
 
@@ -92,11 +96,12 @@ public class ConfigServlet extends HttpServlet implements Servlet {
         return true;
     }
 
-    /* (non-Java-doc)
+    /*
+     * (non-Java-doc)
+     * 
      * @see javax.servlet.Servlet#destroy()
      */
     public void destroy() {
-        // TODO Auto-generated method stub
     }
 
 }

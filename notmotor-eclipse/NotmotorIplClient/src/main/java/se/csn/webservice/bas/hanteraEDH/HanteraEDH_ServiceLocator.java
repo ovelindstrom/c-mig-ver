@@ -1,23 +1,36 @@
-/**
+package se.csn.webservice.bas.hanteraEDH;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.rmi.Remote;
+import java.util.HashSet;
+import java.util.Iterator;
+
+import javax.xml.namespace.QName;
+import javax.xml.rpc.ServiceException;
+
+import org.apache.axis.AxisFault;
+import org.apache.axis.EngineConfiguration;
+import org.apache.axis.client.Service;
+import org.apache.axis.client.Stub;
+
+/*
  * HanteraEDH_ServiceLocator.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
-
-package se.csn.webservice.bas.hanteraEDH;
-
-public class HanteraEDH_ServiceLocator extends org.apache.axis.client.Service implements se.csn.webservice.bas.hanteraEDH.HanteraEDH_Service {
+public class HanteraEDH_ServiceLocator extends Service implements HanteraEDH_Service {
 
     public HanteraEDH_ServiceLocator() {
     }
 
 
-    public HanteraEDH_ServiceLocator(org.apache.axis.EngineConfiguration config) {
+    public HanteraEDH_ServiceLocator(EngineConfiguration config) {
         super(config);
     }
 
-    public HanteraEDH_ServiceLocator(java.lang.String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
+    public HanteraEDH_ServiceLocator(java.lang.String wsdlLoc, QName sName) throws ServiceException {
         super(wsdlLoc, sName);
     }
 
@@ -39,24 +52,24 @@ public class HanteraEDH_ServiceLocator extends org.apache.axis.client.Service im
         hanteraEDHSOAPWSDDServiceName = name;
     }
 
-    public se.csn.webservice.bas.hanteraEDH.HanteraEDH_PortType gethanteraEDHSOAP() throws javax.xml.rpc.ServiceException {
-        java.net.URL endpoint;
+    public HanteraEDH_PortType gethanteraEDHSOAP() throws ServiceException {
+        URL endpoint;
         try {
-            endpoint = new java.net.URL(hanteraEDHSOAP_address);
+            endpoint = new URL(hanteraEDHSOAP_address);
         }
-        catch (java.net.MalformedURLException e) {
-            throw new javax.xml.rpc.ServiceException(e);
+        catch (MalformedURLException e) {
+            throw new ServiceException(e);
         }
         return gethanteraEDHSOAP(endpoint);
     }
 
-    public se.csn.webservice.bas.hanteraEDH.HanteraEDH_PortType gethanteraEDHSOAP(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public HanteraEDH_PortType gethanteraEDHSOAP(URL portAddress) throws ServiceException {
         try {
-            se.csn.webservice.bas.hanteraEDH.HanteraEDHSOAPStub _stub = new se.csn.webservice.bas.hanteraEDH.HanteraEDHSOAPStub(portAddress, this);
+            HanteraEDHSOAPStub _stub = new HanteraEDHSOAPStub(portAddress, this);
             _stub.setPortName(gethanteraEDHSOAPWSDDServiceName());
             return _stub;
         }
-        catch (org.apache.axis.AxisFault e) {
+        catch (AxisFault e) {
             return null;
         }
     }
@@ -65,31 +78,31 @@ public class HanteraEDH_ServiceLocator extends org.apache.axis.client.Service im
         hanteraEDHSOAP_address = address;
     }
 
-    /**
+    /*
      * For the given interface, get the stub implementation.
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    public Remote getPort(Class serviceEndpointInterface) throws ServiceException {
         try {
-            if (se.csn.webservice.bas.hanteraEDH.HanteraEDH_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
-                se.csn.webservice.bas.hanteraEDH.HanteraEDHSOAPStub _stub = new se.csn.webservice.bas.hanteraEDH.HanteraEDHSOAPStub(new java.net.URL(hanteraEDHSOAP_address), this);
+            if (HanteraEDH_PortType.class.isAssignableFrom(serviceEndpointInterface)) {
+                HanteraEDHSOAPStub _stub = new HanteraEDHSOAPStub(new URL(hanteraEDHSOAP_address), this);
                 _stub.setPortName(gethanteraEDHSOAPWSDDServiceName());
                 return _stub;
             }
         }
         catch (java.lang.Throwable t) {
-            throw new javax.xml.rpc.ServiceException(t);
+            throw new ServiceException(t);
         }
-        throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
+        throw new ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
     }
 
-    /**
+    /*
      * For the given interface, get the stub implementation.
      * If this service has no port for the given interface,
      * then ServiceException is thrown.
      */
-    public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
+    public Remote getPort(QName portName, Class serviceEndpointInterface) throws ServiceException {
         if (portName == null) {
             return getPort(serviceEndpointInterface);
         }
@@ -97,43 +110,43 @@ public class HanteraEDH_ServiceLocator extends org.apache.axis.client.Service im
         if ("hanteraEDHSOAP".equals(inputPortName)) {
             return gethanteraEDHSOAP();
         } else {
-            java.rmi.Remote _stub = getPort(serviceEndpointInterface);
-            ((org.apache.axis.client.Stub) _stub).setPortName(portName);
+            Remote _stub = getPort(serviceEndpointInterface);
+            ((Stub) _stub).setPortName(portName);
             return _stub;
         }
     }
 
-    public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH/", "hanteraEDH");
+    public QName getServiceName() {
+        return new QName("http://webservice.csn.se/bas/hanteraEDH/", "hanteraEDH");
     }
 
-    private java.util.HashSet ports = null;
+    private HashSet ports;
 
-    public java.util.Iterator getPorts() {
+    public Iterator getPorts() {
         if (ports == null) {
-            ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("http://webservice.csn.se/bas/hanteraEDH/", "hanteraEDHSOAP"));
+            ports = new HashSet();
+            ports.add(new QName("http://webservice.csn.se/bas/hanteraEDH/", "hanteraEDHSOAP"));
         }
         return ports.iterator();
     }
 
-    /**
+    /*
     * Set the endpoint address for the specified port name.
     */
-    public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
+    public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws ServiceException {
 
         if ("hanteraEDHSOAP".equals(portName)) {
             sethanteraEDHSOAPEndpointAddress(address);
         } else
         { // Unknown Port Name
-            throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
+            throw new ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
-    /**
+    /*
     * Set the endpoint address for the specified port name.
     */
-    public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
+    public void setEndpointAddress(QName portName, java.lang.String address) throws ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }
 

@@ -1,8 +1,3 @@
-/**
- * @since 2007-jun-01
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.listeners;
 
 import javax.servlet.ServletContextEvent;
@@ -10,7 +5,11 @@ import javax.servlet.ServletContextListener;
 
 import se.csn.ark.common.util.logging.Log;
 
-
+/**
+ * @since 2007-jun-01
+ * @author Jonas \u00e5hrnell (csn7821)
+ * 
+ */
 public class ContainerListener implements ServletContextListener {
 
     private final Log log = Log.getInstance(ContainerListener.class);

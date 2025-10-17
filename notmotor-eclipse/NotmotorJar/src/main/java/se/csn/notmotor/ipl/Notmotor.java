@@ -1,8 +1,3 @@
-/**
- * @since 2007-mar-23
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.ipl;
 
 import java.util.Date;
@@ -38,6 +33,8 @@ import se.csn.notmotor.ipl.model.Status;
 import se.csn.notmotor.ipl.sms.SMSTjaenst;
 
 /**
+ * @since 2007-mar-23
+ * 
  * Huvudklassen, ingångsklassen för notifieringsmotorn. Denna klass
  * instantierar och kopplar ihop alla andra klasser. 
  */

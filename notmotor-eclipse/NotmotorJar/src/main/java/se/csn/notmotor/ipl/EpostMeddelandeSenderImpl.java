@@ -1,4 +1,4 @@
-/**
+/*
  * @since 2007-mar-23
  * @author Jonas åhrnell (csn7821)
  * 
@@ -12,8 +12,6 @@ import java.util.Properties;
 
 import com.sun.mail.smtp.SMTPAddressFailedException;
 import com.sun.mail.smtp.SMTPAddressSucceededException;
-import com.sun.mail.smtp.SMTPSendFailedException;
-import com.sun.mail.smtp.SMTPTransport;
 
 import javax.activation.DataHandler;
 import javax.mail.Address;
@@ -43,7 +41,7 @@ import se.csn.notmotor.ipl.model.Mottagare;
 import se.csn.notmotor.ipl.model.SandResultat;
 import se.csn.notmotor.ipl.validators.EpostValidator;
 
-/**
+/*
  * Mailsändare.
  * TODO: problematisk klass, för mycket kod, för lite abstraktion.
  * @author Jonas åhrnell - csn7821
@@ -106,7 +104,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
     }
     
     
-    /**
+    /*
      * Skickar meddelande. 
      * @param meddelande Meddelandet. 
      * @return Ett sändresultat. Om meddelandet gick iväg till mailservern är 
@@ -198,7 +196,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
     }
     
     
-    /**
+    /*
      * @see se.csn.notmotor.ipl.MeddelandeSender#getFelkodForMeddelande(se.csn.notmotor.ipl.model.Meddelande)
      */
     
@@ -217,7 +215,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
         return false;
     }
     
-    /** 
+    /* 
      * @see se.csn.notmotor.ipl.MeddelandeSender#kanSkickaMeddelande(se.csn.notmotor.ipl.model.Meddelande)
      */
     public boolean kanSkickaMeddelande(Meddelande meddelande) {
@@ -231,7 +229,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
         return false;
     }
     
-    /**
+    /*
      * Skapar ett MimeMeddelande som inte har bilagor.
      * @throws MessagingException
      */
@@ -291,7 +289,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
         return msg;
     }
     
-    /**
+    /*
      * Går igenom alla mottagare och plockar bort okända 
      * mottagartyper och mottagare med status SKICKAT_SERVER. 
      * Om en mottagare bara har okända typer så plockas den bort.
@@ -379,7 +377,7 @@ public class EpostMeddelandeSenderImpl implements MeddelandeSender {
 		return (Address[]) adresser.toArray(new Address[0]);
     }
     
-    /**
+    /*
      * Skickar meddelande. 
      * @param antalForsok Flagga som används för att undvika oändliga loopar vid omedelbart
      * 		omsändningsförsök mm  
