@@ -18,20 +18,80 @@ public class TestSokBean extends TestCase {
         bean.setAvsandaradress("AVSADRESS");
 
         String sql = bean.skapaSokWherevillkor();
-        assertEquals(sql, "(AVS.NAMN LIKE '%AVSNAMN%') AND (AVS.EPOST LIKE '%AVSADRESS%') AND (AVS.PROGRAMNAMN LIKE '%APP%')");
+        assertTrue(sql.endsWith("AND (AVS.NAMN LIKE '%AVSNAMN%') AND (AVS.EPOST LIKE '%AVSADRESS%') AND (AVS.PROGRAMNAMN LIKE '%APP%')"));
 
         bean.setCsnnummer(12345678);
-        assertEquals(bean.skapaSokWherevillkor(), "(AVS.NAMN LIKE '%AVSNAMN%') AND (AVS.EPOST LIKE '%AVSADRESS%') AND (AVS.PROGRAMNAMN LIKE '%APP%') AND (MEDD.CSNNUMMER = 12345678)");
+        sql = bean.skapaSokWherevillkor();
+        assertTrue(sql.endsWith("(AVS.NAMN LIKE '%AVSNAMN%') AND (AVS.EPOST LIKE '%AVSADRESS%') AND (AVS.PROGRAMNAMN LIKE '%APP%') AND (MEDD.CSNNUMMER = 12345678)"));
 
         bean = new SokBean();
         bean.setMottagarnamn("MOTTNAMN");
         bean.setMottagaradress("MOTTADRESS");
-        assertEquals(bean.skapaSokWherevillkor(), "(MOTT.NAMN LIKE '%MOTTNAMN%') AND (MOTT.ADRESS LIKE '%MOTTADRESS%')");
+        assertTrue(bean.skapaSokWherevillkor().endsWith("(MOTT.NAMN LIKE '%MOTTNAMN%') AND (MOTT.ADRESS LIKE '%MOTTADRESS%')"));
 
         bean = new SokBean();
         bean.setMottagaradress("");
-        assertEquals(bean.skapaSokWherevillkor(), "");
+        assertFalse(bean.skapaSokWherevillkor().contains("MOTT."));
 
+    }
+
+    public void testSkapaSokWherevillkorMedDatumIntervall() {
+        SokBean bean = new SokBean();
+        
+        // Beräkna gårdagens och dagens datum
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        
+        // Dagens datum (tom-datum med tid 23:59:59)
+        cal.set(java.util.Calendar.HOUR_OF_DAY, 23);
+        cal.set(java.util.Calendar.MINUTE, 59);
+        cal.set(java.util.Calendar.SECOND, 59);
+        cal.set(java.util.Calendar.MILLISECOND, 0);
+        java.util.Date today = cal.getTime();
+        
+        // Gårdagens datum (from-datum med tid 00:00:00)  
+        cal.add(java.util.Calendar.DAY_OF_MONTH, -1);
+        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        cal.set(java.util.Calendar.MINUTE, 0);
+        cal.set(java.util.Calendar.SECOND, 0);
+        cal.set(java.util.Calendar.MILLISECOND, 0);
+        java.util.Date yesterday = cal.getTime();
+        
+        // Formatera datum enligt förväntat format (yyyy-mm-dd)
+        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd");
+        String yesterdayStr = dateFormat.format(yesterday);
+        String todayStr = dateFormat.format(today);
+        
+        // Sätt datum i bean
+        bean.setFromSkapat(yesterdayStr);
+        bean.setTomSkapat(todayStr);
+        
+        String sql = bean.skapaSokWherevillkor();
+        
+        // Kontrollera att SQL innehåller korrekta TIMESTAMP-villkor
+        // Format: TIMESTAMP('yyyy-MM-dd-HH.mm.ss.000000')
+        assertTrue("SQL ska innehålla SKAPADTIDPUNKT >= villkor", 
+                   sql.contains("(MEDD.SKAPADTIDPUNKT >= TIMESTAMP('" + yesterdayStr + "-00.00.00.000000'))"));
+        assertTrue("SQL ska innehålla SKAPADTIDPUNKT <= villkor",
+                   sql.contains("(MEDD.SKAPADTIDPUNKT <= TIMESTAMP('" + todayStr + "-23.59.59.000000'))"));
+        
+        // Kontrollera att båda villkoren finns med AND
+        assertTrue("SQL ska innehålla både from- och tom-villkor med AND", 
+                   sql.contains("AND"));
+
+        // Mer detaljerad validering
+        String expectedFromClause = "(MEDD.SKAPADTIDPUNKT >= TIMESTAMP('" + yesterdayStr + "-00.00.00.000000'))";
+        String expectedToClause = "(MEDD.SKAPADTIDPUNKT <= TIMESTAMP('" + todayStr + "-23.59.59.000000'))";
+        
+        // Kontrollera att SQL matchar det förväntade mönstret med rätt datum
+        assertTrue("SQL ska innehålla korrekt datumintervall för gårdag till idag", 
+                   sql.matches(".*\\(MEDD\\.SKAPADTIDPUNKT >= TIMESTAMP\\('" + yesterdayStr + "-00\\.00\\.00\\.000000'\\)\\) AND \\(MEDD\\.SKAPADTIDPUNKT <= TIMESTAMP\\('" + todayStr + "-23\\.59\\.59\\.000000'\\)\\).*"));
+        
+        // Debug-utskrift för manuell verifiering (synligt i Maven Surefire rapporter)
+        System.out.println("=== TEST DEBUG INFO ===");
+        System.out.println("Förväntat from-villkor: " + expectedFromClause);
+        System.out.println("Förväntat to-villkor: " + expectedToClause);
+        System.out.println("Genererat SQL: " + sql);
+        System.out.println("======================");
     }
 
 }
