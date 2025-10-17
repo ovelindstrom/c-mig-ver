@@ -5,7 +5,7 @@ import se.csn.common.servlet.RunControl;
 import org.easymock.MockControl;
 
 /**
- * Skapad 2007-mar-12
+ * @since 2007-mar-12
  * @author Jonas åhrnell (csn7821)
  * 
  */

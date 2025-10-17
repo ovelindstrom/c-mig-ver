@@ -1,9 +1,3 @@
-/*
- * Created on 2005-feb-10
- *
- * To change the template for this generated file go to
- * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
- */
 package se.csn.notmotor.ipl.sms;
 
 import java.io.BufferedReader;

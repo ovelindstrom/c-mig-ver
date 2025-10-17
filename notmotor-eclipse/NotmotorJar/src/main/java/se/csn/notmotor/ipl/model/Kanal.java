@@ -1,5 +1,5 @@
 /*
- * Skapad 2010-09-01
+ * @since 2010-09-01
  */
 package se.csn.notmotor.ipl.model;
 

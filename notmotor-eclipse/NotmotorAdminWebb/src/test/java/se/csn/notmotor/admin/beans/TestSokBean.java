@@ -1,5 +1,5 @@
 /*
- * Skapad 2007-sep-21
+ * @since 2007-sep-21
  */
 package se.csn.notmotor.admin.beans;
 

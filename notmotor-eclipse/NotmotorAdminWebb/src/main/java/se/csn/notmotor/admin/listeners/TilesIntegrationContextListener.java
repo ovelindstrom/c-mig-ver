@@ -1,7 +1,4 @@
-/**
- * Skapad 2007-jun-18
- * @author Jonas Ahrnell (csn7821)
- */
+
 package se.csn.notmotor.admin.listeners;
 
 import javax.faces.FactoryFinder;
@@ -11,6 +8,10 @@ import javax.servlet.ServletContextListener;
 
 import com.sun.faces.lifecycle.LifecycleImpl;
 
+/**
+ * @since 2007-jun-18
+ * @author Jonas Ahrnell (csn7821)
+ */
 public class TilesIntegrationContextListener implements ServletContextListener {
 
     @Override
@@ -19,13 +20,11 @@ public class TilesIntegrationContextListener implements ServletContextListener {
     }
 
     /**
-     * Denna kod är nödvändig för att kunna sätta en ny ViewHandler i
-     * Faces-systemet.
-     * Vi vill göra det för att komma runt en begränsning i Tiles-
-     * maskineriet; Tiles kontrollerar att svaret inte är committat.
-     * Default-implementationen av JSF:s ViewHandler committar svaret,
-     * den utgår från att den är ensam renderare.
-     * Vi ersätter med en "custom-implementation" som fixar featuren.
+     * This code is necessary to set a new ViewHandler in the Faces system.
+     * We want to do this to work around a limitation in the Tiles machinery;
+     * Tiles checks that the response is not committed. The default implementation
+     * of JSF's ViewHandler commits the response, assuming it is the sole renderer.
+     * We replace it with a custom implementation that fixes this feature.
      */
     @Override
     public void contextInitialized(ServletContextEvent arg0) {

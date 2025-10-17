@@ -1,8 +1,3 @@
-/**
- * Skapad 2007-jun-08
- * @author Jonas åhrnell (csn7821)
- * 
- */
 package se.csn.notmotor.admin.beans;
 
 import java.sql.Connection;
@@ -33,7 +28,11 @@ import se.csn.notmotor.ipl.db.QueryProcessor;
 import se.csn.notmotor.ipl.db.RowToObjectMapper;
 import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 
-
+/**
+ * @since 2007-jun-08
+ * @author Jonas åhrnell (csn7821)
+ * 
+ */
 public class StatistikBean {
 
     private static final String REQUEST_PARAMETER_VALD_DAG = "valdDag";

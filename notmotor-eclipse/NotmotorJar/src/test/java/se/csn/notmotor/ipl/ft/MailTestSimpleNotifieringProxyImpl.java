@@ -6,7 +6,7 @@ import se.csn.notmotor.ipl.MeddelandeSender;
 import se.csn.notmotor.ipl.model.Meddelande;
 
 /**
- * Skapad 2007-mar-30
+ * @since 2007-mar-30
  * @author Jonas åhrnell (csn7821)
  * 
  */

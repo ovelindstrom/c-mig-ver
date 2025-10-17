@@ -1,5 +1,5 @@
 /**
- * Skapad 2007-mar-08
+ * @since 2007-mar-08
  * @author Jonas åhrnell (csn7821)
  * 
  */
