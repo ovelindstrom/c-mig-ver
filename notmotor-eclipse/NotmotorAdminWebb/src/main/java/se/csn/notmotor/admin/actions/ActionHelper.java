@@ -1,14 +1,13 @@
 package se.csn.notmotor.admin.actions;
 
 import java.sql.Connection;
-
 import javax.sql.DataSource;
 
 import se.csn.notmotor.admin.ResourceFactory;
 import se.csn.notmotor.admin.ResourceFactoryImpl;
 
 
-public class ActionHelper {
+public final class ActionHelper {
 
     private static DataSource ds;
     private static int isolationLevel = Connection.TRANSACTION_READ_COMMITTED;

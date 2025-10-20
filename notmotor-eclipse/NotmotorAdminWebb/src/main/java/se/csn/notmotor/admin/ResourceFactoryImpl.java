@@ -28,7 +28,7 @@ import se.csn.notmotor.ipl.db.QueryProcessorImpl;
 
 public class ResourceFactoryImpl implements ResourceFactory {
 
-    private DataSource ds;
+    private final DataSource ds;
     private int transactionIsolationLevel;
 
 
@@ -50,9 +50,9 @@ public class ResourceFactoryImpl implements ResourceFactory {
     }
 
     /**
+     * QueryListenern som kommer att skriva all SQL och alla fel till loggen.
+     * 
      * @return En query processor med tillhörande QueryListener. 
-     * QueryListenern kommer att skriva all SQL och alla fel till 
-     * loggen.
      */
     public QueryProcessor getQueryProcessor() {
         QueryListener ql = new QueryListenerImpl("ADMINWEBB");

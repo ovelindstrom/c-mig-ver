@@ -3,7 +3,6 @@ package se.csn.notmotor.admin.faces;
 import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.ResourceBundle;
-
 import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -11,7 +10,7 @@ import javax.faces.context.FacesContext;
 /**
  * Taget fran Core JavaServer Faces, Geary och Horstmann, s. 232  
  */
-public class Messages {
+public final class Messages {
 
     public static final String BUNDLENAME = "se.csn.notmotor.admin.resources.ApplicationResources";
 
