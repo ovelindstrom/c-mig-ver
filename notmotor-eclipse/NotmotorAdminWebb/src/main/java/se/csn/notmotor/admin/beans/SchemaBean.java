@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
 import javax.faces.event.ActionEvent;
 import javax.faces.model.ListDataModel;
 
@@ -18,11 +17,13 @@ import se.csn.notmotor.ipl.model.Tidsintervall;
 public class SchemaBean {
 
     private ListDataModel model;
-    private String startdatum, slutdatum;
+    private String startdatum;
+    private String slutdatum;
 
     public static class Schemarad {
         private boolean delete;
-        private Date from, tom;
+        private Date from;
+        private Date tom;
 
         public Schemarad(Date start, Date stop) {
             this.from = start;
@@ -58,7 +59,7 @@ public class SchemaBean {
     public SchemaBean() {
         DAOSchema dao = ActionHelper.getResourceFactory().getDAOSchema();
         List intervall = dao.getIntervall();
-        List<Schemarad> schemarader = new ArrayList<Schemarad>(intervall.size());
+        List<Schemarad> schemarader = new ArrayList<>(intervall.size());
         for (Iterator it = intervall.iterator();it.hasNext();) {
             Tidsintervall ti = (Tidsintervall) it.next();
             schemarader.add(new Schemarad(ti.getStarttid(), ti.getSluttid()));

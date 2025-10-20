@@ -263,6 +263,8 @@ public class SokBean {
     }
 
     /**
+     * Skapar en WHERE-klausul för SQL-sökningen baserat på de villkor som är angivna i bönan.
+     * 
      * @return en giltig SQL-sträng med de villkor som är angivna i bönan 
      */
     String skapaSokWherevillkor() {
@@ -353,6 +355,7 @@ public class SokBean {
 
     /**
      * Skickar om ett flera meddelanden som valts pa webbsidan.
+     * 
      * @param e action event från webbsidan
      */
     public void skickaOm(ActionEvent e) {
@@ -417,6 +420,7 @@ public class SokBean {
 
     /**
      * Kontrollerar om nagra meddelanden som hittades i sokningen ar mojliga att skicka om.
+     * 
      * @return true om något meddelande kan skickas om, annars false.
      */
     public boolean getFinnsMeddelandenMojligaForOmsandning() {

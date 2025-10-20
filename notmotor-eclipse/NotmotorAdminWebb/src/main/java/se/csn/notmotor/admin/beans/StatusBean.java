@@ -11,7 +11,6 @@ import javax.faces.event.ActionEvent;
 import javax.faces.model.ListDataModel;
 
 import se.csn.ark.common.util.logging.Log;
-import se.csn.common.config.CommunicationTester;
 import se.csn.common.servlet.ServletUtils;
 import se.csn.notmotor.admin.actions.ActionHelper;
 import se.csn.notmotor.ipl.SkickaMeddelandeStateMachine;
@@ -239,10 +238,10 @@ public class StatusBean {
 
     final List<Statusrad> hamtaStatusraderFranDB() {
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
-        List statuslist = dao.getStatus(null, null);
+        List<Status> statuslist = dao.getStatus(null, null);
         List<Statusrad> rader = new ArrayList<Statusrad>();
-        for (Iterator it = statuslist.iterator();it.hasNext();) {
-            Status s = (Status) it.next();
+        for (Iterator<Status> it = statuslist.iterator(); it.hasNext();) {
+            Status s = it.next();
             rader.add(new Statusrad(s.getInstans(), s.getStatus(), ""
                 + s.getServer(), s.getStartad(), s.getStoppad(), s.getWatchdog(), s.getTyp(), s.isAktiv()));
         }
@@ -251,10 +250,10 @@ public class StatusBean {
 
     final List<Serverrad> hamtaServerraderFranDB() {
         DAOServer dao = ActionHelper.getResourceFactory().getDAOServer();
-        List servers = dao.getAktiva(true);
+        List<Server> servers = dao.getAktiva(true);
         List<Serverrad> rader = new ArrayList<Serverrad>();
-        for (Iterator it = servers.iterator();it.hasNext();) {
-            Server s = (Server) it.next();
+        for (Iterator<Server> it = servers.iterator(); it.hasNext();) {
+            Server s = it.next();
             rader.add(new Serverrad(s.getId(), s.getServleturl(), s.getPrestanda(), dao.getLevandeProcesser(s.getId())));
         }
         return rader;
@@ -270,10 +269,10 @@ public class StatusBean {
             return null;
         }
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
-        List statuslist = dao.getStatus(null, null);
+        List<Status> statuslist = dao.getStatus(null, null);
         String varning = "";
-        for (Iterator it = statuslist.iterator();it.hasNext();) {
-            Status s = (Status) it.next();
+        for (Iterator<Status> it = statuslist.iterator(); it.hasNext();) {
+            Status s = it.next();
             if (s.getStatus() == SkickaMeddelandeStateMachine.STOPPED) {
                 continue;
             }
@@ -323,9 +322,9 @@ public class StatusBean {
     public void taBortStoppadeStatusar(ActionEvent e) {
         log.debug("taBortStangdaStatusar");
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
-        List rader = (List) statusrader.getWrappedData();
+        List<Statusrad> rader = (List<Statusrad>) statusrader.getWrappedData();
         for (int i = rader.size() - 1;i >= 0;i--) {
-            Statusrad rad = (Statusrad) rader.get(i);
+            Statusrad rad = rader.get(i);
             if (kontrolleraBorttag(rad)) {
                 rader.remove(i);
                 dao.delete(rad.getNr());
@@ -338,9 +337,9 @@ public class StatusBean {
     public void taBortStatusar(ActionEvent e) {
         log.debug("taBortStatusar");
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
-        List rader = (List) statusrader.getWrappedData();
+        List<Statusrad> rader = (List<Statusrad>) statusrader.getWrappedData();
         for (int i = rader.size() - 1;i >= 0;i--) {
-            Statusrad rad = (Statusrad) rader.get(i);
+            Statusrad rad = rader.get(i);
             if (rad.getRensa() && kontrolleraBorttag(rad)) {
                 rader.remove(i);
                 dao.delete(rad.getNr());
@@ -352,9 +351,9 @@ public class StatusBean {
 
     public void taBortServrar(ActionEvent e) {
         DAOServer dao = ActionHelper.getResourceFactory().getDAOServer();
-        List rader = (List) serverrader.getWrappedData();
+        List<Serverrad> rader = (List<Serverrad>) serverrader.getWrappedData();
         for (int i = rader.size() - 1;i >= 0;i--) {
-            Serverrad rad = (Serverrad) rader.get(i);
+            Serverrad rad = rader.get(i);
             if (rad.getDelete()) {
                 rader.remove(i);
                 dao.delete(rad.getId());
@@ -380,13 +379,13 @@ public class StatusBean {
 
 
     Serverrad getServerrad(int radnr) {
-        List rader = (List) serverrader.getWrappedData();
-        return (Serverrad) rader.get(radnr);
+        List<Serverrad> rader = (List<Serverrad>) serverrader.getWrappedData();
+        return rader.get(radnr);
     }
 
     Statusrad getStatusrad(int radnr) {
-        List rader = (List) statusrader.getWrappedData();
-        return (Statusrad) rader.get(radnr);
+        List<Statusrad> rader = (List<Statusrad>) statusrader.getWrappedData();
+        return rader.get(radnr);
     }
 
     public void startaProcess(ActionEvent e) {

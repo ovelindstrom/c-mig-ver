@@ -1,7 +1,6 @@
 package se.csn.notmotor.admin.servlets;
 
 import java.io.IOException;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -62,11 +61,11 @@ public class ConfigServlet extends HttpServlet {
                     "Kunde inte ens hitta utils, klassen se.csn.common.config.ConfigException finns inte...", e);
         }
         // Kolla klasser:
-        String[][] CLASSTEST = new String[][]{
+        String[][] classtest = new String[][]{
                 ClassDependencyTester.LOG4J,
                 ClassDependencyTester.ARKALL,
         };
-        ClassDependencyTester.findClassesThrowException(CLASSTEST);
+        ClassDependencyTester.findClassesThrowException(classtest);
 
         ClassDependencyTester.findClassThrowException("se.csn.common.util.cache.TimeoutCache", "Utils");
 

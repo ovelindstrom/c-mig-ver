@@ -27,10 +27,38 @@ public class ParamBean {
     };
 
     /**
-     * Lista med de parametrar som finns tillgangliga for nedprioriterade kanaler.
-     * Varje element i listan bestar i sin tur av en lista som innehaller tva element;
-     * namn och beskrivning. Om parameterns namn innehaller "{{KANAL}}" sa kommer detta
-     * att bytas ut mot kanalens namn.
+     * Definitions for channel-specific configuration parameters.
+     *
+     * <p>Each entry in this two-dimensional array is a String[2] where:
+     * <ol>
+     *   <li>Index 0: a parameter key pattern containing the placeholder "{{KANAL}}".
+     *       Replace "{{KANAL}}" with a concrete channel identifier to obtain the actual config key
+     *       (for example, "KANAL_{{KANAL}}_PERTIMME" -> "KANAL_1_PERTIMME").</li>
+     *   <li>Index 1: a human-readable description (Swedish) intended for UI labels or documentation.</li>
+     * </ol>
+     *
+     * <p>Expected keys and semantics (examples):
+     * <ul>
+     *   <li>..._PERTIMME — Max antal meddelanden att sända per timme.</li>
+     *   <li>..._BATCHSTORLEK — Max antal meddelanden att sända i följd.</li>
+     *   <li>..._SOVTID — Sovtid i sekunder mellan varje batch.</li>
+     *   <li>..._OPPNINGSTID — Öppningstid för aktuell kanal, format "HH:mm:ss".</li>
+     *   <li>..._STANGNINGSTID — Stängningstid för aktuell kanal, format "HH:mm:ss".</li>
+     * </ul>
+     *
+     * <p>Usage example:
+     * <pre>
+     * String keyPattern = paramsKanaler[i][0];
+     * String key = keyPattern.replace("{{KANAL}}", channelId);
+     * String description = paramsKanaler[i][1];
+     * </pre>
+     *
+     * <p>Notes:
+     * <ul>
+     *   <li>The array is intended as a constant lookup table; do not modify at runtime.</li>
+     *   <li>Consumers should validate that each row has exactly two elements before use.</li>
+     *   <li>Descriptions are currently in Swedish; consider externalizing for localization if needed.</li>
+     * </ul>
      */
     private static final String[][] paramsKanaler = {
         {"KANAL_{{KANAL}}_PERTIMME", "Max antal meddelanden att sända per timme."},
