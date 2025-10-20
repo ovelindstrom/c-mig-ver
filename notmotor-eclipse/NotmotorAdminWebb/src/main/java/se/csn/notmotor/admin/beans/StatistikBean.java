@@ -28,19 +28,14 @@ import se.csn.notmotor.ipl.db.QueryProcessor;
 import se.csn.notmotor.ipl.db.RowToObjectMapper;
 import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 
-/**
- * @since 2007-jun-08
- * @author Jonas åhrnell (csn7821)
- * 
- */
 public class StatistikBean {
 
     private static final String REQUEST_PARAMETER_VALD_DAG = "valdDag";
 	private static final String DATUMFORMAT = "yyyy-MM-dd";
 	private QueryProcessor qp;
-    private ListDataModel datumrader;
-    private String startdatum, slutdatum;
-    private final Log log = Log.getInstance(StatistikBean.class);
+	private ListDataModel<Datumrad> datumrader;
+	private String startdatum, slutdatum;
+	private final Log log = Log.getInstance(StatistikBean.class);
     
     private Statistik mottagna;
     private Statistik sant;
@@ -215,7 +210,7 @@ public class StatistikBean {
 	    qp = ActionHelper.getResourceFactory().getQueryProcessor();
 	    // Sätt TransactionLevel till READ_UNCOMMITTED, vi behöver ingen 
 	    // vidare precision i dessa slagningar
-	    datumrader = new ListDataModel();
+	    datumrader = new ListDataModel<Datumrad>();
 	    this.mottagna = null;
 	    this.sant = null;
 	    this.borttagna = null;
@@ -484,9 +479,9 @@ public class StatistikBean {
 	        sql += " WHERE " + where;
 	    }
 	    sql += ") AS DATUM GROUP BY DATUM, INSTANS, STATUS";
-	    log.debug("SQL: " + sql);
-	    List rader = qp.processQuery(sql, new DatumradRowMapper());
-	    datumrader.setWrappedData(rader);
+		log.debug("SQL: " + sql);
+		List<Datumrad> rader = qp.processQuery(sql, new DatumradRowMapper());
+		datumrader.setWrappedData(rader);
 	}
 	
 	public void uppdatera(ActionEvent e) {
@@ -563,11 +558,11 @@ public class StatistikBean {
 		return kanalerMottagna.size() > 0;
 	}
 	
-	public ListDataModel getKanalerMottagna() {
+	public ListDataModel<Statistik> getKanalerMottagna() {
 		if (kanalerMottagna == null) {
 			hamtaStatistik();
 		}
-		return new ListDataModel(kanalerMottagna);
+		return new ListDataModel<Statistik>(kanalerMottagna);
 	}
 	
 	public boolean getFinnsKanalerSant() {
@@ -577,11 +572,11 @@ public class StatistikBean {
 		return kanalerSant.size() > 0;
 	}
 	
-	public ListDataModel getKanalerSant() {
+	public ListDataModel<Statistik> getKanalerSant() {
 		if (kanalerSant == null) {
 			hamtaStatistik();
 		}
-		return new ListDataModel(kanalerSant);
+		return new ListDataModel<Statistik>(kanalerSant);
 	}
 	
 	public boolean getFinnsKanalerBorttagna() {
@@ -599,12 +594,12 @@ public class StatistikBean {
 	}
 	
 	
-    public ListDataModel getDatumrader() {
-        return datumrader;
-    }
-    public void setDatumrader(ListDataModel datumrader) {
-        this.datumrader = datumrader;
-    }
+	public ListDataModel<Datumrad> getDatumrader() {
+		return datumrader;
+	}
+	public void setDatumrader(ListDataModel<Datumrad> datumrader) {
+		this.datumrader = datumrader;
+	}
     public String getSlutdatum() {
         return slutdatum;
     }
@@ -628,6 +623,7 @@ public class StatistikBean {
       
     /**
      * Returnerar föregående dag i kalendern baserat på attributet valdDag.
+	 * 
      * @return föregående dag i kalendern för attributet valdDag.
      */
     public String getForegaendeDag() {
@@ -639,6 +635,7 @@ public class StatistikBean {
     
     /**
      * Returnerar nästa dag i kalendern baserat på attributet valdDag.
+	 * 
      * @return nästa dag i kalenderna för attributet valdDag.
      */
     public String getNastaDag() {
@@ -665,7 +662,7 @@ public class StatistikBean {
     /**
      * Returnerar inskickad datumsträng som en Date. Skulle datumstängen vara felaktigt eller 
      * null kommer dagens datum att returneras. 
-     * @param datum datum på formen yyyy-MM-dd. Felaktigt format eller null ger dagens datum.
+     * @param datum på formen yyyy-MM-dd. Felaktigt format eller null ger dagens datum.
      * @return inskickat datum som en Date.
      */
     private Date getDatumSomDate(final String datum) {

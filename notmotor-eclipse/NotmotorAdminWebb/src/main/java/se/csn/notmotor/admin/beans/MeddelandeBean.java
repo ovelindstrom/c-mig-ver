@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
 import javax.el.ELContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -37,7 +36,8 @@ public class MeddelandeBean {
     private final Log log = Log.getInstance(MeddelandeBean.class);
 
     public static class Handelserad {
-        private int typ, kod;
+        private int typ;
+        private int kod;
         private String text;
         private long id;
         private Date tidpunkt;
@@ -392,7 +392,7 @@ public class MeddelandeBean {
     }
 
     private List getHandelserFranMeddelande() {
-        List<Handelserad> list = new ArrayList<Handelserad>();
+        List<Handelserad> list = new ArrayList<>();
         long tick = System.currentTimeMillis();
         MeddelandeHandelse[] h = meddelande.getHandelser();
         log.debug("Det tog " + (System.currentTimeMillis() - tick) + " ms att hämta händelser");
@@ -417,11 +417,8 @@ public class MeddelandeBean {
 
     public boolean getKunnaTaBortMeddelande() {
         int status = qp.getInt("SELECT STATUS FROM MEDDELANDE WHERE ID=" + id, 0);
-        if ((status == MeddelandeHandelse.MOTTAGET || status > MeddelandeHandelse.SKICKAT_SERVER)
-            && status != MeddelandeHandelse.BORTTAGET) {
-            return true;
-        }
-        return false;
+        return (status == MeddelandeHandelse.MOTTAGET || status > MeddelandeHandelse.SKICKAT_SERVER)
+            && status != MeddelandeHandelse.BORTTAGET;
     }
 
     public long getId() {
