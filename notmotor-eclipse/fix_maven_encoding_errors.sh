@@ -1,5 +1,5 @@
 #!/bin/bash
-# Convenience script to fix encoding errors from Maven compilation
+# Convenience script to fix encoding errors.
 # 
 # Usage: 
 #   ./fix_maven_encoding_errors.sh [directory]
