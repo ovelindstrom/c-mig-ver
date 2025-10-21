@@ -43,6 +43,11 @@
 		<url>http://tdsrv2003/tdbin/start_a.htm</url>
 	</issueManagement>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
 	<!-- This is where most of the Dependency Management should go now -->
 	<dependencyManagement>
 		<dependencies>
@@ -87,11 +92,10 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.11.0</version>
 					<configuration>
-						<source>11</source>
-						<target>11</target>
 						<encoding>UTF-8</encoding>
 						<showWarnings>true</showWarnings>
 						<showDeprecation>true</showDeprecation>
+      					<release>11</release>
 					</configuration>
 				</plugin>
 
@@ -277,6 +281,76 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+
+			<!-- Rewrite Rules according to WAMT requirements -->
+			<plugin>
+				<groupId>org.openrewrite.maven</groupId>
+				<artifactId>rewrite-maven-plugin</artifactId>
+				<version>6.9.0</version>
+				<configuration>
+					<activeRecipes>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.CastArraysAsListToList</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.javax.AddJaxbDependencies</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.javax.AddJaxwsDependencies</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.javax.AddInjectDependencies</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.javax.AddCommonAnnotationsDependencies</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.staticanalysis.BigDecimalRoundingConstantsToEnums</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.staticanalysis.PrimitiveWrapperClassConstructorToValueOf</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.concurrent.JavaConcurrentAPIs</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.lang.JavaLangAPIs</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.logging.JavaLoggingAPIs</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.lombok.UpdateLombokToJava11</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.net.JavaNetAPIs</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.nio.file.PathsGetToPathOf</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.sql.JavaSqlAPIs</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.javax.JavaxLangModelUtil</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.javax.JavaxManagementMonitorAPIs</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.javax.JavaxXmlStreamAPIs</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.cobertura.RemoveCoberturaMavenPlugin</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.UpgradeBuildToJava11</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.util.OptionalNotPresentToIsEmpty</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.util.OptionalNotEmptyToIsPresent</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.util.OptionalStreamRecipe</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.UpgradePluginsForJava11</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.scala.migrate.UpgradeScala_2_12</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.RemovedJavaXMLWSModuleProvided</recipe>
+						<!--Java SE 11 general information and potential issues-->
+						<recipe>org.openrewrite.java.migrate.RemovedJaxBModuleProvided</recipe>
+					</activeRecipes>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.openrewrite.recipe</groupId>
+						<artifactId>rewrite-migrate-java</artifactId>
+						<version>3.10.0</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
