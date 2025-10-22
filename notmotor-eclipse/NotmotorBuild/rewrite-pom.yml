@@ -1,0 +1,109 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.Pom
+displayName: All POM Modernization Recipes
+description: Applies all modernization recipes including changing to the new superpom, removing developers section, adding JUnit 3 dependency.
+recipeList:
+  - se.csn.recipes.modernize.pom.NewSuperPomParent
+  - se.csn.recipes.modernize.pom.UpdateProjectParent
+  - se.csn.recipes.modernize.pom.DropDevelopers
+  - se.csn.recipes.modernize.pom.DropSourceDirectory
+  - se.csn.recipes.modernize.pom.DropTestSourceDirectory
+  - se.csn.recipes.modernize.pom.DropOutputDirectory
+  - se.csn.recipes.modernize.pom.DropTestOutputDirectory
+  - se.csn.recipes.modernize.pom.AddJunit3TestDependency
+  - se.csn.recipes.modernize.pom.UpdateNotmotorJarVersion
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.NewSuperPomParent
+displayName: Change to use the new superpom as parent
+recipeList:
+  - org.openrewrite.maven.ChangeParentPom:
+      oldGroupId: se.csn
+      oldArtifactId: superpom
+      newVersion: 3.0-SNAPSHOT
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.pom.UpdateProjectParent
+displayName: Make sure that all projects use the new Notmotor parent
+recipeList:
+  - org.openrewrite.maven.ChangeParentPom:
+      oldGroupId: se.csn
+      oldArtifactId: notmotor
+      newVersion: 1.0-SNAPSHOT
+
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.pom.DropDevelopers
+displayName: Delete <developers> section
+description: Removes the <developers> section from Maven POM files.
+recipeList:
+  - org.openrewrite.xml.RemoveXmlTag:
+      # The XPath expression to target the <developers> element anywhere in a POM file.
+      xPath: /project/developers
+      fileMatcher: '**/pom.xml'
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.pom.DropSourceDirectory
+displayName: Delete <sourceDirectory> element
+description: Removes the <sourceDirectory> element from Maven POM files.
+recipeList:
+  - org.openrewrite.xml.RemoveXmlTag:
+      # The XPath expression to target the <sourceDirectory> element anywhere in a POM file.
+      xPath: /project/build/sourceDirectory
+      fileMatcher: '**/pom.xml'
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.pom.DropTestSourceDirectory
+displayName: Delete <testSourceDirectory> element
+description: Removes the <testSourceDirectory> element from Maven POM files.
+recipeList:
+  - org.openrewrite.xml.RemoveXmlTag:
+      # The XPath expression to target the <testSourceDirectory> element anywhere in a POM file.
+      xPath: /project/build/testSourceDirectory
+      fileMatcher: '**/pom.xml'
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.pom.DropOutputDirectory
+displayName: Delete <outputDirectory> element
+description: Removes the <outputDirectory> element from Maven POM files.
+recipeList:
+  - org.openrewrite.xml.RemoveXmlTag:
+      # The XPath expression to target the <outputDirectory> element anywhere in a POM file.
+      xPath: /project/build/outputDirectory
+      fileMatcher: '**/pom.xml'
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.pom.DropTestOutputDirectory
+displayName: Delete <testOutputDirectory> element
+description: Removes the <testOutputDirectory> element from Maven POM files.
+recipeList:
+  - org.openrewrite.xml.RemoveXmlTag:
+      # The XPath expression to target the <testOutputDirectory> element anywhere in a POM file.
+      xPath: /project/build/testOutputDirectory
+      fileMatcher: '**/pom.xml'
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.pom.AddJunit3TestDependency
+displayName: Add JUnit 3 Test Dependency
+description: Adds the classic JUnit 3 dependency with test scope to pom.xml.
+recipeList:
+  - org.openrewrite.maven.AddDependency:
+      # Required parameters for the dependency coordinate
+      groupId: junit
+      artifactId: junit
+      version: 3.8.1 # Specify the version you need
+      # Optional parameter to set the scope
+      scope: test
+      # We only want to add JUnit 3 if the project is using it
+      onlyIfUsing: junit.framework.*
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.pom.UpdateNotmotorJarVersion
+displayName: Update notmotorjar dependency version to 2.1-SNAPSHOT
+description: Updates the version of se.csn.notmotor:notmotorjar dependency to 2.1-SNAPSHOT
+recipeList:
+  - org.openrewrite.maven.ChangeDependencyGroupIdAndArtifactId:
+      oldGroupId: se.csn.notmotor
+      oldArtifactId: notmotorjar
+      newVersion: 2.1-SNAPSHOT

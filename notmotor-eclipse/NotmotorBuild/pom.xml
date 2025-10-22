@@ -237,7 +237,7 @@
 
 	<profiles>
 		<profile>
-			<id>styling</id>
+			<id>rewrite</id>
 			<build>
 				<plugins>
 					<plugin>
@@ -247,8 +247,7 @@
 						<configuration>
 							<exportDatatables>true</exportDatatables>
 							<activeRecipes>
-								<recipe>org.openrewrite.java.RemoveUnusedImports</recipe>
-								<recipe>org.openrewrite.maven.BestPractices</recipe>
+								<recipe>se.csn.recipes.modernize.AllRecipes</recipe>
 							</activeRecipes>
 							<activeStyles>
 								<style>org.openrewrite.java.GoogleJavaFormat</style>
@@ -272,24 +271,6 @@
 								<activeRecipe>se.csn.recipes.modernize.Pom</activeRecipe>
 							</activeRecipes>
 							<configLocation>${maven.multiModuleProjectDirectory}/rewrite-pom.yml</configLocation>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>sout</id>
-			<build>
-				<plugins>
-					<!-- Rewrite Rules according to WAMT requirements -->
-					<plugin>
-						<groupId>org.openrewrite.maven</groupId>
-						<artifactId>rewrite-maven-plugin</artifactId>
-						<version>6.21.1</version>
-						<configuration>
-							<activeRecipes>
-								<activeRecipe>se.csn.recipes.example.FindMethodsExample</activeRecipe>
-							</activeRecipes>
 						</configuration>
 					</plugin>
 				</plugins>
