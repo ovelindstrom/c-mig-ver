@@ -6,7 +6,6 @@ import se.csn.notmotor.ipl.model.SandResultat;
 /**
  * Interface som markerar alla sandartjanster.
  * 
- * @author Jonas åhrnell - csn7821
  */
 public interface MeddelandeSender {
 

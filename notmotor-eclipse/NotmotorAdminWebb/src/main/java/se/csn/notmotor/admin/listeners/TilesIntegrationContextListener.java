@@ -9,7 +9,6 @@ import com.sun.faces.lifecycle.LifecycleImpl;
 
 /**
  * @since 2007-jun-18
- * @author Jonas Ahrnell (csn7821)
  */
 public class TilesIntegrationContextListener implements ServletContextListener {
 

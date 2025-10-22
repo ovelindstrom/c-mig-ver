@@ -6,7 +6,6 @@ import se.csn.common.servlet.RunControl;
  * Klass som realiserar tillstandshanteringen for att skicka meddelanden.
  * Allt "arbete" utfors i andra klasser; det gor det mojligt att testa 
  * tillstandshanteringen for sig. 
- * @author Jonas åhrnell (csn7821)
  *
  */
 public class SkickaMeddelandeStateMachine extends MeddelandeStateMachineBase {

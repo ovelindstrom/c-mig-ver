@@ -11,7 +11,6 @@ import se.csn.notmotor.ipl.sms.DTOSMSUt;
 import se.csn.notmotor.ipl.sms.SMSTjaenst;
 
 /**
- * @author Jonas åhrnell - csn7821
  * Klassen skickar meddelande via SMS.
  */
 public class SMSMeddelandeSenderImpl implements MeddelandeSender {

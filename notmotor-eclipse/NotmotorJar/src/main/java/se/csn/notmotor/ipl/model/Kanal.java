@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
  * Representerar en inkanal dar det finns begransningar i
  * hur meddelanden ska bearbetas.
  * 
- * @author Petrus Bergman, csn7820
  */
 public class Kanal {
 

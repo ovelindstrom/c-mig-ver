@@ -4,9 +4,7 @@ import se.csn.notmotor.ipl.model.Meddelande;
 import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 import se.csn.notmotor.ipl.model.Mottagare;
 import se.csn.notmotor.ipl.model.KodText;
-
 /**
- * @author Jonas åhrnell - csn7821
  * Kontrollerar: 
  * -mobilnummer
  * -att texten inte är längre än 160 tecken

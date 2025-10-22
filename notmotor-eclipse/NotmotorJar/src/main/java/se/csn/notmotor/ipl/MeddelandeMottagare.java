@@ -17,7 +17,6 @@ import se.csn.notmotor.ipl.validators.MeddelandeValidator;
 import se.csn.notmotor.ipl.validators.SMSValidator;
 
 /**
- * @author Jonas åhrnell - csn7821
  * Klass som validerar meddelandet, lägger till händelsen MOTTAGET
  * och lagrar meddelandet till databas
  */
