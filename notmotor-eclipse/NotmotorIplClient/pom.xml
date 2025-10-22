@@ -8,6 +8,9 @@
     <artifactId>superpom</artifactId>
     <version>3.0-SNAPSHOT</version>
   </parent>
+ <properties>
+  <maven.compiler.release>11</maven.compiler.release>
+ </properties>
 
   <!-- TODO: Kolla varför den här inte är via NotmotorBuild -->
 
