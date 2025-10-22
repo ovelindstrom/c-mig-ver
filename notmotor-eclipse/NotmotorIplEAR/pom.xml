@@ -42,12 +42,6 @@
   </dependencies>
 
   <build>
-    <!--
-    <sourceDirectory>${project.basedir}/src</sourceDirectory>
-    <testSourceDirectory>${project.basedir}/src</testSourceDirectory>
-    <outputDirectory>${project.basedir}/target/classes</outputDirectory>
-    <testOutputDirectory>${project.basedir}/target/test-classes</testOutputDirectory>
-    -->
     <defaultGoal>compile</defaultGoal>
 
     <plugins>

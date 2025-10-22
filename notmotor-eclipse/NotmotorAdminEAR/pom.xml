@@ -56,12 +56,6 @@
   </dependencies>
 
   <build>
-    <!-- Old ones.
-    <sourceDirectory>${basedir}/src</sourceDirectory>
-    <testSourceDirectory>${basedir}/src</testSourceDirectory>
-    <outputDirectory>${basedir}/target/classes</outputDirectory>
-    <testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
-    -->
     <defaultGoal>compile</defaultGoal>
 
     <plugins>

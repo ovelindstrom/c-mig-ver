@@ -84,6 +84,7 @@
 	</dependencies>
 
 	<build>
+
 		<pluginManagement>
 			<plugins>
 				<!-- Core Maven plugins -->
@@ -95,7 +96,7 @@
 						<encoding>UTF-8</encoding>
 						<showWarnings>true</showWarnings>
 						<showDeprecation>true</showDeprecation>
-      					<release>11</release>
+						<release>11</release>
 					</configuration>
 				</plugin>
 
@@ -227,131 +228,7 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-
-		<!-- Configure artifact copying for the parent project -->
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-artifacts</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<!-- Copy NotmotorIplEAR -->
-								<artifactItem>
-									<groupId>se.csn.notmotor</groupId>
-									<artifactId>notmotoriplear</artifactId>
-									<version>2.0-SNAPSHOT</version>
-									<type>ear</type>
-									<destFileName>notmotor-ipl-ear-${project.version}.ear</destFileName>
-								</artifactItem>
-								<!-- Copy NotmotorAdminEAR -->
-								<artifactItem>
-									<groupId>se.csn.notmotor</groupId>
-									<artifactId>notmotoradminear</artifactId>
-									<version>2.0-SNAPSHOT</version>
-									<type>ear</type>
-									<destFileName>notmotor-admin-ear-${project.version}.ear</destFileName>
-								</artifactItem>
-								<!-- Copy NotmotorIplWebb WAR -->
-								<artifactItem>
-									<groupId>se.csn.notmotor</groupId>
-									<artifactId>notmotoriplwebb</artifactId>
-									<version>2.0-SNAPSHOT</version>
-									<type>war</type>
-									<destFileName>notmotor-ipl-webb-${project.version}.war</destFileName>
-								</artifactItem>
-								<!-- Copy NotmotorAdminWebb WAR -->
-								<artifactItem>
-									<groupId>se.csn.notmotor</groupId>
-									<artifactId>notmotoradminwebb</artifactId>
-									<version>2.0-SNAPSHOT</version>
-									<type>war</type>
-									<destFileName>notmotor-admin-webb-${project.version}.war</destFileName>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>${project.basedir}/bin</outputDirectory>
-							<overWriteReleases>true</overWriteReleases>
-							<overWriteSnapshots>true</overWriteSnapshots>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Rewrite Rules according to WAMT requirements -->
-			<plugin>
-				<groupId>org.openrewrite.maven</groupId>
-				<artifactId>rewrite-maven-plugin</artifactId>
-				<version>6.9.0</version>
-				<configuration>
-					<activeRecipes>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.CastArraysAsListToList</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.javax.AddJaxbDependencies</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.javax.AddJaxwsDependencies</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.javax.AddInjectDependencies</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.javax.AddCommonAnnotationsDependencies</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.staticanalysis.BigDecimalRoundingConstantsToEnums</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.staticanalysis.PrimitiveWrapperClassConstructorToValueOf</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.concurrent.JavaConcurrentAPIs</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.lang.JavaLangAPIs</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.logging.JavaLoggingAPIs</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.lombok.UpdateLombokToJava11</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.net.JavaNetAPIs</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.nio.file.PathsGetToPathOf</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.sql.JavaSqlAPIs</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.javax.JavaxLangModelUtil</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.javax.JavaxManagementMonitorAPIs</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.javax.JavaxXmlStreamAPIs</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.cobertura.RemoveCoberturaMavenPlugin</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.UpgradeBuildToJava11</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.util.OptionalNotPresentToIsEmpty</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.util.OptionalNotEmptyToIsPresent</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.util.OptionalStreamRecipe</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.UpgradePluginsForJava11</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.scala.migrate.UpgradeScala_2_12</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.RemovedJavaXMLWSModuleProvided</recipe>
-						<!--Java SE 11 general information and potential issues-->
-						<recipe>org.openrewrite.java.migrate.RemovedJaxBModuleProvided</recipe>
-					</activeRecipes>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.openrewrite.recipe</groupId>
-						<artifactId>rewrite-migrate-java</artifactId>
-						<version>3.10.0</version>
-					</dependency>
-				</dependencies>
-			</plugin>
 		</plugins>
 	</build>
 
@@ -359,5 +236,124 @@
 	</reporting>
 
 	<profiles>
+		<profile>
+			<id>styling</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.openrewrite.maven</groupId>
+						<artifactId>rewrite-maven-plugin</artifactId>
+						<version>6.21.0</version>
+						<configuration>
+							<exportDatatables>true</exportDatatables>
+							<activeRecipes>
+								<recipe>org.openrewrite.java.RemoveUnusedImports</recipe>
+								<recipe>org.openrewrite.maven.BestPractices</recipe>
+							</activeRecipes>
+							<activeStyles>
+								<style>org.openrewrite.java.GoogleJavaFormat</style>
+							</activeStyles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>poms</id>
+			<build>
+				<plugins>
+					<!-- Rewrite Rules according to WAMT requirements -->
+					<plugin>
+						<groupId>org.openrewrite.maven</groupId>
+						<artifactId>rewrite-maven-plugin</artifactId>
+						<version>6.21.1</version>
+						<configuration>
+							<activeRecipes>
+								<activeRecipe>se.csn.recipes.modernize.Pom</activeRecipe>
+							</activeRecipes>
+							<configLocation>${maven.multiModuleProjectDirectory}/rewrite-pom.yml</configLocation>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>sout</id>
+			<build>
+				<plugins>
+					<!-- Rewrite Rules according to WAMT requirements -->
+					<plugin>
+						<groupId>org.openrewrite.maven</groupId>
+						<artifactId>rewrite-maven-plugin</artifactId>
+						<version>6.21.1</version>
+						<configuration>
+							<activeRecipes>
+								<activeRecipe>se.csn.recipes.example.FindMethodsExample</activeRecipe>
+							</activeRecipes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>copydeps</id>
+			<build>
+					<!-- Configure artifact copying for the parent project -->
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-dependency-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>copy-artifacts</id>
+									<phase>package</phase>
+									<goals>
+										<goal>copy</goal>
+									</goals>
+									<configuration>
+										<artifactItems>
+											<!-- Copy NotmotorIplEAR -->
+											<artifactItem>
+												<groupId>se.csn.notmotor</groupId>
+												<artifactId>notmotoriplear</artifactId>
+												<version>2.0-SNAPSHOT</version>
+												<type>ear</type>
+												<destFileName>notmotor-ipl-ear-${project.version}.ear</destFileName>
+											</artifactItem>
+											<!-- Copy NotmotorAdminEAR -->
+											<artifactItem>
+												<groupId>se.csn.notmotor</groupId>
+												<artifactId>notmotoradminear</artifactId>
+												<version>2.0-SNAPSHOT</version>
+												<type>ear</type>
+												<destFileName>notmotor-admin-ear-${project.version}.ear</destFileName>
+											</artifactItem>
+											<!-- Copy NotmotorIplWebb WAR -->
+											<artifactItem>
+												<groupId>se.csn.notmotor</groupId>
+												<artifactId>notmotoriplwebb</artifactId>
+												<version>2.0-SNAPSHOT</version>
+												<type>war</type>
+												<destFileName>notmotor-ipl-webb-${project.version}.war</destFileName>
+											</artifactItem>
+											<!-- Copy NotmotorAdminWebb WAR -->
+											<artifactItem>
+												<groupId>se.csn.notmotor</groupId>
+												<artifactId>notmotoradminwebb</artifactId>
+												<version>2.0-SNAPSHOT</version>
+												<type>war</type>
+												<destFileName>notmotor-admin-webb-${project.version}.war</destFileName>
+											</artifactItem>
+										</artifactItems>
+										<outputDirectory>${project.basedir}/bin</outputDirectory>
+										<overWriteReleases>true</overWriteReleases>
+										<overWriteSnapshots>true</overWriteSnapshots>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+			</build>
+		</profile>
 	</profiles>
 </project>
