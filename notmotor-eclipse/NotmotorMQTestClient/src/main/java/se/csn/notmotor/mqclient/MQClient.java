@@ -17,7 +17,7 @@ public class MQClient {
 	private static final int CCSID = 278; // Stordatorn
 	//private static final int CCSID = 850; // Windows TE
 	// Port 1415 = MQT7 (Integration test)
-	// Port 1414 = MQT9 (GR\u00d6N)
+	// Port 1414 = MQT9 (GRÖN)
 	private static final String QUEUE_MANAGER = "MQINT00"; //"MQT7";
 	private static final int MQ_SERVER_PORT = 1415;
 	private static final String QUEUE_NAME = "UT.MAAAUD";//"UT.LADOKFRAGA.REGISTRERING";

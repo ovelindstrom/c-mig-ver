@@ -35,7 +35,7 @@ public class SMSTjaenst {
     /**
      * Skapar en ny instans av SMSTjaenst med angiven endpoint.
      * 
-     * @throws IllegalArgumentException om det inte g\u00e5r att skapa en URL av endpoint
+     * @throws IllegalArgumentException om det inte går att skapa en URL av endpoint
      */
     public SMSTjaenst(String endpoint) throws IllegalArgumentException {
         this();
@@ -65,18 +65,18 @@ public class SMSTjaenst {
     /**
      * Kontrollerar att alla nodvandiga data ar satta.
      * 
-     * @throws IllegalStateException om n\u00e5gon parameter saknas f\u00f6r
-     *                               att tj\u00e4nsten ska kunna anv\u00e4ndas
+     * @throws IllegalStateException om någon parameter saknas för
+     *                               att tjänsten ska kunna användas
      */
     public void checkParams() throws IllegalStateException {
         if (userid == null) {
-            throw new IllegalStateException("userid m\u00e5ste vara satt");
+            throw new IllegalStateException("userid måste vara satt");
         }
         if (password == null) {
-            throw new IllegalStateException("password m\u00e5ste vara satt");
+            throw new IllegalStateException("password måste vara satt");
         }
         if (endpoint == null) {
-            throw new IllegalStateException("endpoint m\u00e5ste vara satt");
+            throw new IllegalStateException("endpoint måste vara satt");
         }
     }
 
@@ -102,7 +102,7 @@ public class SMSTjaenst {
                 try {
                     in.close();
                 } catch (IOException e) {
-                    log.error("Kunde inte st\u00e4nga BufferedReader...");
+                    log.error("Kunde inte stänga BufferedReader...");
                 }
             }
         }
@@ -113,7 +113,7 @@ public class SMSTjaenst {
      * 
      * @param in DTOSMSIn
      * @return DTOSMSUt
-     * @throws IllegalArgumentException om indata \u00e4r null
+     * @throws IllegalArgumentException om indata är null
      */
     public DTOSMSUt execute(DTOSMSIn in) throws IllegalArgumentException {
         // Dumpa SSL-properties:
@@ -123,12 +123,12 @@ public class SMSTjaenst {
             log.info("Prop: " + props[i] + ": " + System.getProperty(props[i]));
         }
         if (in == null) {
-            throw new IllegalArgumentException("Indata m\u00e5ste vara satt");
+            throw new IllegalArgumentException("Indata måste vara satt");
         }
         checkParams();
 
         if (log.isDebugEnabled()) {
-            log.debug("Anropar sms-tj\u00e4nsten med f\u00f6ljande indata.\n  Telnr:" + in.getTelnummer()
+            log.debug("Anropar sms-tjänsten med följande indata.\n  Telnr:" + in.getTelnummer()
                     + "\n  Meddelande:" + in.getMeddelande()
                     + "\n  Userid:" + userid
                     + "\n  Password:" + password
@@ -158,12 +158,12 @@ public class SMSTjaenst {
             client.getState().setCredentials(AuthScope.ANY, defaultcreds);
             client.executeMethod(post);
         } catch (HttpException he) {
-            String error = "F\u00e5ngade HttpException";
+            String error = "Fångade HttpException";
             log.error(error, he);
             response.setReturStatus(998);
             return response;
         } catch (IOException ioe) {
-            String error = "F\u00e5ngade IOException";
+            String error = "Fångade IOException";
             log.error(error, ioe);
             response.setReturStatus(998);
             return response;
@@ -172,7 +172,7 @@ public class SMSTjaenst {
         try {
             xml = post.getResponseBodyAsString();
         } catch (IOException ioe) {
-            String error = "F\u00e5ngade IOException";
+            String error = "Fångade IOException";
             log.error(error, ioe);
             response.setReturStatus(997);
             return response;
@@ -185,12 +185,12 @@ public class SMSTjaenst {
         try {
             parser.parse(new InputSource(new StringReader(xml)));
         } catch (SAXException saxe) {
-            String error = "F\u00e5ngade SAXException";
+            String error = "Fångade SAXException";
             log.error(error, saxe);
             response.setReturStatus(997);
             return response;
         } catch (IOException ioe) {
-            String error = "F\u00e5ngade IOException";
+            String error = "Fångade IOException";
             log.error(error, ioe);
             response.setReturStatus(997);
             return response;
@@ -206,13 +206,13 @@ public class SMSTjaenst {
             return response;
         }
 
-        // Om vi f\u00e5r returkod 2 fr\u00e5n telia anv\u00e4nder vi 902 internt ist\u00e4llet
-        // d\u00e5 kod 2 betyder "skickat server" i notmotorn
+        // Om vi får returkod 2 från telia använder vi 902 internt istället
+        // då kod 2 betyder "skickat server" i notmotorn
         if (responseCode == 2) {
             responseCode = 902;
         }
         if (responseCode == 0) {
-            responseCode = 2; // Betyder att meddelandet \u00e4r skickat
+            responseCode = 2; // Betyder att meddelandet är skickat
         }
         response.setReturStatus(responseCode);
         response.setResponseMessage(sResponseMessage);
