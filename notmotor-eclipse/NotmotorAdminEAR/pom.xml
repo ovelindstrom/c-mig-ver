@@ -16,10 +16,10 @@
 
   <packaging>ear</packaging>
   <name>NotmotorAdminEAR</name>
-  <url>../../../NotmotorAdminEAR/target/site</url>
-  <inceptionYear>2007</inceptionYear>
-
   <description>Notmotorns Admin EAR - Parent: NotmotornBuild</description>
+  <url>../../../NotmotorAdminEAR/target/site</url>
+
+  <inceptionYear>2007</inceptionYear>
 
   <organization>
     <name>Centrala studiestödsnämnden</name>

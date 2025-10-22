@@ -18,8 +18,8 @@
   
   <name>NotmotorJar</name>
   
-  <url>notmotor-jar/</url>
   <description>Notmotorn Jar - Model classes an other shared resources - Parent: NotmotorBuild</description>
+  <url>notmotor-jar/</url>
   <inceptionYear>2007</inceptionYear>
   
   <organization>
@@ -161,7 +161,6 @@
     <dependency>
       <groupId>opensymphony</groupId>
       <artifactId>quartz</artifactId>
-      <version>1.6.0</version>
     </dependency>
     <!--    -->
     <!--   	<dependency> -->
@@ -205,7 +204,7 @@
 
   <build>
 
-     <defaultGoal>compile</defaultGoal>
+    <defaultGoal>compile</defaultGoal>
     <!--
   <resources>
    <resource>
