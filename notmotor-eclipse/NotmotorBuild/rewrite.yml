@@ -7,7 +7,6 @@ recipeList:
   - se.csn.recipes.modernize.FixByteArrayDataSourceImport
   - org.openrewrite.staticanalysis.maven.MavenJavadocNonAsciiRecipe
   - org.openrewrite.staticanalysis.RemoveEmptyJavaDocParameters
-  - org.openrewrite.java.cleanup.RemoveUnusedImports
   - org.openrewrite.java.RemoveUnusedImports
   - org.openrewrite.java.format.AutoFormat
   - org.openrewrite.java.migrate.Java8toJava11
