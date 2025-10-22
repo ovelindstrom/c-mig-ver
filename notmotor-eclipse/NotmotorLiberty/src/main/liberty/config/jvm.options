@@ -1,0 +1,8 @@
+# JVM options for OpenTelemetry configuration
+-Dotel.sdk.disabled=false
+-Dotel.service.name=base-template-shift
+-Dotel.service.version=1.0-SNAPSHOT
+-Dotel.traces.exporter=otlp
+-Dotel.metrics.exporter=otlp
+-Dotel.logs.exporter=otlp
+-Dotel.resource.attributes=service.name=base-template-shift,service.version=1.0-SNAPSHOT,deployment.environment=development

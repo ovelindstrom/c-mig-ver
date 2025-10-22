@@ -1,0 +1,51 @@
+services:
+  otel:
+    image: grafana/otel-lgtm:latest
+    container_name: otel-dev
+    networks:
+      - csn-dev-net
+    ports:
+      - "3000:3000"   # Grafana
+      - "4317:4317"   # OpenTelemetry GRPC
+      - "4318:4318"   # OpenTelemetry HTTP
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  base-template-shift:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: base-template-shift:dev
+    container_name: base-template-shift-dev
+    networks:
+      - csn-dev-net
+    ports:
+      - "9080:9080"
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel:4317
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    depends_on:
+      - otel
+    volumes:
+      # Mount source for development (optional - for live reload in dev mode)
+      - ./src:/opt/ol/wlp/usr/servers/defaultServer/src:ro
+      - ./target:/opt/ol/wlp/usr/servers/defaultServer/target
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9080/base-template-shift/api/hello"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  csn-dev-net:
+    external: true
