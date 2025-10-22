@@ -165,7 +165,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
             try {
                 client = serviceLocator.getSkickaSOAP(getURL(serviceLocator.getPorts()));
                 // CHECKSTYLE/OFF: MagicNumber
-                meddelande.setCsnnummer(new Integer(refnr.substring(0, 8)));
+                meddelande.setCsnnummer(Integer.valueOf(refnr.substring(0, 8)));
                 meddelande.setRubrik(rubrik);
                 meddelande.setMeddelandetext(motiv);
                 if (skickatidigast.length() >= 10) {
@@ -189,7 +189,7 @@ public class MeddelandeBean extends CsnDAOWebServiceImpl implements javax.ejb.Me
                 } else {
                     mott.setAdress(mobilnr);
                 }
-                mott.setCsnnummer(new Integer(refnr.substring(0, 8)));
+                mott.setCsnnummer(Integer.valueOf(refnr.substring(0, 8)));
                 mottArr[0] = mott;
                 meddelande.setMottagare(mottArr);
                 // CHECKSTYLE/ON: MagicNumber

@@ -7,10 +7,11 @@ import java.util.List;
 
 public interface QueryProcessor {
     /**
-     * @param SQL SQL-kommando som ska köras
-     * @return Antalet rader i databasen som påverkades, -1 om 
-     * anropet misslyckades utan exception
-     * @throws RuntimeException om något gick fel
+     * Kör ett SQL-kommando som bara returnerar antalet påverkade rader.
+     * 
+     * @param SQL ett SQL-kommando som ska köras
+     * @return antalet rader i databasen som påverkades eller -1 om anropet
+     *         misslyckades utan exception
      */
     public int executeThrowException(String SQL);
 
@@ -27,45 +28,46 @@ public interface QueryProcessor {
     public String[] getStringArray(String SQL, String[] returnIfNoResult);
 
     /**
-     * Skapar java-objekt från en databasfråga. 
-     * @param SQL sql-fråga
-     * @param mapper Ett objekt som kan översätta en rad i svaret till 
-     * 		  ett Java-objekt
-     *
+     * Skapar java-objekt från en databasfråga.
+     * 
+     * @param SQL    en sql-fråga
+     * @param mapper Ett objekt som kan översätta en rad i svaret till ett
+     *               Java-objekt
      */
     public List processQuery(String SQL, RowToObjectMapper mapper);
-    
+
     public Object getObject(String SQL, RowToObjectMapper mapper);
-    
-    public long getSequence(String sequenceName); 
-    
+
+    public long getSequence(String sequenceName);
+
     public long getCounter(String table, String counterName,
             String nameCol, String valueCol);
 
     public long getCounter(String table, String counterName);
-    
+
     public String getClob(ResultSet rs, String colName) throws SQLException;
-    
+
     public byte[] getBlob(ResultSet rs, String colName) throws SQLException;
-    
+
     /**
-     * @throws RuntimeException om det inte gick att få en ny connection. 
+     * @throws RuntimeException om det inte gick att få en ny connection.
      */
     public Connection getConnection();
 
     /**
-     * Sätter den connection som ska användas. QueryProcessorn kommer att använda 
-     * denna connection tills en annan connection satts.  
-     * @param conn Connection-objektet som ska användas
-     * @param handleConnection true om det nya Connection-objektet ska hanteras som 
-     *        vanligt, false annars
+     * Sätter den connection som ska användas. QueryProcessorn kommer att använda
+     * denna connection tills en annan connection satts.
+     * 
+     * @param conn             Connection-objektet som ska användas
+     * @param handleConnection true om det nya Connection-objektet ska hanteras som
+     *                         vanligt, false annars
      */
     public void setConnection(Connection conn, boolean handleConnection);
-    
+
     public void addQueryListener(QueryListener ql);
+
     public void removeQueryListener(QueryListener ql);
+
     public List getQueryListeners();
-    
-    
 
 }
