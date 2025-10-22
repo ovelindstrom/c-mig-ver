@@ -13,7 +13,7 @@
   <artifactId>notmotoriplclient</artifactId>
   <version>2.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-  
+
   <name>NotmotorIplClient</name>
   <description>Notmotor Ipl Client som används av andra applicationer för att kommunicera med notmotorn. Parent: SuperPom</description>
 
@@ -61,31 +61,12 @@
   </dependencies>
 
   <build>
-    <!--
-    <sourceDirectory>${project.basedir}/src</sourceDirectory>
-    <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
-    <outputDirectory>${project.basedir}/target/classes</outputDirectory>
-    <testOutputDirectory>${project.basedir}/target/test-classes</testOutputDirectory>
-    -->
     <defaultGoal>compile</defaultGoal>
-    <!--
-    <resources>
-      <resource>
-        <directory>${project.basedir}/src</directory>
-        <includes>
-          <include>**/*.java</include>
-        </includes>
-      </resource>
-    </resources>
-    -->
-    
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-     <release>11</release>
-        </configuration>
       </plugin>
     </plugins>
 

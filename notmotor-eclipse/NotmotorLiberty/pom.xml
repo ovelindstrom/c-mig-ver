@@ -20,6 +20,9 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Liberty configuration -->
+        <liberty.var.http.port>9080</liberty.var.http.port>
+        <liberty.var.https.port>9443</liberty.var.https.port>
     </properties>
 
     <dependencies>
@@ -53,7 +56,7 @@
     </dependencies>
 
     <build>
-        <finalName>base-template-shift</finalName>
+        <finalName>notmotorliberty</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -78,8 +81,75 @@
                         --network csn-dev-net
                         -e OTEL_EXPORTER_OTLP_ENDPOINT=http://otel:4317
                     </containerRunOpts>
+                     <systemPropertyVariables>
+                        <http.port>${liberty.var.http.port}</http.port>
+                        <context.root>/notmotor</context.root>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+			<id>copydeps</id>
+			<build>
+					<!-- Configure artifact copying for the parent project -->
+					<plugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-dependency-plugin</artifactId>
+							<executions>
+								<execution>
+									<id>copy-artifacts</id>
+									<phase>package</phase>
+									<goals>
+										<goal>copy</goal>
+									</goals>
+									<configuration>
+										<artifactItems>
+											<!-- Copy NotmotorIplEAR -->
+											<artifactItem>
+												<groupId>se.csn.notmotor</groupId>
+												<artifactId>notmotoriplear</artifactId>
+												<version>2.0-SNAPSHOT</version>
+												<type>ear</type>
+												<destFileName>notmotor-ipl-ear-${project.version}.ear</destFileName>
+											</artifactItem>
+											<!-- Copy NotmotorAdminEAR -->
+											<artifactItem>
+												<groupId>se.csn.notmotor</groupId>
+												<artifactId>notmotoradminear</artifactId>
+												<version>2.0-SNAPSHOT</version>
+												<type>ear</type>
+												<destFileName>notmotor-admin-ear-${project.version}.ear</destFileName>
+											</artifactItem>
+											<!-- Copy NotmotorIplWebb WAR -->
+											<artifactItem>
+												<groupId>se.csn.notmotor</groupId>
+												<artifactId>notmotoriplwebb</artifactId>
+												<version>2.0-SNAPSHOT</version>
+												<type>war</type>
+												<destFileName>notmotor-ipl-webb-${project.version}.war</destFileName>
+											</artifactItem>
+											<!-- Copy NotmotorAdminWebb WAR -->
+											<artifactItem>
+												<groupId>se.csn.notmotor</groupId>
+												<artifactId>notmotoradminwebb</artifactId>
+												<version>2.0-SNAPSHOT</version>
+												<type>war</type>
+												<destFileName>notmotor-admin-webb-${project.version}.war</destFileName>
+											</artifactItem>
+										</artifactItems>
+										<outputDirectory>${project.basedir}/bin</outputDirectory>
+										<overWriteReleases>true</overWriteReleases>
+										<overWriteSnapshots>true</overWriteSnapshots>
+									</configuration>
+								</execution>
+							</executions>
+						</plugin>
+					</plugins>
+			</build>
+		</profile>
+    </profiles>
 </project>
