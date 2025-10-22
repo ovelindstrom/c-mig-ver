@@ -31,27 +31,22 @@
       <groupId>se.csn.notmotor</groupId>
       <artifactId>notmotoradminwebb</artifactId>
       <type>war</type>
-      <version>2.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>se.csn</groupId>
       <artifactId>ark</artifactId>
-      <version>3.0.1</version>
     </dependency>
     <dependency>
       <groupId>se.csn</groupId>
       <artifactId>utils</artifactId>
-      <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>se.csn.notmotor</groupId>
       <artifactId>notmotorjar</artifactId>
-      <version>2.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>1.2.8</version>
     </dependency>
   </dependencies>
 

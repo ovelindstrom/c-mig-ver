@@ -238,14 +238,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<dependencies>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-		</dependency>
-	</dependencies>
-
 	<build>
 
 		<pluginManagement>
@@ -435,66 +427,6 @@
 							</activeRecipes>
 							<configLocation>${maven.multiModuleProjectDirectory}/rewrite-pom.yml</configLocation>
 						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>copydeps</id>
-			<build>
-				<!-- Configure artifact copying for the parent project -->
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>copy-artifacts</id>
-								<phase>package</phase>
-								<goals>
-									<goal>copy</goal>
-								</goals>
-								<configuration>
-									<artifactItems>
-										<!-- Copy NotmotorIplEAR -->
-										<artifactItem>
-											<groupId>se.csn.notmotor</groupId>
-											<artifactId>notmotoriplear</artifactId>
-											<version>2.0-SNAPSHOT</version>
-											<type>ear</type>
-											<destFileName>notmotor-ipl-ear-${project.version}.ear</destFileName>
-										</artifactItem>
-										<!-- Copy NotmotorAdminEAR -->
-										<artifactItem>
-											<groupId>se.csn.notmotor</groupId>
-											<artifactId>notmotoradminear</artifactId>
-											<version>2.0-SNAPSHOT</version>
-											<type>ear</type>
-											<destFileName>notmotor-admin-ear-${project.version}.ear</destFileName>
-										</artifactItem>
-										<!-- Copy NotmotorIplWebb WAR -->
-										<artifactItem>
-											<groupId>se.csn.notmotor</groupId>
-											<artifactId>notmotoriplwebb</artifactId>
-											<version>2.0-SNAPSHOT</version>
-											<type>war</type>
-											<destFileName>notmotor-ipl-webb-${project.version}.war</destFileName>
-										</artifactItem>
-										<!-- Copy NotmotorAdminWebb WAR -->
-										<artifactItem>
-											<groupId>se.csn.notmotor</groupId>
-											<artifactId>notmotoradminwebb</artifactId>
-											<version>2.0-SNAPSHOT</version>
-											<type>war</type>
-											<destFileName>notmotor-admin-webb-${project.version}.war</destFileName>
-										</artifactItem>
-									</artifactItems>
-									<outputDirectory>${project.basedir}/bin</outputDirectory>
-									<overWriteReleases>true</overWriteReleases>
-									<overWriteSnapshots>true</overWriteSnapshots>
-								</configuration>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>

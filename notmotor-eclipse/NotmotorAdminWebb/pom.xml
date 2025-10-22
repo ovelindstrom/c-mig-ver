@@ -28,114 +28,46 @@
     <dependency>
       <groupId>se.csn</groupId>
       <artifactId>ark</artifactId>
-      <version>3.0.1</version>
     </dependency>
     <dependency>
       <groupId>se.csn</groupId>
       <artifactId>utils</artifactId>
-      <version>1.0.0</version>
     </dependency>
     <dependency>
       <groupId>se.csn.notmotor</groupId>
       <artifactId>notmotorjar</artifactId>
-      <version>2.1-SNAPSHOT</version>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
-      <version>1.2.8</version>
-      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
-
-    <!-- 	<dependency> -->
-    <!-- 	    <groupId>org.glassfish</groupId> -->
-    <!-- 	    <artifactId>javax.faces</artifactId> -->
-    <!-- 	    <version>2.4.0</version> -->
-    <!-- 	    <scope>provided</scope> -->
-    <!-- 	</dependency> -->
-
     <dependency>
       <groupId>com.sun.faces</groupId>
       <artifactId>jsf-api</artifactId>
-      <version>2.2.20</version>
     </dependency>
     <dependency>
       <groupId>com.sun.faces</groupId>
       <artifactId>jsf-impl</artifactId>
-      <version>2.2.20</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>javax.el</groupId>
       <artifactId>javax.el-api</artifactId>
-      <version>3.0.0</version>
     </dependency>
-
-
-    <!--    	<dependency> -->
-    <!-- 	  	<groupId>com.ibm.websphere</groupId> -->
-    <!-- 		<artifactId>j2ee</artifactId> -->
-    <!--   		<version>8.0</version> -->
-    <!--   		<scope>provided</scope> -->
-    <!--   	</dependency> -->
-    <!--    	<dependency> -->
-    <!-- 	  	<groupId>com.ibm.websphere.was</groupId> -->
-    <!-- 		<artifactId>management</artifactId> -->
-    <!--   		<version>8.0</version> -->
-    <!--   		<scope>provided</scope> -->
-    <!--   	</dependency> -->
-    <!--    	<dependency> -->
-    <!-- 	  	<groupId>com.ibm.websphere.was</groupId> -->
-    <!-- 		<artifactId>wsexception</artifactId> -->
-    <!--   		<version>8.0</version> -->
-    <!--   		<scope>provided</scope> -->
-    <!--   	</dependency> -->
-    <!--    	<dependency> -->
-    <!--    		<groupId>com.ibm.ws.jsf</groupId> -->
-    <!--    		<artifactId>myfaces</artifactId> -->
-    <!--    		<version>2.0</version> -->
-    <!--   		<scope>provided</scope> -->
-    <!--    	</dependency> -->
-    <!--    	<dependency> -->
-    <!--    		<groupId>com.ibm.ws.admin</groupId> -->
-    <!--    		<artifactId>core</artifactId> -->
-    <!--    		<version>8.0</version> -->
-    <!--  		<scope>provided</scope> -->
-    <!--    		</dependency> -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.13</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
 
   <build>
-    <!---
-  <sourceDirectory>${project.basedir}/JavaSource</sourceDirectory>
-  <testSourceDirectory>${project.basedir}/test</testSourceDirectory>
-  <outputDirectory>${project.basedir}/target/classes</outputDirectory>
-  <testOutputDirectory>${project.basedir}/target/test-classes</testOutputDirectory>
-
-  <resources>
-   <resource>
-    <directory>${project.basedir}/JavaSource/se/csn/notmotor/admin/resources</directory>
-    <targetPath>se/csn/notmotor/admin/resources</targetPath>
-   </resource>
-   <resource>
-    <directory>${project.basedir}/JavaSource</directory>
-    <includes>
-     <include>**/*.java</include>
-    </includes>
-   </resource>
-  </resources>-->
     <testResources>
       <testResource>
         <directory>../NotmotorProperties/UTV/IW/properties/arkitektur</directory>

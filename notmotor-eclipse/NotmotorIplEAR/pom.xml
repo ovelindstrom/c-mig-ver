@@ -31,13 +31,11 @@
       <groupId>se.csn.notmotor</groupId>
       <artifactId>notmotoriplwebb</artifactId>
       <type>war</type>
-      <version>2.0-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>se.csn.notmotor</groupId>
       <artifactId>notmotoriplejb</artifactId>
       <type>ejb</type>
-      <version>2.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
 
@@ -49,9 +47,6 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-ear-plugin</artifactId>
         <configuration>
-          <!--
-          <applicationXml>${project.basedir}/META-INF/application.xml</applicationXml>
-        -->
           <archive>
             <addMavenDescriptor>false</addMavenDescriptor>
           </archive>
