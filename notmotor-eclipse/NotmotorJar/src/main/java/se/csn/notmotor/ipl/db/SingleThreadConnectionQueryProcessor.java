@@ -82,7 +82,7 @@ public class SingleThreadConnectionQueryProcessor extends QueryProcessorBase imp
         if (s_commitFlags == null) {
             s_commitFlags = new HashMap();
         }
-        s_commitFlags.put(conn, new Boolean(commit));
+        s_commitFlags.put(conn, Boolean.valueOf(commit));
     }
 
     /**

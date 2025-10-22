@@ -32,10 +32,10 @@ public class TransportListenerImpl implements TransportListener {
         String[] id = new String[]{"NI"};
         try {
             id = msg.getHeader("csnid");
-            return new Long(id[0]);
+            return Long.valueOf(id[0]);
         } catch (Exception e) {
             log.error("Kunde inte hitta csnid för meddelande!");
-            return new Long(-1);
+            return Long.valueOf(-1);
         }
     }
 }

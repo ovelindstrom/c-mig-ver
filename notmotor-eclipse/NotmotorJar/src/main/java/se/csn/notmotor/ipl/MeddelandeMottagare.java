@@ -62,7 +62,7 @@ public class MeddelandeMottagare {
         // 2007-10-25: inför separat status för varje mottagare
         for (int i = 0;i < meddelande.getMottagare().length;i++) {
             Mottagare mott = meddelande.getMottagare()[i];
-            mott.setStatus(new Integer(MeddelandeHandelse.MOTTAGET));
+            mott.setStatus(Integer.valueOf(MeddelandeHandelse.MOTTAGET));
 
             // 2008-04-15 Formatera smsnr så att det är på formatet 46701234567
             if ("SMS".equalsIgnoreCase(mott.getTyp())) {

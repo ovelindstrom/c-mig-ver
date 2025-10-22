@@ -36,7 +36,7 @@ public class SimpleNotifieringProxyImpl implements NotifieringProxy {
     public NotifieringResultat skickaMeddelande(Meddelande meddelande) {
         log.debug("Mottaget meddelande: " + meddelande.toString());
         long id = System.currentTimeMillis();
-        meddelande.setId(new Long(id));
+        meddelande.setId(Long.valueOf(id));
         SandResultat handelse = sender.skickaMeddelande(meddelande);
         log.debug("Skickat meddelande, det tog " + (System.currentTimeMillis() - id) + " ms");
         if (handelse.getKod() == MeddelandeHandelse.SKICKAT_SERVER) {

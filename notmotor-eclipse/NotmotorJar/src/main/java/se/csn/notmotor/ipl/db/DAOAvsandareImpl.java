@@ -30,13 +30,13 @@ public class DAOAvsandareImpl extends DAOImplBase implements RowToObjectMapper, 
         qp.executeThrowException("INSERT INTO AVSANDARE (ID,NAMN,EPOST,REPLYTO,PROGRAMNAMN,KATEGORI)"
             + " VALUES(" + id + ", " + namn + ", " + epost + ", "
             + replyTo + ", " + app + ", " + kategori + ")");
-        avs.setId(new Long(id));
+        avs.setId(Long.valueOf(id));
         return id;
     }
 
     public Object newRow(ResultSet rs) throws SQLException {
         Avsandare avs = new Avsandare();
-        avs.setId(new Long(rs.getInt("ID")));
+        avs.setId(Long.valueOf(rs.getInt("ID")));
         avs.setNamn(rs.getString("NAMN"));
         avs.setEpostadress(rs.getString("EPOST"));
         avs.setReplyTo(rs.getString("REPLYTO"));
