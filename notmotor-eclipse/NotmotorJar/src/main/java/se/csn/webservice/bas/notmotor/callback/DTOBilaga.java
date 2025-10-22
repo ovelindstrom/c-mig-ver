@@ -52,8 +52,6 @@ public class DTOBilaga  implements Serializable {
 
     /**
      * Sets the id value for this DTOBilaga.
-     * 
-     * @param id
      */
     public void setId(java.lang.Long id) {
         this.id = id;
@@ -72,8 +70,6 @@ public class DTOBilaga  implements Serializable {
 
     /**
      * Sets the mimetyp value for this DTOBilaga.
-     * 
-     * @param mimetyp
      */
     public void setMimetyp(java.lang.String mimetyp) {
         this.mimetyp = mimetyp;
@@ -92,8 +88,6 @@ public class DTOBilaga  implements Serializable {
 
     /**
      * Sets the filnamn value for this DTOBilaga.
-     * 
-     * @param filnamn
      */
     public void setFilnamn(java.lang.String filnamn) {
         this.filnamn = filnamn;
@@ -112,8 +106,6 @@ public class DTOBilaga  implements Serializable {
 
     /**
      * Sets the encoding value for this DTOBilaga.
-     * 
-     * @param encoding
      */
     public void setEncoding(java.lang.String encoding) {
         this.encoding = encoding;
@@ -132,8 +124,6 @@ public class DTOBilaga  implements Serializable {
 
     /**
      * Sets the data value for this DTOBilaga.
-     * 
-     * @param data
      */
     public void setData(byte[] data) {
         this.data = data;
@@ -160,20 +150,20 @@ public class DTOBilaga  implements Serializable {
         boolean _equals;
         _equals = true
             && ((this.id == null && other.getId() == null)
-                || (this.id != null
-                    && this.id.equals(other.getId())))
+            || (this.id != null
+            && this.id.equals(other.getId())))
             && ((this.mimetyp == null && other.getMimetyp() == null)
-                || (this.mimetyp != null
-                    && this.mimetyp.equals(other.getMimetyp())))
+            || (this.mimetyp != null
+            && this.mimetyp.equals(other.getMimetyp())))
             && ((this.filnamn == null && other.getFilnamn() == null)
-                || (this.filnamn != null
-                    && this.filnamn.equals(other.getFilnamn())))
+            || (this.filnamn != null
+            && this.filnamn.equals(other.getFilnamn())))
             && ((this.encoding == null && other.getEncoding() == null)
-                || (this.encoding != null
-                    && this.encoding.equals(other.getEncoding())))
+            || (this.encoding != null
+            && this.encoding.equals(other.getEncoding())))
             && ((this.data == null && other.getData() == null)
-                || (this.data != null
-                    && Arrays.equals(this.data, other.getData())));
+            || (this.data != null
+            && Arrays.equals(this.data, other.getData())));
         __equalsCalc = null;
         return _equals;
     }

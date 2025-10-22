@@ -57,8 +57,6 @@ public class DTOAvsandare  implements Serializable {
 
     /**
      * Sets the id value for this DTOAvsandare.
-     * 
-     * @param id
      */
     public void setId(java.lang.Long id) {
         this.id = id;
@@ -77,8 +75,6 @@ public class DTOAvsandare  implements Serializable {
 
     /**
      * Sets the applikation value for this DTOAvsandare.
-     * 
-     * @param applikation
      */
     public void setApplikation(java.lang.String applikation) {
         this.applikation = applikation;
@@ -97,8 +93,6 @@ public class DTOAvsandare  implements Serializable {
 
     /**
      * Sets the kategori value for this DTOAvsandare.
-     * 
-     * @param kategori
      */
     public void setKategori(java.lang.String kategori) {
         this.kategori = kategori;
@@ -117,8 +111,6 @@ public class DTOAvsandare  implements Serializable {
 
     /**
      * Sets the namn value for this DTOAvsandare.
-     * 
-     * @param namn
      */
     public void setNamn(java.lang.String namn) {
         this.namn = namn;
@@ -137,8 +129,6 @@ public class DTOAvsandare  implements Serializable {
 
     /**
      * Sets the epostadress value for this DTOAvsandare.
-     * 
-     * @param epostadress
      */
     public void setEpostadress(java.lang.String epostadress) {
         this.epostadress = epostadress;
@@ -157,8 +147,6 @@ public class DTOAvsandare  implements Serializable {
 
     /**
      * Sets the replyTo value for this DTOAvsandare.
-     * 
-     * @param replyTo
      */
     public void setReplyTo(java.lang.String replyTo) {
         this.replyTo = replyTo;
@@ -185,23 +173,23 @@ public class DTOAvsandare  implements Serializable {
         boolean _equals;
         _equals = true
             && ((this.id == null && other.getId() == null)
-                || (this.id != null
-                    && this.id.equals(other.getId())))
+            || (this.id != null
+            && this.id.equals(other.getId())))
             && ((this.applikation == null && other.getApplikation() == null)
-                || (this.applikation != null
-                    && this.applikation.equals(other.getApplikation())))
+            || (this.applikation != null
+            && this.applikation.equals(other.getApplikation())))
             && ((this.kategori == null && other.getKategori() == null)
-                || (this.kategori != null
-                    && this.kategori.equals(other.getKategori())))
+            || (this.kategori != null
+            && this.kategori.equals(other.getKategori())))
             && ((this.namn == null && other.getNamn() == null)
-                || (this.namn != null
-                    && this.namn.equals(other.getNamn())))
+            || (this.namn != null
+            && this.namn.equals(other.getNamn())))
             && ((this.epostadress == null && other.getEpostadress() == null)
-                || (this.epostadress != null
-                    && this.epostadress.equals(other.getEpostadress())))
+            || (this.epostadress != null
+            && this.epostadress.equals(other.getEpostadress())))
             && ((this.replyTo == null && other.getReplyTo() == null)
-                || (this.replyTo != null
-                    && this.replyTo.equals(other.getReplyTo())));
+            || (this.replyTo != null
+            && this.replyTo.equals(other.getReplyTo())));
         __equalsCalc = null;
         return _equals;
     }

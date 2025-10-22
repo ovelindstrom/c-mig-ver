@@ -101,8 +101,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the id value for this DTOMeddelande.
-     * 
-     * @param id
      */
     public void setId(java.lang.Long id) {
         this.id = id;
@@ -121,8 +119,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the csnnummer value for this DTOMeddelande.
-     * 
-     * @param csnnummer
      */
     public void setCsnnummer(java.lang.Integer csnnummer) {
         this.csnnummer = csnnummer;
@@ -141,8 +137,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the rubrik value for this DTOMeddelande.
-     * 
-     * @param rubrik
      */
     public void setRubrik(java.lang.String rubrik) {
         this.rubrik = rubrik;
@@ -161,8 +155,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the meddelandetext value for this DTOMeddelande.
-     * 
-     * @param meddelandetext
      */
     public void setMeddelandetext(java.lang.String meddelandetext) {
         this.meddelandetext = meddelandetext;
@@ -181,8 +173,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the rubrikEncoding value for this DTOMeddelande.
-     * 
-     * @param rubrikEncoding
      */
     public void setRubrikEncoding(java.lang.String rubrikEncoding) {
         this.rubrikEncoding = rubrikEncoding;
@@ -201,8 +191,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the meddelandeEncoding value for this DTOMeddelande.
-     * 
-     * @param meddelandeEncoding
      */
     public void setMeddelandeEncoding(java.lang.String meddelandeEncoding) {
         this.meddelandeEncoding = meddelandeEncoding;
@@ -221,8 +209,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the bilagor value for this DTOMeddelande.
-     * 
-     * @param bilagor
      */
     public void setBilagor(DTOBilaga[] bilagor) {
         this.bilagor = bilagor;
@@ -249,8 +235,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the skapad value for this DTOMeddelande.
-     * 
-     * @param skapad
      */
     public void setSkapad(Calendar skapad) {
         this.skapad = skapad;
@@ -269,8 +253,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the skickat value for this DTOMeddelande.
-     * 
-     * @param skickat
      */
     public void setSkickat(Calendar skickat) {
         this.skickat = skickat;
@@ -289,8 +271,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the skickaTidigast value for this DTOMeddelande.
-     * 
-     * @param skickaTidigast
      */
     public void setSkickaTidigast(Calendar skickaTidigast) {
         this.skickaTidigast = skickaTidigast;
@@ -309,8 +289,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the avsandare value for this DTOMeddelande.
-     * 
-     * @param avsandare
      */
     public void setAvsandare(DTOAvsandare avsandare) {
         this.avsandare = avsandare;
@@ -329,8 +307,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the mottagare value for this DTOMeddelande.
-     * 
-     * @param mottagare
      */
     public void setMottagare(DTOMottagare[] mottagare) {
         this.mottagare = mottagare;
@@ -357,8 +333,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the handelser value for this DTOMeddelande.
-     * 
-     * @param handelser
      */
     public void setHandelser(DTOMeddelandeHandelse[] handelser) {
         this.handelser = handelser;
@@ -385,8 +359,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the callbackURL value for this DTOMeddelande.
-     * 
-     * @param callbackURL
      */
     public void setCallbackURL(java.lang.String callbackURL) {
         this.callbackURL = callbackURL;
@@ -405,8 +377,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the callbackMask value for this DTOMeddelande.
-     * 
-     * @param callbackMask
      */
     public void setCallbackMask(java.lang.Integer callbackMask) {
         this.callbackMask = callbackMask;
@@ -425,8 +395,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the mimetyp value for this DTOMeddelande.
-     * 
-     * @param mimetyp
      */
     public void setMimetyp(java.lang.String mimetyp) {
         this.mimetyp = mimetyp;
@@ -445,8 +413,6 @@ public class DTOMeddelande  implements Serializable {
 
     /**
      * Sets the kanal value for this DTOMeddelande.
-     * 
-     * @param kanal
      */
     public void setKanal(java.lang.String kanal) {
         this.kanal = kanal;
@@ -473,56 +439,56 @@ public class DTOMeddelande  implements Serializable {
         boolean _equals;
         _equals = true
             && ((this.id == null && other.getId() == null)
-                || (this.id != null
-                    && this.id.equals(other.getId())))
+            || (this.id != null
+            && this.id.equals(other.getId())))
             && ((this.csnnummer == null && other.getCsnnummer() == null)
-                || (this.csnnummer != null
-                    && this.csnnummer.equals(other.getCsnnummer())))
+            || (this.csnnummer != null
+            && this.csnnummer.equals(other.getCsnnummer())))
             && ((this.rubrik == null && other.getRubrik() == null)
-                || (this.rubrik != null
-                    && this.rubrik.equals(other.getRubrik())))
+            || (this.rubrik != null
+            && this.rubrik.equals(other.getRubrik())))
             && ((this.meddelandetext == null && other.getMeddelandetext() == null)
-                || (this.meddelandetext != null
-                    && this.meddelandetext.equals(other.getMeddelandetext())))
+            || (this.meddelandetext != null
+            && this.meddelandetext.equals(other.getMeddelandetext())))
             && ((this.rubrikEncoding == null && other.getRubrikEncoding() == null)
-                || (this.rubrikEncoding != null
-                    && this.rubrikEncoding.equals(other.getRubrikEncoding())))
+            || (this.rubrikEncoding != null
+            && this.rubrikEncoding.equals(other.getRubrikEncoding())))
             && ((this.meddelandeEncoding == null && other.getMeddelandeEncoding() == null)
-                || (this.meddelandeEncoding != null
-                    && this.meddelandeEncoding.equals(other.getMeddelandeEncoding())))
+            || (this.meddelandeEncoding != null
+            && this.meddelandeEncoding.equals(other.getMeddelandeEncoding())))
             && ((this.bilagor == null && other.getBilagor() == null)
-                || (this.bilagor != null
-                    && Arrays.equals(this.bilagor, other.getBilagor())))
+            || (this.bilagor != null
+            && Arrays.equals(this.bilagor, other.getBilagor())))
             && ((this.skapad == null && other.getSkapad() == null)
-                || (this.skapad != null
-                    && this.skapad.equals(other.getSkapad())))
+            || (this.skapad != null
+            && this.skapad.equals(other.getSkapad())))
             && ((this.skickat == null && other.getSkickat() == null)
-                || (this.skickat != null
-                    && this.skickat.equals(other.getSkickat())))
+            || (this.skickat != null
+            && this.skickat.equals(other.getSkickat())))
             && ((this.skickaTidigast == null && other.getSkickaTidigast() == null)
-                || (this.skickaTidigast != null
-                    && this.skickaTidigast.equals(other.getSkickaTidigast())))
+            || (this.skickaTidigast != null
+            && this.skickaTidigast.equals(other.getSkickaTidigast())))
             && ((this.avsandare == null && other.getAvsandare() == null)
-                || (this.avsandare != null
-                    && this.avsandare.equals(other.getAvsandare())))
+            || (this.avsandare != null
+            && this.avsandare.equals(other.getAvsandare())))
             && ((this.mottagare == null && other.getMottagare() == null)
-                || (this.mottagare != null
-                    && Arrays.equals(this.mottagare, other.getMottagare())))
+            || (this.mottagare != null
+            && Arrays.equals(this.mottagare, other.getMottagare())))
             && ((this.handelser == null && other.getHandelser() == null)
-                || (this.handelser != null
-                    && Arrays.equals(this.handelser, other.getHandelser())))
+            || (this.handelser != null
+            && Arrays.equals(this.handelser, other.getHandelser())))
             && ((this.callbackURL == null && other.getCallbackURL() == null)
-                || (this.callbackURL != null
-                    && this.callbackURL.equals(other.getCallbackURL())))
+            || (this.callbackURL != null
+            && this.callbackURL.equals(other.getCallbackURL())))
             && ((this.callbackMask == null && other.getCallbackMask() == null)
-                || (this.callbackMask != null
-                    && this.callbackMask.equals(other.getCallbackMask())))
+            || (this.callbackMask != null
+            && this.callbackMask.equals(other.getCallbackMask())))
             && ((this.mimetyp == null && other.getMimetyp() == null)
-                || (this.mimetyp != null
-                    && this.mimetyp.equals(other.getMimetyp())))
+            || (this.mimetyp != null
+            && this.mimetyp.equals(other.getMimetyp())))
             && ((this.kanal == null && other.getKanal() == null)
-                || (this.kanal != null
-                    && this.kanal.equals(other.getKanal())));
+            || (this.kanal != null
+            && this.kanal.equals(other.getKanal())));
         __equalsCalc = null;
         return _equals;
     }

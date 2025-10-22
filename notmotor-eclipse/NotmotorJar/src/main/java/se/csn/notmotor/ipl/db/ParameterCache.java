@@ -47,7 +47,6 @@ public class ParameterCache implements ParameterKalla {
 
     /**
      * 
-     * @param ds
      * @param parameterlivstid Anges i millisekunder
      */
     public ParameterCache(QueryProcessor qp, long refreshtidIMillis) {

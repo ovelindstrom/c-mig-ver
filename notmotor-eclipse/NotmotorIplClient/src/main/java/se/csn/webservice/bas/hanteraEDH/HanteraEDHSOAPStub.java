@@ -51,8 +51,8 @@ public class HanteraEDHSOAPStub extends Stub implements HanteraEDH_PortType {
         oper = new OperationDesc();
         oper.setName("hamtaFranEDH");
         param = new ParameterDesc(new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHFraga"),
-                ParameterDesc.IN, new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHFraga"),
-                HamtaFranEDHFraga.class, false, false);
+            ParameterDesc.IN, new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHFraga"),
+            HamtaFranEDHFraga.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new QName("http://webservice.csn.se/bas/hanteraEDH", "hamtaFranEDHSvar"));
         oper.setReturnClass(HamtaFranEDHSvar.class);
@@ -64,8 +64,8 @@ public class HanteraEDHSOAPStub extends Stub implements HanteraEDH_PortType {
         oper = new OperationDesc();
         oper.setName("sparaTillEDH");
         param = new ParameterDesc(new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHFraga"),
-                ParameterDesc.IN, new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHFraga"),
-                SparaTillEDHFraga.class, false, false);
+            ParameterDesc.IN, new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHFraga"),
+            SparaTillEDHFraga.class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new QName("http://webservice.csn.se/bas/hanteraEDH", "sparaTillEDHSvar"));
         oper.setReturnClass(SparaTillEDHSvar.class);
@@ -180,7 +180,7 @@ public class HanteraEDHSOAPStub extends Stub implements HanteraEDH_PortType {
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         } else if (x instanceof SerializerFactory) {
                             org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory) cachedSerFactories
-                                    .get(i);
+                                .get(i);
                             DeserializerFactory df = (DeserializerFactory) cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }

@@ -39,11 +39,11 @@ public class ParamBean {
      *
      * <p>Expected keys and semantics (examples):
      * <ul>
-     *   <li>..._PERTIMME — Max antal meddelanden att sända per timme.</li>
-     *   <li>..._BATCHSTORLEK — Max antal meddelanden att sända i följd.</li>
-     *   <li>..._SOVTID — Sovtid i sekunder mellan varje batch.</li>
-     *   <li>..._OPPNINGSTID — Öppningstid för aktuell kanal, format "HH:mm:ss".</li>
-     *   <li>..._STANGNINGSTID — Stängningstid för aktuell kanal, format "HH:mm:ss".</li>
+     *   <li>..._PERTIMME  Max antal meddelanden att sanda per timme.</li>
+     *   <li>..._BATCHSTORLEK  Max antal meddelanden att sanda i foljd.</li>
+     *   <li>..._SOVTID  Sovtid i sekunder mellan varje batch.</li>
+     *   <li>..._OPPNINGSTID  Oppningstid for aktuell kanal, format "HH:mm:ss".</li>
+     *   <li>..._STANGNINGSTID  Stangningstid for aktuell kanal, format "HH:mm:ss".</li>
      * </ul>
      *
      * <p>Usage example:

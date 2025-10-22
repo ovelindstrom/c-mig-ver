@@ -27,13 +27,13 @@ public class SokBean {
     private Log log = Log.getInstance(SokBean.class);
     private final static int MAXANTALMEDDELANDEN = 1000;
     private SelectItem[] allaStatusar = {
-            new SelectItem(Integer.valueOf(MeddelandeHandelse.MOTTAGET), "Mottaget"),
-            new SelectItem(Integer.valueOf(MeddelandeHandelse.SKICKAT_SERVER), "Skickat till mailserver"),
-            new SelectItem(Integer.valueOf(MeddelandeHandelse.MEDDELANDEFEL), "Meddelandefel"),
-            new SelectItem(Integer.valueOf(MeddelandeHandelse.TEKNISKT_FEL), "Tekniskt fel"),
-            new SelectItem(Integer.valueOf(MeddelandeHandelse.BORTTAGET), "Borttaget"),
-            new SelectItem(Integer.valueOf(MeddelandeHandelse.BESVARAT), "Besvarat"),
-            new SelectItem(Integer.valueOf(-1), "Under sändning"),
+        new SelectItem(Integer.valueOf(MeddelandeHandelse.MOTTAGET), "Mottaget"),
+        new SelectItem(Integer.valueOf(MeddelandeHandelse.SKICKAT_SERVER), "Skickat till mailserver"),
+        new SelectItem(Integer.valueOf(MeddelandeHandelse.MEDDELANDEFEL), "Meddelandefel"),
+        new SelectItem(Integer.valueOf(MeddelandeHandelse.TEKNISKT_FEL), "Tekniskt fel"),
+        new SelectItem(Integer.valueOf(MeddelandeHandelse.BORTTAGET), "Borttaget"),
+        new SelectItem(Integer.valueOf(MeddelandeHandelse.BESVARAT), "Besvarat"),
+        new SelectItem(Integer.valueOf(-1), "Under sändning"),
     };
 
     private String fromSkapat, tomSkapat, fromSkickat, tomSkickat, fromSkickaTidigast, tomSkickaTidigast;
@@ -57,7 +57,7 @@ public class SokBean {
         private boolean markeradForOmsandning;
 
         public Meddelanderad(long id, String status, String skapat, String kanal, String skickat, String skickaTidigast,
-                String applikation, String mottagare, String rubrik) {
+                             String applikation, String mottagare, String rubrik) {
             this.id = id;
             this.status = status;
             this.skapat = skapat;
@@ -186,7 +186,7 @@ public class SokBean {
 
     public String getStatusBeskrivning(String status) {
 
-        for (int i = 0; i < allaStatusar.length; i++) {
+        for (int i = 0;i < allaStatusar.length;i++) {
             if (status.equals(allaStatusar[i].getValue().toString())) {
                 return (String) allaStatusar[i].getLabel();
             }
@@ -195,7 +195,7 @@ public class SokBean {
     }
 
     public void setValdaStatusar(int[] statusar) {
-        for (int i = 0; i < statusar.length; i++) {
+        for (int i = 0;i < statusar.length;i++) {
             log.debug("" + statusar[i]);
         }
         valdaStatusar = statusar;
@@ -209,14 +209,14 @@ public class SokBean {
         public Object newRow(ResultSet rs) throws SQLException {
             // log.debug("Ny rad");
             return new Meddelanderad(rs.getLong("ID"),
-                    rs.getString("STATUS"),
-                    rs.getString("SKAPAT"),
-                    rs.getString("KANAL"),
-                    rs.getString("SKICKAT"),
-                    rs.getString("SKICKATIDIGAST"),
-                    rs.getString("APPLIKATION"),
-                    rs.getString("MOTTAGARE"),
-                    rs.getString("RUBRIK"));
+                rs.getString("STATUS"),
+                rs.getString("SKAPAT"),
+                rs.getString("KANAL"),
+                rs.getString("SKICKAT"),
+                rs.getString("SKICKATIDIGAST"),
+                rs.getString("APPLIKATION"),
+                rs.getString("MOTTAGARE"),
+                rs.getString("RUBRIK"));
         }
     }
 
@@ -243,11 +243,11 @@ public class SokBean {
     private void sok() {
         log.debug("sok");
         String sql = "SELECT MEDD.ID AS ID, MEDD.KANAL AS KANAL, MEDD.STATUS AS STATUS, "
-                + "MEDD.RUBRIK AS RUBRIK, MEDD.SKAPADTIDPUNKT AS SKAPAT, "
-                + "MEDD.SANTTIDPUNKT AS SKICKAT, MEDD.SKICKATIDIGAST AS SKICKATIDIGAST, "
-                + "AVS.PROGRAMNAMN AS APPLIKATION, MOTT.ADRESS AS MOTTAGARE "
-                + "FROM MEDDELANDE MEDD JOIN AVSANDARE AVS ON MEDD.AVSANDARE = AVS.ID "
-                + "JOIN MOTTAGARE MOTT ON MEDD.ID = MOTT.MEDDELANDEID ";
+            + "MEDD.RUBRIK AS RUBRIK, MEDD.SKAPADTIDPUNKT AS SKAPAT, "
+            + "MEDD.SANTTIDPUNKT AS SKICKAT, MEDD.SKICKATIDIGAST AS SKICKATIDIGAST, "
+            + "AVS.PROGRAMNAMN AS APPLIKATION, MOTT.ADRESS AS MOTTAGARE "
+            + "FROM MEDDELANDE MEDD JOIN AVSANDARE AVS ON MEDD.AVSANDARE = AVS.ID "
+            + "JOIN MOTTAGARE MOTT ON MEDD.ID = MOTT.MEDDELANDEID ";
 
         String where = skapaSokWherevillkor();
         if (where.length() > 0) {
@@ -267,8 +267,8 @@ public class SokBean {
     }
 
     /**
-     * Skapar en WHERE-klausul för SQL-sökningen baserat på de villkor som är
-     * angivna i bönan.
+     * Skapar en WHERE-klausul for SQL-sokningen baserat pa de villkor som ar
+     * angivna i bonan.
      * 
      * @return en giltig SQL-sträng med de villkor som är angivna i bönan
      */
@@ -313,7 +313,7 @@ public class SokBean {
         if (valdaStatusar != null && valdaStatusar.length > 0) {
             boolean underSandning = false;
             String inlist = "";
-            for (int i = 0; i < valdaStatusar.length; i++) {
+            for (int i = 0;i < valdaStatusar.length;i++) {
                 if (valdaStatusar[i] == -1) {
                     underSandning = true;
                     continue;
@@ -341,7 +341,7 @@ public class SokBean {
 
     private String skapaOrderByVillkor() {
         return " ORDER BY MEDD." + orderBy + " " + orderByAscDesc + " FETCH FIRST " + maxAntalMeddelanden
-                + " ROWS ONLY";
+            + " ROWS ONLY";
     }
 
     public String getOrderBy() {
@@ -373,21 +373,21 @@ public class SokBean {
                 if (rad.markeradForOmsandning) {
                     log.debug("skickaom, id:" + rad.getId());
                     MeddelandeHandelse handelse = new MeddelandeHandelse(MeddelandeHandelse.MOTTAGET,
-                            MeddelandeHandelse.OK, "Omsändning");
+                        MeddelandeHandelse.OK, "Omsändning");
                     daoHandelse.createHandelse(handelse, rad.getId());
                     // Läs alla händelser för aktuellt meddelande
                     MeddelandeHandelse[] h = daoHandelse.getHandelserForMeddelande(rad.getId())
-                            .toArray(new MeddelandeHandelse[0]);
+                        .toArray(new MeddelandeHandelse[0]);
                     int forstaLikaMedd = 0;
                     Integer typ = -1;
                     Integer felkod = -1;
                     String feltext = "";
                     Date tidpunkt = null;
                     int antalLikaHandelser = 1;
-                    for (int i = h.length - 1; i >= 0; i--) {
+                    for (int i = h.length - 1;i >= 0;i--) {
                         if ((h[i].getHandelsetyp().compareTo(typ) == 0)
-                                && (h[i].getFelkod().compareTo(felkod) == 0)
-                                && (h[i].getFeltext() != null && h[i].getFeltext().equals(feltext))) {
+                            && (h[i].getFelkod().compareTo(felkod) == 0)
+                            && (h[i].getFeltext() != null && h[i].getFeltext().equals(feltext))) {
                             tidpunkt = h[i].getTidpunkt();
                             antalLikaHandelser++;
                             qp.executeThrowException("DELETE FROM HANDELSE WHERE ID=" + h[i].getId());
@@ -398,15 +398,15 @@ public class SokBean {
                             if (tidpunkt != null) {
                                 log.debug("TIDPUNKT=" + tidpunkt);
                                 qp.executeThrowException("UPDATE HANDELSE SET TEXT='"
-                                        + h[forstaLikaMedd].getFeltext()
-                                        + ", Antal likadana händelser: " + antalLikaHandelser
-                                        + ", Första tidpunkt: " + tidpunkt
-                                        + "' WHERE ID=" + h[forstaLikaMedd].getId());
+                                    + h[forstaLikaMedd].getFeltext()
+                                    + ", Antal likadana händelser: " + antalLikaHandelser
+                                    + ", Första tidpunkt: " + tidpunkt
+                                    + "' WHERE ID=" + h[forstaLikaMedd].getId());
                                 log.debug("UPDATE HANDELSE SET TEXT="
-                                        + h[forstaLikaMedd].getFeltext()
-                                        + "\nAntal likadana händelser: " + antalLikaHandelser
-                                        + "\nFörsta tidpunkt: " + tidpunkt
-                                        + " WHERE ID=" + h[forstaLikaMedd].getId());
+                                    + h[forstaLikaMedd].getFeltext()
+                                    + "\nAntal likadana händelser: " + antalLikaHandelser
+                                    + "\nFörsta tidpunkt: " + tidpunkt
+                                    + " WHERE ID=" + h[forstaLikaMedd].getId());
                                 tidpunkt = null;
                                 antalLikaHandelser = 1;
                             } else {
@@ -418,7 +418,7 @@ public class SokBean {
                         feltext = h[i].getFeltext();
                     }
                     qp.executeThrowException("UPDATE MEDDELANDE SET STATUS=" + MeddelandeHandelse.MOTTAGET
-                            + " WHERE ID=" + rad.getId());
+                        + " WHERE ID=" + rad.getId());
                 }
             }
         } catch (Exception t) {

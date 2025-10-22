@@ -55,8 +55,6 @@ public class DTOMottagare  implements Serializable {
 
     /**
      * Sets the id value for this DTOMottagare.
-     * 
-     * @param id
      */
     public void setId(java.lang.Long id) {
         this.id = id;
@@ -75,8 +73,6 @@ public class DTOMottagare  implements Serializable {
 
     /**
      * Sets the namn value for this DTOMottagare.
-     * 
-     * @param namn
      */
     public void setNamn(java.lang.String namn) {
         this.namn = namn;
@@ -95,8 +91,6 @@ public class DTOMottagare  implements Serializable {
 
     /**
      * Sets the adress value for this DTOMottagare.
-     * 
-     * @param adress
      */
     public void setAdress(java.lang.String adress) {
         this.adress = adress;
@@ -115,8 +109,6 @@ public class DTOMottagare  implements Serializable {
 
     /**
      * Sets the csnnummer value for this DTOMottagare.
-     * 
-     * @param csnnummer
      */
     public void setCsnnummer(java.lang.Integer csnnummer) {
         this.csnnummer = csnnummer;
@@ -135,8 +127,6 @@ public class DTOMottagare  implements Serializable {
 
     /**
      * Sets the typ value for this DTOMottagare.
-     * 
-     * @param typ
      */
     public void setTyp(java.lang.String typ) {
         this.typ = typ;
@@ -155,8 +145,6 @@ public class DTOMottagare  implements Serializable {
 
     /**
      * Sets the status value for this DTOMottagare.
-     * 
-     * @param status
      */
     public void setStatus(java.lang.Integer status) {
         this.status = status;
@@ -183,23 +171,23 @@ public class DTOMottagare  implements Serializable {
         boolean _equals;
         _equals = true
             && ((this.id == null && other.getId() == null)
-                || (this.id != null
-                    && this.id.equals(other.getId())))
+            || (this.id != null
+            && this.id.equals(other.getId())))
             && ((this.namn == null && other.getNamn() == null)
-                || (this.namn != null
-                    && this.namn.equals(other.getNamn())))
+            || (this.namn != null
+            && this.namn.equals(other.getNamn())))
             && ((this.adress == null && other.getAdress() == null)
-                || (this.adress != null
-                    && this.adress.equals(other.getAdress())))
+            || (this.adress != null
+            && this.adress.equals(other.getAdress())))
             && ((this.csnnummer == null && other.getCsnnummer() == null)
-                || (this.csnnummer != null
-                    && this.csnnummer.equals(other.getCsnnummer())))
+            || (this.csnnummer != null
+            && this.csnnummer.equals(other.getCsnnummer())))
             && ((this.typ == null && other.getTyp() == null)
-                || (this.typ != null
-                    && this.typ.equals(other.getTyp())))
+            || (this.typ != null
+            && this.typ.equals(other.getTyp())))
             && ((this.status == null && other.getStatus() == null)
-                || (this.status != null
-                    && this.status.equals(other.getStatus())));
+            || (this.status != null
+            && this.status.equals(other.getStatus())));
         __equalsCalc = null;
         return _equals;
     }

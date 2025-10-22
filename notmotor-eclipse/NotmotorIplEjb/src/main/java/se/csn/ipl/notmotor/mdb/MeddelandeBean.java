@@ -24,7 +24,6 @@ import javax.jms.BytesMessage;
 
 import javax.ejb.MessageDriven;
 import javax.ejb.MessageDrivenContext;
-import javax.ejb.TransactionManagement;
 
 import se.csn.ark.common.CsnApplicationException;
 import se.csn.ark.common.dal.CsnDAOWebServiceImpl;

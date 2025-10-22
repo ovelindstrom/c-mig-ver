@@ -33,7 +33,7 @@ import se.csn.notmotor.ipl.model.Status;
 import se.csn.notmotor.ipl.sms.SMSTjaenst;
 
 /**
- * Huvudklassen, ingångsklassen för notifieringsmotorn. Denna klass
+ * Huvudklassen, ingangsklassen for notifieringsmotorn. Denna klass
  * instantierar och kopplar ihop alla andra klasser.
  * 
  * @since 2007-mar-23
@@ -43,13 +43,13 @@ public class Notmotor extends NotmotorBase implements Job {
     private Log log = Log.getInstance(Notmotor.class);
 
     private static final String MAIL_USER_PROP = "mail.user",
-            MAIL_PASSWORD_PROP = "mail.password",
-            MAIL_HOST_PROP = "mail.host",
-            MAIL_PORT_PROP = "mail.port",
-            MAIL_TIMEOUT_PROP = "mail.timeout",
-            SMS_USER_PROP = "sms.user",
-            SMS_PASSWORD_PROP = "sms.password",
-            SMS_ENDPOINT_PROP = "sms.endpoint";
+        MAIL_PASSWORD_PROP = "mail.password",
+        MAIL_HOST_PROP = "mail.host",
+        MAIL_PORT_PROP = "mail.port",
+        MAIL_TIMEOUT_PROP = "mail.timeout",
+        SMS_USER_PROP = "sms.user",
+        SMS_PASSWORD_PROP = "sms.password",
+        SMS_ENDPOINT_PROP = "sms.endpoint";
 
     private static final String INSTANSNAMN = "NOTMOTOR #";
     private static final String TYP = "NOTMOTOR";
@@ -66,7 +66,7 @@ public class Notmotor extends NotmotorBase implements Job {
 
     /**
      * Startar en ny instans av Notmotorn. Denna metod anropas av Quartz-jobbet
-     * och initierar motorn för den givna jobbkontexten.
+     * och initierar motorn for den givna jobbkontexten.
      *
      * @param context en JobExecutionContext för denna körning
      * @throws JobExecutionException om det uppstår ett fel under körningen
@@ -79,7 +79,7 @@ public class Notmotor extends NotmotorBase implements Job {
     }
 
     /**
-     * Sätter upp ny notmotorinstans.
+     * Satter upp ny notmotorinstans.
      * 
      * @param anropadURL anropande process
      * @param runControl RunControl
@@ -110,7 +110,7 @@ public class Notmotor extends NotmotorBase implements Job {
         DAOBilaga daobilaga = new DAOBilagaImpl(getQP(ds, INSTANSNAMN + engineCount));
 
         DAOMeddelande daomeddelande = new DAOMeddelandeImpl(getQP(ds, INSTANSNAMN + engineCount),
-                daoavs, daomottagare, daobilaga, daohandelse);
+            daoavs, daomottagare, daobilaga, daohandelse);
 
         log.debug("Skapat dao-objekt");
 
@@ -123,14 +123,14 @@ public class Notmotor extends NotmotorBase implements Job {
             port = Properties.getIntProperty(PROPERTYFIL, MAIL_PORT_PROP);
         } catch (PropertyException e) {
             throw new IllegalStateException("Kunde inte läsa property '" + MAIL_PORT_PROP
-                    + "', var inte ett giltigt tal");
+                + "', var inte ett giltigt tal");
         }
         int timeout;
         try {
             timeout = Properties.getIntProperty(PROPERTYFIL, MAIL_TIMEOUT_PROP);
         } catch (PropertyException e) {
             throw new IllegalStateException("Kunde inte läsa property '" + MAIL_TIMEOUT_PROP
-                    + "', var inte ett giltigt tal");
+                + "', var inte ett giltigt tal");
         }
         MeddelandeSender epostSender = new EpostMeddelandeSenderImpl(user, password, server, port, timeout);
         log.debug("Skapat epost-sender");
@@ -160,14 +160,14 @@ public class Notmotor extends NotmotorBase implements Job {
             log.error("Kunde inte hitta server med URL " + anropadURL + " - sätter servernr till -1");
         }
         Status status = new Status(-1, SkickaMeddelandeStateMachine.INIT, servernr,
-                new Date(), null, new Date(), TYP);
+            new Date(), null, new Date(), TYP);
         DAOStatus daostatus = new DAOStatusImpl(qp);
         daostatus.skapa(status);
         log.debug("Sparat statusrad");
 
         SkickaMeddelandeServicesImpl services = new SkickaMeddelandeServicesImpl(
-                new SingleThreadConnectionQueryProcessor(ds),
-                paramkalla, daomeddelande, daohandelse, daomottagare, status.getInstans());
+            new SingleThreadConnectionQueryProcessor(ds),
+            paramkalla, daomeddelande, daohandelse, daomottagare, status.getInstans());
         // Lägg till senders:
         services.addMeddelandeSender(epostSender);
         services.addMeddelandeSender(smsSender);

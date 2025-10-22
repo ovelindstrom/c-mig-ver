@@ -25,7 +25,7 @@ import se.csn.notmotor.ipl.model.MeddelandeHandelse;
 import se.csn.notmotor.ipl.model.Mottagare;
 
 /**
- * CRUD för DTOMeddelande.
+ * CRUD for DTOMeddelande.
  */
 public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
 
@@ -70,10 +70,10 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
             // Vi håller ihop transaktionen så att alla inserts/updates görs samtidigt:
 
             String query = "INSERT INTO MEDDELANDE (ID,AVSANDARE,KANAL,RUBRIK,TEXT,"
-                    + "RUBRIKENCODING,TEXTENCODING,CALLBACKURL,CALLBACKMASK,CSNNUMMER,SKAPADTIDPUNKT,STATUS,SKICKATIDIGAST,MIMETYP) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "RUBRIKENCODING,TEXTENCODING,CALLBACKURL,CALLBACKMASK,CSNNUMMER,SKAPADTIDPUNKT,STATUS,SKICKATIDIGAST,MIMETYP) "
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-            for (Iterator it = qp.getQueryListeners().iterator(); it.hasNext();) {
+            for (Iterator it = qp.getQueryListeners().iterator();it.hasNext();) {
                 QueryListener ql = (QueryListener) it.next();
                 ql.sqlQuery(query);
             }
@@ -121,20 +121,20 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
             }
 
             // Skapa mottagare:
-            for (int i = 0; i < m.getMottagare().length; i++) {
+            for (int i = 0;i < m.getMottagare().length;i++) {
                 mottagareHandler.createMottagare(m.getMottagare()[i], id);
             }
 
             // Skapa bilagor:
             if (m.getBilagor() != null) {
-                for (int i = 0; i < m.getBilagor().length; i++) {
+                for (int i = 0;i < m.getBilagor().length;i++) {
                     bilagaHandler.createBilaga(m.getBilagor()[i], id);
                 }
             }
 
             // Skapa händelserader:
             if (m.getHandelser() != null) {
-                for (int i = 0; i < m.getHandelser().length; i++) {
+                for (int i = 0;i < m.getHandelser().length;i++) {
                     handelseHandler.createHandelse(m.getHandelser()[i], id);
                 }
             }
@@ -174,29 +174,29 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
     }
 
     /**
-     * Letar rätt på meddelanderader som har status MOTTAGET och sätter om
-     * deras status till -instans, detta för att markera att de ska hanteras
+     * Letar ratt pa meddelanderader som har status MOTTAGET och satter om
+     * deras status till -instans, detta for att markera att de ska hanteras
      * av en viss instans.
      * <p>
-     * Parametern 'kanalerMedBegransning' listar de inkommande kanaler som är
-     * nedprioriterade och där mängden meddelanden som får bearbetas är begränsad.
-     * Varje element i listan är av typen Kanal och innehåller uppgifter om kanalens
-     * öppettider och hur många meddelanden från kanalen som får bearbetas.
+     * Parametern 'kanalerMedBegransning' listar de inkommande kanaler som ar
+     * nedprioriterade och dar mangden meddelanden som far bearbetas ar begransad.
+     * Varje element i listan ar av typen Kanal och innehaller uppgifter om kanalens
+     * oppettider och hur manga meddelanden fran kanalen som far bearbetas.
      * </p>
      * <p>
-     * En kanal med begränsningar kommer alltid att bearbetas efter kanaler utan
-     * begränsningar, dvs ha en lägre prioritet. Om det finns flera begränsade kanaler kommer de
+     * En kanal med begransningar kommer alltid att bearbetas efter kanaler utan
+     * begransningar, dvs ha en lagre prioritet. Om det finns flera begransade kanaler kommer de
      * att bearbetas i den turordning som anges i listan 'kanalerMedBegransning'.
      * </p>
      * <p>
-     * Metoden markerar SOM MEST det angivna antalet meddelanden. Det kan bli färre
-     * även om det finns fler meddelanden än de markerade i status MOTTAGET; det
-     * beror på hur det gått med tidigare sändningar mm. Om det finns meddelanden
-     * med status MOTTAGET (och en kanal som inte begränsar utskick) så kommer
+     * Metoden markerar SOM MEST det angivna antalet meddelanden. Det kan bli farre
+     * aven om det finns fler meddelanden an de markerade i status MOTTAGET; det
+     * beror pa hur det gatt med tidigare sandningar mm. Om det finns meddelanden
+     * med status MOTTAGET (och en kanal som inte begransar utskick) sa kommer
      * minst ett av dem att markeras.
      * <p>
-     * OBS! Metoden kommer att göra commit() för att säkerställa att det inte
-     * blir deadlock. Deadlock kan annars potentiellt inträffa i kombinationen
+     * OBS! Metoden kommer att gora commit() for att sakerstalla att det inte
+     * blir deadlock. Deadlock kan annars potentiellt intraffa i kombinationen
      * MEDDELANDE - HANDELSE.
      * </p>
      * 
@@ -234,7 +234,7 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
             sql += " AND (KANAL IS NULL OR KANAL NOT IN (" + inClause.toString() + "))";
         }
         sql += " AND ((SKICKATIDIGAST IS NULL) OR (SKICKATIDIGAST <= CURRENT TIMESTAMP))"
-                + " FETCH FIRST " + antalMeddelanden + " ROWS ONLY";
+            + " FETCH FIRST " + antalMeddelanden + " ROWS ONLY";
         meddelandeNr.addAll(qp.processQuery(sql, new IdMapper()));
 
         // Hämta meddelanden som ligger på nedprioriterade kanaler
@@ -245,7 +245,7 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
                 if (kanal.isSovande()) {
                     if (log.isDebugEnabled()) {
                         log.info("Kanal " + kanal.getNamn() + " sover. "
-                                + kanal.getSovtidKvarMillisekunder() + " ms kvar till nästa batch.");
+                            + kanal.getSovtidKvarMillisekunder() + " ms kvar till nästa batch.");
                     }
                     break;
                 }
@@ -254,13 +254,13 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
                 // Beräkna hur många meddelanden som får markeras i aktuell kanal
                 int antalSenasteTimmen = getMarkeradeSenasteTimmen(kanal.getNamn());
                 int maxAntalPerTimme = kanal.getMaxAntalPerTimme() >= 0 ? kanal.getMaxAntalPerTimme()
-                        : Integer.MAX_VALUE;
+                    : Integer.MAX_VALUE;
                 int batchstorlek = kanal.getBatchStorlek() >= 0 ? kanal.getBatchStorlek() : Integer.MAX_VALUE;
                 int kvarAttSkickaDennaTimme = maxAntalPerTimme - antalSenasteTimmen;
                 int kvarAttSkickaIBatch = kanal.getBatchKvar() >= 0 ? kanal.getBatchKvar() : Integer.MAX_VALUE;
                 int maxAntal = antalMeddelanden - meddelandeNr.size();
                 int antal = Math.min(Math.min(kvarAttSkickaIBatch, batchstorlek),
-                        Math.min(kvarAttSkickaDennaTimme, maxAntal));
+                    Math.min(kvarAttSkickaDennaTimme, maxAntal));
                 /*
                  * if (log.isDebugEnabled()) {
                  * log.debug(kanal.getNamn() + ":"
@@ -276,9 +276,9 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
                  */
                 if (antal > 0) {
                     sql = "SELECT ID FROM MEDDELANDE WHERE STATUS = " + MeddelandeHandelse.MOTTAGET
-                            + " AND KANAL = '" + kanal.getNamn() + "'"
-                            + " AND ((SKICKATIDIGAST IS NULL) OR (SKICKATIDIGAST <= CURRENT TIMESTAMP))"
-                            + " FETCH FIRST " + antal + " ROWS ONLY";
+                        + " AND KANAL = '" + kanal.getNamn() + "'"
+                        + " AND ((SKICKATIDIGAST IS NULL) OR (SKICKATIDIGAST <= CURRENT TIMESTAMP))"
+                        + " FETCH FIRST " + antal + " ROWS ONLY";
                     List<String> resultat = qp.processQuery(sql, new IdMapper());
                     meddelandeNr.addAll(resultat);
                     kanal.setAntalMarkerade(resultat.size());
@@ -317,11 +317,11 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
     }
 
     /**
-     * Returnerar antal meddelanden som markerats för utskick senaste timmen
-     * från en given inkanal. Antalet är summan av de meddelanden som skickats
-     * och därmed fått en skickat-tidsstämpel plus de meddelanden som har
-     * markerats av någon process och håller på att skickas, men ännu ej fått någon
-     * skickat-tidsstämpel.
+     * Returnerar antal meddelanden som markerats for utskick senaste timmen
+     * fran en given inkanal. Antalet ar summan av de meddelanden som skickats
+     * och darmed fatt en skickat-tidsstampel plus de meddelanden som har
+     * markerats av nagon process och haller pa att skickas, men annu ej fatt nagon
+     * skickat-tidsstampel.
      * 
      * @param kanal namn på kanal att hämta uppgifter om
      * @return antal meddelanden som markerats/sänts senaste timmen
@@ -331,24 +331,24 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
         cal.add(Calendar.HOUR_OF_DAY, -1);
         String enTimmeSedan = DAOImplBase.quoteValue(cal.getTime());
         String sql = "SELECT COUNT(*) FROM MEDDELANDE WHERE KANAL = '" + kanal + "'"
-                + " AND (SANTTIDPUNKT >= " + enTimmeSedan + " OR STATUS < 0)";
+            + " AND (SANTTIDPUNKT >= " + enTimmeSedan + " OR STATUS < 0)";
         return qp.getInt(sql, 0);
     }
 
     /**
-     * Söker ut de meddelanden som har status satt till -instans,
-     * alltså de meddelanden som markerats med metoden markeraMeddelandenForInstans.
+     * Soker ut de meddelanden som har status satt till -instans,
+     * alltsa de meddelanden som markerats med metoden markeraMeddelandenForInstans.
      */
     public List getMarkeradeMeddelanden(int instans) {
         List list = qp.processQuery("SELECT ID, AVSANDARE, KANAL, RUBRIK, TEXT, "
-                + "RUBRIKENCODING, TEXTENCODING, CALLBACKURL, CALLBACKMASK, CSNNUMMER, SKAPADTIDPUNKT, "
-                + "SANTTIDPUNKT, SKICKATIDIGAST, MIMETYP "
-                + "FROM MEDDELANDE WHERE STATUS=" + (-instans), this);
+            + "RUBRIKENCODING, TEXTENCODING, CALLBACKURL, CALLBACKMASK, CSNNUMMER, SKAPADTIDPUNKT, "
+            + "SANTTIDPUNKT, SKICKATIDIGAST, MIMETYP "
+            + "FROM MEDDELANDE WHERE STATUS=" + (-instans), this);
         return list;
     }
 
     public DAOMeddelandeImpl(QueryProcessor qp, DAOAvsandare ah,
-            DAOMottagare mh, DAOBilaga bh, DAOHandelse hh) {
+                             DAOMottagare mh, DAOBilaga bh, DAOHandelse hh) {
         super(qp);
         avsandareHandler = ah;
         mottagareHandler = mh;
@@ -433,7 +433,7 @@ public class DAOMeddelandeImpl extends DAOImplBase implements DAOMeddelande {
         // Bygg in-lista för avsändare:
         if ((avsandare != null) && (avsandare.length > 0)) {
             String inAvsandare = "AVSANDARE IN ";
-            for (int i = 0; i < avsandare.length; i++) {
+            for (int i = 0;i < avsandare.length;i++) {
                 if (avsandare[i] == null) {
                     continue;
                 }

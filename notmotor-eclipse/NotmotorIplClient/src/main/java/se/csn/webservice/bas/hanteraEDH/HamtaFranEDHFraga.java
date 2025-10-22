@@ -35,8 +35,6 @@ public class HamtaFranEDHFraga  implements Serializable {
 
     /**
      * Sets the famID value for this HamtaFranEDHFraga.
-     * 
-     * @param famID
      */
     public void setFamID(java.lang.String famID) {
         this.famID = famID;
@@ -63,8 +61,8 @@ public class HamtaFranEDHFraga  implements Serializable {
         boolean _equals;
         _equals = true
             && ((this.famID == null && other.getFamID() == null)
-                || (this.famID != null
-                    && this.famID.equals(other.getFamID())));
+            || (this.famID != null
+            && this.famID.equals(other.getFamID())));
         __equalsCalc = null;
         return _equals;
     }

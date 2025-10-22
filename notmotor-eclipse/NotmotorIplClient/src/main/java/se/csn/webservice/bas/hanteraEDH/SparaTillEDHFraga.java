@@ -64,8 +64,6 @@ public class SparaTillEDHFraga  implements Serializable {
 
     /**
      * Sets the data value for this SparaTillEDHFraga.
-     * 
-     * @param data
      */
     public void setData(byte[] data) {
         this.data = data;
@@ -84,8 +82,6 @@ public class SparaTillEDHFraga  implements Serializable {
 
     /**
      * Sets the ocrstrang value for this SparaTillEDHFraga.
-     * 
-     * @param ocrstrang
      */
     public void setOcrstrang(java.lang.String ocrstrang) {
         this.ocrstrang = ocrstrang;
@@ -104,8 +100,6 @@ public class SparaTillEDHFraga  implements Serializable {
 
     /**
      * Sets the signatur value for this SparaTillEDHFraga.
-     * 
-     * @param signatur
      */
     public void setSignatur(java.lang.String signatur) {
         this.signatur = signatur;
@@ -124,8 +118,6 @@ public class SparaTillEDHFraga  implements Serializable {
 
     /**
      * Sets the myndighetsstampling value for this SparaTillEDHFraga.
-     * 
-     * @param myndighetsstampling
      */
     public void setMyndighetsstampling(java.lang.String myndighetsstampling) {
         this.myndighetsstampling = myndighetsstampling;
@@ -144,8 +136,6 @@ public class SparaTillEDHFraga  implements Serializable {
 
     /**
      * Sets the csnnr value for this SparaTillEDHFraga.
-     * 
-     * @param csnnr
      */
     public void setCsnnr(java.lang.String csnnr) {
         this.csnnr = csnnr;
@@ -164,8 +154,6 @@ public class SparaTillEDHFraga  implements Serializable {
 
     /**
      * Sets the arendelopnr value for this SparaTillEDHFraga.
-     * 
-     * @param arendelopnr
      */
     public void setArendelopnr(java.lang.String arendelopnr) {
         this.arendelopnr = arendelopnr;
@@ -184,8 +172,6 @@ public class SparaTillEDHFraga  implements Serializable {
 
     /**
      * Sets the inhandling value for this SparaTillEDHFraga.
-     * 
-     * @param inhandling
      */
     public void setInhandling(java.lang.String inhandling) {
         this.inhandling = inhandling;
@@ -204,8 +190,6 @@ public class SparaTillEDHFraga  implements Serializable {
 
     /**
      * Sets the timestamp value for this SparaTillEDHFraga.
-     * 
-     * @param timestamp
      */
     public void setTimestamp(java.lang.String timestamp) {
         this.timestamp = timestamp;
@@ -232,29 +216,29 @@ public class SparaTillEDHFraga  implements Serializable {
         boolean _equals;
         _equals = true
             && ((this.data == null && other.getData() == null)
-                || (this.data != null
-                    && Arrays.equals(this.data, other.getData())))
+            || (this.data != null
+            && Arrays.equals(this.data, other.getData())))
             && ((this.ocrstrang == null && other.getOcrstrang() == null)
-                || (this.ocrstrang != null
-                    && this.ocrstrang.equals(other.getOcrstrang())))
+            || (this.ocrstrang != null
+            && this.ocrstrang.equals(other.getOcrstrang())))
             && ((this.signatur == null && other.getSignatur() == null)
-                || (this.signatur != null
-                    && this.signatur.equals(other.getSignatur())))
+            || (this.signatur != null
+            && this.signatur.equals(other.getSignatur())))
             && ((this.myndighetsstampling == null && other.getMyndighetsstampling() == null)
-                || (this.myndighetsstampling != null
-                    && this.myndighetsstampling.equals(other.getMyndighetsstampling())))
+            || (this.myndighetsstampling != null
+            && this.myndighetsstampling.equals(other.getMyndighetsstampling())))
             && ((this.csnnr == null && other.getCsnnr() == null)
-                || (this.csnnr != null
-                    && this.csnnr.equals(other.getCsnnr())))
+            || (this.csnnr != null
+            && this.csnnr.equals(other.getCsnnr())))
             && ((this.arendelopnr == null && other.getArendelopnr() == null)
-                || (this.arendelopnr != null
-                    && this.arendelopnr.equals(other.getArendelopnr())))
+            || (this.arendelopnr != null
+            && this.arendelopnr.equals(other.getArendelopnr())))
             && ((this.inhandling == null && other.getInhandling() == null)
-                || (this.inhandling != null
-                    && this.inhandling.equals(other.getInhandling())))
+            || (this.inhandling != null
+            && this.inhandling.equals(other.getInhandling())))
             && ((this.timestamp == null && other.getTimestamp() == null)
-                || (this.timestamp != null
-                    && this.timestamp.equals(other.getTimestamp())));
+            || (this.timestamp != null
+            && this.timestamp.equals(other.getTimestamp())));
         __equalsCalc = null;
         return _equals;
     }

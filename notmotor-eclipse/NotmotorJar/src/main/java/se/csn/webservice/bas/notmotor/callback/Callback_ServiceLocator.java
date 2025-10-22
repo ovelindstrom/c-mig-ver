@@ -1,7 +1,7 @@
 package se.csn.webservice.bas.notmotor.callback;
 
 public class Callback_ServiceLocator extends org.apache.axis.client.Service
-        implements se.csn.webservice.bas.notmotor.callback.Callback_Service {
+    implements se.csn.webservice.bas.notmotor.callback.Callback_Service {
 
     public Callback_ServiceLocator() {
     }
@@ -11,7 +11,7 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service
     }
 
     public Callback_ServiceLocator(java.lang.String wsdlLoc, javax.xml.namespace.QName sName)
-            throws javax.xml.rpc.ServiceException {
+        throws javax.xml.rpc.ServiceException {
         super(wsdlLoc, sName);
     }
 
@@ -34,7 +34,7 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service
     }
 
     public se.csn.webservice.bas.notmotor.callback.Callback_PortType getCallbackSOAP()
-            throws javax.xml.rpc.ServiceException {
+        throws javax.xml.rpc.ServiceException {
         java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(CallbackSOAP_address);
@@ -45,10 +45,10 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service
     }
 
     public se.csn.webservice.bas.notmotor.callback.Callback_PortType getCallbackSOAP(java.net.URL portAddress)
-            throws javax.xml.rpc.ServiceException {
+        throws javax.xml.rpc.ServiceException {
         try {
             se.csn.webservice.bas.notmotor.callback.CallbackSOAPStub _stub = new se.csn.webservice.bas.notmotor.callback.CallbackSOAPStub(
-                    portAddress, this);
+                portAddress, this);
             _stub.setPortName(getCallbackSOAPWSDDServiceName());
             return _stub;
         } catch (org.apache.axis.AxisFault e) {
@@ -68,9 +68,9 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
             if (se.csn.webservice.bas.notmotor.callback.Callback_PortType.class
-                    .isAssignableFrom(serviceEndpointInterface)) {
+                .isAssignableFrom(serviceEndpointInterface)) {
                 se.csn.webservice.bas.notmotor.callback.CallbackSOAPStub _stub = new se.csn.webservice.bas.notmotor.callback.CallbackSOAPStub(
-                        new java.net.URL(CallbackSOAP_address), this);
+                    new java.net.URL(CallbackSOAP_address), this);
                 _stub.setPortName(getCallbackSOAPWSDDServiceName());
                 return _stub;
             }
@@ -78,7 +78,7 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  "
-                + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
+            + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
     }
 
     /**
@@ -87,7 +87,7 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service
      * 
      */
     public java.rmi.Remote getPort(javax.xml.namespace.QName portName, Class serviceEndpointInterface)
-            throws javax.xml.rpc.ServiceException {
+        throws javax.xml.rpc.ServiceException {
 
         if (portName == null) {
             return getPort(serviceEndpointInterface);
@@ -120,7 +120,7 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service
      * Set the endpoint address for the specified port name.
      */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address)
-            throws javax.xml.rpc.ServiceException {
+        throws javax.xml.rpc.ServiceException {
 
         if ("CallbackSOAP".equals(portName)) {
             setCallbackSOAPEndpointAddress(address);
@@ -133,7 +133,7 @@ public class Callback_ServiceLocator extends org.apache.axis.client.Service
      * Set the endpoint address for the specified port name.
      */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address)
-            throws javax.xml.rpc.ServiceException {
+        throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }
 

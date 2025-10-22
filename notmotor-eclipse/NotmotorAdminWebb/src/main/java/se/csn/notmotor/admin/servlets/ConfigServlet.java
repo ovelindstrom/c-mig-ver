@@ -58,19 +58,19 @@ public class ConfigServlet extends HttpServlet {
             Class.forName("se.csn.common.config.ConfigException");
         } catch (ClassNotFoundException e) {
             throw new IllegalStateException(
-                    "Kunde inte ens hitta utils, klassen se.csn.common.config.ConfigException finns inte...", e);
+                "Kunde inte ens hitta utils, klassen se.csn.common.config.ConfigException finns inte...", e);
         }
         // Kolla klasser:
         String[][] classtest = new String[][]{
-                ClassDependencyTester.LOG4J,
-                ClassDependencyTester.ARKALL,
+            ClassDependencyTester.LOG4J,
+            ClassDependencyTester.ARKALL,
         };
         ClassDependencyTester.findClassesThrowException(classtest);
 
         ClassDependencyTester.findClassThrowException("se.csn.common.util.cache.TimeoutCache", "Utils");
 
         String[] properties = new String[]{
-                "notmotor.ds.jndinamn",
+            "notmotor.ds.jndinamn",
         };
 
         // Anropa med propertiesfilen som argument för att sätta upp Log-klassens

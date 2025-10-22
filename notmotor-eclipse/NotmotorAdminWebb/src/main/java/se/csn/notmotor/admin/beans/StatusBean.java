@@ -240,7 +240,7 @@ public class StatusBean {
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
         List<Status> statuslist = dao.getStatus(null, null);
         List<Statusrad> rader = new ArrayList<Statusrad>();
-        for (Iterator<Status> it = statuslist.iterator(); it.hasNext();) {
+        for (Iterator<Status> it = statuslist.iterator();it.hasNext();) {
             Status s = it.next();
             rader.add(new Statusrad(s.getInstans(), s.getStatus(), ""
                 + s.getServer(), s.getStartad(), s.getStoppad(), s.getWatchdog(), s.getTyp(), s.isAktiv()));
@@ -252,7 +252,7 @@ public class StatusBean {
         DAOServer dao = ActionHelper.getResourceFactory().getDAOServer();
         List<Server> servers = dao.getAktiva(true);
         List<Serverrad> rader = new ArrayList<Serverrad>();
-        for (Iterator<Server> it = servers.iterator(); it.hasNext();) {
+        for (Iterator<Server> it = servers.iterator();it.hasNext();) {
             Server s = it.next();
             rader.add(new Serverrad(s.getId(), s.getServleturl(), s.getPrestanda(), dao.getLevandeProcesser(s.getId())));
         }
@@ -271,7 +271,7 @@ public class StatusBean {
         DAOStatus dao = ActionHelper.getResourceFactory().getDAOStatus();
         List<Status> statuslist = dao.getStatus(null, null);
         String varning = "";
-        for (Iterator<Status> it = statuslist.iterator(); it.hasNext();) {
+        for (Iterator<Status> it = statuslist.iterator();it.hasNext();) {
             Status s = it.next();
             if (s.getStatus() == SkickaMeddelandeStateMachine.STOPPED) {
                 continue;

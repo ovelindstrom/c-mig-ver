@@ -18,8 +18,7 @@ public class Tidsintervall {
     }
 
     /**
-     * Kontrollerar om inmatad tid befinner sig inom intervallet. 
-     * @return 
+     * Kontrollerar om inmatad tid befinner sig inom intervallet.
      */
     public boolean isInIntervall(Date tidpunkt) {
         if (tidpunkt == null) {

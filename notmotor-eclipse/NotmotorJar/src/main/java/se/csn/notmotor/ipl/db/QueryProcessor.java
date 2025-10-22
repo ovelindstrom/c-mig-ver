@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface QueryProcessor {
     /**
-     * Kör ett SQL-kommando som bara returnerar antalet påverkade rader.
+     * Kor ett SQL-kommando som bara returnerar antalet paverkade rader.
      * 
      * @param SQL ett SQL-kommando som ska köras
      * @return antalet rader i databasen som påverkades eller -1 om anropet
@@ -28,7 +28,7 @@ public interface QueryProcessor {
     public String[] getStringArray(String SQL, String[] returnIfNoResult);
 
     /**
-     * Skapar java-objekt från en databasfråga.
+     * Skapar java-objekt fran en databasfraga.
      * 
      * @param SQL    en sql-fråga
      * @param mapper Ett objekt som kan översätta en rad i svaret till ett
@@ -41,7 +41,7 @@ public interface QueryProcessor {
     public long getSequence(String sequenceName);
 
     public long getCounter(String table, String counterName,
-            String nameCol, String valueCol);
+                           String nameCol, String valueCol);
 
     public long getCounter(String table, String counterName);
 
@@ -55,7 +55,7 @@ public interface QueryProcessor {
     public Connection getConnection();
 
     /**
-     * Sätter den connection som ska användas. QueryProcessorn kommer att använda
+     * Satter den connection som ska anvandas. QueryProcessorn kommer att anvanda
      * denna connection tills en annan connection satts.
      * 
      * @param conn             Connection-objektet som ska användas

@@ -40,8 +40,6 @@ public class HamtaFranEDHSvar  implements Serializable {
 
     /**
      * Sets the data value for this HamtaFranEDHSvar.
-     * 
-     * @param data
      */
     public void setData(byte[] data) {
         this.data = data;
@@ -60,8 +58,6 @@ public class HamtaFranEDHSvar  implements Serializable {
 
     /**
      * Sets the returkod value for this HamtaFranEDHSvar.
-     * 
-     * @param returkod
      */
     public void setReturkod(int returkod) {
         this.returkod = returkod;
@@ -88,8 +84,8 @@ public class HamtaFranEDHSvar  implements Serializable {
         boolean _equals;
         _equals = true
             && ((this.data == null && other.getData() == null)
-                || (this.data != null
-                    && Arrays.equals(this.data, other.getData())))
+            || (this.data != null
+            && Arrays.equals(this.data, other.getData())))
             && this.returkod == other.getReturkod();
         __equalsCalc = null;
         return _equals;

@@ -43,8 +43,6 @@ public class DTONotifieringResultat  implements Serializable {
 
     /**
      * Sets the meddelandeId value for this DTONotifieringResultat.
-     * 
-     * @param meddelandeId
      */
     public void setMeddelandeId(long meddelandeId) {
         this.meddelandeId = meddelandeId;
@@ -63,8 +61,6 @@ public class DTONotifieringResultat  implements Serializable {
 
     /**
      * Sets the resultat value for this DTONotifieringResultat.
-     * 
-     * @param resultat
      */
     public void setResultat(java.lang.Integer resultat) {
         this.resultat = resultat;
@@ -83,8 +79,6 @@ public class DTONotifieringResultat  implements Serializable {
 
     /**
      * Sets the info value for this DTONotifieringResultat.
-     * 
-     * @param info
      */
     public void setInfo(java.lang.String info) {
         this.info = info;
@@ -112,11 +106,11 @@ public class DTONotifieringResultat  implements Serializable {
         _equals = true
             && this.meddelandeId == other.getMeddelandeId()
             && ((this.resultat == null && other.getResultat() == null)
-                || (this.resultat != null
-                    && this.resultat.equals(other.getResultat())))
+            || (this.resultat != null
+            && this.resultat.equals(other.getResultat())))
             && ((this.info == null && other.getInfo() == null)
-                || (this.info != null
-                    && this.info.equals(other.getInfo())));
+            || (this.info != null
+            && this.info.equals(other.getInfo())));
         __equalsCalc = null;
         return _equals;
     }

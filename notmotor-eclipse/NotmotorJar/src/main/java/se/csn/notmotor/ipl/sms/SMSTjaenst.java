@@ -49,7 +49,7 @@ public class SMSTjaenst {
                     port = 443;
                 }
             }
-            
+
             this.endpoint = endpoint;
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException("Felaktig endpoint-URL " + endpoint, e);
@@ -117,9 +117,9 @@ public class SMSTjaenst {
      */
     public DTOSMSUt execute(DTOSMSIn in) throws IllegalArgumentException {
         // Dumpa SSL-properties:
-        String[] props = { "javax.net.ssl.trustStore", "javax.net.ssl.trustStorePassword",
-                "javax.net.ssl.keyStore", "javax.net.ssl.keyStorePassword" };
-        for (int i = 0; i < props.length; i++) {
+        String[] props = {"javax.net.ssl.trustStore", "javax.net.ssl.trustStorePassword",
+            "javax.net.ssl.keyStore", "javax.net.ssl.keyStorePassword"};
+        for (int i = 0;i < props.length;i++) {
             log.info("Prop: " + props[i] + ": " + System.getProperty(props[i]));
         }
         if (in == null) {
@@ -129,12 +129,12 @@ public class SMSTjaenst {
 
         if (log.isDebugEnabled()) {
             log.debug("Anropar sms-tjänsten med följande indata.\n  Telnr:" + in.getTelnummer()
-                    + "\n  Meddelande:" + in.getMeddelande()
-                    + "\n  Userid:" + userid
-                    + "\n  Password:" + password
-                    + "\n  Appname:" + in.getApplikationsnamn()
-                    + "\n  Func:" + in.getFunktionsnamn()
-                    + "\n  Endpoint:" + endpoint);
+                + "\n  Meddelande:" + in.getMeddelande()
+                + "\n  Userid:" + userid
+                + "\n  Password:" + password
+                + "\n  Appname:" + in.getApplikationsnamn()
+                + "\n  Func:" + in.getFunktionsnamn()
+                + "\n  Endpoint:" + endpoint);
         }
 
         DTOSMSUt response = new DTOSMSUt();
@@ -148,9 +148,9 @@ public class SMSTjaenst {
             HttpClient client = new HttpClient();
             post = new PostMethod(endpoint);
             NameValuePair[] data = {
-                    new NameValuePair("originatingAddress", in.getRubrik()),
-                    new NameValuePair("destinationAddress", in.getTelnummer()),
-                    new NameValuePair("userData", in.getMeddelande()),
+                new NameValuePair("originatingAddress", in.getRubrik()),
+                new NameValuePair("destinationAddress", in.getTelnummer()),
+                new NameValuePair("userData", in.getMeddelande()),
             };
             post.setRequestBody(data);
             post.addRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");

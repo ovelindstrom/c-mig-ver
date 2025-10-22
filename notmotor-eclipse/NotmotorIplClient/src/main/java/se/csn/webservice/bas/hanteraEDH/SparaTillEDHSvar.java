@@ -39,8 +39,6 @@ public class SparaTillEDHSvar  implements Serializable {
 
     /**
      * Sets the famID value for this SparaTillEDHSvar.
-     * 
-     * @param famID
      */
     public void setFamID(java.lang.String famID) {
         this.famID = famID;
@@ -59,8 +57,6 @@ public class SparaTillEDHSvar  implements Serializable {
 
     /**
      * Sets the returkod value for this SparaTillEDHSvar.
-     * 
-     * @param returkod
      */
     public void setReturkod(int returkod) {
         this.returkod = returkod;
@@ -87,8 +83,8 @@ public class SparaTillEDHSvar  implements Serializable {
         boolean _equals;
         _equals = true
             && ((this.famID == null && other.getFamID() == null)
-                || (this.famID != null
-                    && this.famID.equals(other.getFamID())))
+            || (this.famID != null
+            && this.famID.equals(other.getFamID())))
             && this.returkod == other.getReturkod();
         __equalsCalc = null;
         return _equals;

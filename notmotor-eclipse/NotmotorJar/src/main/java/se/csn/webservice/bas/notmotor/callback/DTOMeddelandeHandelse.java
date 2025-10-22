@@ -56,8 +56,6 @@ public class DTOMeddelandeHandelse  implements Serializable {
 
     /**
      * Sets the id value for this DTOMeddelandeHandelse.
-     * 
-     * @param id
      */
     public void setId(java.lang.Long id) {
         this.id = id;
@@ -76,8 +74,6 @@ public class DTOMeddelandeHandelse  implements Serializable {
 
     /**
      * Sets the handelsetyp value for this DTOMeddelandeHandelse.
-     * 
-     * @param handelsetyp
      */
     public void setHandelsetyp(java.lang.Integer handelsetyp) {
         this.handelsetyp = handelsetyp;
@@ -96,8 +92,6 @@ public class DTOMeddelandeHandelse  implements Serializable {
 
     /**
      * Sets the tidpunkt value for this DTOMeddelandeHandelse.
-     * 
-     * @param tidpunkt
      */
     public void setTidpunkt(Calendar tidpunkt) {
         this.tidpunkt = tidpunkt;
@@ -116,8 +110,6 @@ public class DTOMeddelandeHandelse  implements Serializable {
 
     /**
      * Sets the felkod value for this DTOMeddelandeHandelse.
-     * 
-     * @param felkod
      */
     public void setFelkod(java.lang.Integer felkod) {
         this.felkod = felkod;
@@ -136,8 +128,6 @@ public class DTOMeddelandeHandelse  implements Serializable {
 
     /**
      * Sets the feltext value for this DTOMeddelandeHandelse.
-     * 
-     * @param feltext
      */
     public void setFeltext(java.lang.String feltext) {
         this.feltext = feltext;
@@ -156,8 +146,6 @@ public class DTOMeddelandeHandelse  implements Serializable {
 
     /**
      * Sets the instans value for this DTOMeddelandeHandelse.
-     * 
-     * @param instans
      */
     public void setInstans(java.lang.Integer instans) {
         this.instans = instans;
@@ -184,23 +172,23 @@ public class DTOMeddelandeHandelse  implements Serializable {
         boolean _equals;
         _equals = true
             && ((this.id == null && other.getId() == null)
-                || (this.id != null
-                    && this.id.equals(other.getId())))
+            || (this.id != null
+            && this.id.equals(other.getId())))
             && ((this.handelsetyp == null && other.getHandelsetyp() == null)
-                || (this.handelsetyp != null
-                    && this.handelsetyp.equals(other.getHandelsetyp())))
+            || (this.handelsetyp != null
+            && this.handelsetyp.equals(other.getHandelsetyp())))
             && ((this.tidpunkt == null && other.getTidpunkt() == null)
-                || (this.tidpunkt != null
-                    && this.tidpunkt.equals(other.getTidpunkt())))
+            || (this.tidpunkt != null
+            && this.tidpunkt.equals(other.getTidpunkt())))
             && ((this.felkod == null && other.getFelkod() == null)
-                || (this.felkod != null
-                    && this.felkod.equals(other.getFelkod())))
+            || (this.felkod != null
+            && this.felkod.equals(other.getFelkod())))
             && ((this.feltext == null && other.getFeltext() == null)
-                || (this.feltext != null
-                    && this.feltext.equals(other.getFeltext())))
+            || (this.feltext != null
+            && this.feltext.equals(other.getFeltext())))
             && ((this.instans == null && other.getInstans() == null)
-                || (this.instans != null
-                    && this.instans.equals(other.getInstans())));
+            || (this.instans != null
+            && this.instans.equals(other.getInstans())));
         __equalsCalc = null;
         return _equals;
     }

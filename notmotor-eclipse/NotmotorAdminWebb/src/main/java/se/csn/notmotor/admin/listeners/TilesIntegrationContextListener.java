@@ -29,7 +29,7 @@ public class TilesIntegrationContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent arg0) {
         // Get the LifecycleFactory from the Factory Finder
         LifecycleFactory factory = (LifecycleFactory) FactoryFinder
-                .getFactory("javax.faces.lifecycle.LifecycleFactory");
+            .getFactory("javax.faces.lifecycle.LifecycleFactory");
 
         /*
          * Create a new instance of Lifecycle implementation -
