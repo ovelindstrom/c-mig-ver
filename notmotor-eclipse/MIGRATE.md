@@ -298,8 +298,38 @@ mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCo
 ```
 
 
+# 5 Migrera till OpenLiberty
 
+Nu ska vi börja packa om applikationen.
 
+Jag kör denna från det nya Liberty-projektet, men det går att köra varifrån som helst. 
+
+Börja med att ladda ner [Migration Toolkit for Application Binaries](https://www.ibm.com/support/pages/migration-toolkit-application-binaries).
+
+Direktlänk till [AppScannerIntaller.jar](https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wamt/ApplicationBinaryTP/binaryAppScannerInstaller.jar) 
+och kör `java -jar binaryAppScannerInstaller.jar`. Acceptera licensen och standard installationsfolder.
+
+Du får nu en `wamt/` folder med filerna `binaryAppScanner.jar` och `scanner.properties`.
+Documentationen för Scannern finns på https://www.ibm.com/docs/en/wamt?topic=migration-toolkit-application-binaries
+
+Man kan använda sig av CLI options men det kan vara enklare att använda `scanner.properties` för
+definera vad man vill göra.  Använd `--output=<fil-att-skriva-rapporten-till>`.
+
+Ett exempel på att analysera en .ear-fil.
+
+```sh
+java -jar wamt/binaryAppScanner.jar target/notmotor-ipl-ear-0.1-SNAPSHOT.ear --all --targetAppServer=openLiberty --targetJava=java11 --targetJavaEE=ee7 --output=ipl.ear_Migration.html
+```
+
+De viktiga elementen här är:
+`--targetAppServer=openLiberty` - vilket är mål-app-servern.
+`--targetJava=java11`           - vilken Java-version tänker vi bygga mot
+`--targetJavaEE=ee7`            - vilken Enterprise Edition vi har som mål. Här måste man skilja på `targetJavaEE` och `targetJakartaEE`.
+
+Nu kommer du att få en rapport som berättar hur man migrerar till OpenLiberty. Den är väldetaljerad och ger även en OpenRewrite recept rekommendation.
+Denna är dock för version rewrite-maven-plugin:6.9.0 av plugin och rewrite-migrate-java:3.10.0. Nuvarande är rewrite-maven-plugin:6.21.1 och rewrite-migrate-java:3.19.0.
+
+De flesta som inte hittas i listan är migrerade till `org.openrewrite.java.migrate.UpgradeToJava11`
 
 
 

@@ -6,15 +6,36 @@
         <!-- Core Java EE features -->
         <feature>javaee-7.0</feature>
         <feature>cdi-1.2</feature>
+        <feature>jaxb-2.2</feature>
         <feature>jaxrs-2.0</feature>
         <feature>jsonp-1.0</feature>
-        
+        <feature>jsp-2.3</feature>
+
+        <!-- EJB features -->
+        <feature>ejbHome-3.2</feature>
+        <feature>ejbLite-3.2</feature>
+        <feature>jdbc-4.1</feature>
+        <feature>jndi-1.0</feature>
+        <feature>mdb-3.2</feature>
+
         <!-- MicroProfile 1.4 (includes health, openapi, etc.) -->
         <feature>microProfile-1.4</feature>
-        
+        <!-- Included in mp1.4 -->
+        <!--<feature>servlet-3.1</feature>-->
+
         <!-- OpenTelemetry for modern tracing -->
         <feature>mpTelemetry-2.0</feature>
     </featureManager>
+
+    <!-- 
+            
+       
+        
+       
+       
+        
+        
+    -->
 
     <!-- This template enables security. To get the full use of all the capabilities, a keystore and user registry are required. -->
 
@@ -22,10 +43,10 @@
         encoded password using bin/securityUtility encode and add it below in the password attribute of the keyStore element. 
         Then uncomment the keyStore element. -->
     <keyStore id="defaultKeyStore" password="libertypwd"/>
-    
+
     <!-- SSL Configuration -->
     <ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore"/>
-    
+
     <!-- Logging configuration to suppress OpenTracing warnings -->
     <logging traceSpecification="com.ibm.ws.opentracing*=off:*=info" consoleLogLevel="INFO" messageFileName="messages.log" messageFormat="JSON"/>
 
@@ -40,20 +61,12 @@
     </basicRegistry>
 
     <!-- Configure Access Logging -->
-    <httpAccessLogging id="accessLogging" 
-        logFormat='%h %u %{t}W "%r" %s %b %D %{R}W %{traceparent}i %{tracestate}i'
+    <httpAccessLogging id="accessLogging" logFormat='%h %u %{t}W "%r" %s %b %D %{R}W %{traceparent}i %{tracestate}i'
         />
-    <logging 
-        messageSource="message" 
-        messageFormat="JSON" 
-    />
+<logging messageSource="message" messageFormat="JSON" />
 
     <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
-    <httpEndpoint id="defaultHttpEndpoint" 
-            accessLoggingRef="accessLogging"
-            host="*"
-            httpPort="9080" 
-            httpsPort="9443" />
+    <httpEndpoint id="defaultHttpEndpoint" accessLoggingRef="accessLogging" host="*" httpPort="9080" httpsPort="9443" />
 
 
 
