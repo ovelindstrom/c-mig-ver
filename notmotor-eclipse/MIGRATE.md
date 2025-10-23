@@ -137,7 +137,7 @@ Python-skriptet `{MV}/maven_structure_converter.py` kan hjälpa till med att fly
 
 Du kommer att behöva städa i pom-filerna en hel del.
 
-För det finns det ett antal recept som manipulerar på XML-strukturer. De följer mönstret `se.csn.recipes.modernize.Drop<XML ELEMENT>`
+För det finns det ett antal recept som manipulerar på XML-strukturer. De följer mönstret `se.csn.recipes.modernize.Drop<XML ELEMENT>` och är definierade i `{MV}/rewrite-pom.yml`.
 
 - `se.csn.recipes.modernize.DropDevelopers`
 - `se.csn.recipes.modernize.DropSourceDirectory`
@@ -150,61 +150,75 @@ mvn -U -N org.openrewrite.maven:rewrite-maven-plugin:run \
     -Drewrite.activeRecipes=se.csn.recipes.modernize.DropDevelopers,se.csn.recipes.modernize.DropSourceDirectory,se.csn.recipes.modernize.DropTestSourceDirectory,se.csn.recipes.modernize.DropOutputDirectory,se.csn.recipes.modernize.DropTestOutputDirectory
 ```
 
+## 3.3 Updatering av Javafiler och JavaDoc
 
-## Java file parsability
-When code focused ReWrite tasks are run, it has to be able parse the .java files in a proper way. To do this, there are some recipes that can be run that solves most of them.
+När man analyserar Javafiler med Open Rewrite behöver de vara Lossless Semantic Tree (LST) positiva. Så är inte alltid fallet. Det finns mer information i OPEN_REWRITE.md.
 
-## 3.3.1 Clean out ISO-Latin characters from Java and Javadoc
+Nedan följer en del recept som hjälper en hel del.
+
+## 3.3.1 Rensua ut felaktiga ISO-Latin inehåll från Java och Javadoc
 
 ```sh
 mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-static-analysis:RELEASE -Drewrite.activeRecipes=org.openrewrite.staticanalysis.maven.MavenJavadocNonAsciiRecipe -Drewrite.exportDatatables=true
 ```
 
-## 3.3.2 Remove trailing whitespaces from files
+## 3.3.2 Ta bort trailing whitespaces från filer
 
 ```sh
 mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.activeRecipes=org.openrewrite.java.format.RemoveTrailingWhitespace -Drewrite.exportDatatables=true
 ```
-## 3.3.3 Format all Java files
+## 3.3.3 Formatera alla Java filer
 
 ```sh
 mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.activeRecipes=org.openrewrite.java.format.AutoFormat -Drewrite.exportDatatables=true
 ```
 
-## 3.3.4 Resolve parsing errors
+## 3.3.4 Lös analys-fel.
 
-Use remove the author tags. You can not use åäö in author names and it messes with the plugins. If you dryRun this one, you will get the parsing errors.
+Det mesta handlar om JavaDoc som är på fel plats eller icke komplett. Börja där. Finns beskrivet i OPEN_REWRITE.md
 
-Add missing @Overrides - this is the most common issue, since the output from rewrites will not be the same as the input.
+Nästa jag gör är att lägga till saknade @Overrides. Om metoden gör en @Overrides, så kommer LST-trädet att bli fel om det inte står.
+
 ```sh
 mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-static-analysis:RELEASE -Drewrite.activeRecipes=org.openrewrite.staticanalysis.MissingOverrideAnnotation -Drewrite.exportDatatables=true --errors
 ```
 
+Jag tycker också att man kan ersätta "Skapad" med annoteringen @since.
+
 `find . -name '*.java' -print0 | xargs -0 sed -i '' 's/\* Skapad/* @since/g'`
 
-# Code cleanup
+### 3.3.5 Allmänt städande
+
+Det finns ett litet trevligt recept i Open Rewrite, `org.openrewrite.staticanalysis.CodeCleanup` som fixar en del saker som SAST brukar påpeka.
 ```sh
 mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-static-analysis:RELEASE -Drewrite.activeRecipes=org.openrewrite.staticanalysis.CodeCleanup  --errors
 ```
 
+Om man vill ta bort alla `@author` taggar gör man det med.
+
 ```sh
-mvn -U org.openrewrite.maven:rewrite-maven-plugin:dryRun -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-static-analysis:RELEASE -Drewrite.activeRecipes=org.openrewrite.staticanalysis.RemoveJavaDocAuthorTag -Drewrite.exportDatatables=true --errors
+mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-static-analysis:RELEASE -Drewrite.activeRecipes=org.openrewrite.staticanalysis.RemoveJavaDocAuthorTag -Drewrite.exportDatatables=true --errors
 ```
 
+## 4. Kodmigrering
 
+Nu börjar själva migreringen.
 
-## 4. Code migration
+### 4.1 Decoupling
 
-First decouple from current super pom and to new one.
+Det första man måste göra är att frikoppla sig från den nuvarande SuperPomen.
 
-Add this rewrite.xml to the NotmotorBuild project
+För det kan man använda sig av följande Rewrite i Build-projektet för att uppdatera alla moduler som eventuellt använder dem.
+
+I exemplet har jag använd mig av 3.0-SNAPSHOT, men man ska använda sig av de Java-språknivå-beroende super-pommarna som finns i Nexus.
+
 
 ```yml
 ---
 type: specs.openrewrite.org/v1beta/recipe
 name: se.csn.recipes.modernize.AllRecipes
 displayName: All Modernization Recipes
-description: Applies all modernization recipes including changing to the new superpom, removing developers section, adding JUnit 3 dependency, and ordering imports.
+description: Applies all modernization recipes including changing to the new superpom, removing developers section and ordering imports.
 recipeList:
   - se.csn.recipes.modernize.NewSuperPomParent
   - se.csn.recepes.modernize.NewNotmotorParent
@@ -269,111 +283,45 @@ recipeList:
       newFullyQualifiedTypeName: javax.mail.util.ByteArrayDataSource
 ```
 
-You can run them one by one if you want to.
+
+För att köra dessa:
 
 ```sh
-mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.activeRecipes= (recipes to run, comma separate)
-```
-
-To run everything in that file:
-
 mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.activeRecipes=se.csn.recipes.modernize.AllRecipes`
+```
 
-I like to add some skips to the run:
+
+## 4.2 Modernisera till Java 11
 
 ```sh
-mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.activeRecipes=se.csn.recipes.modernize.FixByteArrayDataSourceImport -Dmaven.main.skip=true -Dmaven.compiler.skip=true -Dmaven.test.skip=true -Dcheckstyle.skip=true
-```
-
-
-## Dependency management
-
-Alla beroendens versioner som finns i Notmotorn hanteras i NotmotorBuild, som alla andra moduler ska ha som <parent>
-
-# Get rid of the developers section in the POM.
-
-`rewrite.yml` in the .\NotmotorBuild and .\NotmotorIplClient
-
-```yml
----
-type: specs.openrewrite.org/v1beta/recipe
-name: se.csn.recipes.modernize.NewSuperPomParent
-displayName: Change to use the new superpom as parent
-recipeList:
-  - org.openrewrite.maven.ChangeParentPom:
-      oldGroupId: se.csn
-      oldArtifactId: superpom
-      newVersion: 3.0-SNAPSHOT
-
----
-type: specs.openrewrite.org/v1beta/recipe
-name: se.csn.recipes.modernize.DropDevelopers
-displayName: Delete <developers> section
-description: Removes the <developers> section from Maven POM files.
-recipeList:
-  - org.openrewrite.xml.RemoveXmlTag:
-      # The XPath expression to target the <developers> element anywhere in a POM file.
-      xPath: /project/developers
-      fileMatcher: '**/pom.xml'
+mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-migrate-java:RELEASE -Drewrite.activeRecipes=org.openrewrite.java.migrate.Java8toJava11 -Drewrite.exportDatatables=true --errors
 ```
 
 
 
 
 
-# Run Modernize to Java 8
-
-```sh
-mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-migrate-java:RELEASE -Drewrite.activeRecipes=org.openrewrite.java.migrate.UpgradeToJava8 -Drewrite.exportDatatables=true
-```
 
 
 
-### Recepies
-
-            <activeRecipes>
-              <recipe>org.openrewrite.FindDeserializationErrors</recipe>
-              <recipe>org.openrewrite.FindGitProvenance</recipe>
-              <recipe>org.openrewrite.maven.BestPractices</recipe>
-              <recipe>org.openrewrite.maven.ModernizeObsoletePoms</recipe>
-              <recipe>org.openrewrite.java.OrderImports</recipe>
-              <recipe>org.openrewrite.java.format.AutoFormat</recipe>
-              <recipe>org.openrewrite.java.RemoveUnusedImports</recipe>
-              <recipe>org.openrewrite.java.migrate.Java8toJava11</recipe>
-              <recipe>se.csn.rewrite.AddToGitignore</recipe>
-            </activeRecipes>
 
 
 
-Följande klasser är problematiska i formatteringen:
-
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/EpostMeddelandeSenderImpl.java
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/Notmotor.java
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/db/QueryProcessor.java
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/db/QueryProcessorBase.java
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/db/DAOImplBase.java
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/db/DAOMeddelandeImpl.java
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/SkickaMeddelandeServicesImpl.java
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/ft/NotifieringProxy.java
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/MeddelandeServicesBase.java
-[WARNING] There were problems parsing notmotor-eclipse/NotmotorJar/src/se/csn/notmotor/ipl/MeddelandeSender.java
 
 
-# Migrate to Commons Lang 3
+
+
+
+
+
+TODO: 
+Senare
+## 4.3 Migrera till Commons Lang 3
 
 ```sh
 mvn -U org.openrewrite.maven:rewrite-maven-plugin:run -Drewrite.recipeArtifactCoordinates=org.openrewrite.recipe:rewrite-apache:RELEASE -Drewrite.activeRecipes=org.openrewrite.apache.commons.lang.UpgradeApacheCommonsLang_2_3 -Drewrite.exportDatatables=true
 ```
 
+## Log4j til Log4j2
 
-
-
-
-mvn -U -N org.openrewrite.maven:rewrite-maven-plugin:run \
-    -Drewrite.activeRecipes=se.csn.recipes.modernize.Pom \
-    -Dmaven.main.skip=true -Dmaven.compiler.skip=true -Dmaven.test.skip=true -Dcheckstyle.skip=true \
-    -Drewrite.configLocation=./rewrite-pom.yml
-
-
-    mvn -U -N rewrite:run \
-    -Dmaven.main.skip=true -Dmaven.compiler.skip=true -Dmaven.test.skip=true -Dcheckstyle.skip=true
+org.openrewrite.java.logging.log4j.Log4j1ToLog4j2

@@ -384,6 +384,21 @@
 			</plugins>
 		</pluginManagement>
 		<plugins>
+			<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<configuration>
+						<filesets>
+							<!-- Remove module-level bin directory (all files and then the directory) -->
+							<fileset>
+								<directory>${basedir}/bin</directory>
+								<includes>
+									<include>**/*</include>
+								</includes>
+							</fileset>
+						</filesets>
+					</configuration>
+				</plugin>
 		</plugins>
 	</build>
 
