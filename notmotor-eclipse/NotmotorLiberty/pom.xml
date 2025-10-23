@@ -141,7 +141,7 @@
 												<destFileName>notmotor-admin-webb-${project.version}.war</destFileName>
 											</artifactItem>
 										</artifactItems>
-										<outputDirectory>${project.basedir}/bin</outputDirectory>
+										<outputDirectory>${project.build.directory}</outputDirectory>
 										<overWriteReleases>true</overWriteReleases>
 										<overWriteSnapshots>true</overWriteSnapshots>
 									</configuration>
