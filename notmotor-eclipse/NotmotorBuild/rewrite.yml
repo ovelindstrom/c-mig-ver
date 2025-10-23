@@ -20,6 +20,14 @@ recipeList:
   - org.openrewrite.java.ChangeType:
       oldFullyQualifiedTypeName: org.apache.soap.util.mime.ByteArrayDataSource
       newFullyQualifiedTypeName: javax.mail.util.ByteArrayDataSource
-
-
-
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.java.CommonsLang3Dependency
+displayName: Update to Commons Lang 3 dependency
+description: Updates the commons-lang:commons-lang to org.apache.commons:commons-lang3
+recipeList:
+  - org.openrewrite.maven.ChangeDependencyGroupIdAndArtifactId:
+      oldGroupId: commons-lang
+      oldArtifactId: commons-lang
+      newGroupId: org.apache.commons
+      newArtifactId: commons-lang3

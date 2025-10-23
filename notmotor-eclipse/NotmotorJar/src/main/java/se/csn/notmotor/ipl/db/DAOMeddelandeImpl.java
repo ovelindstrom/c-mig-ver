@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import se.csn.ark.common.dal.db.DatabaseException;
 import se.csn.ark.common.util.logging.Log;
