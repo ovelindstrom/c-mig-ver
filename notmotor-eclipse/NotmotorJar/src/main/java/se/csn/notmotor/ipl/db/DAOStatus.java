@@ -4,7 +4,6 @@ import java.util.List;
 
 import se.csn.notmotor.ipl.model.Status;
 
-
 public interface DAOStatus {
 
     /**
@@ -19,10 +18,11 @@ public interface DAOStatus {
 
     /**
      * Soker ut de statusar som matchar sokkriterierna
-     * @param status Begränsa sökningen till de rader som har denna status. 
-     *        Om null så begränsas inte sökningen på status.
-     * @param server Begränsa sökningen till de rader som har denna server. 
-     *        Om null så begränsas inte sökningen på server.
+     * 
+     * @param status Begränsa sökningen till de rader som har denna status.
+     *               Om null så begränsas inte sökningen på status.
+     * @param server Begränsa sökningen till de rader som har denna server.
+     *               Om null så begränsas inte sökningen på server.
      */
     public List getStatus(Integer status, Integer server);
 
@@ -32,8 +32,8 @@ public interface DAOStatus {
     public Status getStatus(int instans);
 
     /**
-     * Tar bort motsvarande rad ur databasen. 
-     * OBS! Kan ge markliga problem om raden anvands av en aktiv instans. 
+     * Tar bort motsvarande rad ur databasen.
+     * OBS! Kan ge markliga problem om raden anvands av en aktiv instans.
      */
     public void delete(int instans);
 }

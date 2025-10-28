@@ -14,12 +14,6 @@ import se.csn.ark.common.util.logging.Log;
 import se.csn.common.config.ClassDependencyTester;
 import se.csn.common.config.PropertyDependencyTester;
 import se.csn.common.jndi.ServiceLocator;
-//import se.csn.notmotor.ipl.db.DAOAvsandareImpl;
-//import se.csn.notmotor.ipl.db.DAOBilagaImpl;
-//import se.csn.notmotor.ipl.db.DAOHandelseImpl;
-//import se.csn.notmotor.ipl.db.DAOMeddelande;
-//import se.csn.notmotor.ipl.db.DAOMeddelandeImpl;
-//import se.csn.notmotor.ipl.db.DAOMottagareImpl;
 import se.csn.notmotor.ipl.db.DAOServer;
 import se.csn.notmotor.ipl.db.DAOServerImpl;
 import se.csn.notmotor.ipl.db.QueryListenerImpl;
@@ -30,8 +24,6 @@ import se.csn.notmotor.ipl.ft.NotifieringProxyFactoryImpl;
 import se.csn.notmotor.ipl.model.Server;
 import se.csn.notmotor.ipl.webservice.SkickaService;
 
-//import com.ibm.websphere.servlet.event.ServletEvent;
-//import com.ibm.websphere.servlet.event.ServletListener;
 
 /**
  * Servlet som ska koras vid startup; anvands for att starta notmotorinstans.
