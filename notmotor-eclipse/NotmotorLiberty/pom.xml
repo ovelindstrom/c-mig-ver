@@ -11,7 +11,7 @@
     </parent>
     <artifactId>notmotor-liberty</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>liberty-assembly</packaging>
 
     <description>Notmotor Open Liberty Server - parent: NotmotorBuild</description>
     <name>Notmotor Open Liberty Server</name>
@@ -53,38 +53,221 @@
             <version>2.7.0</version>
             <scope>provided</scope>
         </dependency>
+        <!-- The ear/war dependencies -->
+        <dependency>
+            <groupId>se.csn.notmotor</groupId>
+            <artifactId>notmotoriplear</artifactId>
+            <version>2.0-SNAPSHOT</version>
+            <type>ear</type>
+        </dependency>
+        <dependency>
+            <groupId>se.csn.notmotor</groupId>
+            <artifactId>notmotoradminear</artifactId>
+            <version>2.0-SNAPSHOT</version>
+            <type>ear</type>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>notmotorliberty</finalName>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>3.3.2</version>
-                </plugin>
-                <plugin>
-                    <groupId>io.openliberty.tools</groupId>
-                    <artifactId>liberty-maven-plugin</artifactId>
-                    <version>3.11.5</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <extensions>
+            <extension>
+                <groupId>io.openliberty.tools</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>3.11.5</version>
+            </extension>
+        </extensions>
+
+        <resources>
+            <resource>
+                <directory>../GemensammaProperties/src/IW/properties/arkitektur/</directory>
+                <includes>
+                    <include>ark.properties</include>
+                </includes>
+                <targetPath>.</targetPath>
+            </resource>
+        </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+
+            <!-- Create a JAR with properties files for lib/global -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>create-properties-jar</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>properties</classifier>
+                            <classesDirectory>${project.basedir}/../GemensammaProperties/build/IPL/properties/arkitektur</classesDirectory>
+                            <includes>
+                                <include>ark.properties</include>
+                                <include>arkitektur.properties</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Copy the properties JAR to lib/global -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-properties-jar</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <copy file="${project.build.directory}/${project.build.finalName}-properties.jar" tofile="${project.build.directory}/liberty/wlp/usr/servers/notmotorn/lib/global/notmotor-properties.jar" failonerror="false"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>3.11.5</version>
+
+                <executions>
+                    <execution>
+                        <id>deploy-all</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                        <configuration>
+                            <appsDirectory>apps</appsDirectory>
+                            <deployPackages>dependencies</deployPackages>
+                            <stripVersion>true</stripVersion>
+                            <copyDependencies>
+                                <dependency>
+                                    <groupId>se.csn</groupId>
+                                    <artifactId>ark</artifactId>
+                                    <version>3.0.1</version>
+                                </dependency>
+                                <dependency>
+                                    <groupId>se.csn</groupId>
+                                    <artifactId>utils</artifactId>
+                                    <version>1.0.0</version>
+                                </dependency>
+                                <dependency>
+                                    <groupId>se.csn.notmotor</groupId>
+                                    <artifactId>notmotorjar</artifactId>
+                                    <version>2.1-SNAPSHOT</version>
+                                </dependency>
+                                <dependency>
+                                    <groupId>se.csn</groupId>
+                                    <artifactId>notmotoriplclient</artifactId>
+                                    <version>2.1-SNAPSHOT</version>
+                                </dependency>
+                                <!-- Externa -->
+
+                                <dependency>
+                                    <groupId>axis</groupId>
+                                    <artifactId>axis</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>batik</groupId>
+                                    <artifactId>batik-1.5-fop</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>com.sun.mail</groupId>
+                                    <artifactId>smtp</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>commons-collections</groupId>
+                                    <artifactId>commons-collections</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>commons-httpclient</groupId>
+                                    <artifactId>commons-httpclient</artifactId>
+                                </dependency>
+                                <!-- Behöver båda för ARK-->
+                                <dependency>
+                                    <groupId>commons-lang</groupId>
+                                    <artifactId>commons-lang</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>commons-logging</groupId>
+                                    <artifactId>commons-logging</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>commons-validator</groupId>
+                                    <artifactId>commons-validator</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>fop</groupId>
+                                    <artifactId>fop</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>jakarta.xml.rpc</groupId>
+                                    <artifactId>jakarta.xml.rpc-api</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>jimi</groupId>
+                                    <artifactId>jimi</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>log4j</groupId>
+                                    <artifactId>log4j</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>opensymphony</groupId>
+                                    <artifactId>quartz</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>org.apache.commons</groupId>
+                                    <artifactId>commons-lang3</artifactId>
+                                </dependency>
+                                <!-- Struts -->
+                                <dependency>
+                                    <groupId>struts</groupId>
+                                    <artifactId>struts</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>xerces</groupId>
+                                    <artifactId>xercesImpl</artifactId>
+                                </dependency>
+                                <dependency>
+                                    <groupId>xml-apis</groupId>
+                                    <artifactId>xml-apis</artifactId>
+                                </dependency>
+                                <dependencyGroup>
+                                    <location>lib/global/drivers</location>
+                                    <!-- DB2 JCC4 driver-->
+                                    <dependency>
+                                        <groupId>com.ibm.db2.jcc</groupId>
+                                        <artifactId>db2jcc</artifactId>
+                                        <version>db2jcc4</version>
+                                    </dependency>
+                                </dependencyGroup>
+
+                            </copyDependencies>
+                        </configuration>
+                    </execution>
+                </executions>
                 <configuration>
+                    <serverName>notmotorn</serverName>
                     <containerRunOpts>
-                        --network csn-dev-net
-                        -e OTEL_EXPORTER_OTLP_ENDPOINT=http://otel:4317
+                                --network csn-dev-net
+                                -e OTEL_EXPORTER_OTLP_ENDPOINT=http://otel:4317
                     </containerRunOpts>
-                     <systemPropertyVariables>
-                        <http.port>${liberty.var.http.port}</http.port>
-                        <context.root>/notmotor</context.root>
-                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
@@ -92,64 +275,64 @@
 
     <profiles>
         <profile>
-			<id>copydeps</id>
-			<build>
-					<!-- Configure artifact copying for the parent project -->
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-dependency-plugin</artifactId>
-							<executions>
-								<execution>
-									<id>copy-artifacts</id>
-									<phase>package</phase>
-									<goals>
-										<goal>copy</goal>
-									</goals>
-									<configuration>
-										<artifactItems>
-											<!-- Copy NotmotorIplEAR -->
-											<artifactItem>
-												<groupId>se.csn.notmotor</groupId>
-												<artifactId>notmotoriplear</artifactId>
-												<version>2.0-SNAPSHOT</version>
-												<type>ear</type>
-												<destFileName>notmotor-ipl-ear-${project.version}.ear</destFileName>
-											</artifactItem>
-											<!-- Copy NotmotorAdminEAR -->
-											<artifactItem>
-												<groupId>se.csn.notmotor</groupId>
-												<artifactId>notmotoradminear</artifactId>
-												<version>2.0-SNAPSHOT</version>
-												<type>ear</type>
-												<destFileName>notmotor-admin-ear-${project.version}.ear</destFileName>
-											</artifactItem>
-											<!-- Copy NotmotorIplWebb WAR -->
-											<artifactItem>
-												<groupId>se.csn.notmotor</groupId>
-												<artifactId>notmotoriplwebb</artifactId>
-												<version>2.0-SNAPSHOT</version>
-												<type>war</type>
-												<destFileName>notmotor-ipl-webb-${project.version}.war</destFileName>
-											</artifactItem>
-											<!-- Copy NotmotorAdminWebb WAR -->
-											<artifactItem>
-												<groupId>se.csn.notmotor</groupId>
-												<artifactId>notmotoradminwebb</artifactId>
-												<version>2.0-SNAPSHOT</version>
-												<type>war</type>
-												<destFileName>notmotor-admin-webb-${project.version}.war</destFileName>
-											</artifactItem>
-										</artifactItems>
-										<outputDirectory>${project.build.directory}</outputDirectory>
-										<overWriteReleases>true</overWriteReleases>
-										<overWriteSnapshots>true</overWriteSnapshots>
-									</configuration>
-								</execution>
-							</executions>
-						</plugin>
-					</plugins>
-			</build>
-		</profile>
+            <id>copydeps</id>
+            <build>
+                <!-- Configure artifact copying for the parent project -->
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-artifacts</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>copy</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <!-- Copy NotmotorIplEAR -->
+                                        <artifactItem>
+                                            <groupId>se.csn.notmotor</groupId>
+                                            <artifactId>notmotoriplear</artifactId>
+                                            <version>2.0-SNAPSHOT</version>
+                                            <type>ear</type>
+                                            <destFileName>notmotoripl.ear</destFileName>
+                                        </artifactItem>
+                                        <!-- Copy NotmotorAdminEAR -->
+                                        <artifactItem>
+                                            <groupId>se.csn.notmotor</groupId>
+                                            <artifactId>notmotoradminear</artifactId>
+                                            <version>2.0-SNAPSHOT</version>
+                                            <type>ear</type>
+                                            <destFileName>notmotoradminear.ear</destFileName>
+                                        </artifactItem>
+                                        <!-- Copy NotmotorIplWebb WAR -->
+                                        <artifactItem>
+                                            <groupId>se.csn.notmotor</groupId>
+                                            <artifactId>notmotoriplwebb</artifactId>
+                                            <version>2.0-SNAPSHOT</version>
+                                            <type>war</type>
+                                            <destFileName>notmotoriplwebb.war</destFileName>
+                                        </artifactItem>
+                                        <!-- Copy NotmotorAdminWebb WAR -->
+                                        <artifactItem>
+                                            <groupId>se.csn.notmotor</groupId>
+                                            <artifactId>notmotoradminwebb</artifactId>
+                                            <version>2.0-SNAPSHOT</version>
+                                            <type>war</type>
+                                            <destFileName>notmotoradminwebb.war</destFileName>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    <outputDirectory>${project.build.directory}</outputDirectory>
+                                    <overWriteReleases>true</overWriteReleases>
+                                    <overWriteSnapshots>true</overWriteSnapshots>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 </project>

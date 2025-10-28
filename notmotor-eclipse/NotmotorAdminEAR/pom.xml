@@ -64,6 +64,9 @@
           <archive>
             <addMavenDescriptor>false</addMavenDescriptor>
           </archive>
+            <manifest>
+              <addClasspath>false</addClasspath>
+            </manifest>
           <!--
      <earSourceDirectory>${project.basedir}/src/main/application</earSourceDirectory> -->
           <earSourceExcludes>target/**,.*,*.xml,*.jar,.settings/**,,META-INF/ibmconfig/**</earSourceExcludes>

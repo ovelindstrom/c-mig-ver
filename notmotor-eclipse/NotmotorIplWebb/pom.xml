@@ -64,6 +64,32 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>../NotmotorProperties/build/IPL/properties/log/notmotor</directory>
+        <includes>
+          <include>ark_log4j.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+      <resource>
+        <directory>../NotmotorProperties/build/IPL/properties/notmotor/</directory>
+        <includes>
+          <include>notmotor-ipl.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+
+      <resource>
+        <directory>../GemensammaProperties/build/IPL/properties/arkitektur/</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+    </resources>
+
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -72,10 +98,19 @@
           <warSourceExcludes>**/*Test*</warSourceExcludes>
           <archive>
             <manifest>
-              <addClasspath>true</addClasspath>
+              <addClasspath>false</addClasspath>
             </manifest>
           </archive>
           <addMavenDescriptor>false</addMavenDescriptor>
+          <webResources>
+            <resource>
+              <directory>${project.build.directory}</directory>
+              <includes>
+                <include>ark_log4j.properties</include>
+              </includes>
+              <targetPath>WEB-INF/classes</targetPath>
+            </resource>
+          </webResources>
         </configuration>
       </plugin>
 

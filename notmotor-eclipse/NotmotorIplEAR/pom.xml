@@ -41,6 +41,30 @@
 
   <build>
     <defaultGoal>compile</defaultGoal>
+    <!-- Include properties files from NotmotorProperties to ensure they're on the EJB classpath -->
+    <resources>
+      <resource>
+        <directory>../NotmotorProperties/build/IPL/properties/log/notmotor</directory>
+        <includes>
+          <include>ark_log4j.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+      <resource>
+        <directory>../NotmotorProperties/build/IPL/properties/notmotor/</directory>
+        <includes>
+          <include>notmotor-ipl.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+      <resource>
+        <directory>../GemensammaProperties/build/IPL/properties/arkitektur/</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+    </resources>
 
     <plugins>
       <plugin>
@@ -49,6 +73,9 @@
         <configuration>
           <archive>
             <addMavenDescriptor>false</addMavenDescriptor>
+            <manifest>
+              <addClasspath>false</addClasspath>
+            </manifest>
           </archive>
           <earSourceDirectory>${project.basedir}/</earSourceDirectory>
           <earSourceExcludes>target/**,*.log,*.ddl,.*,*.jar,.settings/**,META-INF/ibmconfig/**</earSourceExcludes>

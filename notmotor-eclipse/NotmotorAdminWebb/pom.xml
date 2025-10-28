@@ -24,6 +24,7 @@
     <url>http://www.csn.se/</url>
   </organization>
 
+
   <dependencies>
     <dependency>
       <groupId>se.csn</groupId>
@@ -68,6 +69,31 @@
 
 
   <build>
+    <resources>
+      <resource>
+        <directory>../NotmotorProperties/build/IW/properties/log/notmotor</directory>
+        <includes>
+          <include>ark_log4j.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+      <resource>
+        <directory>../NotmotorProperties/build/IW/properties/notmotor/</directory>
+        <includes>
+          <include>notmotor-iw.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+
+      <resource>
+        <directory>../GemensammaProperties/build/IW/properties/arkitektur/</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+    </resources>
+
     <testResources>
       <testResource>
         <directory>../NotmotorProperties/UTV/IW/properties/arkitektur</directory>
@@ -93,18 +119,32 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <configuration>
           <warSourceExcludes></warSourceExcludes>
           <archive>
             <manifest>
-              <addClasspath>true</addClasspath>
+              <addClasspath>false</addClasspath> <!-- var TRUE förut -->
             </manifest>
           </archive>
           <webXml>${project.basedir}/WebContent/WEB-INF/web.xml</webXml>
           <!--
      <warSourceDirectory>${project.basedir}/WebContent</warSourceDirectory> -->
           <addMavenDescriptor>false</addMavenDescriptor>
+          <webResources>
+            <resource>
+              <directory>${project.build.directory}</directory>
+              <includes>
+                <include>ark_log4j.properties</include>
+              </includes>
+              <targetPath>WEB-INF/classes</targetPath>
+            </resource>
+          </webResources>
         </configuration>
       </plugin>
       <plugin>
