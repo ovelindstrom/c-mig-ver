@@ -1,7 +1,2 @@
 Manifest-Version: 1.0
-Class-Path: NotmotorJar.jar 
- log4j-1.2.8.jar 
- utils-0.2.1.jar 
- ark-2.1.4.jar
-Ignore-Scanning-Archives: jsf-ibm.jar, icu4j_3_4_1.jar
 
