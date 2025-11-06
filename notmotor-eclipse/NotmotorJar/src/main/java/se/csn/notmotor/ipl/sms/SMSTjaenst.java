@@ -9,6 +9,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import org.apache.commons.httpclient.Credentials;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -16,7 +20,6 @@ import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.UsernamePasswordCredentials;
 import org.apache.commons.httpclient.auth.AuthScope;
 import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.xerces.parsers.DOMParser;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -181,9 +184,18 @@ public class SMSTjaenst {
             response.setReturStatus(997);
             return response;
         }
-        DOMParser parser = new DOMParser();
+        
+        Document doc;
         try {
-            parser.parse(new InputSource(new StringReader(xml)));
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setNamespaceAware(true);
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            doc = builder.parse(new InputSource(new StringReader(xml)));
+        } catch (ParserConfigurationException pce) {
+            String error = "Fångade ParserConfigurationException";
+            log.error(error, pce);
+            response.setReturStatus(997);
+            return response;
         } catch (SAXException saxe) {
             String error = "Fångade SAXException";
             log.error(error, saxe);
@@ -195,7 +207,6 @@ public class SMSTjaenst {
             response.setReturStatus(997);
             return response;
         }
-        Document doc = parser.getDocument();
         sResponseCode = doc.getElementsByTagName("responseCode").item(0).getChildNodes().item(0).getNodeValue();
         sResponseMessage = doc.getElementsByTagName("responseMessage").item(0).getChildNodes().item(0).getNodeValue();
         sTemporaryError = doc.getElementsByTagName("temporaryError").item(0).getChildNodes().item(0).getNodeValue();
