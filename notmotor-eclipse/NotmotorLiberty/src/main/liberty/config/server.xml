@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<server description="template server">
+<server description="Notmotor Liberty Server">
 
     <!-- Enable features -->
     <featureManager>
@@ -10,6 +9,7 @@
         <feature>jaxrs-2.0</feature>
         <feature>jsonp-1.0</feature>
         <feature>jsp-2.3</feature>
+        <feature>jsf-2.2</feature>
 
         <!-- EJB features -->
         <feature>ejbHome-3.2</feature>
@@ -18,71 +18,92 @@
         <feature>jndi-1.0</feature>
         <feature>mdb-3.2</feature>
 
+        <!-- SSL feature for keyStore support -->
+        <feature>ssl-1.0</feature>
+
         <!-- MicroProfile 1.4 (includes health, openapi, etc.) -->
         <feature>microProfile-1.4</feature>
         <!-- Included in mp1.4 -->
-        <!--<feature>servlet-3.1</feature>-->
+        <feature>servlet-3.1</feature>
 
         <!-- OpenTelemetry for modern tracing -->
         <feature>mpTelemetry-2.0</feature>
     </featureManager>
 
-    <!-- 
-            
-       
-        
-       
-       
-        
-        
-    -->
+    <!-- Variables declared in the current WASM but maybe not used -->
+    <variable name="SERVER_LOG_ROOT" value="${server.output.dir}/logs"/>
+    <variable name="WAS_SERVER_NAME" value="defaultServer"/>
+    <variable name="MQ_HOST" value="rabbitmq"/>
+    <variable name="MQ_PORT" value="5672"/>
+    <variable name="MQ_USER" value="admin"/>
+    <variable name="MQ_PASS" value="notadmin!"/>
 
-    <!-- This template enables security. To get the full use of all the capabilities, a keystore and user registry are required. -->
-
-    <!-- For the keystore, default keys are generated and stored in a keystore. To provide the keystore password, generate an 
-        encoded password using bin/securityUtility encode and add it below in the password attribute of the keyStore element. 
-        Then uncomment the keyStore element. -->
-    <keyStore id="defaultKeyStore" password="libertypwd"/>
-
-    <!-- SSL Configuration -->
-    <ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore"/>
-
-    <!-- Logging configuration to suppress OpenTracing warnings -->
+    <!-- Logging configuration -->
     <logging traceSpecification="com.ibm.ws.opentracing*=off:*=info" consoleLogLevel="INFO" messageFileName="messages.log" messageFormat="JSON"/>
+    <logging traceSpecification="com.ibm.ws.webcontainer.metadata.*=severe"/>
+    <logging messageSource="message" messageFormat="JSON"/>
+    <httpAccessLogging id="accessLogging" logFormat='%h %u %{t}W "%r" %s %b %D %{R}W %{traceparent}i %{tracestate}i'/>
 
-    <!--For a user registry configuration, configure your user registry. For example, configure a basic user registry using the
-        basicRegistry element. Specify your own user name below in the name attribute of the user element. For the password,
-        generate an encoded password using bin/securityUtility encode and add it in the password attribute of the user element.
-        Then uncomment the user element. -->
+    <!-- Security configuration -->
+    <keyStore id="defaultKeyStore" password="{xor}MzY9Oi0rJi8oOw=="/>
+    <ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" trustDefaultCerts="true"/>
     <basicRegistry id="basic" realm="BasicRealm">
-        <!--
-        <user name="yourUserName" password="" />
-        -->
+        <user name="openliberty" password="OpenLiberty1234!" />
     </basicRegistry>
 
-    <!-- Configure Access Logging -->
-    <httpAccessLogging id="accessLogging" logFormat='%h %u %{t}W "%r" %s %b %D %{R}W %{traceparent}i %{tracestate}i'
-        />
-<logging messageSource="message" messageFormat="JSON" />
-
-    <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
+    <!-- HTTP endpoint configuration -->
     <httpEndpoint id="defaultHttpEndpoint" accessLoggingRef="accessLogging" host="*" httpPort="9080" httpsPort="9443" />
 
+    <!-- Global Library Configuration -->
+    <library id="globalLib" apiTypeVisibility="+third-party">
+        <fileset dir="${server.config.dir}/lib/global" includes="*.jar"/>
+    </library>
+    <library id="DB2JCCLib">
+        <file name="${server.config.dir}/lib/global/drivers/db2jcc-db2jcc4.jar"/>
+    </library>
+    <library id="RabbitMQJMSLib">
+        <fileset dir="${server.config.dir}/lib/global" includes="rabbitmq-jms-*.jar"/>
+    </library>
 
+    <!-- Data sources and messaging resources -->
+    <dataSource id="DB2DataSource" jndiName="jdbc/NotmotorWebb_DS" type="javax.sql.DataSource">
+        <jdbcDriver libraryRef="DB2JCCLib"/>
+        <properties.db2.jcc user="${CSN_DB2_USER_NAME}" password="${CSN_DB2_PASSWORD}" databaseName="${CSN_DATABASE_NAME}" serverName="${CSN_DB2_SERVER_NAME}" portNumber="${CSN_DB2_PORT_NUMBER}" currentSchema="${CSN_DB2_SCHEMA}"/>
+    </dataSource>
 
-    <!-- Automatically expand WAR files and EAR files -->
+    <jmsConnectionFactory jndiName="jms/NotmotorMqConnFactory" connectionManagerRef="ConMgr1">
+        <properties.rabbitmq host="${MQ_HOST}" port="${MQ_PORT}" username="${MQ_USER}" password="${MQ_PASS}" virtualHost="/"/>
+    </jmsConnectionFactory>
+    <connectionManager id="ConMgr1" maxPoolSize="10"/>
+    
+    <jmsQueue id="MAAAUD" jndiName="queue/MAAAUD">
+        <properties.rabbitmq destinationName="MAAAUD"/>
+    </jmsQueue>
+    
+    <jmsActivationSpec id="activation/MeddelandeActivationSpec">
+        <properties.rabbitmq 
+            host="${MQ_HOST}" 
+            port="${MQ_PORT}" 
+            username="${MQ_USER}" 
+            password="${MQ_PASS}" 
+            virtualHost="/"
+            destinationName="MAAAUD" 
+            destinationType="javax.jms.Queue"/>
+    </jmsActivationSpec>
+
+    <!-- Application deployment configuration -->
     <applicationManager autoExpand="true"/>
-
-    <!-- Configures the application on a specified context root -->
-    <webApplication contextRoot="/base-template-shift" location="base-template-shift.war">
-        <!-- This exposes io.opentelemetry packages and instrumentation annotations -->
+    <webApplication id="notmotorlibertyproject" contextRoot="/notmotor" location="notmotorliberty.war" name="Notmotor Liberty Packed Project">
         <classloader apiTypeVisibility="+third-party">
             <privateLibrary>
                 <fileset dir="${server.config.dir}/lib" includes="*.jar"/>
             </privateLibrary>
         </classloader>
     </webApplication>
-
-    <!-- Default SSL configuration enables trust for default certificates from the Java runtime -->
-    <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
+    <enterpriseApplication id="notmotoriplear" location="notmotoriplear.ear" name="notmotoriplear">
+        <classloader commonLibraryRef="globalLib" apiTypeVisibility="+third-party"/>
+    </enterpriseApplication>
+    <enterpriseApplication id="notmotoradminear" location="notmotoradminear.ear" name="notmotoradminear">
+        <classloader commonLibraryRef="globalLib" apiTypeVisibility="+third-party"/>
+    </enterpriseApplication>
 </server>

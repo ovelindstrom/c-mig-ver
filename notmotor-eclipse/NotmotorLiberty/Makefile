@@ -70,16 +70,16 @@ compose-down: ## Stop Docker Compose stack
 	podman-compose down
 
 compose-logs: ## Show logs from compose stack
-	podman-compose logs -f
+	podman compose logs -f
 
 compose-dev-up: ## Start with Docker Compose (development with auto-build)
-	podman-compose -f docker-compose.dev.yml up -d --build
+	podman compose -f docker-compose.dev.yml up -d --build
 
 compose-dev-down: ## Stop development Docker Compose stack
-	podman-compose -f docker-compose.dev.yml down
+	podman compose -f docker-compose.dev.yml down
 
 compose-dev-logs: ## Show logs from development compose stack
-	podman-compose -f docker-compose.dev.yml logs -f
+	podman compose -f docker-compose.dev.yml logs -f
 
 # OTEL targets
 otel-start: network-create ## Start OTEL-LGTM stack
@@ -93,6 +93,20 @@ otel-stop: ## Stop OTEL-LGTM stack
 
 otel-logs: ## Show OTEL logs
 	podman logs -f otel
+
+# maildev targets
+maildev-start: network-create ## Start OTEL-LGTM stack
+	podman run -d --name maildev \
+		--network csn-dev-net \
+		-p 1080:1080 -p 1025:1025 \
+		maildev/maildev:latest
+
+maildev-stop: ## Stop maildev stack
+	podman rm -f maildev || true
+
+maildev-logs: ## Show maildev logs
+	podman logs -f maildev
+
 
 # Testing targets
 test-api: ## Test the REST API endpoints

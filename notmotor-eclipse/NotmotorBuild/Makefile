@@ -1,8 +1,8 @@
-# Makefile for analyzing Notmotor artifacts with WebSphere Application Migration Toolkit (WAMT)
+# Makefile for analyzing artifacts with WebSphere Application Migration Toolkit (WAMT)
 # Usage: make analyze-all or make analyze-{target}
 
 # Configuration
-WAMT_JAR = /Users/ovelindstrom/CSN/PoC_d/Notmotor/binaries/wamt/binaryAppScanner.jar
+WAMT_JAR = ./wamt/binaryAppScanner.jar
 BIN_DIR = bin
 REPORTS_DIR = reports
 
