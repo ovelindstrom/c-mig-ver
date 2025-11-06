@@ -140,28 +140,5 @@ public class SkickaMotorServlet extends HttpServlet implements Servlet { //, Ser
         if (runControl != null) {
             runControl.setRunning(false);
         }
-    }
-
-//    public void onServletAvailableForService(ServletEvent arg0) {
-//        log.debug(arg0.getServletClassName() + "availableForService()");
-//    }
-//    public void onServletFinishDestroy(ServletEvent arg0) {
-//        log.debug(arg0.getServletClassName() + "finishDestroy()");
-//    }
-//    public void onServletFinishInit(ServletEvent arg0) {
-//        log.debug(arg0.getServletClassName() + "finishInit()");
-//    }
-//    public void onServletStartDestroy(ServletEvent arg0) {
-//        log.debug(arg0.getServletClassName() + "startDestroy()");
-//    }
-//    public void onServletStartInit(ServletEvent arg0) {
-//        log.debug(arg0.getServletClassName() + "availableForService()");
-//    }
-//    public void onServletUnavailableForService(ServletEvent arg0) {
-//        log.debug(arg0.getServletClassName() + "unavailableForService()");
-//    }
-//    public void onServletUnloaded(ServletEvent arg0) {
-//        log.debug(arg0.getServletClassName() + "unloaded()");
-//    }
-    
+    }    
 }
