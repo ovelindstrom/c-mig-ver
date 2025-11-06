@@ -9,11 +9,11 @@ curl -X POST "http://localhost:9080/base-template-shift/api/hello/count" -H "Con
 # Alternative REST Client format (VS Code REST Client extension)
 
 ### GET Hello
-GET http://localhost:9080/base-template-shift/api/hello
+GET http://localhost:9080/notmotor/api/hello
 Accept: application/json
 
 ### POST Count
-POST http://localhost:9080/base-template-shift/api/hello/count
+POST http://localhost:9080/notmotor/api/hello/count
 Content-Type: text/plain
 
 OpenTelemetry is working great
