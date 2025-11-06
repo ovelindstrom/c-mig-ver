@@ -217,3 +217,20 @@ wsl --install
 # Sedan kan du använda make i WSL
 ```
 
+## MailDev
+
+MailDev är en fake-smtp-server som har ett litet trevligt UI att kika i.
+
+```sh
+(echo HELO csn.se; \
+echo MAIL FROM: \<noreply@csn.se\>; \
+echo RCPT TO: \<nobody@example.com\>; \
+echo DATA; \
+echo From: CSN \<noreply@csn.se\>; \
+echo To: nobody@example.com; \
+echo Subject: Another test mail; \
+echo ""; \
+echo More body, will the from be filled in\?; \
+echo .;\
+echo QUIT) | nc localhost 1025
+```
