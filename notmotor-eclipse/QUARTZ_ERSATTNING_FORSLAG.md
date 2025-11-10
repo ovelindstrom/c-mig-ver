@@ -51,7 +51,7 @@ SkickaMotorServlet (init)
 
 ### Steg 1: Skapa EJB Timer Service Bean
 
-**Ny fil:** `NotmotorIplEjb/src/main/java/se/csn/notmotor/ipl/timer/NotmotorSchedulerBean.java`
+**Ny fil:** `NotmotorIplEjb/src/main/java/se/csn/ipl/notmotor/timer/NotmotorSchedulerBean.java`
 
 ```java
 package se.csn.notmotor.ipl.timer;
@@ -144,6 +144,39 @@ public class NotmotorSchedulerBean {
     }
 }
 ```
+--- OBS! Inte 100% funktionellt ännu, men man kan använda templaten nedan ---
+Det finns ett recept skapat i projektet `ModerniseringsVerktyg`.
+
+Lägg till i rewrite.yml för EJB-projektet (Byt ut Notmotor mot din egen modul. `moduleName` med gemener.):
+
+```yml
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.modernize.quartz.NotmotorCreateSchedulerBean
+displayName: Create Notmotor Scheduler Bean
+description: Creates a EJB Scheduler Bean for Notmotor Processing
+recipeList:
+  - se.csn.modernize.quartz.CreateSchedulerBean:
+      moduleName: notmotor 
+```
+
+Lägg till i `pom:build.plugins.plugin.rewrite-maven-plugin`:
+```xml
+...
+<configuration>
+   <activeRecipes>
+        <recipe>sse.csn.modernize.quartz.NotmotorCreateSchedulerBean</recipe>
+    </activeRecipes>
+</configuration>
+ <dependencies>
+    <dependency>
+    <groupId>se.csn.modernize</groupId>
+    <artifactId>rewrite-recipes</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+```
+
 
 ### Steg 2: Modifiera Notmotor.java
 

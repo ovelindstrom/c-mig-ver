@@ -470,6 +470,13 @@
 								<style>org.openrewrite.java.GoogleJavaFormat</style>
 							</activeStyles>
 						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>se.csn.modernize</groupId>
+								<artifactId>rewrite-recipes</artifactId>
+								<version>0.1.0-SNAPSHOT</version>
+							</dependency>
+						</dependencies>
 					</plugin>
 				</plugins>
 			</build>

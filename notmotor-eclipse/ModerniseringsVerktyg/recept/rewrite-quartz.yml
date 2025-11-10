@@ -1,7 +1,16 @@
 type: specs.openrewrite.org/v1beta/recipe
 name: se.csn.recipes.modernize.QuartzRewrite
 displayName: Rewrite Quartz Scheduling to Use Liberty's Built-in Scheduler
-description: This recipe rewrites Java code that uses the Quartz scheduling library to instead use the built-in scheduling capabilities provided by the Liberty application server. It removes Quartz dependencies, replaces Quartz-specific classes and interfaces with Liberty equivalents, and provides templates for creating Liberty Timer Service wrappers.
+description: This recipe rewrites Java code that uses the Quartz scheduling library to instead use the built-in scheduling capabilities provided by the Liberty application server. It removes Quartz dependencies and removes Quartz-specific imports.
+recipeList:
+ - se.csn.recipes.modernize.QuartzUpdatePOMRewrite
+ - se.csn.recipes.modernize.QuartzRemoveImports
+ - se.csn.recipes.modernize.NotmotorCreateSchedulerBean
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.QuartzUpdatePOMRewrite
+displayName: Update POM to Remove Quartz Dependencies
+description: This recipe updates Maven POM files to remove dependencies on the Quartz scheduling library and adds necessary dependencies for using Liberty's built-in scheduling features.
 recipeList:
   # Remove Quartz dependencies from Maven POM files
   - org.openrewrite.java.dependencies.RemoveDependency:
@@ -20,134 +29,15 @@ recipeList:
     version: 3.2.2
     scope: provided
     onlyIfUsing: org.quartz.*
-  # Replace Quartz Job interface with Liberty Timer interface
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.QuartzRemoveImports
+displayName: Remove Quartz Imports from Java Code
+description: This recipe removes Quartz-specific imports from Java files. Manual code changes will be needed to replace Quartz scheduling logic with EJB Timer Service.
+recipeList:
+  # Remove Quartz Job interface implementation
   - org.openrewrite.java.ChangeType:
-    oldFullyQualifiedTypeName: org.quartz.Job
-    newFullyQualifiedTypeName: java.lang.Runnable
-  - org.openrewrite.java.ChangeType:
-    oldFullyQualifiedTypeName: org.quartz.JobExecutionContext
-    newFullyQualifiedTypeName: javax.ejb.TimerService
-  - org.openrewrite.java.ChangeType:
-    oldFullyQualifiedTypeName: org.quartz.JobExecutionException
-    newFullyQualifiedTypeName: java.lang.RuntimeException
-  # Replace Quartz Scheduler with Liberty Timer Service
-  - org.openrewrite.java.ChangeType:
-    oldFullyQualifiedTypeName: org.quartz.Scheduler
-    newFullyQualifiedTypeName: javax.ejb.TimerService
-  - org.openrewrite.java.ChangeType:
-    oldFullyQualifiedTypeName: org.quartz.SchedulerFactory
-    newFullyQualifiedTypeName: javax.ejb.TimerService
+      oldFullyQualifiedTypeName: org.quartz.Job
+      newFullyQualifiedTypeName: java.lang.Object
   # Remove Quartz imports
   - org.openrewrite.java.RemoveUnusedImports
-
-  # Template recipe for creating Liberty Timer Service wrapper
-  - org.openrewrite.java.CreateJavaClass:
-      packageName: "#{packagePath}"
-      className: LibertyTimerService
-      source: |
-        package #{packagePath};
-
-        import javax.annotation.Resource;
-        import javax.ejb.*;
-        import java.util.concurrent.TimeUnit;
-        import java.util.logging.Logger;
-
-        /**
-        * Liberty Timer Service wrapper for migrated Quartz jobs.
-        * Replace Quartz scheduling with Liberty's built-in timer service.
-        */
-        @Stateless
-        public class LibertyTimerService {
-            
-            private static final Logger logger = Logger.getLogger(LibertyTimerService.class.getName());
-            
-            @Resource
-            private TimerService timerService;
-            
-            /**
-            * Schedule a job to run at fixed intervals.
-            * @param job The job to execute (Runnable)
-            * @param intervalSeconds Interval in seconds
-            * @param initialDelaySeconds Initial delay before first execution
-            */
-            public void scheduleAtFixedRate(Runnable job, long intervalSeconds, long initialDelaySeconds) {
-                ScheduleExpression schedule = new ScheduleExpression();
-                schedule.second("*/" + intervalSeconds);
-                
-                TimerConfig config = new TimerConfig();
-                config.setInfo("ScheduledJob:" + job.getClass().getSimpleName());
-                config.setPersistent(false);
-                
-                timerService.createCalendarTimer(schedule, config);
-                logger.info("Scheduled job: " + job.getClass().getSimpleName() + " every " + intervalSeconds + " seconds");
-            }
-            
-          /**
-           * Schedule a job using cron-like expression.
-           * @param job The job to execute
-           * @param cronExpression Cron expression (simplified for Liberty)
-           */
-          public void scheduleCron(Runnable job, String hour, String minute, String second) {
-              ScheduleExpression schedule = new ScheduleExpression();
-              schedule.hour(hour).minute(minute).second(second);
-              
-              TimerConfig config = new TimerConfig();
-              config.setInfo("CronJob:" + job.getClass().getSimpleName());
-              config.setPersistent(false);
-              
-              timerService.createCalendarTimer(schedule, config);
-              logger.info("Scheduled cron job: " + job.getClass().getSimpleName());
-          }
-          
-          @Timeout
-          public void handleTimeout(Timer timer) {
-              String jobInfo = (String) timer.getInfo();
-              logger.info("Executing timer: " + jobInfo);
-              // Job execution will be handled by the scheduled methods
-          }
-        }
-
-  # Template for converting Quartz Job to Liberty compatible class
-  - org.openrewrite.java.CreateJavaClass:
-    packageName: "#{packagePath}"
-    className: LibertyJobAdapter
-    source: |
-      package #{packagePath};
-
-      import javax.ejb.Schedule;
-      import javax.ejb.Stateless;
-      import java.util.logging.Logger;
-
-      /**
-       * Template for converting Quartz Job to Liberty Timer.
-       * Replace this template with your actual job logic.
-       */
-      @Stateless
-      public class LibertyJobAdapter {
-          
-          private static final Logger logger = Logger.getLogger(LibertyJobAdapter.class.getName());
-          
-          /**
-           * Example: Run every 30 seconds
-           * Modify the @Schedule annotation according to your needs
-           */
-          @Schedule(second = "*/30", minute = "*", hour = "*", persistent = false)
-          public void executeScheduledTask() {
-              try {
-                  logger.info("Executing scheduled task...");
-                  // TODO: Replace with your actual job logic from Quartz Job.execute()
-                  performJobLogic();
-              } catch (Exception e) {
-                  logger.severe("Error executing scheduled task: " + e.getMessage());
-                  // Handle exceptions appropriately
-              }
-          }
-          
-          /**
-           * Place your original Quartz job logic here.
-           * This replaces the execute(JobExecutionContext context) method.
-           */
-          private void performJobLogic() {
-              // TODO: Migrate your Quartz Job.execute() logic here
-          }
-      }
