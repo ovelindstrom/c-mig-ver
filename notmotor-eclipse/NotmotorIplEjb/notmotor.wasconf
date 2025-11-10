@@ -1,0 +1,41 @@
+# Configscript för notmotorn
+# csn7821 2007-03-08
+[LISTENERPORT_1]
+name=NotmotorLP
+qcfjndiname=jms/NotmotorMqConnFactory
+jndiname=queue/NOTMOTOR
+maxretries=0
+description=Listenerport för notmotorn
+
+
+[QUEUECONNECTIONFACTORY_1]
+name=NotmotorMqConnFactory
+jndiname=jms/NotmotorMqConnFactory
+host=csn24int
+port=1415
+managername=MQS_CSN24INT_MQIU
+channel=NOTMOTOR_CSN24INT
+msgretention=true
+xa=true
+transporttype=CLIENT
+description=Connection Factory för Notmotorn
+connectionpoolmaxconns=10
+connectionpoolminconns=1
+sessionpoolmaxconns=10
+sessionpoolminconns=1
+
+[MQQUEUE_1]
+name=NOTMOTOR
+jndiname=queue/NOTMOTOR
+host=csn24int
+port=1415
+managername=MQS_CSN24INT_MQIU
+basequeue=LQ.NOTMOTOR
+targetclient=MQ
+description=Kö för meddelanden som ska skickas av notmotorn
+
+[THREADPOOLSETTINGS_1]
+maxthreads=50
+minthreads=10
+allowextrathreads=false
+timeout=3500

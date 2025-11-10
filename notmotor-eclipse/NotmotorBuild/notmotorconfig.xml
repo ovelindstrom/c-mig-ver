@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="http://csn24int/maven/installstyle/installstyle-1_1.xsl"?>
+
+<config name="config">
+	
+	<variables>
+		<variable name="MAILUSER" description="Mailanv�ndare/kontohavare f�r det SMTP-konto som ska skicka mail">
+			<environment name="utv,test" value="emaal-skv"/>
+		</variable>
+		<variable name="MAILPASSWORD" description="L�sen f�r det SMTP-konto som ska skicka mail">
+			<environment name="utv,test" value="emaal-skv"/>
+		</variable>
+		<variable name="MAILHOST" description="Hostname eller ip-adress till den SMTP-server som ska skicka mail">
+			<environment name="utv,test" value="relay.wm.net"/>
+		</variable>
+		<variable name="MAILPORT" description="Port p� den SMTP-server som ska skicka mail">
+			<environment name="utv,test" value="25"/>
+		</variable>
+		<variable name="MAILTIMEOUT" description="Antal millisekunder som notmotorn v�ntar p� uppkoppling mot mailservern">
+			<environment name="utv,test" value="30000"/>
+		</variable>
+		<variable name="SMSUSER" description="Mailanv�ndare/kontohavare f�r SMS-kontot">
+			<environment name="utv,test,prod" value="CSN-user"/>
+		</variable>
+		<variable name="SMSPASSWORD" description="L�sen f�r SMS-kontot">
+			<environment name="utv,test" value=""/>
+		</variable>
+		<variable name="SMSENDPOINT" description="Endpoint till den server som ska skicka SMS">
+			<environment name="utv,test,prod" value="https://ssc.telia.se/smsplus/sendsms"/>
+		</variable>
+		<variable name="HOSTADRESS" description="Fullt kvalificerat DNS-namn + port till den server som k�r applikationen">
+			<environment name="Lokal utvecklare" value="localhost:16080"/>
+			<environment name="inte1" value="csnipli01.csnnet.int:22200"/> 
+			<environment name="Gr�n test" value="csnlini02.csnnet.int:22000"/>
+		</variable>
+		<variable name="DBNAMN" description="Databasnamn">
+			<environment name="Lokal utvecklare,utv" value="WDBUTV"/>
+			<environment name="Gr�n test" value="WDBGRON"/>
+		</variable>
+		<variable name="DBSERVER" description="Databasserver">
+			<environment name="Lokal utvecklare,utv,test" value="csndbu01"/>
+		</variable>
+		<variable name="DBPORT" description="Serverport f�r databasen">
+			<environment name="Lokal utvecklare,utv,test" value="50000"/>
+		</variable>
+		<variable name="NOTMOTOR_DBUSER" description="DB-anv�ndare f�r Notmotor">
+			<environment name="Lokal utvecklare,utv,test" value="notmotor"/>
+		</variable>
+		<variable name="NOTMOTOR_DBPASSWORD" description="DB-l�senord f�r Notmotor">
+			<environment name="Lokal utvecklare,utv,test" value="notmotor"/>
+		</variable>
+		<variable name="NOTMOTOR_DS_JNDINAMN" description="JNDI-namn f�r notmotorns datasource">
+			<environment name="utv,test,prod" value="jdbc/NotmotorDS"/>
+		</variable>
+		<variable name="MQ_FROM" description="Avsandaradress for meddelanden via MQ">
+			<environment name="utv,test" value="noreply.test@csn.se"/>
+			<environment name="prod" value="noreply@csn.se"/>
+		</variable>
+		<variable name="MQ_NAMN" description="Avsandarnamn for meddelanden via MQ">
+			<environment name="utv,test,prod" value="CSN noreply"/>
+		</variable>
+		<variable name="MQ_APP" description="Applikation">
+			<environment name="utv,test,prod" value="MQ"/>
+		</variable>
+	</variables>
+
+	<project name="Notmotor"/>
+	
+	<!-- IPL -->
+		<application name="NotmotorIplWebb.ear" environment="IPL">
+			<description>
+				Skickar mail, SMS mm. Mellanlagrar i databas, tillhandah�ller schemal�ggning, failover etc.
+			</description>
+			
+			<task>Anv�nder SMTP -> m�ste ha �ppnad brandv�gg f�r SMTP</task>
+			<propertyfile name="notmotor-ipl.properties">
+				<property name="mail.user" value="$MAILUSER" description="Mailserverinst�llningar"/>
+				<property name="mail.password" value="$MAILPASSWORD"/>
+				<property name="mail.host" value="$MAILHOST"/>
+				<property name="mail.port" value="$MAILPORT"/>
+				<property name="mail.timeout" value="$MAILTIMEOUT"/>
+        		<property name="sms.user" value="$SMSUSER" description="SMS-tjansteinstallningar"/>
+				<property name="sms.password" value="$SMSPASSWORD"/>
+				<property name="sms.endpoint" value="$SMSENDPOINT"/>
+				<property name="param.refreshtid" value="120000" description="Hur m�nga millisekunder det ska �ntas mellan varje uppdatering av parametrar"/>
+				<property name="notmotor.ds.jndinamn" value="$NOTMOTOR_DS_JNDINAMN" description="JNDI-namn f�r notmotorns datasource"/>
+				<property name="notmotor.url" value="http://$HOSTADRESS/NotmotorIPL/SkickaMotorServlet" description="URL till notmotorinstansen"/>
+				<property name="notmotor.mq.mail.from" value="$MQ_FROM" description="Avsnitt for lasning av MQ"/>
+				<property name="notmotor.mq.mail.namn" value="$MQ_NAMN" />
+				<property name="notmotor.mq.mail.applikation" value="$MQ_APP" />
+			</propertyfile>
+			<propertyfile name="ark.properties">
+				<property name="dao.ws.bas.notmotor" value="http://$HOSTADRESS/NotmotorIPL/services" description="URL till notmotor web service"/>
+			</propertyfile>
+	
+			<logging commentHeader="Notmotor">
+				<task>L�gg upp appender i ark_log4j.properties</task>
+				<logger name="notmotor" level="WARN" classroot="se.csn.notmotor" additivity="false"/>
+				<logger name="sqllog" level="WARN" classroot="se.csn.notmotor.ipl.db.QueryListenerImpl" additivity="false"/>
+				<appender name="notmotor" class="org.apache.log4j.RollingFileAppender" layoutPattern="%d %c %-5p - %m%n">
+					<property name="File" value="${SERVER_LOG_ROOT}/log4jnotmotor.log"/>
+					<property name="MaxFileSize" value="500KB"/>
+					<property name="MaxBackupIndex" value="05"/>
+				</appender>
+				<appender name="sqllog" class="org.apache.log4j.RollingFileAppender" layoutPattern="%d %c %-5p - %m%n">
+					<property name="File" value="${SERVER_LOG_ROOT}/log4jnotmotorSql.log"/>
+					<property name="MaxFileSize" value="1000KB"/>
+					<property name="MaxBackupIndex" value="10"/>
+				</appender>
+			</logging>
+	
+			<sharedlib name="CellAppNotmotor">
+				<library name="/properties/notmotor"/>
+				<library name="/properties/arkitektur"/>
+			</sharedlib>
+			
+			<database>
+				<task>Installera DB2-tabeller enligt specifikation i scriptet tables.ddl vid ren installation.</task>
+				<task>K�r tablediff.ddl vid uppdatering av notmotorn.</task>
+				<tables schema="NOTMOTOR">
+					<table name="MEDDELANDE"/>
+					<table name="AVSANDARE"/>
+					<table name="MOTTAGARE"/>
+					<table name="BILAGA"/>
+					<table name="HANDELSE"/>
+					<table name="STATUS"/>
+					<table name="KORSCHEMA"/>
+					<table name="PARAMETER"/>
+					<table name="SEKVENS"/>
+					<table name="SERVER"/>
+				</tables>
+				<datasources>
+					<datasource name="NotmotorDS" db="$DBNAMN" jndiname="$NOTMOTOR_DS_JNDINAMN" host="$DBSERVER" port="$DBPORT" user="$NOTMOTOR_DBUSER" password="$NOTMOTOR_DBPASSWORD"/>
+				</datasources>
+			</database>
+			
+		</application>
+	
+<!--  IW  -->	
+	<application name="NotmotorAdmin.ear" environment="InternWebb">
+		<description>
+			Anv�ndar- och administrationsgr�nssnitt f�r Notmotorn.
+		</description>
+	
+		<propertyfile name="notmotor-iw.properties">
+			<property name="notmotor.ds.jndinamn" value="$NOTMOTOR_DS_JNDINAMN" description="JNDI-namn f�r datasourcen"/>							
+		</propertyfile>
+		<logging commentHeader="Notmotor">
+			<task>L�gg upp appender i ark_log4j.properties</task>
+			<logger name="notmotor" level="WARN" classroot="se.csn.notmotor" additivity="false"/>
+			<logger name="sqllog" level="WARN" classroot="se.csn.notmotor.ipl.db.QueryListenerImpl" additivity="false"/>
+			<appender name="notmotor" class="org.apache.log4j.RollingFileAppender" layoutPattern="%d %c %-5p - %m%n">
+				<property name="File" value="${SERVER_LOG_ROOT}/log4jnotmotor.log"/>
+				<property name="MaxFileSize" value="500KB"/>
+				<property name="MaxBackupIndex" value="05"/>
+			</appender>
+			<appender name="sqllog" class="org.apache.log4j.RollingFileAppender" layoutPattern="%d %c %-5p - %m%n">
+				<property name="File" value="${SERVER_LOG_ROOT}/log4jnotmotorSql.log"/>
+				<property name="MaxFileSize" value="1000KB"/>
+				<property name="MaxBackupIndex" value="10"/>
+			</appender>
+		</logging>
+
+		<sharedlib name="CellAppNotmotor">
+			<library name="/properties/notmotor"/>
+			<library name="/properties/arkitektur"/>
+		</sharedlib>
+		
+	</application>
+	
+</config>

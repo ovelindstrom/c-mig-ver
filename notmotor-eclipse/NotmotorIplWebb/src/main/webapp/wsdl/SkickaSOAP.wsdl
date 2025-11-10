@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webservice.csn.se/bas/notmotor/skicka" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Skicka" targetNamespace="http://webservice.csn.se/bas/notmotor/skicka">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    	<xsd:import namespace="http://webservice.csn.se/bas/notmotor/skicka" schemaLocation="SkickaSchema.xsd">
+    	</xsd:import>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="skickaMeddelandeRequest">
+    <wsdl:part element="tns:skickaMeddelandeRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="skickaMeddelandeResponse">
+    <wsdl:part element="tns:skickaMeddelandeResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="hamtaMeddelandeRequest">
+  	<wsdl:part element="tns:hamtaMeddelandeRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="hamtaMeddelandeResponse">
+  	<wsdl:part element="tns:hamtaMeddelandeResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:message name="taBortMeddelandeRequest">
+  	<wsdl:part element="tns:taBortMeddelandeRequest" name="parameters"/>
+  </wsdl:message>
+  <wsdl:message name="taBortMeddelandeResponse">
+  	<wsdl:part element="tns:taBortMeddelandeResponse" name="response"/>
+  </wsdl:message>
+  <wsdl:portType name="Skicka">
+    <wsdl:operation name="skickaMeddelande">
+      <wsdl:input message="tns:skickaMeddelandeRequest"/>
+      <wsdl:output message="tns:skickaMeddelandeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="hamtaMeddelande">
+    	<wsdl:input message="tns:hamtaMeddelandeRequest"/>
+    	<wsdl:output message="tns:hamtaMeddelandeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="taBortMeddelande">
+    	<wsdl:input message="tns:taBortMeddelandeRequest"/>
+    	<wsdl:output message="tns:taBortMeddelandeResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SkickaSOAP" type="tns:Skicka">
+
+  	<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  	<wsdl:operation name="skickaMeddelande">
+
+  		<soap:operation soapAction="http://webservice.csn.se/bas/notmotor/skicka/skickaMeddelande"/>
+  		<wsdl:input>
+
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="hamtaMeddelande">
+  		<soap:operation soapAction="http://webservice.csn.se/bas/notmotor/skicka/hamtaMeddelande"/>
+  		<wsdl:input>
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  	<wsdl:operation name="taBortMeddelande">
+  		<soap:operation soapAction="http://webservice.csn.se/bas/notmotor/skicka/taBortMeddelande"/>
+  		<wsdl:input>
+  			<soap:body use="literal"/>
+  		</wsdl:input>
+  		<wsdl:output>
+  			<soap:body use="literal"/>
+  		</wsdl:output>
+  	</wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Skicka">
+    <wsdl:port binding="tns:SkickaSOAP" name="SkickaSOAP">
+      <soap:address location="http://localhost:16080/NotmotorIPL/services/SkickaSOAP"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

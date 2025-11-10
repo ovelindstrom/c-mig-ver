@@ -1,0 +1,131 @@
+services:
+  otel:
+    image: grafana/otel-lgtm:latest
+    container_name: otel-dev
+    networks:
+      - csn-dev-net
+    ports:
+      - "3000:3000"   # Grafana
+      - "4317:4317"   # OpenTelemetry GRPC
+      - "4318:4318"   # OpenTelemetry HTTP
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+
+  notmotor-liberty:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: notmotor-liberty:dev
+    container_name: notmotor-liberty-dev
+    networks:
+      - csn-dev-net
+    ports:
+      - "9080:9080"
+    environment:
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel:4317
+      - OTEL_SERVICE_NAME=notmotor-liberty
+      - OTEL_RESOURCE_ATTRIBUTES=service.version=dev,deployment.environment=development
+      # DB2 connection environment variables
+      - CSN_DB2_USER_NAME=db2inst1
+      - CSN_DB2_PASSWORD=db2inst1
+      - CSN_DB2_DATABASE_NAME=notmotor
+      - CSN_DB2_SERVER_NAME=db2
+      - CSN_DB2_PORT_NUMBER=50000
+      - CSN_DB2_SCHEMA=DB2INST1
+      - MQ_HOST=rabbitmq
+      - MQ_PORT=5672
+      - MQ_USER=guest
+      - MQ_PASS=guest
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
+    depends_on:
+      - otel
+      - maildev
+      - rabbitmq
+    volumes:
+      # Mount source for development (optional - for live reload in dev mode)
+      - ./src:/opt/ol/wlp/usr/servers/defaultServer/src:ro
+      - ./target:/opt/ol/wlp/usr/servers/defaultServer/target
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost::9080/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  maildev:
+    image: maildev/maildev:latest
+    container_name: maildev-dev
+    networks:
+      - csn-dev-net
+    ports:
+      - "1080:1080"   # Web UI
+      - "1025:1025"   # SMTP
+    environment:
+      - TZ=Europe/Stockholm
+    restart: unless-stopped
+
+  db2:
+    platform: linux/amd64
+    image: icr.io/db2_community/db2:latest
+    container_name: db2-dev
+    networks:
+      - csn-dev-net
+    ports:
+      - "50000:50000"   # DB2 port
+    privileged: true    # Unfortunately required for DB2 container
+    environment:
+      - LICENSE=accept
+      - DB2INSTANCE=db2inst1
+      - DB2INST1_PASSWORD=db2inst1
+      - DBNAME=notmotor
+      - ARCHIVE_LOGS=false
+      - AUTOCONFIG=false
+    volumes:
+      # Persist database data
+      - db2-data:/database
+      # Copy initialisation scripts
+      - ./database/init.sh:/var/custom/init.sh:ro
+      - ./database/tables.ddl:/var/custom/tables.ddl:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "su", "-", "db2inst1", "-c", "db2 connect to notmotor"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s
+
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: rabbitmq-dev
+    hostname: dev-rabbitmq
+    networks:
+      - csn-dev-net
+    ports:
+      - "5672:5672"   # AMQP
+      - "15672:15672" # Management UI
+    environment:
+      - RABBITMQ_CONFIG_FILE=/etc/rabbitmq/rabbitmq
+    restart: unless-stopped
+    volumes:
+      # 1. Mount the definitions.json file into the container
+      - ./rabbitmq/definition.json:/etc/rabbitmq/definitions.json:ro
+      # 2. Mount a custom config file that tells RabbitMQ to load the definitions
+      #    We assume the config file is named rabbitmq.conf and is next to the definitions file.
+      - ./rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+
+networks:
+  csn-dev-net:
+    external: true
+
+volumes:
+  db2-data:
+    driver: local

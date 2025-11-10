@@ -1,0 +1,33 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.AllRecipes
+displayName: All Modernization Recipes
+description: Applies all modernization recipes in this file.
+recipeList:
+  - se.csn.recipes.modernize.FixByteArrayDataSourceImport
+  - org.openrewrite.staticanalysis.maven.MavenJavadocNonAsciiRecipe
+  - org.openrewrite.staticanalysis.RemoveEmptyJavaDocParameters
+  - org.openrewrite.java.RemoveUnusedImports
+  - org.openrewrite.java.format.AutoFormat
+  - org.openrewrite.java.migrate.Java8toJava11
+  - org.openrewrite.maven.BestPractices
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.FixByteArrayDataSourceImport
+displayName: Change ByteArrayDataSource import from apache.soap to javax.mail
+description: Changes import from org.apache.soap.util.mime.ByteArrayDataSource to javax.mail.util.ByteArrayDataSource
+recipeList:
+  - org.openrewrite.java.ChangeType:
+      oldFullyQualifiedTypeName: org.apache.soap.util.mime.ByteArrayDataSource
+      newFullyQualifiedTypeName: javax.mail.util.ByteArrayDataSource
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.java.CommonsLang3Dependency
+displayName: Update to Commons Lang 3 dependency
+description: Updates the commons-lang:commons-lang to org.apache.commons:commons-lang3
+recipeList:
+  - org.openrewrite.maven.ChangeDependencyGroupIdAndArtifactId:
+      oldGroupId: commons-lang
+      oldArtifactId: commons-lang
+      newGroupId: org.apache.commons
+      newArtifactId: commons-lang3

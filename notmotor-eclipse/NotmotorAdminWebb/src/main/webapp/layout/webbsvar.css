@@ -1,0 +1,928 @@
+/*\*//*/
+@import "screen_ie_mac.css";
+/**/
+html {
+	margin:0;
+	padding:0;
+	font:83% Verdana,Arial,Helvetica,sans-serif;
+	background:#fff;
+	color:#000;
+}
+
+body {
+
+	margin:0 auto;
+	padding:0;
+}
+
+
+
+a:link, a:visited {
+	background-color:transparent;
+	color:#039;
+}
+
+a:visited {
+	color:#039;
+}
+
+
+a:focus {
+	text-decoration:underline;
+}
+
+a:active {
+	text-decoration:underline;
+}
+
+
+a img {
+	border:none;
+}
+
+address {
+	font-style:normal;
+}
+
+
+form {
+	margin:0;
+}
+
+fieldset ul {
+	margin-top:0em;
+	margin-left:1.5em;
+	margin-bottom:0.5em;
+	padding-top:0;
+	padding-left:0;	
+}
+
+h1, h2 {
+	margin-top:0;
+	margin-bottom:1em;
+	font-family:Arial,Helvetica,sans-serif;
+}
+
+h3, h4 {
+	margin-top:1.5em;
+	margin-bottom:0;
+}
+
+hr {
+	clear:both;
+	height:0;
+	border:1px solid #dedede;
+	border-width:1px 0 0;
+}
+
+
+p {
+	margin-top:0;
+	margin-bottom:1em;
+}
+
+p a:link, p a:visited {
+	font-weight:normal;
+	text-decoration:underline;
+}
+
+p a:hover {
+
+}
+
+q {
+	quotes:"\201D" "\201D" "\00BB" "\00BB";
+}
+
+
+table {
+	clear:both;
+	width:100%;
+	margin-bottom:1em;
+	border-collapse:collapse;
+}
+
+td, th {
+	padding:0.1em 0.1em 0.1em 0;
+	text-align:left;
+	vertical-align:top;
+	
+}
+
+tr {
+	vertical-align:top;
+}
+
+
+table {
+	border:0.1em solid #999;
+	width:100%;
+	margin-bottom:1.5em;
+	border-collapse:collapse;
+	margin-top:0.6em;
+	font-size:0.85em;
+}
+
+td, th {
+	border:0.1em solid #999;
+	padding:0.4em;
+	text-align:left;
+	vertical-align:top;
+}
+
+tr {
+	vertical-align:top;
+}
+
+th {
+	background:#fff;
+	text-align:left;
+}
+
+
+fieldset div {
+	clear:both;
+	margin-bottom:0.2em;
+}
+
+fieldset p {
+
+	margin-left:0.2em;
+
+}
+
+fieldset label {
+	float:left;
+	width:10em;
+}
+
+legend {
+	margin-bottom:0.3em;
+	padding-top:0.2em;
+	font-weight:bold;
+	font-size:1.15em;
+	color:#000;
+}
+
+
+fieldset {
+	border: 1px solid #ccc;
+	padding:1em;
+	padding-top:0em;
+	font-size:0.85em;
+	margin-bottom:1.5em;
+}
+
+/*IDENTITETER*/
+
+#sidansBredd {
+	position:relative;
+	float:left;
+	width:57em;
+	padding:0;
+	margin:0;
+}
+.sidansBreddForSok {
+	position:relative;
+	float:left;
+	padding:0;
+	margin:0;
+}
+
+
+
+
+
+input[type="submit"] {
+/*
+	background:#039;
+	color:#fff;
+	border-width:2px;
+	border-style:solid;
+	border-color:#69c #036 #036 #69c;
+*/
+}
+
+
+/* Sidhuvudet */
+#sidhuvud {
+	position:relative;
+	float:left;
+	width:100%;
+	background:#060;
+	margin:0em;
+	margin-top:0em;	
+	padding:0em;
+	height:38px;
+	background:transparent url(/NotmotorAdminWebb/bilder/bakgrundSidhuvud.gif) repeat;		
+	clear:both;
+	border-bottom:2px solid #060;
+}
+
+#sidhuvudForSok{
+	position:relative;
+	width:100%;
+	background:#060;
+	margin:0em;
+	margin-top:0em;	
+	padding:0em;
+	height:38px;
+	background:transparent url(/NotmotorAdminWebb/bilder/bakgrundSidhuvud.gif) repeat;		
+	clear:both;
+	border-bottom:2px solid #060;
+}
+
+.sidhuvudForSokH1Rubrik{
+    padding-top: 7px;
+    padding-left: 13px;
+}
+	
+#sidhuvud .formatering {
+	padding:7px 0em 0em 1em; 
+}	
+
+#sidhuvud .formatering h1 {
+	margin-bottom: 0em;
+	font-size: 20pt;
+}
+
+/* Yttre behållare */
+#yttre-skal {
+	margin:1.5em 12em 1.5em 13em;
+	border-left:1px solid #ccc;
+	min-height:30.6em;
+	width: 32em;
+}
+
+#enSpalt #yttre-skal {
+	margin:1.5em 0em 1.5em 13em;
+	border-left:1px solid #ccc;
+}
+
+/* Inre behållare */
+#innehallsskal {
+	float:right;
+	width:99%;
+}
+
+#innehallsskal h2, #innehallsskal h3, #innehallsskal h4 {
+	background:transparent;
+	color:#000;
+}
+
+/* Sidans huvudinnehåll */
+#innehall {
+	float:left;
+	width:99%;
+	margin-bottom:1em;
+	line-height:1.5;
+}
+
+#innehall h1 {
+		margin-top:-0.2em;
+		margin-bottom:0.4em;
+		font-size:1.9em;
+		font-weight:normal;
+		font-family:arial;
+		font-weight:normal;
+}
+
+#innehall h2 {
+	position:absolute;
+	left:-1000em;
+	width:10em;
+	font-size:1.5em;
+	font-weight:normal;
+}
+
+#innehall h2.synlig {
+	position:static;
+}
+
+#innehall h3 {
+	font-size:1em;
+}
+
+#innehall .tvaspalt h3 {
+	border-bottom:1px solid #000;
+}
+
+#innehall h4 {
+	font-size:0.9em;
+}
+
+#enSpalt #innehall, #utanMenyer #innehall {
+	width:42.6em;
+}
+
+#spaltUtanMenyer .formatering {
+		padding:2em 2em 1.5em 2.5em;
+	}
+
+#spalt1 {
+	margin:0 auto;
+	font-size:1em;
+}
+
+#spalt1 .formatering {
+	padding:0em 1em 0 1em;
+}
+
+#enSpalt #spalt1 .formatering {
+	padding:0em 0em 0 0.9em;
+}
+
+/* Sidorutan */
+#spalt2 {
+	float:right;
+	position:relative; /* Buggfix för Safari 1.3+ */
+	width:12em;
+	margin-right:-12em;
+	line-height:1.3em;
+}
+
+#spalt2 h2 {
+	position:absolute;
+	left:-1000em;
+	width:20em;
+}
+
+#spalt2 h3 {
+	margin:0 0 0.75em;
+	font-size:1em;
+}
+
+#spalt2 ul {
+	margin:0 0 2em;
+	padding:0;
+}
+
+#spalt2 li {
+	margin:0 0 0.7em 1.5em;
+	padding:0;
+	font-size:80%;
+}
+
+
+#spalt2 li li {
+	font-size:1em;
+}
+
+#spalt2 p {
+	font-size:0.85em;
+}
+
+#spalt2 .formatering {
+		padding:3.3em 0em 0em 0em; 
+	}
+	
+
+
+
+/* Undermenyn */
+#undermeny {
+	float:left;
+	position:relative; /* Buggfix för Safari 1.3+ */
+	width:13em;
+	margin-left:-13em;
+}
+
+#undermeny ul {
+	margin:0em 0em 3em 0.5em;
+	padding:0;
+	/*border-bottom:1px solid #dedede;*/
+}
+
+#undermeny ul#sista-listan {
+	margin-bottom:0;
+}
+
+#undermeny li {
+	margin:0 1.5em 0.7em 1.6em;
+	/*border:1px solid #dedede;*/
+	border-width:1px 0 0;
+	list-style:outside url(/NotmotorAdminWebb/bilder/undermenyBulletx.gif);
+}
+
+#undermeny li#aktiv {
+	list-style:outside url(/NotmotorAdminWebb/bilder/undermenyBulleta.gif);
+}
+
+#undermeny a {
+	color:#000;
+	font-style:normal;
+	font-size:85%;
+	font-weight:normal;
+	text-decoration:none;
+}
+
+#undermeny .aktiv {
+	color:#000;
+	font-weight:bold;
+	
+}
+
+#undermeny h3 {
+		margin-top:0.5em;
+		margin-bottom:1.4em;
+		font-size:1em;
+		font-weight:bold;
+		margin-left:0.8em;
+}
+
+#undermeny a:hover {
+	text-decoration:underline;
+}
+
+#undermeny a:focus {
+	text-decoration:underline;
+}
+
+
+/* huvudmeny */
+#huvudmeny {
+	clear:both;
+	position:relative;
+	margin-left:0em;
+	margin-right:0em;
+	background:#e9e9e9;
+	color:#fff;
+	width:100%;
+	border-bottom:1px solid #999;
+	height:1.8em;
+}
+
+#huvudmeny p {
+	padding:0;
+	margin:0;
+}
+
+#huvudmeny .formatering {
+	padding-left:0em;
+	padding-top:0.2em;
+	padding-bottom:0.2em;
+}
+
+#huvudmeny li {
+	float:left;
+	margin-right:1.5em;
+	list-style:none;
+}
+
+#huvudmeny ul {
+	margin-top:0em;
+	margin-left:-2em;
+	margin-bottom:0;
+	width:50em;
+}
+
+#huvudmeny a {
+	margin-top:0.2em;
+	margin-right:0.2em;
+	background:transparent;
+	color:#000;
+	font-size:85%;
+	text-decoration:none;
+
+}
+
+#huvudmeny #hem {
+	margin-left:1.15em;
+}
+
+#huvudmeny a:hover {
+	color:#000;
+	text-decoration:underline;
+}
+
+#huvudmeny a:focus {
+	text-decoration:underline;
+}
+
+#huvudmeny a:active {
+	text-decoration:underline;
+}
+
+
+
+/* Sidfoten */
+#sidfot {
+	clear:both;
+	position:relative;
+	float:left;
+	margin-top:0em;
+	padding-top:.1em;
+	border-top:1px solid #ccc;
+	width:100%;
+	height:2em;
+}
+
+#sidfot .formatering {
+	margin-left:1em;
+	margin-top:0.3em;
+}
+#sidfot address {
+	color:#000;
+	font-size:85%;
+}
+
+#sidfot address a {
+	color:#039;
+	font-weight:normal;
+	text-decoration:underline;
+}
+
+#sidfot address a:hover {
+	color:#039;
+	font-weight:normal;
+	text-decoration:underline;
+}
+
+#sidfot address a:focus {
+	color:#039;
+	font-weight:normal;
+	text-decoration:underline;
+}
+
+#sidfot p {
+	font-size:85%;
+}
+
+/* Element som inte visas i CSS-kapabla agenter */
+#sok hr, #undermeny hr, #huvudmeny hr, #huvudSpalt hr, #spalt2 hr, #sidfot hr,#logo2,hr
+{
+	display:none;
+}
+
+#undermeny h2, #huvudmeny h3
+{
+	position:absolute;
+	left:-1000em;
+	width:20em;
+}
+
+
+
+
+
+
+
+
+ul.horisontell {
+	margin:1.5em 0;
+	padding:0;
+}
+
+.horisontell li {
+	display:inline;
+	padding:0 3em 0 0;
+}
+
+
+
+
+
+
+
+#logo {
+	width:115px;
+	height:22px;
+	background:transparent url(/NotmotorAdminWebb/bilder/logoMinaSidorMotGront.gif) no-repeat;	
+	margin-top:0px;
+}
+
+#logocsn {
+		position:absolute;
+		right:1px;
+		top:1px;
+		width:37px;
+		height:37px;
+		background:transparent url(/NotmotorAdminWebb/bilder/csnlogoMotGront.gif) no-repeat;	
+}
+
+
+#loggaUt {
+	text-align:right;
+}
+
+#divLoggaUt {
+	text-align:right;
+}
+
+
+
+#tableHidden td
+	{
+	border:0;
+	padding:10em;;
+	padding-bottom:1em;
+	padding-right:1em;
+}
+
+
+/*KLASSER*/
+
+.noUnderline {
+	text-decoration: none;
+}
+
+.publiceringsdatum {
+	font-size:smaller;
+	color:#999; 
+}
+
+.utjamnare {
+	clear:both;
+	line-height:0;
+}
+
+.word {
+	
+}
+
+.tabellRubrik h3, .tabellRubrik p {
+	margin:0;
+	padding:0;
+}
+
+.divKolumn
+{
+	position:relative;
+	float:left;
+}
+
+
+.ej-css {
+	position:absolute;
+	left:-100em;
+}
+
+.ej-css a:focus {
+	display:block;
+	position:absolute;
+	top:0;
+	left:51em;
+	z-index:100;
+	width:6em;
+	padding:0.5em 1em;
+	background:#fff;
+	color:#039;
+	border:4px solid #039;
+	font-size:2em;
+	text-align:center;
+}
+
+.hidden {
+	display:none;
+}
+
+.tableHidden {
+	clear:both;
+	border:0;
+	margin-bottom:1em;
+	margin-top:0.5em;
+	font-size:1em;
+
+}
+
+.tableHiddenTextSmall {
+	clear:both;
+	border:0;
+	margin-bottom:1em;
+	margin-top:0.5em;
+	font-size:0.85em;
+	background-color:#fff;
+}
+
+.tableHidden td, .tableHidden th {
+	border:0;
+	padding:0em;
+	vertical-align:top;
+	
+}
+
+
+.tableHidden th {
+	padding-right:1em;
+}
+
+
+.formularKnappar1 {
+	margin-left: 10.3em;
+	margin-top:0.5em;
+}
+
+
+.formularKnappar1 {
+	margin-left: 10.2em;
+	margin-top:0.5em;
+}
+
+
+.aktiv {
+	font-weight:bold;
+	}
+
+.felmeddelande {
+	color:#CC0000;
+}
+
+.felmeddelande legend{
+	color:#CC0000;
+}
+
+.felmeddelande fieldset {
+	border: 1px solid #cc0000;	
+}
+
+
+.observera {
+	color:#CC0000;
+}
+
+.observera legend{
+	color:#CC0000;
+}
+
+.observera fieldset {
+	border: 1px solid #cc0000;	
+}
+	
+.flytande {
+	position:relative;
+	float:left;
+}
+
+
+.tabellHjalp {
+	position:relative;
+	text-align:right;
+}
+
+
+/*Start Settings för meddelanden, ska bort med tiden */
+
+
+.tableMeddelanden {
+	width:97%;
+	clear:both;
+	border:0.1em solid #999;
+	margin-bottom:1.5em;
+	margin-top:0.4em;
+	border-collapse:collapse;
+	font-size:0.85em;
+}
+
+.tableMeddelanden td, .tableMeddelanden th {
+	border:0.1em solid #999;
+	padding:0.3em;
+	padding-left:0.5em;
+	vertical-align:top;
+}
+
+.tableMeddelanden .tableHidden {
+	border:0;
+	margin-bottom:0em;
+	margin-top:0em;
+}
+
+.tableMeddelanden .tableHidden td {
+	border:0;
+	padding:0;
+	padding-right:0.4em;
+	margin-bottom:0em;
+	margin-top:0em;
+}
+
+.tableMeddelanden a {
+
+}
+
+/*Slut settings för meddelanden */
+
+
+
+/* added style */
+
+/* För tabellerna i sok */
+.sokForDatumTabel{
+	width: 418px;
+}
+.sokForUppgifterTabel{
+	width: 388px;
+}
+.sokForStatusTabel{
+	width: 480px;
+}
+
+.datecolumn {
+	width: 120px;
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #ccc;
+    color: black;
+    text-align: left;
+    padding: 5px 5px;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    
+    bottom: 100%;
+    left: 50%; 
+    margin-left: -100px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #ccc transparent transparent transparent;
+}
+
+
+/* För statuskods tabellen */
+.statuskoderBeskrivning{
+	position: absolute;
+    width: 430px;
+    margin-left: 614px;
+}
+.headerForStatuskoderBeskrivning{
+	font-size: 20px;
+	margin-left: 614px;
+}
+.statusColor1{
+	background-color: #66ff33;
+}
+
+.statusColor2{
+	background-color: #2db300;
+}
+
+.statusColor4{
+	background-color: #cc33ff;
+}
+
+.statusColor8{
+	background-color: #7a00cc;
+}
+
+.statusColor16{
+	background-color: #ff8c1a;
+}
+
+.statusColor32{
+	background-color:#ff3300;
+}
+
+/* För sortering pillarna i rubriken på sökresultat tabellen */
+.ascendingOrder{
+    position: absolute;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+.descendingOrder{
+    position: absolute;
+    margin-top: 11px;
+    margin-left: 4px;
+}
+
+.doljImg{
+    opacity: 0 !important;  
+}
+
+.taBortLankForSokresultatTabel{
+	text-decoration: none; 
+	color: black;
+}
+
+
+
+/*   FÖR TEST   */
+.firstClass{
+	background-color: red;
+}
+.secondClass{
+	background-color: blue;
+}
+

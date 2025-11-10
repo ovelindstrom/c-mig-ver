@@ -1,0 +1,8 @@
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.NotmotortCreateSchedulerBean
+displayName: Create Notmotor Scheduler Bean
+description: Creates a EJB Scheduler Bean for Notmotor
+recipeList:
+  - se.csn.modernize.quartz.CreateSchedulerBean:
+      moduleName: notmotor
+      targetModule: NotmotorIplEjb

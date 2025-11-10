@@ -1,0 +1,5 @@
+target/
+!target/*.war
+!target/liberty/wlp/usr/servers/notmotorn/apps/*.ear
+!target/liberty/wlp/usr/servers/notmotorn/lib/
+!target/liberty/wlp/usr/shared/resources/*

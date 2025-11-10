@@ -2,7 +2,26 @@
 # -*- coding: utf-8 -*-
 """
 Script to fix encoding issues in Java source files.
-Handles corrupted Unicode escapes and encoding mismatches for Swedish characters.
+
+This script specifically addresses Maven compilation errors like:
+[ERROR] file.java:[line,col] error: unmappable character (0xE4) for encoding UTF-8
+[ERROR] file.java:[line,col] error: unmappable character (0xF6) for encoding UTF-8
+[ERROR] file.java:[line,col] error: unmappable character (0xE5) for encoding UTF-8
+
+These errors occur when Java files contain Swedish characters encoded in ISO-8859-1
+but Maven tries to compile them as UTF-8.
+
+The script:
+1. Detects files with problematic byte codes (0xE4=ä, 0xF6=ö, 0xE5=å, 0xC4=Ä, 0xD6=Ö)
+2. Reads files in their original encoding (typically ISO-8859-1)
+3. Converts and saves them as proper UTF-8
+4. Handles corrupted Unicode escapes and double-encoding issues
+5. Preserves Swedish characters correctly during the conversion
+
+Usage examples:
+- Process all Java files in a directory: python3 fix_encoding.py src/
+- Process files from Maven error output: mvn compile 2>&1 | python3 fix_encoding.py --maven-errors
+- Test the encoding fix logic: python3 fix_encoding.py --test
 """
 
 import os
@@ -17,51 +36,55 @@ def fix_encoding_issues(file_path):
     Returns True if file was modified, False otherwise.
     """
     try:
-        # Try reading with different encodings
         content = None
         original_encoding = None
+        needs_conversion = False
         
-        # Try different encodings and check for replacement characters
-        content = None
-        original_encoding = None
+        # First, read as bytes to check for problematic byte sequences
+        with open(file_path, 'rb') as f:
+            raw_bytes = f.read()
         
-        # Try ISO-8859-1 first (most common for Swedish legacy files)
-        try:
-            with open(file_path, 'r', encoding='iso-8859-1') as f:
-                content = f.read()
-                original_encoding = 'iso-8859-1'
-                # Check if this looks like it needs conversion to UTF-8
-                # (has Swedish characters but might be misinterpreted)
-        except UnicodeDecodeError:
-            pass
-            
-        # Try UTF-8 if ISO-8859-1 didn't work or if we want to double-check
-        if not content:
+        # Check if file contains the problematic byte codes from Maven errors
+        problematic_bytes = [0xE4, 0xF6, 0xE5, 0xC4, 0xD6]  # ä, ö, å, Ä, Ö in ISO-8859-1
+        has_swedish_bytes = any(byte_val in raw_bytes for byte_val in problematic_bytes)
+        
+        # Try ISO-8859-1 first if we detected Swedish byte codes
+        if has_swedish_bytes:
             try:
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    utf8_content = f.read()
-                    # Check if UTF-8 reading resulted in replacement characters
-                    if '�' not in utf8_content:
-                        content = utf8_content
-                        original_encoding = 'utf-8'
-                    elif not content:  # Fall back if no ISO content
-                        content = utf8_content
-                        original_encoding = 'utf-8-with-replacements'
+                content = raw_bytes.decode('iso-8859-1')
+                original_encoding = 'iso-8859-1'
+                # Check if this contains Swedish characters that need UTF-8 conversion
+                swedish_chars = ['å', 'ä', 'ö', 'Å', 'Ä', 'Ö']
+                if any(char in content for char in swedish_chars):
+                    needs_conversion = True
             except UnicodeDecodeError:
                 pass
         
-        # Try Windows-1252 as last resort
+        # Try UTF-8 if ISO-8859-1 didn't work or wasn't needed
         if not content:
             try:
-                with open(file_path, 'r', encoding='cp1252') as f:
-                    content = f.read()
-                    original_encoding = 'cp1252'
+                content = raw_bytes.decode('utf-8')
+                original_encoding = 'utf-8'
+                # Check if UTF-8 reading resulted in replacement characters
+                if '�' in content:
+                    needs_conversion = True
             except UnicodeDecodeError:
-                # Absolute last resort: read as bytes and decode with errors='replace'
-                with open(file_path, 'rb') as f:
-                    raw_content = f.read()
-                    content = raw_content.decode('utf-8', errors='replace')
-                    original_encoding = 'utf-8-with-errors'
+                pass
+        
+        # Try Windows-1252 as fallback
+        if not content:
+            try:
+                content = raw_bytes.decode('cp1252')
+                original_encoding = 'cp1252'
+                needs_conversion = True
+            except UnicodeDecodeError:
+                pass
+        
+        # Last resort: force decode with error handling
+        if not content:
+            content = raw_bytes.decode('utf-8', errors='replace')
+            original_encoding = 'utf-8-with-errors'
+            needs_conversion = True
         
         if not content:
             return False
@@ -69,14 +92,17 @@ def fix_encoding_issues(file_path):
         original_content = content
         
         # Fix corrupted characters and encoding issues
-        content = fix_corrupted_characters(content)
+        if needs_conversion or original_encoding != 'utf-8':
+            content = fix_corrupted_characters(content)
         
-        # Check if file was modified
-        if content != original_content:
+        # Always convert to UTF-8 if not already UTF-8 or if we found issues
+        file_was_modified = (content != original_content) or (original_encoding != 'utf-8' and has_swedish_bytes)
+        
+        if file_was_modified:
             # Write back as UTF-8
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)
-            print(f"Fixed: {file_path} (was {original_encoding})")
+            print(f"Fixed: {file_path} (was {original_encoding}, Swedish chars: {has_swedish_bytes})")
             return True
         
         return False
@@ -227,24 +253,27 @@ def fix_iso88591_corruptions(text):
     """
     Fix common ISO-8859-1 character corruptions where Swedish characters
     were replaced with wrong Latin-1 characters.
-    """
-    # These are specific byte-level corruptions observed in the files
-    iso_corruptions = {
-        # Character code 0xD6 (Ö) wrongly used instead of 0xE5 (å)  
-        'Ö': 'å',  # This is the specific case we saw in hexdump
-        
-        # Other potential corruptions - characters that are unlikely in Swedish names/text
-        'Í': 'ä',  # 0xCD might be used instead of 0xE4
-        'È': 'ö',  # 0xC8 might be used instead of 0xF6
-        'Æ': 'ä',  # 0xC6 sometimes corrupts to ä
-        'Ø': 'ö',  # 0xD8 (Danish/Norwegian ø) might corrupt to Swedish ö
-        
-        # Capital versions
-        'Ì': 'Ä',  # Similar corruption patterns for capitals
-        'Ç': 'Ö',  # 0xC7 might be used instead of 0xD6
-    }
     
+    This function handles characters that are valid Swedish characters in ISO-8859-1
+    but need to be preserved correctly when converting to UTF-8.
+    """
     result = text
+    
+    # The problematic characters from Maven errors are actually CORRECT Swedish characters
+    # in ISO-8859-1, they just need proper UTF-8 encoding. No character replacement needed.
+    # 0xE4 = ä, 0xF6 = ö, 0xE5 = å, 0xC4 = Ä, 0xD6 = Ö
+    
+    # However, we still handle edge cases where characters might be genuinely corrupted
+    iso_corruptions = {
+        # Only handle cases where we have obviously wrong characters
+        # that are unlikely to appear in Swedish text in Java comments/strings
+        'Í': 'ä',  # 0xCD is very unlikely in Swedish context  
+        'È': 'ö',  # 0xC8 is very unlikely in Swedish context
+        'Æ': 'ä',  # 0xC6 (ligature) sometimes corrupts to ä
+        'Ø': 'ö',  # 0xD8 (Danish/Norwegian ø) might need conversion to Swedish ö
+        'Ì': 'Ä',  # Similar corruption patterns for capitals
+        'Ç': 'Ö',  # 0xC7 might be corrupted Ö
+    }
     
     # Only replace these characters if they appear in Swedish-like contexts
     for corrupted, correct in iso_corruptions.items():
@@ -252,7 +281,7 @@ def fix_iso88591_corruptions(text):
         # Only replace if it's part of a word that looks Swedish
         import re
         
-        # Replace in Swedish names and common words
+        # Replace in Swedish names and common words - be conservative
         patterns = [
             (rf'\b([A-Za-z]*){re.escape(corrupted)}([a-z]*)\b', lambda m: m.group(1) + correct + m.group(2)),
             # In middle of words (most common case)
@@ -282,6 +311,43 @@ def detect_likely_swedish_char(context_before, context_after):
     # Default to å as it's most common
     return 'å'
 
+def check_for_maven_error_bytes(file_path):
+    """
+    Check if a file contains the specific byte codes that cause Maven compilation errors.
+    Returns a dict with information about problematic bytes found.
+    """
+    try:
+        with open(file_path, 'rb') as f:
+            raw_bytes = f.read()
+        
+        # Maven error byte codes for Swedish characters in ISO-8859-1
+        error_bytes = {
+            0xE4: 'ä (small a with diaeresis)',
+            0xF6: 'ö (small o with diaeresis)', 
+            0xE5: 'å (small a with ring above)',
+            0xC4: 'Ä (capital A with diaeresis)',
+            0xD6: 'Ö (capital O with diaeresis)'
+        }
+        
+        found_issues = {}
+        for byte_code, description in error_bytes.items():
+            if byte_code in raw_bytes:
+                # Find positions of this byte
+                positions = []
+                for i, b in enumerate(raw_bytes):
+                    if b == byte_code:
+                        positions.append(i)
+                found_issues[byte_code] = {
+                    'description': description,
+                    'count': len(positions),
+                    'positions': positions[:10]  # Limit to first 10 occurrences
+                }
+        
+        return found_issues
+    except Exception as e:
+        print(f"Error checking {file_path}: {e}")
+        return {}
+
 def process_java_files(root_dir):
     """
     Process all .java files in the given directory and subdirectories.
@@ -292,87 +358,27 @@ def process_java_files(root_dir):
     print(f"Found {len(java_files)} Java files to process...")
     
     modified_count = 0
-    total_fixes = 0
+    files_with_maven_errors = 0
     
     for java_file in java_files:
-        print(f"Processing: {java_file}")
+        # Check for Maven error bytes before processing
+        maven_issues = check_for_maven_error_bytes(java_file)
+        
+        if maven_issues:
+            files_with_maven_errors += 1
+            print(f"Processing: {java_file} (Maven error bytes detected)")
+            for byte_code, info in maven_issues.items():
+                print(f"  - Found {info['count']} instances of 0x{byte_code:02X} ({info['description']})")
+        else:
+            print(f"Processing: {java_file}")
+            
         if fix_encoding_issues(java_file):
             modified_count += 1
     
     print(f"\nSummary:")
     print(f"- Processed {len(java_files)} Java files")
+    print(f"- Files with Maven error bytes: {files_with_maven_errors}")
     print(f"- Modified {modified_count} files")
-    return modified_count
-
-def parse_maven_errors(error_lines):
-    """
-    Parse Maven compilation error output to extract file paths with encoding errors.
-    
-    Maven error format example:
-    [ERROR] /path/to/File.java:[line,column] unmappable character (0xE5) for encoding UTF-8
-    
-    Returns a set of unique file paths that have encoding errors.
-    """
-    file_paths = set()
-    
-    for line in error_lines:
-        # Match Maven error pattern for encoding issues
-        # Pattern: [ERROR] /path/to/file.java:[line,col] unmappable character
-        match = re.search(r'\[ERROR\]\s+([^:]+\.java):\[\d+,\d+\].*unmappable character', line)
-        if match:
-            file_path = match.group(1)
-            file_paths.add(file_path)
-        
-        # Alternative pattern without [ERROR] prefix
-        match = re.search(r'((?:/[^/\s:]+)+\.java):\[\d+,\d+\].*unmappable character', line)
-        if match and match.group(1) not in file_paths:
-            file_path = match.group(1)
-            file_paths.add(file_path)
-    
-    return file_paths
-
-def process_maven_errors():
-    """
-    Read Maven error output from stdin and fix encoding issues in affected files.
-    This is called when --maven-errors flag is used.
-    """
-    print("Reading Maven error output from stdin...")
-    
-    # Read all lines from stdin
-    error_lines = sys.stdin.readlines()
-    
-    if not error_lines:
-        print("No input received from stdin.")
-        return 0
-    
-    print(f"Received {len(error_lines)} lines of Maven output")
-    
-    # Parse file paths from Maven errors
-    file_paths = parse_maven_errors(error_lines)
-    
-    if not file_paths:
-        print("No encoding errors found in Maven output.")
-        print("Running general encoding fix on current directory...")
-        return process_java_files(".")
-    
-    print(f"\nFound {len(file_paths)} files with encoding errors:")
-    for file_path in sorted(file_paths):
-        print(f"  - {file_path}")
-    
-    print("\nFixing encoding issues...")
-    modified_count = 0
-    
-    for file_path in sorted(file_paths):
-        if os.path.exists(file_path):
-            if fix_encoding_issues(file_path):
-                modified_count += 1
-        else:
-            print(f"Warning: File not found: {file_path}")
-    
-    print(f"\nSummary:")
-    print(f"- Found {len(file_paths)} files with Maven encoding errors")
-    print(f"- Fixed {modified_count} files")
-    
     return modified_count
 
 def test_encoding_fix(test_string):
@@ -384,13 +390,51 @@ def test_encoding_fix(test_string):
     print(f"Fixed:   {repr(fixed)}")
     print()
 
+def process_maven_error_files(error_log_text):
+    """
+    Parse Maven error output and process only the files mentioned in the errors.
+    """
+    import re
+    
+    # Extract file paths from Maven error messages
+    error_pattern = r'\[ERROR\] ([^:]+\.java):\[\d+,\d+\] error: unmappable character'
+    error_files = set()
+    
+    for line in error_log_text.split('\n'):
+        match = re.search(error_pattern, line)
+        if match:
+            file_path = match.group(1)
+            error_files.add(file_path)
+    
+    print(f"Found {len(error_files)} files with Maven encoding errors:")
+    
+    modified_count = 0
+    for file_path in sorted(error_files):
+        if os.path.exists(file_path):
+            print(f"\nProcessing Maven error file: {file_path}")
+            maven_issues = check_for_maven_error_bytes(file_path)
+            
+            if maven_issues:
+                for byte_code, info in maven_issues.items():
+                    print(f"  - Found {info['count']} instances of 0x{byte_code:02X} ({info['description']})")
+            
+            if fix_encoding_issues(file_path):
+                modified_count += 1
+        else:
+            print(f"Warning: File not found: {file_path}")
+    
+    print(f"\nSummary:")
+    print(f"- Processed {len(error_files)} files from Maven errors")
+    print(f"- Modified {modified_count} files")
+    return modified_count
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python3 fix_encoding.py <source_directory> [--test]")
-        print("       python3 fix_encoding.py --maven-errors  (reads Maven errors from stdin)")
+        print("Usage: python3 fix_encoding.py <source_directory> [--test] [--maven-errors]")
         print("Example: python3 fix_encoding.py src/")
-        print("         mvn compile 2>&1 | python3 fix_encoding.py --maven-errors")
         print("Test mode: python3 fix_encoding.py --test")
+        print("Maven errors: python3 fix_encoding.py --maven-errors < maven_output.txt")
+        print("             (reads Maven error output from stdin)")
         sys.exit(1)
     
     if sys.argv[1] == "--test":
@@ -409,8 +453,10 @@ if __name__ == "__main__":
         for test in test_cases:
             test_encoding_fix(test)
     elif sys.argv[1] == "--maven-errors":
-        # Maven error mode - read from stdin
-        process_maven_errors()
+        # Process files from Maven error output
+        print("Reading Maven error output from stdin...")
+        maven_output = sys.stdin.read()
+        process_maven_error_files(maven_output)
     else:
         source_dir = sys.argv[1]
         if not os.path.exists(source_dir):

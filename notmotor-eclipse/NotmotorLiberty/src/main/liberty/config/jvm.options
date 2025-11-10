@@ -1,0 +1,19 @@
+# Java 25 compatibility - suppress module warnings
+--add-opens=java.base/sun.security.action=ALL-UNNAMED
+--add-opens=java.base/jdk.internal.loader=ALL-UNNAMED
+# Remove problematic --add-exports for Java 25
+# These modules don't exist in modern Java or have been encapsulated
+
+# Disable warnings about illegal reflective access
+--add-opens=java.base/java.lang=ALL-UNNAMED
+--add-opens=java.base/java.util=ALL-UNNAMED
+--add-opens=java.base/sun.security.action=ALL-UNNAMED
+
+# JVM options for OpenTelemetry configuration
+-Dotel.sdk.disabled=false
+-Dotel.service.name=notmotor
+-Dotel.service.version=2.1
+-Dotel.traces.exporter=otlp
+-Dotel.metrics.exporter=otlp
+-Dotel.logs.exporter=otlp
+-Dotel.resource.attributes=service.name=notmotor,service.version=2.1,deployment.environment=development

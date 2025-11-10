@@ -1,0 +1,43 @@
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.QuartzRewrite
+displayName: Rewrite Quartz Scheduling to Use Liberty's Built-in Scheduler
+description: This recipe rewrites Java code that uses the Quartz scheduling library to instead use the built-in scheduling capabilities provided by the Liberty application server. It removes Quartz dependencies and removes Quartz-specific imports.
+recipeList:
+ - se.csn.recipes.modernize.QuartzUpdatePOMRewrite
+ - se.csn.recipes.modernize.QuartzRemoveImports
+ - se.csn.recipes.modernize.NotmotorCreateSchedulerBean
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.QuartzUpdatePOMRewrite
+displayName: Update POM to Remove Quartz Dependencies
+description: This recipe updates Maven POM files to remove dependencies on the Quartz scheduling library and adds necessary dependencies for using Liberty's built-in scheduling features.
+recipeList:
+  # Remove Quartz dependencies from Maven POM files
+  - org.openrewrite.java.dependencies.RemoveDependency:
+    groupId: quartz
+    artifactId: quartz
+  - org.openrewrite.java.dependencies.RemoveDependency:
+    groupId: org.quartz-scheduler
+    artifactId: quartz
+  - org.openrewrite.java.dependencies.RemoveDependency:
+    groupId: opensymphony
+    artifactId: quartz
+  # Add Liberty Timer annotations dependency if not present
+  - org.openrewrite.java.dependencies.AddDependency:
+    groupId: javax.ejb
+    artifactId: javax.ejb-api
+    version: 3.2.2
+    scope: provided
+    onlyIfUsing: org.quartz.*
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.recipes.modernize.QuartzRemoveImports
+displayName: Remove Quartz Imports from Java Code
+description: This recipe removes Quartz-specific imports from Java files. Manual code changes will be needed to replace Quartz scheduling logic with EJB Timer Service.
+recipeList:
+  # Remove Quartz Job interface implementation
+  - org.openrewrite.java.ChangeType:
+      oldFullyQualifiedTypeName: org.quartz.Job
+      newFullyQualifiedTypeName: java.lang.Object
+  # Remove Quartz imports
+  - org.openrewrite.java.RemoveUnusedImports

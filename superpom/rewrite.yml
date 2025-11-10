@@ -1,0 +1,10 @@
+---
+type: specs.openrewrite.org/v1beta/recipe
+name: se.csn.rewrite.AddToGitignore
+displayName: Add .vscode to `.gitignore`
+recipeList:
+  - org.openrewrite.AddToGitignore:
+      entries: >
+        .vscode/
+      filePattern: .gitignore
+      

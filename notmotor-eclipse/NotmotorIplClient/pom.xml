@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>se.csn</groupId>
+    <artifactId>superpom</artifactId>
+    <version>3.0-SNAPSHOT</version>
+  </parent>
+ <properties>
+  <maven.compiler.release>11</maven.compiler.release>
+ </properties>
+
+  <!-- TODO: Kolla varför den här inte är via NotmotorBuild -->
+
+  <groupId>se.csn</groupId>
+  <artifactId>notmotoriplclient</artifactId>
+  <version>2.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>NotmotorIplClient</name>
+  <description>Notmotor Ipl Client som används av andra applicationer för att kommunicera med notmotorn. Parent: SuperPom</description>
+
+  <url>./target/site</url>
+  <inceptionYear>2007</inceptionYear>
+  <organization>
+    <name>Centrala studiestödsnämnden</name>
+    <url>http://www.csn.se/</url>
+  </organization>
+
+  <issueManagement>
+    <system>Testdirector</system>
+    <url>http://tdsrv2003/tdbin/start_a.htm</url>
+  </issueManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>axis</groupId>
+      <artifactId>axis</artifactId>
+      <version>1.3</version>
+      <exclusions>
+        <exclusion>
+          <groupId>axis</groupId>
+          <artifactId>axis-jaxrpc</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.xml.rpc</groupId>
+      <artifactId>jakarta.xml.rpc-api</artifactId>
+      <version>1.1.4</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <defaultGoal>compile</defaultGoal>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+    </plugins>
+
+  </build>
+
+</project>

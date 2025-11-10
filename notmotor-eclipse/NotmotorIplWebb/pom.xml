@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>se.csn</groupId>
+    <artifactId>notmotor</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../NotmotorBuild</relativePath>
+  </parent>
+
+  <groupId>se.csn.notmotor</groupId>
+  <artifactId>notmotoriplwebb</artifactId>
+  <version>2.0-SNAPSHOT</version>
+
+  <packaging>war</packaging>
+
+  <name>NotmotorIplWebb</name>
+
+  <description>Notmotor Ipl Webb : Parent: NotmotorBuild</description>
+
+
+  <url>notmotor-ipl/</url>
+  <inceptionYear>2007</inceptionYear>
+
+  <organization>
+    <name>Centrala studiestödsnämnden</name>
+    <url>http://www.csn.se/</url>
+  </organization>
+
+  <dependencies>
+    <dependency>
+      <groupId>se.csn</groupId>
+      <artifactId>ark</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>se.csn</groupId>
+      <artifactId>utils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>se.csn.notmotor</groupId>
+      <artifactId>notmotorjar</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>se.csn</groupId>
+      <artifactId>notmotoriplclient</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <!--   		<optional>true</optional> -->
+    </dependency>
+    <dependency>
+      <groupId>opensymphony</groupId>
+      <artifactId>quartz</artifactId>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>../NotmotorProperties/build/IPL/properties/log/notmotor</directory>
+        <includes>
+          <include>ark_log4j.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+      <resource>
+        <directory>../NotmotorProperties/build/IPL/properties/notmotor/</directory>
+        <includes>
+          <include>notmotor-ipl.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+
+      <resource>
+        <directory>../GemensammaProperties/build/IPL/properties/arkitektur/</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+    </resources>
+
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warSourceExcludes>**/*Test*</warSourceExcludes>
+          <archive>
+            <manifest>
+              <addClasspath>false</addClasspath>
+            </manifest>
+          </archive>
+          <addMavenDescriptor>false</addMavenDescriptor>
+          <webResources>
+            <resource>
+              <directory>${project.build.directory}</directory>
+              <includes>
+                <include>ark_log4j.properties</include>
+              </includes>
+              <targetPath>WEB-INF/classes</targetPath>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <release>11</release>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+
+</project>

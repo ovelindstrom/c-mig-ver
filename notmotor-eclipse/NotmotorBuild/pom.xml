@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>se.csn</groupId>
+		<artifactId>superpom</artifactId>
+		<version>3.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>se.csn</groupId>
+	<artifactId>notmotor</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Notmotor Build</name>
+	<description>Notmotor Build - Parent: SuperPom</description>
+
+	<url>http://www.csn.se/</url>
+	<inceptionYear>2007</inceptionYear>
+
+	<organization>
+		<name>Centrala studiestödsnämnden</name>
+		<url>http://www.csn.se/</url>
+	</organization>
+
+	<modules>
+		<module>../NotmotorJar</module>
+		<module>../NotmotorIplWebb</module>
+		<module>../NotmotorIplEjb</module>
+		<module>../NotmotorIplEAR</module>
+		<module>../NotmotorAdminEAR</module>
+		<module>../NotmotorAdminWebb</module>
+		<module>../NotmotorIplClient</module>
+		<!-- Och NotmotorIplClient? Den modulen är frikopplad från den övriga notmotorn.
+  	     Grundprincipen är att om det är olika releasecykler (och det kommer det 
+  	     troligtvis att vara) så ska projekten ligga i olika projekt. -->
+	</modules>
+
+	<issueManagement>
+		<system>Testdirector</system>
+		<url>http://tdsrv2003/tdbin/start_a.htm</url>
+	</issueManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- For Liberty server tests and local dev output -->
+		<server.output.dir>${project.build.directory}/liberty-server</server.output.dir>
+	</properties>
+
+	<!-- This is where most of the Dependency Management should go now -->
+	<dependencyManagement>
+		<dependencies>
+			<!-- Interna beroenden-->
+			<dependency>
+				<groupId>se.csn</groupId>
+				<artifactId>ark</artifactId>
+				<version>3.0.1</version>
+				<exclusions>
+					<!-- Excludera j2ee -->
+					<exclusion>
+						<groupId>javax.j2ee</groupId>
+						<artifactId>j2ee</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>se.csn</groupId>
+				<artifactId>utils</artifactId>
+				<version>1.0.0</version>
+				<exclusions>
+					<exclusion>
+						<groupId>xalan</groupId>
+						<artifactId>xalan</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.j2ee</groupId>
+						<artifactId>j2ee</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- Projektberoenden -->
+			<dependency>
+				<groupId>se.csn</groupId>
+				<artifactId>notmotoriplclient</artifactId>
+				<version>2.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>se.csn.notmotor</groupId>
+				<artifactId>notmotorjar</artifactId>
+				<version>2.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>se.csn.notmotor</groupId>
+				<artifactId>notmotoradminwebb</artifactId>
+				<version>2.0-SNAPSHOT</version>
+				<type>war</type>
+			</dependency>
+			<dependency>
+				<groupId>se.csn.notmotor</groupId>
+				<artifactId>notmotoriplwebb</artifactId>
+				<type>war</type>
+				<version>2.0-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>se.csn.notmotor</groupId>
+				<artifactId>notmotoriplejb</artifactId>
+				<type>ejb</type>
+				<version>2.0-SNAPSHOT</version>
+			</dependency>
+			<!-- Externa beroenden-->
+			<dependency>
+				<groupId>avalon-framework</groupId>
+				<artifactId>avalon-framework</artifactId>
+				<version>4.1.3</version>
+			</dependency>
+			<dependency>
+				<groupId>axis</groupId>
+				<artifactId>axis</artifactId>
+				<version>1.3</version>
+				<exclusions>
+					<exclusion>
+						<groupId>axis</groupId>
+						<artifactId>axis-jaxrpc</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>batik</groupId>
+				<artifactId>batik-1.5-fop</artifactId>
+				<version>0.20-5</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.faces</groupId>
+				<artifactId>jsf-api</artifactId>
+				<version>2.2.20</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.faces</groupId>
+				<artifactId>jsf-impl</artifactId>
+				<version>2.2.20</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.mail</groupId>
+				<artifactId>smtp</artifactId>
+				<version>1.6.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>3.2.2</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-httpclient</groupId>
+				<artifactId>commons-httpclient</artifactId>
+				<version>3.1</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>2.6</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.1.3</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-validator</groupId>
+				<artifactId>commons-validator</artifactId>
+				<version>1.1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>fop</groupId>
+				<artifactId>fop</artifactId>
+				<version>0.20.5</version>
+			</dependency>
+			<dependency>
+				<groupId>jakarta.xml.rpc</groupId>
+				<artifactId>jakarta.xml.rpc-api</artifactId>
+				<version>1.1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.activation</groupId>
+				<artifactId>activation</artifactId>
+				<version>1.1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.el</groupId>
+				<artifactId>javax.el-api</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.xml.rpc</groupId>
+				<artifactId>javax.xml.rpc-api</artifactId>
+				<version>1.1</version>
+			</dependency>
+			<dependency>
+				<groupId>log4j</groupId>
+				<artifactId>log4j</artifactId>
+				<version>1.2.17</version>
+			</dependency>
+			<dependency>
+				<groupId>opensymphony</groupId>
+				<artifactId>quartz</artifactId>
+				<version>1.6.0</version>
+			</dependency>
+			<!-- Struts -->
+			<dependency>
+				<groupId>struts</groupId>
+				<artifactId>struts</artifactId>
+				<version>1.2.9</version>
+			</dependency>
+			<dependency>
+				<groupId>xerces</groupId>
+				<artifactId>xercesImpl</artifactId>
+				<version>2.8.1</version>
+				<exclusions>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>xml-apis</groupId>
+				<artifactId>xml-apis</artifactId>
+				<version>1.4.01</version>
+			</dependency>
+			<!-- Should run Recipes=org.openrewrite.apache.commons.lang.UpgradeApacheCommonsLang_2_3 -->
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>3.19.0</version>
+				<scope>compile</scope>
+			</dependency>
+
+			<!-- Testberoenden-->
+			<dependency>
+				<groupId>easymock</groupId>
+				<artifactId>easymock</artifactId>
+				<version>1.2_Java1.3</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.13</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Open Liberty Dependencies-->
+			<dependency>
+				<groupId>javax</groupId>
+				<artifactId>javaee-api</artifactId>
+				<version>7.0</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.microprofile</groupId>
+				<artifactId>microprofile</artifactId>
+				<version>1.4</version>
+				<type>pom</type>
+				<scope>provided</scope>
+			</dependency>
+			<!-- OpenTelemetry API for accessing tracer -->
+			<dependency>
+				<groupId>io.opentelemetry</groupId>
+				<artifactId>opentelemetry-api</artifactId>
+				<version>1.32.0</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+
+		<pluginManagement>
+			<plugins>
+				<!-- Core Maven plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.11.0</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<showWarnings>true</showWarnings>
+						<showDeprecation>true</showDeprecation>
+						<release>11</release>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.3.1</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.1.2</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<useSystemClassLoader>false</useSystemClassLoader>
+						<systemPropertyVariables>
+							<server.output.dir>${server.output.dir}</server.output.dir>
+						</systemPropertyVariables>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>3.1.2</version>
+				</plugin>
+
+				<!-- Packaging plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.3.0</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.4.0</version>
+					<configuration>
+						<failOnMissingWebXml>false</failOnMissingWebXml>
+						<archive>
+							<manifest>
+								<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+								<addClasspath>false</addClasspath>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ear-plugin</artifactId>
+					<version>3.3.0</version>
+					<configuration>
+						<version>10</version>
+						<defaultLibBundleDir>lib</defaultLibBundleDir>
+						<generateApplicationXml>false</generateApplicationXml>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-ejb-plugin</artifactId>
+					<version>3.2.1</version>
+					<configuration>
+						<ejbVersion>3.2</ejbVersion>
+					</configuration>
+				</plugin>
+
+				<!-- Lifecycle plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.3.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>3.1.1</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>3.1.1</version>
+				</plugin>
+
+				<!-- Code quality plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.3.0</version>
+				</plugin>
+
+				<plugin>
+					<groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>4.7.3.6</version>
+				</plugin>
+
+				<!-- Site and reporting plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>4.0.0-M9</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>3.4.5</version>
+				</plugin>
+
+				<!-- Dependency plugin for copying artifacts -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>3.6.0</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets>
+						<!-- Remove module-level bin directory (all files and then the directory) -->
+						<fileset>
+							<directory>${basedir}/bin</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+	</reporting>
+
+	<profiles>
+		<profile>
+			<id>rewrite</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.openrewrite.maven</groupId>
+						<artifactId>rewrite-maven-plugin</artifactId>
+						<version>6.21.0</version>
+						<configuration>
+							<exportDatatables>true</exportDatatables>
+							<activeRecipes>
+								<recipe>se.csn.recipes.modernize.AllRecipes</recipe>
+							</activeRecipes>
+							<activeStyles>
+								<style>org.openrewrite.java.GoogleJavaFormat</style>
+							</activeStyles>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>se.csn.modernize</groupId>
+								<artifactId>rewrite-recipes</artifactId>
+								<version>0.1.0-SNAPSHOT</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>poms</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.openrewrite.maven</groupId>
+						<artifactId>rewrite-maven-plugin</artifactId>
+						<version>6.21.1</version>
+						<configuration>
+							<activeRecipes>
+								<activeRecipe>se.csn.recipes.modernize.Pom</activeRecipe>
+							</activeRecipes>
+							<configLocation>${maven.multiModuleProjectDirectory}/rewrite-pom.yml</configLocation>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.openrewrite.recipe</groupId>
+								<artifactId>rewrite-migrate-java</artifactId>
+								<version>3.19.0</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>wamt</id>
+			<build>
+				<plugins>
+					<!-- Rewrite Rules according to WAMT requirements -->
+					<plugin>
+						<groupId>org.openrewrite.maven</groupId>
+						<artifactId>rewrite-maven-plugin</artifactId>
+						<version>6.21.1</version>
+						<configuration>
+							<activeRecipes>
+								<recipe>org.openrewrite.java.migrate.Java8toJava11</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.CastArraysAsListToList</recipe>
+								<!--Java SE 11 general information and potential issues
+								<recipe>org.openrewrite.java.migrate.javax.AddJaxbDependencies</recipe>-->
+								<recipe>org.openrewrite.java.migrate.javax.AddJaxbDependenciesWithoutRuntime</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.javax.AddJaxwsDependencies</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.javax.AddInjectDependencies</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.javax.AddCommonAnnotationsDependencies</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.staticanalysis.BigDecimalRoundingConstantsToEnums</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.staticanalysis.PrimitiveWrapperClassConstructorToValueOf</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.concurrent.JavaConcurrentAPIs</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.lang.JavaLangAPIs</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.logging.JavaLoggingAPIs</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.lombok.UpdateLombokToJava11</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.net.JavaNetAPIs</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.nio.file.PathsGetToPathOf</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.sql.JavaSqlAPIs</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.javax.JavaxLangModelUtil</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.javax.JavaxManagementMonitorAPIs</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.javax.JavaxXmlStreamAPIs</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.cobertura.RemoveCoberturaMavenPlugin</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.UpgradeBuildToJava11</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.util.OptionalNotPresentToIsEmpty</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.util.OptionalNotEmptyToIsPresent</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.util.OptionalStreamRecipe</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.UpgradePluginsForJava11</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.scala.migrate.UpgradeScala_2_12</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.RemovedJavaXMLWSModuleProvided</recipe>
+								<!--Java SE 11 general information and potential issues-->
+								<!--Java SE 11 general information and potential issues-->
+								<recipe>org.openrewrite.java.migrate.RemovedJaxBModuleProvided</recipe>
+							</activeRecipes>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.openrewrite.recipe</groupId>
+								<artifactId>rewrite-migrate-java</artifactId>
+								<version>3.19.0</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

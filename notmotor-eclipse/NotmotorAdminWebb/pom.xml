@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>se.csn</groupId>
+    <artifactId>notmotor</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../NotmotorBuild</relativePath>
+  </parent>
+
+  <groupId>se.csn.notmotor</groupId>
+  <artifactId>notmotoradminwebb</artifactId>
+
+  <version>2.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>NotmotorAdminWebb</name>
+  <description>Notmotor Admin Webb : Parent: NotmotorBuild</description>
+  <url>../../../NotmotorAdminWebb/target/site</url>
+  <inceptionYear>2007</inceptionYear>
+  <organization>
+    <name>Centrala studiestödsnämnden</name>
+    <url>http://www.csn.se/</url>
+  </organization>
+
+
+  <dependencies>
+    <dependency>
+      <groupId>se.csn</groupId>
+      <artifactId>ark</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>se.csn</groupId>
+      <artifactId>utils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>se.csn.notmotor</groupId>
+      <artifactId>notmotorjar</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>log4j</groupId>
+      <artifactId>log4j</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.faces</groupId>
+      <artifactId>jsf-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.faces</groupId>
+      <artifactId>jsf-impl</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.el</groupId>
+      <artifactId>javax.el-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+
+  <build>
+    <resources>
+      <resource>
+        <directory>../NotmotorProperties/build/IW/properties/log/notmotor</directory>
+        <includes>
+          <include>ark_log4j.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+      <resource>
+        <directory>../NotmotorProperties/build/IW/properties/notmotor/</directory>
+        <includes>
+          <include>notmotor-iw.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+
+      <resource>
+        <directory>../GemensammaProperties/build/IW/properties/arkitektur/</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+        <targetPath>.</targetPath>
+      </resource>
+    </resources>
+
+    <testResources>
+      <testResource>
+        <directory>../NotmotorProperties/UTV/IW/properties/arkitektur</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </testResource>
+      <testResource>
+        <directory>../NotmotorProperties/UTV/IW/properties/notmotor</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </testResource>
+      <testResource>
+        <directory>../NotmotorProperties/UTV/IW/properties/log/notmotor</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </testResource>
+    </testResources>
+    <defaultGoal>compile</defaultGoal>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warSourceExcludes></warSourceExcludes>
+          <archive>
+            <manifest>
+              <addClasspath>false</addClasspath> <!-- var TRUE förut -->
+            </manifest>
+          </archive>
+          <webXml>${project.basedir}/WebContent/WEB-INF/web.xml</webXml>
+          <!--
+     <warSourceDirectory>${project.basedir}/WebContent</warSourceDirectory> -->
+          <addMavenDescriptor>false</addMavenDescriptor>
+          <webResources>
+            <resource>
+              <directory>${project.build.directory}</directory>
+              <includes>
+                <include>ark_log4j.properties</include>
+              </includes>
+              <targetPath>WEB-INF/classes</targetPath>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <release>11</release>
+        </configuration>
+      </plugin>
+    </plugins>
+
+  </build>
+
+</project>

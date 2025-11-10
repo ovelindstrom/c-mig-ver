@@ -1,0 +1,19 @@
+# Base Template Shift API Test Commands
+
+## Test the Hello endpoint (GET)
+curl -X GET "http://localhost:9080/base-template-shift/api/hello" -H "accept: application/json"
+
+## Test the Count endpoint (POST)
+curl -X POST "http://localhost:9080/base-template-shift/api/hello/count" -H "Content-Type: text/plain" -d "OpenTelemetry is working great"
+
+# Alternative REST Client format (VS Code REST Client extension)
+
+### GET Hello
+GET http://localhost:9080/notmotor/api/hello
+Accept: application/json
+
+### POST Count
+POST http://localhost:9080/notmotor/api/hello/count
+Content-Type: text/plain
+
+OpenTelemetry is working great

@@ -1,0 +1,109 @@
+<server description="Notmotor Liberty Server">
+
+    <!-- Enable features -->
+    <featureManager>
+        <!-- Core Java EE features -->
+        <feature>javaee-7.0</feature>
+        <feature>cdi-1.2</feature>
+        <feature>jaxb-2.2</feature>
+        <feature>jaxrs-2.0</feature>
+        <feature>jsonp-1.0</feature>
+        <feature>jsp-2.3</feature>
+        <feature>jsf-2.2</feature>
+
+        <!-- EJB features -->
+        <feature>ejbHome-3.2</feature>
+        <feature>ejbLite-3.2</feature>
+        <feature>jdbc-4.1</feature>
+        <feature>jndi-1.0</feature>
+        <feature>mdb-3.2</feature>
+
+        <!-- SSL feature for keyStore support -->
+        <feature>ssl-1.0</feature>
+
+        <!-- MicroProfile 1.4 (includes health, openapi, etc.) -->
+        <feature>microProfile-1.4</feature>
+        <!-- Included in mp1.4 -->
+        <feature>servlet-3.1</feature>
+
+        <!-- OpenTelemetry for modern tracing -->
+        <feature>mpTelemetry-2.0</feature>
+    </featureManager>
+
+    <!-- Variables declared in the current WASM but maybe not used -->
+    <variable name="SERVER_LOG_ROOT" value="${server.output.dir}/logs"/>
+    <variable name="WAS_SERVER_NAME" value="defaultServer"/>
+    <variable name="MQ_HOST" value="rabbitmq"/>
+    <variable name="MQ_PORT" value="5672"/>
+    <variable name="MQ_USER" value="admin"/>
+    <variable name="MQ_PASS" value="notadmin!"/>
+
+    <!-- Logging configuration -->
+    <logging traceSpecification="com.ibm.ws.opentracing*=off:*=info" consoleLogLevel="INFO" messageFileName="messages.log" messageFormat="JSON"/>
+    <logging traceSpecification="com.ibm.ws.webcontainer.metadata.*=severe"/>
+    <logging messageSource="message" messageFormat="JSON"/>
+    <httpAccessLogging id="accessLogging" logFormat='%h %u %{t}W "%r" %s %b %D %{R}W %{traceparent}i %{tracestate}i'/>
+
+    <!-- Security configuration -->
+    <keyStore id="defaultKeyStore" password="{xor}MzY9Oi0rJi8oOw=="/>
+    <ssl id="defaultSSLConfig" keyStoreRef="defaultKeyStore" trustDefaultCerts="true"/>
+    <basicRegistry id="basic" realm="BasicRealm">
+        <user name="openliberty" password="OpenLiberty1234!" />
+    </basicRegistry>
+
+    <!-- HTTP endpoint configuration -->
+    <httpEndpoint id="defaultHttpEndpoint" accessLoggingRef="accessLogging" host="*" httpPort="9080" httpsPort="9443" />
+
+    <!-- Global Library Configuration -->
+    <library id="globalLib" apiTypeVisibility="+third-party">
+        <fileset dir="${server.config.dir}/lib/global" includes="*.jar"/>
+    </library>
+    <library id="DB2JCCLib">
+        <file name="${server.config.dir}/lib/global/drivers/db2jcc-db2jcc4.jar"/>
+    </library>
+    <library id="RabbitMQJMSLib">
+        <fileset dir="${server.config.dir}/lib/global" includes="rabbitmq-jms-*.jar"/>
+    </library>
+
+    <!-- Data sources and messaging resources -->
+    <dataSource id="DB2DataSource" jndiName="jdbc/NotmotorWebb_DS" type="javax.sql.DataSource">
+        <jdbcDriver libraryRef="DB2JCCLib"/>
+        <properties.db2.jcc user="${CSN_DB2_USER_NAME}" password="${CSN_DB2_PASSWORD}" databaseName="${CSN_DATABASE_NAME}" serverName="${CSN_DB2_SERVER_NAME}" portNumber="${CSN_DB2_PORT_NUMBER}" currentSchema="${CSN_DB2_SCHEMA}"/>
+    </dataSource>
+
+    <jmsConnectionFactory jndiName="jms/NotmotorMqConnFactory" connectionManagerRef="ConMgr1">
+        <properties.rabbitmq host="${MQ_HOST}" port="${MQ_PORT}" username="${MQ_USER}" password="${MQ_PASS}" virtualHost="/"/>
+    </jmsConnectionFactory>
+    <connectionManager id="ConMgr1" maxPoolSize="10"/>
+    
+    <jmsQueue id="MAAAUD" jndiName="queue/MAAAUD">
+        <properties.rabbitmq destinationName="MAAAUD"/>
+    </jmsQueue>
+    
+    <jmsActivationSpec id="activation/MeddelandeActivationSpec">
+        <properties.rabbitmq 
+            host="${MQ_HOST}" 
+            port="${MQ_PORT}" 
+            username="${MQ_USER}" 
+            password="${MQ_PASS}" 
+            virtualHost="/"
+            destinationName="MAAAUD" 
+            destinationType="javax.jms.Queue"/>
+    </jmsActivationSpec>
+
+    <!-- Application deployment configuration -->
+    <applicationManager autoExpand="true"/>
+    <webApplication id="notmotorlibertyproject" contextRoot="/notmotor" location="notmotorliberty.war" name="Notmotor Liberty Packed Project">
+        <classloader apiTypeVisibility="+third-party">
+            <privateLibrary>
+                <fileset dir="${server.config.dir}/lib" includes="*.jar"/>
+            </privateLibrary>
+        </classloader>
+    </webApplication>
+    <enterpriseApplication id="notmotoriplear" location="notmotoriplear.ear" name="notmotoriplear">
+        <classloader commonLibraryRef="globalLib" apiTypeVisibility="+third-party"/>
+    </enterpriseApplication>
+    <enterpriseApplication id="notmotoradminear" location="notmotoradminear.ear" name="notmotoradminear">
+        <classloader commonLibraryRef="globalLib" apiTypeVisibility="+third-party"/>
+    </enterpriseApplication>
+</server>

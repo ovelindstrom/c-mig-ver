@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>se.csn</groupId>
+    <artifactId>notmotor</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <relativePath>../NotmotorBuild</relativePath>
+  </parent>
+
+  <groupId>se.csn.notmotor</groupId>
+  <artifactId>notmotorjar</artifactId>
+  <version>2.1-SNAPSHOT</version>
+
+  <packaging>jar</packaging>
+
+  <name>NotmotorJar</name>
+
+  <description>Notmotorn Jar - Model classes an other shared resources - Parent: NotmotorBuild</description>
+  <url>notmotor-jar/</url>
+  <inceptionYear>2007</inceptionYear>
+
+  <organization>
+    <name>Centrala studiest�dsn�mnden</name>
+    <url>http://www.csn.se/</url>
+  </organization>
+
+  <issueManagement>
+    <system>Testdirector</system>
+    <url>http://tdsrv2003/tdbin/start_a.htm</url>
+  </issueManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax.activation</groupId>
+      <artifactId>activation</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.xml.rpc</groupId>
+      <artifactId>javax.xml.rpc-api</artifactId>
+      <version>1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>se.csn</groupId>
+      <artifactId>ark</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>se.csn</groupId>
+      <artifactId>utils</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>se.csn</groupId>
+      <artifactId>notmotoriplclient</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>smtp</artifactId>
+      <version>1.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <!-- Test -->
+    <dependency>
+      <groupId>easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>axis</groupId>
+      <artifactId>axis</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>opensymphony</groupId>
+      <artifactId>quartz</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+
+    <defaultGoal>compile</defaultGoal>
+    <testResources>
+      <testResource>
+        <directory>../NotmotorProperties/UTV/IPL/properties/arkitektur</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </testResource>
+      <testResource>
+        <directory>../NotmotorProperties/UTV/IPL/properties/notmotor</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </testResource>
+      <testResource>
+        <directory>../NotmotorProperties/UTV/IPL/properties/log/notmotor</directory>
+        <includes>
+          <include>*.properties</include>
+        </includes>
+      </testResource>
+    </testResources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+
+    </plugins>
+
+  </build>
+
+</project>

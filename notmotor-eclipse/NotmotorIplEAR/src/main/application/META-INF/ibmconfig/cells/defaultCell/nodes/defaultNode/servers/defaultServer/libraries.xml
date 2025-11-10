@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<libraries:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:libraries="http://www.ibm.com/websphere/appserver/schemas/5.0/libraries.xmi" xmi:id="Library_1221564927924" name="App_Notmotor_IPL_test" description="Används endast för test i lokal utvecklingsmiljö">
+  <classPath>${CSN_ENV_ROOT_GEMENSAMMA}/IPL/properties/arkitektur</classPath>
+  <classPath>${CSN_ENV_ROOT_NOTMOTOR}/IPL/properties/log/notmotor</classPath>
+  <classPath>${CSN_ENV_ROOT_NOTMOTOR}/IPL/properties/notmotor</classPath>
+</libraries:Library>

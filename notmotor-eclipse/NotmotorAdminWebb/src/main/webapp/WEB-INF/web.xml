@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name>
+	NotmotorAdminWebb</display-name>
+	<context-param>
+		<param-name>com.sun.faces.NUMBER_OF_VIEWS_IN_SESSION</param-name>
+		<param-value>15</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.sun.faces.enableHighAvailability</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.sun.faces.COMPRESS_STATE</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.ws.jsf.JSP_UPDATE_CHECK</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.ws.jsf.LOAD_FACES_CONFIG_AT_STARTUP</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.DISABLE_JWL_MULTIPART_CONTEXT</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.RESOURCE_EXPIRE_MS</param-name>
+		<param-value>31536000000</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.DATETIME_ASSIST_STRICTNESS</param-name>
+		<param-value>1</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.NUMBER_ASSIST_STRICTNESS</param-name>
+		<param-value>1</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.USE_UNENCODED_CONTEXT_PATH</param-name>
+		<param-value></param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.JS_RESOURCE_SERVLET_URL_PATTERN</param-name>
+		<param-value>/.ibmjsfres/*</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.JS_RESOURCE_SERVLET_CACHE</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.ENCODING_MAPPING</param-name>
+		<param-value>converter.properties</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.ENHANCED_SERVER_STATE_SAVING_SESSION_STORED_VIEWS</param-name>
+		<param-value>15</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.USE_HXCLIENT_FULL</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.ENCODE_DATA</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.ibm.faces.TURN_OFF_AJAX_PORTAL_60_PATH</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.CONFIG_FILES</param-name>
+		<param-value></param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.jsp</param-value>
+	</context-param>
+	<context-param>
+		<description>
+		Specifies maximum size for the request content processed by MultipartExternalContext.
+Can be used to prevent large files from being uploaded.
+Takes an integer value, in bytes. 0 or empty means there is no limit.
+Default is no limit.
+</description>
+		<param-name>com.ibm.faces.MAX_REQUEST_CONTENT_SIZE</param-name>
+		<param-value>0</param-value>
+	</context-param>
+	<servlet>
+		<description>
+		Servlet för konfiguration och tester</description>
+		<display-name>
+		ConfigServlet</display-name>
+		<servlet-name>ConfigServlet</servlet-name>
+		<servlet-class>
+		se.csn.notmotor.admin.servlets.ConfigServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>
+		javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>JavaScript Resource Servlet</servlet-name>
+		<servlet-class>com.ibm.faces.webapp.JSResourceServlet</servlet-class>
+		<load-on-startup>-1</load-on-startup>
+		<enabled>true</enabled>
+		<async-supported>false</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ConfigServlet</servlet-name>
+		<url-pattern>/ConfigServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.faces</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JavaScript Resource Servlet</servlet-name>
+		<url-pattern>
+		/.ibmjsfres/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	<error-page>
+		<error-code>403</error-code>
+		<location>/ejBehorig.jsp</location>
+	</error-page>
+	
+	<welcome-file-list>
+		<welcome-file>status.jsf</welcome-file>
+	</welcome-file-list>
+	<security-constraint>
+		 <!-- This security constraint illustrates how JSP pages 
+	             with JavaServer Faces components can be protected from
+	             being accessed without going through the Faces Servlet.
+	             The security constraint ensures that the Faces Servlet will
+	             be used or the pages will not be processed. -->
+		<display-name>Restrict access to JSP pages</display-name>
+		<web-resource-collection>
+			<web-resource-name>Restrict access to JSP pages</web-resource-name>
+			<url-pattern>/sok.jsp</url-pattern>
+			<url-pattern>/stangningsschema.jsp</url-pattern>
+			<url-pattern>/statistik.jsp</url-pattern>
+			<url-pattern>/oppnaStang.jsp</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+		    <description>
+			With no roles defined, no access granted
+		    </description>
+		</auth-constraint>
+    </security-constraint>
+	<security-constraint>
+		<display-name>
+		DriftstyrningConstraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Driftsidor</web-resource-name>
+			<url-pattern>/oppnaStang.jsf</url-pattern>
+			<url-pattern>/stangningsschema.jsf</url-pattern>
+			<url-pattern>/params.jsf</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+		    <description>Driftpersonal</description>
+		    <role-name>Driftstyrning</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<display-name>
+		MeddelandehanteringConstraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Meddelandesidor</web-resource-name>
+			<url-pattern>/sok.jsf</url-pattern>
+			<url-pattern>/visameddelande.jsf</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+		    <description>Handläggare med rätt att hantera meddelanden
+		    </description>
+		    <role-name>Meddelandehantering</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<security-role>
+		<description>
+		Öppna/stäng, ändra styrparametrar, tidsstyrning etc.</description>
+		<role-name>Driftstyrning</role-name>
+	</security-role>
+	<security-role>
+		<description>
+		Sök och visa meddelanden</description>
+		<role-name>Meddelandehantering</role-name>
+	</security-role>
+	<resource-ref id="ResourceRef_1207026916745">
+		<description>
+		</description>
+		<res-ref-name>NotmotorDS</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+</web-app>
+

@@ -1,0 +1,56 @@
+# Properties för notifieringsmotorn
+mail.user=<username@SMTP>
+mail.password=<password@SMTP>
+mail.host=<host@SMTP>
+mail.port=<port@SMTP>
+mail.timeout=30000
+
+#SMS-tjansteinstallningar
+sms.user=<username@SMS>
+sms.password=<password@SMS>
+sms.endpoint=https://<host@SMS>/smsplus/smsextended
+
+dataservice.hamtapersonnummer=http://<host:port@IPL>/DataServiceIplWebb/api/hamtapersonnummer
+
+#MMM-tjansteinstallningar
+tieto.endpoint=https://<MMFAR_SERVER_HOST>/e-trade/mm/v3/Message?wsdl
+
+#Certifikat och nycklar for MMM
+#tieto.certifikat=file:///opt/IBM/WebSphere855/csnjava/INTE10/TESTIPL/properties/notmotor/service3.server.pem
+#tieto.nyckel=file:///opt/IBM/WebSphere855/csnjava/INTE10/TESTIPL/properties/notmotor/service3.private.p8
+tieto.certifikat=<NOTMOTOR_CERTIFIKAT_SOKVAG>
+tieto.nyckel=<NOTMOTOR_CERTIFIKAT_KEY_SOKVAG>
+#tieto.certifikat=C:/workspaces/Notmotor/NotmotorIplWebb/cert/service3.server.pem
+#tieto.nyckel=C:/workspaces/Notmotor/NotmotorIplWebb/cert/service3.private.p8
+
+#Texter mm for MMM
+#mmm.meddelande.rubrik=Årsbesked från CSN
+#mmm.meddelande.orgnr=162021001819
+#mmm.meddelande.avsandare=Centrala studiestödsnämnden
+#mmm.meddelande.supportinfo.text=Vänd er till CSN om ni har frågor angående detta meddelande
+#mmm.meddelande.supportinfo.url=http://www.csn.se/kontakta-oss
+#mmm.meddelande.bilaga.namn=Årsbesked.pdf
+
+
+
+#JNDI-namn för notmotorns datasource
+notmotor.ds.jndinamn=<NOTMOTOR_DS_JNDINAMN_IPL>
+
+#Hur många millisekunder det ska väntas mellan varje uppdatering av parametrar
+param.refreshtid=120000
+
+#URL till notmotorinstansen
+notmotor.url=http://<NOTMOTOR_WEBSERVICE_URL>/NotmotorIPL/SkickaMotorServlet
+
+#Avsnitt for lasning av MQ
+notmotor.mq.mail.from=<NOTMOTOR_FROM>
+notmotor.mq.mail.namn=CSN noreply
+notmotor.mq.mail.applikation=MQ
+
+# Anger hur många instanser av Notmotorn som ska startas automatiskt
+# (sätt 0 för att inaktivera autostart)
+notmotor.autostart=1
+
+# Character set för läsning av Correlation-ID
+notmotor.mq.characterset=<jmsencoding@MQ>
+

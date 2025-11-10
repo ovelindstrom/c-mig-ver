@@ -1,0 +1,25 @@
+package se.csn.notmotor.listeners;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+import se.csn.ark.common.util.logging.Log;
+
+/**
+ * @since 2007-jun-01
+ * 
+ */
+public class ContainerListener implements ServletContextListener {
+
+    private final Log log = Log.getInstance(ContainerListener.class);
+
+    @Override
+    public void contextDestroyed(ServletContextEvent arg0) {
+        log.info("CONTEXT DESTROY");
+    }
+
+    @Override
+    public void contextInitialized(ServletContextEvent arg0) {
+        log.info("CONTEXT INIT");
+    }
+}

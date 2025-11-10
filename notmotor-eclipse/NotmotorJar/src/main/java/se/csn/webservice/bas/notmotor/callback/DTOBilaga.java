@@ -1,0 +1,281 @@
+package se.csn.webservice.bas.notmotor.callback;
+
+import java.io.Serializable;
+import java.util.Arrays;
+
+import javax.xml.namespace.QName;
+
+import org.apache.axis.description.ElementDesc;
+import org.apache.axis.description.TypeDesc;
+import org.apache.axis.encoding.Deserializer;
+import org.apache.axis.encoding.Serializer;
+import org.apache.axis.encoding.ser.BeanDeserializer;
+import org.apache.axis.encoding.ser.BeanSerializer;
+
+public class DTOBilaga  implements Serializable {
+    private java.lang.Long id;
+
+    private java.lang.String mimetyp;
+
+    private java.lang.String filnamn;
+
+    private java.lang.String encoding;
+
+    private byte[] data;
+
+    public DTOBilaga() {
+    }
+
+    public DTOBilaga(
+           java.lang.Long id,
+           java.lang.String mimetyp,
+           java.lang.String filnamn,
+           java.lang.String encoding,
+           byte[] data) {
+        this.id = id;
+        this.mimetyp = mimetyp;
+        this.filnamn = filnamn;
+        this.encoding = encoding;
+        this.data = data;
+    }
+
+
+    /**
+     * Gets the id value for this DTOBilaga.
+     * 
+     * @return id
+     */
+    public java.lang.Long getId() {
+        return id;
+    }
+
+
+    /**
+     * Sets the id value for this DTOBilaga.
+     */
+    public void setId(java.lang.Long id) {
+        this.id = id;
+    }
+
+
+    /**
+     * Gets the mimetyp value for this DTOBilaga.
+     * 
+     * @return mimetyp
+     */
+    public java.lang.String getMimetyp() {
+        return mimetyp;
+    }
+
+
+    /**
+     * Sets the mimetyp value for this DTOBilaga.
+     */
+    public void setMimetyp(java.lang.String mimetyp) {
+        this.mimetyp = mimetyp;
+    }
+
+
+    /**
+     * Gets the filnamn value for this DTOBilaga.
+     * 
+     * @return filnamn
+     */
+    public java.lang.String getFilnamn() {
+        return filnamn;
+    }
+
+
+    /**
+     * Sets the filnamn value for this DTOBilaga.
+     */
+    public void setFilnamn(java.lang.String filnamn) {
+        this.filnamn = filnamn;
+    }
+
+
+    /**
+     * Gets the encoding value for this DTOBilaga.
+     * 
+     * @return encoding
+     */
+    public java.lang.String getEncoding() {
+        return encoding;
+    }
+
+
+    /**
+     * Sets the encoding value for this DTOBilaga.
+     */
+    public void setEncoding(java.lang.String encoding) {
+        this.encoding = encoding;
+    }
+
+
+    /**
+     * Gets the data value for this DTOBilaga.
+     * 
+     * @return data
+     */
+    public byte[] getData() {
+        return data;
+    }
+
+
+    /**
+     * Sets the data value for this DTOBilaga.
+     */
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    private java.lang.Object __equalsCalc;
+
+    @Override
+    public synchronized boolean equals(java.lang.Object obj) {
+        if (!(obj instanceof DTOBilaga)) {
+            return false;
+        }
+        DTOBilaga other = (DTOBilaga) obj;
+        if (obj == null) {
+            return false;
+        }
+        if (this == obj) {
+            return true;
+        }
+        if (__equalsCalc != null) {
+            return __equalsCalc == obj;
+        }
+        __equalsCalc = obj;
+        boolean _equals;
+        _equals = true
+            && ((this.id == null && other.getId() == null)
+            || (this.id != null
+            && this.id.equals(other.getId())))
+            && ((this.mimetyp == null && other.getMimetyp() == null)
+            || (this.mimetyp != null
+            && this.mimetyp.equals(other.getMimetyp())))
+            && ((this.filnamn == null && other.getFilnamn() == null)
+            || (this.filnamn != null
+            && this.filnamn.equals(other.getFilnamn())))
+            && ((this.encoding == null && other.getEncoding() == null)
+            || (this.encoding != null
+            && this.encoding.equals(other.getEncoding())))
+            && ((this.data == null && other.getData() == null)
+            || (this.data != null
+            && Arrays.equals(this.data, other.getData())));
+        __equalsCalc = null;
+        return _equals;
+    }
+
+    private boolean __hashCodeCalc;
+
+    @Override
+    public synchronized int hashCode() {
+        if (__hashCodeCalc) {
+            return 0;
+        }
+        __hashCodeCalc = true;
+        int _hashCode = 1;
+        if (getId() != null) {
+            _hashCode += getId().hashCode();
+        }
+        if (getMimetyp() != null) {
+            _hashCode += getMimetyp().hashCode();
+        }
+        if (getFilnamn() != null) {
+            _hashCode += getFilnamn().hashCode();
+        }
+        if (getEncoding() != null) {
+            _hashCode += getEncoding().hashCode();
+        }
+        if (getData() != null) {
+            for (int i = 0;
+                 i < java.lang.reflect.Array.getLength(getData());
+                 i++) {
+                java.lang.Object obj = java.lang.reflect.Array.get(getData(), i);
+                if (obj != null
+                    && !obj.getClass().isArray()) {
+                    _hashCode += obj.hashCode();
+                }
+            }
+        }
+        __hashCodeCalc = false;
+        return _hashCode;
+    }
+
+    // Type metadata
+    private static TypeDesc typeDesc =
+        new TypeDesc(DTOBilaga.class, true);
+
+    static {
+        typeDesc.setXmlType(new QName("http://webservice.csn.se/bas/notmotor/callback", "DTOBilaga"));
+        ElementDesc elemField = new ElementDesc();
+        elemField.setFieldName("id");
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/callback", "id"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "long"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new ElementDesc();
+        elemField.setFieldName("mimetyp");
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/callback", "mimetyp"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new ElementDesc();
+        elemField.setFieldName("filnamn");
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/callback", "filnamn"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new ElementDesc();
+        elemField.setFieldName("encoding");
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/callback", "encoding"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new ElementDesc();
+        elemField.setFieldName("data");
+        elemField.setXmlName(new QName("http://webservice.csn.se/bas/notmotor/callback", "data"));
+        elemField.setXmlType(new QName("http://www.w3.org/2001/XMLSchema", "base64Binary"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+    }
+
+    /**
+     * Return type metadata object
+     */
+    public static TypeDesc getTypeDesc() {
+        return typeDesc;
+    }
+
+    /**
+     * Get Custom Serializer
+     */
+    public static Serializer getSerializer(
+           java.lang.String mechType,
+           java.lang.Class _javaType,
+           QName _xmlType) {
+        return
+            new  BeanSerializer(
+                _javaType, _xmlType, typeDesc);
+    }
+
+    /**
+     * Get Custom Deserializer
+     */
+    public static Deserializer getDeserializer(
+           java.lang.String mechType,
+           java.lang.Class _javaType,
+           QName _xmlType) {
+        return
+            new  BeanDeserializer(
+                _javaType, _xmlType, typeDesc);
+    }
+
+}
